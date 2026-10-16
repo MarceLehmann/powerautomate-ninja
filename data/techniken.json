@@ -138,7 +138,7 @@
         "frage": "Wozu dient eine JSON-Viewer-Erweiterung bei der Arbeit mit Flows?",
         "antworten": [
           "Rohes JSON lesbar und strukturiert anzeigen",
-          "Flows automatisch reparieren",
+          "Fehlerhafte Flows automatisch reparieren",
           "JSON in Premium-Connectoren umwandeln"
         ],
         "richtig_index": 0,
@@ -312,16 +312,20 @@
       "guertel": 3,
       "thema": "ALM & Governance",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Was ist laut Tipp die Grundlage für ein automatisches Backup von Flows und Apps?",
+        "frage": "Worauf baut ein automatisches Backup von Flows und Apps auf?",
         "antworten": [
-          "Geplante Exporte von Solutions als ZIP-Datei",
-          "Ein Papierkorb für gelöschte Flows",
-          "Kopien aus der Run history"
+          "Geplante Exporte der Solution als ZIP-Datei",
+          "Eine Kopie jedes Flows im Postfach des Besitzers",
+          "Die Ausgaben der Aktionen in der Run history"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Flows und Apps liegen in einer Solution, ein geplanter Flow exportiert sie regelmässig als ZIP nach SharePoint, OneDrive oder Azure Blob. Diese Datei importierst du im Notfall wieder.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du richtest ein wiederkehrendes Backup deiner Solutions ein."
     },
@@ -385,16 +389,20 @@
       "guertel": 3,
       "thema": "Trigger",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was ersetzt du, bevor du einen Ausdruck aus Filter array als Trigger Condition einfügst?",
         "antworten": [
-          "Das @-Zeichen durch ein #-Zeichen",
-          "Nichts, der Ausdruck passt unverändert",
+          "Das @-Zeichen am Anfang durch ein #-Zeichen",
+          "Nichts, der Ausdruck funktioniert unverändert",
           "item() durch triggerOutputs() oder triggerBody()"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Filter array prüft jedes Element mit item(), das es im Trigger nicht gibt. In der Trigger Condition verweist du deshalb auf triggerOutputs() oder triggerBody()."
+        ]
       },
       "lernziel": "Du schreibst Trigger Conditions, damit der Flow nur bei passenden Ereignissen startet."
     },
@@ -510,16 +518,20 @@
       "guertel": 1,
       "thema": "Ausdrücke",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Was liefert dir «Format data by example»?",
+        "frage": "Was liefert dir «Format data by example» oder sein Nachfolger, der Copilot-Ausdrucksassistent?",
         "antworten": [
-          "Eine Vorlage für den ganzen Flow",
-          "Eine neue Datenquelle",
-          "Einen fertigen Formatierungsausdruck aus deinem Beispiel"
+          "Eine fertige Vorlage für den ganzen Flow",
+          "Eine neue Datenquelle mit formatierten Werten",
+          "Den passenden Ausdruck zu deinem Beispiel"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Du gibst ein Beispiel vor oder beschreibst das gewünschte Format, und Power Automate erzeugt daraus den Ausdruck, etwa formatDateTime() für ein Datum. Die klassische Funktion ist durch den Copilot-Ausdrucksassistenten abgelöst."
+        ]
       },
       "lernziel": "Du lässt dir Formatierungsausdrücke erzeugen statt sie auswendig zu schreiben."
     },
@@ -532,16 +544,20 @@
       "guertel": 3,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wie speicherst du eine passwortgeschützte Datei aus dem Web?",
         "antworten": [
-          "Mit einer authentifizierten HTTP-Anfrage und danach Create file",
-          "Mit Get file content",
-          "Mit «Upload file from URL» ohne weitere Angaben"
+          "Authentifizierte HTTP-Anfrage, danach «Create file»",
+          "Nur «Upload file from URL» mit der Datei-URL",
+          "«Get file content» direkt mit der Web-Adresse"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Mit einer HTTP-Anfrage samt Authentifizierung holst du den geschützten Inhalt und speicherst ihn mit «Create file». «Upload file from URL» eignet sich nur für öffentliche Dateien.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du lädst Dateien aus dem Web je nach Schutz mit der richtigen Aktion herunter."
     },
@@ -565,7 +581,8 @@
         "richtig_index": 2,
         "erklaerungen": []
       },
-      "lernziel": "Du verkleinerst Bilder im Flow mit SharePoint-Thumbnails."
+      "lernziel": "Du verkleinerst Bilder im Flow mit SharePoint-Thumbnails.",
+      "pool_ausschluss": "Tipp nennt eine Aktion «Upload file from URL» mit Thumbnail-Ausgabe, fachlich fraglich, Frage nicht eindeutig belegbar."
     },
     {
       "schluessel": "20",
@@ -602,16 +619,20 @@
       "guertel": 3,
       "thema": "Trigger",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wo findest du zum Beispiel die Mailadresse der Person, die den Flow ausgelöst hat?",
+        "frage": "Wo steht bei einem manuell gestarteten Flow die Mailadresse der Person, die ihn gestartet hat?",
         "antworten": [
-          "In body('Compose')",
+          "In outputs('Compose')?['body']",
           "In triggerOutputs()?['headers']",
-          "In workflow()?['name']"
+          "In workflow()?['run']?['name']"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Der manuelle Trigger liefert in seinen Headern unter anderem x-ms-user-email. Du liest die Adresse mit triggerOutputs()?['headers']?['x-ms-user-email'].",
+          ""
+        ]
       },
       "lernziel": "Du nutzt Trigger-Header, um die auslösende Person zu benachrichtigen."
     },
@@ -629,7 +650,7 @@
         "frage": "Wie führst du zwei Arrays zusammen und behältst dabei Duplikate?",
         "antworten": [
           "join(), concat() und danach split()",
-          "union() mit beiden Arrays",
+          "union() mit beiden Arrays als Parameter",
           "intersection() mit beiden Arrays"
         ],
         "richtig_index": 0,
@@ -728,16 +749,20 @@
       "guertel": 2,
       "thema": "Power Apps und Flows",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was ist ein Vorteil des PowerApps V2 Triggers?",
         "antworten": [
-          "Er braucht keine Verbindungen",
+          "Er kommt ohne jede Verbindung zu Datenquellen aus",
           "Er startet den Flow automatisch nach Zeitplan",
           "Typisierte Eingaben wie Text, Zahl oder Ja/Nein"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Du legst für jede Eingabe den Typ fest, etwa Text, Zahl, Ja/Nein, E-Mail oder Datum. Titel und Beschreibung der Eingaben erscheinen in Power Apps beim Aufruf von Run()."
+        ]
       },
       "lernziel": "Du setzt für App-Flows den PowerApps V2 Trigger mit klaren Eingaben ein."
     },
@@ -905,16 +930,20 @@
       "guertel": 3,
       "thema": "ALM & Governance",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Welcher Schritt entfernt am Ende alle gesammelten Apps und Flows auf einmal?",
         "antworten": [
-          "Die Umgebung zurücksetzen",
-          "Den Export als unmanaged",
+          "Den Export als Managed Solution",
+          "Die unmanaged Solution löschen",
           "Die importierte Managed Solution löschen"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Nach dem Re-Import gehören die Apps und Flows zur Managed Solution. Löschst du diese, verschwinden alle enthaltenen Komponenten in einem Schritt, ohne weitere Rückfrage."
+        ]
       },
       "lernziel": "Du räumst Test-Apps und Flows gesammelt auf."
     },
@@ -932,7 +961,7 @@
         "frage": "Wofür setzt du Scopes laut Tipp ein?",
         "antworten": [
           "Zum Auslösen anderer Flows aus dem laufenden Flow",
-          "Zum Gruppieren von Aktionen, Isolieren von Fehlern und Wiederverwenden",
+          "Zum Gruppieren von Aktionen und Isolieren von Fehlern",
           "Zum Speichern von Variablen über mehrere Läufe hinweg"
         ],
         "richtig_index": 1,
@@ -953,16 +982,20 @@
       "guertel": 6,
       "thema": "SharePoint REST",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wie viele Operationen bündelt ein $batch-Aufruf laut Tipp höchstens?",
+        "frage": "Wie viele Operationen bündelt ein $batch-Aufruf an SharePoint höchstens?",
         "antworten": [
           "1000",
           "100",
           "5000"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Die SharePoint REST API nimmt bis zu 1000 Create-, Update- oder Delete-Operationen in einem $batch-Aufruf an. Statt hunderter Einzelaktionen schickst du einen HTTP-Aufruf.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du verarbeitest grosse Mengen SharePoint-Einträge mit Batch-Aufrufen statt Einzelaktionen."
     },
@@ -975,7 +1008,7 @@
       "guertel": 1,
       "thema": "ALM & Governance",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Welcher Weg bringt einen Flow samt Abhängigkeiten zu Kollegen?",
         "antworten": [
@@ -984,7 +1017,11 @@
           "Die Run history teilen"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Eine Solution fasst Apps, Flows, Connection References und Tabellen zusammen. Beim Export und Import wandern die Abhängigkeiten mit.",
+          ""
+        ]
       },
       "lernziel": "Du wählst den passenden Weg, um Flows mit anderen zu teilen."
     },
@@ -997,16 +1034,20 @@
       "guertel": 4,
       "thema": "Schleifen & Parallelität",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Welchen Status meldet die Do-Until-Schleife, wenn Count oder Timeout sie beenden?",
         "antworten": [
-          "Failed",
+          "TimedOut",
           "Succeeded",
           "Cancelled"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Erreicht die Schleife Count oder Timeout, meldet sie trotzdem Succeeded. Ob das Warten geklappt hat, prüfst du deshalb an der Variable nach der Schleife.",
+          ""
+        ]
       },
       "lernziel": "Du baust Abfrageschleifen mit Delay und prüfst das Ergebnis an der Variable statt am Schleifenstatus."
     },
@@ -1019,16 +1060,20 @@
       "guertel": 4,
       "thema": "ALM & Governance",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wofür brauchst du die Übersicht, welcher Flow welchen aufruft?",
         "antworten": [
-          "Um Lizenzen zu sparen",
-          "Für die richtige Reihenfolge beim Deployment und für die Fehlersuche",
-          "Um Flows automatisch zu löschen"
+          "Um Lizenzen für Child Flows einzusparen",
+          "Für die richtige Reihenfolge beim Deployment",
+          "Um ungenutzte Flows automatisch zu löschen"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Child Flows müssen in der Zielumgebung vorhanden und eingeschaltet sein, bevor du den Parent Flow aktivierst. Die Übersicht zeigt dir diese Reihenfolge und welche Flows eine Änderung betrifft.",
+          ""
+        ]
       },
       "lernziel": "Du dokumentierst Parent-Child-Abhängigkeiten zwischen Flows."
     },
@@ -1041,16 +1086,20 @@
       "guertel": 4,
       "thema": "HTTP & Microsoft Graph",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wann greifst du laut Tipp zu den HTTP-Aktionen?",
+        "frage": "Wann greifst du in Power Automate zu den HTTP-Aktionen?",
         "antworten": [
-          "Nur zum Testen von Flows",
-          "Für jede SharePoint-Abfrage",
-          "Wenn Standard-Connectoren eine API nicht abdecken"
+          "Nur zum Testen von Flows vor dem Produktivbetrieb",
+          "Für jede Abfrage auf eine SharePoint-Liste",
+          "Wenn kein fertiger Connector die API abdeckt"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "HTTP-Aktionen rufen jede REST-API auf, auch Microsoft Graph. Du brauchst sie dort, wo die fertigen Connectoren nicht reichen."
+        ]
       },
       "lernziel": "Du rufst APIs ohne fertigen Connector über HTTP auf."
     },
@@ -1114,16 +1163,20 @@
       "guertel": 3,
       "thema": "ALM & Governance",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Welches Problem lösen Umgebungsvariablen?",
         "antworten": [
-          "Fehlende Lizenzen",
-          "Fest eingetragene Werte, die je Umgebung anders sein müssen",
-          "Zu langsame Schleifen"
+          "Fehlende Lizenzen für Premium-Connectoren",
+          "Fest eingetragene Werte, die je Umgebung abweichen",
+          "Zu langsame Schleifen bei grossen Datenmengen"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Umgebungsvariablen ersetzen fest eingetragene Werte. So wandert dieselbe Solution ohne Änderung von Dev über Test nach Prod.",
+          ""
+        ]
       },
       "lernziel": "Du baust Flows mit Umgebungsvariablen für den Transport zwischen Umgebungen."
     },
@@ -1162,16 +1215,20 @@
       "guertel": 5,
       "thema": "JSON & Datenumwandlung",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Womit wandelst du laut Tipp ein Array in ein Objekt um?",
         "antworten": [
           "Eine Apply-to-each-Schleife mit Append to array",
-          "Die Aktion Create HTML table",
+          "Die Aktion Create HTML table mit eigenen Spalten",
           "Select-Aktion und verschachtelte replace()-Ausdrücke"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Select erzeugt die Schlüssel-Wert-Paare, und die verschachtelten replace()-Ausdrücke entfernen Klammern und Trennzeichen, bis ein einziges Objekt übrig bleibt. Eine Schleife brauchst du dafür nicht."
+        ]
       },
       "lernziel": "Du formst Arrays ohne Schleifen in adressierbare Objekte um."
     },
@@ -1237,16 +1294,20 @@
       "guertel": 2,
       "thema": "Mails, Teams & Kalender",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wohin schickt der Flow seine Benachrichtigungen laut Tipp?",
+        "frage": "Wie hältst du Flow-Benachrichtigungen in Teams nach Thema getrennt?",
         "antworten": [
-          "In thematische Gruppenchats über den Flow Bot",
-          "In eine SharePoint-Liste",
-          "Nur in den persönlichen Chat des Erstellers"
+          "Der Flow Bot postet in Gruppenchats pro Thema",
+          "Alle Meldungen landen in einer SharePoint-Liste",
+          "Alles geht in den persönlichen Chat mit dem Flow Bot"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Du legst pro Thema einen Gruppenchat an und lässt den Flow Bot mit «Post message in a chat or channel» dorthin posten. So landen nicht alle Meldungen im selben Chat.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du ordnest Flow-Benachrichtigungen in Teams nach Thema."
     },
@@ -1309,16 +1370,20 @@
       "guertel": 2,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was musst du bei den kostenlosen PDF-Diensten beachten?",
         "antworten": [
-          "Die meisten Connectoren sind Premium, auch wenn der Dienst kostenlos ist",
-          "Sie funktionieren nur mit Word-Dateien",
-          "Sie brauchen keine Verbindung"
+          "Die meisten Connectoren sind trotzdem Premium",
+          "Sie funktionieren nur mit Word-Dateien als Quelle",
+          "Sie brauchen in Power Automate keine Verbindung"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Adobe PDF Services, Encodian, Muhimbi und Cloudmersive haben kostenlose Kontingente. Ihre Connectoren sind in Power Automate aber meist Premium, darum kann trotzdem eine Premium-Lizenz nötig sein.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du wählst einen PDF-Dienst passend zu Kontingent und Lizenz."
     },
@@ -1357,16 +1422,20 @@
       "guertel": 3,
       "thema": "Daten abfragen & schreiben",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wo filterst du SharePoint-Daten am effizientesten?",
         "antworten": [
           "In der Filter Query von Get items an der Quelle",
-          "In einer Condition nach jedem Eintrag",
+          "In einer Condition für jeden einzelnen Eintrag",
           "Erst nach dem Abruf mit einer Schleife"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Die Filter Query in Get items filtert per OData direkt in SharePoint. So lädt der Flow nur die Einträge, die er braucht, statt alles zu holen und danach auszusortieren.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du schreibst OData-Filter und lädst nur die nötigen Einträge."
     },
@@ -1379,16 +1448,20 @@
       "guertel": 2,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Mit welcher Aktion holst du laut Tipp Webseiteninhalte ohne Premium?",
+        "frage": "Mit welcher Aktion holst du Webseiteninhalte ohne Premium-Connector?",
         "antworten": [
-          "Get file content",
-          "HTTP-Aktion",
+          "«Get file content» im SharePoint-Connector",
+          "Die HTTP-Aktion mit einem GET-Aufruf",
           "«Upload from URL» im OneDrive-Connector"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "«Upload from URL» speichert die Seite als Datei in OneDrive, danach liest du sie mit «Get file content» als Text. Beides sind Standardaktionen, die HTTP-Aktion wäre Premium."
+        ]
       },
       "lernziel": "Du speicherst Webinhalte mit einer Standardaktion."
     },
@@ -1401,16 +1474,20 @@
       "guertel": 2,
       "thema": "Daten abfragen & schreiben",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wie viele Einträge liefert Get items aus SharePoint laut Tipp ohne Pagination?",
+        "frage": "Wie viele Einträge liefert Get items aus SharePoint standardmässig, ohne Pagination und Top Count?",
         "antworten": [
           "256",
           "5000",
           "100"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Ohne Pagination und ohne Top Count liefert SharePoint die ersten 100 Einträge. 256 ist der Standardwert beim Excel-Connector."
+        ]
       },
       "lernziel": "Du holst mit Pagination alle Einträge statt nur der ersten Seite."
     },
@@ -1449,16 +1526,20 @@
       "guertel": 4,
       "thema": "KI & Copilot Studio",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wie gelangen die strukturierten Daten aus ChatGPT in den Flow?",
         "antworten": [
           "Über einen Link mit URL-kodierten Daten an die Trigger-URL",
-          "Über einen Mailanhang",
-          "Über eine geteilte Excel-Datei"
+          "Als Mailanhang an ein Postfach, das der Flow überwacht",
+          "Über eine Excel-Datei, die der Flow regelmässig liest"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "ChatGPT kodiert die Daten für die URL und hängt sie an die Trigger-URL eines Flows mit HTTP-Trigger. Ein Klick auf den Link schickt sie an Power Automate.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du startest einen Flow per Link mit Daten aus einem KI-Chat."
     },
@@ -1522,16 +1603,20 @@
       "guertel": 5,
       "thema": "HTTP & Microsoft Graph",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Welche Eigenschaft hält die Gästeliste eines Termins verborgen?",
+        "frage": "Welche Eigenschaft hält bei einem Termin in Graph die Gästeliste verborgen?",
         "antworten": [
           "hideAttendees",
-          "isPrivate",
-          "showAs"
+          "isReminderOn",
+          "isOnlineMeeting"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Mit hideAttendees auf true bleibt die Gästeliste für die Teilnehmenden verborgen. Du setzt sie per PATCH zusammen mit der ergänzten Liste attendees.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du verwaltest Teilnehmende eines Termins leise und vertraulich über Graph."
     },
@@ -1595,16 +1680,20 @@
       "guertel": 4,
       "thema": "Power Apps und Flows",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wie liest die App die Umgebungsvariable ohne Premium?",
         "antworten": [
-          "Direkt über die Dataverse-Tabelle",
-          "Über einen Solution-Flow, den die App beim OnStart aufruft",
-          "Gar nicht, das geht nur mit Premium"
+          "Direkt aus der Dataverse-Tabelle per Formel",
+          "Mit einem Solution-Flow, aufgerufen beim OnStart",
+          "Gar nicht, dafür braucht die App immer Premium"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Ein Flow in der Solution liest die Umgebungsvariable und gibt sie an die App zurück. Die App ruft ihn beim OnStart auf und speichert den Wert in einer Variable.",
+          ""
+        ]
       },
       "lernziel": "Du stellst Konfigurationswerte aus der Solution auch Standard-Apps bereit."
     },
@@ -1617,7 +1706,7 @@
       "guertel": 3,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was dient in Word als Platzhalter für die Daten aus dem Flow?",
         "antworten": [
@@ -1626,7 +1715,11 @@
           "Kopfzeilen"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "In Word fügst du über Quick Parts eine Dokumenteigenschaft als Platzhalter ein, die ein Standard-Flow mit Daten füllt. Premium brauchst du dafür nicht.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du erstellst Word-Dokumente automatisch mit Standardmitteln."
     },
@@ -1692,16 +1785,20 @@
       "guertel": 5,
       "thema": "Approvals",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Womit wird die Auswahlliste der Adaptive Card gefüllt?",
         "antworten": [
-          "Mit den Mitgliedern der Umgebung",
-          "Mit einer festen Liste im Flow",
-          "Mit der Suchaktion des Office 365 Users-Connectors"
+          "Mit den Benutzern der Power-Platform-Umgebung",
+          "Mit einer festen Namensliste in einer Compose-Aktion",
+          "Mit «Search for user (V2)» aus Office 365 Users"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "«Search for user (V2)» aus dem Office 365 Users-Connector liefert die Personen, eine Select-Aktion formt sie in title und value um. Diese Paare stehen als choices im Input.ChoiceSet der Karte."
+        ]
       },
       "lernziel": "Du baust mehrstufige Genehmigungen mit dynamischer Wahl der nächsten Person."
     },
@@ -1740,16 +1837,20 @@
       "guertel": 3,
       "thema": "Approvals",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Welche Aktion nutzt du laut Tipp für Genehmigungen durch externe Personen?",
+        "frage": "Welche Aktion nutzt du laut Tipp für eine einfache Genehmigung durch Externe?",
         "antworten": [
-          "«Start and wait for an approval» mit Gastkonto",
-          "Eine Teams-Nachricht im Kanal",
+          "«Create item» in SharePoint",
+          "«Start and wait for an approval»",
           "«Send email with options»"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Der Standard-Approval-Prozess erreicht externe Empfänger nicht. «Send email with options» geht an jede gültige Adresse, die Antwort verarbeitest du im Flow."
+        ]
       },
       "lernziel": "Du holst Genehmigungen auch von Personen ausserhalb der Organisation ein."
     },
@@ -1762,16 +1863,20 @@
       "guertel": 3,
       "thema": "KI & Copilot Studio",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Was brauchst du, um Azure Document Intelligence laut Tipp aus Power Automate aufzurufen?",
+        "frage": "Womit rufst du Azure Document Intelligence laut Tipp aus einem Flow auf?",
         "antworten": [
-          "Die HTTP-Aktion, die eine Premium-Funktion ist",
-          "Nur einen AI Builder-Prompt",
-          "Keine Verbindung, es läuft automatisch"
+          "Mit der HTTP-Aktion, einer Premium-Funktion",
+          "Mit dem Standard-Connector Excel Online",
+          "Mit einer Wissensquelle in Copilot Studio"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Du holst API-Schlüssel und Endpunkt aus Azure und rufst den Dienst mit der HTTP-Aktion auf. Diese Aktion ist in Power Automate eine Premium-Funktion.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du wählst zwischen AI Builder und Azure Document Intelligence nach Menge und Kosten."
     },
@@ -1784,16 +1889,20 @@
       "guertel": 6,
       "thema": "Schleifen & Parallelität",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wie kommst du laut Tipp über die 50 parallelen Durchläufe von Apply to each hinaus?",
         "antworten": [
           "Mit Child Flows oder Datenbank-Triggern",
-          "Mit einer höheren Pagination",
+          "Mit einer höheren Pagination-Grenze",
           "Mit einem zweiten Trigger im selben Flow"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Ein Child Flow pro Eintrag oder ein zweiter Flow, der auf neue Datenbankzeilen reagiert, verarbeitet jeden Eintrag unabhängig. So gilt die Grenze von 50 parallelen Durchläufen der Schleife nicht mehr.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du verteilst grosse Datenmengen auf parallele Flows."
     },
@@ -1806,16 +1915,20 @@
       "guertel": 2,
       "thema": "Flow-Aufbau & Lesbarkeit",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was tust du, damit eine kopierte Aktion in einem Switch funktioniert?",
         "antworten": [
-          "Den Switch löschen und neu anlegen",
-          "Ausserhalb einfügen, in den Zweig ziehen, Referenzen neu setzen",
-          "Concurrency einschalten"
+          "Den Switch löschen und komplett neu anlegen",
+          "Ausserhalb einfügen, hineinziehen, Verweise neu setzen",
+          "Concurrency Control in den Einstellungen einschalten"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Die kopierte Aktion verweist oft auf Ausgaben, die im Zweig nicht erreichbar sind. Du fügst sie weiter oben ein, ziehst sie in den Zweig und setzt die dynamischen Inhalte neu.",
+          ""
+        ]
       },
       "lernziel": "Du kopierst Aktionen in Verzweigungen, ohne Referenzen zu verlieren."
     },
@@ -1828,16 +1941,20 @@
       "guertel": 2,
       "thema": "Werkzeuge",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Was ist PowerTools?",
+        "frage": "Was ist PowerTools von Paul Murana?",
         "antworten": [
-          "Ein eingebauter Microsoft-Connector",
-          "Ein Connector eines unabhängigen Anbieters für Textverarbeitung",
-          "Ein Ausdruck in Power Automate"
+          "Ein eingebauter Microsoft-Connector für Textaufgaben",
+          "Ein Connector eines Drittanbieters für Textverarbeitung",
+          "Eine eingebaute Ausdrucksfunktion in Power Automate"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "PowerTools ist ein kommerzieller Connector eines unabhängigen Anbieters, kein Microsoft-Produkt. Er ergänzt Power Automate um Aktionen zum Bereinigen und Extrahieren von Text.",
+          ""
+        ]
       },
       "lernziel": "Du kennst eine Ergänzung, wenn Ausdrücke für Textaufgaben zu aufwendig werden."
     },
@@ -1902,16 +2019,20 @@
       "guertel": 2,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Welche Dateien liefert «Get file content» laut Tipp ohne Base64-Umweg?",
+        "frage": "Welche Dateien liefert «Get file content» ohne Base64-Umweg?",
         "antworten": [
-          "Nur Bilder",
-          "Nur PDF-Dateien",
-          "Klartextformate wie JSON, CSV, XML und Markdown"
+          "Bildformate wie PNG, JPG und GIF",
+          "Office-Dateien wie DOCX und XLSX",
+          "Textformate wie JSON, CSV und XML"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Klartextformate wie JSON, CSV, XML oder Markdown kommen direkt als Text zurück. Du verarbeitest sie ohne Base64-Dekodierung weiter."
+        ]
       },
       "lernziel": "Du verarbeitest Textdateien ohne unnötige Dekodierung."
     },
@@ -1924,16 +2045,20 @@
       "guertel": 4,
       "thema": "JSON & Datenumwandlung",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Welche Bausteine wandeln CSV laut Tipp in JSON um?",
         "antworten": [
-          "Create HTML table",
+          "Create CSV table und Compose",
           "split(), Select und Parse JSON",
-          "Ein Premium-CSV-Connector"
+          "Ein Premium-Connector für CSV-Dateien"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "split() trennt die CSV in Zeilen und Felder, Select ordnet die Werte den Spaltennamen zu, und Parse JSON macht das Ergebnis nutzbar. Alles sind Standardaktionen.",
+          ""
+        ]
       },
       "lernziel": "Du machst CSV-Dateien im Flow als strukturierte Daten nutzbar."
     },
@@ -1946,16 +2071,20 @@
       "guertel": 5,
       "thema": "Sicherheit & Benutzerkontext",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was ersetzt der Tipp durch eine zentrale App mit geplantem Flow?",
         "antworten": [
-          "Die Teams-App",
-          "Viele einzelne Flows pro Person",
-          "Die Outlook-Verbindung"
+          "Die Outlook-Verbindung jeder Person",
+          "Viele einzelne Flows, einen pro Person",
+          "Die Benachrichtigung über Teams"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Statt für jede Person einen eigenen Flow zu bauen, sammelt eine zentrale Power App die Eingaben, und der Flow läuft im Kontext der jeweiligen Person. Ein geplanter Flow verschickt dazu den Link zur App.",
+          ""
+        ]
       },
       "lernziel": "Du automatisierst persönliche Aufgaben zentral statt mit vielen Einzel-Flows."
     },
@@ -1968,16 +2097,20 @@
       "guertel": 4,
       "thema": "JSON & Datenumwandlung",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Was ersetzt der Zugriff mit variablen Schlüsseln?",
+        "frage": "Was ersparst du dir mit dem Zugriff über einen variablen Schlüssel?",
         "antworten": [
-          "Switch- und If-Kaskaden",
-          "Die Aktion Parse JSON",
-          "Den Trigger"
+          "Verschachtelte Switch- und If-Strukturen",
+          "Die Aktion Parse JSON mit ihrem Schema",
+          "Den Trigger, der den Flow startet"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Mit body('Parse_JSON')?[variables('key')] holst du den Wert direkt über den Schlüssel. Pro Sprache, Rolle oder Nachrichtentyp brauchst du keinen eigenen Zweig mehr.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du holst Werte aus JSON dynamisch über einen Schlüssel."
     },
@@ -1990,16 +2123,20 @@
       "guertel": 4,
       "thema": "Daten abfragen & schreiben",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Warum braucht es nach dem OData-Filter noch Filter array?",
+        "frage": "Du brauchst die exakte Schreibweise. Warum reicht der OData-Filter in SharePoint nicht?",
         "antworten": [
-          "Weil OData nur 100 Einträge liefert",
-          "Weil OData in SharePoint Gross- und Kleinschreibung ignoriert",
+          "Weil OData nur 100 Einträge zurückgibt",
+          "Weil OData Gross- und Kleinschreibung ignoriert",
           "Weil Filter array schneller ist als OData"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Title eq 'ABC' liefert auch abc und Abc. Filter array mit equals() vergleicht danach mit exakter Schreibweise.",
+          ""
+        ]
       },
       "lernziel": "Du filterst SharePoint-Daten exakt nach Schreibweise."
     },
@@ -2012,16 +2149,20 @@
       "guertel": 4,
       "thema": "Daten abfragen & schreiben",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wie übergibst du den Wert für eine Choice-Spalte im JSON-Objekt?",
+        "frage": "Wie übergibst du in «Update item» den Wert einer Choice-Spalte im JSON-Objekt?",
         "antworten": [
-          "Als reine Zahl",
+          "Als reinen Text mit dem Namen der Option",
           "Als Objekt mit der Eigenschaft Value",
-          "Gar nicht, Choice-Spalten gehen so nicht"
+          "Als Zahl mit der Position der Option"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Choice-Spalten erwarten ein Objekt mit der Eigenschaft Value. Ein reiner Text wird zwar angenommen, leert die Spalte aber.",
+          ""
+        ]
       },
       "lernziel": "Du aktualisierst einzelne SharePoint-Felder, ohne alle Pflichtfelder mitzugeben."
     },
@@ -2111,7 +2252,7 @@
       "guertel": 1,
       "thema": "Mails, Teams & Kalender",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wie sieht eine Plus-Adresse aus?",
         "antworten": [
@@ -2120,7 +2261,11 @@
           "user+tag@domain.com"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Der Zusatz steht nach einem Pluszeichen direkt vor dem @. Am Absender siehst du dann, welcher Flow die Mail geschickt hat."
+        ]
       },
       "lernziel": "Du machst automatische Mails mit Plus-Adressen rückverfolgbar."
     },
@@ -2133,16 +2278,20 @@
       "guertel": 4,
       "thema": "KI & Copilot Studio",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Welche zwei Bausteine kombiniert der Tipp?",
+        "frage": "Welche zwei Bausteine lesen Rechnungen im Gratis-Kontingent und fassen sie zusammen?",
         "antworten": [
-          "AI Builder und Excel",
-          "Teams und SharePoint",
-          "Einen OCR-Connector und Azure AI Language"
+          "Power BI und eine Excel-Arbeitsmappe",
+          "Teams-Chats und eine SharePoint-Liste",
+          "Ein OCR-Connector und Azure AI Language"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Ein OCR-Connector im Gratis-Kontingent liest den Text aus dem PDF, Azure AI Language fasst ihn zusammen. So bleiben bis zu 500 Seiten pro Monat kostenlos."
+        ]
       },
       "lernziel": "Du verarbeitest Rechnungen automatisch im Rahmen kostenloser Kontingente."
     },
@@ -2207,16 +2356,20 @@
       "guertel": 5,
       "thema": "KI & Copilot Studio",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Warum zuerst nur das Thumbnail auswerten?",
+        "frage": "Warum lässt du die KI zuerst nur das Thumbnail auswerten?",
         "antworten": [
-          "Weil PDFs nicht unterstützt werden",
-          "Weil Thumbnails genauer sind als PDFs",
+          "Weil KI-Dienste keine PDF-Dateien verarbeiten können",
+          "Weil Thumbnails genauere Ergebnisse liefern als PDFs",
           "Weil jede verarbeitete Seite KI-Kosten verursacht"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "KI-Dienste rechnen pro Seite oder Aufruf ab, und die wichtigen Angaben stehen oft auf der ersten Seite. Das ganze PDF verarbeitest du nur, wenn das Thumbnail nicht reicht."
+        ]
       },
       "lernziel": "Du senkst KI-Kosten mit einer Verarbeitung in Stufen."
     },
@@ -2287,16 +2440,20 @@
       "guertel": 1,
       "thema": "Werkzeuge",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wobei hilft der Trigger Condition Builder?",
+        "frage": "Wobei hilft der Trigger Condition Builder auf tools.powerplatformtip.com?",
         "antworten": [
-          "Er startet Flows nach Zeitplan",
+          "Er startet Flows nach einem festen Zeitplan",
           "Er erzeugt gültige Trigger Conditions aus deinen Daten",
-          "Er exportiert Solutions"
+          "Er exportiert Solutions in eine andere Umgebung"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Du fügst Beispieldaten wie einen JSON-Body ein und baust die Bedingung visuell zusammen. Den fertigen Ausdruck kopierst du in die Trigger Conditions deines Flows.",
+          ""
+        ]
       },
       "lernziel": "Du erzeugst häufige Ausdrücke mit Werkzeugen statt von Hand."
     },
@@ -2617,7 +2774,7 @@
       "guertel": 4,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": true,
+      "pool": false,
       "quiz": {
         "frage": "Was bringt dich trotz Chunking zurück auf die 100-MB-Grenze?",
         "antworten": [
@@ -2632,7 +2789,8 @@
           ""
         ]
       },
-      "lernziel": "Du verarbeitest grosse Dateien bis 1 GB im Flow."
+      "lernziel": "Du verarbeitest grosse Dateien bis 1 GB im Flow.",
+      "pool_ausschluss": "Kernaussage mit Nuancen (1 GB nur direkt zwischen Dateiaktionen, Compose oder Variable dazwischen 100 MB), als Prüfungsfrage nicht eindeutig."
     },
     {
       "schluessel": "157",
@@ -2643,16 +2801,20 @@
       "guertel": 3,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Mit welcher Aktion rufst du ein Office Script aus dem Flow auf?",
         "antworten": [
           "«Run script» im Excel Online (Business)-Connector",
-          "«Create file» in OneDrive",
-          "«Update a row» in einer Schleife"
+          "«Create file» im OneDrive for Business-Connector",
+          "«Update a row» in einer Apply to each-Schleife"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Das Script liegt in OneDrive, «Run script» im Excel Online (Business)-Connector führt es auf der Arbeitsmappe aus. Parameter gibst du mit, Rückgabewerte nutzt du im Flow weiter.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du ersetzt lange Excel-Aktionsketten durch ein Office Script."
     },
@@ -2742,16 +2904,20 @@
       "guertel": 6,
       "thema": "SharePoint REST",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Mit welchem Endpunkt legst du die Spalten in der Zielliste an?",
         "antworten": [
-          "addfield",
-          "fields/clone",
-          "createfieldasxml"
+          "fields/addfieldasjson",
+          "fields/clonefromschema",
+          "fields/createfieldasxml"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Du schickst das SchemaXml jeder eigenen Spalte per POST an fields/createfieldasxml der Zielliste. So entstehen die Spalten mit denselben internen Namen und Einstellungen."
+        ]
       },
       "lernziel": "Du überträgst Spalten einer Liste exakt auf eine andere Seite."
     },
@@ -2764,16 +2930,20 @@
       "guertel": 5,
       "thema": "HTTP & Microsoft Graph",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was muss das members-Array für einen privaten Kanal enthalten?",
         "antworten": [
-          "Nur Gäste",
-          "Mindestens einen Owner",
-          "Alle Teammitglieder"
+          "Ausschliesslich Gastkonten aus anderen Tenants",
+          "Mindestens eine Person mit der Rolle owner",
+          "Alle Mitglieder des übergeordneten Teams"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Ein privater Kanal braucht schon beim Anlegen Mitglieder, und mindestens eines davon hat roles: [\"owner\"]. Sonst lehnt Graph die Anfrage mit 400 ab.",
+          ""
+        ]
       },
       "lernziel": "Du legst private Teams-Kanäle automatisch an."
     },
@@ -2844,7 +3014,7 @@
         "antworten": [
           "Sie werden nur in Exchange Online gespeichert",
           "Sie brauchen eine eigene Lizenz pro Benutzer",
-          "Sie kommen nur zurück, wenn du sie mit $select anforderst"
+          "Sie kommen nur mit, wenn $select sie nennt"
         ],
         "richtig_index": 2,
         "erklaerungen": [
@@ -2890,16 +3060,20 @@
       "guertel": 4,
       "thema": "Datum & Zeit",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Gibt es in Cloud-Flow-Ausdrücken eine Funktion dateDiff()?",
         "antworten": [
-          "Ja, aber nur mit Premium",
-          "Ja, sie liefert die Tage als Zahl",
+          "Ja, aber nur mit einer Premium-Lizenz",
+          "Ja, sie liefert die Differenz in Tagen",
           "Nein, du rechnest die Differenz mit ticks()"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "dateDiff() gibt es nicht. Du ziehst die ticks() beider Zeitpunkte voneinander ab und teilst durch 864000000000, dann hast du die Tage als Zahl."
+        ]
       },
       "lernziel": "Du berechnest Zeitdifferenzen und vergleichst Daten zuverlässig."
     },
@@ -2963,16 +3137,20 @@
       "guertel": 5,
       "thema": "Trigger",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Wo läuft «For a selected item» laut Tipp nur?",
+        "frage": "Aus welcher Umgebung läuft «For a selected item» laut Tipp nur?",
         "antworten": [
-          "In der Default-Umgebung",
-          "Nur in Teams",
-          "In jeder Produktionsumgebung"
+          "Aus der Default-Umgebung",
+          "Nur aus Teams-Umgebungen",
+          "Aus jeder Produktionsumgebung"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "«For a selected item» läuft nur aus der Default-Umgebung. Liegt der Flow in einer produktiven Umgebung, startest du ihn über einen Button in der Spaltenformatierung mit executeFlow.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du startest Flows aus Listen per Button, ohne auf Premium auszuweichen."
     },
@@ -2985,16 +3163,20 @@
       "guertel": 6,
       "thema": "KI & Copilot Studio",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was steuert der Parameter action im Router-Flow?",
         "antworten": [
-          "Die Lizenz des Flows",
-          "Die Sprache des Agents",
-          "Den Switch, der zu get, create oder update verzweigt"
+          "Ob der Flow eine Premium-Lizenz braucht",
+          "Die Sprache, in der der Agent antwortet",
+          "Den Switch zu get, create oder update"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Der Switch auf action leitet in den Zweig get, create oder update. Der Parameter input trägt dazu einen OData-Filter oder einen JSON-Body."
+        ]
       },
       "lernziel": "Du gibst einem Copilot-Studio-Agent mit einem Flow mehrere Werkzeuge."
     },
@@ -3007,16 +3189,20 @@
       "guertel": 6,
       "thema": "Trigger",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was tut ein Run, der das Flag IsRunning auf Yes vorfindet?",
         "antworten": [
-          "Nichts",
-          "Er setzt das Flag zurück",
+          "Er beendet sich, ohne etwas zu verarbeiten",
+          "Er setzt das Flag auf No und startet neu",
           "Er verarbeitet alle Mails noch einmal"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Steht IsRunning auf Yes, gehört der Stapel schon einem anderen Run. Der Run endet mit Terminate und dem Status Succeeded, ohne Mails anzufassen.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du bündelst viele Trigger-Ereignisse zu einer Verarbeitung."
     },
@@ -3029,16 +3215,20 @@
       "guertel": 7,
       "thema": "KI & Copilot Studio",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Warum kann ein Agent bei einem direkt gebundenen Connector Fehler nicht selbst korrigieren?",
+        "frage": "Warum kann ein Agent Fehler eines direkt gebundenen Connectors nicht selbst korrigieren?",
         "antworten": [
-          "Agents dürfen keine Connectoren nutzen",
-          "Connectoren liefern nie Fehler",
-          "Jeder Status ausserhalb von 2xx ist ein harter Fehler, das Modell sieht die Meldung nicht"
+          "Agents dürfen in Copilot Studio keine Connectoren nutzen",
+          "Connectoren melden Fehler nur per Mail an den Besitzer",
+          "Fehlerstatus brechen ab, bevor das Modell die Meldung sieht"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Jeder Status ausserhalb von 2xx wird zum harten Fehler connectorRequestFailure, bevor das Sprachmodell die Antwort liest. Erst ein Flow, der immer lesbares JSON zurückgibt, macht den Fehler für den Agent sichtbar."
+        ]
       },
       "lernziel": "Du baust Agent-Werkzeuge, die aus Fehlern lernen."
     },
@@ -3077,7 +3267,7 @@
       "guertel": 1,
       "thema": "ALM & Governance",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Wofür reicht die eingebaute Versionshistorie nicht aus?",
         "antworten": [
@@ -3086,7 +3276,11 @@
           "Ältere Versionen eines bestehenden Flows ansehen"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Die Versionshistorie deckt nur Flows ab, die noch existieren. Für einen ganz gelöschten Flow brauchst du eine Sicherung, etwa einen regelmässigen Export als Solution.",
+          ""
+        ]
       },
       "lernziel": "Du stellst eine frühere Flow-Version wieder her und weisst, wann du zusätzlich ein Backup brauchst."
     },
@@ -3099,16 +3293,20 @@
       "guertel": 2,
       "thema": "Mails, Teams & Kalender",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Welche Einstellung sorgt dafür, dass die Teams-Nachricht von dir statt vom Flow-Bot kommt?",
         "antworten": [
           "Mehrere Empfänger im Chat eintragen",
-          "Post as «Flow bot»",
-          "Post as «User»"
+          "Post as auf «Flow bot» stellen",
+          "Post as auf «User» stellen"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Mit Post as «User» schreibt die Aktion «Post message in a chat or channel» im Namen des Kontos hinter der Teams-Verbindung. Mit «Flow bot» kommt die Nachricht vom Bot."
+        ]
       },
       "lernziel": "Du sendest aus einem Flow eine persönliche 1:1-Nachricht in Teams mit dir als Absender."
     },
@@ -3121,16 +3319,20 @@
       "guertel": 2,
       "thema": "Trigger",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
-        "frage": "Was passiert bei einem Flow ohne Trigger Condition, wenn ein Eintrag geändert wird, der die Bedingung im Flow nicht erfüllt?",
+        "frage": "Ein Flow ohne Trigger Condition prüft seine Bedingung erst im Lauf. Was passiert bei einer Änderung, die nicht passt?",
         "antworten": [
-          "Der Flow startet gar nicht",
-          "SharePoint verwirft die Änderung",
+          "Der Flow startet nicht, SharePoint filtert vorher",
+          "SharePoint macht die Änderung am Eintrag rückgängig",
           "Der Flow startet trotzdem und verbraucht einen Run"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Ohne Trigger Condition startet der Flow bei jeder Änderung und prüft erst danach. Eine SharePoint Automate Rule oder eine Trigger Condition filtert vorher und spart den Run."
+        ]
       },
       "lernziel": "Du entscheidest zwischen Automate Rule, Flow und Trigger Condition, um unnötige Runs zu vermeiden."
     },
@@ -3143,16 +3345,20 @@
       "guertel": 5,
       "thema": "Dateien & Dokumente",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Warum lässt sich eine Word-Vorlage so ohne Premium-Word-Connector befüllen?",
         "antworten": [
           "Weil Word Platzhalter beim Öffnen selbst füllt",
-          "Weil SharePoint Word-Dateien automatisch in Text umwandelt",
-          "Weil eine .docx-Datei ein ZIP-Archiv mit XML-Dateien ist"
+          "Weil SharePoint Word-Dateien in Text umwandelt",
+          "Weil eine .docx-Datei ein ZIP-Archiv aus XML ist"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Eine .docx-Datei ist ein ZIP-Archiv mit XML-Dateien. Du entpackst sie, ersetzt den Platzhalter in word/document.xml und packst sie wieder."
+        ]
       },
       "lernziel": "Du befüllst eine Word-Vorlage mit Standardaktionen über das XML im Archiv."
     },
@@ -3169,9 +3375,9 @@
       "quiz": {
         "frage": "Warum braucht es für die Fortschrittsanzeige eine eigene StateLog-Liste?",
         "antworten": [
-          "Weil Power Apps keine Flows starten kann",
+          "Weil Power Apps keine Flows direkt starten kann",
           "Weil «Respond to PowerApps» nur einmal antworten kann",
-          "Weil ein Timer nur SharePoint lesen kann"
+          "Weil ein Timer nur SharePoint-Listen lesen kann"
         ],
         "richtig_index": 1,
         "erklaerungen": [
@@ -3191,16 +3397,20 @@
       "guertel": 4,
       "thema": "Sicherheit & Benutzerkontext",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Mit wessen Rechten läuft eine SharePoint-Aktion im Flow?",
         "antworten": [
           "Mit dem Konto der hinterlegten Verbindung",
-          "Immer mit dem Konto, das den Flow in der App auslöst",
+          "Immer mit dem Konto, das den Flow auslöst",
           "Automatisch mit Administratorrechten"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Jede Aktion nutzt die Verbindung, die beim Erstellen hinterlegt wurde. Gehört sie einem Servicekonto, läuft die Aktion mit dessen Rechten, egal wer den Flow in der App auslöst.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du gibst App-Benutzern gezielt erhöhte Rechte für genau eine Operation über einen Flow."
     },
@@ -3239,16 +3449,20 @@
       "guertel": 3,
       "thema": "ALM & Governance",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Was gilt, wenn derselbe Flow in mehreren Solutions liegt?",
         "antworten": [
           "Jede Solution enthält eine unabhängige Kopie",
-          "Der Flow wird automatisch deaktiviert",
-          "Es bleibt ein Flow, eine Änderung wirkt in allen Solutions"
+          "Der Flow wird in allen Solutions deaktiviert",
+          "Es bleibt ein Flow, Änderungen wirken überall"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Ein Flow kann in mehreren Solutions liegen und bleibt doch ein einziger Flow. Änderst oder stellst du ihn wieder her, wirkt das in allen Solutions."
+        ]
       },
       "lernziel": "Du sicherst Flows über Solutions so, dass du auch gelöschte Flows zurückholen kannst."
     },
@@ -3261,16 +3475,20 @@
       "guertel": 5,
       "thema": "JSON & Datenumwandlung",
       "seite": false,
-      "pool": false,
+      "pool": true,
       "quiz": {
         "frage": "Welche Funktionen kombinierst du, um Zellen einer HTML-Tabelle aus einer Mail zu lesen?",
         "antworten": [
-          "split() und join()",
+          "concat() und join()",
           "json() und first()",
           "xml() und xpath()"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "xml() wandelt den HTML-Text der Mail in XML um, und xpath() wählt darin Zeilen und Zellen aus. Mit /text() am Ende erhältst du reine Werte."
+        ]
       },
       "lernziel": "Du liest Tabellen aus HTML-Mails mit xml() und xpath() aus."
     }

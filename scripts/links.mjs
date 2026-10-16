@@ -59,7 +59,7 @@ for (const rel of seiten) {
   const istIndex = rel.endsWith('index.html');
   // 404.html wird in jeder Tiefe ausgeliefert und nutzt Pfade ab der Basis aus BASE_URL. Sie gilt nur fuer diese Basis
   // und wird beim Domainwechsel mit BASE_URL neu gebaut.
-  for (const basis of rel === '404.html' ? [new URL(BASE_URL).pathname] : BASEN) {
+  for (const basis of /404.html$/.test(rel) ? [new URL(BASE_URL).pathname] : BASEN) {
     const seitenPfad = basis + (istIndex ? rel.slice(0, -'index.html'.length) : rel);
     const seitenUrl = new URL(seitenPfad, 'http://pruefen.local');
     for (const ref of refs) {
@@ -78,7 +78,7 @@ for (const rel of seiten) {
         continue;
       }
       if (ref.startsWith('//')) { fehler.push(`${rel}: protokollrelativer Link ${ref}`); continue; }
-      if (ref.startsWith('/') && rel !== '404.html') { fehler.push(`${rel} [${basis}]: absoluter Pfad ${ref}`); continue; }
+      if (ref.startsWith("/") && !/404.html$/.test(rel)) { fehler.push(`${rel} [${basis}]: absoluter Pfad ${ref}`); continue; }
       const ziel = new URL(ref, seitenUrl);
       if (!ziel.pathname.startsWith(basis)) { fehler.push(`${rel} [${basis}]: ${ref} verlaesst die Basis (${ziel.pathname})`); continue; }
       const innen = ziel.pathname.slice(basis.length);
@@ -108,7 +108,7 @@ if (vorschauNoindex) (LIVEGANG ? fehler : hinweise).push(`Vorschau-Build: ${vors
 if (LIVEGANG) for (const rel of seiten) if (/class="vorschau-banner"/.test(lesen(rel))) fehler.push(`${rel}: Vorschau-Banner im Livegang`);
 for (const rel of seiten) {
   const html = lesen(rel);
-  if (rel === '404.html' || /<meta name="robots" content="[^"]*noindex/.test(html)) continue;
+  if (/404.html$/.test(rel) || /<meta name="robots" content="[^"]*noindex/.test(html)) continue;
   const url = BASE_URL + (rel.endsWith('index.html') ? rel.slice(0, -'index.html'.length) : rel);
   if (!inSitemap.has(url)) fehler.push(`sitemap.xml: indexierbare Seite fehlt: ${url}`);
   const canon = html.match(/<link rel="canonical" href="([^"]+)"/);

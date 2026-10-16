@@ -1,16 +1,17 @@
 <a class="skip" href="#main">Zum Inhalt springen</a>
 <header class="kopf">
   <div class="wrap kopf__innen">
-    <a class="marke" href="{{r}}" aria-label="{{name}}, Startseite">{{{marke_knoten}}}<span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <a class="marke" href="{{lr}}" aria-label="{{name}}, Startseite">{{{marke_knoten}}}<span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
     <nav class="nav" aria-label="Hauptnavigation">
       <ul>
-        <li><a href="{{r}}techniken/"{{{cur_techniken}}}>Techniken</a></li>
-        <li><a href="{{r}}pruefung/"{{{cur_pruefung}}}>Gürtelprüfung</a></li>
-        <li><a href="{{r}}premium/"{{{cur_premium}}}>Lizenz-Check</a></li>
-        <li><a href="{{r}}dojo/"{{{cur_dojo}}}>Mein Dojo</a></li>
+        <li><a href="{{lr}}techniken/"{{{cur_techniken}}}>Techniken</a></li>
+        <li><a href="{{lr}}pruefung/"{{{cur_pruefung}}}>Gürtelprüfung</a></li>
+        <li><a href="{{lr}}premium/"{{{cur_premium}}}>Lizenz-Check</a></li>
+        <li><a href="{{lr}}dojo/"{{{cur_dojo}}}>Mein Dojo</a></li>
       </ul>
     </nav>
     <div class="kopf__aktionen">
+      <a class="knopf-icon sprache" href="{{sprache_href}}" hreflang="{{sprache_code}}" data-sprache="{{sprache_code}}"><span lang="{{sprache_code}}">{{sprache_kurz}}</span><span class="sr-only" lang="{{sprache_code}}"> {{sprache_name}}</span></a>
       <button type="button" class="knopf-icon" data-suche-auf aria-label="Technik suchen" aria-keyshortcuts="Control+K Meta+K" data-nur-js>{{{icon_suche}}}<kbd>Strg K</kbd></button>
       <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dunkelmodus" data-nur-js>{{{icon_sonne}}}{{{icon_mond}}}</button>
       <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menü" data-nur-js>{{{icon_menue}}}</button>
@@ -24,12 +25,12 @@
   </div>
   <nav aria-label="Menü">
     <ul>
-      <li><a href="{{r}}techniken/">Techniken</a></li>
-      <li><a href="{{r}}pruefung/">Gürtelprüfung</a></li>
-      <li><a href="{{r}}premium/">Lizenz-Check</a></li>
-      <li><a href="{{r}}heute/">Technik des Tages</a></li>
-      <li><a href="{{r}}dojo/">Mein Dojo</a></li>
-      <li><a href="{{r}}ueber/">Über</a></li>
+      <li><a href="{{lr}}techniken/">Techniken</a></li>
+      <li><a href="{{lr}}pruefung/">Gürtelprüfung</a></li>
+      <li><a href="{{lr}}premium/">Lizenz-Check</a></li>
+      <li><a href="{{lr}}heute/">Technik des Tages</a></li>
+      <li><a href="{{lr}}dojo/">Mein Dojo</a></li>
+      <li><a href="{{lr}}ueber/">Über</a></li>
     </ul>
   </nav>
 </div>

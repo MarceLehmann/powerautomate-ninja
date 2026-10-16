@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" data-seite="technik" data-r="../../../" data-lr="../../../en/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../assets/css/site.css">
+<script src="../../../assets/js/theme-init.js"></script>
+<script src="../../../assets/js/site.js" defer></script>
+
+<meta name="generator" content="KMUpower Flow-Dojo build">
+<title>Remove duplicates with union() | KMUpower Flow-Dojo</title>
+<meta name="description" content="Remove duplicates with union(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
+<meta name="robots" content="noindex">
+<meta name="dojo-build" content="testphase">
+<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/">
+<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/duplikate-mit-union-entfernen/">
+<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/">
+<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/duplikate-mit-union-entfernen/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="KMUpower Flow-Dojo">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:title" content="Remove duplicates with union() | KMUpower Flow-Dojo">
+<meta property="og:description" content="Remove duplicates with union(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
+<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/">
+<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-gelb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "name": "KMUpower Flow-Dojo",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "inLanguage": "en",
+      "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/#technik",
+      "name": "Remove duplicates with union()",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/",
+      "inLanguage": "en",
+      "learningResourceType": "Quiz",
+      "educationalLevel": "Yellow belt",
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-7-union-and-filterarray/",
+      "citation": [
+        "https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference",
+        "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs"
+      ],
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Techniques",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Remove duplicates with union()",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../../en/" aria-label="KMUpower Flow-Dojo, home page"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../../../en/techniken/" aria-current="true">Techniques</a></li>
+        <li><a href="../../../en/pruefung/">Belt exam</a></li>
+        <li><a href="../../../en/premium/">License check</a></li>
+        <li><a href="../../../en/dojo/">My dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <a class="knopf-icon sprache" href="../../../techniken/duplikate-mit-union-entfernen/" hreflang="de" data-sprache="de"><span lang="de">DE</span><span class="sr-only" lang="de"> Deutsche Version</span></a>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text"><small>KMUpower</small><b>Flow-Dojo</b></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="../../../en/techniken/">Techniques</a></li>
+      <li><a href="../../../en/pruefung/">Belt exam</a></li>
+      <li><a href="../../../en/premium/">License check</a></li>
+      <li><a href="../../../en/heute/">Technique of the day</a></li>
+      <li><a href="../../../en/dojo/">My dojo</a></li>
+      <li><a href="../../../en/ueber/">About</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Search techniques</h2>
+    <label for="suche-feld" class="sr-only">Search term</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approval, loop">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Close search"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Results"></ul>
+  <p class="suche__leer" hidden>No technique found. Try JSON, approval or loop.</p>
+</dialog>
+<main id="main"><div class="wrap">
+<nav class="krumen" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Techniques</a></li><li><a href="./" aria-current="page">Remove duplicates with union()</a></li></ol></nav>
+<article class="tk" data-technik="7" data-guertel-nr="2">
+<header class="tk__kopf">
+<ul class="metazeile"><li><span class="guertel-tag" data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span>Yellow belt</span></li><li><span class="badge badge--standard">Standard</span></li><li class="tk__nr">Tip 7</li></ul>
+<h1 id="h1">Remove duplicates with union()</h1>
+</header>
+<section class="quiz" id="quiz" data-quiz data-richtig="0" data-guertel-nr="2" aria-labelledby="h-quiz">
+<h2 id="h-quiz" class="label">Quiz question</h2>
+<p class="quiz__frage">What does union() return when you pass the same array twice?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>The array without duplicate entries</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>The array twice, one after the other</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>Only the entries that appear twice</span></button></li></ul>
+<p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
+<div class="aufloesung-block" data-aufloesung>
+<h3>Solution</h3>
+<ol class="aufloesung"><li class="richtig"><b>A) The array without duplicate entries</b>Correct. union() returns each value only once, so union(x, x) works like DISTINCT.</li><li class="falsch"><b>B) The array twice, one after the other</b>Wrong. That would be simple concatenation. union() removes the duplicates.</li><li class="falsch"><b>C) Only the entries that appear twice</b>Wrong. union() combines the arrays and keeps each value once, including those that appear only once.</li></ol>
+</div>
+</section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>When you merge data from two sources, duplicate entries quickly end up in the result. The union() function combines two arrays and returns each value only once. That leads to a simple trick: pass the same array twice, union(x, x), and you get the array back without duplicates, like DISTINCT in a database. This works with simple values and with objects. Then you narrow the result down with Filter array to the entries you need. Two built-in steps replace a loop with a condition and a variable. If you need to keep the duplicates, union() is the wrong choice.</p></section>
+<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>union(x, x)</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>When you merge lists or want to clean up an array before you continue.</p></div><div class="karte-text"><h3>Better not</h3><p>When duplicate entries must be kept, for example bookings with the same amount.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Removing duplicates in a loop with a condition and a variable, although a single expression is enough.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-7-union-and-filterarray/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-7" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #7, with screenshots</span></a></section>
+<section class="abschnitt" aria-label="Your progress">
+<button type="button" class="knopf" data-geuebt="7" aria-pressed="false" data-nur-js>Mark as practiced</button>
+<p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
+
+</section>
+<section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20does%20union()%20return%20when%20you%20pass%20the%20same%20array%20twice%3F%0A%0AA)%20The%20array%20without%20duplicate%20entries%0AB)%20The%20array%20twice%2C%20one%20after%20the%20other%0AC)%20Only%20the%20entries%20that%20appear%20twice%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fduplikate-mit-union-entfernen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What does union() return when you pass the same array twice?&#10;&#10;A) The array without duplicate entries&#10;B) The array twice, one after the other&#10;C) Only the entries that appear twice&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%207&amp;body=Question%3A%20What%20does%20union()%20return%20when%20you%20pass%20the%20same%20array%20twice%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/7</p>
+</section>
+<p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-7-union-and-filterarray/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-7" rel="noopener">PowerPlatformTip #7</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference" rel="noopener">Reference for functions in workflow expressions</a>.</p>
+<nav class="blaettern" aria-label="More techniques"><a href="../../techniken/feste-werte-in-compose-statt-variablen/" rel="prev"><span>Previous technique</span>Fixed values in Compose instead of variables</a><a href="../../techniken/mit-static-result-testen/" rel="next"><span>Next technique</span>Test with Static Result without changing data</a></nav>
+</article>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, no tracking. Your progress stays in your browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../../en/techniken/">All techniques</a></li>
+          <li><a href="../../../en/pruefung/">Belt exam</a></li>
+          <li><a href="../../../en/premium/">Is my license enough?</a></li>
+          <li><a href="../../../en/heute/">Technique of the day</a></li>
+          <li><a href="../../../en/kalender/montag.ics" download>A question in your calendar every Monday</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../../../en/ueber/">About the Flow-Dojo</a></li>
+          <li><a href="../../../en/impressum/">Legal notice</a></li>
+          <li><a href="../../../en/datenschutz/">Privacy</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft and the Power Platform product names (for example Power Apps, Power Automate, Copilot Studio) are trademarks of the Microsoft group of companies. This is an independent website. It is not operated, sponsored or endorsed by Microsoft.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<a class="skip" href="#main">Skip to content</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="{{lr}}" aria-label="{{name}}, home page">{{{marke_knoten}}}<span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="{{lr}}techniken/"{{{cur_techniken}}}>Techniques</a></li>
+        <li><a href="{{lr}}pruefung/"{{{cur_pruefung}}}>Belt exam</a></li>
+        <li><a href="{{lr}}premium/"{{{cur_premium}}}>License check</a></li>
+        <li><a href="{{lr}}dojo/"{{{cur_dojo}}}>My dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <a class="knopf-icon sprache" href="{{sprache_href}}" hreflang="{{sprache_code}}" data-sprache="{{sprache_code}}"><span lang="{{sprache_code}}">{{sprache_kurz}}</span><span class="sr-only" lang="{{sprache_code}}"> {{sprache_name}}</span></a>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js>{{{icon_suche}}}<kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-nur-js>{{{icon_sonne}}}{{{icon_mond}}}</button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js>{{{icon_menue}}}</button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke">{{{marke_knoten}}}<span class="marke__text"><small>KMUpower</small><b>Flow-Dojo</b></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Close menu">{{{icon_zu}}}</button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="{{lr}}techniken/">Techniques</a></li>
+      <li><a href="{{lr}}pruefung/">Belt exam</a></li>
+      <li><a href="{{lr}}premium/">License check</a></li>
+      <li><a href="{{lr}}heute/">Technique of the day</a></li>
+      <li><a href="{{lr}}dojo/">My dojo</a></li>
+      <li><a href="{{lr}}ueber/">About</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Search techniques</h2>
+    <label for="suche-feld" class="sr-only">Search term</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approval, loop">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Close search">{{{icon_zu}}}</button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Results"></ul>
+  <p class="suche__leer" hidden>No technique found. Try JSON, approval or loop.</p>
+</dialog>

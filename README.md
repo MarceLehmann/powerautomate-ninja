@@ -1,6 +1,6 @@
 # KMUpower Flow-Dojo
 
-Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch. Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Spätere Adresse: powerautomate.ninja. Testphase: https://marcelehmann.github.io/powerautomate-ninja/ (alle Seiten noindex).
+Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch (/) und Englisch (/en/). Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Spätere Adresse: powerautomate.ninja. Testphase: https://marcelehmann.github.io/powerautomate-ninja/ (alle Seiten noindex).
 
 Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung zu Microsoft.
 
@@ -9,13 +9,14 @@ Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung
 | Pfad | Inhalt |
 |---|---|
 | `/` | Startseite in fünf Blöcken: Hero, Lizenz-Check Frage 1, Technik des Tages, Gürtelpfad, Absender |
-| `/pruefung/` | Gürtelprüfung (11 Fragen aus dem Pool, Abbruch bei zwei falschen pro Gürtel, Ergebnisbild, LinkedIn, .ics) |
+| `/pruefung/` | Gürtelprüfung (12 Fragen, zwei je Gürtel Weiss bis Braun, zufällig aus dem Pool aller geprüften Tipps, Abbruch bei zwei falschen pro Gürtel, Ergebnisbild, LinkedIn, .ics) |
 | `/premium/` | Lizenz-Check «Reicht meine Lizenz?», vier Fragen, Quellen nur Microsoft Learn |
 | `/techniken/` | alle Techniken mit Filter (Gürtel, Thema, Lizenz, Stand) und Suche |
 | `/techniken/<slug>/` | Technik: Quiz, Auflösung, Erklärung, Ausdruck, wann ja/nein, Fehler, Lizenz, Link zum Tipp |
 | `/guertel/<farbe>/` | sieben Gürtelseiten, Ziel der geteilten Ergebnisse |
 | `/heute/`, `/dojo/` | Technik des Tages, eigener Fortschritt (nur localStorage) |
 | `/<tippnr>/` | Kurzadresse, leitet auf die Technik |
+| `/en/...` | englische Fassung aller Seiten, gleiche Pfade. Umschalter DE/EN im Kopf, hreflang, Erstbesuch der deutschen Startseite ohne Deutsch in navigator.languages leitet einmalig auf /en/ (Wahl in localStorage fd-lang, nicht für Crawler) |
 | `/ueber/`, `/impressum/`, `/datenschutz/`, `/404.html` | |
 
 ## Aufbau
@@ -23,9 +24,10 @@ Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung
 | Datei | Inhalt |
 |---|---|
 | `site.config.json` | alle Seitenwerte: Basis-URL, Name, Kurs, UTM, Pfade |
-| `data/techniken.json` | einzige Inhaltsquelle (108 Tipps, `pool` = Prüfungsfrage, `seite` = eigene Technik-Seite) |
+| `data/techniken.json` | einzige Inhaltsquelle (108 Tipps, `pool` = Prüfungsfrage, `seite` = eigene Technik-Seite, `pool_ausschluss` = Grund, warum eine Frage nicht in die Prüfung kommt) |
+| `data/en.json` | englische Texte je Technik (Schlüssel wie techniken.json) und Gürtel. Limits auf Englisch: `text_en` in limits.json |
 | `data/limits.json` | alle Zahlen zu Limits mit Learn-Quelle, in Texten als `{limit:schluessel}` |
-| `templates/partials/`, `templates/css/site.css` | Rahmen und CSS-Quelle |
+| `templates/partials/`, `templates/css/site.css` | Rahmen und CSS-Quelle, englischer Rahmen in `*.en.html` |
 | `assets/js/` | `site.js` (Theme, Suche, Quiz, Fortschritt, Filter), `pruefung.js`, `premium.js`, `theme-init.js` |
 | `scripts/build.mjs` | erzeugt alle Seiten und prüft Texte, Lizenzbelege und Ausdrücke |
 | `scripts/import-tipps.mjs` | ergänzt `data/techniken.json` aus dem Tipp-Inventar (`_recherche/`, nicht im Repo) |

@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en" data-seite="wand" data-r="../../" data-lr="../../en/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script src="../../assets/js/theme-init.js"></script>
+<script src="../../assets/js/site.js" defer></script>
+
+<meta name="generator" content="KMUpower Flow-Dojo build">
+<title>All techniques for flows by belt | KMUpower Flow-Dojo</title>
+<meta name="description" content="24 techniques for flows in Power Automate, ordered by belt. Each with a quiz question, explanation and a link to the full tip.">
+<meta name="robots" content="noindex">
+<meta name="dojo-build" content="testphase">
+<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/">
+<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/">
+<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/">
+<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KMUpower Flow-Dojo">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:title" content="All techniques for flows by belt | KMUpower Flow-Dojo">
+<meta property="og:description" content="24 techniques for flows in Power Automate, ordered by belt. Each with a quiz question, explanation and a link to the full tip.">
+<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/">
+<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "name": "KMUpower Flow-Dojo",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "inLanguage": "en",
+      "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "All techniques",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/",
+      "inLanguage": "en",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/",
+            "name": "Format the date directly in utcNow()"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-testen-vor-dem-einschalten/",
+            "name": "Test a flow before it goes live"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/aktionen-ueber-my-clipboard-wiederverwenden/",
+            "name": "Reuse actions with My clipboard"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/mit-code-view-hinter-eine-aktion-schauen/",
+            "name": "Look behind an action with Code View"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/filter-array-im-advanced-mode/",
+            "name": "Filter array in Advanced Mode"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/feste-werte-in-compose-statt-variablen/",
+            "name": "Fixed values in Compose instead of variables"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/",
+            "name": "Remove duplicates with union()"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/mit-static-result-testen/",
+            "name": "Test with Static Result without changing data"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/",
+            "name": "Safe access with the ? operator"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/schleifen-beim-testen-mit-take-kuerzen/",
+            "name": "Shorten loops with take() while testing"
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/float-vor-div/",
+            "name": "float() before div() for correct decimals"
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/fehler-mit-try-catch-finally-abfangen/",
+            "name": "Catch errors with Try, Catch and Finally"
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/",
+            "name": "Run flows one after another"
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/timeout-fuer-lange-aktionen/",
+            "name": "Set a timeout for long-running actions"
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apostrophe-und-sonderzeichen-codieren/",
+            "name": "Encode apostrophes and special characters correctly"
+          },
+          {
+            "@type": "ListItem",
+            "position": 16,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-daten-als-json-an-power-apps/",
+            "name": "Return flow data to Power Apps as JSON"
+          },
+          {
+            "@type": "ListItem",
+            "position": 17,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/",
+            "name": "Run Apply to each in parallel"
+          },
+          {
+            "@type": "ListItem",
+            "position": 18,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/json-objekt-statt-switch/",
+            "name": "JSON object instead of Switch"
+          },
+          {
+            "@type": "ListItem",
+            "position": 19,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/json-schema-das-null-vertraegt/",
+            "name": "A JSON schema that tolerates null"
+          },
+          {
+            "@type": "ListItem",
+            "position": 20,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/microsoft-graph-ohne-app-registrierung/",
+            "name": "Call Microsoft Graph without an app registration"
+          },
+          {
+            "@type": "ListItem",
+            "position": 21,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/",
+            "name": "Decisions through a shared mailbox"
+          },
+          {
+            "@type": "ListItem",
+            "position": 22,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sharepoint-datei-per-rest-umbenennen/",
+            "name": "Rename a SharePoint file via REST"
+          },
+          {
+            "@type": "ListItem",
+            "position": 23,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/",
+            "name": "Read the real error message with result()"
+          },
+          {
+            "@type": "ListItem",
+            "position": 24,
+            "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/",
+            "name": "Keep approvals alive beyond 30 days"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Techniques",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../en/" aria-label="KMUpower Flow-Dojo, home page"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../../en/techniken/" aria-current="page">Techniques</a></li>
+        <li><a href="../../en/pruefung/">Belt exam</a></li>
+        <li><a href="../../en/premium/">License check</a></li>
+        <li><a href="../../en/dojo/">My dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <a class="knopf-icon sprache" href="../../techniken/" hreflang="de" data-sprache="de"><span lang="de">DE</span><span class="sr-only" lang="de"> Deutsche Version</span></a>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text"><small>KMUpower</small><b>Flow-Dojo</b></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="../../en/techniken/">Techniques</a></li>
+      <li><a href="../../en/pruefung/">Belt exam</a></li>
+      <li><a href="../../en/premium/">License check</a></li>
+      <li><a href="../../en/heute/">Technique of the day</a></li>
+      <li><a href="../../en/dojo/">My dojo</a></li>
+      <li><a href="../../en/ueber/">About</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Search techniques</h2>
+    <label for="suche-feld" class="sr-only">Search term</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approval, loop">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Close search"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Results"></ul>
+  <p class="suche__leer" hidden>No technique found. Try JSON, approval or loop.</p>
+</dialog>
+<main id="main"><div class="wrap">
+<nav class="krumen" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li><a href="./" aria-current="page">Techniques</a></li></ol></nav>
+<div class="sektion--eng">
+<span class="label">Technique wall</span>
+<h1 id="h1">All techniques</h1>
+<p class="lead">24 techniques with a quiz question, explanation and expression. Each one links to the full tip with screenshots on powerplatformtip.com.</p>
+<div class="filter" data-filter data-nur-js>
+<label class="sr-only" for="wand-suche">Search techniques</label>
+<input class="suchfeld" id="wand-suche" type="search" placeholder="Search: JSON, approval, SharePoint" data-wand-suche autocomplete="off">
+<fieldset><legend>Belt</legend><div class="chips"><button type="button" class="chip" data-f="guertel-nr" data-v="1" aria-pressed="false"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span>White</button><button type="button" class="chip" data-f="guertel-nr" data-v="2" aria-pressed="false"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span>Yellow</button><button type="button" class="chip" data-f="guertel-nr" data-v="3" aria-pressed="false"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span>Orange</button><button type="button" class="chip" data-f="guertel-nr" data-v="4" aria-pressed="false"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span>Green</button><button type="button" class="chip" data-f="guertel-nr" data-v="5" aria-pressed="false"><span class="band-punkt" data-guertel-nr="5" aria-hidden="true"></span>Blue</button><button type="button" class="chip" data-f="guertel-nr" data-v="6" aria-pressed="false"><span class="band-punkt" data-guertel-nr="6" aria-hidden="true"></span>Brown</button></div></fieldset>
+<fieldset><legend>Topic</legend><div class="chips"><button type="button" class="chip" data-f="thema" data-v="Approvals" aria-pressed="false">Approvals</button><button type="button" class="chip" data-f="thema" data-v="Arrays &amp; filters" aria-pressed="false">Arrays &amp; filters</button><button type="button" class="chip" data-f="thema" data-v="Date &amp; time" aria-pressed="false">Date &amp; time</button><button type="button" class="chip" data-f="thema" data-v="Error handling" aria-pressed="false">Error handling</button><button type="button" class="chip" data-f="thema" data-v="Expressions" aria-pressed="false">Expressions</button><button type="button" class="chip" data-f="thema" data-v="Flow structure &amp; readability" aria-pressed="false">Flow structure &amp; readability</button><button type="button" class="chip" data-f="thema" data-v="HTTP &amp; Microsoft Graph" aria-pressed="false">HTTP &amp; Microsoft Graph</button><button type="button" class="chip" data-f="thema" data-v="JSON &amp; data conversion" aria-pressed="false">JSON &amp; data conversion</button><button type="button" class="chip" data-f="thema" data-v="Loops &amp; concurrency" aria-pressed="false">Loops &amp; concurrency</button><button type="button" class="chip" data-f="thema" data-v="Power Apps and flows" aria-pressed="false">Power Apps and flows</button><button type="button" class="chip" data-f="thema" data-v="SharePoint REST" aria-pressed="false">SharePoint REST</button><button type="button" class="chip" data-f="thema" data-v="Testing &amp; debugging" aria-pressed="false">Testing &amp; debugging</button></div></fieldset>
+<fieldset><legend>License</legend><div class="chips"><button type="button" class="chip" data-f="lizenz" data-v="standard" aria-pressed="false">Standard</button><button type="button" class="chip" data-f="lizenz" data-v="premium" aria-pressed="false">Premium</button></div></fieldset>
+<fieldset><legend>Your progress</legend><div class="chips"><button type="button" class="chip" data-f="stand" data-v="offen" aria-pressed="false">Not yet practiced</button><button type="button" class="chip" data-f="stand" data-v="geuebt" aria-pressed="false">Practiced</button></div></fieldset>
+<p class="zaehler" data-filter-zaehler role="status" aria-live="polite"></p>
+</div>
+</div>
+<section class="guertel-abschnitt sektion--eng" id="weiss" aria-labelledby="h-weiss" data-guertel-nr="1">
+<h2 id="h-weiss"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span>White belt: Operating</h2>
+<p class="klein">You test flows, read the inputs and outputs of every action and format dates directly.</p>
+<ul class="karten"><li class="karte" data-technik="6" data-guertel-nr="1" data-thema="Date &amp; time" data-lizenz="standard" data-such="format the date directly in utcnow() date &amp; time utcnow formatdatetime date format time zone converttimezone 6">
+<span class="klein">Tip 6</span>
+<h3><a href="../techniken/datum-direkt-mit-utcnow-formatieren/">Format the date directly in utcNow()</a></h3>
+<p>You format the current date with a single expression.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Date &amp; time</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="9" data-guertel-nr="1" data-thema="Testing &amp; debugging" data-lizenz="standard" data-such="test a flow before it goes live testing &amp; debugging test test run debugging run history inputs outputs 9">
+<span class="klein">Tip 9</span>
+<h3><a href="../techniken/flow-testen-vor-dem-einschalten/">Test a flow before it goes live</a></h3>
+<p>You test a flow before turning it on and read the results of every action.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Testing &amp; debugging</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="12" data-guertel-nr="1" data-thema="Flow structure &amp; readability" data-lizenz="standard" data-such="reuse actions with my clipboard flow structure &amp; readability scope clipboard copy paste template child flow 12">
+<span class="klein">Tip 12</span>
+<h3><a href="../techniken/aktionen-ueber-my-clipboard-wiederverwenden/">Reuse actions with My clipboard</a></h3>
+<p>You use Scopes as reusable building blocks.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Flow structure &amp; readability</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="89" data-guertel-nr="1" data-thema="Testing &amp; debugging" data-lizenz="standard" data-such="look behind an action with code view testing &amp; debugging code view peek code json expression debugging 89">
+<span class="klein">Tip 89</span>
+<h3><a href="../techniken/mit-code-view-hinter-eine-aktion-schauen/">Look behind an action with Code View</a></h3>
+<p>You read an action's definition to find errors faster.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Testing &amp; debugging</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="gelb" aria-labelledby="h-gelb" data-guertel-nr="2">
+<h2 id="h-gelb"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span>Yellow belt: Expressions</h2>
+<p class="klein">You write your first expressions, filter and clean up arrays and test loops with just a few items.</p>
+<ul class="karten"><li class="karte" data-technik="3" data-guertel-nr="2" data-thema="Arrays &amp; filters" data-lizenz="standard" data-such="filter array in advanced mode arrays &amp; filters filter array advanced mode and or contains condition 3">
+<span class="klein">Tip 3</span>
+<h3><a href="../techniken/filter-array-im-advanced-mode/">Filter array in Advanced Mode</a></h3>
+<p>You filter arrays with your own expressions in Advanced Mode.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Arrays &amp; filters</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="5" data-guertel-nr="2" data-thema="Flow structure &amp; readability" data-lizenz="standard" data-such="fixed values in compose instead of variables flow structure &amp; readability variables compose parse json initialize variable settings configuration 5">
+<span class="klein">Tip 5</span>
+<h3><a href="../techniken/feste-werte-in-compose-statt-variablen/">Fixed values in Compose instead of variables</a></h3>
+<p>You use variables only for values that actually change.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Flow structure &amp; readability</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="7" data-guertel-nr="2" data-thema="Arrays &amp; filters" data-lizenz="standard" data-such="remove duplicates with union() arrays &amp; filters union duplicates distinct array filter array merge 7">
+<span class="klein">Tip 7</span>
+<h3><a href="../techniken/duplikate-mit-union-entfernen/">Remove duplicates with union()</a></h3>
+<p>You create unique values with union() and then filter them with Filter array.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Arrays &amp; filters</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="36" data-guertel-nr="2" data-thema="Testing &amp; debugging" data-lizenz="standard" data-such="test with static result without changing data testing &amp; debugging static result mock testing simulated output testing 36">
+<span class="klein">Tip 36</span>
+<h3><a href="../techniken/mit-static-result-testen/">Test with Static Result without changing data</a></h3>
+<p>You test flows with simulated results without changing real data.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Testing &amp; debugging</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="59" data-guertel-nr="2" data-thema="Expressions" data-lizenz="standard" data-such="safe access with the ? operator expressions question mark safe navigation null invalidtemplate coalesce dynamic content item() 59">
+<span class="klein">Tip 59</span>
+<h3><a href="../techniken/sicherer-zugriff-mit-fragezeichen/">Safe access with the ? operator</a></h3>
+<p>You access properties that may be missing in a robust way.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Expressions</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="148" data-guertel-nr="2" data-thema="Testing &amp; debugging" data-lizenz="standard" data-such="shorten loops with take() while testing testing &amp; debugging take apply to each loop testing array limit 148">
+<span class="klein">Tip 148</span>
+<h3><a href="../techniken/schleifen-beim-testen-mit-take-kuerzen/">Shorten loops with take() while testing</a></h3>
+<p>You test loops with a few items without restructuring the flow.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Testing &amp; debugging</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="155" data-guertel-nr="2" data-thema="Expressions" data-lizenz="standard" data-such="float() before div() for correct decimals expressions div float decimals percentage formatnumber division 155">
+<span class="klein">Tip 155</span>
+<h3><a href="../techniken/float-vor-div/">float() before div() for correct decimals</a></h3>
+<p>You calculate percentages and ratios with correct decimal places.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Expressions</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="orange" aria-labelledby="h-orange" data-guertel-nr="3">
+<h2 id="h-orange"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span>Orange belt: Control</h2>
+<p class="klein">You catch errors with scopes, control concurrent runs and return data to Power Apps.</p>
+<ul class="karten"><li class="karte" data-technik="15" data-guertel-nr="3" data-thema="Error handling" data-lizenz="standard" data-such="catch errors with try, catch and finally error handling try catch finally scope configure run after error handling terminate 15">
+<span class="klein">Tip 15</span>
+<h3><a href="../techniken/fehler-mit-try-catch-finally-abfangen/">Catch errors with Try, Catch and Finally</a></h3>
+<p>You build the try-catch-finally pattern into every important flow.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Error handling</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="35" data-guertel-nr="3" data-thema="Loops &amp; concurrency" data-lizenz="standard" data-such="run flows one after another loops &amp; concurrency concurrency control degree of parallelism trigger duplicates queue sequential 35">
+<span class="klein">Tip 35</span>
+<h3><a href="../techniken/flow-laeufe-nacheinander/">Run flows one after another</a></h3>
+<p>You prevent conflicts by letting flow instances run one after another.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Loops &amp; concurrency</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="109" data-guertel-nr="3" data-thema="Approvals" data-lizenz="standard" data-such="set a timeout for long-running actions approvals timeout iso 8601 approval has timed out configure run after p2w 109">
+<span class="klein">Tip 109</span>
+<h3><a href="../techniken/timeout-fuer-lange-aktionen/">Set a timeout for long-running actions</a></h3>
+<p>You protect long approvals against timeouts.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Approvals</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="146" data-guertel-nr="3" data-thema="Expressions" data-lizenz="standard" data-such="encode apostrophes and special characters correctly expressions apostrophe odata encodeuricomponent decodeuricomponent replace special characters json 146">
+<span class="klein">Tip 146</span>
+<h3><a href="../techniken/apostrophe-und-sonderzeichen-codieren/">Encode apostrophes and special characters correctly</a></h3>
+<p>You stop special characters from breaking filters and requests.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Expressions</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="158" data-guertel-nr="3" data-thema="Power Apps and flows" data-lizenz="standard" data-such="return flow data to power apps as json power apps and flows power apps parsejson json respond to a power app or flow canvas app return values 158">
+<span class="klein">Tip 158</span>
+<h3><a href="../techniken/flow-daten-als-json-an-power-apps/">Return flow data to Power Apps as JSON</a></h3>
+<p>You return nested data to an app without premium.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Power Apps and flows</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="gruen" aria-labelledby="h-gruen" data-guertel-nr="4">
+<h2 id="h-gruen"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span>Green belt: Hardening</h2>
+<p class="klein">You process messy data safely, speed up loops and call SharePoint and Microsoft Graph directly.</p>
+<ul class="karten"><li class="karte" data-technik="75" data-guertel-nr="4" data-thema="Loops &amp; concurrency" data-lizenz="standard" data-such="run apply to each in parallel loops &amp; concurrency apply to each concurrency control parallelism loop performance throttling 75">
+<span class="klein">Tip 75</span>
+<h3><a href="../techniken/apply-to-each-parallel/">Run Apply to each in parallel</a></h3>
+<p>You speed up loops with concurrency and recognize when it corrupts results.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Loops &amp; concurrency</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="100" data-guertel-nr="4" data-thema="JSON &amp; data conversion" data-lizenz="standard" data-such="json object instead of switch json &amp; data conversion switch condition compose json lookup coalesce 100">
+<span class="klein">Tip 100</span>
+<h3><a href="../techniken/json-objekt-statt-switch/">JSON object instead of Switch</a></h3>
+<p>You replace branches with a lookup in a JSON object.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>JSON &amp; data conversion</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="104" data-guertel-nr="4" data-thema="JSON &amp; data conversion" data-lizenz="standard" data-such="a json schema that tolerates null json &amp; data conversion parse json schema null required expected string but got null validation 104">
+<span class="klein">Tip 104</span>
+<h3><a href="../techniken/json-schema-das-null-vertraegt/">A JSON schema that tolerates null</a></h3>
+<p>You write robust schemas for unreliable APIs.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>JSON &amp; data conversion</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="138" data-guertel-nr="4" data-thema="HTTP &amp; Microsoft Graph" data-lizenz="premium" data-such="call microsoft graph without an app registration http &amp; microsoft graph microsoft graph http with microsoft entra id entra id app registration 403 nextlink 138">
+<span class="klein">Tip 138</span>
+<h3><a href="../techniken/microsoft-graph-ohne-app-registrierung/">Call Microsoft Graph without an app registration</a></h3>
+<p>You call Microsoft Graph from a flow without an app registration.</p>
+<div class="karte__meta"><span class="badge badge--premium">Premium</span><span>HTTP &amp; Microsoft Graph</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="149" data-guertel-nr="4" data-thema="Approvals" data-lizenz="standard" data-such="decisions through a shared mailbox approvals approval shared mailbox send email with options selectedoption outlook approvals center 149">
+<span class="klein">Tip 149</span>
+<h3><a href="../techniken/entscheidungen-ueber-ein-geteiltes-postfach/">Decisions through a shared mailbox</a></h3>
+<p>You collect approvals through a shared mailbox.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Approvals</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="153" data-guertel-nr="4" data-thema="SharePoint REST" data-lizenz="standard" data-such="rename a sharepoint file via rest sharepoint rest sharepoint rename fileleafref merge rest send an http request to sharepoint 153">
+<span class="klein">Tip 153</span>
+<h3><a href="../techniken/sharepoint-datei-per-rest-umbenennen/">Rename a SharePoint file via REST</a></h3>
+<p>You rename SharePoint files without copying them.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>SharePoint REST</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="blau" aria-labelledby="h-blau" data-guertel-nr="5">
+<h2 id="h-blau"><span class="band-punkt" data-guertel-nr="5" aria-hidden="true"></span>Blue belt: Reading errors</h2>
+<p class="klein">You read the real error message from a scope and pass it on to people or agents.</p>
+<ul class="karten"><li class="karte" data-technik="168" data-guertel-nr="5" data-thema="Error handling" data-lizenz="standard" data-such="read the real error message with result() error handling result error message scope filter array error copilot studio 168">
+<span class="klein">Tip 168</span>
+<h3><a href="../techniken/echte-fehlermeldung-mit-result-auslesen/">Read the real error message with result()</a></h3>
+<p>You pass the real error message on to people or agents.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Error handling</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="braun" aria-labelledby="h-braun" data-guertel-nr="6">
+<h2 id="h-braun"><span class="band-punkt" data-guertel-nr="6" aria-hidden="true"></span>Brown belt: Architecture</h2>
+<p class="klein">You keep processes alive for weeks, even beyond the run duration limit of a flow.</p>
+<ul class="karten"><li class="karte" data-technik="144" data-guertel-nr="6" data-thema="Approvals" data-lizenz="standard" data-such="keep approvals alive beyond 30 days approvals approval 30 days timeout triggerflow trigger conditions restart wait for an approval 144">
+<span class="klein">Tip 144</span>
+<h3><a href="../techniken/approvals-ueber-30-tage/">Keep approvals alive beyond 30 days</a></h3>
+<p>You build approvals that may stay open for longer than 30 days.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Approvals</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="schwarz" aria-labelledby="h-schwarz" data-guertel-nr="7">
+<h2 id="h-schwarz"><span class="band-punkt" data-guertel-nr="7" aria-hidden="true"></span>Black belt: Master exam</h2>
+<p class="klein">Flows as tools for agents: routers and calls that correct themselves.</p>
+<p class="leer-hinweis">Master exam. The techniques for this belt follow once the tips behind them have been revised.</p>
+</section>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, no tracking. Your progress stays in your browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../en/techniken/">All techniques</a></li>
+          <li><a href="../../en/pruefung/">Belt exam</a></li>
+          <li><a href="../../en/premium/">Is my license enough?</a></li>
+          <li><a href="../../en/heute/">Technique of the day</a></li>
+          <li><a href="../../en/kalender/montag.ics" download>A question in your calendar every Monday</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../../en/ueber/">About the Flow-Dojo</a></li>
+          <li><a href="../../en/impressum/">Legal notice</a></li>
+          <li><a href="../../en/datenschutz/">Privacy</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft and the Power Platform product names (for example Power Apps, Power Automate, Copilot Studio) are trademarks of the Microsoft group of companies. This is an independent website. It is not operated, sponsored or endorsed by Microsoft.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

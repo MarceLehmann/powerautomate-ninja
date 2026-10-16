@@ -1,15 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/pruefung/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/premium/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/techniken/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/weiss/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/gelb/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/orange/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/blau/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/braun/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/schwarz/</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://marcelehmann.github.io/powerautomate-ninja/ueber/</loc><lastmod>2026-10-16</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/pruefung/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/pruefung/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/pruefung/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/pruefung/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/premium/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/premium/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/premium/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/premium/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/techniken/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/weiss/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/weiss/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/weiss/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/weiss/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/gelb/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gelb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gelb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gelb/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/orange/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/orange/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/orange/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/orange/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gruen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/blau/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/blau/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/blau/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/blau/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/braun/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/braun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/braun/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/braun/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/guertel/schwarz/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/schwarz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/schwarz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/schwarz/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/ueber/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/ueber/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/ueber/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/ueber/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/pruefung/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/pruefung/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/pruefung/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/pruefung/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/premium/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/premium/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/premium/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/premium/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/techniken/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/guertel/weiss/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/weiss/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/weiss/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/weiss/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gelb/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gelb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gelb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gelb/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/guertel/orange/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/orange/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/orange/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/orange/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gruen/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gruen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/guertel/blau/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/blau/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/blau/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/blau/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/guertel/braun/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/braun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/braun/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/braun/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/guertel/schwarz/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/schwarz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/schwarz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/schwarz/"/>
+  </url>
+  <url>
+    <loc>https://marcelehmann.github.io/powerautomate-ninja/en/ueber/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/ueber/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/ueber/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/ueber/"/>
+  </url>
 </urlset>

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KMUpower//Flow-Dojo//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:flow-dojo-montag-en@kmupower.com
+DTSTAMP:20261016T000000Z
+DTSTART:20261019T083000
+DURATION:PT10M
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Flow-Dojo: one question
+DESCRIPTION:Ten minutes, one question about flows. The technique of the da
+ y is at https://marcelehmann.github.io/powerautomate-ninja/en/heute/
+URL:https://marcelehmann.github.io/powerautomate-ninja/en/heute/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

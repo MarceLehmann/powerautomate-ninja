@@ -13,7 +13,8 @@ import os from 'node:os';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const chrome = process.env.CHROME || ['C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', '/usr/bin/google-chrome', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'].find(p => fs.existsSync(p));
 if (!chrome) { console.error('Kein Chrome gefunden (CHROME=Pfad setzen)'); process.exit(1); }
-const liste = ['og-image.svg', ...fs.readdirSync(path.join(ROOT, 'assets/img')).filter(f => /^guertel-.*\.svg$/.test(f)).map(f => `assets/img/${f}`)];
+// Deutsch in assets/img, Englisch in assets/img/en
+const liste = ['og-image.svg', ...['assets/img', 'assets/img/en'].flatMap(d => fs.existsSync(path.join(ROOT, d)) ? fs.readdirSync(path.join(ROOT, d)).filter(f => /^(guertel-.*|og-image)\.svg$/.test(f)).map(f => `${d}/${f}`) : [])];
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'flowdojo-'));
 let n = 0;
 for (const svg of liste) {

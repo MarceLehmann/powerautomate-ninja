@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" data-seite="guertel" data-r="../../../" data-lr="../../../en/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../assets/css/site.css">
+<script src="../../../assets/js/theme-init.js"></script>
+<script src="../../../assets/js/site.js" defer></script>
+
+<meta name="generator" content="KMUpower Flow-Dojo build">
+<title>Green belt: Hardening | KMUpower Flow-Dojo</title>
+<meta name="description" content="Green belt: You process messy data safely, speed up loops and call SharePoint and Microsoft Graph directly.">
+<meta name="robots" content="noindex">
+<meta name="dojo-build" content="testphase">
+<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gruen/">
+<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/">
+<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gruen/">
+<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/guertel/gruen/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KMUpower Flow-Dojo">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:title" content="Green belt in the KMUpower Flow-Dojo">
+<meta property="og:description" content="Green belt: You process messy data safely, speed up loops and call SharePoint and Microsoft Graph directly.">
+<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gruen/">
+<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-gruen.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "name": "KMUpower Flow-Dojo",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "inLanguage": "en",
+      "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Green belt",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/guertel/gruen/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../../en/" aria-label="KMUpower Flow-Dojo, home page"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../../../en/techniken/">Techniques</a></li>
+        <li><a href="../../../en/pruefung/">Belt exam</a></li>
+        <li><a href="../../../en/premium/">License check</a></li>
+        <li><a href="../../../en/dojo/">My dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <a class="knopf-icon sprache" href="../../../guertel/gruen/" hreflang="de" data-sprache="de"><span lang="de">DE</span><span class="sr-only" lang="de"> Deutsche Version</span></a>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text"><small>KMUpower</small><b>Flow-Dojo</b></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="../../../en/techniken/">Techniques</a></li>
+      <li><a href="../../../en/pruefung/">Belt exam</a></li>
+      <li><a href="../../../en/premium/">License check</a></li>
+      <li><a href="../../../en/heute/">Technique of the day</a></li>
+      <li><a href="../../../en/dojo/">My dojo</a></li>
+      <li><a href="../../../en/ueber/">About</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Search techniques</h2>
+    <label for="suche-feld" class="sr-only">Search term</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approval, loop">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Close search"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Results"></ul>
+  <p class="suche__leer" hidden>No technique found. Try JSON, approval or loop.</p>
+</dialog>
+<main id="main"><div class="wrap sektion--eng">
+<nav class="krumen" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../techniken/">Belt path</a></li><li><a href="./" aria-current="page">Green belt</a></li></ol></nav>
+<div class="ergebnis__abzeichen"><svg class="" viewBox="0 0 32 32" data-guertel-nr="4" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><div><span class="label">Level 4 of 7</span><h1 id="h1">Green belt: Hardening</h1></div></div>
+<p class="lead">You build flows that cope with real, messy data.</p>
+<section class="abschnitt" aria-labelledby="h-kann"><h2 id="h-kann">What you can do with this belt</h2><p>You process messy data safely, speed up loops and call SharePoint and Microsoft Graph directly.</p>
+<p class="klein">6 techniques with their own page, 24 questions in the belt exam.</p>
+</section>
+<ul class="karten"><li class="karte" data-technik="75" data-guertel-nr="4" data-thema="Loops &amp; concurrency" data-lizenz="standard" data-such="run apply to each in parallel loops &amp; concurrency apply to each concurrency control parallelism loop performance throttling 75">
+<span class="klein">Tip 75</span>
+<h3><a href="../../techniken/apply-to-each-parallel/">Run Apply to each in parallel</a></h3>
+<p>You speed up loops with concurrency and recognize when it corrupts results.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Loops &amp; concurrency</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="100" data-guertel-nr="4" data-thema="JSON &amp; data conversion" data-lizenz="standard" data-such="json object instead of switch json &amp; data conversion switch condition compose json lookup coalesce 100">
+<span class="klein">Tip 100</span>
+<h3><a href="../../techniken/json-objekt-statt-switch/">JSON object instead of Switch</a></h3>
+<p>You replace branches with a lookup in a JSON object.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>JSON &amp; data conversion</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="104" data-guertel-nr="4" data-thema="JSON &amp; data conversion" data-lizenz="standard" data-such="a json schema that tolerates null json &amp; data conversion parse json schema null required expected string but got null validation 104">
+<span class="klein">Tip 104</span>
+<h3><a href="../../techniken/json-schema-das-null-vertraegt/">A JSON schema that tolerates null</a></h3>
+<p>You write robust schemas for unreliable APIs.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>JSON &amp; data conversion</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="138" data-guertel-nr="4" data-thema="HTTP &amp; Microsoft Graph" data-lizenz="premium" data-such="call microsoft graph without an app registration http &amp; microsoft graph microsoft graph http with microsoft entra id entra id app registration 403 nextlink 138">
+<span class="klein">Tip 138</span>
+<h3><a href="../../techniken/microsoft-graph-ohne-app-registrierung/">Call Microsoft Graph without an app registration</a></h3>
+<p>You call Microsoft Graph from a flow without an app registration.</p>
+<div class="karte__meta"><span class="badge badge--premium">Premium</span><span>HTTP &amp; Microsoft Graph</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="149" data-guertel-nr="4" data-thema="Approvals" data-lizenz="standard" data-such="decisions through a shared mailbox approvals approval shared mailbox send email with options selectedoption outlook approvals center 149">
+<span class="klein">Tip 149</span>
+<h3><a href="../../techniken/entscheidungen-ueber-ein-geteiltes-postfach/">Decisions through a shared mailbox</a></h3>
+<p>You collect approvals through a shared mailbox.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Approvals</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="153" data-guertel-nr="4" data-thema="SharePoint REST" data-lizenz="standard" data-such="rename a sharepoint file via rest sharepoint rest sharepoint rename fileleafref merge rest send an http request to sharepoint 153">
+<span class="klein">Tip 153</span>
+<h3><a href="../../techniken/sharepoint-datei-per-rest-umbenennen/">Rename a SharePoint file via REST</a></h3>
+<p>You rename SharePoint files without copying them.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>SharePoint REST</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+<p class="knopf-reihe"><a class="knopf knopf--primaer" href="../../pruefung/">Start the belt exam</a><a class="knopf" href="../../guertel/blau/">On to the blue belt</a></p>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, no tracking. Your progress stays in your browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../../en/techniken/">All techniques</a></li>
+          <li><a href="../../../en/pruefung/">Belt exam</a></li>
+          <li><a href="../../../en/premium/">Is my license enough?</a></li>
+          <li><a href="../../../en/heute/">Technique of the day</a></li>
+          <li><a href="../../../en/kalender/montag.ics" download>A question in your calendar every Monday</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../../../en/ueber/">About the Flow-Dojo</a></li>
+          <li><a href="../../../en/impressum/">Legal notice</a></li>
+          <li><a href="../../../en/datenschutz/">Privacy</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft and the Power Platform product names (for example Power Apps, Power Automate, Copilot Studio) are trademarks of the Microsoft group of companies. This is an independent website. It is not operated, sponsored or endorsed by Microsoft.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # KMUpower Flow-Dojo
 
-> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.
+> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.
 
 ## Seiten
 
@@ -35,3 +35,35 @@
 - [SharePoint-Datei per REST umbenennen](https://marcelehmann.github.io/powerautomate-ninja/techniken/sharepoint-datei-per-rest-umbenennen/): Grüner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/
 - [Die echte Fehlermeldung mit result() auslesen](https://marcelehmann.github.io/powerautomate-ninja/techniken/echte-fehlermeldung-mit-result-auslesen/): Blauer Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/
 - [Approvals über 30 Tage am Leben halten](https://marcelehmann.github.io/powerautomate-ninja/techniken/approvals-ueber-30-tage/): Brauner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/
+
+## English
+
+- [Home](https://marcelehmann.github.io/powerautomate-ninja/en/): English version
+- [Belt exam](https://marcelehmann.github.io/powerautomate-ninja/en/pruefung/): self-assessment from white to brown
+- [License check](https://marcelehmann.github.io/powerautomate-ninja/en/premium/): is the license from Microsoft 365 enough?
+- [All techniques](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/): ordered by belt
+
+- [Format the date directly in utcNow()](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/
+- [Test a flow before it goes live](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-testen-vor-dem-einschalten/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-9-powerautomate-preview/
+- [Reuse actions with My clipboard](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/aktionen-ueber-my-clipboard-wiederverwenden/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-12-components-for-powerautomate/
+- [Look behind an action with Code View](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/mit-code-view-hinter-eine-aktion-schauen/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-89-code-view-peak-code/
+- [Filter array in Advanced Mode](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/filter-array-im-advanced-mode/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/
+- [Fixed values in Compose instead of variables](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/feste-werte-in-compose-statt-variablen/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-5-less-variables/
+- [Remove duplicates with union()](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/duplikate-mit-union-entfernen/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-7-union-and-filterarray/
+- [Test with Static Result without changing data](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/mit-static-result-testen/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-36-static-result/
+- [Safe access with the ? operator](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-59-handle-dynamic-content/
+- [Shorten loops with take() while testing](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/schleifen-beim-testen-mit-take-kuerzen/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-148-take-expression-limit-apply-to-each/
+- [float() before div() for correct decimals](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/float-vor-div/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-155-float-before-div-power-automate/
+- [Catch errors with Try, Catch and Finally](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/fehler-mit-try-catch-finally-abfangen/): Orange belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/
+- [Run flows one after another](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/): Orange belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/
+- [Set a timeout for long-running actions](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/timeout-fuer-lange-aktionen/): Orange belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-109-use-timeout/
+- [Encode apostrophes and special characters correctly](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apostrophe-und-sonderzeichen-codieren/): Orange belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-146-encode-decode-functions/
+- [Return flow data to Power Apps as JSON](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-daten-als-json-an-power-apps/): Orange belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-158-parsejson-return-flow-data-power-apps/
+- [Run Apply to each in parallel](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/): Green belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-75-boost-efficiency-with-concurrency-control/
+- [JSON object instead of Switch](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/json-objekt-statt-switch/): Green belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-100-bypassing-complexity-in-powerautomate/
+- [A JSON schema that tolerates null](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/json-schema-das-null-vertraegt/): Green belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-104-efficient-json-handling/
+- [Call Microsoft Graph without an app registration](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/microsoft-graph-ohne-app-registrierung/): Green belt, Premium. Based on: https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/
+- [Decisions through a shared mailbox](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/): Green belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-149-approvals-to-a-shared-mailbox/
+- [Rename a SharePoint file via REST](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sharepoint-datei-per-rest-umbenennen/): Green belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/
+- [Read the real error message with result()](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/): Blue belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/
+- [Keep approvals alive beyond 30 days](https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/): Brown belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/

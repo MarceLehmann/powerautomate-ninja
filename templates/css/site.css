@@ -301,3 +301,6 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 @media print { .kopf, .fuss, .knopf, .filter, [data-nur-js] { display: none !important; } body { background: #fff; color: #000; } }
 .dojo-liste a { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; }
+/* Sprachumschalter DE/EN im Kopf */
+.sprache { font-weight: 600; font-size: .95rem; letter-spacing: .04em; text-decoration: none; }
+.sprache:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
