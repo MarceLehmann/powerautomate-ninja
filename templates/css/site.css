@@ -1,4 +1,4 @@
-/* KMUpower Flow-Dojo. Farben, Masse und Zeiten nur hier unter :root. Mobil zuerst (390 px), dann breiter. */
+/* PowerPlatformAcademy Dojo (Power Automate). Farben, Masse und Zeiten nur hier unter :root. Mobil zuerst (390 px), dann breiter. */
 @font-face { font-family: "Dojo Display"; src: url("../fonts/dojo-display-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: optional; }
 @font-face { font-family: "Dojo Display"; src: url("../fonts/dojo-display-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: optional; }
 :root {
@@ -108,9 +108,12 @@ html.js [data-ohne-js] { display: none !important; }
 .marke__knoten { width: 30px; height: 30px; flex: none; }
 .marke__knoten .band { fill: var(--belt-current); stroke: var(--ink); stroke-width: 1.6; }
 .marke__knoten .knoten-k { fill: var(--ink); }
-.marke__text { display: flex; flex-direction: column; line-height: 1; font-family: var(--font-display); font-stretch: 87.5%; }
-.marke__text small { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-muted); }
-.marke__text b { font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em; }
+.marke { min-width: 0; }
+.marke__text { display: flex; flex-direction: column; gap: .15rem; line-height: 1; font-family: var(--font-display); font-stretch: 87.5%; min-width: 0; }
+.marke__text b { font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.02; overflow-wrap: normal; }
+.marke__text small { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+@media (min-width: 420px) { .marke__text b { font-size: 1.15rem; } }
+@media (min-width: 600px) { .marke__text b { font-size: 1.3rem; white-space: nowrap; } .marke__text small { font-size: .7rem; } }
 .nav { display: none; }
 .nav ul { display: flex; gap: .2rem; list-style: none; margin: 0; padding: 0; }
 .nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .75rem; color: var(--ink); text-decoration: none; font-weight: 500; border-radius: var(--r-md); }
@@ -296,6 +299,9 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .fuss ul { list-style: none; padding: 0; margin: 0; }
 .fuss li a { display: inline-flex; align-items: center; min-height: 36px; }
 .fuss__klar { font-weight: 700; color: var(--ink); }
+.fuss__dojos { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.fuss__dojos p { margin: 0 0 .3rem; }
+.fuss__dojos a { padding-block: .45rem; }
 .fuss__recht { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
@@ -304,5 +310,4 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 /* Sprachumschalter DE/EN im Kopf */
 .sprache { font-weight: 600; font-size: .95rem; letter-spacing: .04em; text-decoration: none; }
 .sprache:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
-.marke__text b { white-space: nowrap; }
-@media (max-width: 359px) { .kopf__aktionen .knopf-icon { min-width: 40px; padding: 0 .3rem; } .kopf__innen { gap: .3rem; } }
+@media (max-width: 359px) { .kopf__aktionen .knopf-icon { min-width: 40px; padding: 0 .3rem; } .kopf__innen { gap: .3rem; } .marke { gap: .4rem; } .marke__text b { font-size: .9rem; } .marke__text small { font-size: .6rem; letter-spacing: .08em; } }

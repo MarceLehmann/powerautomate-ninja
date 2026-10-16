@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-  KMUpower Flow-Dojo: data/techniken.json aus dem Tipp-Inventar erzeugen oder ergaenzen.
+  PowerPlatformAcademy Dojo (Power Automate): data/techniken.json aus dem Tipp-Inventar erzeugen oder ergaenzen.
   node scripts/import-tipps.mjs [--tipps <pfad>] [--review <pfad>]
 
   Quelle: _recherche/data/tipps.json (Inventar der Power-Automate-Tipps, nicht im Repo).

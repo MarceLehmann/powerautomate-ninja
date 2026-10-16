@@ -1,4 +1,4 @@
-# KMUpower Flow-Dojo: robots.txt (erzeugt von scripts/build.mjs)
+# PowerPlatformAcademy Dojo: robots.txt (erzeugt von scripts/build.mjs)
 # Inhalte frei fuer Suche, KI-Training und KI-Antworten (contentsignals.org).
 # Die Content-Signal-Zeile steht in jeder Gruppe, weil ein Crawler nach RFC 9309 nur seine eigene Gruppe liest.
 

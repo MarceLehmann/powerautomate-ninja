@@ -1,4 +1,6 @@
-# KMUpower Flow-Dojo
+# PowerPlatformAcademy Dojo · Power Automate
+
+Name seit 16.10.2026 (vorher «KMUpower Flow-Dojo»). Gehört zur Power Platform Academy, Schwesterseite für Copilot: copilot.ninja.
 
 Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch (/) und Englisch (/en/). Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Live seit 16.10.2026 unter https://powerautomate.ninja/ (GitHub Pages, Custom Domain, HTTPS erzwungen). Alle Inhalte von Marcel freigegeben, jede Seite indexierbar (ausser 404 und Kurzadressen).
 
@@ -48,7 +50,7 @@ node scripts/engine-sync.mjs           Abgleich mit copilot-ninja
 
 Node 18 oder neuer, keine Abhängigkeiten. Einrichten auf einem neuen Rechner: `cp scripts/pre-push .git/hooks/pre-push`.
 
-Der Build bricht ab bei: Gedankenstrich, Eszett, Emoji, Testhinweis im Text; Technik ohne Lizenzbeleg bei Microsoft Learn; Ausdruck, der nicht wörtlich im Tipp steht (geprüft gegen den lokalen Klon `../PowerPlatformTip_LIVE/_posts`); Kurztext ausserhalb 80 bis 150 Wörter; Antwort über 12 Wörter; Inline-Skript, style-Attribut, fremde Quelle; «Power Automate» im Seitentitel.
+Der Build bricht ab bei: Gedankenstrich, Eszett, Emoji, Testhinweis im Text; Technik ohne Lizenzbeleg bei Microsoft Learn; Ausdruck, der nicht wörtlich im Tipp steht (geprüft gegen den lokalen Klon `../PowerPlatformTip_LIVE/_posts`); Kurztext ausserhalb 80 bis 150 Wörter; Antwort über 12 Wörter; Inline-Skript, style-Attribut, fremde Quelle; «Power Automate» im Seitentitel (erlaubt nur im Zusatz «PowerPlatformAcademy Dojo · Power Automate», `name` und `zusatz` in site.config.json).
 
 ## Livegang und Suchmaschinen
 

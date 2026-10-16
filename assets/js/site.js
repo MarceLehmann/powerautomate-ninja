@@ -1,4 +1,4 @@
-/* KMUpower Flow-Dojo: Theme, Menue, Suche, Kopieren, Quiz, Fortschritt, Technik-Wand, Technik des Tages, Mein Dojo.
+/* PowerPlatformAcademy Dojo (Power Automate): Theme, Menue, Suche, Kopieren, Quiz, Fortschritt, Technik-Wand, Technik des Tages, Mein Dojo.
    Kein Tracking, keine Anfragen an fremde Server. Jeder Zugriff auf localStorage in try/catch, alles laeuft auch ohne. */
 (function () {
   'use strict';

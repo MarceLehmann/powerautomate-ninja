@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-  KMUpower Flow-Dojo (Engine aus copilot-ninja): interne Links unter zwei Basen pruefen. Aendert nichts, braucht kein Netz.
+  PowerPlatformAcademy Dojo (Power Automate) (Engine aus copilot-ninja): interne Links unter zwei Basen pruefen. Aendert nichts, braucht kein Netz.
   node scripts/links.mjs              Vorschau und Produktion pruefen, Vorschau-Seiten nur als Hinweis
   node scripts/links.mjs --livegang   zusaetzlich Abbruch, wenn noch Vorschau-Seiten (Banner, noindex) im Ordner liegen.
                                       Laeuft als Git-Hook vor jedem Push (scripts/pre-push, Einrichtung im README).

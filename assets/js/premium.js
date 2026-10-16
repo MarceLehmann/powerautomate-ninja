@@ -1,4 +1,4 @@
-/* KMUpower Flow-Dojo: Lizenz-Check. Vier Fragen, Urteil sofort. Vorauswahl ueber ?q1=... (Startseite). */
+/* PowerPlatformAcademy Dojo (Power Automate): Lizenz-Check. Vier Fragen, Urteil sofort. Vorauswahl ueber ?q1=... (Startseite). */
 (function () {
   'use strict';
   var d = document, EN = /^en/i.test(d.documentElement.lang || ''), tx = function (de, en) { return EN ? en : de; }, form = d.querySelector('[data-lizenz-check]'), urteil = d.querySelector('[data-urteil]'), liste = d.querySelector('[data-urteil-liste]');

@@ -1,4 +1,4 @@
-/* KMUpower Flow-Dojo: Guertelpruefung. Zwei Fragen je Guertel von Weiss bis Braun (je_guertel in pool.json).
+/* PowerPlatformAcademy Dojo (Power Automate): Guertelpruefung. Zwei Fragen je Guertel von Weiss bis Braun (je_guertel in pool.json).
    Bestanden ist ein Guertel, wenn alle seine Fragen richtig sind. Zwei falsche im selben Guertel beenden die Pruefung.
    Ergebnis ist der hoechste Guertel, bis zu dem alle Guertel bestanden sind. Das Ergebnisbild entsteht lokal im Browser. */
 (function () {
@@ -83,15 +83,15 @@
     if (res) d.documentElement.setAttribute('data-guertel', res); else d.documentElement.removeAttribute('data-guertel');
     var g0 = res ? daten.guertel[res - 1] : null, naechster = daten.guertel[res] || null;
     var kurs = res <= 3 ? daten.kurs.einstieg : daten.kurs.fortgeschritten;
-    var text = res ? tx('Ich habe in der Flow-Gürtelprüfung des KMUpower Flow-Dojo ' + g0.akk + ' geschafft. ' + (naechster && res < 6 ? 'Schaffst du ' + naechster.akk + '?' : 'Schaffst du das auch?'), 'I earned ' + g0.akk + ' in the flow belt exam of the KMUpower Flow-Dojo. ' + (naechster && res < 6 ? 'Can you get ' + naechster.akk + '?' : 'Can you do it too?')) + '\n\n' + daten.base + 'guertel/' + g0.farbe + '/' : '';
+    var text = res ? tx('Ich habe in der Flow-Gürtelprüfung des PowerPlatformAcademy Dojo für Power Automate ' + g0.akk + ' geschafft. ' + (naechster && res < 6 ? 'Schaffst du ' + naechster.akk + '?' : 'Schaffst du das auch?'), 'I earned ' + g0.akk + ' in the flow belt exam of the PowerPlatformAcademy Dojo for Power Automate. ' + (naechster && res < 6 ? 'Can you get ' + naechster.akk + '?' : 'Can you do it too?')) + '\n\n' + daten.base + 'guertel/' + g0.farbe + '/' : '';
     var naechste = naechster && res < 6 ? daten.guertel[res].naechste : [];
     box.innerHTML = '<section class="ergebnis" aria-labelledby="erg-titel">' + balken() +
       '<div class="ergebnis__abzeichen">' + knotenSvg(res || 1) + '<div><span class="label">' + tx('Dein Ergebnis', 'Your result') + (abbruch ? tx(', Prüfung beendet', ', exam ended') : '') + '</span><h2 id="erg-titel" tabindex="-1">' + (res ? esc(g0.name) : tx('Noch kein Gürtel', 'No belt yet')) + '</h2></div></div>' +
       '<p class="lead">' + (res ? tx('Das kannst du: ', 'What you can do: ') + esc(g0.kann) : tx('Starte mit dem weissen Gürtel: Flows testen, Ein- und Ausgaben lesen, Datumswerte formatieren.', 'Start with the white belt: test flows, read inputs and outputs, format dates.')) + '</p>' +
       '<ul class="uebersicht">' + uebersicht.map(function (u) { return '<li><span class="band-punkt" data-guertel-nr="' + u.g + '" aria-hidden="true"></span>' + esc(daten.guertel[u.g - 1].name) + ': ' + u.text + '</li>'; }).join('') + '</ul>' +
       (naechste.length ? '<h3>' + tx('Als Nächstes lernst du', 'What to learn next') + '</h3><ul class="arrow-list">' + naechste.map(function (t) { return '<li><a href="' + LR + t.url + '">' + esc(t.titel) + '</a></li>'; }).join('') + '</ul>' : (res < 6 ? '<p><a href="' + LR + 'guertel/' + (naechster ? naechster.farbe : 'weiss') + '/">' + tx('Zum ', 'To the ') + esc(naechster ? (F && F.EN ? naechster.name.toLowerCase() : naechster.name) : tx('Weissen Gürtel', 'white belt')) + '</a></p>' : '')) +
-      (res ? '<h3>' + tx('Teilen', 'Share') + '</h3><img class="vorschau-bild" data-bild alt="' + tx('Ergebnisbild: ', 'Result image: ') + esc(g0.name) + tx(' im KMUpower Flow-Dojo', ' in the KMUpower Flow-Dojo') + '" width="1200" height="627">' +
-        '<div class="knopf-reihe"><a class="knopf knopf--klein" data-bild-download download="flow-dojo-' + g0.farbe + '.png" href="#">' + tx('Bild herunterladen', 'Download image') + '</a>' +
+      (res ? '<h3>' + tx('Teilen', 'Share') + '</h3><img class="vorschau-bild" data-bild alt="' + tx('Ergebnisbild: ', 'Result image: ') + esc(g0.name) + tx(' im PowerPlatformAcademy Dojo, Power Automate', ' in the PowerPlatformAcademy Dojo, Power Automate') + '" width="1200" height="627">' +
+        '<div class="knopf-reihe"><a class="knopf knopf--klein" data-bild-download download="powerplatformacademy-dojo-power-automate-' + g0.farbe + '.png" href="#">' + tx('Bild herunterladen', 'Download image') + '</a>' +
         '<a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=' + encodeURIComponent(text) + '" rel="noopener">' + tx('Auf LinkedIn teilen', 'Share on LinkedIn') + '</a>' +
         '<button type="button" class="knopf knopf--klein" data-text-kopieren>' + tx('Text kopieren', 'Copy text') + '</button></div>' : '') +
       '<div class="knopf-reihe"><a class="knopf" href="' + LR + 'kalender/montag.ics" download>' + tx('Jeden Montag eine Frage im Kalender', 'A question in your calendar every Monday') + '</a><button type="button" class="knopf knopf--leise" data-nochmal>' + tx('Prüfung neu starten', 'Restart the exam') + '</button></div>' +
@@ -116,7 +116,7 @@
       ctx.fillStyle = '#F4EFE6'; ctx.fillRect(0, 0, 1200, 627);
       daten.guertel.forEach(function (b, i) { ctx.fillStyle = b.hex; ctx.fillRect(i * 1200 / 7, 601, 1200 / 7 + 1, 26); });
       ctx.fillStyle = '#8A7F6C'; ctx.fillRect(0, 600, 1200, 1.5);
-      ctx.fillStyle = '#4E525B'; ctx.font = '600 30px "Dojo Display", Bahnschrift, "Arial Narrow", sans-serif'; ctx.fillText(tx('KMUPOWER FLOW-DOJO  ·  GÜRTELPRÜFUNG', 'KMUPOWER FLOW-DOJO  ·  BELT EXAM'), 80, 110);
+      ctx.fillStyle = '#4E525B'; ctx.font = '600 28px "Dojo Display", Bahnschrift, "Arial Narrow", sans-serif'; ctx.fillText(tx('POWERPLATFORMACADEMY DOJO  ·  POWER AUTOMATE  ·  GÜRTELPRÜFUNG', 'POWERPLATFORMACADEMY DOJO  ·  POWER AUTOMATE  ·  BELT EXAM'), 80, 110, 1040);
       ctx.fillStyle = '#15171B'; ctx.font = '700 104px "Dojo Display", Bahnschrift, "Arial Narrow", sans-serif'; ctx.fillText(g.name.split(' ')[0], 76, 250); ctx.fillText(tx('Gürtel', 'belt'), 76, 360);
       ctx.strokeStyle = '#B4301A'; ctx.lineWidth = 12; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(80, 386); ctx.quadraticCurveTo(250, 374, 420, 382); ctx.stroke();
       ctx.fillStyle = '#4E525B'; ctx.font = '30px "Segoe UI", system-ui, sans-serif'; umbrechen(ctx, g.kann, 80, 450, 700, 40);

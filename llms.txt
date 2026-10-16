@@ -1,4 +1,4 @@
-# KMUpower Flow-Dojo
+# PowerPlatformAcademy Dojo · Power Automate
 
 > Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.
 

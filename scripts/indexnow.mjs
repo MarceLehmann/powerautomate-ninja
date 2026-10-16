@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-  KMUpower Flow-Dojo: alle URLs der Sitemap an IndexNow melden (Bing, Yandex, Seznam, Naver teilen die Meldung).
+  PowerPlatformAcademy Dojo (Power Automate): alle URLs der Sitemap an IndexNow melden (Bing, Yandex, Seznam, Naver teilen die Meldung).
   node scripts/indexnow.mjs            liest sitemap.xml aus dem Ordner, sendet an api.indexnow.org
   node scripts/indexnow.mjs --trocken  zeigt nur, was gesendet wuerde
   Key: indexnow_key in site.config.json, die Datei <key>.txt im Stamm schreibt build.mjs. Keine Abhaengigkeiten, Node 18+.

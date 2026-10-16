@@ -1,8 +1,10 @@
 {
-  "name": "KMUpower Flow-Dojo",
-  "kurzname": "Flow-Dojo",
+  "name": "PowerPlatformAcademy Dojo",
+  "zusatz": "Power Automate",
+  "kurzname": "Dojo",
   "untertitel": "Flows bauen lernen, eine Frage nach der anderen",
-  "titel_start": "Flow-Dojo von KMUpower",
+  "titel_start": "PowerPlatformAcademy Dojo · Power Automate: Flows bauen lernen",
+  "titel_start_en": "PowerPlatformAcademy Dojo · Power Automate: learn to build flows",
   "base_url": "https://powerautomate.ninja/",
   "ausweichadresse": "https://kmupower.com/flow-dojo/",
   "kontakt": "marcel.lehmann@kmupower.com",
@@ -18,5 +20,9 @@
   "speicher_praefix": "fd",
   "copilot_ninja_pfad": "../copilot-ninja",
   "domain": "powerautomate.ninja",
-  "indexnow_key": "3ccf5e6fd13f7ebb3467177308b4faef"
+  "indexnow_key": "3ccf5e6fd13f7ebb3467177308b4faef",
+  "weitere_dojos": {
+    "copilot": "https://copilot.ninja/",
+    "copilot_en": "https://copilot.ninja/en/"
+  }
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-  KMUpower Flow-Dojo: Vorschaubilder (og:image) als PNG aus den SVG-Dateien rendern, die build.mjs schreibt.
+  PowerPlatformAcademy Dojo (Power Automate): Vorschaubilder (og:image) als PNG aus den SVG-Dateien rendern, die build.mjs schreibt.
   Braucht ein lokales Chrome oder Edge (Pfad per CHROME=...). Danach nicht neu bauen noetig, die Seiten verweisen schon auf die PNG.
   node scripts/karten.mjs
 */

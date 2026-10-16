@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//KMUpower//Flow-Dojo//DE
+PRODID:-//KMUpower//PowerPlatformAcademy Dojo//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
@@ -9,7 +9,7 @@ DTSTAMP:20261016T000000Z
 DTSTART:20261019T083000
 DURATION:PT10M
 RRULE:FREQ=WEEKLY;BYDAY=MO
-SUMMARY:Flow-Dojo: eine Frage
+SUMMARY:PowerPlatformAcademy Dojo: eine Frage
 DESCRIPTION:Zehn Minuten, eine Frage zu Flows. Die Technik des Tages steht
   unter https://powerautomate.ninja/heute/
 URL:https://powerautomate.ninja/heute/

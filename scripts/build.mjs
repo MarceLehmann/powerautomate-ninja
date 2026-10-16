@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-  KMUpower Flow-Dojo: Generator und Validierung. Node 18 oder neuer, keine Abhaengigkeiten.
+  PowerPlatformAcademy Dojo (Power Automate): Generator und Validierung. Node 18 oder neuer, keine Abhaengigkeiten.
 
   node scripts/build.mjs --testphase     Testphase: jede Seite noindex, kein Banner (Standard bis zum Livegang)
   node scripts/build.mjs --produktion    Livegang: Index-Regeln aus dem Bauplan, Sitemap nur indexierbare Seiten
@@ -22,7 +22,9 @@ const BASE_URL = CFG.base_url;
 const BASIS_PFAD = new URL(BASE_URL).pathname;
 const KURZ_BASIS = BASE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
 const NAME = CFG.name;
-const GENERATOR = '<meta name="generator" content="KMUpower Flow-Dojo build">';
+const ZUSATZ = CFG.zusatz;
+const TITEL_SUFFIX = `${NAME} · ${ZUSATZ}`; // einziger erlaubter Seitentitel-Zusatz mit «Power Automate»
+const GENERATOR = '<meta name="generator" content="PowerPlatformAcademy Dojo build">';
 
 const ARGS = process.argv.slice(2);
 const MODUS = ARGS.includes('--produktion') ? 'produktion' : ARGS.includes('--pruefen') ? 'pruefen' : 'testphase';
@@ -65,6 +67,9 @@ function jsonLd(obj) { return `<script type="application/ld+json">\n${JSON.strin
 const utm = (stelle) => `utm_source=${encodeURIComponent(CFG.utm_source)}&utm_medium=${encodeURIComponent(CFG.utm_medium)}&utm_content=${encodeURIComponent(stelle)}`;
 const mitUtm = (url, stelle) => `${url}${url.includes('?') ? '&' : '?'}${utm(stelle)}`;
 const kursUrl = (stelle) => mitUtm(CFG.kurs_url, stelle);
+// Verlinkung der Dojos und der Academy (Fusszeile, Ueber-Seite)
+const ACADEMY_DOJO = () => `${CFG.academy_url}?utm_source=${encodeURIComponent(CFG.utm_source)}&utm_medium=${encodeURIComponent(CFG.utm_medium)}&utm_campaign=dojo&utm_content=footer`;
+const COPILOT_DOJO = () => T(CFG.weitere_dojos.copilot, CFG.weitere_dojos.copilot_en);
 
 /* Mini-Templates wie copilot-ninja: {{feld}} escaped, {{{feld}}} roh, {{> partial}} */
 const partialCache = {};
@@ -222,10 +227,10 @@ const LIZENZ_SATZ = () => ({
   standard: T('Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365.', 'Runs without a premium connector, so the license from Microsoft 365 is enough.'),
   premium: T('Braucht Power Automate Premium oder eine andere Lizenz mit Premium-Connectoren.', 'Needs Power Automate Premium or another license that includes premium connectors.')
 });
-const mailtoFehler = (t) => `mailto:${CFG.kontakt}?subject=${encodeURIComponent(T(`Flow-Dojo: Fehler in Frage ${t.tipp_nr || t.schluessel}`, `Flow-Dojo: error in question ${t.tipp_nr || t.schluessel}`))}&body=${encodeURIComponent(T(`Frage: ${t.quiz.frage}\n\nWas stimmt nicht?\n\n`, `Question: ${t.quiz.frage}\n\nWhat is wrong?\n\n`))}`;
+const mailtoFehler = (t) => `mailto:${CFG.kontakt}?subject=${encodeURIComponent(T(`${NAME}: Fehler in Frage ${t.tipp_nr || t.schluessel}`, `${NAME}: error in question ${t.tipp_nr || t.schluessel}`))}&body=${encodeURIComponent(T(`Frage: ${t.quiz.frage}\n\nWas stimmt nicht?\n\n`, `Question: ${t.quiz.frage}\n\nWhat is wrong?\n\n`))}`;
 function linkedinUrl(text) { return `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`; }
 function teilenText(t) {
-  return `${T('Quizfrage für alle, die Flows bauen', 'Quiz question for everyone who builds flows')}: ${t.quiz.frage}\n\n${t.quiz.antworten.map((a, i) => `${BUCHST[i]}) ${a}`).join('\n')}\n\n${T('Auflösung mit Erklärung im KMUpower Flow-Dojo', 'Answer with explanation in the KMUpower Flow-Dojo')}: ${urlTechnik(t)}`;
+  return `${T('Quizfrage für alle, die Flows bauen', 'Quiz question for everyone who builds flows')}: ${t.quiz.frage}\n\n${t.quiz.antworten.map((a, i) => `${BUCHST[i]}) ${a}`).join('\n')}\n\n${T(`Auflösung mit Erklärung im ${NAME}`, `Answer with explanation in the ${NAME}`)}: ${urlTechnik(t)}`;
 }
 function karte(t, r) {
   const such = [t.titel_de, t.thema, ...(t.suchbegriffe || []), String(t.tipp_nr || '')].join(' ').toLowerCase();
@@ -280,7 +285,7 @@ function seite(relL, p) {
     icon_suche: ICONS.suche, icon_sonne: ICONS.sonne, icon_mond: ICONS.mond, icon_menue: ICONS.menue, icon_zu: ICONS.zu,
     cur_techniken: cur('techniken'), cur_pruefung: cur('pruefung'), cur_premium: cur('premium'), cur_dojo: cur('dojo'),
     js_extra: (p.js || []).map(s => `<script src="${r}assets/js/${s}" defer></script>`).join('\n'),
-    tipp_fuss: mitUtm('https://www.powerplatformtip.com/', 'fusszeile'), academy_fuss: mitUtm(CFG.academy_url, 'fusszeile'),
+    tipp_fuss: mitUtm('https://www.powerplatformtip.com/', 'fusszeile'), academy_fuss: mitUtm(CFG.academy_url, 'fusszeile'), academy_dojo: ACADEMY_DOJO(), copilot_dojo: COPILOT_DOJO(),
     sprache_href: r + andere + pfad, sprache_code: L === 'en' ? 'de' : 'en', sprache_kurz: L === 'en' ? 'DE' : 'EN', sprache_name: L === 'en' ? 'Deutsche Version' : 'English version'
   };
   const noindex = TESTPHASE || p.noindex;
@@ -358,7 +363,7 @@ function baueStart() {
   const haupt = `<main id="main">
 <section class="wrap hero" aria-labelledby="h1">
   <div class="hero__band" aria-hidden="true">${GUERTEL.map(g => `<span data-guertel-nr="${g.nr}"></span>`).join('')}</div>
-  <span class="label">${esc(NAME)}</span>
+  <span class="label">${esc(TITEL_SUFFIX)}</span>
   <h1 id="h1">${T('Welcher <span class="strich">Flow-Gürtel</span> bist du?', 'Which <span class="strich">flow belt</span> are you?')}</h1>
   <p class="lead">${T(`${PRUEF_ANZAHL()} Fragen, rund vier Minuten. Danach weisst du, was du als Nächstes lernst.`, `${PRUEF_ANZAHL()} questions, about four minutes. Then you know what to learn next.`)}</p>
   <div class="knopf-reihe"><a class="knopf knopf--primaer" href="pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a><a class="knopf" href="premium/">${T('Reicht meine Lizenz?', 'Is my license enough?')}</a></div>
@@ -388,7 +393,7 @@ function baueStart() {
 </div></section>
 </main>`;
   seite('index.html', {
-    seite: 'start', titel: T(CFG.titel_start, 'Flow-Dojo by KMUpower'), haupt,
+    seite: 'start', titel: T(CFG.titel_start, CFG.titel_start_en), haupt,
     beschreibung: T('Welcher Flow-Gürtel bist du? Gürtelprüfung, Lizenz-Check und Techniken mit Erklärung für Flows in Power Automate, auf Deutsch.', 'Which flow belt are you? Belt exam, license check and techniques with explanations for flows in Power Automate.'),
     ogTitel: T('Welcher Flow-Gürtel bist du?', 'Which flow belt are you?'), jsonld: [LD_WEBSITE(), LD_ORG]
   });
@@ -429,7 +434,7 @@ ${filterHtml()}
 ${abschnitte}
 </div></main>`;
   seite('techniken/index.html', {
-    seite: 'wand', titel: T(`Alle Techniken für Flows nach Gürtel | ${NAME}`, `All techniques for flows by belt | ${NAME}`), haupt,
+    seite: 'wand', titel: T(`Alle Techniken für Flows nach Gürtel | ${TITEL_SUFFIX}`, `All techniques for flows by belt | ${TITEL_SUFFIX}`), haupt,
     beschreibung: T(`${SEITEN.length} Techniken für Flows in Power Automate, nach Gürtel geordnet. Jede mit Quizfrage, Erklärung auf Deutsch und Link zum ganzen Tipp.`, `${SEITEN.length} techniques for flows in Power Automate, ordered by belt. Each with a quiz question, explanation and a link to the full tip.`),
     jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'CollectionPage', name: T('Alle Techniken', 'All techniques'), url: `${BL()}techniken/`, inLanguage: LANG_HTML(), mainEntity: { '@type': 'ItemList', itemListElement: SEITEN.map((t, i) => ({ '@type': 'ListItem', position: i + 1, url: urlTechnik(t), name: t.titel_de })) } }, krumen([[T('Start', 'Home'), BL()], [T('Techniken', 'Techniques'), `${BL()}techniken/`]])]
   });
@@ -481,7 +486,7 @@ ${kurs}
 </article>
 </div></main>`;
   seite(`techniken/${t.slug}/index.html`, {
-    seite: 'technik', titel: `${t.titel_de} | ${NAME}`, haupt, noindex: !indexierbar, ogTyp: 'article',
+    seite: 'technik', titel: `${t.titel_de} | ${TITEL_SUFFIX}`, haupt, noindex: !indexierbar, ogTyp: 'article',
     ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`,
     beschreibung: T(`${t.titel_de}: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.`, `${t.titel_de}: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.`).slice(0, 160),
     jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'LearningResource', '@id': `${url}#technik`, name: t.titel_de, url, inLanguage: LANG_HTML(), learningResourceType: 'Quiz', educationalLevel: g.name, isBasedOn: t.tipp_url, citation: [t.learn_url, ...(t.lizenz_belege || []).map(b => b.url)], publisher: { '@id': LD_ORG['@id'] }, isPartOf: { '@id': `${BL()}#website` }, hasPart: { '@id': `${url}#quiz` } },
@@ -503,7 +508,7 @@ function baueHeute() {
 <div data-heute data-heute-alle>${t ? quizKarte(t, '../', 'h2') : `<p class="leer-hinweis">${T('Die erste Technik des Tages folgt.', 'The first technique of the day is coming soon.')}</p>`}</div>
 <p class="knopf-reihe"><a class="knopf" href="../kalender/montag.ics" download>${T('Jeden Montag eine Frage im Kalender', 'A question in your calendar every Monday')}</a><a class="knopf knopf--leise" href="../techniken/">${T('Alle Techniken', 'All techniques')}</a></p>
 </div></main>`;
-  seite('heute/index.html', { seite: 'heute', titel: T(`Technik des Tages | ${NAME}`, `Technique of the day | ${NAME}`), haupt, beschreibung: T('Jeden Tag eine Quizfrage zu Flows in Power Automate, mit Auflösung und Erklärung.', 'A quiz question about flows in Power Automate every day, with solution and explanation.') });
+  seite('heute/index.html', { seite: 'heute', titel: T(`Technik des Tages | ${TITEL_SUFFIX}`, `Technique of the day | ${TITEL_SUFFIX}`), haupt, beschreibung: T('Jeden Tag eine Quizfrage zu Flows in Power Automate, mit Auflösung und Erklärung.', 'A quiz question about flows in Power Automate every day, with solution and explanation.') });
 }
 
 function bauePruefung() {
@@ -523,7 +528,7 @@ ${krumenHtml('../', [[T('Gürtelprüfung', 'Belt exam'), './']])}
 </section>
 </div></main>`;
   seite('pruefung/index.html', {
-    seite: 'pruefung', titel: T(`Gürtelprüfung für Flows | ${NAME}`, `Belt exam for flows | ${NAME}`), haupt, js: ['pruefung.js'],
+    seite: 'pruefung', titel: T(`Gürtelprüfung für Flows | ${TITEL_SUFFIX}`, `Belt exam for flows | ${TITEL_SUFFIX}`), haupt, js: ['pruefung.js'],
     beschreibung: T(`Welcher Flow-Gürtel bist du? ${n} Fragen zu Flows in Power Automate, von Weiss bis Braun, mit Ergebnisbild zum Teilen.`, `Which flow belt are you? ${n} questions about flows in Power Automate, from white to brown, with a result image to share.`),
     ogTitel: T('Welcher Flow-Gürtel bist du?', 'Which flow belt are you?'), jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [T('Gürtelprüfung', 'Belt exam'), `${BL()}pruefung/`]])]
   });
@@ -565,7 +570,7 @@ ${T(`<li>Mit einer Lizenz aus Microsoft 365 nutzt du Standard-Connectoren. Verwe
 </section>
 </div></main>`;
   seite('premium/index.html', {
-    seite: 'premium', titel: T(`Reicht meine Lizenz für Flows? Lizenz-Check | ${NAME}`, `Is my license enough for flows? License check | ${NAME}`), haupt, js: ['premium.js'],
+    seite: 'premium', titel: T(`Reicht meine Lizenz für Flows? Lizenz-Check | ${TITEL_SUFFIX}`, `Is my license enough for flows? License check | ${TITEL_SUFFIX}`), haupt, js: ['premium.js'],
     beschreibung: T('Vier Fragen zu deinem Flow: Reicht die Lizenz aus Microsoft 365 oder brauchst du Power Automate Premium? Mit Quellen bei Microsoft Learn.', 'Four questions about your flow: is the license from Microsoft 365 enough or do you need Power Automate Premium? With sources on Microsoft Learn.'),
     jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [T('Lizenz-Check', 'License check'), `${BL()}premium/`]])]
   });
@@ -587,8 +592,8 @@ ${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul
 <p class="knopf-reihe"><a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>${naechster && g.nr < 6 ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${T('Weiter zu', 'On to the')} ${esc(T(naechster.name, naechster.name.toLowerCase()))}</a>` : ''}</p>
 </div></main>`;
   seite(`guertel/${g.farbe}/index.html`, {
-    seite: 'guertel', titel: `${g.name}: ${g.leitwort} | ${NAME}`, haupt,
-    ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`, ogTitel: T(`${g.name} im KMUpower Flow-Dojo`, `${g.name} in the KMUpower Flow-Dojo`),
+    seite: 'guertel', titel: `${g.name}: ${g.leitwort} | ${TITEL_SUFFIX}`, haupt,
+    ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`, ogTitel: T(`${g.name} im ${NAME}`, `${g.name} in the ${NAME}`),
     beschreibung: `${g.name}: ${g.kannst_du}`.slice(0, 160),
     jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [g.name, `${BL()}guertel/${g.farbe}/`]])]
   });
@@ -609,7 +614,7 @@ function baueDojo() {
 ${liste}
 <section class="abschnitt" aria-labelledby="h-loeschen"><h2 id="h-loeschen">${T('Daten löschen', 'Delete data')}</h2><p>${T('Dein Fortschritt liegt nur im lokalen Speicher dieses Browsers. Mit einem Klick ist er weg.', 'Your progress is only stored in the local storage of this browser. One click and it is gone.')}</p><p><button type="button" class="knopf knopf--leise" data-dojo-loeschen data-nur-js>${T('Alles löschen', 'Delete everything')}</button></p><p class="status-zeile" data-dojo-meldung role="status" aria-live="polite"></p></section>
 </div></main>`;
-  seite('dojo/index.html', { seite: 'dojo', titel: T(`Mein Dojo | ${NAME}`, `My dojo | ${NAME}`), haupt, beschreibung: T('Dein Fortschritt im KMUpower Flow-Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the KMUpower Flow-Dojo: practiced techniques and your belt from the exam.') });
+  seite('dojo/index.html', { seite: 'dojo', titel: T(`Mein Dojo | ${TITEL_SUFFIX}`, `My dojo | ${TITEL_SUFFIX}`), haupt, beschreibung: T('Dein Fortschritt im PowerPlatformAcademy Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the PowerPlatformAcademy Dojo: practiced techniques and your belt from the exam.') });
 }
 
 function baueRecht() {
@@ -617,8 +622,8 @@ function baueRecht() {
   const ueber = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Über', 'About'), './']])}
 <div class="prose sektion--eng">
-${T(`<h1 id="h1">Über das Flow-Dojo</h1>
-<p class="lead">Das Flow-Dojo prüft und erklärt auf Deutsch, was die Tipps auf powerplatformtip.com zeigen. Eine Frage nach der anderen, vom ersten Test bis zur Architektur.</p>
+${T(`<h1 id="h1">Über das Dojo</h1>
+<p class="lead">Das PowerPlatformAcademy Dojo für Power Automate prüft und erklärt auf Deutsch, was die Tipps auf powerplatformtip.com zeigen. Eine Frage nach der anderen, vom ersten Test bis zur Architektur.</p>
 <h2>Wie es funktioniert</h2>
 <ul class="arrow-list">
 <li>Jede Technik beginnt mit einer Quizfrage. Erst raten, dann lesen: So bleibt mehr hängen als beim reinen Lesen.</li>
@@ -630,10 +635,12 @@ ${T(`<h1 id="h1">Über das Flow-Dojo</h1>
 <p>Alle Fragen stammen aus den wöchentlichen Tipps von Marcel Lehmann auf powerplatformtip.com. Ins Dojo kommen nur Tipps, die nach der letzten Durchsicht aktuell sind. Lizenzangaben und Zahlen zu Limits stützen sich auf Microsoft Learn, mit Link auf jeder Seite. Ist eine Erklärung hier falsch, wird zuerst der Tipp korrigiert und danach das Dojo.</p>
 <h2>Was das Dojo nicht ist</h2>
 <p>Kein Angebot von Microsoft, keine Zertifizierung und keine Lizenzberatung im Einzelfall. Die Gürtel sind eine Lernhilfe dieser Seite.</p>
+<h2>Teil der Power Platform Academy</h2>
+<p>Das PowerPlatformAcademy Dojo gehört zur <a href="${esc(ACADEMY_DOJO())}" rel="noopener">Power Platform Academy</a>. Für Copilot gibt es ein eigenes Dojo auf <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>.</p>
 <h2>Fehler gefunden?</h2>
 <p>Auf jeder Technik-Seite gibt es den Link «Fehler in dieser Frage melden». Oder schreib direkt an <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>
-<p>Wer Flows mit Begleitung lernen will: `, `<h1 id="h1">About the Flow-Dojo</h1>
-<p class="lead">The Flow-Dojo tests and explains what the tips on powerplatformtip.com show. One question after another, from the first test to architecture.</p>
+<p>Wer Flows mit Begleitung lernen will: `, `<h1 id="h1">About the dojo</h1>
+<p class="lead">The PowerPlatformAcademy Dojo for Power Automate tests and explains what the tips on powerplatformtip.com show. One question after another, from the first test to architecture.</p>
 <h2>How it works</h2>
 <ul class="arrow-list">
 <li>Every technique starts with a quiz question. Guess first, then read: more sticks than with reading alone.</li>
@@ -645,11 +652,13 @@ ${T(`<h1 id="h1">Über das Flow-Dojo</h1>
 <p>All questions come from the weekly tips by Marcel Lehmann on powerplatformtip.com. Only tips that are current after the last review make it into the dojo. License statements and limit numbers are based on Microsoft Learn, with a link on every page. If an explanation here is wrong, the tip is corrected first and the dojo after that.</p>
 <h2>What the dojo is not</h2>
 <p>Not a Microsoft offering, not a certification and no licensing advice for individual cases. The belts are a learning aid of this website.</p>
+<h2>Part of the Power Platform Academy</h2>
+<p>The PowerPlatformAcademy Dojo is part of the <a href="${esc(ACADEMY_DOJO())}" rel="noopener">Power Platform Academy</a>. There is a separate dojo for Copilot at <a href="${esc(COPILOT_DOJO())}" rel="noopener" hreflang="en">copilot.ninja</a>.</p>
 <h2>Found an error?</h2>
 <p>Every technique page has the link "Report an error in this question". Or write directly to <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>
 <p>If you want to learn flows with guidance: `)}<a href="${esc(kursUrl('ueber'))}" rel="noopener">${esc(KURS_NAME())}</a>.</p>
 </div></div></main>`;
-  seite('ueber/index.html', { seite: 'ueber', titel: T(`Über das Flow-Dojo | ${NAME}`, `About the Flow-Dojo | ${NAME}`), haupt: ueber, beschreibung: T('Wie das KMUpower Flow-Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.', 'How the KMUpower Flow-Dojo works, where the questions come from and what the site is not.') });
+  seite('ueber/index.html', { seite: 'ueber', titel: T(`Über das Dojo | ${TITEL_SUFFIX}`, `About the dojo | ${TITEL_SUFFIX}`), haupt: ueber, beschreibung: T('Wie das PowerPlatformAcademy Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.', 'How the PowerPlatformAcademy Dojo works, where the questions come from and what the site is not.') });
 
   const impressum = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Impressum', 'Legal notice'), './']])}
@@ -684,7 +693,7 @@ ${T(`<h1 id="h1">Impressum</h1>
 <h2>Copyright</h2>
 <p>You may use the expressions from the tips freely in your organization. You may not publish the other texts, questions or the design of this website as your own without asking first.</p>`)}
 </div></div></main>`;
-  seite('impressum/index.html', { seite: 'recht', titel: T(`Impressum | ${NAME}`, `Legal notice | ${NAME}`), haupt: impressum, beschreibung: T('Impressum des KMUpower Flow-Dojo.', 'Legal notice of the KMUpower Flow-Dojo.') });
+  seite('impressum/index.html', { seite: 'recht', titel: T(`Impressum | ${TITEL_SUFFIX}`, `Legal notice | ${TITEL_SUFFIX}`), haupt: impressum, beschreibung: T('Impressum des PowerPlatformAcademy Dojo.', 'Legal notice of the PowerPlatformAcademy Dojo.') });
 
   const p = CFG.speicher_praefix;
   const datenschutz = `<main id="main"><div class="wrap">
@@ -754,11 +763,11 @@ ${T(`<h1 id="h1">Datenschutz</h1>
 <h2>Your rights</h2>
 <p>Under the Swiss Federal Act on Data Protection you can request information or deletion. The website itself does not store any personal data with me, and the GoatCounter counts contain none either. For the hosting logs, contact GitHub. For everything else, write to me at <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`)}
 </div></div></main>`;
-  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${NAME}`, `Privacy | ${NAME}`), haupt: datenschutz, beschreibung: T('Datenschutz im KMUpower Flow-Dojo: keine Cookies, anonyme Zugriffszählung, Fortschritt nur im Browser.', 'Privacy in the KMUpower Flow-Dojo: no cookies, anonymous visit counting, progress only in your browser.') });
+  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${TITEL_SUFFIX}`, `Privacy | ${TITEL_SUFFIX}`), haupt: datenschutz, beschreibung: T('Datenschutz im PowerPlatformAcademy Dojo: keine Cookies, anonyme Zugriffszählung, Fortschritt nur im Browser.', 'Privacy in the PowerPlatformAcademy Dojo: no cookies, anonymous visit counting, progress only in your browser.') });
 
   const b = BASIS_PFAD + PFX();
   seite('404.html', {
-    seite: '404', absolut: true, titel: T(`Seite nicht gefunden | ${NAME}`, `Page not found | ${NAME}`), noindex: true, beschreibung: T('Diese Seite gibt es nicht.', 'This page does not exist.'),
+    seite: '404', absolut: true, titel: T(`Seite nicht gefunden | ${TITEL_SUFFIX}`, `Page not found | ${TITEL_SUFFIX}`), noindex: true, beschreibung: T('Diese Seite gibt es nicht.', 'This page does not exist.'),
     haupt: `<main id="main"><div class="wrap sektion">
 <span class="label">${T('Fehler 404', 'Error 404')}</span>
 <h1 id="h1">${T('Diese Seite gibt es nicht.', 'This page does not exist.')}</h1>
@@ -778,7 +787,7 @@ function baueKurzadressen() {
 ${GENERATOR}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
-<title>${esc(t.titel_de)} | ${esc(NAME)}</title>
+<title>${esc(t.titel_de)} | ${esc(TITEL_SUFFIX)}</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="${urlTechnik(t)}">
 <meta http-equiv="refresh" content="0; url=${ziel}">
@@ -804,8 +813,8 @@ function baueDaten() {
   schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME() }, guertel, fragen: pool }));
 
   const montag = (() => { const d = new Date(DATUM + 'T00:00:00Z'); do d.setUTCDate(d.getUTCDate() + 1); while (d.getUTCDay() !== 1); return d.toISOString().slice(0, 10).replace(/-/g, ''); })();
-  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//Flow-Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'en' ? '-en' : ''}@kmupower.com`,
-    `DTSTAMP:${DATUM.replace(/-/g, '')}T000000Z`, `DTSTART:${montag}T083000`, 'DURATION:PT10M', 'RRULE:FREQ=WEEKLY;BYDAY=MO', T('SUMMARY:Flow-Dojo: eine Frage', 'SUMMARY:Flow-Dojo: one question'),
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//PowerPlatformAcademy Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'en' ? '-en' : ''}@kmupower.com`,
+    `DTSTAMP:${DATUM.replace(/-/g, '')}T000000Z`, `DTSTART:${montag}T083000`, 'DURATION:PT10M', 'RRULE:FREQ=WEEKLY;BYDAY=MO', T(`SUMMARY:${NAME}: eine Frage`, `SUMMARY:${NAME}: one question`),
     T(`DESCRIPTION:Zehn Minuten, eine Frage zu Flows. Die Technik des Tages steht unter ${BL()}heute/`, `DESCRIPTION:Ten minutes, one question about flows. The technique of the day is at ${BL()}heute/`), `URL:${BL()}heute/`, 'TRANSP:TRANSPARENT', 'END:VEVENT', 'END:VCALENDAR'];
   schreibe(`${PFX()}kalender/montag.ics`, ics.map(falte).join('\r\n') + '\r\n');
 }
@@ -827,7 +836,7 @@ function baueSitemap(indexierbar) {
   if (CFG.indexnow_key) { if (!/^[a-f0-9]{32}$/.test(CFG.indexnow_key)) fehler('indexnow_key: 32 Hexzeichen'); schreibe(`${CFG.indexnow_key}.txt`, CFG.indexnow_key); }
   if (CFG.domain && new URL(BASE_URL).hostname === CFG.domain) schreibe('CNAME', CFG.domain + '\n');
   setzeSprache('de');
-  const de = [`# ${NAME}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
+  const de = [`# ${TITEL_SUFFIX}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
     '## Seiten', '', `- [Gürtelprüfung](${BASE_URL}pruefung/): Selbsttest von Weiss bis Braun`, `- [Lizenz-Check](${BASE_URL}premium/): Reicht die Lizenz aus Microsoft 365?`, `- [Alle Techniken](${BASE_URL}techniken/): nach Gürtel geordnet`, `- [Über](${BASE_URL}ueber/): Methode und Herkunft der Fragen`, '',
     '## Techniken', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Grundlage: ${t.tipp_url}`), ''];
   setzeSprache('en');
@@ -849,7 +858,7 @@ function baueBilder() {
 <rect width="1200" height="630" fill="#F4EFE6"/>
 ${BAND_HEX.map((c, i) => `<rect x="${i * (1200 / 7)}" y="604" width="${1200 / 7 + 1}" height="26" fill="${c}"/>`).join('')}
 <rect x="0" y="603" width="1200" height="1.5" fill="#8A7F6C"/>
-<text x="80" y="120" font-family="${schrift}" font-weight="600" font-size="34" letter-spacing="6" fill="#4E525B">KMUPOWER FLOW-DOJO</text>
+<text x="80" y="120" font-family="${schrift}" font-weight="600" font-size="30" letter-spacing="4" fill="#4E525B">POWERPLATFORMACADEMY DOJO  ·  POWER AUTOMATE</text>
 <text x="76" y="270" font-family="${schrift}" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">${titel1}</text>
 <text x="76" y="380" font-family="${schrift}" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">${titel2}</text>
 <path d="M80 404C190 394 300 392 420 398" fill="none" stroke="#B4301A" stroke-width="12" stroke-linecap="round"/>
@@ -870,7 +879,7 @@ function minifiziere(css) {
 function baueCss() {
   const css = lies('templates/css/site.css');
   if (/@import|url\((?!["']?(data:|\.\.\/fonts\/[\w-]+\.woff2["']?\)))/.test(css)) fehler('site.css: @import oder fremde url() nicht erlaubt');
-  schreibe('assets/css/site.css', `/* KMUpower Flow-Dojo. Quelle: templates/css/site.css (nicht hier bearbeiten) */\n${minifiziere(css)}\n`);
+  schreibe('assets/css/site.css', `/* PowerPlatformAcademy Dojo. Quelle: templates/css/site.css (nicht hier bearbeiten) */\n${minifiziere(css)}\n`);
 }
 
 /* Abschlusspruefung */
@@ -903,7 +912,7 @@ function abschluss() {
     if (/class="vorschau-banner"/.test(html)) fehler(`${wo}: Vorschau-Banner`);
     const titel = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
     if (!titel) fehler(`${wo}: <title> fehlt`);
-    if (/Power Automate/i.test(titel)) fehler(`${wo}: «Power Automate» im <title>`);
+    if (/Power Automate/i.test(titel.split(TITEL_SUFFIX).join(''))) fehler(`${wo}: «Power Automate» im <title> (erlaubt nur im Zusatz «${TITEL_SUFFIX}»)`);
     if (!kurz) {
       const n = (html.match(/<h1[\s>]/g) || []).length; if (n !== 1) fehler(`${wo}: ${n} statt genau ein <h1>`);
       const sichtbar = html.replace(/<script[\s\S]*?<\/script>/g, '');
@@ -954,7 +963,7 @@ if (!fehlerListe.length && MODUS !== 'pruefen') {
   abschluss();
 }
 setzeSprache('de');
-console.log(`\nKMUpower Flow-Dojo Build, Modus ${MODUS}, Datum ${DATUM}, Sprachen ${SPRACHEN.join(', ')}`);
+console.log(`\nPowerPlatformAcademy Dojo Build, Modus ${MODUS}, Datum ${DATUM}, Sprachen ${SPRACHEN.join(', ')}`);
 console.log(`Tipps: ${ALLE.length}, Pool ${POOL.length}, Technik-Seiten ${SEITEN.length}, Prüfung ${PRUEF_ANZAHL()} Fragen`);
 console.log(`Pool je Gürtel: ${GUERTEL.map(g => `${g.kurz} ${POOL.filter(t => t.guertel === g.nr).length}`).join(', ')}`);
 const ausgeschlossen = daten.techniken.filter(t => t.pool_ausschluss);
