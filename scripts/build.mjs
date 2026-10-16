@@ -695,15 +695,18 @@ ${T(`<h1 id="h1">Datenschutz</h1>
 <h2>Kurz erklärt</h2>
 <ul class="arrow-list">
 <li>Diese Seite setzt keine Cookies.</li>
-<li>Es läuft kein Tracking und keine Analyse auf der Seite.</li>
+<li>Aufrufe werden anonym mit GoatCounter gezählt, ohne Cookies und ohne Speicherung deiner IP-Adresse. Es gibt kein Tracking über Seiten hinweg.</li>
 <li>Es gibt keine Konten und keine Formulare, die etwas senden.</li>
-<li>Die Seite lädt keine Schriften, Skripte oder Bilder von Dritten.</li>
+<li>Schriften, Skripte und Bilder kommen von dieser Seite selbst. Die einzige Verbindung zu einem Dritten ist die Zählanfrage an GoatCounter.</li>
 <li>Was du im Dojo markierst oder in der Prüfung erreichst, bleibt in deinem Browser. Ich erhalte davon nichts.</li>
 </ul>
 <h2>Verantwortlich</h2>
 <p>Marcel Lehmann (Handelsname KMUpower), erreichbar unter <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>. Die vollständigen Angaben stehen im <a href="../impressum/">Impressum</a>.</p>
 <h2>Hosting bei GitHub Pages</h2>
 <p>Die Seite liegt auf GitHub Pages. Betreiber ist GitHub Inc. in den USA. Beim Aufruf verarbeitet GitHub technisch notwendige Zugriffsdaten in Server-Logs, zum Beispiel deine IP-Adresse und den Zeitpunkt des Aufrufs. Ich werte diese Logs nicht aus. Dabei können Daten in die USA übermittelt werden. Einzelheiten stehen in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+<h2 id="zugriffszaehlung">Anonyme Zugriffszählung mit GoatCounter</h2>
+<p>Damit ich sehe, welche Techniken gelesen werden, zählt die Seite Aufrufe mit GoatCounter. Anbieter ist GoatCounter.com, betrieben von Martin Tournoij in Irland, die Daten liegen auf Servern der Hetzner Online GmbH in Finnland und Deutschland. Das Zählskript liefert diese Seite selbst aus, nur die Zählanfrage geht an GoatCounter.</p>
+<p>Bei jedem Aufruf erhält GoatCounter die Adresse der Seite, die verweisende Seite, die Browserkennung, die Bildschirmbreite, die Browsersprache und deine IP-Adresse. Gespeichert werden nur Summen pro Tag oder Stunde: Seitenpfad, verweisende Seite, Browser und Betriebssystem mit Version, Land, Sprache und Bildschirmbreite. Die IP-Adresse und die vollständige Browserkennung werden nicht gespeichert. Damit ein Neuladen nicht doppelt zählt, hält GoatCounter eine Kombination aus Seite, IP-Adresse und Browserkennung höchstens 8 Stunden im Arbeitsspeicher, nie auf der Festplatte. Es werden keine Cookies gesetzt, nichts im Browser gespeichert und keine Daten an Dritte weitergegeben. Grundlage ist mein Interesse zu wissen, welche Inhalte genutzt werden. Einzelheiten stehen in der <a href="https://www.goatcounter.com/help/privacy" rel="noopener">Datenschutzerklärung von GoatCounter</a>. Wenn du die Zählung nicht willst, blockiere Anfragen an goatcounter.com mit einem Inhaltsblocker. Die Seite funktioniert dann genau gleich.</p>
 <h2 id="dein-fortschritt">Dein Fortschritt im Dojo</h2>
 <p>Einige Einstellungen und dein Fortschritt werden im lokalen Speicher deines Browsers abgelegt (localStorage). Das ist kein Cookie. Die Einträge bleiben auf deinem Gerät und werden nie an mich oder an Dritte übertragen. Geschrieben wird erst, wenn du etwas tust.</p>
 <ul class="arrow-list">
@@ -718,20 +721,23 @@ ${T(`<h1 id="h1">Datenschutz</h1>
 <h2>Links zu anderen Seiten</h2>
 <p>Die Seite verlinkt auf powerplatformtip.com, Microsoft Learn, die Power Platform Academy, LinkedIn und weitere Seiten. Erst wenn du einen Link anklickst, erhält der jeweilige Anbieter deine Daten. Die Links zu powerplatformtip.com und zur Academy tragen eine Herkunftsangabe in der Adresse (utm_source=${CFG.utm_source}). Diese Seite selbst wertet den Parameter nicht aus, die Zielseite tut es nach ihrer eigenen Datenschutzerklärung.</p>
 <h2>Deine Rechte</h2>
-<p>Nach dem Schweizer Datenschutzgesetz kannst du Auskunft oder Löschung verlangen. Die Seite selbst speichert keine Personendaten bei mir. Für die Logs beim Hosting wendest du dich an GitHub. Für alles andere schreib mir an <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`, `<h1 id="h1">Privacy</h1>
+<p>Nach dem Schweizer Datenschutzgesetz kannst du Auskunft oder Löschung verlangen. Die Seite selbst speichert keine Personendaten bei mir, auch die Zählung bei GoatCounter enthält keine. Für die Logs beim Hosting wendest du dich an GitHub. Für alles andere schreib mir an <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`, `<h1 id="h1">Privacy</h1>
 <p>As of: ${CFG.recht_stand}</p>
 <h2>In short</h2>
 <ul class="arrow-list">
 <li>This website sets no cookies.</li>
-<li>No tracking and no analytics run on this website.</li>
+<li>Visits are counted anonymously with GoatCounter, without cookies and without storing your IP address. There is no tracking across websites.</li>
 <li>There are no accounts and no forms that send anything.</li>
-<li>The website loads no fonts, scripts or images from third parties.</li>
+<li>Fonts, scripts and images come from this website itself. The only connection to a third party is the count request to GoatCounter.</li>
 <li>What you mark in the dojo or reach in the exam stays in your browser. I receive none of it.</li>
 </ul>
 <h2>Responsible</h2>
 <p>Marcel Lehmann (trade name KMUpower), reachable at <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>. Full details are in the <a href="../impressum/">legal notice</a>.</p>
 <h2>Hosting on GitHub Pages</h2>
 <p>The website is hosted on GitHub Pages, operated by GitHub Inc. in the USA. When you open a page, GitHub processes technically necessary access data in server logs, for example your IP address and the time of access. I do not analyze these logs. Data may be transferred to the USA in the process. Details are in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub privacy statement</a>.</p>
+<h2 id="zugriffszaehlung">Anonymous visit counting with GoatCounter</h2>
+<p>So that I can see which techniques are read, the website counts visits with GoatCounter. The provider is GoatCounter.com, operated by Martin Tournoij in Ireland; the data is stored on servers of Hetzner Online GmbH in Finland and Germany. This website serves the counting script itself, only the count request goes to GoatCounter.</p>
+<p>For each page view, GoatCounter receives the page address, the referring page, the browser identifier (User-Agent), the screen width, the browser language and your IP address. Only totals per day or hour are stored: page path, referring page, browser and operating system with version, country, language and screen width. Your IP address and the full browser identifier are not stored. So that a reload does not count twice, GoatCounter keeps a combination of site, IP address and browser identifier in memory for at most 8 hours, never on disk. No cookies are set, nothing is stored in your browser and no data is passed on to third parties. The basis is my interest in knowing which content is used. Details are in the <a href="https://www.goatcounter.com/help/privacy" rel="noopener">GoatCounter privacy policy</a>. If you do not want to be counted, block requests to goatcounter.com with a content blocker. The website works exactly the same.</p>
 <h2 id="dein-fortschritt">Your progress in the dojo</h2>
 <p>Some settings and your progress are stored in your browser's local storage (localStorage). This is not a cookie. The entries stay on your device and are never sent to me or to third parties. Nothing is written until you do something.</p>
 <ul class="arrow-list">
@@ -746,9 +752,9 @@ ${T(`<h1 id="h1">Datenschutz</h1>
 <h2>Links to other websites</h2>
 <p>This website links to powerplatformtip.com, Microsoft Learn, the Power Platform Academy, LinkedIn and other websites. Only when you click a link does the provider receive your data. Links to powerplatformtip.com and the Academy carry a source parameter in the address (utm_source=${CFG.utm_source}). This website does not evaluate the parameter itself, the target website does so under its own privacy policy.</p>
 <h2>Your rights</h2>
-<p>Under the Swiss Federal Act on Data Protection you can request information or deletion. The website itself does not store any personal data with me. For the hosting logs, contact GitHub. For everything else, write to me at <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`)}
+<p>Under the Swiss Federal Act on Data Protection you can request information or deletion. The website itself does not store any personal data with me, and the GoatCounter counts contain none either. For the hosting logs, contact GitHub. For everything else, write to me at <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`)}
 </div></div></main>`;
-  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${NAME}`, `Privacy | ${NAME}`), haupt: datenschutz, beschreibung: T('Datenschutz im KMUpower Flow-Dojo: keine Cookies, kein Tracking, Fortschritt nur im Browser.', 'Privacy in the KMUpower Flow-Dojo: no cookies, no tracking, progress only in your browser.') });
+  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${NAME}`, `Privacy | ${NAME}`), haupt: datenschutz, beschreibung: T('Datenschutz im KMUpower Flow-Dojo: keine Cookies, anonyme Zugriffszählung, Fortschritt nur im Browser.', 'Privacy in the KMUpower Flow-Dojo: no cookies, anonymous visit counting, progress only in your browser.') });
 
   const b = BASIS_PFAD + PFX();
   seite('404.html', {

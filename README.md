@@ -60,4 +60,4 @@ Der Build bricht ab bei: Gedankenstrich, Eszett, Emoji, Testhinweis im Text; Tec
 
 Pages liefert den ganzen Branch aus, also auch `data/`, `scripts/` und `templates/`. `robots.txt` sperrt sie ab eigener Domain. `_recherche/` liegt nur lokal (`.gitignore`).
 
-Keine Cookies, kein Tracking, keine Anfragen an fremde Server. Schrift selbst ausgeliefert (Barlow Semi Condensed, SIL OFL 1.1, `assets/fonts/LIESMICH.txt`).
+Keine Cookies, kein Tracking. Einzige Anfrage an einen fremden Server ist die anonyme Zugriffszählung mit GoatCounter: `assets/js/count.js` selbst gehostet, Endpunkt https://powerautomate-ninja.goatcounter.com/count, in der CSP (`templates/partials/head.html`) unter connect-src und img-src freigegeben. Schrift selbst ausgeliefert (Barlow Semi Condensed, SIL OFL 1.1, `assets/fonts/LIESMICH.txt`).
