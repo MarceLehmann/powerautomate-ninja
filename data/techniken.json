@@ -142,7 +142,11 @@
           "JSON in Premium-Connectoren umwandeln"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Die Erweiterung rückt rohes JSON aus einem Lauf ein und klappt es auf. So findest du die Eigenschaft, die du im Ausdruck brauchst.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du liest JSON aus Runs schneller und findest die richtigen Eigenschaften."
     },
@@ -581,7 +585,11 @@
           "Ein Child Flow"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Liegt der Flow in einer Solution, änderst du den Besitzer direkt unter Details. Verbindungen und Run history bleiben erhalten.",
+          ""
+        ]
       },
       "lernziel": "Du übergibst Flows sauber an einen neuen Besitzer."
     },
@@ -625,7 +633,11 @@
           "intersection() mit beiden Arrays"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "union() entfernt doppelte Einträge. Mit join() werden beide Arrays zu Text, concat() hängt sie aneinander und split() macht wieder ein Array daraus.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du wählst zwischen union() und dem Join-Concat-Split-Muster je nach Bedarf."
     },
@@ -643,11 +655,15 @@
         "frage": "Wie machst du den Overwrite-Schalter bei «Create file» sichtbar?",
         "antworten": [
           "«Allow chunking» in den Einstellungen ausschalten",
-          "Concurrency Control einschalten",
-          "Die Datei vorher löschen"
+          "Concurrency Control in den Einstellungen einschalten",
+          "Die bestehende Datei zuerst mit Delete file entfernen"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Solange Chunking aktiv ist, blendet «Create file» den Overwrite-Schalter aus. Ohne Chunking erscheint er, sehr grosse Dateien können dann aber scheitern.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du überschreibst bestehende Dateien in SharePoint ohne Umweg."
     },
@@ -664,12 +680,16 @@
       "quiz": {
         "frage": "Wozu ergänzt du eine Description-Eigenschaft im Parse-JSON-Schema?",
         "antworten": [
-          "Sie validiert die Daten strenger",
+          "Sie prüft die eingehenden Daten strenger gegen das Schema",
           "Sie erscheint im Dynamic Content und unterscheidet gleichnamige Felder",
-          "Sie macht das Feld zum Pflichtfeld"
+          "Sie macht das Feld im Schema automatisch zum Pflichtfeld"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Die Description steht im Dynamic Content unter dem Feld. So unterscheidest du zwei Felder, die gleich heissen.",
+          ""
+        ]
       },
       "lernziel": "Du machst Dynamic Content aus Parse JSON eindeutig lesbar."
     },
@@ -686,12 +706,16 @@
       "quiz": {
         "frage": "Was gibt coalesce() zurück?",
         "antworten": [
-          "Den letzten Wert der Liste",
-          "Den ersten nicht leeren Wert",
-          "Alle Werte als Text verbunden"
+          "Den letzten Wert der Parameterliste",
+          "Den ersten Wert, der nicht null ist",
+          "Alle Werte zu einem Text verbunden"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "coalesce() prüft die Werte der Reihe nach und gibt den ersten zurück, der nicht null ist. Ein leerer Text gilt in Power Automate nicht als null.",
+          ""
+        ]
       },
       "lernziel": "Du ersetzt verschachtelte Leer-Prüfungen durch coalesce()."
     },
@@ -834,11 +858,15 @@
         "frage": "Was gewinnst du, wenn du eine Name/Wert-Tabelle in ein JSON-Objekt umwandelst?",
         "antworten": [
           "Direkten Zugriff auf jeden Eintrag über seinen Namen",
-          "Automatische Übersetzung der Werte",
-          "Eine schnellere SharePoint-Abfrage"
+          "Eine automatische Übersetzung aller Werte der Tabelle",
+          "Eine schnellere Abfrage der SharePoint-Liste im Flow"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Statt die Tabelle zu durchlaufen und jeden Namen zu vergleichen, holst du den Wert nach Parse JSON direkt über seinen Namen.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du machst Konfigurationstabellen im Flow direkt adressierbar."
     },
@@ -856,11 +884,15 @@
         "frage": "Wo setzt du FetchXML in einem Flow ein?",
         "antworten": [
           "Im Parameter Fetch Xml Query der Aktion List rows",
-          "In der Trigger Condition",
-          "In einer eigenen FetchXML-Aktion"
+          "In der Trigger Condition des Dataverse-Triggers",
+          "In einer eigenen FetchXML-Aktion des Dataverse-Connectors"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "List rows nimmt FetchXML direkt im Parameter Fetch Xml Query an, eine eigene Aktion braucht es nicht. So gehen Joins und Gruppierungen, die der OData-Filter nicht kann.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du lässt Dataverse komplexe Abfragen und Summen serverseitig rechnen."
     },
@@ -899,12 +931,16 @@
       "quiz": {
         "frage": "Wofür setzt du Scopes laut Tipp ein?",
         "antworten": [
-          "Zum Auslösen anderer Flows",
+          "Zum Auslösen anderer Flows aus dem laufenden Flow",
           "Zum Gruppieren von Aktionen, Isolieren von Fehlern und Wiederverwenden",
-          "Zum Speichern von Variablen"
+          "Zum Speichern von Variablen über mehrere Läufe hinweg"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Ein Scope fasst Aktionen zu einem Block zusammen. Scheitert darin etwas, reagierst du auf den ganzen Block, und den Block kopierst du in andere Flows.",
+          ""
+        ]
       },
       "lernziel": "Du gliederst Flows mit Scopes in lesbare Blöcke."
     },
@@ -1105,11 +1141,15 @@
         "frage": "Was braucht PowerDocu als Eingabe?",
         "antworten": [
           "Einen Export deines Flows, deiner App oder Solution",
-          "Zugang zur Run history",
-          "Eine Premium-Lizenz"
+          "Lesezugriff auf die Run history der Umgebung",
+          "Eine Premium-Lizenz für jeden dokumentierten Flow"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "PowerDocu ist ein kostenloses Werkzeug für Windows. Du exportierst Flow, App oder Solution und erhältst daraus eine Dokumentation in Word, Markdown oder HTML.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du dokumentierst Flows automatisch statt mit Screenshots."
     },
@@ -1300,7 +1340,11 @@
           "word/document.xml"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Eine DOCX-Datei ist ein ZIP-Archiv. Nach dem Entpacken steht der Text des Dokuments in word/document.xml."
+        ]
       },
       "lernziel": "Du extrahierst Text aus Word-Dateien ohne Zusatzdienst."
     },
@@ -1384,11 +1428,15 @@
         "frage": "Was bewirken Secure Inputs und Secure Outputs?",
         "antworten": [
           "Sensible Daten werden in der Run history verborgen",
-          "Die Daten werden verschlüsselt per Mail versendet",
-          "Die Aktion läuft schneller"
+          "Die Daten gehen verschlüsselt per Mail an den Besitzer",
+          "Die Aktion läuft schneller, weil weniger protokolliert wird"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Du schaltest beide in den Einstellungen der Aktion ein. Danach zeigt die Run history die Ein- und Ausgaben dieser Aktion nicht mehr an.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du schützt Passwörter und Personendaten in Run-Protokollen."
     },
@@ -1675,7 +1723,11 @@
           "trim() und toLower()"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "trim() entfernt Leerzeichen am Anfang und am Ende, toLower() schreibt alles klein. Danach scheitert ein Vergleich nicht mehr an der Schreibweise."
+        ]
       },
       "lernziel": "Du vergleichst Werte zuverlässig, weil du sie vorher normalisierst."
     },
@@ -1807,7 +1859,11 @@
           "FileRef"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "FileLeafRef ist der Dateiname, FileRef der ganze Pfad und FileDirRef der Ordner, in dem die Datei liegt.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du filterst Dokumente nach Name, Pfad und Ordner direkt an der Quelle."
     },
@@ -1824,12 +1880,16 @@
       "quiz": {
         "frage": "Woher kommt die Gesamtzahl der Einträge einer Liste?",
         "antworten": [
-          "Aus der Eigenschaft ItemCount",
-          "Aus der höchsten ID",
+          "Aus der Eigenschaft ItemCount der Liste",
+          "Aus der höchsten ID in der Liste",
           "Aus der Länge von Get items ohne Pagination"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Der REST-Aufruf auf /ItemCount gibt die Anzahl direkt zurück. In einer Bibliothek zählen Ordner dabei mit.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du ermittelst Kennzahlen einer Liste, ohne alle Einträge zu laden."
     },
@@ -1983,7 +2043,11 @@
           "Flows brauchen keine Verbindungen mehr"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Wer den Flow über die App startet, löst ihn mit dem Power Apps (V2) Trigger im eigenen Kontext aus. Ein Flow mit Zeitplan läuft dagegen immer als Besitzer.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du betreibst einen Flow für viele Personen ohne Kopien und Berechtigungschaos."
     },
@@ -2100,7 +2164,11 @@
           "concat()"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "split() trennt den Text am Zeilenumbruch und gibt ein Array zurück, das du mit Apply to each durchläufst.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du machst aus Textlisten verarbeitbare Arrays."
     },
@@ -2117,12 +2185,16 @@
       "quiz": {
         "frage": "Welche Aktion setzt die Kategorien laut Tipp?",
         "antworten": [
-          "Update event (V4) mit Kategorie-Feld",
+          "Update event (V4) mit dem Feld für Kategorien",
           "«Send an HTTP request» im Office 365 Outlook-Connector",
-          "Die Premium-HTTP-Aktion"
+          "Die Premium-Aktion HTTP mit einem eigenen Token"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Die Aktion «Send an HTTP request» des Outlook-Connectors schickt einen PATCH auf den Termin und setzt die Kategorien. Premium brauchst du dafür nicht.",
+          ""
+        ]
       },
       "lernziel": "Du kategorisierst Termine automatisch mit einer Standardaktion."
     },
@@ -2400,7 +2472,11 @@
           "Mit zwei Office Scripts"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Zwei Office Scripts wandeln JSON und HTML in Markdown um, mit festem Code, ohne KI und ohne Premium."
+        ]
       },
       "lernziel": "Du erzeugst Markdown im Flow ohne KI und ohne Schleifen."
     },
@@ -2469,11 +2545,15 @@
         "frage": "Welche Felder stellt der MERGE-Aufruf wieder her?",
         "antworten": [
           "AuthorId, EditorId, Created und Modified",
-          "Die Berechtigungen",
-          "Nur den Dateinamen"
+          "Die Berechtigungen und Freigabelinks der Datei",
+          "Nur den Dateinamen und den Ordnerpfad"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Beim Kopieren und Löschen gehen Ersteller, letzter Bearbeiter und Zeitstempel verloren. Ein MERGE über «Send an HTTP request to SharePoint» schreibt sie zurück.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du migrierst Dateien, ohne Ersteller und Daten zu verlieren."
     },
@@ -2542,11 +2622,15 @@
         "frage": "Was bringt dich trotz Chunking zurück auf die 100-MB-Grenze?",
         "antworten": [
           "Eine Variable, ein Ausdruck oder ein Compose zwischen den Dateiaktionen",
-          "Ein Scope um die Aktionen",
-          "Ein manueller Trigger"
+          "Ein Scope, der beide Dateiaktionen zusammenfasst",
+          "Ein manueller Trigger statt eines automatischen Triggers"
         ],
         "richtig_index": 0,
-        "erklaerungen": []
+        "erklaerungen": [
+          "Chunking trägt Dateien bis 1 GB nur, wenn die Datei direkt von einer Dateiaktion zur nächsten geht. Steht etwas dazwischen, gilt wieder die Grenze von 100 MB.",
+          "",
+          ""
+        ]
       },
       "lernziel": "Du verarbeitest grosse Dateien bis 1 GB im Flow."
     },
@@ -2641,7 +2725,11 @@
           "breakroleinheritance"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Erst trennt breakroleinheritance die geerbten Berechtigungen. Danach vergibt addroleassignment genau die Rechte, die du willst."
+        ]
       },
       "lernziel": "Du sperrst einzelne Einträge automatisch für bestimmte Personen."
     },
@@ -2707,7 +2795,11 @@
           "text/plain"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Die ICS-Datei ist reiner Text im iCalendar-Format. Hängst du sie als text/calendar an, bietet das Mailprogramm das Eintragen in den Kalender an.",
+          ""
+        ]
       },
       "lernziel": "Du versendest Termine, die jede Person in ihren Kalender übernehmen kann."
     },
@@ -2729,7 +2821,11 @@
           "/v1.0/groups"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "Ein POST auf /v1.0/invitations legt die Person als Gast in Microsoft Entra ID an. Auf Wunsch verschickt Graph die Einladung gleich mit.",
+          ""
+        ]
       },
       "lernziel": "Du lädst externe Personen automatisch als Gäste ein."
     },
@@ -2746,12 +2842,16 @@
       "quiz": {
         "frage": "Warum fehlen onPremisesSamAccountName und Co. in der normalen Abfrage?",
         "antworten": [
-          "Sie existieren nur in Exchange",
-          "Sie brauchen eine eigene Lizenz",
+          "Sie werden nur in Exchange Online gespeichert",
+          "Sie brauchen eine eigene Lizenz pro Benutzer",
           "Sie kommen nur zurück, wenn du sie mit $select anforderst"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Graph liefert ohne $select nur die Standardfelder. Nennst du die Attribute im $select, kommen sie mit."
+        ]
       },
       "lernziel": "Du liest On-Prem-AD-Felder gezielt über Graph aus."
     },
@@ -2773,7 +2873,11 @@
           "«Get calendar view of events»"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "«Get mail tips for a mailbox (V2)» mit der Option automaticReplies zeigt, ob die automatische Antwort aktiv ist. Das geht ohne HTTP und ohne App-Registrierung.",
+          ""
+        ]
       },
       "lernziel": "Du leitest Genehmigungen bei Abwesenheit an eine Vertretung um."
     },
@@ -2951,12 +3055,16 @@
       "quiz": {
         "frage": "Was änderst du in der URL, um die versteckte Exportseite zu öffnen?",
         "antworten": [
-          "/edit anhängen",
-          "?export=true anhängen",
+          "/edit am Ende der Adresse anhängen",
+          "?export=true an die Adresse anhängen",
           "/details durch /export ersetzen"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "Auf der Detailseite des Flows ersetzt du /details am Ende der Adresse durch /export. Dann öffnet sich die Exportseite für das ZIP-Paket."
+        ]
       },
       "lernziel": "Du exportierst einen einzelnen Flow auch ohne sichtbare Schaltfläche."
     },
@@ -3066,7 +3174,11 @@
           "Weil ein Timer nur SharePoint lesen kann"
         ],
         "richtig_index": 1,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "«Respond to PowerApps» antwortet nur einmal. Den Zwischenstand schreibt der Flow deshalb in eine StateLog-Liste, die ein Timer in der App regelmässig liest.",
+          ""
+        ]
       },
       "lernziel": "Du zeigst in einer App den Fortschritt eines laufenden Flows über eine Statusliste an."
     },
@@ -3105,12 +3217,16 @@
       "quiz": {
         "frage": "Wie gibst du ein Array aus einem Flow an Power Apps zurück?",
         "antworten": [
-          "Direkt als Array-Ausgang der Antwortaktion",
-          "Nur über eine Premium-Aktion",
+          "Direkt als Array-Ausgang von «Respond to a Power App or flow»",
+          "Gar nicht ohne Premium, Arrays gehen nur über die Response-Aktion",
           "Als JSON-Text in einem Textausgang und in der App mit ParseJSON entpacken"
         ],
         "richtig_index": 2,
-        "erklaerungen": []
+        "erklaerungen": [
+          "",
+          "",
+          "«Respond to a Power App or flow» gibt nur flache Werte zurück. Du schickst das Array als JSON-Text und machst in der App mit ParseJSON wieder eine Tabelle daraus."
+        ]
       },
       "lernziel": "Du gibst Listen aus einem Flow ohne Premium an eine App zurück."
     },

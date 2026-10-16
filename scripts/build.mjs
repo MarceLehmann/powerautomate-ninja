@@ -130,6 +130,12 @@ function validiere() {
     if (!q.frage || !Array.isArray(q.antworten) || q.antworten.length !== 3 || !Number.isInteger(q.richtig_index) || q.richtig_index < 0 || q.richtig_index > 2) fehler(`${wo}: Quiz unvollständig (Frage, drei Antworten, richtig_index)`);
     if (!Number.isInteger(t.guertel) || t.guertel < 1 || t.guertel > 7) fehler(`${wo}: guertel 1 bis 7`);
     texte({ quiz: t.quiz }, wo).forEach(([p, s]) => VERBOTEN.forEach(([re, w]) => re.test(s) && fehler(`${p}: enthält ${w}`)));
+    if (!t.seite && Array.isArray(q.antworten)) {
+      q.antworten.forEach((a, i) => { if (woerter(a) > 12) fehler(`${wo}: Antwort ${BUCHST[i]} über 12 Wörter`); });
+      const l = q.antworten.map(a => a.length), andere = l.filter((_, i) => i !== q.richtig_index);
+      if (l[q.richtig_index] > Math.max(...andere) * 1.4 && l[q.richtig_index] - Math.max(...andere) > 12) warnung(`${wo}: richtige Antwort deutlich länger als die falschen (${l.join('/')} Zeichen)`);
+      if (!(q.erklaerungen || [])[q.richtig_index]) warnung(`${wo}: Prüfungsfrage ohne Erklärung`);
+    }
   }
   for (const t of SEITEN) {
     const wo = `Tipp ${t.schluessel}`;
@@ -667,7 +673,7 @@ function baueDaten(indexierbar) {
   schreibe('assets/data/suche.json', JSON.stringify({ eintraege: SEITEN.map(t => ({ k: t.schluessel, nr: t.tipp_nr, titel: t.titel_de, g: t.guertel, slug: t.slug, s: [t.thema, ...(t.suchbegriffe || [])].join(' ') })) }));
   const folge = (daten.tag_reihenfolge || []).map(k => NACH_KEY[k]).filter(t => t && t.seite);
   schreibe('assets/data/tag.json', JSON.stringify({ start: daten.tag_start, eintraege: folge.map(t => ({ k: t.schluessel, slug: t.slug, titel: t.titel_de, g: t.guertel, lizenz: t.lizenz, start: FUER_START(t), frage: t.quiz.frage, antworten: t.quiz.antworten })) }));
-  const pool = POOL.map(t => ({ k: t.schluessel, g: t.guertel, frage: t.quiz.frage, antworten: t.quiz.antworten, richtig: t.quiz.richtig_index, erkl: t.seite ? t.quiz.erklaerungen[t.quiz.richtig_index] : '', url: t.seite ? `techniken/${t.slug}/` : mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), titel: t.seite ? t.titel_de : tippLabel(t), seite: !!t.seite }));
+  const pool = POOL.map(t => ({ k: t.schluessel, g: t.guertel, frage: t.quiz.frage, antworten: t.quiz.antworten, richtig: t.quiz.richtig_index, erkl: (t.quiz.erklaerungen || [])[t.quiz.richtig_index] || '', url: t.seite ? `techniken/${t.slug}/` : mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), titel: t.seite ? t.titel_de : tippLabel(t), seite: !!t.seite }));
   const guertel = GUERTEL.map(g => ({ nr: g.nr, farbe: g.farbe, name: g.name, akk: g.akk, kurz: g.kurz, leitwort: g.leitwort, kann: g.kannst_du, hex: g.hex, naechste: SEITEN.filter(t => t.guertel === g.nr).slice(0, 3).map(t => ({ titel: t.titel_de, url: `techniken/${t.slug}/` })) }));
   schreibe('assets/data/pool.json', JSON.stringify({ base: BASE_URL, kurz: KURZ_BASIS, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: CFG.kurs_name }, guertel, fragen: pool }));
 
