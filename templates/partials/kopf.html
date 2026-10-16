@@ -1,0 +1,45 @@
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="{{r}}" aria-label="{{name}}, Startseite">{{{marke_knoten}}}<span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="{{r}}techniken/"{{{cur_techniken}}}>Techniken</a></li>
+        <li><a href="{{r}}pruefung/"{{{cur_pruefung}}}>Gürtelprüfung</a></li>
+        <li><a href="{{r}}premium/"{{{cur_premium}}}>Lizenz-Check</a></li>
+        <li><a href="{{r}}dojo/"{{{cur_dojo}}}>Mein Dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Technik suchen" aria-keyshortcuts="Control+K Meta+K" data-nur-js>{{{icon_suche}}}<kbd>Strg K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dunkelmodus" data-nur-js>{{{icon_sonne}}}{{{icon_mond}}}</button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menü" data-nur-js>{{{icon_menue}}}</button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke">{{{marke_knoten}}}<span class="marke__text"><small>KMUpower</small><b>Flow-Dojo</b></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Menü schliessen">{{{icon_zu}}}</button>
+  </div>
+  <nav aria-label="Menü">
+    <ul>
+      <li><a href="{{r}}techniken/">Techniken</a></li>
+      <li><a href="{{r}}pruefung/">Gürtelprüfung</a></li>
+      <li><a href="{{r}}premium/">Lizenz-Check</a></li>
+      <li><a href="{{r}}heute/">Technik des Tages</a></li>
+      <li><a href="{{r}}dojo/">Mein Dojo</a></li>
+      <li><a href="{{r}}ueber/">Über</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Technik suchen</h2>
+    <label for="suche-feld" class="sr-only">Suchbegriff</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, Approval, Schleife">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Suche schliessen">{{{icon_zu}}}</button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Treffer"></ul>
+  <p class="suche__leer" hidden>Keine Technik gefunden. Versuch es mit JSON, Approval oder Schleife.</p>
+</dialog>

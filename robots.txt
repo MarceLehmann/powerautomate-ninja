@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /powerautomate-ninja/templates/
+Disallow: /powerautomate-ninja/scripts/
+Disallow: /powerautomate-ninja/data/
+
+Sitemap: https://marcelehmann.github.io/powerautomate-ninja/sitemap.xml

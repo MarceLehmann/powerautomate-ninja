@@ -1,0 +1,35 @@
+{
+  "stand": "2026-10-16",
+  "hinweis": "Zahlen nur hier. In Texten als {limit:schluessel} einsetzen. Vor dem Livegang jeden Wert erneut gegen die Learn-Seite lesen und geprueft_am setzen.",
+  "limits": {
+    "laufzeit_max": {
+      "wert": 30,
+      "einheit": "Tage",
+      "text": "30 Tagen",
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
+      "learn_zitat": "Run duration: 30 days. After 30 days, any pending steps time out.",
+      "geprueft_am": "2026-10-16"
+    },
+    "schleife_parallel_max": {
+      "wert": 50,
+      "text": "50",
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
+      "learn_zitat": "Apply to each concurrency: 1 is the default limit. You can change the default to a value between 1 and 50 inclusively.",
+      "geprueft_am": "2026-10-16"
+    },
+    "trigger_warteschlange": {
+      "wert": 11,
+      "text": "11",
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
+      "learn_zitat": "Waiting runs: 10 plus the degree of parallelism (1-100) when Concurrency Control is on. Bei Parallelitaet 1 also 11.",
+      "geprueft_am": "2026-10-16"
+    },
+    "trigger_parallel": {
+      "wert": "1 bis 100",
+      "text": "1 bis 100, Standard 25",
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
+      "learn_zitat": "Concurrent runs: 1 to 100 when Concurrency Control is turned on (defaults to 25). Turning on Concurrency Control can't be undone without deleting and re-adding the trigger.",
+      "geprueft_am": "2026-10-16"
+    }
+  }
+}

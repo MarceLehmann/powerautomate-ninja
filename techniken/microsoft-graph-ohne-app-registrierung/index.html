@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="de-CH" data-seite="technik" data-r="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script src="../../assets/js/theme-init.js"></script>
+<script src="../../assets/js/site.js" defer></script>
+
+<meta name="generator" content="KMUpower Flow-Dojo build">
+<title>Microsoft Graph ohne App-Registrierung aufrufen | KMUpower Flow-Dojo</title>
+<meta name="description" content="Microsoft Graph ohne App-Registrierung aufrufen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
+<meta name="robots" content="noindex">
+<meta name="dojo-build" content="testphase">
+<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="KMUpower Flow-Dojo">
+<meta property="og:locale" content="de_CH">
+<meta property="og:title" content="Microsoft Graph ohne App-Registrierung aufrufen | KMUpower Flow-Dojo">
+<meta property="og:description" content="Microsoft Graph ohne App-Registrierung aufrufen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
+<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/">
+<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-gruen.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "name": "KMUpower Flow-Dojo",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "inLanguage": "de-CH",
+      "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/#technik",
+      "name": "Microsoft Graph ohne App-Registrierung aufrufen",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/",
+      "inLanguage": "de-CH",
+      "learningResourceType": "Quiz",
+      "educationalLevel": "Grüner Gürtel",
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/",
+      "citation": [
+        "https://learn.microsoft.com/en-us/connectors/webcontents/",
+        "https://learn.microsoft.com/en-us/connectors/webcontents/"
+      ],
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Start",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Techniken",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Microsoft Graph ohne App-Registrierung aufrufen",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../" aria-label="KMUpower Flow-Dojo, Startseite"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="../../techniken/" aria-current="true">Techniken</a></li>
+        <li><a href="../../pruefung/">Gürtelprüfung</a></li>
+        <li><a href="../../premium/">Lizenz-Check</a></li>
+        <li><a href="../../dojo/">Mein Dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Technik suchen" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Strg K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dunkelmodus" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menü" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text"><small>KMUpower</small><b>Flow-Dojo</b></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Menü schliessen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menü">
+    <ul>
+      <li><a href="../../techniken/">Techniken</a></li>
+      <li><a href="../../pruefung/">Gürtelprüfung</a></li>
+      <li><a href="../../premium/">Lizenz-Check</a></li>
+      <li><a href="../../heute/">Technik des Tages</a></li>
+      <li><a href="../../dojo/">Mein Dojo</a></li>
+      <li><a href="../../ueber/">Über</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Technik suchen</h2>
+    <label for="suche-feld" class="sr-only">Suchbegriff</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, Approval, Schleife">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Suche schliessen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Treffer"></ul>
+  <p class="suche__leer" hidden>Keine Technik gefunden. Versuch es mit JSON, Approval oder Schleife.</p>
+</dialog>
+<main id="main"><div class="wrap">
+<nav class="krumen" aria-label="Brotkrumen"><ol><li><a href="../../">Start</a></li><li><a href="../">Techniken</a></li><li><a href="./" aria-current="page">Microsoft Graph ohne App-Registrierung aufrufen</a></li></ol></nav>
+<article class="tk" data-technik="138" data-guertel-nr="4">
+<header class="tk__kopf">
+<ul class="metazeile"><li><span class="guertel-tag" data-guertel-nr="4"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span>Grüner Gürtel</span></li><li><span class="badge badge--premium">Premium</span></li><li class="tk__nr">Tipp 138</li></ul>
+<h1 id="h1">Microsoft Graph ohne App-Registrierung aufrufen</h1>
+</header>
+<section class="quiz" id="quiz" data-quiz data-richtig="0" data-guertel-nr="4" aria-labelledby="h-quiz">
+<h2 id="h-quiz" class="label">Quizfrage</h2>
+<p class="quiz__frage">Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>Dem Token fehlt die Berechtigung für Chats</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Chats lassen sich über Graph gar nicht lesen</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>Die Base Resource URL ist falsch gesetzt</span></button></li></ul>
+<p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
+<div class="aufloesung-block" data-aufloesung>
+<h3>Auflösung</h3>
+<ol class="aufloesung"><li class="richtig"><b>A) Dem Token fehlt die Berechtigung für Chats</b>Richtig. Der Connector hat eine feste Liste an Berechtigungen. Chats gehören nicht dazu, die Rolle des Kontos ändert daran nichts.</li><li class="falsch"><b>B) Chats lassen sich über Graph gar nicht lesen</b>Falsch. Graph bietet Chats an. Es fehlt nur die passende Berechtigung im Token dieses Connectors.</li><li class="falsch"><b>C) Die Base Resource URL ist falsch gesetzt</b>Falsch. Mit einer falschen Basis-URL scheiterten alle Aufrufe. /v1.0/me funktioniert aber.</li></ol>
+</div>
+</section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Für Aufrufe an Microsoft Graph registrierst du normalerweise eine App in Microsoft Entra ID und verwaltest Secrets oder Zertifikate. Die Aktion «HTTP with Microsoft Entra ID (preauthorized)» nimmt dir das ab. Du meldest dich einmal an und setzt Base Resource URL und Resource URI beide auf https://graph.microsoft.com. Danach wählst du Methode und Endpunkt, etwa GET auf /v1.0/me, und der Connector holt das Token selbst. Der Haken: Das Token trägt eine feste Liste an Berechtigungen. Profil, Gruppen, Dateien, Mails und Kalender gehen, Chats, Präsenz oder Anmeldeprotokolle nicht, auch nicht mit einer Adminrolle. Weitere Seiten einer Antwort holst du über @odata.nextLink.</p></section>
+<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">Der Ausdruck aus dem Tipp</h2><div class="code-block"><pre id="ausdruck"><code>https://graph.microsoft.com</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Kopieren</button></div></section>
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Für Graph-Abfragen im Namen der angemeldeten Person: Profil, Gruppen, Dateien, Mails, Kalender.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Wenn du Chats, Präsenz, Anmeldeprotokolle oder Intune brauchst oder keine Premium-Lizenz hast.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Einen 403 für eine falsche Abfrage halten. Fehlt die Berechtigung im Token, hilft keine andere Schreibweise.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--premium">Premium</span> Braucht Power Automate Premium oder eine andere Lizenz mit Premium-Connectoren. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
+<section class="abschnitt" aria-label="Ganzer Tipp"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-138" rel="noopener"><strong>Ganzer Tipp mit Screenshots auf powerplatformtip.com</strong><span>PowerPlatformTip #138, auf Englisch</span></a></section>
+<section class="abschnitt" aria-label="Dein Stand">
+<button type="button" class="knopf" data-geuebt="138" aria-pressed="false" data-nur-js>Als geübt markieren</button>
+<p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
+<p class="kurs-zeile">Lieber mit Begleitung? Der <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-138" rel="noopener">Live-Kurs Power Automate der Power Platform Academy</a> führt in vier Wochen von den Grundlagen bis zu Error Handling und Scopes.</p>
+</section>
+<section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Warum%20scheitert%20%2Fv1.0%2Fme%2Fchats%20mit%20dieser%20Aktion%20auch%20f%C3%BCr%20Admins%3F%0A%0AA)%20Dem%20Token%20fehlt%20die%20Berechtigung%20f%C3%BCr%20Chats%0AB)%20Chats%20lassen%20sich%20%C3%BCber%20Graph%20gar%20nicht%20lesen%0AC)%20Die%20Base%20Resource%20URL%20ist%20falsch%20gesetzt%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Fmicrosoft-graph-ohne-app-registrierung%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?&#10;&#10;A) Dem Token fehlt die Berechtigung für Chats&#10;B) Chats lassen sich über Graph gar nicht lesen&#10;C) Die Base Resource URL ist falsch gesetzt&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20138&amp;body=Frage%3A%20Warum%20scheitert%20%2Fv1.0%2Fme%2Fchats%20mit%20dieser%20Aktion%20auch%20f%C3%BCr%20Admins%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/138</p>
+</section>
+<p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-138" rel="noopener">PowerPlatformTip #138</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz</a>.</p>
+<nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/json-schema-das-null-vertraegt/" rel="prev"><span>Vorherige Technik</span>JSON-Schema, das null verträgt</a><a href="../../techniken/entscheidungen-ueber-ein-geteiltes-postfach/" rel="next"><span>Nächste Technik</span>Entscheidungen über ein geteiltes Postfach</a></nav>
+</article>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, ohne Tracking. Dein Fortschritt bleibt in deinem Browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../techniken/">Alle Techniken</a></li>
+          <li><a href="../../pruefung/">Gürtelprüfung</a></li>
+          <li><a href="../../premium/">Reicht meine Lizenz?</a></li>
+          <li><a href="../../heute/">Technik des Tages</a></li>
+          <li><a href="../../kalender/montag.ics" download>Jeden Montag eine Frage im Kalender</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../../ueber/">Über das Flow-Dojo</a></li>
+          <li><a href="../../impressum/">Impressum</a></li>
+          <li><a href="../../datenschutz/">Datenschutz</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft und die Produktnamen der Power Platform (z. B. Power Apps, Power Automate, Copilot Studio) sind Marken der Microsoft-Unternehmensgruppe. Dies ist eine unabhängige Website von Marcel Lehmann. Sie wird nicht von Microsoft betrieben, gesponsert oder unterstützt.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

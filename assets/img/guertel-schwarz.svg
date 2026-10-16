@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#F4EFE6"/>
+<rect x="0" y="604" width="172.42857142857142" height="26" fill="#FBFAF5"/><rect x="171.42857142857142" y="604" width="172.42857142857142" height="26" fill="#E2B100"/><rect x="342.85714285714283" y="604" width="172.42857142857142" height="26" fill="#E36A00"/><rect x="514.2857142857142" y="604" width="172.42857142857142" height="26" fill="#2E8B57"/><rect x="685.7142857142857" y="604" width="172.42857142857142" height="26" fill="#2F6FB5"/><rect x="857.1428571428571" y="604" width="172.42857142857142" height="26" fill="#7A4A2B"/><rect x="1028.5714285714284" y="604" width="172.42857142857142" height="26" fill="#111111"/>
+<rect x="0" y="603" width="1200" height="1.5" fill="#8A7F6C"/>
+<text x="80" y="120" font-family="Bahnschrift, 'Arial Narrow', sans-serif" font-weight="600" font-size="34" letter-spacing="6" fill="#4E525B">KMUPOWER FLOW-DOJO</text>
+<text x="76" y="270" font-family="Bahnschrift, 'Arial Narrow', sans-serif" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">Schwarzer</text>
+<text x="76" y="380" font-family="Bahnschrift, 'Arial Narrow', sans-serif" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">Gürtel</text>
+<path d="M80 404C190 394 300 392 420 398" fill="none" stroke="#B4301A" stroke-width="12" stroke-linecap="round"/>
+<text x="80" y="490" font-family="'Segoe UI', system-ui, sans-serif" font-size="34" fill="#4E525B">Du baust Flows, auf die sich Agents verlassen können.</text>
+<g transform="translate(860 150) scale(9)"><path d="M2 11h28v7H2z" fill="#111111" stroke="#15171B" stroke-width=".5"/><path d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4" fill="#111111" stroke="#15171B" stroke-width=".5"/><rect x="11.5" y="8.5" width="9" height="12" rx="2.2" fill="#15171B"/></g>
+</svg>

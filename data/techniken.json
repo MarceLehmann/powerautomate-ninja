@@ -1,0 +1,3162 @@
+{
+  "schema": 1,
+  "stand": "2026-10-16",
+  "guertel": [
+    {
+      "nr": 1,
+      "leitwort": "Bedienen",
+      "kannst_du": "Du testest Flows, liest Ein- und Ausgaben jeder Aktion und formatierst Datumswerte direkt.",
+      "erreicht_satz": "Du kennst den Designer und testest, bevor du einschaltest."
+    },
+    {
+      "nr": 2,
+      "leitwort": "Ausdrücke",
+      "kannst_du": "Du schreibst erste Ausdrücke, filterst und bereinigst Arrays und testest Schleifen mit wenigen Einträgen.",
+      "erreicht_satz": "Du schreibst Ausdrücke, die auch bei unvollständigen Daten halten."
+    },
+    {
+      "nr": 3,
+      "leitwort": "Steuern",
+      "kannst_du": "Du fängst Fehler mit Scopes ab, steuerst gleichzeitige Läufe und gibst Daten an Power Apps zurück.",
+      "erreicht_satz": "Du steuerst, was bei Fehlern, Wartezeiten und parallelen Läufen passiert."
+    },
+    {
+      "nr": 4,
+      "leitwort": "Absichern",
+      "kannst_du": "Du verarbeitest unsaubere Daten sicher, beschleunigst Schleifen und rufst SharePoint und Microsoft Graph direkt auf.",
+      "erreicht_satz": "Du baust Flows, die mit echten, unsauberen Daten zurechtkommen."
+    },
+    {
+      "nr": 5,
+      "leitwort": "Fehler lesen",
+      "kannst_du": "Du liest die echte Fehlermeldung aus einem Scope und gibst sie an Menschen oder Agents weiter.",
+      "erreicht_satz": "Du weisst, warum ein Lauf scheitert, ohne die Run history zu öffnen."
+    },
+    {
+      "nr": 6,
+      "leitwort": "Architektur",
+      "kannst_du": "Du hältst Prozesse über Wochen am Leben, auch über die Laufzeitgrenze eines Flows hinaus.",
+      "erreicht_satz": "Du baust Abläufe, die länger leben als ein einzelner Flow-Lauf."
+    },
+    {
+      "nr": 7,
+      "leitwort": "Meisterprüfung",
+      "kannst_du": "Flows als Werkzeuge für Agents: Router und Aufrufe, die sich selbst korrigieren.",
+      "erreicht_satz": "Du baust Flows, auf die sich Agents verlassen können."
+    }
+  ],
+  "tag_start": "2026-10-19",
+  "tag_reihenfolge": [
+    "9",
+    "59",
+    "15",
+    "6",
+    "5",
+    "35",
+    "75",
+    "12",
+    "3",
+    "146",
+    "104",
+    "89",
+    "7",
+    "109",
+    "100",
+    "155",
+    "158",
+    "138",
+    "148",
+    "153",
+    "36",
+    "149",
+    "168",
+    "144"
+  ],
+  "techniken": [
+    {
+      "schluessel": "3",
+      "tipp_nr": 3,
+      "tipp_titel": "Advanced Filtering Array",
+      "tipp_datum": "2022-12-12",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/",
+      "guertel": 2,
+      "thema": "Arrays & Filter",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wann wechselst du bei Filter array in den Advanced Mode?",
+        "antworten": [
+          "Wenn mehrere Bedingungen in einen Filter gehören",
+          "Wenn du die Einträge nach einem Feld sortieren willst",
+          "Wenn der Filter direkt in SharePoint laufen soll"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. Im Advanced Mode schreibst du die Bedingung als Ausdruck und verknüpfst mehrere Prüfungen mit and() oder or().",
+          "Falsch. Filter array lässt Einträge weg, sortiert aber nicht. Die Reihenfolge bleibt gleich.",
+          "Falsch. Filter array arbeitet im Flow auf einem Array, das schon geladen ist, nicht in der Datenquelle."
+        ]
+      },
+      "lernziel": "Du filterst Arrays mit eigenen Ausdrücken im Advanced Mode.",
+      "slug": "filter-array-im-advanced-mode",
+      "titel_de": "Filter array im Advanced Mode",
+      "kurztext_de": "Die Aktion Filter array bietet im einfachen Modus eine Bedingung mit Feld, Operator und Wert. Für viele Fälle reicht das nicht: zwei Bedingungen gleichzeitig, eine Oder-Verknüpfung oder ein Vergleich mit einem berechneten Wert. Statt mehrere Filter hintereinander zu schalten, wechselst du in den Advanced Mode. Dort schreibst du die Bedingung als Ausdruck und kombinierst Funktionen wie equals(), contains(), and() und or(). Auch dynamische Inhalte aus früheren Aktionen kannst du einbeziehen. So bleibt es bei einer einzigen Aktion, und der Flow wird übersichtlicher. Einfache Vergleiche zeigt der Designer weiterhin als Felder an.",
+      "wann_ja": "Wenn du mehrere Bedingungen kombinieren oder mit berechneten Werten vergleichen willst.",
+      "wann_nein": "Wenn ein einziger Vergleich reicht. Dann bleibt der einfache Modus lesbarer.",
+      "fehler": "Mehrere Filter array hintereinander schalten, obwohl ein Ausdruck mit and() dasselbe in einem Schritt erledigt.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Filter array",
+        "Advanced Mode",
+        "and",
+        "or",
+        "contains",
+        "Bedingung"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/data-operations",
+      "learn_titel": "Use data operations in Power Automate",
+      "limits": [],
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "4",
+      "tipp_nr": 4,
+      "tipp_titel": "JSON Viewer",
+      "tipp_datum": "2022-12-13",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-4-json-viewer/",
+      "guertel": 1,
+      "thema": "Werkzeuge",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Wozu dient eine JSON-Viewer-Erweiterung bei der Arbeit mit Flows?",
+        "antworten": [
+          "Rohes JSON lesbar und strukturiert anzeigen",
+          "Flows automatisch reparieren",
+          "JSON in Premium-Connectoren umwandeln"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du liest JSON aus Runs schneller und findest die richtigen Eigenschaften."
+    },
+    {
+      "schluessel": "5",
+      "tipp_nr": 5,
+      "tipp_titel": "Less Variables",
+      "tipp_datum": "2022-12-14",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-5-less-variables/",
+      "guertel": 2,
+      "thema": "Flow-Aufbau & Lesbarkeit",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wohin gehört eine Mailadresse, die sich im Flow nie ändert?",
+        "antworten": [
+          "In eine Variable, damit der Flow schneller läuft",
+          "In eine Compose-Aktion oder in Parse JSON",
+          "In eine eigene Condition am Anfang des Flows"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. Eine Variable macht den Flow nicht schneller. In Schleifen verhindert sie sogar, dass Apply to each parallel läuft.",
+          "Richtig. Feste Werte brauchen keine Variable. Compose oder Parse JSON zeigen klar, dass sich der Wert nicht ändert.",
+          "Falsch. Eine Condition prüft etwas und verzweigt. Zum Ablegen eines festen Werts ist sie nicht da."
+        ]
+      },
+      "lernziel": "Du setzt Variablen nur für Werte ein, die sich wirklich ändern.",
+      "slug": "feste-werte-in-compose-statt-variablen",
+      "titel_de": "Feste Werte in Compose statt in Variablen",
+      "ausdruck": "outputs('Parse_JSON')?['settingName']",
+      "kurztext_de": "Viele Flows beginnen mit einer Reihe von «Initialize variable» für Werte, die sich nie ändern: eine Mailadresse, eine Listen-URL, ein Schwellenwert. Für feste Werte brauchst du keine Variable. Ein einzelner Wert gehört in eine Compose-Aktion. Mehrere zusammengehörige Werte legst du als JSON-Objekt in Parse JSON ab und greifst mit einem Ausdruck wie outputs('Parse_JSON')?['settingName'] darauf zu. Der Flow wird kürzer, und alle sehen sofort, dass diese Werte fest sind. Dazu kommt ein Grund aus der Praxis: Setzt du eine Variable in einer Schleife, läuft Apply to each nur noch nacheinander. Variablen behältst du für Werte, die sich während des Laufs wirklich ändern, etwa eine laufende Summe.",
+      "wann_ja": "Für Einstellungen, die während des Laufs gleich bleiben: Adressen, URLs, Schwellenwerte, Texte.",
+      "wann_nein": "Für Werte, die sich im Lauf ändern, etwa eine Summe oder ein Array, das du Schritt für Schritt füllst. Dafür sind Variablen da.",
+      "fehler": "Im Schema von Parse JSON Felder als Pflicht markieren, die manchmal fehlen. Dann scheitert der Lauf an der Schemaprüfung.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Variablen",
+        "Compose",
+        "Parse JSON",
+        "Initialize variable",
+        "Einstellungen",
+        "Konfiguration"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/data-operations",
+      "learn_titel": "Use data operations in Power Automate",
+      "limits": []
+    },
+    {
+      "schluessel": "6",
+      "tipp_nr": 6,
+      "tipp_titel": "formatDateTime in utcNow",
+      "tipp_datum": "2022-12-15",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/",
+      "guertel": 1,
+      "thema": "Datum & Zeit",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was liefert der Ausdruck utcNow('dd.MM.yyyy')?",
+        "antworten": [
+          "Die aktuelle Uhrzeit in Schweizer Ortszeit",
+          "Einen Fehler, weil formatDateTime() fehlt",
+          "Das heutige Datum im Format Tag.Monat.Jahr"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. Das Format enthält keine Stunden, und utcNow() rechnet immer in UTC, nicht in Schweizer Zeit.",
+          "Falsch. Der Ausdruck ist gültig. utcNow() formatiert selbst, die zweite Funktion fällt weg.",
+          "Richtig. utcNow() nimmt das Format als Parameter an, formatDateTime() braucht es dafür nicht."
+        ]
+      },
+      "lernziel": "Du formatierst das aktuelle Datum mit einem einzigen Ausdruck.",
+      "slug": "datum-direkt-mit-utcnow-formatieren",
+      "titel_de": "Datum direkt in utcNow() formatieren",
+      "ausdruck": "utcNow('dd.MM.yyyy')",
+      "kurztext_de": "Viele Flows brauchen das heutige Datum in einem bestimmten Format, etwa für einen Dateinamen oder einen Betreff. Oft steht dafür formatDateTime(utcNow(), 'Format') im Flow. Das geht kürzer: utcNow() nimmt das Format direkt als Parameter an. utcNow('dd.MM.yyyy') liefert das Datum im Schweizer Format, ohne zweite Funktion. Das Ergebnis ist dasselbe, der Ausdruck ist kürzer und leichter zu lesen. Achte auf die Gross- und Kleinschreibung im Format: MM steht für den Monat, mm für die Minute. Und utcNow() liefert immer die Zeit in UTC. Brauchst du die Schweizer Ortszeit, rechnest du mit convertTimeZone() um.",
+      "wann_ja": "Wenn du den aktuellen Zeitpunkt in einem festen Format brauchst, etwa für Dateinamen, Betreffzeilen oder Protokolle.",
+      "wann_nein": "Wenn du ein Datum aus einer Liste oder Mail formatierst. Dafür bleibt formatDateTime() mit dem Wert aus der Quelle richtig.",
+      "fehler": "mm statt MM ins Format schreiben. Dann steht statt des Monats die Minute im Datum.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "utcNow",
+        "formatDateTime",
+        "Datum",
+        "Format",
+        "Zeitzone",
+        "convertTimeZone"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference",
+      "learn_titel": "Reference for functions in workflow expressions",
+      "limits": []
+    },
+    {
+      "schluessel": "7",
+      "tipp_nr": 7,
+      "tipp_titel": "UNION and FilterArray",
+      "tipp_datum": "2022-12-16",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-7-union-and-filterarray/",
+      "guertel": 2,
+      "thema": "Arrays & Filter",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was liefert union() mit zweimal demselben Array?",
+        "antworten": [
+          "Das Array ohne doppelte Einträge",
+          "Das Array zweimal hintereinander",
+          "Nur die Einträge, die doppelt vorkommen"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. union() gibt jeden Wert nur einmal zurück, also wirkt union(x, x) wie DISTINCT.",
+          "Falsch. Das wäre ein einfaches Aneinanderhängen. union() entfernt dabei die Duplikate.",
+          "Falsch. union() vereinigt die Arrays und behält jeden Wert einmal, auch die, die nur einmal vorkommen."
+        ]
+      },
+      "lernziel": "Du erzeugst eindeutige Werte mit union() und filterst danach mit Filter array.",
+      "slug": "duplikate-mit-union-entfernen",
+      "titel_de": "Duplikate mit union() entfernen",
+      "ausdruck": "union(x, x)",
+      "kurztext_de": "Wenn du Daten aus zwei Quellen zusammenführst, landen schnell doppelte Einträge im Ergebnis. Die Funktion union() verbindet zwei Arrays und gibt jeden Wert nur einmal zurück. Daraus folgt ein einfacher Trick: Übergibst du dasselbe Array zweimal, also union(x, x), bekommst du das Array ohne Duplikate zurück, wie DISTINCT in einer Datenbank. Das funktioniert mit einfachen Werten und mit Objekten. Danach grenzt du das Ergebnis mit Filter array auf die Einträge ein, die du brauchst. Zwei eingebaute Schritte ersetzen so eine Schleife mit Bedingung und Variable. Willst du die Duplikate behalten, ist union() die falsche Wahl.",
+      "wann_ja": "Wenn du Listen zusammenführst oder ein Array bereinigen willst, bevor du weiterarbeitest.",
+      "wann_nein": "Wenn doppelte Einträge erhalten bleiben müssen, zum Beispiel bei Buchungen mit gleichem Betrag.",
+      "fehler": "Duplikate in einer Schleife mit Bedingung und Variable entfernen, obwohl ein einziger Ausdruck reicht.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "union",
+        "Duplikate",
+        "DISTINCT",
+        "Array",
+        "Filter array",
+        "zusammenführen"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference",
+      "learn_titel": "Reference for functions in workflow expressions",
+      "limits": []
+    },
+    {
+      "schluessel": "8",
+      "tipp_nr": 8,
+      "tipp_titel": "Automate Backups & Restores for Flows, Apps & Solutions",
+      "tipp_datum": "2022-12-17",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-8-automate-export-and-import-flows-powerapps-solutions/",
+      "guertel": 3,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was ist laut Tipp die Grundlage für ein automatisches Backup von Flows und Apps?",
+        "antworten": [
+          "Geplante Exporte von Solutions als ZIP-Datei",
+          "Ein Papierkorb für gelöschte Flows",
+          "Kopien aus der Run history"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du richtest ein wiederkehrendes Backup deiner Solutions ein."
+    },
+    {
+      "schluessel": "9",
+      "tipp_nr": 9,
+      "tipp_titel": "Test Your Flow Before Activation",
+      "tipp_datum": "2022-12-18",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-9-powerautomate-preview/",
+      "guertel": 1,
+      "thema": "Testen & Debugging",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was zeigt dir ein Testlauf, das du im Designer sonst nicht siehst?",
+        "antworten": [
+          "Die Anzahl Lizenzen, die dein Flow verbraucht",
+          "Die Ein- und Ausgaben jeder einzelnen Aktion",
+          "Eine Liste aller Personen, die den Flow nutzen"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. Ein Testlauf prüft die Logik deines Flows. Zur Lizenz sagt er nichts.",
+          "Richtig. Im Testlauf öffnest du jede Aktion und siehst, welche Werte sie bekommen und zurückgegeben hat.",
+          "Falsch. Der Testlauf zeigt den Weg der Daten durch deinen Flow, keine Nutzerliste."
+        ]
+      },
+      "lernziel": "Du testest einen Flow vor dem Aktivieren und liest die Ergebnisse jeder Aktion.",
+      "slug": "flow-testen-vor-dem-einschalten",
+      "titel_de": "Flow testen, bevor er live geht",
+      "kurztext_de": "Ein neuer Flow läuft selten beim ersten Versuch fehlerfrei. Mit «Test» im Designer startest du ihn manuell, gibst die Eingaben des Triggers selbst vor und verfolgst den Lauf Schritt für Schritt. Bei jeder Aktion siehst du, was hineingeht und was herauskommt. So findest du den Schritt, an dem ein Wert leer bleibt oder ein Ausdruck etwas anderes liefert als gedacht, bevor echte Daten durch den Flow laufen. Danach passt du an und testest erneut, so oft du willst. Erst wenn die Ein- und Ausgaben stimmen, schaltest du den Flow für den Alltag ein.",
+      "wann_ja": "Vor jedem Einschalten und nach jeder Änderung an Trigger, Ausdrücken oder Bedingungen.",
+      "wann_nein": "Wenn eine Aktion echte Mails verschickt oder Daten ändert, die du nicht anfassen willst. Dann gib ihr zuerst ein statisches Ergebnis.",
+      "fehler": "Nur auf den grünen Haken schauen und die Ausgaben nicht öffnen. «Erfolgreich» heisst nicht, dass der Wert stimmt.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Test",
+        "Testlauf",
+        "Debugging",
+        "Run history",
+        "Inputs",
+        "Outputs"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/flows-designer",
+      "learn_titel": "Explore the cloud flows designer",
+      "limits": [],
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "11",
+      "tipp_nr": 11,
+      "tipp_titel": "Trigger Condition",
+      "tipp_datum": "2022-12-20",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-11-trigger-condition/",
+      "guertel": 3,
+      "thema": "Trigger",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was ersetzt du, bevor du einen Ausdruck aus Filter array als Trigger Condition einfügst?",
+        "antworten": [
+          "Das @-Zeichen durch ein #-Zeichen",
+          "Nichts, der Ausdruck passt unverändert",
+          "item() durch triggerOutputs() oder triggerBody()"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du schreibst Trigger Conditions, damit der Flow nur bei passenden Ereignissen startet."
+    },
+    {
+      "schluessel": "12",
+      "tipp_nr": 12,
+      "tipp_titel": "Components for PowerAutomate",
+      "tipp_datum": "2022-12-21",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-12-components-for-powerautomate/",
+      "guertel": 1,
+      "thema": "Flow-Aufbau & Lesbarkeit",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was prüfst du nach dem Einfügen aus My clipboard?",
+        "antworten": [
+          "Die Lizenzen aller Personen, die den Flow nutzen",
+          "Ob der Scope im alten Flow gelöscht wurde",
+          "Verbindungen und dynamische Inhalte aus dem alten Flow"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. Kopieren und Einfügen ändert nichts an der Lizenz. Es geht um die Einstellungen der eingefügten Aktionen.",
+          "Falsch. Kopieren lässt den Scope im alten Flow unverändert. Beide Flows behalten ihre Aktionen.",
+          "Richtig. Verbindungen werden nicht mitkopiert, und Verweise auf Aktionen des alten Flows lösen sich im neuen nicht auf."
+        ]
+      },
+      "lernziel": "Du nutzt Scopes als wiederverwendbare Bausteine.",
+      "slug": "aktionen-ueber-my-clipboard-wiederverwenden",
+      "titel_de": "Aktionen über My clipboard wiederverwenden",
+      "kurztext_de": "Gewisse Abläufe baust du in fast jedem Flow: eine Benachrichtigung, einen Protokolleintrag, eine Fehlermeldung. Statt sie jedes Mal neu zusammenzuklicken, legst du die Aktionen in einen Scope und wählst im Menü des Scopes «Copy to my clipboard». Im nächsten Flow findest du den Block in der Aktionsauswahl unter «My clipboard» und fügst ihn mit allen Einstellungen ein. Zwei Dinge prüfst du danach: Verbindungen kommen nicht mit, die Aktionen verbindest du neu. Und dynamische Inhalte, die auf den Trigger oder frühere Aktionen des alten Flows zeigten, ordnest du neu zu. My clipboard ist an deinen Browser gebunden. Für Bausteine, die ein ganzes Team nutzt, ist ein Child Flow der bessere Weg.",
+      "wann_ja": "Für Blöcke, die du selbst immer wieder baust, etwa eine Fehlermeldung oder einen Protokolleintrag.",
+      "wann_nein": "Für Bausteine, die mehrere Personen nutzen sollen. My clipboard ist an deinen Browser gebunden, dafür eignet sich ein Child Flow.",
+      "fehler": "Den eingefügten Block laufen lassen, ohne die Verweise auf Trigger und frühere Aktionen neu zu setzen.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Scope",
+        "Clipboard",
+        "Kopieren",
+        "Einfügen",
+        "Vorlage",
+        "Child Flow"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/flows-designer",
+      "learn_titel": "Explore the cloud flows designer",
+      "limits": [],
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "15",
+      "tipp_nr": 15,
+      "tipp_titel": "try-catch-finally",
+      "tipp_datum": "2022-12-24",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/",
+      "guertel": 3,
+      "thema": "Fehlerbehandlung",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wie stellst du «Configure run after» beim Scope Catch ein?",
+        "antworten": [
+          "has failed und has timed out an, is successful aus",
+          "Alle vier Status anhaken, damit Catch immer läuft",
+          "Nur is successful anhaken, damit Catch nachfolgt"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. So läuft Catch nur, wenn im Scope Try etwas scheitert oder zu lange dauert.",
+          "Falsch. So stellst du Finally ein. Catch würde sonst auch nach jedem erfolgreichen Lauf starten.",
+          "Falsch. Dann liefe Catch nur, wenn alles klappt, also genau dann, wenn es nichts abzufangen gibt."
+        ]
+      },
+      "lernziel": "Du baust das Try-Catch-Finally-Muster in jeden wichtigen Flow ein.",
+      "slug": "fehler-mit-try-catch-finally-abfangen",
+      "titel_de": "Fehler mit Try, Catch und Finally abfangen",
+      "ausdruck": "result('Try')",
+      "kurztext_de": "Ohne Fehlerbehandlung bleibt ein Flow bei der ersten fehlerhaften Aktion stehen, und niemand erfährt davon. Mit drei Scopes baust du das Muster aus der Programmierung nach. Im Scope Try steht die eigentliche Logik. Der Scope Catch läuft nur, wenn Try scheitert: Unter «Configure run after» hakst du «has failed» und «has timed out» an und lässt «is successful» leer. Dort benachrichtigst du jemanden oder schreibst ein Protokoll. Der Scope Finally läuft immer, mit allen vier Status angehakt, und räumt auf. Mit result('Try') liest du im Catch aus, welche Aktion gescheitert ist. Soll der Lauf in der Übersicht als fehlgeschlagen erscheinen, setzt du im Catch eine Terminate-Aktion mit dem Status Failed.",
+      "wann_ja": "In jedem Flow, dessen Ausfall jemand bemerken muss: Schnittstellen, Dateien, Datensätze in Dataverse.",
+      "wann_nein": "Bei einem kurzen Testflow, den du selbst startest und dessen Lauf du direkt verfolgst.",
+      "fehler": "Kritische Aktionen ausserhalb des Scopes Try lassen. Was dort scheitert, sieht Catch nie.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Try",
+        "Catch",
+        "Finally",
+        "Scope",
+        "Configure run after",
+        "Fehlerbehandlung",
+        "Terminate"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/error-handling",
+      "learn_titel": "Employ robust error handling",
+      "limits": []
+    },
+    {
+      "schluessel": "17",
+      "tipp_nr": 17,
+      "tipp_titel": "Format data by example",
+      "tipp_datum": "2023-01-05",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-17-format-data-by-example/",
+      "guertel": 1,
+      "thema": "Ausdrücke",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was liefert dir «Format data by example»?",
+        "antworten": [
+          "Eine Vorlage für den ganzen Flow",
+          "Eine neue Datenquelle",
+          "Einen fertigen Formatierungsausdruck aus deinem Beispiel"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du lässt dir Formatierungsausdrücke erzeugen statt sie auswendig zu schreiben."
+    },
+    {
+      "schluessel": "18",
+      "tipp_nr": 18,
+      "tipp_titel": "Download & Save Files",
+      "tipp_datum": "2023-01-10",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-18-download-and-save-files/",
+      "guertel": 3,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie speicherst du eine passwortgeschützte Datei aus dem Web?",
+        "antworten": [
+          "Mit einer authentifizierten HTTP-Anfrage und danach Create file",
+          "Mit Get file content",
+          "Mit «Upload file from URL» ohne weitere Angaben"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du lädst Dateien aus dem Web je nach Schutz mit der richtigen Aktion herunter."
+    },
+    {
+      "schluessel": "19",
+      "tipp_nr": 19,
+      "tipp_titel": "Resize files",
+      "tipp_datum": "2023-01-12",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-19-resize-files/",
+      "guertel": 3,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Woher kommt die verkleinerte Bildversion in diesem Tipp?",
+        "antworten": [
+          "Aus der Aktion Compose",
+          "Aus einem Premium-Bildconnector",
+          "Aus dem Thumbnail, das SharePoint für die gespeicherte Datei bereitstellt"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du verkleinerst Bilder im Flow mit SharePoint-Thumbnails."
+    },
+    {
+      "schluessel": "20",
+      "tipp_nr": 20,
+      "tipp_titel": "Change Flow-Owner",
+      "tipp_datum": "2023-01-17",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-20-change-flow-owner/",
+      "guertel": 2,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was muss ein Flow sein, damit du den Besitzer direkt ändern kannst?",
+        "antworten": [
+          "Deaktiviert",
+          "Solution-aware",
+          "Ein Child Flow"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du übergibst Flows sauber an einen neuen Besitzer."
+    },
+    {
+      "schluessel": "21",
+      "tipp_nr": 21,
+      "tipp_titel": "Use Triggeroutput",
+      "tipp_datum": "2023-01-19",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-21-use-triggeroutput/",
+      "guertel": 3,
+      "thema": "Trigger",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wo findest du zum Beispiel die Mailadresse der Person, die den Flow ausgelöst hat?",
+        "antworten": [
+          "In body('Compose')",
+          "In triggerOutputs()?['headers']",
+          "In workflow()?['name']"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du nutzt Trigger-Header, um die auslösende Person zu benachrichtigen."
+    },
+    {
+      "schluessel": "24",
+      "tipp_nr": 24,
+      "tipp_titel": "Merge Arrays or Tables in Power Automate",
+      "tipp_datum": "2023-01-31",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-24-merge-arrays-or-tables/",
+      "guertel": 3,
+      "thema": "Arrays & Filter",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Wie führst du zwei Arrays zusammen und behältst dabei Duplikate?",
+        "antworten": [
+          "join(), concat() und danach split()",
+          "union() mit beiden Arrays",
+          "intersection() mit beiden Arrays"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du wählst zwischen union() und dem Join-Concat-Split-Muster je nach Bedarf."
+    },
+    {
+      "schluessel": "27",
+      "tipp_nr": 27,
+      "tipp_titel": "Overwrite existing files' (The Settings Hack)",
+      "tipp_datum": "2023-02-09",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-27-overwrite-existing-files/",
+      "guertel": 2,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Wie machst du den Overwrite-Schalter bei «Create file» sichtbar?",
+        "antworten": [
+          "«Allow chunking» in den Einstellungen ausschalten",
+          "Concurrency Control einschalten",
+          "Die Datei vorher löschen"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du überschreibst bestehende Dateien in SharePoint ohne Umweg."
+    },
+    {
+      "schluessel": "29",
+      "tipp_nr": 29,
+      "tipp_titel": "ParseJSON Description",
+      "tipp_datum": "2023-02-15",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-29-parsejson-description/",
+      "guertel": 2,
+      "thema": "JSON & Datenumwandlung",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Wozu ergänzt du eine Description-Eigenschaft im Parse-JSON-Schema?",
+        "antworten": [
+          "Sie validiert die Daten strenger",
+          "Sie erscheint im Dynamic Content und unterscheidet gleichnamige Felder",
+          "Sie macht das Feld zum Pflichtfeld"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du machst Dynamic Content aus Parse JSON eindeutig lesbar."
+    },
+    {
+      "schluessel": "33",
+      "tipp_nr": 33,
+      "tipp_titel": "Coalesce in Power Apps",
+      "tipp_datum": "2023-03-07",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-33-coalesce/",
+      "guertel": 2,
+      "thema": "Ausdrücke",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was gibt coalesce() zurück?",
+        "antworten": [
+          "Den letzten Wert der Liste",
+          "Den ersten nicht leeren Wert",
+          "Alle Werte als Text verbunden"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du ersetzt verschachtelte Leer-Prüfungen durch coalesce()."
+    },
+    {
+      "schluessel": "34",
+      "tipp_nr": 34,
+      "tipp_titel": "PowerApps V2",
+      "tipp_datum": "2023-03-09",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-34-powerapps-v2/",
+      "guertel": 2,
+      "thema": "Power Apps und Flows",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was ist ein Vorteil des PowerApps V2 Triggers?",
+        "antworten": [
+          "Er braucht keine Verbindungen",
+          "Er startet den Flow automatisch nach Zeitplan",
+          "Typisierte Eingaben wie Text, Zahl oder Ja/Nein"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du setzt für App-Flows den PowerApps V2 Trigger mit klaren Eingaben ein."
+    },
+    {
+      "schluessel": "35",
+      "tipp_nr": 35,
+      "tipp_titel": "Concurrent Control",
+      "tipp_datum": "2023-03-14",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/",
+      "guertel": 3,
+      "thema": "Schleifen & Parallelität",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was passiert mit neuen Auslösungen bei Parallelität 1?",
+        "antworten": [
+          "Sie werden sofort verworfen und nie ausgeführt",
+          "Sie warten, bis der laufende Lauf fertig ist",
+          "Sie laufen trotzdem parallel, nur langsamer"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. Neue Auslösungen warten. Ob jede zu einem Lauf wird, ist erst unsicher, wenn die Warteschlange voll ist.",
+          "Richtig. Weitere Läufe stehen in einer Warteschlange und starten nacheinander.",
+          "Falsch. Bei Parallelität 1 läuft genau ein Lauf auf einmal, alle anderen warten."
+        ]
+      },
+      "lernziel": "Du verhinderst Konflikte, indem du Flow-Instanzen nacheinander laufen lässt.",
+      "slug": "flow-laeufe-nacheinander",
+      "titel_de": "Flow-Läufe nacheinander statt gleichzeitig",
+      "kurztext_de": "Ein automatisierter Flow startet bei jedem neuen Ereignis, auch wenn der vorherige Lauf noch nicht fertig ist. Bearbeiten zwei Läufe gleichzeitig dieselben Daten, entstehen Duplikate, oder ein Lauf überschreibt den anderen. In den Einstellungen des Triggers schaltest du Concurrency Control ein und setzt den Grad der Parallelität auf 1. Dann läuft immer nur ein Lauf, weitere warten und starten der Reihe nach. Das kostet Zeit, sichert aber die Daten. Die Warteschlange ist begrenzt: Es warten höchstens {limit:trigger_warteschlange} Läufe. Und überlege dir den Schritt vorher: Concurrency Control am Trigger lässt sich nur ausschalten, indem du den Trigger löschst und neu einfügst.",
+      "wann_ja": "Wenn mehrere Läufe dieselbe Liste, dieselbe Datei oder denselben Zähler bearbeiten.",
+      "wann_nein": "Wenn sehr viele Ereignisse in kurzer Zeit eintreffen. Die Warteschlange ist begrenzt, und ein Lauf nach dem anderen wird zum Engpass.",
+      "fehler": "Concurrency Control am Trigger zum Ausprobieren einschalten. Zurück geht es nur, indem du den Trigger löschst und neu einfügst.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "limits": [
+        "trigger_warteschlange"
+      ],
+      "suchbegriffe": [
+        "Concurrency Control",
+        "Parallelität",
+        "Trigger",
+        "Duplikate",
+        "Warteschlange",
+        "nacheinander"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
+      "learn_titel": "Limits of automated, scheduled, and instant flows",
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "36",
+      "tipp_nr": 36,
+      "tipp_titel": "Static Result",
+      "tipp_datum": "2023-03-16",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-36-static-result/",
+      "guertel": 2,
+      "thema": "Testen & Debugging",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was bewirkt Static Result bei einer Aktion?",
+        "antworten": [
+          "Sie läuft, ihre Ausgabe wird aber nicht gespeichert",
+          "Sie läuft nur, wenn du den Flow manuell startest",
+          "Sie liefert eine feste Ausgabe, ohne zu laufen"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. Mit Static Result läuft die Aktion gar nicht. Genau deshalb ändert sie keine Daten.",
+          "Falsch. Static Result hängt nicht von der Art des Starts ab. Es gilt bei jedem Lauf, solange es eingeschaltet ist.",
+          "Richtig. Die Aktion gilt als erfolgreich und gibt das vorgegebene Ergebnis weiter, ohne wirklich zu laufen."
+        ]
+      },
+      "lernziel": "Du testest Flows mit simulierten Ergebnissen, ohne echte Daten zu verändern.",
+      "slug": "mit-static-result-testen",
+      "titel_de": "Mit Static Result testen, ohne Daten zu ändern",
+      "kurztext_de": "Manche Aktionen willst du beim Testen nicht wirklich ausführen: Sie verschicken Mails, ändern Datensätze oder dauern lange. Mit Static Result gibst du einer Aktion ein festes Ergebnis vor. Im Designer schaltest du dafür im Bereich Testing der Aktion «Enable Static Result» ein und legst fest, welche Ausgabe sie liefern soll. Beim nächsten Lauf gilt die Aktion als erfolgreich, ohne dass sie ausgeführt wird. Die folgenden Schritte arbeiten mit deiner vorgegebenen Ausgabe weiter. So testest du die Logik danach in Ruhe und mit verschiedenen Fällen, ohne echte Daten anzufassen. Vor dem Einsatz im Betrieb schaltest du das statische Ergebnis wieder aus.",
+      "wann_ja": "Für Aktionen, die Mails senden, Daten ändern oder lange dauern, während du die Schritte danach testest.",
+      "wann_nein": "Im Betrieb. Bleibt Static Result eingeschaltet, führt der Flow die Aktion nie wirklich aus.",
+      "fehler": "Static Result nach dem Testen eingeschaltet lassen. Der Flow meldet Erfolg, obwohl die Aktion nie gelaufen ist.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Static Result",
+        "statisches Ergebnis",
+        "Testen",
+        "Mock",
+        "Testing"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/flows-designer",
+      "learn_titel": "Explore the cloud flows designer",
+      "limits": [],
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "37",
+      "tipp_nr": 37,
+      "tipp_titel": "Table to JSON",
+      "tipp_datum": "2023-03-21",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-37-table-to-json/",
+      "guertel": 3,
+      "thema": "JSON & Datenumwandlung",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was gewinnst du, wenn du eine Name/Wert-Tabelle in ein JSON-Objekt umwandelst?",
+        "antworten": [
+          "Direkten Zugriff auf jeden Eintrag über seinen Namen",
+          "Automatische Übersetzung der Werte",
+          "Eine schnellere SharePoint-Abfrage"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du machst Konfigurationstabellen im Flow direkt adressierbar."
+    },
+    {
+      "schluessel": "39",
+      "tipp_nr": 39,
+      "tipp_titel": "Mastering FetchXML",
+      "tipp_datum": "2023-03-28",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-39-mastering-fetchxml/",
+      "guertel": 5,
+      "thema": "Daten abfragen & schreiben",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Wo setzt du FetchXML in einem Flow ein?",
+        "antworten": [
+          "Im Parameter Fetch Xml Query der Aktion List rows",
+          "In der Trigger Condition",
+          "In einer eigenen FetchXML-Aktion"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du lässt Dataverse komplexe Abfragen und Summen serverseitig rechnen."
+    },
+    {
+      "schluessel": "40",
+      "tipp_nr": 40,
+      "tipp_titel": "Delete Apps / Flows",
+      "tipp_datum": "2023-03-30",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-40-delete-apps-flows/",
+      "guertel": 3,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welcher Schritt entfernt am Ende alle gesammelten Apps und Flows auf einmal?",
+        "antworten": [
+          "Die Umgebung zurücksetzen",
+          "Den Export als unmanaged",
+          "Die importierte Managed Solution löschen"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du räumst Test-Apps und Flows gesammelt auf."
+    },
+    {
+      "schluessel": "45",
+      "tipp_nr": 45,
+      "tipp_titel": "Use Scopes",
+      "tipp_datum": "2023-04-18",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-45-use-scopes/",
+      "guertel": 2,
+      "thema": "Flow-Aufbau & Lesbarkeit",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Wofür setzt du Scopes laut Tipp ein?",
+        "antworten": [
+          "Zum Auslösen anderer Flows",
+          "Zum Gruppieren von Aktionen, Isolieren von Fehlern und Wiederverwenden",
+          "Zum Speichern von Variablen"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du gliederst Flows mit Scopes in lesbare Blöcke."
+    },
+    {
+      "schluessel": "47",
+      "tipp_nr": 47,
+      "tipp_titel": "Batch-Method within SharePoint",
+      "tipp_datum": "2023-04-25",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-47-batch-method-within-sharepoint/",
+      "guertel": 6,
+      "thema": "SharePoint REST",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie viele Operationen bündelt ein $batch-Aufruf laut Tipp höchstens?",
+        "antworten": [
+          "1000",
+          "100",
+          "5000"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du verarbeitest grosse Mengen SharePoint-Einträge mit Batch-Aufrufen statt Einzelaktionen."
+    },
+    {
+      "schluessel": "48",
+      "tipp_nr": 48,
+      "tipp_titel": "Sharing of Flows & Power Apps",
+      "tipp_datum": "2023-04-27",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-48-sharing-of-flows-and-power-apps/",
+      "guertel": 1,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welcher Weg bringt einen Flow samt Abhängigkeiten zu Kollegen?",
+        "antworten": [
+          "Einen Screenshot senden",
+          "Als Solution verpacken",
+          "Die Run history teilen"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du wählst den passenden Weg, um Flows mit anderen zu teilen."
+    },
+    {
+      "schluessel": "49",
+      "tipp_nr": 49,
+      "tipp_titel": "Do-Until",
+      "tipp_datum": "2023-05-02",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-49-do-until/",
+      "guertel": 4,
+      "thema": "Schleifen & Parallelität",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welchen Status meldet die Do-Until-Schleife, wenn Count oder Timeout sie beenden?",
+        "antworten": [
+          "Failed",
+          "Succeeded",
+          "Cancelled"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du baust Abfrageschleifen mit Delay und prüfst das Ergebnis an der Variable statt am Schleifenstatus."
+    },
+    {
+      "schluessel": "51",
+      "tipp_nr": 51,
+      "tipp_titel": "Which Flow Calls Which Flow",
+      "tipp_datum": "2023-05-09",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-51-which-flow-calls-which-flow/",
+      "guertel": 4,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wofür brauchst du die Übersicht, welcher Flow welchen aufruft?",
+        "antworten": [
+          "Um Lizenzen zu sparen",
+          "Für die richtige Reihenfolge beim Deployment und für die Fehlersuche",
+          "Um Flows automatisch zu löschen"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du dokumentierst Parent-Child-Abhängigkeiten zwischen Flows."
+    },
+    {
+      "schluessel": "58",
+      "tipp_nr": 58,
+      "tipp_titel": "HTTP Actions",
+      "tipp_datum": "2023-06-06",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-58-http-actions/",
+      "guertel": 4,
+      "thema": "HTTP & Microsoft Graph",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wann greifst du laut Tipp zu den HTTP-Aktionen?",
+        "antworten": [
+          "Nur zum Testen von Flows",
+          "Für jede SharePoint-Abfrage",
+          "Wenn Standard-Connectoren eine API nicht abdecken"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du rufst APIs ohne fertigen Connector über HTTP auf."
+    },
+    {
+      "schluessel": "59",
+      "tipp_nr": 59,
+      "tipp_titel": "Handle Dynamic Content",
+      "tipp_datum": "2023-06-08",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-59-handle-dynamic-content/",
+      "guertel": 2,
+      "thema": "Ausdrücke",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was liefert item()?['id'], wenn die Eigenschaft id fehlt?",
+        "antworten": [
+          "Den Wert null, und der Flow läuft weiter",
+          "Einen Fehler, der die Aktion sofort abbricht",
+          "Den Wert des vorherigen Eintrags im Array"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. Das Fragezeichen macht aus einer fehlenden Eigenschaft null, statt die Aktion scheitern zu lassen.",
+          "Falsch. Das passiert ohne Fragezeichen: item()['id'] bricht mit InvalidTemplate ab.",
+          "Falsch. Der Ausdruck greift nur auf den aktuellen Eintrag zu und übernimmt keine Werte aus anderen Einträgen."
+        ]
+      },
+      "lernziel": "Du greifst robust auf Eigenschaften zu, die fehlen können.",
+      "slug": "sicherer-zugriff-mit-fragezeichen",
+      "titel_de": "Sicherer Zugriff mit dem Operator ?",
+      "ausdruck": "item()?['id']",
+      "kurztext_de": "Daten aus Listen, Mails oder Schnittstellen sind selten vollständig. Ein Ausdruck wie item()['id'] geht davon aus, dass die Eigenschaft id immer vorhanden ist. Fehlt sie in einem einzigen Eintrag, bricht die Aktion mit dem Fehler InvalidTemplate ab. Mit einem Fragezeichen vor der Klammer, also item()?['id'], liefert der Ausdruck in diesem Fall null statt eines Fehlers. Das Fragezeichen schützt nur die Klammer, vor der es steht. Bei verschachtelten Pfaden setzt du es deshalb vor jede Stufe. Danach entscheidest du, was bei null passieren soll, zum Beispiel mit coalesce() und einem Ersatzwert oder mit einer Condition. Gegen einen falschen Datentyp hilft das Fragezeichen nicht.",
+      "wann_ja": "Bei jedem Zugriff auf Daten, deren Felder nicht immer vorhanden sind, etwa Antworten von Schnittstellen oder optionale Listenspalten.",
+      "wann_nein": "Wenn ein fehlendes Feld ein echter Fehler ist, den du sehen willst. Dann darf die Aktion scheitern.",
+      "fehler": "Das Fragezeichen nur bei der ersten Stufe setzen. triggerBody()?['missing']['x'] scheitert trotzdem, wenn missing fehlt.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Fragezeichen",
+        "null",
+        "InvalidTemplate",
+        "coalesce",
+        "dynamischer Inhalt",
+        "item()"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-definition-language",
+      "learn_titel": "Workflow Definition Language schema reference",
+      "limits": []
+    },
+    {
+      "schluessel": "61",
+      "tipp_nr": 61,
+      "tipp_titel": "Power of Environment Variables",
+      "tipp_datum": "2023-06-15",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-61-power-of-environment-variables/",
+      "guertel": 3,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welches Problem lösen Umgebungsvariablen?",
+        "antworten": [
+          "Fehlende Lizenzen",
+          "Fest eingetragene Werte, die je Umgebung anders sein müssen",
+          "Zu langsame Schleifen"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du baust Flows mit Umgebungsvariablen für den Transport zwischen Umgebungen."
+    },
+    {
+      "schluessel": "65",
+      "tipp_nr": 65,
+      "tipp_titel": "PowerDocu: Document Power Apps, Flows and Solutions Automatically",
+      "tipp_datum": "2023-06-29",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-65-automate-documentation-with-powerdocu/",
+      "guertel": 1,
+      "thema": "Werkzeuge",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was braucht PowerDocu als Eingabe?",
+        "antworten": [
+          "Einen Export deines Flows, deiner App oder Solution",
+          "Zugang zur Run history",
+          "Eine Premium-Lizenz"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du dokumentierst Flows automatisch statt mit Screenshots."
+    },
+    {
+      "schluessel": "71",
+      "tipp_nr": 71,
+      "tipp_titel": "Array to Object",
+      "tipp_datum": "2023-08-08",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-71-array-to-object/",
+      "guertel": 5,
+      "thema": "JSON & Datenumwandlung",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Womit wandelst du laut Tipp ein Array in ein Objekt um?",
+        "antworten": [
+          "Eine Apply-to-each-Schleife mit Append to array",
+          "Die Aktion Create HTML table",
+          "Select-Aktion und verschachtelte replace()-Ausdrücke"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du formst Arrays ohne Schleifen in adressierbare Objekte um."
+    },
+    {
+      "schluessel": "75",
+      "tipp_nr": 75,
+      "tipp_titel": "Boost Efficiency with Concurrency Control",
+      "tipp_datum": "2023-08-29",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-75-boost-efficiency-with-concurrency-control/",
+      "guertel": 4,
+      "thema": "Schleifen & Parallelität",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wann darfst du die Parallelität einer Schleife nicht erhöhen?",
+        "antworten": [
+          "Wenn sie mehr als hundert Einträge verarbeiten muss",
+          "Wenn sie eine Variable erhöht oder an ein Array anhängt",
+          "Wenn sie Einträge aus einer SharePoint-Liste liest"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. Gerade bei vielen unabhängigen Einträgen spart Parallelität am meisten Zeit.",
+          "Richtig. Parallele Durchläufe lesen und schreiben dieselbe Variable gleichzeitig und überschreiben sich.",
+          "Falsch. Die Quelle spielt keine Rolle. Entscheidend ist, ob die Durchläufe voneinander abhängen."
+        ]
+      },
+      "lernziel": "Du beschleunigst Schleifen parallel und erkennst, wann das Ergebnisse verfälscht.",
+      "slug": "apply-to-each-parallel",
+      "titel_de": "Apply to each parallel laufen lassen",
+      "kurztext_de": "Apply to each arbeitet die Einträge standardmässig nacheinander ab. Bei Hunderten Einträgen dauert das, auch wenn jeder Durchlauf für sich allein steht. In den Einstellungen der Schleife schaltest du Concurrency Control ein und erhöhst den Grad der Parallelität auf höchstens {limit:schleife_parallel_max}. Dann laufen mehrere Durchläufe gleichzeitig, und die Schleife ist oft in einem Bruchteil der Zeit fertig. Das geht nur, wenn die Durchläufe unabhängig sind. Erhöht die Schleife einen Zähler oder hängt sie Werte an ein Array an, überschreiben sich die Durchläufe gegenseitig. Baue das Ergebnis dann mit Select oder union() statt mit Variablen. Zu viel Parallelität gegen denselben Connector kann zudem zu Drosselung führen.",
+      "wann_ja": "Wenn jeder Durchlauf für sich steht, etwa eine Mail pro Person oder ein Update pro Datensatz.",
+      "wann_nein": "Wenn Durchläufe dieselbe Variable ändern oder die Reihenfolge wichtig ist.",
+      "fehler": "Parallelität einschalten und im Innern weiter «Increment variable» nutzen. Der Zähler stimmt danach nicht mehr.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "limits": [
+        "schleife_parallel_max"
+      ],
+      "suchbegriffe": [
+        "Apply to each",
+        "Concurrency Control",
+        "Parallelität",
+        "Schleife",
+        "Performance",
+        "Drosselung"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
+      "learn_titel": "Limits of automated, scheduled, and instant flows",
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "83",
+      "tipp_nr": 83,
+      "tipp_titel": "Organize Power Automate Chat Messages",
+      "tipp_datum": "2023-10-24",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-83-organize-power-automate-chat-messages/",
+      "guertel": 2,
+      "thema": "Mails, Teams & Kalender",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wohin schickt der Flow seine Benachrichtigungen laut Tipp?",
+        "antworten": [
+          "In thematische Gruppenchats über den Flow Bot",
+          "In eine SharePoint-Liste",
+          "Nur in den persönlichen Chat des Erstellers"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du ordnest Flow-Benachrichtigungen in Teams nach Thema."
+    },
+    {
+      "schluessel": "89",
+      "tipp_nr": 89,
+      "tipp_titel": "Code View (Peek Code)",
+      "tipp_datum": "2023-11-30",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-89-code-view-peak-code/",
+      "guertel": 1,
+      "thema": "Testen & Debugging",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wofür eignet sich Code View einer Aktion?",
+        "antworten": [
+          "Die Aktion direkt im JSON bearbeiten",
+          "Den ganzen Flow als Datei exportieren",
+          "Die Ausdrücke einer Aktion vollständig lesen"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. Code View ist schreibgeschützt. Änderungen machst du im Designer oder im Ausdruckseditor.",
+          "Falsch. Code View zeigt nur die eine Aktion. Mit dem Export des Flows hat die Ansicht nichts zu tun.",
+          "Richtig. Code View zeigt die Definition der Aktion mit allen Ausdrücken, so wie der Flow sie ausführt."
+        ]
+      },
+      "lernziel": "Du liest die Definition einer Aktion, um Fehler schneller zu finden.",
+      "slug": "mit-code-view-hinter-eine-aktion-schauen",
+      "titel_de": "Mit Code View hinter eine Aktion schauen",
+      "kurztext_de": "Im Designer siehst du Felder, Symbole und dynamische Inhalte. Was die Aktion wirklich ausführt, steht in ihrer Definition. Über das Menü einer Aktion mit den drei Punkten öffnest du Code View, früher «Peek code». Dort steht die Aktion als JSON, mit allen Eingaben und den vollständigen Ausdrücken. Du siehst etwa, dass hinter einem harmlosen Feld ein verschachtelter concat()-Ausdruck steckt. Das hilft beim Fehlersuchen und beim Lernen: Du erkennst, wie jemand anderes einen Schritt gelöst hat, und übernimmst den Ausdruck in deinen eigenen Flow. Code View ist nur zum Lesen da. Ändern kannst du die Aktion weiterhin im Designer.",
+      "wann_ja": "Wenn ein Feld etwas anderes liefert als erwartet und du sehen willst, welcher Ausdruck wirklich dahinter steht.",
+      "wann_nein": "Wenn du etwas ändern willst. Das machst du im Designer, Code View ist schreibgeschützt.",
+      "fehler": "Nur das sichtbare Feld im Designer prüfen. Erst in Code View siehst du den vollständigen Ausdruck mit allen Funktionen.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Code View",
+        "Peek code",
+        "JSON",
+        "Ausdruck",
+        "Debugging"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/flows-designer",
+      "learn_titel": "Explore the cloud flows designer",
+      "limits": [],
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "92",
+      "tipp_nr": 92,
+      "tipp_titel": "Free PDF Tools in PowerAutomate",
+      "tipp_datum": "2023-12-08",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-92-free-pdf-tools-in-powerautomate/",
+      "guertel": 2,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was musst du bei den kostenlosen PDF-Diensten beachten?",
+        "antworten": [
+          "Die meisten Connectoren sind Premium, auch wenn der Dienst kostenlos ist",
+          "Sie funktionieren nur mit Word-Dateien",
+          "Sie brauchen keine Verbindung"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du wählst einen PDF-Dienst passend zu Kontingent und Lizenz."
+    },
+    {
+      "schluessel": "94",
+      "tipp_nr": 94,
+      "tipp_titel": "Extract Text from DOCX",
+      "tipp_datum": "2023-12-13",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-94-extract-text-from-docx/",
+      "guertel": 5,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welche Datei im DOCX-Archiv enthält den Text des Dokuments?",
+        "antworten": [
+          "[Content_Types].xml",
+          "docProps/app.xml",
+          "word/document.xml"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du extrahierst Text aus Word-Dateien ohne Zusatzdienst."
+    },
+    {
+      "schluessel": "95",
+      "tipp_nr": 95,
+      "tipp_titel": "Optimized SharePoint Queries",
+      "tipp_datum": "2023-12-19",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-95-optimized-sharepoint-queries/",
+      "guertel": 3,
+      "thema": "Daten abfragen & schreiben",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wo filterst du SharePoint-Daten am effizientesten?",
+        "antworten": [
+          "In der Filter Query von Get items an der Quelle",
+          "In einer Condition nach jedem Eintrag",
+          "Erst nach dem Abruf mit einer Schleife"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du schreibst OData-Filter und lädst nur die nötigen Einträge."
+    },
+    {
+      "schluessel": "96",
+      "tipp_nr": 96,
+      "tipp_titel": "Scraping Web Data with Standard Connectors",
+      "tipp_datum": "2023-12-21",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-96-scraping-web-data-with-standard-connectors/",
+      "guertel": 2,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Mit welcher Aktion holst du laut Tipp Webseiteninhalte ohne Premium?",
+        "antworten": [
+          "Get file content",
+          "HTTP-Aktion",
+          "«Upload from URL» im OneDrive-Connector"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du speicherst Webinhalte mit einer Standardaktion."
+    },
+    {
+      "schluessel": "97",
+      "tipp_nr": 97,
+      "tipp_titel": "Enhanced Pagination",
+      "tipp_datum": "2023-12-22",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-97-enhanced-pagination/",
+      "guertel": 2,
+      "thema": "Daten abfragen & schreiben",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie viele Einträge liefert Get items aus SharePoint laut Tipp ohne Pagination?",
+        "antworten": [
+          "256",
+          "5000",
+          "100"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du holst mit Pagination alle Einträge statt nur der ersten Seite."
+    },
+    {
+      "schluessel": "98",
+      "tipp_nr": 98,
+      "tipp_titel": "Secure Inputs / Secure Outputs",
+      "tipp_datum": "2023-12-27",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-98-secure-inputs-secure-outputs/",
+      "guertel": 2,
+      "thema": "Sicherheit & Benutzerkontext",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was bewirken Secure Inputs und Secure Outputs?",
+        "antworten": [
+          "Sensible Daten werden in der Run history verborgen",
+          "Die Daten werden verschlüsselt per Mail versendet",
+          "Die Aktion läuft schneller"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du schützt Passwörter und Personendaten in Run-Protokollen."
+    },
+    {
+      "schluessel": "99",
+      "tipp_nr": 99,
+      "tipp_titel": "Timesaver Toolkits, ChatGPT and Flow",
+      "tipp_datum": "2024-01-08",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-99-timesaver-toolkits-chatgpt-and-flow/",
+      "guertel": 4,
+      "thema": "KI & Copilot Studio",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie gelangen die strukturierten Daten aus ChatGPT in den Flow?",
+        "antworten": [
+          "Über einen Link mit URL-kodierten Daten an die Trigger-URL",
+          "Über einen Mailanhang",
+          "Über eine geteilte Excel-Datei"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du startest einen Flow per Link mit Daten aus einem KI-Chat."
+    },
+    {
+      "schluessel": "100",
+      "tipp_nr": 100,
+      "tipp_titel": "Bypassing Complexity in PowerAutomate",
+      "tipp_datum": "2024-06-18",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-100-bypassing-complexity-in-powerautomate/",
+      "guertel": 4,
+      "thema": "JSON & Datenumwandlung",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wozu dienen die zwei ? in outputs('Compose')?[InputValue]?['Title']?",
+        "antworten": [
+          "Sie verhindern einen Fehler bei unbekanntem Schlüssel",
+          "Sie markieren die Werte als optionale Eingaben",
+          "Sie wandeln das Ergebnis automatisch in Text um"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. Fehlt der Schlüssel oder das Feld, liefert der Ausdruck null statt eines Fehlers.",
+          "Falsch. Das Fragezeichen hat mit Eingaben nichts zu tun. Es schützt nur den Zugriff auf eine Eigenschaft.",
+          "Falsch. Das Fragezeichen ändert den Typ nicht. Für Text brauchst du string()."
+        ]
+      },
+      "lernziel": "Du ersetzt Verzweigungen durch Nachschlagen in einem JSON-Objekt.",
+      "slug": "json-objekt-statt-switch",
+      "titel_de": "JSON-Objekt statt Switch",
+      "ausdruck": "outputs('Compose')?[InputValue]?['Title']",
+      "kurztext_de": "Ein Switch mit einem Dutzend Fällen oder Bedingungen über drei Ebenen ist schwer zu lesen, und für jeden neuen Fall änderst du den Aufbau des Flows. Oft geht es nur darum, zu einem Schlüssel einen Wert nachzuschlagen. Dafür legst du in einer Compose-Aktion ein JSON-Objekt mit allen Fällen ab, etwa A, B und C mit je Titel und Beschreibung. Den passenden Wert holst du mit einem Ausdruck wie outputs('Compose')?[InputValue]?['Title']. Die beiden Fragezeichen verhindern einen Fehler, wenn der Schlüssel oder das Feld fehlt. Mit coalesce() setzt du für unbekannte Schlüssel einen Ersatzwert. Neue Fälle ergänzt du im JSON, der Flow selbst bleibt gleich.",
+      "wann_ja": "Wenn ein Switch nur Werte nachschlägt: Status, Texte, Adressen oder Einstellungen pro Umgebung.",
+      "wann_nein": "Wenn die Fälle unterschiedliche Aktionen auslösen sollen. Dann bleibt Switch das richtige Werkzeug.",
+      "fehler": "Unbekannte Schlüssel nicht abfangen. Ohne coalesce() läuft null weiter und fällt erst viel später auf.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Switch",
+        "Condition",
+        "Compose",
+        "JSON",
+        "Lookup",
+        "coalesce"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/data-operations",
+      "learn_titel": "Use data operations in Power Automate",
+      "limits": []
+    },
+    {
+      "schluessel": "102",
+      "tipp_nr": 102,
+      "tipp_titel": "Event Coordination",
+      "tipp_datum": "2024-06-12",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-102-event-coordination/",
+      "guertel": 5,
+      "thema": "HTTP & Microsoft Graph",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welche Eigenschaft hält die Gästeliste eines Termins verborgen?",
+        "antworten": [
+          "hideAttendees",
+          "isPrivate",
+          "showAs"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du verwaltest Teilnehmende eines Termins leise und vertraulich über Graph."
+    },
+    {
+      "schluessel": "104",
+      "tipp_nr": 104,
+      "tipp_titel": "Efficient JSON Handling",
+      "tipp_datum": "2024-06-20",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-104-efficient-json-handling/",
+      "guertel": 4,
+      "thema": "JSON & Datenumwandlung",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Parse JSON scheitert an «Expected String but got Null». Was hilft?",
+        "antworten": [
+          "Das Feld zusätzlich in die Liste required setzen",
+          "Den Typ als Liste mit string und null angeben",
+          "Das Schema aus einer neuen Beispielantwort erzeugen"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. required prüft nur, ob das Feld vorhanden ist. Am Typfehler bei null ändert das nichts.",
+          "Richtig. Mit [\"string\", \"null\"] akzeptiert das Schema Text und null, die Prüfung besteht.",
+          "Falsch. Ein neues Beispiel liefert wieder genau einen Typ pro Feld. Beim nächsten null scheitert die Prüfung erneut."
+        ]
+      },
+      "lernziel": "Du schreibst robuste Schemas für unzuverlässige APIs.",
+      "slug": "json-schema-das-null-vertraegt",
+      "titel_de": "JSON-Schema, das null verträgt",
+      "ausdruck": "\"type\": [\"string\", \"null\"]",
+      "kurztext_de": "Parse JSON prüft jede Antwort gegen ein Schema. Erzeugst du das Schema aus einer Beispielantwort, legt der Designer für jedes Feld genau einen Typ fest, etwa string. Kommt später ein Feld mit null, scheitert die Aktion mit «Invalid type. Expected String but got Null.» Die Lösung ist eine Typliste: \"type\": [\"string\", \"null\"] akzeptiert Text und null. Fehlt ein Feld manchmal ganz, nimmst du es aus der Liste required. Kann beides vorkommen, machst du beides. Die genaue Ursache einer gescheiterten Prüfung steht in den Ausgaben der Aktion im Array errors. Der Lauf selbst meldet nur, dass die Schemaprüfung gescheitert ist.",
+      "wann_ja": "Bei Antworten von Schnittstellen und Formularen, in denen Felder leer bleiben dürfen.",
+      "wann_nein": "Bei Feldern, die nie leer sein dürfen. Dort soll die Schemaprüfung scheitern und den Fehler zeigen.",
+      "fehler": "Nur die Fehlermeldung des Laufs lesen. Die genaue Ursache steht in den Ausgaben von Parse JSON im Array errors.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Parse JSON",
+        "Schema",
+        "null",
+        "required",
+        "Expected String but got Null",
+        "Validierung"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/data-operations",
+      "learn_titel": "Use data operations in Power Automate",
+      "limits": []
+    },
+    {
+      "schluessel": "105",
+      "tipp_nr": 105,
+      "tipp_titel": "PowerApps, EnvironmentVariables Without Premium",
+      "tipp_datum": "2024-06-04",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-105-powerapps-environmentvariables-without-premium/",
+      "guertel": 4,
+      "thema": "Power Apps und Flows",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie liest die App die Umgebungsvariable ohne Premium?",
+        "antworten": [
+          "Direkt über die Dataverse-Tabelle",
+          "Über einen Solution-Flow, den die App beim OnStart aufruft",
+          "Gar nicht, das geht nur mit Premium"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du stellst Konfigurationswerte aus der Solution auch Standard-Apps bereit."
+    },
+    {
+      "schluessel": "106",
+      "tipp_nr": 106,
+      "tipp_titel": "Word & Quick Parts",
+      "tipp_datum": "2024-03-05",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-106-word-quick-parts/",
+      "guertel": 3,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was dient in Word als Platzhalter für die Daten aus dem Flow?",
+        "antworten": [
+          "Quick Parts",
+          "Kommentare",
+          "Kopfzeilen"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du erstellst Word-Dokumente automatisch mit Standardmitteln."
+    },
+    {
+      "schluessel": "109",
+      "tipp_nr": 109,
+      "tipp_titel": "Use TimeOut",
+      "tipp_datum": "2024-04-11",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-109-use-timeout/",
+      "guertel": 3,
+      "thema": "Approvals",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was bedeutet der Timeout-Wert P2W bei einer Aktion?",
+        "antworten": [
+          "Die Aktion startet erst nach zwei Wochen",
+          "Die Aktion läuft zweimal pro Woche",
+          "Die Aktion wartet höchstens zwei Wochen"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. Timeout verzögert nichts. Er legt fest, wann eine laufende Aktion als abgelaufen gilt.",
+          "Falsch. Timeout wiederholt keine Aktion. Wiederholungen regelt die Retry Policy.",
+          "Richtig. P2W ist eine Dauer im Format ISO 8601 und steht für zwei Wochen."
+        ]
+      },
+      "lernziel": "Du sicherst lange Approvals gegen Timeouts ab.",
+      "slug": "timeout-fuer-lange-aktionen",
+      "titel_de": "Timeout für lange Aktionen festlegen",
+      "ausdruck": "P2W",
+      "kurztext_de": "Eine Approval oder eine andere Aktion, die auf Menschen wartet, kann länger dauern als geplant. In den Einstellungen der Aktion legst du unter Timeout fest, wie lange sie höchstens warten darf. Die Dauer schreibst du im Format ISO 8601: P1D ist ein Tag, P2W sind zwei Wochen, PT2H zwei Stunden. Läuft die Zeit ab, gilt die Aktion als abgelaufen. Damit der Flow dann nicht einfach scheitert, hängst du eine Aktion an, deren «Configure run after» nur auf «has timed out» steht. Dort erinnerst du, eskalierst oder startest eine neue Anfrage. Über allem gilt die Laufzeitgrenze eines Flows von {limit:laufzeit_max}.",
+      "wann_ja": "Bei Approvals und anderen Aktionen, die auf eine Antwort warten, deren Dauer du nicht kennst.",
+      "wann_nein": "Wenn der Prozess die Laufzeitgrenze von {limit:laufzeit_max} überschreiten kann. Dann reicht ein Timeout nicht, weil der ganze Lauf vorher endet.",
+      "fehler": "Den Timeout setzen, aber keinen Pfad für «has timed out» bauen. Dann scheitert der Lauf trotzdem.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "limits": [
+        "laufzeit_max"
+      ],
+      "suchbegriffe": [
+        "Timeout",
+        "ISO 8601",
+        "Approval",
+        "has timed out",
+        "Configure run after",
+        "P2W"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
+      "learn_titel": "Limits of automated, scheduled, and instant flows"
+    },
+    {
+      "schluessel": "111",
+      "tipp_nr": 111,
+      "tipp_titel": "Adaptive Cards for Dynamic Approvals",
+      "tipp_datum": "2024-04-24",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-111-adaptive-cards-for-dynamic-approvals/",
+      "guertel": 5,
+      "thema": "Approvals",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Womit wird die Auswahlliste der Adaptive Card gefüllt?",
+        "antworten": [
+          "Mit den Mitgliedern der Umgebung",
+          "Mit einer festen Liste im Flow",
+          "Mit der Suchaktion des Office 365 Users-Connectors"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du baust mehrstufige Genehmigungen mit dynamischer Wahl der nächsten Person."
+    },
+    {
+      "schluessel": "112",
+      "tipp_nr": 112,
+      "tipp_titel": "Consistent Data Formats",
+      "tipp_datum": "2024-05-01",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-112-consistent-data-formats/",
+      "guertel": 2,
+      "thema": "Ausdrücke",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welche Funktionen nutzt du in Power Automate, um Werte vor einem Vergleich anzugleichen?",
+        "antworten": [
+          "first() und last()",
+          "length() und add()",
+          "trim() und toLower()"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du vergleichst Werte zuverlässig, weil du sie vorher normalisierst."
+    },
+    {
+      "schluessel": "114",
+      "tipp_nr": 114,
+      "tipp_titel": "Send Approvals to External Recipients",
+      "tipp_datum": "2024-05-17",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-114-send-approvals-to-external-recipients/",
+      "guertel": 3,
+      "thema": "Approvals",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welche Aktion nutzt du laut Tipp für Genehmigungen durch externe Personen?",
+        "antworten": [
+          "«Start and wait for an approval» mit Gastkonto",
+          "Eine Teams-Nachricht im Kanal",
+          "«Send email with options»"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du holst Genehmigungen auch von Personen ausserhalb der Organisation ein."
+    },
+    {
+      "schluessel": "115",
+      "tipp_nr": 115,
+      "tipp_titel": "AI OCR Models",
+      "tipp_datum": "2024-06-22",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-115-ai-ocr-models/",
+      "guertel": 3,
+      "thema": "KI & Copilot Studio",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was brauchst du, um Azure Document Intelligence laut Tipp aus Power Automate aufzurufen?",
+        "antworten": [
+          "Die HTTP-Aktion, die eine Premium-Funktion ist",
+          "Nur einen AI Builder-Prompt",
+          "Keine Verbindung, es läuft automatisch"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du wählst zwischen AI Builder und Azure Document Intelligence nach Menge und Kosten."
+    },
+    {
+      "schluessel": "117",
+      "tipp_nr": 117,
+      "tipp_titel": "Optimize Parallel Object Processing",
+      "tipp_datum": "2024-07-16",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-117-optimize-parallel-object-processing/",
+      "guertel": 6,
+      "thema": "Schleifen & Parallelität",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie kommst du laut Tipp über die 50 parallelen Durchläufe von Apply to each hinaus?",
+        "antworten": [
+          "Mit Child Flows oder Datenbank-Triggern",
+          "Mit einer höheren Pagination",
+          "Mit einem zweiten Trigger im selben Flow"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du verteilst grosse Datenmengen auf parallele Flows."
+    },
+    {
+      "schluessel": "118",
+      "tipp_nr": 118,
+      "tipp_titel": "Copy Actions in Switch/Condition",
+      "tipp_datum": "2024-07-23",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-118-copy-actions-in-switch_condition/",
+      "guertel": 2,
+      "thema": "Flow-Aufbau & Lesbarkeit",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was tust du, damit eine kopierte Aktion in einem Switch funktioniert?",
+        "antworten": [
+          "Den Switch löschen und neu anlegen",
+          "Ausserhalb einfügen, in den Zweig ziehen, Referenzen neu setzen",
+          "Concurrency einschalten"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du kopierst Aktionen in Verzweigungen, ohne Referenzen zu verlieren."
+    },
+    {
+      "schluessel": "120",
+      "tipp_nr": 120,
+      "tipp_titel": "PowerAutomate, Text Processing 2.0",
+      "tipp_datum": "2024-08-13",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-120-powerautomate-text-processing-2-0/",
+      "guertel": 2,
+      "thema": "Werkzeuge",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was ist PowerTools?",
+        "antworten": [
+          "Ein eingebauter Microsoft-Connector",
+          "Ein Connector eines unabhängigen Anbieters für Textverarbeitung",
+          "Ein Ausdruck in Power Automate"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du kennst eine Ergänzung, wenn Ausdrücke für Textaufgaben zu aufwendig werden."
+    },
+    {
+      "schluessel": "121",
+      "tipp_nr": 121,
+      "tipp_titel": "Filtering SharePoint File Fields with OData",
+      "tipp_datum": "2024-08-21",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-121-filtering-sharepoint-file-fields-with-odata/",
+      "guertel": 4,
+      "thema": "Daten abfragen & schreiben",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welches Feld enthält den Dateinamen?",
+        "antworten": [
+          "FileLeafRef",
+          "FileDirRef",
+          "FileRef"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du filterst Dokumente nach Name, Pfad und Ordner direkt an der Quelle."
+    },
+    {
+      "schluessel": "123",
+      "tipp_nr": 123,
+      "tipp_titel": "Get Lowest / Highest SharePoint ID & TotalCount",
+      "tipp_datum": "2024-09-11",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-123-get-lowest-highest-sharepoint-id-totalcount/",
+      "guertel": 4,
+      "thema": "SharePoint REST",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Woher kommt die Gesamtzahl der Einträge einer Liste?",
+        "antworten": [
+          "Aus der Eigenschaft ItemCount",
+          "Aus der höchsten ID",
+          "Aus der Länge von Get items ohne Pagination"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du ermittelst Kennzahlen einer Liste, ohne alle Einträge zu laden."
+    },
+    {
+      "schluessel": "124",
+      "tipp_nr": 124,
+      "tipp_titel": "Recognize Plain Text File Formats",
+      "tipp_datum": "2024-09-18",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-124-recognize-plain-text-file-formats/",
+      "guertel": 2,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welche Dateien liefert «Get file content» laut Tipp ohne Base64-Umweg?",
+        "antworten": [
+          "Nur Bilder",
+          "Nur PDF-Dateien",
+          "Klartextformate wie JSON, CSV, XML und Markdown"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du verarbeitest Textdateien ohne unnötige Dekodierung."
+    },
+    {
+      "schluessel": "125",
+      "tipp_nr": 125,
+      "tipp_titel": "Convert CSV to JSON",
+      "tipp_datum": "2024-09-25",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-125-convert-csv-to-json/",
+      "guertel": 4,
+      "thema": "JSON & Datenumwandlung",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welche Bausteine wandeln CSV laut Tipp in JSON um?",
+        "antworten": [
+          "Create HTML table",
+          "split(), Select und Parse JSON",
+          "Ein Premium-CSV-Connector"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du machst CSV-Dateien im Flow als strukturierte Daten nutzbar."
+    },
+    {
+      "schluessel": "126",
+      "tipp_nr": 126,
+      "tipp_titel": "User Context for Automated Tasks",
+      "tipp_datum": "2024-10-08",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-126-user-context-for-automated-tasks/",
+      "guertel": 5,
+      "thema": "Sicherheit & Benutzerkontext",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was ersetzt der Tipp durch eine zentrale App mit geplantem Flow?",
+        "antworten": [
+          "Die Teams-App",
+          "Viele einzelne Flows pro Person",
+          "Die Outlook-Verbindung"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du automatisierst persönliche Aufgaben zentral statt mit vielen Einzel-Flows."
+    },
+    {
+      "schluessel": "128",
+      "tipp_nr": 128,
+      "tipp_titel": "Dynamic Data Retrieval",
+      "tipp_datum": "2024-10-31",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-128-dynamic-data-retrieval/",
+      "guertel": 4,
+      "thema": "JSON & Datenumwandlung",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was ersetzt der Zugriff mit variablen Schlüsseln?",
+        "antworten": [
+          "Switch- und If-Kaskaden",
+          "Die Aktion Parse JSON",
+          "Den Trigger"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du holst Werte aus JSON dynamisch über einen Schlüssel."
+    },
+    {
+      "schluessel": "129",
+      "tipp_nr": 129,
+      "tipp_titel": "Case-sensitive SharePoint Filtering",
+      "tipp_datum": "2024-11-06",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-129-case-sensitive-sharepoint-filtering/",
+      "guertel": 4,
+      "thema": "Daten abfragen & schreiben",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Warum braucht es nach dem OData-Filter noch Filter array?",
+        "antworten": [
+          "Weil OData nur 100 Einträge liefert",
+          "Weil OData in SharePoint Gross- und Kleinschreibung ignoriert",
+          "Weil Filter array schneller ist als OData"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du filterst SharePoint-Daten exakt nach Schreibweise."
+    },
+    {
+      "schluessel": "133",
+      "tipp_nr": 133,
+      "tipp_titel": "SharePoint Updates with Power Automate, No Required Fields Needed",
+      "tipp_datum": "2025-01-22",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-133-sharepoint-updates-with-power-automate-no-required-fields-needed/",
+      "guertel": 4,
+      "thema": "Daten abfragen & schreiben",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie übergibst du den Wert für eine Choice-Spalte im JSON-Objekt?",
+        "antworten": [
+          "Als reine Zahl",
+          "Als Objekt mit der Eigenschaft Value",
+          "Gar nicht, Choice-Spalten gehen so nicht"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du aktualisierst einzelne SharePoint-Felder, ohne alle Pflichtfelder mitzugeben."
+    },
+    {
+      "schluessel": "135",
+      "tipp_nr": 135,
+      "tipp_titel": "One Flow, Many Users",
+      "tipp_datum": "2025-04-01",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-135-One-Flow-Many-Users/",
+      "guertel": 5,
+      "thema": "Sicherheit & Benutzerkontext",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was erreichst du mit der App als Startpunkt?",
+        "antworten": [
+          "Jede Person führt den Flow im eigenen Kontext aus",
+          "Alle Flows laufen unter dem Konto des Erstellers",
+          "Flows brauchen keine Verbindungen mehr"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du betreibst einen Flow für viele Personen ohne Kopien und Berechtigungschaos."
+    },
+    {
+      "schluessel": "138",
+      "tipp_nr": 138,
+      "tipp_titel": "Graph API via HTTP with Microsoft Entra ID",
+      "tipp_datum": "2025-06-25",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/",
+      "guertel": 4,
+      "thema": "HTTP & Microsoft Graph",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?",
+        "antworten": [
+          "Dem Token fehlt die Berechtigung für Chats",
+          "Chats lassen sich über Graph gar nicht lesen",
+          "Die Base Resource URL ist falsch gesetzt"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. Der Connector hat eine feste Liste an Berechtigungen. Chats gehören nicht dazu, die Rolle des Kontos ändert daran nichts.",
+          "Falsch. Graph bietet Chats an. Es fehlt nur die passende Berechtigung im Token dieses Connectors.",
+          "Falsch. Mit einer falschen Basis-URL scheiterten alle Aufrufe. /v1.0/me funktioniert aber."
+        ]
+      },
+      "lernziel": "Du rufst Microsoft Graph aus einem Flow ohne App-Registrierung auf.",
+      "slug": "microsoft-graph-ohne-app-registrierung",
+      "titel_de": "Microsoft Graph ohne App-Registrierung aufrufen",
+      "ausdruck": "https://graph.microsoft.com",
+      "kurztext_de": "Für Aufrufe an Microsoft Graph registrierst du normalerweise eine App in Microsoft Entra ID und verwaltest Secrets oder Zertifikate. Die Aktion «HTTP with Microsoft Entra ID (preauthorized)» nimmt dir das ab. Du meldest dich einmal an und setzt Base Resource URL und Resource URI beide auf https://graph.microsoft.com. Danach wählst du Methode und Endpunkt, etwa GET auf /v1.0/me, und der Connector holt das Token selbst. Der Haken: Das Token trägt eine feste Liste an Berechtigungen. Profil, Gruppen, Dateien, Mails und Kalender gehen, Chats, Präsenz oder Anmeldeprotokolle nicht, auch nicht mit einer Adminrolle. Weitere Seiten einer Antwort holst du über @odata.nextLink.",
+      "wann_ja": "Für Graph-Abfragen im Namen der angemeldeten Person: Profil, Gruppen, Dateien, Mails, Kalender.",
+      "wann_nein": "Wenn du Chats, Präsenz, Anmeldeprotokolle oder Intune brauchst oder keine Premium-Lizenz hast.",
+      "fehler": "Einen 403 für eine falsche Abfrage halten. Fehlt die Berechtigung im Token, hilft keine andere Schreibweise.",
+      "lizenz": "premium",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/connectors/webcontents/",
+          "titel": "HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz"
+        }
+      ],
+      "suchbegriffe": [
+        "Microsoft Graph",
+        "HTTP with Microsoft Entra ID",
+        "Entra ID",
+        "App-Registrierung",
+        "403",
+        "nextLink"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/connectors/webcontents/",
+      "learn_titel": "HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz",
+      "limits": []
+    },
+    {
+      "schluessel": "139",
+      "tipp_nr": 139,
+      "tipp_titel": "Plus Address Tracking",
+      "tipp_datum": "2025-07-01",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-139-Plus-Address-Tracking/",
+      "guertel": 1,
+      "thema": "Mails, Teams & Kalender",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wie sieht eine Plus-Adresse aus?",
+        "antworten": [
+          "user@tag.domain.com",
+          "tag.user@domain.com",
+          "user+tag@domain.com"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du machst automatische Mails mit Plus-Adressen rückverfolgbar."
+    },
+    {
+      "schluessel": "140",
+      "tipp_nr": 140,
+      "tipp_titel": "Free Invoice OCR (Process 500 PDFs/Month for €0)",
+      "tipp_datum": "2025-08-01",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-140-free-invoice-ocr/",
+      "guertel": 4,
+      "thema": "KI & Copilot Studio",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welche zwei Bausteine kombiniert der Tipp?",
+        "antworten": [
+          "AI Builder und Excel",
+          "Teams und SharePoint",
+          "Einen OCR-Connector und Azure AI Language"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du verarbeitest Rechnungen automatisch im Rahmen kostenloser Kontingente."
+    },
+    {
+      "schluessel": "141",
+      "tipp_nr": 141,
+      "tipp_titel": "Text to Array",
+      "tipp_datum": "2025-08-19",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-141-text-to-array/",
+      "guertel": 2,
+      "thema": "Arrays & Filter",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Mit welcher Funktion wird mehrzeiliger Text zu einem Array?",
+        "antworten": [
+          "split()",
+          "join()",
+          "concat()"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du machst aus Textlisten verarbeitbare Arrays."
+    },
+    {
+      "schluessel": "142",
+      "tipp_nr": 142,
+      "tipp_titel": "Automate Outlook Categories",
+      "tipp_datum": "2025-08-26",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-142-automate-outlook-categories/",
+      "guertel": 4,
+      "thema": "Mails, Teams & Kalender",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welche Aktion setzt die Kategorien laut Tipp?",
+        "antworten": [
+          "Update event (V4) mit Kategorie-Feld",
+          "«Send an HTTP request» im Office 365 Outlook-Connector",
+          "Die Premium-HTTP-Aktion"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du kategorisierst Termine automatisch mit einer Standardaktion."
+    },
+    {
+      "schluessel": "143",
+      "tipp_nr": 143,
+      "tipp_titel": "Reduce AI Costs with Thumbnail-First Document Processing",
+      "tipp_datum": "2025-10-01",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-143-reduce-ai-costs/",
+      "guertel": 5,
+      "thema": "KI & Copilot Studio",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Warum zuerst nur das Thumbnail auswerten?",
+        "antworten": [
+          "Weil PDFs nicht unterstützt werden",
+          "Weil Thumbnails genauer sind als PDFs",
+          "Weil jede verarbeitete Seite KI-Kosten verursacht"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du senkst KI-Kosten mit einer Verarbeitung in Stufen."
+    },
+    {
+      "schluessel": "144",
+      "tipp_nr": 144,
+      "tipp_titel": "Infinite Approvals beyond 30 days",
+      "tipp_datum": "2025-10-15",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/",
+      "guertel": 6,
+      "thema": "Approvals",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Warum setzt die erste Aktion TriggerFlow sofort auf Nein?",
+        "antworten": [
+          "Damit die Approval nach Ablauf gelöscht wird",
+          "Damit Änderungen im Lauf keinen neuen Start auslösen",
+          "Damit die genehmigende Person keine Mail bekommt"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. TriggerFlow steuert nur den Start des Flows. Mit der Approval selbst hat die Spalte nichts zu tun.",
+          "Richtig. Nur der Pfad nach dem Timeout setzt TriggerFlow wieder auf Ja. So gibt es genau einen Neustart pro Zyklus.",
+          "Falsch. Ob eine neue Mail kommt, hängt von der gewählten Methode ab, nicht von TriggerFlow."
+        ]
+      },
+      "lernziel": "Du baust Genehmigungen, die länger als 30 Tage offen bleiben dürfen.",
+      "slug": "approvals-ueber-30-tage",
+      "titel_de": "Approvals über 30 Tage am Leben halten",
+      "ausdruck": "@equals(triggerOutputs()?['body/TriggerFlow'], true)",
+      "kurztext_de": "Ein Flow-Lauf endet nach {limit:laufzeit_max}. Wartet eine Approval länger, läuft sie ins Leere, und niemand merkt es. Die Lösung: Der Flow startet sich selbst neu. Eine SharePoint-Liste bekommt die Spalte TriggerFlow (Ja/Nein). Der Trigger «When an item is created or modified» läuft dank einer Trigger Condition nur, wenn sie auf Ja steht, und die erste Aktion setzt sie sofort auf Nein. Die Approval bekommt einen Timeout knapp unter der Grenze, etwa P29D. Läuft er ab, setzt eine Aktion mit «has timed out» TriggerFlow wieder auf Ja, und ein neuer Lauf beginnt. Willst du keine neue Mail, trennst du «Create an approval» und «Wait for an approval» und speicherst die Approval-ID.",
+      "wann_ja": "Bei Verträgen, Budgets, Rechtsprüfungen und anderen Entscheiden, die länger als einen Monat liegen können.",
+      "wann_nein": "Wenn die Entscheidung sicher innerhalb von {limit:laufzeit_max} fällt. Dann reicht ein Timeout mit Pfad für «has timed out».",
+      "fehler": "Die Trigger Condition weglassen. Dann startet jede Änderung am Element einen neuen Lauf, und der Flow ruft sich endlos selbst auf.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/connectors/approvals/",
+          "titel": "Standard approvals, Connector-Referenz"
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/connectors/sharepointonline/",
+          "titel": "SharePoint, Connector-Referenz"
+        }
+      ],
+      "limits": [
+        "laufzeit_max"
+      ],
+      "suchbegriffe": [
+        "Approval",
+        "30 Tage",
+        "Timeout",
+        "TriggerFlow",
+        "Trigger Condition",
+        "Neustart",
+        "Wait for an approval"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/wait-for-approvals",
+      "learn_titel": "Wait for approval in a cloud flow"
+    },
+    {
+      "schluessel": "145",
+      "tipp_nr": 145,
+      "tipp_titel": "Power Platform Tools",
+      "tipp_datum": "2025-11-01",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-145-power-platform-tools/",
+      "guertel": 1,
+      "thema": "Werkzeuge",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wobei hilft der Trigger Condition Builder?",
+        "antworten": [
+          "Er startet Flows nach Zeitplan",
+          "Er erzeugt gültige Trigger Conditions aus deinen Daten",
+          "Er exportiert Solutions"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du erzeugst häufige Ausdrücke mit Werkzeugen statt von Hand."
+    },
+    {
+      "schluessel": "146",
+      "tipp_nr": 146,
+      "tipp_titel": "Encode & Decode Functions",
+      "tipp_datum": "2025-12-04",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-146-encode-decode-functions/",
+      "guertel": 3,
+      "thema": "Ausdrücke",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wie schützt du einen Apostroph in einem OData-Filter?",
+        "antworten": [
+          "Du codierst ihn mit encodeUriComponent()",
+          "Du setzt einen Backslash davor",
+          "Du verdoppelst ihn mit replace()"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. encodeUriComponent() gehört in URLs. Im OData-Filter zerstört es die Syntax der Abfrage.",
+          "Falsch. Ein Backslash maskiert in OData keinen Apostroph. Der Text endet trotzdem an dieser Stelle.",
+          "Richtig. In OData stehen zwei Apostrophe für einen Apostroph im Wert, und der Filter bleibt gültig."
+        ]
+      },
+      "lernziel": "Du verhinderst, dass Sonderzeichen Filter und Aufrufe brechen.",
+      "slug": "apostrophe-und-sonderzeichen-codieren",
+      "titel_de": "Apostrophe und Sonderzeichen richtig codieren",
+      "ausdruck": "replace(Title,'''','''''')",
+      "kurztext_de": "Sonderzeichen in Werten brechen Abfragen und Anfragen, weil der Flow sie als Teil der Syntax liest. Welche Lösung passt, hängt davon ab, wohin der Wert geht. In einem OData-Filter wie Title eq 'Tom's Diner' beendet der Apostroph den Text zu früh. Du verdoppelst ihn mit replace(), dann steht in der Abfrage 'Tom''s Diner'. Für Werte in einer URL nutzt du encodeUriComponent(), das Leerzeichen, Fragezeichen und Apostrophe in Prozent-Codes umwandelt. Codierte Werte von aussen liest du mit decodeUriComponent() zurück. Für Text im Body einer JSON-Anfrage baust du das Objekt mit setProperty() und json() auf. Dann maskiert der Flow Anführungszeichen, Backslashes und Zeilenumbrüche selbst.",
+      "wann_ja": "Wenn Namen, Titel oder Freitext in Filtern, URLs oder JSON-Anfragen landen.",
+      "wann_nein": "Wenn der Wert nur angezeigt oder in ein Feld geschrieben wird und nie Teil einer Abfrage oder URL ist.",
+      "fehler": "encodeUriComponent() in einem OData-Filter einsetzen. Das codiert auch die Syntax, und die Abfrage scheitert.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Apostroph",
+        "OData",
+        "encodeUriComponent",
+        "decodeUriComponent",
+        "replace",
+        "Sonderzeichen",
+        "JSON"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference",
+      "learn_titel": "Reference for functions in workflow expressions",
+      "limits": []
+    },
+    {
+      "schluessel": "148",
+      "tipp_nr": 148,
+      "tipp_titel": "Limit Apply to Each with take()",
+      "tipp_datum": "2026-01-08",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-148-take-expression-limit-apply-to-each/",
+      "guertel": 2,
+      "thema": "Testen & Debugging",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was liefert take(array, 5), wenn das Array nur drei Einträge hat?",
+        "antworten": [
+          "Alle drei Einträge, ohne Fehler",
+          "Einen Fehler, weil Einträge fehlen",
+          "Drei Einträge und zwei leere dazu"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. take() nimmt höchstens die angegebene Anzahl. Sind es weniger, kommen alle vorhandenen Einträge zurück.",
+          "Falsch. take() bricht nicht ab, wenn das Array kürzer ist als die gewünschte Anzahl.",
+          "Falsch. take() füllt nichts auf. Es schneidet nur ab, was über die Anzahl hinausgeht."
+        ]
+      },
+      "lernziel": "Du testest Schleifen mit wenigen Einträgen, ohne den Flow umzubauen.",
+      "slug": "schleifen-beim-testen-mit-take-kuerzen",
+      "titel_de": "Schleifen beim Testen mit take() kürzen",
+      "ausdruck": "take(outputs('Select'), 5)",
+      "kurztext_de": "Eine Schleife über Hunderte Einträge zu testen, kostet bei jedem Lauf Zeit und Aktionen. Mit take() verarbeitest du beim Testen nur die ersten Einträge. Du ersetzt die Eingabe von Apply to each durch einen Ausdruck wie take(outputs('Select'), 5). Die Schleife läuft dann genau fünfmal, egal wie gross das Array ist. Hat das Array weniger Einträge, liefert take() einfach alle, ohne Fehler. So prüfst du die Logik in der Schleife an wenigen echten Datensätzen. Stimmt alles, nimmst du take() wieder heraus und wählst die ursprüngliche Ausgabe neu aus. Der Aufbau des Flows bleibt dabei unverändert.",
+      "wann_ja": "Beim Testen von Schleifen über grosse Listen oder Tabellen, bevor du den Flow auf alle Daten loslässt.",
+      "wann_nein": "Im Betrieb. Bleibt take() im Flow, verarbeitet er dauerhaft nur die ersten Einträge.",
+      "fehler": "take() nach dem Test im Flow vergessen. Ein Hinweis in der Aktion erinnert dich daran, es wieder zu entfernen.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "take",
+        "Apply to each",
+        "Schleife",
+        "Testen",
+        "Array",
+        "begrenzen"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference",
+      "learn_titel": "Reference for functions in workflow expressions",
+      "limits": []
+    },
+    {
+      "schluessel": "149",
+      "tipp_nr": 149,
+      "tipp_titel": "Approvals to a Shared Mailbox",
+      "tipp_datum": "2026-01-15",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-149-approvals-to-a-shared-mailbox/",
+      "guertel": 4,
+      "thema": "Approvals",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Woraus liest der Flow die Entscheidung bei «Send email with options»?",
+        "antworten": [
+          "Aus dem Approvals-Center des Postfachs",
+          "Aus dem dynamischen Wert SelectedOption",
+          "Aus einer Antwortmail an den Flow"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. Diese Aktion legt keine Approval an und erscheint deshalb nicht im Approvals-Center.",
+          "Richtig. SelectedOption enthält den geklickten Knopf, UserEmailAddress die Person, die geklickt hat.",
+          "Falsch. Es kommt keine Mail zurück. Der Klick geht direkt an den wartenden Flow."
+        ]
+      },
+      "lernziel": "Du holst Genehmigungen über ein gemeinsames Postfach ein.",
+      "slug": "entscheidungen-ueber-ein-geteiltes-postfach",
+      "titel_de": "Entscheidungen über ein geteiltes Postfach",
+      "kurztext_de": "Weist du «Start and wait for an approval» einem geteilten Postfach zu, sehen alle die Mail, aber ein Klick auf Approve bleibt wirkungslos. Die Approval gehört zur Identität des Postfachs, und wer klickt, ist nicht als Genehmiger eingetragen. Die Lösung ist die Aktion «Send email with options» aus Office 365 Outlook. Du trägst das geteilte Postfach bei To ein und die Knöpfe bei User Options, etwa Approve,Reject. Wer Zugriff auf das Postfach hat, kann antworten. Die Antwort steht in SelectedOption, und UserEmailAddress zeigt, wer geklickt hat. Einen Eintrag im Approvals-Center gibt es dabei nicht. Willst du die Entscheidung nachvollziehen, schreibst du sie selbst in eine Liste.",
+      "wann_ja": "Für Support-, Finanz- oder Dispositionspostfächer, in denen entscheidet, wer gerade da ist.",
+      "wann_nein": "Wenn du die Historie im Approvals-Center brauchst oder eine bestimmte Person entscheiden muss.",
+      "fehler": "Die Antwort nicht speichern. Ohne eigenen Eintrag gibt es kein Protokoll, wer wie entschieden hat.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/connectors/office365/",
+          "titel": "Office 365 Outlook, Connector-Referenz"
+        }
+      ],
+      "suchbegriffe": [
+        "Approval",
+        "geteiltes Postfach",
+        "Shared Mailbox",
+        "Send email with options",
+        "SelectedOption",
+        "Outlook"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/connectors/office365/#send-email-with-options",
+      "learn_titel": "Office 365 Outlook: Send email with options",
+      "limits": [],
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "150",
+      "tipp_nr": 150,
+      "tipp_titel": "JSON & HTML to Markdown with Office Scripts",
+      "tipp_datum": "2026-01-22",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-150-json-html-to-markdown-office-scripts/",
+      "guertel": 5,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Womit entsteht das Markdown in diesem Tipp?",
+        "antworten": [
+          "Mit verschachtelten Schleifen",
+          "Mit einer KI-Aktion",
+          "Mit zwei Office Scripts"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du erzeugst Markdown im Flow ohne KI und ohne Schleifen."
+    },
+    {
+      "schluessel": "153",
+      "tipp_nr": 153,
+      "tipp_titel": "Rename a SharePoint File with Power Automate",
+      "tipp_datum": "2026-03-05",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/",
+      "guertel": 4,
+      "thema": "SharePoint REST",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Warum benennst du per FileLeafRef um statt zu kopieren?",
+        "antworten": [
+          "Kopieren geht in Bibliotheken grundsätzlich nicht",
+          "FileLeafRef ändert auch gleich die Dateiendung",
+          "ID, Versionen und Metadaten bleiben erhalten"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. Kopieren geht, erzeugt aber ein neues Element mit neuer ID und ohne Versionsverlauf.",
+          "Falsch. Eine geänderte Endung ignoriert SharePoint bei FileLeafRef. Dafür brauchst du MoveTo.",
+          "Richtig. MERGE auf FileLeafRef ändert nur den Namen. Das Element selbst bleibt dasselbe."
+        ]
+      },
+      "lernziel": "Du benennst SharePoint-Dateien um, ohne sie zu kopieren.",
+      "slug": "sharepoint-datei-per-rest-umbenennen",
+      "titel_de": "SharePoint-Datei per REST umbenennen",
+      "ausdruck": "X-HTTP-Method: MERGE",
+      "kurztext_de": "Der SharePoint-Connector hat keine Aktion zum Umbenennen. Kopieren und Löschen erzeugt eine neue Datei mit neuer ID, ohne Versionsverlauf und Metadaten. Sauberer ist ein einziger Aufruf mit «Send an HTTP request to SharePoint». Du schickst einen POST an das Listenelement der Datei und machst ihn mit den Kopfzeilen IF-MATCH: * und X-HTTP-Method: MERGE zu einer Änderung. Im Body steht nur das Feld FileLeafRef mit dem neuen Dateinamen samt Endung. Mit den Kopfzeilen odata=nometadata brauchst du keinen Eintrag __metadata. Die Antwort 204 bedeutet Erfolg. ID, Versionen, Berechtigungen und Metadaten bleiben erhalten. Die Dateiendung lässt sich so nicht ändern, dafür gibt es MoveTo.",
+      "wann_ja": "Für Namenskonventionen, Referenznummern im Dateinamen oder Korrekturen an hochgeladenen Dateien.",
+      "wann_nein": "Wenn sich die Dateiendung oder der Ordner ändern soll. Dafür ist MoveTo der richtige Aufruf.",
+      "fehler": "Den Namen ohne Endung in FileLeafRef schreiben. Der Dateiname enthält die Endung immer mit.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/connectors/sharepointonline/",
+          "titel": "SharePoint, Connector-Referenz"
+        }
+      ],
+      "suchbegriffe": [
+        "SharePoint",
+        "umbenennen",
+        "FileLeafRef",
+        "MERGE",
+        "REST",
+        "Send an HTTP request to SharePoint"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/sharepoint/dev/business-apps/power-automate/guidance/working-with-send-sp-http-request",
+      "learn_titel": "Working with the SharePoint Send HTTP Request flow action",
+      "limits": []
+    },
+    {
+      "schluessel": "154",
+      "tipp_nr": 154,
+      "tipp_titel": "Preserve Author, Editor & Dates on Copied SharePoint Files",
+      "tipp_datum": "2026-03-19",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-154-preserve-author-created-metadata-power-automate/",
+      "guertel": 5,
+      "thema": "SharePoint REST",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welche Felder stellt der MERGE-Aufruf wieder her?",
+        "antworten": [
+          "AuthorId, EditorId, Created und Modified",
+          "Die Berechtigungen",
+          "Nur den Dateinamen"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du migrierst Dateien, ohne Ersteller und Daten zu verlieren."
+    },
+    {
+      "schluessel": "155",
+      "tipp_nr": 155,
+      "tipp_titel": "Float Before Div for Correct Decimals in Power Automate",
+      "tipp_datum": "2026-04-02",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-155-float-before-div-power-automate/",
+      "guertel": 2,
+      "thema": "Ausdrücke",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Was ergibt der Ausdruck div(75, 200)?",
+        "antworten": [
+          "0, weil beide Werte ganze Zahlen sind",
+          "0.375, weil div() immer Dezimalzahlen liefert",
+          "Einen Fehler, weil 75 kleiner ist als 200"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": [
+          "Richtig. Bei zwei ganzen Zahlen rechnet div() ganzzahlig und schneidet die Nachkommastellen ab.",
+          "Falsch. Eine Dezimalzahl kommt erst heraus, wenn mindestens ein Wert eine Dezimalzahl ist, etwa nach float().",
+          "Falsch. Ein kleinerer Dividend ist kein Fehler. Scheitern würde die Division nur am Teiler 0."
+        ]
+      },
+      "lernziel": "Du rechnest Prozente und Verhältnisse mit korrekten Nachkommastellen.",
+      "slug": "float-vor-div",
+      "titel_de": "float() vor div() für korrekte Dezimalstellen",
+      "ausdruck": "div(float(a), float(b))",
+      "kurztext_de": "Du berechnest einen Anteil aus zwei Zählungen und bekommst 0 statt 37.5. Der Grund: div() rechnet ganzzahlig, wenn beide Werte ganze Zahlen sind, und schneidet die Nachkommastellen ab. div(75, 200) ergibt deshalb 0, und mal 100 bleibt es 0. Sobald einer der beiden Werte eine Dezimalzahl ist, liefert div() eine Dezimalzahl. Am sichersten wandelst du beide Werte mit float() um. Für die Anzeige rundest du das Ergebnis mit formatNumber() auf zwei Stellen, daraus wird allerdings Text. Und schütze die Division mit if(), wenn der Teiler 0 sein kann, sonst scheitert die Aktion.",
+      "wann_ja": "Bei Prozenten, Anteilen und Durchschnitten aus Zählungen oder length().",
+      "wann_nein": "Wenn du bewusst eine ganze Zahl willst. Dann ist die ganzzahlige Division richtig, div(7, 2) ergibt 3.",
+      "fehler": "Das Ergebnis von formatNumber() weiterverrechnen. Es ist Text und muss erst mit float() zurück in eine Zahl.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "div",
+        "float",
+        "Dezimalstellen",
+        "Prozent",
+        "formatNumber",
+        "Division"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference",
+      "learn_titel": "Reference for functions in workflow expressions",
+      "limits": []
+    },
+    {
+      "schluessel": "156",
+      "tipp_nr": 156,
+      "tipp_titel": "Handle Files up to 1 GB with Chunking in Power Automate",
+      "tipp_datum": "2026-04-16",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-156-handle-large-files-chunking-power-automate/",
+      "guertel": 4,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was bringt dich trotz Chunking zurück auf die 100-MB-Grenze?",
+        "antworten": [
+          "Eine Variable, ein Ausdruck oder ein Compose zwischen den Dateiaktionen",
+          "Ein Scope um die Aktionen",
+          "Ein manueller Trigger"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du verarbeitest grosse Dateien bis 1 GB im Flow."
+    },
+    {
+      "schluessel": "157",
+      "tipp_nr": 157,
+      "tipp_titel": "Run Office Scripts from Power Automate – 20 Everyday Excel Automations",
+      "tipp_datum": "2026-04-30",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-157-run-office-scripts-power-automate/",
+      "guertel": 3,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Mit welcher Aktion rufst du ein Office Script aus dem Flow auf?",
+        "antworten": [
+          "«Run script» im Excel Online (Business)-Connector",
+          "«Create file» in OneDrive",
+          "«Update a row» in einer Schleife"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du ersetzt lange Excel-Aktionsketten durch ein Office Script."
+    },
+    {
+      "schluessel": "158",
+      "tipp_nr": 158,
+      "tipp_titel": "Return Flow Data to Power Apps with ParseJSON (No Premium)",
+      "tipp_datum": "2026-05-14",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-158-parsejson-return-flow-data-power-apps/",
+      "guertel": 3,
+      "thema": "Power Apps und Flows",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Wie kommen verschachtelte Daten aus einem Flow in eine Canvas-App?",
+        "antworten": [
+          "Mit einem eigenen Ausgang für jedes Feld",
+          "Als JSON-Text in einem Ausgang, dann ParseJSON",
+          "Über die Aktion Response des HTTP-Connectors"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": [
+          "Falsch. Flache Ausgänge bilden keine Listen und keine verschachtelten Datensätze ab.",
+          "Richtig. Ein Textausgang trägt jede Struktur, und ParseJSON baut sie in der App wieder auf.",
+          "Falsch. Für diesen Fall reicht «Respond to a Power App or flow». Response brauchst du nicht."
+        ]
+      },
+      "lernziel": "Du gibst verschachtelte Daten ohne Premium an eine App zurück.",
+      "slug": "flow-daten-als-json-an-power-apps",
+      "titel_de": "Flow-Daten als JSON an Power Apps zurückgeben",
+      "kurztext_de": "Ein Flow liefert einer Canvas-App oft mehr als einen einzelnen Wert, zum Beispiel einen Kunden mit allen Bestellungen. «Respond to a Power App or flow» kennt aber nur flache Ausgaben wie Text, Zahl oder Ja/Nein. Statt Dutzende Felder anzulegen, baust du das Ergebnis im Flow als JSON, etwa mit Select und Compose, und gibst es als einen einzigen Textausgang zurück. In Power Apps liest ParseJSON den Text wieder ein. Ohne Typangabe bekommst du einen dynamischen Wert und wandelst Felder mit Text(), Value() oder Boolean() um. Mit einem Type als zweitem Argument erhältst du direkt typisierte Datensätze und Tabellen. Die Aktion Response aus dem HTTP-Connector brauchst du dafür nicht.",
+      "wann_ja": "Wenn die App Listen oder verschachtelte Datensätze aus dem Flow braucht.",
+      "wann_nein": "Bei sehr grossen Datenmengen. Dann speichert der Flow die Daten in SharePoint oder Dataverse, und die App liest sie direkt.",
+      "fehler": "Felder aus ParseJSON ohne Umwandlung in Formeln verwenden. Ohne Type liefert ParseJSON dynamische Werte.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "Power Apps",
+        "ParseJSON",
+        "JSON",
+        "Respond to a Power App or flow",
+        "Canvas-App",
+        "Rückgabe"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-parsejson",
+      "learn_titel": "ParseJSON function",
+      "limits": [],
+      "ausdruck": ""
+    },
+    {
+      "schluessel": "160",
+      "tipp_nr": 160,
+      "tipp_titel": "Set SharePoint Item Permissions with Power Automate",
+      "tipp_datum": "2026-06-11",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-160-set-sharepoint-permissions-power-automate/",
+      "guertel": 5,
+      "thema": "SharePoint REST",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welcher Aufruf kommt vor addroleassignment?",
+        "antworten": [
+          "resetroleinheritance",
+          "getbyid",
+          "breakroleinheritance"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du sperrst einzelne Einträge automatisch für bestimmte Personen."
+    },
+    {
+      "schluessel": "161",
+      "tipp_nr": 161,
+      "tipp_titel": "Clone a SharePoint List's Custom Columns to Another Site",
+      "tipp_datum": "2026-06-25",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-161-clone-sharepoint-list-custom-columns/",
+      "guertel": 6,
+      "thema": "SharePoint REST",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Mit welchem Endpunkt legst du die Spalten in der Zielliste an?",
+        "antworten": [
+          "addfield",
+          "fields/clone",
+          "createfieldasxml"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du überträgst Spalten einer Liste exakt auf eine andere Seite."
+    },
+    {
+      "schluessel": "162",
+      "tipp_nr": 162,
+      "tipp_titel": "Create a Private Teams Channel from a Flow",
+      "tipp_datum": "2026-07-09",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-162-create-private-teams-channel-from-flow/",
+      "guertel": 5,
+      "thema": "HTTP & Microsoft Graph",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was muss das members-Array für einen privaten Kanal enthalten?",
+        "antworten": [
+          "Nur Gäste",
+          "Mindestens einen Owner",
+          "Alle Teammitglieder"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du legst private Teams-Kanäle automatisch an."
+    },
+    {
+      "schluessel": "163",
+      "tipp_nr": 163,
+      "tipp_titel": "Create an ICS Calendar File in Power Automate",
+      "tipp_datum": "2026-07-23",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-163-create-ics-calendar-file-power-automate/",
+      "guertel": 4,
+      "thema": "Mails, Teams & Kalender",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welchen Inhaltstyp bekommt die ICS-Datei?",
+        "antworten": [
+          "application/pdf",
+          "text/calendar",
+          "text/plain"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du versendest Termine, die jede Person in ihren Kalender übernehmen kann."
+    },
+    {
+      "schluessel": "164",
+      "tipp_nr": 164,
+      "tipp_titel": "Invite External Users (Guests) to Microsoft Entra ID with Power Automate",
+      "tipp_datum": "2026-08-06",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-164-invite-external-guest-users-entra-id-power-automate/",
+      "guertel": 5,
+      "thema": "HTTP & Microsoft Graph",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welcher Graph-Endpunkt lädt Gäste ein?",
+        "antworten": [
+          "/v1.0/users",
+          "/v1.0/invitations",
+          "/v1.0/groups"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du lädst externe Personen automatisch als Gäste ein."
+    },
+    {
+      "schluessel": "165",
+      "tipp_nr": 165,
+      "tipp_titel": "Read On-Prem AD Attributes via the User Profile and $select",
+      "tipp_datum": "2026-08-13",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-165-read-onprem-ad-attributes-graph-select/",
+      "guertel": 4,
+      "thema": "HTTP & Microsoft Graph",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Warum fehlen onPremisesSamAccountName und Co. in der normalen Abfrage?",
+        "antworten": [
+          "Sie existieren nur in Exchange",
+          "Sie brauchen eine eigene Lizenz",
+          "Sie kommen nur zurück, wenn du sie mit $select anforderst"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du liest On-Prem-AD-Felder gezielt über Graph aus."
+    },
+    {
+      "schluessel": "166",
+      "tipp_nr": 166,
+      "tipp_titel": "Check if a Person Is Out of Office Before an Approval",
+      "tipp_datum": "2026-09-17",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-166-check-out-of-office-before-approval/",
+      "guertel": 3,
+      "thema": "Approvals",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Welche Aktion zeigt dir, ob eine Person abwesend ist?",
+        "antworten": [
+          "«Get user profile (V2)»",
+          "«Get mail tips for a mailbox (V2)»",
+          "«Get calendar view of events»"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du leitest Genehmigungen bei Abwesenheit an eine Vertretung um."
+    },
+    {
+      "schluessel": "167",
+      "tipp_nr": 167,
+      "tipp_titel": "Date Math Without a dateDiff() - the ticks() Trick",
+      "tipp_datum": "2026-09-25",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-167-ticks-date-math/",
+      "guertel": 4,
+      "thema": "Datum & Zeit",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Gibt es in Cloud-Flow-Ausdrücken eine Funktion dateDiff()?",
+        "antworten": [
+          "Ja, aber nur mit Premium",
+          "Ja, sie liefert die Tage als Zahl",
+          "Nein, du rechnest die Differenz mit ticks()"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du berechnest Zeitdifferenzen und vergleichst Daten zuverlässig."
+    },
+    {
+      "schluessel": "168",
+      "tipp_nr": 168,
+      "tipp_titel": "Collect Failed Action Details with the result() Function",
+      "tipp_datum": "2026-10-08",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/",
+      "guertel": 5,
+      "thema": "Fehlerbehandlung",
+      "seite": true,
+      "pool": true,
+      "quiz": {
+        "frage": "Worauf darf result() in einem Ausdruck zeigen?",
+        "antworten": [
+          "Auf jede beliebige Aktion im ganzen Flow",
+          "Nur auf den Trigger am Anfang des Flows",
+          "Auf einen Scope, Apply to each oder Until"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": [
+          "Falsch. Zeigt result() auf eine einfache Aktion wie Compose, scheitert schon das Speichern.",
+          "Falsch. Der Trigger enthält keine Aktionen. result() braucht einen Container mit Aktionen darin.",
+          "Richtig. result() liest die Aktionen in einem solchen Container. Zeigt es auf eine einfache Aktion, lässt sich der Flow nicht speichern."
+        ]
+      },
+      "lernziel": "Du gibst die echte Fehlermeldung an Personen oder Agents weiter.",
+      "slug": "echte-fehlermeldung-mit-result-auslesen",
+      "titel_de": "Die echte Fehlermeldung mit result() auslesen",
+      "ausdruck": "first(body('Filter_array'))?['error']?['message']",
+      "kurztext_de": "Scheitert ein Flow nachts, steht der Grund in der Run history. Wer ihn kennen muss, kann sie oft nicht öffnen. Die Funktion result() holt dir die Details: result('Try') liefert ein Array mit allen Aktionen der obersten Ebene des Scopes Try, je mit name, status, code und bei Fehlern einem Objekt error mit der Meldung. In einer Aktion, die nur bei «has failed» läuft, filterst du das Array mit Filter array auf status gleich Failed. Den Text holst du mit first(body('Filter_array'))?['error']?['message'] und schickst ihn per Mail weiter. result() funktioniert nur mit einem Scope, Apply to each oder Until. Liegt der Fehler tiefer, wendest du result() auf die innere Ebene an.",
+      "wann_ja": "Wenn Fachleute, Admins oder ein Agent wissen müssen, warum ein Lauf gescheitert ist.",
+      "wann_nein": "Für Aktionen ausserhalb des Scopes. result() sieht nur, was im Container steht.",
+      "fehler": "Nur die oberste Ebene auslesen. Fehler in einer Condition oder einem inneren Scope stehen erst im result() dieser Ebene.",
+      "lizenz": "standard",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs",
+          "titel": "Power Automate licensing FAQ"
+        }
+      ],
+      "suchbegriffe": [
+        "result",
+        "Fehlermeldung",
+        "Scope",
+        "Filter array",
+        "error",
+        "Copilot Studio"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/error-handling",
+      "learn_titel": "Employ robust error handling",
+      "limits": []
+    },
+    {
+      "schluessel": "169",
+      "tipp_nr": 169,
+      "tipp_titel": "Run a For-a-Selected-Item Flow from Any List with a Column Button",
+      "tipp_datum": "2026-09-10",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-169-run-for-a-selected-item-flows-from-any-list-column-button/",
+      "guertel": 5,
+      "thema": "Trigger",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wo läuft «For a selected item» laut Tipp nur?",
+        "antworten": [
+          "In der Default-Umgebung",
+          "Nur in Teams",
+          "In jeder Produktionsumgebung"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du startest Flows aus Listen per Button, ohne auf Premium auszuweichen."
+    },
+    {
+      "schluessel": "170",
+      "tipp_nr": 170,
+      "tipp_titel": "One Flow, Many Tools – a Switch Router for Copilot Studio Agents",
+      "tipp_datum": "2026-08-20",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-170-flow-as-agent-tool-switch-router/",
+      "guertel": 6,
+      "thema": "KI & Copilot Studio",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was steuert der Parameter action im Router-Flow?",
+        "antworten": [
+          "Die Lizenz des Flows",
+          "Die Sprache des Agents",
+          "Den Switch, der zu get, create oder update verzweigt"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du gibst einem Copilot-Studio-Agent mit einem Flow mehrere Werkzeuge."
+    },
+    {
+      "schluessel": "171",
+      "tipp_nr": 171,
+      "tipp_titel": "Debounce the Email Trigger with a Status Flag & Modified-Date Window",
+      "tipp_datum": "2026-10-15",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-171-debounce-email-trigger-status-flag-power-automate/",
+      "guertel": 6,
+      "thema": "Trigger",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was tut ein Run, der das Flag IsRunning auf Yes vorfindet?",
+        "antworten": [
+          "Nichts",
+          "Er setzt das Flag zurück",
+          "Er verarbeitet alle Mails noch einmal"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du bündelst viele Trigger-Ereignisse zu einer Verarbeitung."
+    },
+    {
+      "schluessel": "174",
+      "tipp_nr": 174,
+      "tipp_titel": "Self-Healing Connector Actions in Copilot Studio - Retry & Remember",
+      "tipp_datum": "2026-09-03",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/",
+      "guertel": 7,
+      "thema": "KI & Copilot Studio",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Warum kann ein Agent bei einem direkt gebundenen Connector Fehler nicht selbst korrigieren?",
+        "antworten": [
+          "Agents dürfen keine Connectoren nutzen",
+          "Connectoren liefern nie Fehler",
+          "Jeder Status ausserhalb von 2xx ist ein harter Fehler, das Modell sieht die Meldung nicht"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du baust Agent-Werkzeuge, die aus Fehlern lernen."
+    },
+    {
+      "schluessel": "193",
+      "tipp_nr": 193,
+      "tipp_titel": "Export a Power Automate Flow When the Export Option Is Missing",
+      "tipp_datum": "2026-09-24",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-193-export-flow-when-export-option-missing/",
+      "guertel": 2,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Was änderst du in der URL, um die versteckte Exportseite zu öffnen?",
+        "antworten": [
+          "/edit anhängen",
+          "?export=true anhängen",
+          "/details durch /export ersetzen"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du exportierst einen einzelnen Flow auch ohne sichtbare Schaltfläche."
+    },
+    {
+      "schluessel": "restore-earlier-version-flow-power-automate",
+      "tipp_nr": null,
+      "tipp_titel": "How to Restore an Earlier Version of Your Flow (Power Automate), from John Liu",
+      "tipp_datum": "2020-12-30",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2020/12/30/restore-earlier-version-flow-power-automate/",
+      "guertel": 1,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Wofür reicht die eingebaute Versionshistorie nicht aus?",
+        "antworten": [
+          "Eine frühere gespeicherte Version wiederherstellen",
+          "Einen ganz gelöschten Flow zurückholen",
+          "Ältere Versionen eines bestehenden Flows ansehen"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du stellst eine frühere Flow-Version wieder her und weisst, wann du zusätzlich ein Backup brauchst."
+    },
+    {
+      "schluessel": "send-1-1-message-flow-teams",
+      "tipp_nr": null,
+      "tipp_titel": "How to Send a 1:1 Message via Power Automate in Teams: Direct Personal Messaging Solution",
+      "tipp_datum": "2021-10-13",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2021/10/13/send-1-1-message-flow-teams/",
+      "guertel": 2,
+      "thema": "Mails, Teams & Kalender",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welche Einstellung sorgt dafür, dass die Teams-Nachricht von dir statt vom Flow-Bot kommt?",
+        "antworten": [
+          "Mehrere Empfänger im Chat eintragen",
+          "Post as «Flow bot»",
+          "Post as «User»"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du sendest aus einem Flow eine persönliche 1:1-Nachricht in Teams mit dir als Absender."
+    },
+    {
+      "schluessel": "power-automate-flows-vs-automate-rules",
+      "tipp_nr": null,
+      "tipp_titel": "Power Automate Flows vs Automate Rules: Performance and Efficiency Comparison by Daniel Christian",
+      "tipp_datum": "2022-03-09",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2022/03/09/power-automate-flows-vs-automate-rules/",
+      "guertel": 2,
+      "thema": "Trigger",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was passiert bei einem Flow ohne Trigger Condition, wenn ein Eintrag geändert wird, der die Bedingung im Flow nicht erfüllt?",
+        "antworten": [
+          "Der Flow startet gar nicht",
+          "SharePoint verwirft die Änderung",
+          "Der Flow startet trotzdem und verbraucht einen Run"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du entscheidest zwischen Automate Rule, Flow und Trigger Condition, um unnötige Runs zu vermeiden."
+    },
+    {
+      "schluessel": "fill-and-sign-word-document-power-apps-automate",
+      "tipp_nr": null,
+      "tipp_titel": "Fill and Sign a Word Document with Power Apps and Power Automate, without Premium Actions, from Paulie M",
+      "tipp_datum": "2022-04-27",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2022/04/27/fill-and-sign-word-document-power-apps-automate/",
+      "guertel": 5,
+      "thema": "Dateien & Dokumente",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Warum lässt sich eine Word-Vorlage so ohne Premium-Word-Connector befüllen?",
+        "antworten": [
+          "Weil Word Platzhalter beim Öffnen selbst füllt",
+          "Weil SharePoint Word-Dateien automatisch in Text umwandelt",
+          "Weil eine .docx-Datei ein ZIP-Archiv mit XML-Dateien ist"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du befüllst eine Word-Vorlage mit Standardaktionen über das XML im Archiv."
+    },
+    {
+      "schluessel": "how-to-track-the-current-progress-of-a-flow-in-the-powerapp",
+      "tipp_nr": null,
+      "tipp_titel": "How to Track the Current Progress of a Flow in PowerApps",
+      "tipp_datum": "2022-05-18",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2022/05/18/how-to-track-the-current-progress-of-a-flow-in-the-powerapp/",
+      "guertel": 4,
+      "thema": "Power Apps und Flows",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Warum braucht es für die Fortschrittsanzeige eine eigene StateLog-Liste?",
+        "antworten": [
+          "Weil Power Apps keine Flows starten kann",
+          "Weil «Respond to PowerApps» nur einmal antworten kann",
+          "Weil ein Timer nur SharePoint lesen kann"
+        ],
+        "richtig_index": 1,
+        "erklaerungen": []
+      },
+      "lernziel": "Du zeigst in einer App den Fortschritt eines laufenden Flows über eine Statusliste an."
+    },
+    {
+      "schluessel": "power-apps-elevated-permissions-power-automate",
+      "tipp_nr": null,
+      "tipp_titel": "Run Power Apps Actions with Elevated Permissions via Power Automate, from Reza Dorrani",
+      "tipp_datum": "2022-05-18",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2022/05/18/power-apps-elevated-permissions-power-automate/",
+      "guertel": 4,
+      "thema": "Sicherheit & Benutzerkontext",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Mit wessen Rechten läuft eine SharePoint-Aktion im Flow?",
+        "antworten": [
+          "Mit dem Konto der hinterlegten Verbindung",
+          "Immer mit dem Konto, das den Flow in der App auslöst",
+          "Automatisch mit Administratorrechten"
+        ],
+        "richtig_index": 0,
+        "erklaerungen": []
+      },
+      "lernziel": "Du gibst App-Benutzern gezielt erhöhte Rechte für genau eine Operation über einen Flow."
+    },
+    {
+      "schluessel": "return-an-array-from-powerautomate-to-powerapps-split-method",
+      "tipp_nr": null,
+      "tipp_titel": "Return an Array from Power Automate to Power Apps (ParseJSON and Split Method, No Premium)",
+      "tipp_datum": "2022-05-23",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2022/05/23/return-an-array-from-powerautomate-to-powerapps-split-method/",
+      "guertel": 3,
+      "thema": "Power Apps und Flows",
+      "seite": false,
+      "pool": true,
+      "quiz": {
+        "frage": "Wie gibst du ein Array aus einem Flow an Power Apps zurück?",
+        "antworten": [
+          "Direkt als Array-Ausgang der Antwortaktion",
+          "Nur über eine Premium-Aktion",
+          "Als JSON-Text in einem Textausgang und in der App mit ParseJSON entpacken"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du gibst Listen aus einem Flow ohne Premium an eine App zurück."
+    },
+    {
+      "schluessel": "how-to-restore-create-backup-flow",
+      "tipp_nr": null,
+      "tipp_titel": "How to Restore and Create a Backup from a Flow",
+      "tipp_datum": "2022-08-30",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2022/08/30/how-to-restore-create-backup-flow/",
+      "guertel": 3,
+      "thema": "ALM & Governance",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Was gilt, wenn derselbe Flow in mehreren Solutions liegt?",
+        "antworten": [
+          "Jede Solution enthält eine unabhängige Kopie",
+          "Der Flow wird automatisch deaktiviert",
+          "Es bleibt ein Flow, eine Änderung wirkt in allen Solutions"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du sicherst Flows über Solutions so, dass du auch gelöschte Flows zurückholen kannst."
+    },
+    {
+      "schluessel": "extract-html-table-email-power-automate",
+      "tipp_nr": null,
+      "tipp_titel": "Extract an HTML Table from an Email in Power Automate, with XPath, from Damien Bird",
+      "tipp_datum": "2022-11-10",
+      "tipp_url": "https://www.powerplatformtip.com/article/powerplatform/2022/11/10/extract-html-table-email-power-automate/",
+      "guertel": 5,
+      "thema": "JSON & Datenumwandlung",
+      "seite": false,
+      "pool": false,
+      "quiz": {
+        "frage": "Welche Funktionen kombinierst du, um Zellen einer HTML-Tabelle aus einer Mail zu lesen?",
+        "antworten": [
+          "split() und join()",
+          "json() und first()",
+          "xml() und xpath()"
+        ],
+        "richtig_index": 2,
+        "erklaerungen": []
+      },
+      "lernziel": "Du liest Tabellen aus HTML-Mails mit xml() und xpath() aus."
+    }
+  ]
+}

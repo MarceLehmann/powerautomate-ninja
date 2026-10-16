@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="de-CH" data-seite="premium" data-r="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/theme-init.js"></script>
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/premium.js" defer></script>
+<meta name="generator" content="KMUpower Flow-Dojo build">
+<title>Reicht meine Lizenz für Flows? Lizenz-Check | KMUpower Flow-Dojo</title>
+<meta name="description" content="Vier Fragen zu deinem Flow: Reicht die Lizenz aus Microsoft 365 oder brauchst du Power Automate Premium? Mit Quellen bei Microsoft Learn.">
+<meta name="robots" content="noindex">
+<meta name="dojo-build" content="testphase">
+<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/premium/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KMUpower Flow-Dojo">
+<meta property="og:locale" content="de_CH">
+<meta property="og:title" content="Reicht meine Lizenz für Flows? Lizenz-Check | KMUpower Flow-Dojo">
+<meta property="og:description" content="Vier Fragen zu deinem Flow: Reicht die Lizenz aus Microsoft 365 oder brauchst du Power Automate Premium? Mit Quellen bei Microsoft Learn.">
+<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/premium/">
+<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "name": "KMUpower Flow-Dojo",
+      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "inLanguage": "de-CH",
+      "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Start",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Lizenz-Check",
+          "item": "https://marcelehmann.github.io/powerautomate-ninja/premium/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../" aria-label="KMUpower Flow-Dojo, Startseite"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text" aria-hidden="true"><small>KMUpower</small><b>Flow-Dojo</b></span></a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="../techniken/">Techniken</a></li>
+        <li><a href="../pruefung/">Gürtelprüfung</a></li>
+        <li><a href="../premium/" aria-current="page">Lizenz-Check</a></li>
+        <li><a href="../dojo/">Mein Dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Technik suchen" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Strg K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dunkelmodus" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menü" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/></svg><span class="marke__text"><small>KMUpower</small><b>Flow-Dojo</b></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Menü schliessen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menü">
+    <ul>
+      <li><a href="../techniken/">Techniken</a></li>
+      <li><a href="../pruefung/">Gürtelprüfung</a></li>
+      <li><a href="../premium/">Lizenz-Check</a></li>
+      <li><a href="../heute/">Technik des Tages</a></li>
+      <li><a href="../dojo/">Mein Dojo</a></li>
+      <li><a href="../ueber/">Über</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Technik suchen</h2>
+    <label for="suche-feld" class="sr-only">Suchbegriff</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, Approval, Schleife">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Suche schliessen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Treffer"></ul>
+  <p class="suche__leer" hidden>Keine Technik gefunden. Versuch es mit JSON, Approval oder Schleife.</p>
+</dialog>
+<main id="main"><div class="wrap sektion--eng pruef">
+<nav class="krumen" aria-label="Brotkrumen"><ol><li><a href="../">Start</a></li><li><a href="./" aria-current="page">Lizenz-Check</a></li></ol></nav>
+<span class="label">Lizenz-Check, Stand 16.10.2026</span>
+<h1 id="h1">Reicht meine Lizenz?</h1>
+<p class="lead">Vier Fragen zu deinem Flow. Das Urteil sagt dir, ob die Lizenz aus Microsoft 365 reicht oder wofür du Power Automate Premium brauchst.</p>
+<div class="urteil pruefen" data-urteil role="status" aria-live="polite">Beantworte die vier Fragen, das Urteil erscheint hier.</div>
+<ul class="arrow-list" data-urteil-liste></ul>
+<form data-lizenz-check>
+<fieldset class="lfrage" id="q1">
+<legend>1. Mit welchen Datenquellen arbeitet dein Flow?</legend>
+<p class="klein">SharePoint, Office 365 Outlook, Microsoft Teams und Excel Online (Business) sind Standard-Connectoren.</p>
+<label class="wahl"><input type="radio" name="q1" value="m365" data-wirkung="standard" data-punkt=""><span>Nur SharePoint, Outlook, Teams oder Excel</span></label>
+<label class="wahl"><input type="radio" name="q1" value="andere" data-wirkung="pruefen" data-punkt="Connectoren zu anderen Systemen: Ob sie Standard oder Premium sind, zeigt die Liste der Premium-Connectoren."><span>Auch andere Systeme oder Fachanwendungen</span></label>
+<label class="wahl"><input type="radio" name="q1" value="unklar" data-wirkung="pruefen" data-punkt="Datenquellen klären und in der Liste der Premium-Connectoren nachsehen."><span>Weiss ich noch nicht</span></label>
+</fieldset>
+<fieldset class="lfrage" id="q2">
+<legend>2. Brauchst du einen Custom Connector oder «HTTP with Microsoft Entra ID»?</legend>
+
+<label class="wahl"><input type="radio" name="q2" value="nein" data-wirkung="standard" data-punkt=""><span>Nein</span></label>
+<label class="wahl"><input type="radio" name="q2" value="ja" data-wirkung="premium" data-punkt="Custom Connector oder HTTP with Microsoft Entra ID"><span>Ja</span></label>
+<label class="wahl"><input type="radio" name="q2" value="andere" data-wirkung="pruefen" data-punkt="Für andere Web-Schnittstellen: Zeigt die Aktion im Designer das Premium-Kennzeichen, brauchst du Premium."><span>Ich rufe eine andere Web-Schnittstelle auf</span></label>
+</fieldset>
+<fieldset class="lfrage" id="q3">
+<legend>3. Liest oder schreibt dein Flow Daten in Dataverse?</legend>
+
+<label class="wahl"><input type="radio" name="q3" value="nein" data-wirkung="standard" data-punkt=""><span>Nein</span></label>
+<label class="wahl"><input type="radio" name="q3" value="ja" data-wirkung="premium" data-punkt="Microsoft Dataverse"><span>Ja</span></label>
+</fieldset>
+<fieldset class="lfrage" id="q4">
+<legend>4. Soll dein Cloud Flow einen Desktop Flow auf einem Rechner starten?</legend>
+
+<label class="wahl"><input type="radio" name="q4" value="nein" data-wirkung="standard" data-punkt=""><span>Nein</span></label>
+<label class="wahl"><input type="radio" name="q4" value="ja" data-wirkung="premium" data-punkt="Desktop Flows aus einem Cloud Flow (RPA)"><span>Ja</span></label>
+</fieldset>
+</form>
+<section class="abschnitt" aria-labelledby="h-grundlage"><h2 id="h-grundlage">Worauf das Urteil beruht</h2>
+<ul class="arrow-list">
+<li>Mit einer Lizenz aus Microsoft 365 nutzt du Standard-Connectoren. Verwendet ein Flow keinen Premium-Connector, brauchst du keine Premium-Lizenz.</li>
+<li>Microsoft Dataverse und HTTP with Microsoft Entra ID sind Premium-Connectoren. Custom Connectors und Desktop Flows aus Cloud Flows sind in der Lizenz aus Microsoft 365 nicht enthalten.</li>
+<li>Startet ein automatisierter oder geplanter Flow mit Premium-Connector, braucht nur der Besitzer die Premium-Lizenz. Bei Flows, die Personen per Knopf starten, braucht sie jede Person, die startet.</li>
+<li>Voraussetzung ist, dass dein Abo aus Microsoft 365 Power Automate enthält. Welche Pläne das sind, steht in der Licensing FAQ.</li>
+</ul>
+<p class="klein">Quellen, Stand 16.10.2026: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>, <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license" rel="noopener">Deep dive on specific licenses</a>, <a href="https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-standard-connectors" rel="noopener">List of all Standard tier connectors</a>, <a href="https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-premium-connectors" rel="noopener">List of all Premium tier connectors</a>, <a href="https://learn.microsoft.com/en-us/connectors/commondataserviceforapps/" rel="noopener">Microsoft Dataverse, Connector-Referenz</a>, <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz</a>. Keine Lizenzberatung im Einzelfall: Für Verträge fragst du deinen Microsoft-Partner.</p>
+</section>
+<section class="abschnitt" aria-labelledby="h-standard"><h2 id="h-standard">Diese Techniken laufen mit Standard</h2>
+<ul class="dojo-liste"><li data-guertel-nr="1"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span><a href="../techniken/datum-direkt-mit-utcnow-formatieren/">Datum direkt in utcNow() formatieren</a></li><li data-guertel-nr="1"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span><a href="../techniken/flow-testen-vor-dem-einschalten/">Flow testen, bevor er live geht</a></li><li data-guertel-nr="1"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span><a href="../techniken/aktionen-ueber-my-clipboard-wiederverwenden/">Aktionen über My clipboard wiederverwenden</a></li><li data-guertel-nr="1"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span><a href="../techniken/mit-code-view-hinter-eine-aktion-schauen/">Mit Code View hinter eine Aktion schauen</a></li><li data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span><a href="../techniken/filter-array-im-advanced-mode/">Filter array im Advanced Mode</a></li><li data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span><a href="../techniken/feste-werte-in-compose-statt-variablen/">Feste Werte in Compose statt in Variablen</a></li><li data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span><a href="../techniken/duplikate-mit-union-entfernen/">Duplikate mit union() entfernen</a></li><li data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span><a href="../techniken/mit-static-result-testen/">Mit Static Result testen, ohne Daten zu ändern</a></li><li data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span><a href="../techniken/sicherer-zugriff-mit-fragezeichen/">Sicherer Zugriff mit dem Operator ?</a></li><li data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span><a href="../techniken/schleifen-beim-testen-mit-take-kuerzen/">Schleifen beim Testen mit take() kürzen</a></li><li data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span><a href="../techniken/float-vor-div/">float() vor div() für korrekte Dezimalstellen</a></li><li data-guertel-nr="3"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span><a href="../techniken/fehler-mit-try-catch-finally-abfangen/">Fehler mit Try, Catch und Finally abfangen</a></li><li data-guertel-nr="3"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span><a href="../techniken/flow-laeufe-nacheinander/">Flow-Läufe nacheinander statt gleichzeitig</a></li><li data-guertel-nr="3"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span><a href="../techniken/timeout-fuer-lange-aktionen/">Timeout für lange Aktionen festlegen</a></li><li data-guertel-nr="3"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span><a href="../techniken/apostrophe-und-sonderzeichen-codieren/">Apostrophe und Sonderzeichen richtig codieren</a></li><li data-guertel-nr="3"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span><a href="../techniken/flow-daten-als-json-an-power-apps/">Flow-Daten als JSON an Power Apps zurückgeben</a></li><li data-guertel-nr="4"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span><a href="../techniken/apply-to-each-parallel/">Apply to each parallel laufen lassen</a></li><li data-guertel-nr="4"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span><a href="../techniken/json-objekt-statt-switch/">JSON-Objekt statt Switch</a></li><li data-guertel-nr="4"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span><a href="../techniken/json-schema-das-null-vertraegt/">JSON-Schema, das null verträgt</a></li><li data-guertel-nr="4"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span><a href="../techniken/entscheidungen-ueber-ein-geteiltes-postfach/">Entscheidungen über ein geteiltes Postfach</a></li><li data-guertel-nr="4"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span><a href="../techniken/sharepoint-datei-per-rest-umbenennen/">SharePoint-Datei per REST umbenennen</a></li><li data-guertel-nr="5"><span class="band-punkt" data-guertel-nr="5" aria-hidden="true"></span><a href="../techniken/echte-fehlermeldung-mit-result-auslesen/">Die echte Fehlermeldung mit result() auslesen</a></li><li data-guertel-nr="6"><span class="band-punkt" data-guertel-nr="6" aria-hidden="true"></span><a href="../techniken/approvals-ueber-30-tage/">Approvals über 30 Tage am Leben halten</a></li></ul>
+</section>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, ohne Tracking. Dein Fortschritt bleibt in deinem Browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../techniken/">Alle Techniken</a></li>
+          <li><a href="../pruefung/">Gürtelprüfung</a></li>
+          <li><a href="../premium/">Reicht meine Lizenz?</a></li>
+          <li><a href="../heute/">Technik des Tages</a></li>
+          <li><a href="../kalender/montag.ics" download>Jeden Montag eine Frage im Kalender</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../ueber/">Über das Flow-Dojo</a></li>
+          <li><a href="../impressum/">Impressum</a></li>
+          <li><a href="../datenschutz/">Datenschutz</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft und die Produktnamen der Power Platform (z. B. Power Apps, Power Automate, Copilot Studio) sind Marken der Microsoft-Unternehmensgruppe. Dies ist eine unabhängige Website von Marcel Lehmann. Sie wird nicht von Microsoft betrieben, gesponsert oder unterstützt.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

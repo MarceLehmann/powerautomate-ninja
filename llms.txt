@@ -1,0 +1,37 @@
+# KMUpower Flow-Dojo
+
+> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.
+
+## Seiten
+
+- [Gürtelprüfung](https://marcelehmann.github.io/powerautomate-ninja/pruefung/): Selbsttest von Weiss bis Braun
+- [Lizenz-Check](https://marcelehmann.github.io/powerautomate-ninja/premium/): Reicht die Lizenz aus Microsoft 365?
+- [Alle Techniken](https://marcelehmann.github.io/powerautomate-ninja/techniken/): nach Gürtel geordnet
+- [Über](https://marcelehmann.github.io/powerautomate-ninja/ueber/): Methode und Herkunft der Fragen
+
+## Techniken
+
+- [Datum direkt in utcNow() formatieren](https://marcelehmann.github.io/powerautomate-ninja/techniken/datum-direkt-mit-utcnow-formatieren/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/
+- [Flow testen, bevor er live geht](https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-testen-vor-dem-einschalten/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-9-powerautomate-preview/
+- [Aktionen über My clipboard wiederverwenden](https://marcelehmann.github.io/powerautomate-ninja/techniken/aktionen-ueber-my-clipboard-wiederverwenden/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-12-components-for-powerautomate/
+- [Mit Code View hinter eine Aktion schauen](https://marcelehmann.github.io/powerautomate-ninja/techniken/mit-code-view-hinter-eine-aktion-schauen/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-89-code-view-peak-code/
+- [Filter array im Advanced Mode](https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/
+- [Feste Werte in Compose statt in Variablen](https://marcelehmann.github.io/powerautomate-ninja/techniken/feste-werte-in-compose-statt-variablen/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-5-less-variables/
+- [Duplikate mit union() entfernen](https://marcelehmann.github.io/powerautomate-ninja/techniken/duplikate-mit-union-entfernen/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-7-union-and-filterarray/
+- [Mit Static Result testen, ohne Daten zu ändern](https://marcelehmann.github.io/powerautomate-ninja/techniken/mit-static-result-testen/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-36-static-result/
+- [Sicherer Zugriff mit dem Operator ?](https://marcelehmann.github.io/powerautomate-ninja/techniken/sicherer-zugriff-mit-fragezeichen/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-59-handle-dynamic-content/
+- [Schleifen beim Testen mit take() kürzen](https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-148-take-expression-limit-apply-to-each/
+- [float() vor div() für korrekte Dezimalstellen](https://marcelehmann.github.io/powerautomate-ninja/techniken/float-vor-div/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-155-float-before-div-power-automate/
+- [Fehler mit Try, Catch und Finally abfangen](https://marcelehmann.github.io/powerautomate-ninja/techniken/fehler-mit-try-catch-finally-abfangen/): Oranger Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/
+- [Flow-Läufe nacheinander statt gleichzeitig](https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/): Oranger Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/
+- [Timeout für lange Aktionen festlegen](https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/): Oranger Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-109-use-timeout/
+- [Apostrophe und Sonderzeichen richtig codieren](https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/): Oranger Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-146-encode-decode-functions/
+- [Flow-Daten als JSON an Power Apps zurückgeben](https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/): Oranger Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-158-parsejson-return-flow-data-power-apps/
+- [Apply to each parallel laufen lassen](https://marcelehmann.github.io/powerautomate-ninja/techniken/apply-to-each-parallel/): Grüner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-75-boost-efficiency-with-concurrency-control/
+- [JSON-Objekt statt Switch](https://marcelehmann.github.io/powerautomate-ninja/techniken/json-objekt-statt-switch/): Grüner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-100-bypassing-complexity-in-powerautomate/
+- [JSON-Schema, das null verträgt](https://marcelehmann.github.io/powerautomate-ninja/techniken/json-schema-das-null-vertraegt/): Grüner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-104-efficient-json-handling/
+- [Microsoft Graph ohne App-Registrierung aufrufen](https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/): Grüner Gürtel, Premium. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/
+- [Entscheidungen über ein geteiltes Postfach](https://marcelehmann.github.io/powerautomate-ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/): Grüner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-149-approvals-to-a-shared-mailbox/
+- [SharePoint-Datei per REST umbenennen](https://marcelehmann.github.io/powerautomate-ninja/techniken/sharepoint-datei-per-rest-umbenennen/): Grüner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/
+- [Die echte Fehlermeldung mit result() auslesen](https://marcelehmann.github.io/powerautomate-ninja/techniken/echte-fehlermeldung-mit-result-auslesen/): Blauer Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/
+- [Approvals über 30 Tage am Leben halten](https://marcelehmann.github.io/powerautomate-ninja/techniken/approvals-ueber-30-tage/): Brauner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/

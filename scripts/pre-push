@@ -1,0 +1,15 @@
+#!/bin/sh
+# KMUpower Dojo: verhindert, dass ein Vorschau-Build (Banner) veroeffentlicht wird.
+# Einrichten: cp scripts/pre-push .git/hooks/pre-push
+# Vorher: node scripts/build.mjs --produktion
+# Testphase (Marcel 15.10.2026): Build mit --testphase ist erlaubt, wenn jede Seite noindex traegt und kein Banner da ist.
+if grep -q 'content="testphase"' index.html 2>/dev/null; then
+  if grep -rl --include=*.html 'class="vorschau-banner"' . 2>/dev/null | grep -v '^./_recherche/' | grep -q .; then
+    echo "Push abgebrochen: Testphase-Build enthaelt noch Vorschau-Banner."; exit 1
+  fi
+  ohne=$(grep -rL --include=*.html 'content="noindex"' . 2>/dev/null | grep -v -e '^./_recherche/' -e '^./templates/' -e '^./node_modules/' -e '^./[0-9]*/')
+  if [ -n "$ohne" ]; then echo "Push abgebrochen: Testphase-Seiten ohne noindex:"; echo "$ohne"; exit 1; fi
+  node scripts/links.mjs || { echo "Push abgebrochen: Linkpruefung fehlgeschlagen."; exit 1; }
+  exit 0
+fi
+node scripts/links.mjs --livegang || { echo "Push abgebrochen: Im Ordner liegt noch ein Vorschau-Build. Erst node scripts/build.mjs --produktion."; exit 1; }
