@@ -862,20 +862,25 @@ function baueBilder() {
   // Favicon: Kopf von Tusch wie copilot.ninja, Hintergrund im Papierton dieser Seite
   if (L === 'de') schreibe('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 -4 96 96"><rect x="20" y="-4" width="96" height="96" rx="16" fill="#EDF2F9"/><path fill="#B4301A" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path fill="#15171B" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path fill="#EDF2F9" d="M31 38l62-5 1 13-63 5z"/><path fill="none" stroke="#15171B" stroke-width="4.2" stroke-linecap="round" d="M46 44.6h9M68 42.4h9"/></svg>\n`);
   const schrift = "Bahnschrift, 'Arial Narrow', sans-serif";
+  // Vorschaubilder im Farbton dieser Seite (16.10.2026), mit Tusch wie bei copilot.ninja. Tusch traegt den Guertel der Karte.
+  const tuschFarben = (hex) => `.t-koerper{fill:#15171B}.t-gesicht{fill:#EDF2F9}.t-augen{fill:none;stroke:#15171B;stroke-width:3.6;stroke-linecap:round}.t-band,.t-pinsel-spitze{fill:#B4301A}.t-guertel,.t-guertel-enden{fill:${hex};stroke:#6E7C93;stroke-width:1.2;stroke-linejoin:round}.t-pinsel-stiel{fill:none;stroke:#15171B;stroke-width:3;stroke-linecap:round}.t-hand{fill:#15171B}.t-rolle,.t-strich{display:none}`;
+  const tuschSvg = (hex) => `<style>${tuschFarben(hex)}</style>` + partial('tusch').replace(/<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
   const karteSvg = (titel1, titel2, unter, hex) => `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-<rect width="1200" height="630" fill="#F4EFE6"/>
+<rect width="1200" height="630" fill="#EDF2F9"/>
 ${BAND_HEX.map((c, i) => `<rect x="${i * (1200 / 7)}" y="604" width="${1200 / 7 + 1}" height="26" fill="${c}"/>`).join('')}
-<rect x="0" y="603" width="1200" height="1.5" fill="#8A7F6C"/>
-<text x="80" y="120" font-family="${schrift}" font-weight="600" font-size="30" letter-spacing="4" fill="#4E525B">POWERPLATFORMACADEMY DOJO  ·  POWER AUTOMATE</text>
+<rect x="0" y="603" width="1200" height="1.5" fill="#6E7C93"/>
+<rect x="0" y="0" width="1200" height="8" fill="#0F5BB5"/>
+<text x="80" y="112" font-family="${schrift}" font-weight="600" font-size="38" fill="#15171B">PowerPlatformAcademy Dojo</text>
+<text x="80" y="152" font-family="${schrift}" font-weight="700" font-size="26" letter-spacing="3" fill="#0F5BB5">POWER AUTOMATE</text>
 <text x="76" y="270" font-family="${schrift}" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">${titel1}</text>
 <text x="76" y="380" font-family="${schrift}" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">${titel2}</text>
 <path d="M80 404C190 394 300 392 420 398" fill="none" stroke="#B4301A" stroke-width="12" stroke-linecap="round"/>
-<text x="80" y="490" font-family="'Segoe UI', system-ui, sans-serif" font-size="34" fill="#4E525B">${unter}</text>
-<g transform="translate(860 150) scale(9)"><path d="M2 11h28v7H2z" fill="${hex}" stroke="#15171B" stroke-width=".5"/><path d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4" fill="${hex}" stroke="#15171B" stroke-width=".5"/><rect x="11.5" y="8.5" width="9" height="12" rx="2.2" fill="#15171B"/></g>
+<text x="80" y="490" font-family="'Segoe UI', system-ui, sans-serif" font-size="34" fill="#4A5160">${unter}</text>
+<g transform="translate(862 150) scale(2.55)">${tuschSvg(hex)}</g>
 </svg>
 `;
-  if (L === 'de') schreibe('og-image.svg', karteSvg('Welcher', 'Flow-Gürtel?', 'Fragen und Erklärungen zu Flows, auf Deutsch.', '#B4301A'));
-  else schreibe('assets/img/en/og-image.svg', karteSvg('Which', 'flow belt?', 'Questions and explanations on flows.', '#B4301A'));
+  if (L === 'de') schreibe('og-image.svg', karteSvg('Welcher', 'Flow-Gürtel?', 'Fragen und Erklärungen zu Flows, auf Deutsch.', '#FBFAF5'));
+  else schreibe('assets/img/en/og-image.svg', karteSvg('Which', 'flow belt?', 'Questions and explanations on flows.', '#FBFAF5'));
   for (const g of GUERTEL) schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(g.name.split(' ')[0], T('Gürtel', 'belt'), esc(g.erreicht_satz).slice(0, 70), g.hex));
 }
 function minifiziere(css) {
