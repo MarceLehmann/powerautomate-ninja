@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Apostrophe und Sonderzeichen richtig codieren | KMUpower Flow-Dojo</title>
 <meta name="description" content="Apostrophe und Sonderzeichen richtig codieren: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apostrophe-und-sonderzeichen-codieren/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
+<link rel="canonical" href="https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/apostrophe-und-sonderzeichen-codieren/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Apostrophe und Sonderzeichen richtig codieren | KMUpower Flow-Dojo">
 <meta property="og:description" content="Apostrophe und Sonderzeichen richtig codieren: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-orange.png">
+<meta property="og:url" content="https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-orange.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "@id": "https://powerautomate.ninja/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "url": "https://powerautomate.ninja/",
       "inLanguage": "de-CH",
       "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/#technik",
+      "@id": "https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/#technik",
       "name": "Apostrophe und Sonderzeichen richtig codieren",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/",
+      "url": "https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/",
       "inLanguage": "de-CH",
       "learningResourceType": "Quiz",
       "educationalLevel": "Oranger Gürtel",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+        "@id": "https://powerautomate.ninja/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/#quiz",
+      "name": "Quizfrage: Apostrophe und Sonderzeichen richtig codieren",
+      "inLanguage": "de-CH",
+      "educationalLevel": "Oranger Gürtel",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-146-encode-decode-functions/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Wie schützt du einen Apostroph in einem OData-Filter?",
+          "text": "Wie schützt du einen Apostroph in einem OData-Filter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 2,
+            "text": "Du verdoppelst ihn mit replace()",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Richtig. In OData stehen zwei Apostrophe für einen Apostroph im Wert, und der Filter bleibt gültig."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "Du codierst ihn mit encodeUriComponent()",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. encodeUriComponent() gehört in URLs. Im OData-Filter zerstört es die Syntax der Abfrage."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Du setzt einen Backslash davor",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Ein Backslash maskiert in OData keinen Apostroph. Der Text endet trotzdem an dieser Stelle."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Start",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+          "item": "https://powerautomate.ninja/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniken",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+          "item": "https://powerautomate.ninja/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Apostrophe und Sonderzeichen richtig codieren",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/"
+          "item": "https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Wie%20sch%C3%BCtzt%20du%20einen%20Apostroph%20in%20einem%20OData-Filter%3F%0A%0AA)%20Du%20codierst%20ihn%20mit%20encodeUriComponent()%0AB)%20Du%20setzt%20einen%20Backslash%20davor%0AC)%20Du%20verdoppelst%20ihn%20mit%20replace()%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Fapostrophe-und-sonderzeichen-codieren%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Wie schützt du einen Apostroph in einem OData-Filter?&#10;&#10;A) Du codierst ihn mit encodeUriComponent()&#10;B) Du setzt einen Backslash davor&#10;C) Du verdoppelst ihn mit replace()&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/apostrophe-und-sonderzeichen-codieren/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20146&amp;body=Frage%3A%20Wie%20sch%C3%BCtzt%20du%20einen%20Apostroph%20in%20einem%20OData-Filter%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
-<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/146</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Wie%20sch%C3%BCtzt%20du%20einen%20Apostroph%20in%20einem%20OData-Filter%3F%0A%0AA)%20Du%20codierst%20ihn%20mit%20encodeUriComponent()%0AB)%20Du%20setzt%20einen%20Backslash%20davor%0AC)%20Du%20verdoppelst%20ihn%20mit%20replace()%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Fapostrophe-und-sonderzeichen-codieren%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Wie schützt du einen Apostroph in einem OData-Filter?&#10;&#10;A) Du codierst ihn mit encodeUriComponent()&#10;B) Du setzt einen Backslash davor&#10;C) Du verdoppelst ihn mit replace()&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://powerautomate.ninja/techniken/apostrophe-und-sonderzeichen-codieren/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20146&amp;body=Frage%3A%20Wie%20sch%C3%BCtzt%20du%20einen%20Apostroph%20in%20einem%20OData-Filter%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: powerautomate.ninja/146</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-146-encode-decode-functions/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-146" rel="noopener">PowerPlatformTip #146</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference" rel="noopener">Reference for functions in workflow expressions</a>.</p>
 <nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/timeout-fuer-lange-aktionen/" rel="prev"><span>Vorherige Technik</span>Timeout für lange Aktionen festlegen</a><a href="../../techniken/flow-daten-als-json-an-power-apps/" rel="next"><span>Nächste Technik</span>Flow-Daten als JSON an Power Apps zurückgeben</a></nav>

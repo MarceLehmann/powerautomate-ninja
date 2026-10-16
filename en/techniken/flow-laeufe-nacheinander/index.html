@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Run flows one after another | KMUpower Flow-Dojo</title>
 <meta name="description" content="Run flows one after another: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Run flows one after another | KMUpower Flow-Dojo">
 <meta property="og:description" content="Run flows one after another: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-orange.png">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-orange.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "@id": "https://powerautomate.ninja/en/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "url": "https://powerautomate.ninja/en/",
       "inLanguage": "en",
       "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/#technik",
+      "@id": "https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/#technik",
       "name": "Run flows one after another",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/",
+      "url": "https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/",
       "inLanguage": "en",
       "learningResourceType": "Quiz",
       "educationalLevel": "Orange belt",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/#quiz",
+      "name": "Quiz question: Run flows one after another",
+      "inLanguage": "en",
+      "educationalLevel": "Orange belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "What happens to new trigger events with a parallelism of 1?",
+          "text": "What happens to new trigger events with a parallelism of 1?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 1,
+            "text": "They wait until the current run has finished",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. Further runs wait in a queue and start one after another."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "They are discarded immediately and never run",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. New trigger events wait. Whether each one becomes a run is only uncertain once the queue is full."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "They still run in parallel, just more slowly",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. With a parallelism of 1, exactly one run is active at a time, all others wait."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+          "item": "https://powerautomate.ninja/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniques",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+          "item": "https://powerautomate.ninja/en/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Run flows one after another",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/"
+          "item": "https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20happens%20to%20new%20trigger%20events%20with%20a%20parallelism%20of%201%3F%0A%0AA)%20They%20are%20discarded%20immediately%20and%20never%20run%0AB)%20They%20wait%20until%20the%20current%20run%20has%20finished%0AC)%20They%20still%20run%20in%20parallel%2C%20just%20more%20slowly%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fflow-laeufe-nacheinander%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What happens to new trigger events with a parallelism of 1?&#10;&#10;A) They are discarded immediately and never run&#10;B) They wait until the current run has finished&#10;C) They still run in parallel, just more slowly&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%2035&amp;body=Question%3A%20What%20happens%20to%20new%20trigger%20events%20with%20a%20parallelism%20of%201%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
-<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/35</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20happens%20to%20new%20trigger%20events%20with%20a%20parallelism%20of%201%3F%0A%0AA)%20They%20are%20discarded%20immediately%20and%20never%20run%0AB)%20They%20wait%20until%20the%20current%20run%20has%20finished%0AC)%20They%20still%20run%20in%20parallel%2C%20just%20more%20slowly%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fflow-laeufe-nacheinander%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What happens to new trigger events with a parallelism of 1?&#10;&#10;A) They are discarded immediately and never run&#10;B) They wait until the current run has finished&#10;C) They still run in parallel, just more slowly&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%2035&amp;body=Question%3A%20What%20happens%20to%20new%20trigger%20events%20with%20a%20parallelism%20of%201%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/35</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-35" rel="noopener">PowerPlatformTip #35</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/limits-and-config" rel="noopener">Limits of automated, scheduled, and instant flows</a>.</p>
 <nav class="blaettern" aria-label="More techniques"><a href="../../techniken/fehler-mit-try-catch-finally-abfangen/" rel="prev"><span>Previous technique</span>Catch errors with Try, Catch and Finally</a><a href="../../techniken/timeout-fuer-lange-aktionen/" rel="next"><span>Next technique</span>Set a timeout for long-running actions</a></nav>

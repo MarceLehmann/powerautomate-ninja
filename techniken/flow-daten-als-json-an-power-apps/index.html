@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Flow-Daten als JSON an Power Apps zurückgeben | KMUpower Flow-Dojo</title>
 <meta name="description" content="Flow-Daten als JSON an Power Apps zurückgeben: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-daten-als-json-an-power-apps/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/">
+<link rel="canonical" href="https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/flow-daten-als-json-an-power-apps/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Flow-Daten als JSON an Power Apps zurückgeben | KMUpower Flow-Dojo">
 <meta property="og:description" content="Flow-Daten als JSON an Power Apps zurückgeben: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-orange.png">
+<meta property="og:url" content="https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-orange.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "@id": "https://powerautomate.ninja/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "url": "https://powerautomate.ninja/",
       "inLanguage": "de-CH",
       "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/#technik",
+      "@id": "https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/#technik",
       "name": "Flow-Daten als JSON an Power Apps zurückgeben",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/",
+      "url": "https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/",
       "inLanguage": "de-CH",
       "learningResourceType": "Quiz",
       "educationalLevel": "Oranger Gürtel",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+        "@id": "https://powerautomate.ninja/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/#quiz",
+      "name": "Quizfrage: Flow-Daten als JSON an Power Apps zurückgeben",
+      "inLanguage": "de-CH",
+      "educationalLevel": "Oranger Gürtel",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-158-parsejson-return-flow-data-power-apps/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Wie kommen verschachtelte Daten aus einem Flow in eine Canvas-App?",
+          "text": "Wie kommen verschachtelte Daten aus einem Flow in eine Canvas-App?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 1,
+            "text": "Als JSON-Text in einem Ausgang, dann ParseJSON",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Richtig. Ein Textausgang trägt jede Struktur, und ParseJSON baut sie in der App wieder auf."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "Mit einem eigenen Ausgang für jedes Feld",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Flache Ausgänge bilden keine Listen und keine verschachtelten Datensätze ab."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "Über die Aktion Response des HTTP-Connectors",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Für diesen Fall reicht «Respond to a Power App or flow». Response brauchst du nicht."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Start",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+          "item": "https://powerautomate.ninja/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniken",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+          "item": "https://powerautomate.ninja/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Flow-Daten als JSON an Power Apps zurückgeben",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/"
+          "item": "https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Wie%20kommen%20verschachtelte%20Daten%20aus%20einem%20Flow%20in%20eine%20Canvas-App%3F%0A%0AA)%20Mit%20einem%20eigenen%20Ausgang%20f%C3%BCr%20jedes%20Feld%0AB)%20Als%20JSON-Text%20in%20einem%20Ausgang%2C%20dann%20ParseJSON%0AC)%20%C3%9Cber%20die%20Aktion%20Response%20des%20HTTP-Connectors%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Fflow-daten-als-json-an-power-apps%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Wie kommen verschachtelte Daten aus einem Flow in eine Canvas-App?&#10;&#10;A) Mit einem eigenen Ausgang für jedes Feld&#10;B) Als JSON-Text in einem Ausgang, dann ParseJSON&#10;C) Über die Aktion Response des HTTP-Connectors&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-daten-als-json-an-power-apps/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20158&amp;body=Frage%3A%20Wie%20kommen%20verschachtelte%20Daten%20aus%20einem%20Flow%20in%20eine%20Canvas-App%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
-<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/158</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Wie%20kommen%20verschachtelte%20Daten%20aus%20einem%20Flow%20in%20eine%20Canvas-App%3F%0A%0AA)%20Mit%20einem%20eigenen%20Ausgang%20f%C3%BCr%20jedes%20Feld%0AB)%20Als%20JSON-Text%20in%20einem%20Ausgang%2C%20dann%20ParseJSON%0AC)%20%C3%9Cber%20die%20Aktion%20Response%20des%20HTTP-Connectors%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Fflow-daten-als-json-an-power-apps%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Wie kommen verschachtelte Daten aus einem Flow in eine Canvas-App?&#10;&#10;A) Mit einem eigenen Ausgang für jedes Feld&#10;B) Als JSON-Text in einem Ausgang, dann ParseJSON&#10;C) Über die Aktion Response des HTTP-Connectors&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://powerautomate.ninja/techniken/flow-daten-als-json-an-power-apps/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20158&amp;body=Frage%3A%20Wie%20kommen%20verschachtelte%20Daten%20aus%20einem%20Flow%20in%20eine%20Canvas-App%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: powerautomate.ninja/158</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-158-parsejson-return-flow-data-power-apps/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-158" rel="noopener">PowerPlatformTip #158</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-parsejson" rel="noopener">ParseJSON function</a>.</p>
 <nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/apostrophe-und-sonderzeichen-codieren/" rel="prev"><span>Vorherige Technik</span>Apostrophe und Sonderzeichen richtig codieren</a><a href="../../techniken/apply-to-each-parallel/" rel="next"><span>Nächste Technik</span>Apply to each parallel laufen lassen</a></nav>

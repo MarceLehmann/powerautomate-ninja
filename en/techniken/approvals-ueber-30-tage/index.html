@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Keep approvals alive beyond 30 days | KMUpower Flow-Dojo</title>
 <meta name="description" content="Keep approvals alive beyond 30 days: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/approvals-ueber-30-tage/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/approvals-ueber-30-tage/">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/approvals-ueber-30-tage/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/approvals-ueber-30-tage/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Keep approvals alive beyond 30 days | KMUpower Flow-Dojo">
 <meta property="og:description" content="Keep approvals alive beyond 30 days: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-braun.png">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-braun.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "@id": "https://powerautomate.ninja/en/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "url": "https://powerautomate.ninja/en/",
       "inLanguage": "en",
       "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/#technik",
+      "@id": "https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/#technik",
       "name": "Keep approvals alive beyond 30 days",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/",
+      "url": "https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/",
       "inLanguage": "en",
       "learningResourceType": "Quiz",
       "educationalLevel": "Brown belt",
@@ -73,8 +71,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/#quiz",
+      "name": "Quiz question: Keep approvals alive beyond 30 days",
+      "inLanguage": "en",
+      "educationalLevel": "Brown belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Why does the first action set TriggerFlow to No right away?",
+          "text": "Why does the first action set TriggerFlow to No right away?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 1,
+            "text": "So changes during the run don't trigger a new start",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. Only the path after the timeout sets TriggerFlow back to Yes. That gives exactly one restart per cycle."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "So the approval is deleted when it expires",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. TriggerFlow only controls when the flow starts. The column has nothing to do with the approval itself."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "So the approver doesn't receive an email",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. Whether a new email is sent depends on the chosen method, not on TriggerFlow."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -83,19 +134,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+          "item": "https://powerautomate.ninja/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniques",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+          "item": "https://powerautomate.ninja/en/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Keep approvals alive beyond 30 days",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/"
+          "item": "https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/"
         }
       ]
     }
@@ -179,8 +230,8 @@
 <p class="kurs-zeile">Prefer to learn with guidance? The <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-144" rel="noopener">Power Automate live course of the Power Platform Academy</a> takes you from the basics to error handling and scopes in four weeks.</p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Why%20does%20the%20first%20action%20set%20TriggerFlow%20to%20No%20right%20away%3F%0A%0AA)%20So%20the%20approval%20is%20deleted%20when%20it%20expires%0AB)%20So%20changes%20during%20the%20run%20don't%20trigger%20a%20new%20start%0AC)%20So%20the%20approver%20doesn't%20receive%20an%20email%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fapprovals-ueber-30-tage%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Why does the first action set TriggerFlow to No right away?&#10;&#10;A) So the approval is deleted when it expires&#10;B) So changes during the run don't trigger a new start&#10;C) So the approver doesn't receive an email&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/approvals-ueber-30-tage/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%20144&amp;body=Question%3A%20Why%20does%20the%20first%20action%20set%20TriggerFlow%20to%20No%20right%20away%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
-<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/144</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Why%20does%20the%20first%20action%20set%20TriggerFlow%20to%20No%20right%20away%3F%0A%0AA)%20So%20the%20approval%20is%20deleted%20when%20it%20expires%0AB)%20So%20changes%20during%20the%20run%20don't%20trigger%20a%20new%20start%0AC)%20So%20the%20approver%20doesn't%20receive%20an%20email%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fapprovals-ueber-30-tage%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Why does the first action set TriggerFlow to No right away?&#10;&#10;A) So the approval is deleted when it expires&#10;B) So changes during the run don't trigger a new start&#10;C) So the approver doesn't receive an email&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%20144&amp;body=Question%3A%20Why%20does%20the%20first%20action%20set%20TriggerFlow%20to%20No%20right%20away%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/144</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-144" rel="noopener">PowerPlatformTip #144</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/wait-for-approvals" rel="noopener">Wait for approval in a cloud flow</a>.</p>
 <nav class="blaettern" aria-label="More techniques"><a href="../../techniken/echte-fehlermeldung-mit-result-auslesen/" rel="prev"><span>Previous technique</span>Read the real error message with result()</a><a href="../../pruefung/" rel="next"><span>Done</span>To the belt exam</a></nav>

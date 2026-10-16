@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Read the real error message with result() | KMUpower Flow-Dojo</title>
 <meta name="description" content="Read the real error message with result(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Read the real error message with result() | KMUpower Flow-Dojo">
 <meta property="og:description" content="Read the real error message with result(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-blau.png">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-blau.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "@id": "https://powerautomate.ninja/en/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "url": "https://powerautomate.ninja/en/",
       "inLanguage": "en",
       "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/#technik",
+      "@id": "https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/#technik",
       "name": "Read the real error message with result()",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/",
+      "url": "https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/",
       "inLanguage": "en",
       "learningResourceType": "Quiz",
       "educationalLevel": "Blue belt",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/#quiz",
+      "name": "Quiz question: Read the real error message with result()",
+      "inLanguage": "en",
+      "educationalLevel": "Blue belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "What may result() point to in an expression?",
+          "text": "What may result() point to in an expression?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 2,
+            "text": "A Scope, Apply to each or Until",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. result() reads the actions inside such a container. If it points to a simple action, the flow cannot be saved."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "Any action anywhere in the whole flow",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. If result() points to a simple action such as Compose, even saving fails."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Only the trigger at the start of the flow",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. The trigger contains no actions. result() needs a container with actions inside."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+          "item": "https://powerautomate.ninja/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniques",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+          "item": "https://powerautomate.ninja/en/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Read the real error message with result()",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/"
+          "item": "https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 <p class="kurs-zeile">Prefer to learn with guidance? The <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-168" rel="noopener">Power Automate live course of the Power Platform Academy</a> takes you from the basics to error handling and scopes in four weeks.</p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20may%20result()%20point%20to%20in%20an%20expression%3F%0A%0AA)%20Any%20action%20anywhere%20in%20the%20whole%20flow%0AB)%20Only%20the%20trigger%20at%20the%20start%20of%20the%20flow%0AC)%20A%20Scope%2C%20Apply%20to%20each%20or%20Until%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fechte-fehlermeldung-mit-result-auslesen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What may result() point to in an expression?&#10;&#10;A) Any action anywhere in the whole flow&#10;B) Only the trigger at the start of the flow&#10;C) A Scope, Apply to each or Until&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%20168&amp;body=Question%3A%20What%20may%20result()%20point%20to%20in%20an%20expression%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
-<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/168</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20may%20result()%20point%20to%20in%20an%20expression%3F%0A%0AA)%20Any%20action%20anywhere%20in%20the%20whole%20flow%0AB)%20Only%20the%20trigger%20at%20the%20start%20of%20the%20flow%0AC)%20A%20Scope%2C%20Apply%20to%20each%20or%20Until%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fechte-fehlermeldung-mit-result-auslesen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What may result() point to in an expression?&#10;&#10;A) Any action anywhere in the whole flow&#10;B) Only the trigger at the start of the flow&#10;C) A Scope, Apply to each or Until&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%20168&amp;body=Question%3A%20What%20may%20result()%20point%20to%20in%20an%20expression%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/168</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-168" rel="noopener">PowerPlatformTip #168</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/error-handling" rel="noopener">Employ robust error handling</a>.</p>
 <nav class="blaettern" aria-label="More techniques"><a href="../../techniken/sharepoint-datei-per-rest-umbenennen/" rel="prev"><span>Previous technique</span>Rename a SharePoint file via REST</a><a href="../../techniken/approvals-ueber-30-tage/" rel="next"><span>Next technique</span>Keep approvals alive beyond 30 days</a></nav>

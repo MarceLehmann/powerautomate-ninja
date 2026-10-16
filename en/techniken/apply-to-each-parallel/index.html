@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Run Apply to each in parallel | KMUpower Flow-Dojo</title>
 <meta name="description" content="Run Apply to each in parallel: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/apply-to-each-parallel/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/apply-to-each-parallel/">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/apply-to-each-parallel/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/apply-to-each-parallel/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/apply-to-each-parallel/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/apply-to-each-parallel/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Run Apply to each in parallel | KMUpower Flow-Dojo">
 <meta property="og:description" content="Run Apply to each in parallel: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-gruen.png">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/apply-to-each-parallel/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gruen.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "@id": "https://powerautomate.ninja/en/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "url": "https://powerautomate.ninja/en/",
       "inLanguage": "en",
       "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/#technik",
+      "@id": "https://powerautomate.ninja/en/techniken/apply-to-each-parallel/#technik",
       "name": "Run Apply to each in parallel",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/",
+      "url": "https://powerautomate.ninja/en/techniken/apply-to-each-parallel/",
       "inLanguage": "en",
       "learningResourceType": "Quiz",
       "educationalLevel": "Green belt",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/apply-to-each-parallel/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/apply-to-each-parallel/#quiz",
+      "name": "Quiz question: Run Apply to each in parallel",
+      "inLanguage": "en",
+      "educationalLevel": "Green belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-75-boost-efficiency-with-concurrency-control/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "When must you not raise the concurrency of a loop?",
+          "text": "When must you not raise the concurrency of a loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 1,
+            "text": "When it increments a variable or appends to an array",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. Parallel iterations read and write the same variable at the same time and overwrite each other."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "When it has to process more than a hundred items",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. Concurrency saves the most time precisely when there are many independent items."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "When it reads items from a SharePoint list",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. The source does not matter. What counts is whether the iterations depend on each other."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+          "item": "https://powerautomate.ninja/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniques",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+          "item": "https://powerautomate.ninja/en/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Run Apply to each in parallel",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/"
+          "item": "https://powerautomate.ninja/en/techniken/apply-to-each-parallel/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 <p class="kurs-zeile">Prefer to learn with guidance? The <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-75" rel="noopener">Power Automate live course of the Power Platform Academy</a> takes you from the basics to error handling and scopes in four weeks.</p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20When%20must%20you%20not%20raise%20the%20concurrency%20of%20a%20loop%3F%0A%0AA)%20When%20it%20has%20to%20process%20more%20than%20a%20hundred%20items%0AB)%20When%20it%20increments%20a%20variable%20or%20appends%20to%20an%20array%0AC)%20When%20it%20reads%20items%20from%20a%20SharePoint%20list%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fapply-to-each-parallel%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: When must you not raise the concurrency of a loop?&#10;&#10;A) When it has to process more than a hundred items&#10;B) When it increments a variable or appends to an array&#10;C) When it reads items from a SharePoint list&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/apply-to-each-parallel/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%2075&amp;body=Question%3A%20When%20must%20you%20not%20raise%20the%20concurrency%20of%20a%20loop%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
-<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/75</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20When%20must%20you%20not%20raise%20the%20concurrency%20of%20a%20loop%3F%0A%0AA)%20When%20it%20has%20to%20process%20more%20than%20a%20hundred%20items%0AB)%20When%20it%20increments%20a%20variable%20or%20appends%20to%20an%20array%0AC)%20When%20it%20reads%20items%20from%20a%20SharePoint%20list%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fapply-to-each-parallel%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: When must you not raise the concurrency of a loop?&#10;&#10;A) When it has to process more than a hundred items&#10;B) When it increments a variable or appends to an array&#10;C) When it reads items from a SharePoint list&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://powerautomate.ninja/en/techniken/apply-to-each-parallel/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%2075&amp;body=Question%3A%20When%20must%20you%20not%20raise%20the%20concurrency%20of%20a%20loop%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/75</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-75-boost-efficiency-with-concurrency-control/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-75" rel="noopener">PowerPlatformTip #75</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/limits-and-config" rel="noopener">Limits of automated, scheduled, and instant flows</a>.</p>
 <nav class="blaettern" aria-label="More techniques"><a href="../../techniken/flow-daten-als-json-an-power-apps/" rel="prev"><span>Previous technique</span>Return flow data to Power Apps as JSON</a><a href="../../techniken/json-objekt-statt-switch/" rel="next"><span>Next technique</span>JSON object instead of Switch</a></nav>

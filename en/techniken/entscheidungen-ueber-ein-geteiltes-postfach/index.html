@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Decisions through a shared mailbox | KMUpower Flow-Dojo</title>
 <meta name="description" content="Decisions through a shared mailbox: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Decisions through a shared mailbox | KMUpower Flow-Dojo">
 <meta property="og:description" content="Decisions through a shared mailbox: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-gruen.png">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gruen.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "@id": "https://powerautomate.ninja/en/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "url": "https://powerautomate.ninja/en/",
       "inLanguage": "en",
       "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/#technik",
+      "@id": "https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/#technik",
       "name": "Decisions through a shared mailbox",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/",
+      "url": "https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/",
       "inLanguage": "en",
       "learningResourceType": "Quiz",
       "educationalLevel": "Green belt",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/#quiz",
+      "name": "Quiz question: Decisions through a shared mailbox",
+      "inLanguage": "en",
+      "educationalLevel": "Green belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-149-approvals-to-a-shared-mailbox/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Where does the flow read the decision from with Send email with options?",
+          "text": "Where does the flow read the decision from with Send email with options?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 1,
+            "text": "From the dynamic value SelectedOption",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. SelectedOption contains the clicked button, UserEmailAddress the person who clicked."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "From the mailbox's Approvals center",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. This action creates no approval and therefore does not appear in the Approvals center."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "From a reply email sent to the flow",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. No email comes back. The click goes straight to the waiting flow."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+          "item": "https://powerautomate.ninja/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniques",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+          "item": "https://powerautomate.ninja/en/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Decisions through a shared mailbox",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/"
+          "item": "https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 <p class="kurs-zeile">Prefer to learn with guidance? The <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-149" rel="noopener">Power Automate live course of the Power Platform Academy</a> takes you from the basics to error handling and scopes in four weeks.</p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Where%20does%20the%20flow%20read%20the%20decision%20from%20with%20Send%20email%20with%20options%3F%0A%0AA)%20From%20the%20mailbox's%20Approvals%20center%0AB)%20From%20the%20dynamic%20value%20SelectedOption%0AC)%20From%20a%20reply%20email%20sent%20to%20the%20flow%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fentscheidungen-ueber-ein-geteiltes-postfach%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Where does the flow read the decision from with Send email with options?&#10;&#10;A) From the mailbox's Approvals center&#10;B) From the dynamic value SelectedOption&#10;C) From a reply email sent to the flow&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%20149&amp;body=Question%3A%20Where%20does%20the%20flow%20read%20the%20decision%20from%20with%20Send%20email%20with%20options%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
-<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/149</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Where%20does%20the%20flow%20read%20the%20decision%20from%20with%20Send%20email%20with%20options%3F%0A%0AA)%20From%20the%20mailbox's%20Approvals%20center%0AB)%20From%20the%20dynamic%20value%20SelectedOption%0AC)%20From%20a%20reply%20email%20sent%20to%20the%20flow%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fentscheidungen-ueber-ein-geteiltes-postfach%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Where does the flow read the decision from with Send email with options?&#10;&#10;A) From the mailbox's Approvals center&#10;B) From the dynamic value SelectedOption&#10;C) From a reply email sent to the flow&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%20149&amp;body=Question%3A%20Where%20does%20the%20flow%20read%20the%20decision%20from%20with%20Send%20email%20with%20options%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/149</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-149-approvals-to-a-shared-mailbox/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-149" rel="noopener">PowerPlatformTip #149</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/office365/#send-email-with-options" rel="noopener">Office 365 Outlook: Send email with options</a>.</p>
 <nav class="blaettern" aria-label="More techniques"><a href="../../techniken/microsoft-graph-ohne-app-registrierung/" rel="prev"><span>Previous technique</span>Call Microsoft Graph without an app registration</a><a href="../../techniken/sharepoint-datei-per-rest-umbenennen/" rel="next"><span>Next technique</span>Rename a SharePoint file via REST</a></nav>

@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Filter array im Advanced Mode | KMUpower Flow-Dojo</title>
 <meta name="description" content="Filter array im Advanced Mode: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/filter-array-im-advanced-mode/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/">
+<link rel="canonical" href="https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Filter array im Advanced Mode | KMUpower Flow-Dojo">
 <meta property="og:description" content="Filter array im Advanced Mode: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-gelb.png">
+<meta property="og:url" content="https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-gelb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "@id": "https://powerautomate.ninja/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "url": "https://powerautomate.ninja/",
       "inLanguage": "de-CH",
       "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/#technik",
+      "@id": "https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/#technik",
       "name": "Filter array im Advanced Mode",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/",
+      "url": "https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/",
       "inLanguage": "de-CH",
       "learningResourceType": "Quiz",
       "educationalLevel": "Gelber Gürtel",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+        "@id": "https://powerautomate.ninja/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/#quiz",
+      "name": "Quizfrage: Filter array im Advanced Mode",
+      "inLanguage": "de-CH",
+      "educationalLevel": "Gelber Gürtel",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Wann wechselst du bei Filter array in den Advanced Mode?",
+          "text": "Wann wechselst du bei Filter array in den Advanced Mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 0,
+            "text": "Wenn mehrere Bedingungen in einen Filter gehören",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Richtig. Im Advanced Mode schreibst du die Bedingung als Ausdruck und verknüpfst mehrere Prüfungen mit and() oder or()."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Wenn du die Einträge nach einem Feld sortieren willst",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Filter array lässt Einträge weg, sortiert aber nicht. Die Reihenfolge bleibt gleich."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "Wenn der Filter direkt in SharePoint laufen soll",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Filter array arbeitet im Flow auf einem Array, das schon geladen ist, nicht in der Datenquelle."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Start",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+          "item": "https://powerautomate.ninja/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniken",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+          "item": "https://powerautomate.ninja/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Filter array im Advanced Mode",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/"
+          "item": "https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Wann%20wechselst%20du%20bei%20Filter%20array%20in%20den%20Advanced%20Mode%3F%0A%0AA)%20Wenn%20mehrere%20Bedingungen%20in%20einen%20Filter%20geh%C3%B6ren%0AB)%20Wenn%20du%20die%20Eintr%C3%A4ge%20nach%20einem%20Feld%20sortieren%20willst%0AC)%20Wenn%20der%20Filter%20direkt%20in%20SharePoint%20laufen%20soll%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Ffilter-array-im-advanced-mode%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Wann wechselst du bei Filter array in den Advanced Mode?&#10;&#10;A) Wenn mehrere Bedingungen in einen Filter gehören&#10;B) Wenn du die Einträge nach einem Feld sortieren willst&#10;C) Wenn der Filter direkt in SharePoint laufen soll&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/filter-array-im-advanced-mode/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%203&amp;body=Frage%3A%20Wann%20wechselst%20du%20bei%20Filter%20array%20in%20den%20Advanced%20Mode%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
-<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/3</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Wann%20wechselst%20du%20bei%20Filter%20array%20in%20den%20Advanced%20Mode%3F%0A%0AA)%20Wenn%20mehrere%20Bedingungen%20in%20einen%20Filter%20geh%C3%B6ren%0AB)%20Wenn%20du%20die%20Eintr%C3%A4ge%20nach%20einem%20Feld%20sortieren%20willst%0AC)%20Wenn%20der%20Filter%20direkt%20in%20SharePoint%20laufen%20soll%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Ffilter-array-im-advanced-mode%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Wann wechselst du bei Filter array in den Advanced Mode?&#10;&#10;A) Wenn mehrere Bedingungen in einen Filter gehören&#10;B) Wenn du die Einträge nach einem Feld sortieren willst&#10;C) Wenn der Filter direkt in SharePoint laufen soll&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%203&amp;body=Frage%3A%20Wann%20wechselst%20du%20bei%20Filter%20array%20in%20den%20Advanced%20Mode%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: powerautomate.ninja/3</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-3" rel="noopener">PowerPlatformTip #3</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/data-operations" rel="noopener">Use data operations in Power Automate</a>.</p>
 <nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/mit-code-view-hinter-eine-aktion-schauen/" rel="prev"><span>Vorherige Technik</span>Mit Code View hinter eine Aktion schauen</a><a href="../../techniken/feste-werte-in-compose-statt-variablen/" rel="next"><span>Nächste Technik</span>Feste Werte in Compose statt in Variablen</a></nav>

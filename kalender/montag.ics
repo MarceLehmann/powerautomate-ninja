@@ -11,8 +11,8 @@ DURATION:PT10M
 RRULE:FREQ=WEEKLY;BYDAY=MO
 SUMMARY:Flow-Dojo: eine Frage
 DESCRIPTION:Zehn Minuten, eine Frage zu Flows. Die Technik des Tages steht
-  unter https://marcelehmann.github.io/powerautomate-ninja/heute/
-URL:https://marcelehmann.github.io/powerautomate-ninja/heute/
+  unter https://powerautomate.ninja/heute/
+URL:https://powerautomate.ninja/heute/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

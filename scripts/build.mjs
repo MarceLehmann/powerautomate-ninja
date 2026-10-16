@@ -29,7 +29,7 @@ const MODUS = ARGS.includes('--produktion') ? 'produktion' : ARGS.includes('--pr
 const TESTPHASE = MODUS !== 'produktion';
 const DATUM = (ARGS.find(a => a.startsWith('--datum=')) || '').slice(8) || lokalesDatum(new Date());
 const TIPP_QUELLE = path.resolve(ROOT, (() => { const i = ARGS.indexOf('--tipp-quelle'); return i > -1 ? ARGS[i + 1] : CFG.tipp_quelle; })());
-const MIN_WOERTER_INDEX = 240; // «rund 250 Woerter eigener Inhalt» (Bauplan Abschnitt 9)
+const MIN_WOERTER_INDEX = 240; // nur noch Kennzahl im Build-Protokoll. Freigabe aller Inhalte durch Marcel 16.10.2026: im Livegang ist jede Seite indexierbar (ausser 404).
 
 const fehlerListe = [], warnListe = [], geschrieben = [];
 const fehler = (m) => { if (!fehlerListe.includes(m)) fehlerListe.push(m); };
@@ -442,7 +442,7 @@ function baueTechnik(t, i) {
   const vor = SEITEN[i - 1], nach = SEITEN[i + 1];
   const q = t.quiz;
   const kurs = t.guertel >= 4 ? `<p class="kurs-zeile">${T('Lieber mit Begleitung? Der', 'Prefer to learn with guidance? The')} <a href="${esc(kursUrl(`technik-${t.tipp_nr}`))}" rel="noopener">${esc(KURS_NAME())}</a> ${T('führt in vier Wochen von den Grundlagen bis zu Error Handling und Scopes.', 'takes you from the basics to error handling and scopes in four weeks.')}</p>` : '';
-  const indexierbar = !TESTPHASE && t._woerter >= MIN_WOERTER_INDEX;
+  const indexierbar = !TESTPHASE;
   const belege = (t.lizenz_belege || []).map(b => `<a href="${esc(b.url)}" rel="noopener">${esc(b.titel)}</a>`).join(', ');
   const haupt = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Techniken', 'Techniques'), '../'], [t.titel_de, './']])}
@@ -484,7 +484,12 @@ ${kurs}
     seite: 'technik', titel: `${t.titel_de} | ${NAME}`, haupt, noindex: !indexierbar, ogTyp: 'article',
     ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`,
     beschreibung: T(`${t.titel_de}: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.`, `${t.titel_de}: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.`).slice(0, 160),
-    jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'LearningResource', '@id': `${url}#technik`, name: t.titel_de, url, inLanguage: LANG_HTML(), learningResourceType: 'Quiz', educationalLevel: g.name, isBasedOn: t.tipp_url, citation: [t.learn_url, ...(t.lizenz_belege || []).map(b => b.url)], publisher: { '@id': LD_ORG['@id'] }, isPartOf: { '@id': `${BL()}#website` } }, krumen([[T('Start', 'Home'), BL()], [T('Techniken', 'Techniques'), `${BL()}techniken/`], [t.titel_de, url]])]
+    jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'LearningResource', '@id': `${url}#technik`, name: t.titel_de, url, inLanguage: LANG_HTML(), learningResourceType: 'Quiz', educationalLevel: g.name, isBasedOn: t.tipp_url, citation: [t.learn_url, ...(t.lizenz_belege || []).map(b => b.url)], publisher: { '@id': LD_ORG['@id'] }, isPartOf: { '@id': `${BL()}#website` }, hasPart: { '@id': `${url}#quiz` } },
+      { '@type': 'Quiz', '@id': `${url}#quiz`, name: `${T('Quizfrage', 'Quiz question')}: ${t.titel_de}`, inLanguage: LANG_HTML(), educationalLevel: g.name, about: { '@type': 'Thing', name: 'Power Automate' }, isBasedOn: t.tipp_url,
+        hasPart: [{ '@type': 'Question', eduQuestionType: 'Multiple choice', learningResourceType: 'Practice problem', name: q.frage, text: q.frage,
+          acceptedAnswer: { '@type': 'Answer', position: q.richtig_index, text: q.antworten[q.richtig_index], answerExplanation: { '@type': 'Comment', text: q.erklaerungen[q.richtig_index] } },
+          suggestedAnswer: q.antworten.map((a, k) => k === q.richtig_index ? null : { '@type': 'Answer', position: k, text: a, answerExplanation: { '@type': 'Comment', text: q.erklaerungen[k] } }).filter(Boolean) }] },
+      krumen([[T('Start', 'Home'), BL()], [T('Techniken', 'Techniques'), `${BL()}techniken/`], [t.titel_de, url]])]
   });
   return indexierbar;
 }
@@ -498,7 +503,7 @@ function baueHeute() {
 <div data-heute data-heute-alle>${t ? quizKarte(t, '../', 'h2') : `<p class="leer-hinweis">${T('Die erste Technik des Tages folgt.', 'The first technique of the day is coming soon.')}</p>`}</div>
 <p class="knopf-reihe"><a class="knopf" href="../kalender/montag.ics" download>${T('Jeden Montag eine Frage im Kalender', 'A question in your calendar every Monday')}</a><a class="knopf knopf--leise" href="../techniken/">${T('Alle Techniken', 'All techniques')}</a></p>
 </div></main>`;
-  seite('heute/index.html', { seite: 'heute', titel: T(`Technik des Tages | ${NAME}`, `Technique of the day | ${NAME}`), haupt, noindex: true, beschreibung: T('Jeden Tag eine Quizfrage zu Flows in Power Automate, mit Auflösung und Erklärung.', 'A quiz question about flows in Power Automate every day, with solution and explanation.') });
+  seite('heute/index.html', { seite: 'heute', titel: T(`Technik des Tages | ${NAME}`, `Technique of the day | ${NAME}`), haupt, beschreibung: T('Jeden Tag eine Quizfrage zu Flows in Power Automate, mit Auflösung und Erklärung.', 'A quiz question about flows in Power Automate every day, with solution and explanation.') });
 }
 
 function bauePruefung() {
@@ -604,7 +609,7 @@ function baueDojo() {
 ${liste}
 <section class="abschnitt" aria-labelledby="h-loeschen"><h2 id="h-loeschen">${T('Daten löschen', 'Delete data')}</h2><p>${T('Dein Fortschritt liegt nur im lokalen Speicher dieses Browsers. Mit einem Klick ist er weg.', 'Your progress is only stored in the local storage of this browser. One click and it is gone.')}</p><p><button type="button" class="knopf knopf--leise" data-dojo-loeschen data-nur-js>${T('Alles löschen', 'Delete everything')}</button></p><p class="status-zeile" data-dojo-meldung role="status" aria-live="polite"></p></section>
 </div></main>`;
-  seite('dojo/index.html', { seite: 'dojo', titel: T(`Mein Dojo | ${NAME}`, `My dojo | ${NAME}`), haupt, noindex: true, beschreibung: T('Dein Fortschritt im KMUpower Flow-Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the KMUpower Flow-Dojo: practiced techniques and your belt from the exam.') });
+  seite('dojo/index.html', { seite: 'dojo', titel: T(`Mein Dojo | ${NAME}`, `My dojo | ${NAME}`), haupt, beschreibung: T('Dein Fortschritt im KMUpower Flow-Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the KMUpower Flow-Dojo: practiced techniques and your belt from the exam.') });
 }
 
 function baueRecht() {
@@ -679,7 +684,7 @@ ${T(`<h1 id="h1">Impressum</h1>
 <h2>Copyright</h2>
 <p>You may use the expressions from the tips freely in your organization. You may not publish the other texts, questions or the design of this website as your own without asking first.</p>`)}
 </div></div></main>`;
-  seite('impressum/index.html', { seite: 'recht', titel: T(`Impressum | ${NAME}`, `Legal notice | ${NAME}`), haupt: impressum, noindex: true, beschreibung: T('Impressum des KMUpower Flow-Dojo.', 'Legal notice of the KMUpower Flow-Dojo.') });
+  seite('impressum/index.html', { seite: 'recht', titel: T(`Impressum | ${NAME}`, `Legal notice | ${NAME}`), haupt: impressum, beschreibung: T('Impressum des KMUpower Flow-Dojo.', 'Legal notice of the KMUpower Flow-Dojo.') });
 
   const p = CFG.speicher_praefix;
   const datenschutz = `<main id="main"><div class="wrap">
@@ -743,7 +748,7 @@ ${T(`<h1 id="h1">Datenschutz</h1>
 <h2>Your rights</h2>
 <p>Under the Swiss Federal Act on Data Protection you can request information or deletion. The website itself does not store any personal data with me. For the hosting logs, contact GitHub. For everything else, write to me at <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`)}
 </div></div></main>`;
-  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${NAME}`, `Privacy | ${NAME}`), haupt: datenschutz, noindex: true, beschreibung: T('Datenschutz im KMUpower Flow-Dojo: keine Cookies, kein Tracking, Fortschritt nur im Browser.', 'Privacy in the KMUpower Flow-Dojo: no cookies, no tracking, progress only in your browser.') });
+  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${NAME}`, `Privacy | ${NAME}`), haupt: datenschutz, beschreibung: T('Datenschutz im KMUpower Flow-Dojo: keine Cookies, kein Tracking, Fortschritt nur im Browser.', 'Privacy in the KMUpower Flow-Dojo: no cookies, no tracking, progress only in your browser.') });
 
   const b = BASIS_PFAD + PFX();
   seite('404.html', {
@@ -804,11 +809,17 @@ function baueSitemap(indexierbar) {
   const url = (p, sprache) => `  <url>\n    <loc>${BASE_URL}${sprache === 'en' ? 'en/' : ''}${p}</loc>\n    <lastmod>${daten.stand}</lastmod>\n${alt(p)}\n  </url>`;
   const eintraege = [];
   for (const s of SPRACHEN) {
-    const pfade = ['', 'pruefung/', 'premium/', 'techniken/', ...FARBEN.map(f => `guertel/${f}/`), 'ueber/', ...indexierbar[s].map(t => `techniken/${t.slug}/`)];
+    const pfade = ['', 'pruefung/', 'premium/', 'techniken/', ...FARBEN.map(f => `guertel/${f}/`), 'heute/', 'dojo/', 'ueber/', 'impressum/', 'datenschutz/', ...indexierbar[s].map(t => `techniken/${t.slug}/`)];
     eintraege.push(...pfade.map(p => url(p, s)));
   }
   schreibe('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${eintraege.join('\n')}\n</urlset>\n`);
-  schreibe('robots.txt', `User-agent: *\nAllow: /\nDisallow: ${BASIS_PFAD}templates/\nDisallow: ${BASIS_PFAD}scripts/\nDisallow: ${BASIS_PFAD}data/\n\nSitemap: ${BASE_URL}sitemap.xml\n`);
+  const regeln = ['Allow: /', `Disallow: ${BASIS_PFAD}templates/`, `Disallow: ${BASIS_PFAD}scripts/`, `Disallow: ${BASIS_PFAD}data/`, 'Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes'];
+  const BOTS = ['Googlebot', 'Googlebot-Image', 'Bingbot', 'Slurp', 'DuckDuckBot', 'Applebot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'Claude-Web', 'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'Amazonbot', 'meta-externalagent', 'cohere-ai', 'MistralAI-User', 'CCBot'];
+  schreibe('robots.txt', [`# ${NAME}: robots.txt (erzeugt von scripts/build.mjs)`, '# Inhalte frei fuer Suche, KI-Training und KI-Antworten (contentsignals.org).', '# Die Content-Signal-Zeile steht in jeder Gruppe, weil ein Crawler nach RFC 9309 nur seine eigene Gruppe liest.', '',
+    'User-agent: *', ...regeln, '', ...BOTS.flatMap(b => [`User-agent: ${b}`, ...regeln, '']), `Sitemap: ${BASE_URL}sitemap.xml`, '', `# Uebersicht fuer KI-Antwortsysteme: ${BASE_URL}llms.txt`, ''].join('\n'));
+  // IndexNow: Schluesseldatei im Stamm (Key ist oeffentlich), CNAME aus domain
+  if (CFG.indexnow_key) { if (!/^[a-f0-9]{32}$/.test(CFG.indexnow_key)) fehler('indexnow_key: 32 Hexzeichen'); schreibe(`${CFG.indexnow_key}.txt`, CFG.indexnow_key); }
+  if (CFG.domain && new URL(BASE_URL).hostname === CFG.domain) schreibe('CNAME', CFG.domain + '\n');
   setzeSprache('de');
   const de = [`# ${NAME}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
     '## Seiten', '', `- [Gürtelprüfung](${BASE_URL}pruefung/): Selbsttest von Weiss bis Braun`, `- [Lizenz-Check](${BASE_URL}premium/): Reicht die Lizenz aus Microsoft 365?`, `- [Alle Techniken](${BASE_URL}techniken/): nach Gürtel geordnet`, `- [Über](${BASE_URL}ueber/): Methode und Herkunft der Fragen`, '',

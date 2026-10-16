@@ -11,8 +11,8 @@ DURATION:PT10M
 RRULE:FREQ=WEEKLY;BYDAY=MO
 SUMMARY:Flow-Dojo: one question
 DESCRIPTION:Ten minutes, one question about flows. The technique of the da
- y is at https://marcelehmann.github.io/powerautomate-ninja/en/heute/
-URL:https://marcelehmann.github.io/powerautomate-ninja/en/heute/
+ y is at https://powerautomate.ninja/en/heute/
+URL:https://powerautomate.ninja/en/heute/
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR

@@ -3,8 +3,7 @@
   "kurzname": "Flow-Dojo",
   "untertitel": "Flows bauen lernen, eine Frage nach der anderen",
   "titel_start": "Flow-Dojo von KMUpower",
-  "base_url": "https://marcelehmann.github.io/powerautomate-ninja/",
-  "domain_spaeter": "powerautomate.ninja",
+  "base_url": "https://powerautomate.ninja/",
   "ausweichadresse": "https://kmupower.com/flow-dojo/",
   "kontakt": "marcel.lehmann@kmupower.com",
   "utm_source": "powerautomate.ninja",
@@ -17,5 +16,7 @@
   "review_csv": "../../ArbeitenMarcel/OUTPUT/13_SEO_GEO/2026-10-13_PowerPlatformTip_Review_Inventar.csv",
   "recht_stand": "2026-10-16",
   "speicher_praefix": "fd",
-  "copilot_ninja_pfad": "../copilot-ninja"
+  "copilot_ninja_pfad": "../copilot-ninja",
+  "domain": "powerautomate.ninja",
+  "indexnow_key": "3ccf5e6fd13f7ebb3467177308b4faef"
 }

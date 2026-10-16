@@ -1,0 +1,30 @@
+name: IndexNow
+
+# Meldet nach jedem Pages-Build alle URLs der Sitemap an IndexNow (scripts/indexnow.mjs).
+on:
+  page_build:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1' # montags 03:00 UTC
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Warten, bis die neue Fassung ausgeliefert ist
+        run: sleep 60
+      - name: Key-Datei live pruefen
+        run: |
+          KEY=$(node -e "console.log(require('./site.config.json').indexnow_key)")
+          BASE=$(node -e "console.log(require('./site.config.json').base_url)")
+          curl -fsS "${BASE}${KEY}.txt" | grep -q "$KEY"
+      - name: An IndexNow melden
+        run: node scripts/indexnow.mjs

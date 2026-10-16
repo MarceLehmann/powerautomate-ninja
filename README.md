@@ -1,6 +1,6 @@
 # KMUpower Flow-Dojo
 
-Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch (/) und Englisch (/en/). Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Spätere Adresse: powerautomate.ninja. Testphase: https://marcelehmann.github.io/powerautomate-ninja/ (alle Seiten noindex).
+Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch (/) und Englisch (/en/). Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Live seit 16.10.2026 unter https://powerautomate.ninja/ (GitHub Pages, Custom Domain, HTTPS erzwungen). Alle Inhalte von Marcel freigegeben, jede Seite indexierbar (ausser 404 und Kurzadressen).
 
 Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung zu Microsoft.
 
@@ -50,11 +50,13 @@ Node 18 oder neuer, keine Abhängigkeiten. Einrichten auf einem neuen Rechner: `
 
 Der Build bricht ab bei: Gedankenstrich, Eszett, Emoji, Testhinweis im Text; Technik ohne Lizenzbeleg bei Microsoft Learn; Ausdruck, der nicht wörtlich im Tipp steht (geprüft gegen den lokalen Klon `../PowerPlatformTip_LIVE/_posts`); Kurztext ausserhalb 80 bis 150 Wörter; Antwort über 12 Wörter; Inline-Skript, style-Attribut, fremde Quelle; «Power Automate» im Seitentitel.
 
-## Domainwechsel
+## Livegang und Suchmaschinen
 
-1. `base_url` in `site.config.json` auf `https://powerautomate.ninja/` setzen.
-2. `node scripts/build.mjs --produktion`, `node scripts/karten.mjs`, `node scripts/links.mjs --livegang`.
-3. 404 unter der neuen Domain testen, Sitemap in Search Console und Bing einreichen.
+1. `base_url` und `domain` in `site.config.json` (eine Quelle, Build schreibt CNAME, Canonicals, Sitemap, robots.txt).
+2. `node scripts/build.mjs --produktion`, `node scripts/karten.mjs`, `node scripts/links.mjs --livegang` (läuft auch als pre-push-Hook).
+3. robots.txt wie powerplatformtip.com: Content-Signal search/ai-train/ai-retrieval = yes, eigene Gruppe je Such- und KI-Crawler. llms.txt mit beiden Sprachen.
+4. IndexNow: Key `indexnow_key` in site.config.json, Key-Datei `<key>.txt` im Stamm, `scripts/indexnow.mjs` meldet alle Sitemap-URLs. Läuft nach jedem Pages-Build über `.github/workflows/indexnow.yml`.
+5. Strukturierte Daten: WebSite, Organization, BreadcrumbList, LearningResource mit Quiz (Question, acceptedAnswer, suggestedAnswer) auf jeder Technik-Seite.
 
 Pages liefert den ganzen Branch aus, also auch `data/`, `scripts/` und `templates/`. `robots.txt` sperrt sie ab eigener Domain. `_recherche/` liegt nur lokal (`.gitignore`).
 

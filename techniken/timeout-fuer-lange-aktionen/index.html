@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Timeout für lange Aktionen festlegen | KMUpower Flow-Dojo</title>
 <meta name="description" content="Timeout für lange Aktionen festlegen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/timeout-fuer-lange-aktionen/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/">
+<link rel="canonical" href="https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/timeout-fuer-lange-aktionen/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Timeout für lange Aktionen festlegen | KMUpower Flow-Dojo">
 <meta property="og:description" content="Timeout für lange Aktionen festlegen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-orange.png">
+<meta property="og:url" content="https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-orange.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "@id": "https://powerautomate.ninja/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "url": "https://powerautomate.ninja/",
       "inLanguage": "de-CH",
       "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/#technik",
+      "@id": "https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/#technik",
       "name": "Timeout für lange Aktionen festlegen",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/",
+      "url": "https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/",
       "inLanguage": "de-CH",
       "learningResourceType": "Quiz",
       "educationalLevel": "Oranger Gürtel",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+        "@id": "https://powerautomate.ninja/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/#quiz",
+      "name": "Quizfrage: Timeout für lange Aktionen festlegen",
+      "inLanguage": "de-CH",
+      "educationalLevel": "Oranger Gürtel",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-109-use-timeout/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Was bedeutet der Timeout-Wert P2W bei einer Aktion?",
+          "text": "Was bedeutet der Timeout-Wert P2W bei einer Aktion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 2,
+            "text": "Die Aktion wartet höchstens zwei Wochen",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Richtig. P2W ist eine Dauer im Format ISO 8601 und steht für zwei Wochen."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "Die Aktion startet erst nach zwei Wochen",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Timeout verzögert nichts. Er legt fest, wann eine laufende Aktion als abgelaufen gilt."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Die Aktion läuft zweimal pro Woche",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Timeout wiederholt keine Aktion. Wiederholungen regelt die Retry Policy."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Start",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+          "item": "https://powerautomate.ninja/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniken",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+          "item": "https://powerautomate.ninja/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Timeout für lange Aktionen festlegen",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/"
+          "item": "https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P2W%20bei%20einer%20Aktion%3F%0A%0AA)%20Die%20Aktion%20startet%20erst%20nach%20zwei%20Wochen%0AB)%20Die%20Aktion%20l%C3%A4uft%20zweimal%20pro%20Woche%0AC)%20Die%20Aktion%20wartet%20h%C3%B6chstens%20zwei%20Wochen%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Ftimeout-fuer-lange-aktionen%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was bedeutet der Timeout-Wert P2W bei einer Aktion?&#10;&#10;A) Die Aktion startet erst nach zwei Wochen&#10;B) Die Aktion läuft zweimal pro Woche&#10;C) Die Aktion wartet höchstens zwei Wochen&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/timeout-fuer-lange-aktionen/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20109&amp;body=Frage%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P2W%20bei%20einer%20Aktion%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
-<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/109</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P2W%20bei%20einer%20Aktion%3F%0A%0AA)%20Die%20Aktion%20startet%20erst%20nach%20zwei%20Wochen%0AB)%20Die%20Aktion%20l%C3%A4uft%20zweimal%20pro%20Woche%0AC)%20Die%20Aktion%20wartet%20h%C3%B6chstens%20zwei%20Wochen%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Ftimeout-fuer-lange-aktionen%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was bedeutet der Timeout-Wert P2W bei einer Aktion?&#10;&#10;A) Die Aktion startet erst nach zwei Wochen&#10;B) Die Aktion läuft zweimal pro Woche&#10;C) Die Aktion wartet höchstens zwei Wochen&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20109&amp;body=Frage%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P2W%20bei%20einer%20Aktion%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: powerautomate.ninja/109</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-109-use-timeout/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-109" rel="noopener">PowerPlatformTip #109</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/limits-and-config" rel="noopener">Limits of automated, scheduled, and instant flows</a>.</p>
 <nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/flow-laeufe-nacheinander/" rel="prev"><span>Vorherige Technik</span>Flow-Läufe nacheinander statt gleichzeitig</a><a href="../../techniken/apostrophe-und-sonderzeichen-codieren/" rel="next"><span>Nächste Technik</span>Apostrophe und Sonderzeichen richtig codieren</a></nav>

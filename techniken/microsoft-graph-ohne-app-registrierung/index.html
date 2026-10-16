@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Microsoft Graph ohne App-Registrierung aufrufen | KMUpower Flow-Dojo</title>
 <meta name="description" content="Microsoft Graph ohne App-Registrierung aufrufen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/microsoft-graph-ohne-app-registrierung/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/">
+<link rel="canonical" href="https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/microsoft-graph-ohne-app-registrierung/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Microsoft Graph ohne App-Registrierung aufrufen | KMUpower Flow-Dojo">
 <meta property="og:description" content="Microsoft Graph ohne App-Registrierung aufrufen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-gruen.png">
+<meta property="og:url" content="https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-gruen.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "@id": "https://powerautomate.ninja/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "url": "https://powerautomate.ninja/",
       "inLanguage": "de-CH",
       "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/#technik",
+      "@id": "https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/#technik",
       "name": "Microsoft Graph ohne App-Registrierung aufrufen",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/",
+      "url": "https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/",
       "inLanguage": "de-CH",
       "learningResourceType": "Quiz",
       "educationalLevel": "Grüner Gürtel",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+        "@id": "https://powerautomate.ninja/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/#quiz",
+      "name": "Quizfrage: Microsoft Graph ohne App-Registrierung aufrufen",
+      "inLanguage": "de-CH",
+      "educationalLevel": "Grüner Gürtel",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?",
+          "text": "Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 0,
+            "text": "Dem Token fehlt die Berechtigung für Chats",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Richtig. Der Connector hat eine feste Liste an Berechtigungen. Chats gehören nicht dazu, die Rolle des Kontos ändert daran nichts."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Chats lassen sich über Graph gar nicht lesen",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Graph bietet Chats an. Es fehlt nur die passende Berechtigung im Token dieses Connectors."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "Die Base Resource URL ist falsch gesetzt",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Mit einer falschen Basis-URL scheiterten alle Aufrufe. /v1.0/me funktioniert aber."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Start",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+          "item": "https://powerautomate.ninja/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniken",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+          "item": "https://powerautomate.ninja/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Microsoft Graph ohne App-Registrierung aufrufen",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/"
+          "item": "https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 <p class="kurs-zeile">Lieber mit Begleitung? Der <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-138" rel="noopener">Live-Kurs Power Automate der Power Platform Academy</a> führt in vier Wochen von den Grundlagen bis zu Error Handling und Scopes.</p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Warum%20scheitert%20%2Fv1.0%2Fme%2Fchats%20mit%20dieser%20Aktion%20auch%20f%C3%BCr%20Admins%3F%0A%0AA)%20Dem%20Token%20fehlt%20die%20Berechtigung%20f%C3%BCr%20Chats%0AB)%20Chats%20lassen%20sich%20%C3%BCber%20Graph%20gar%20nicht%20lesen%0AC)%20Die%20Base%20Resource%20URL%20ist%20falsch%20gesetzt%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Fmicrosoft-graph-ohne-app-registrierung%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?&#10;&#10;A) Dem Token fehlt die Berechtigung für Chats&#10;B) Chats lassen sich über Graph gar nicht lesen&#10;C) Die Base Resource URL ist falsch gesetzt&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/microsoft-graph-ohne-app-registrierung/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20138&amp;body=Frage%3A%20Warum%20scheitert%20%2Fv1.0%2Fme%2Fchats%20mit%20dieser%20Aktion%20auch%20f%C3%BCr%20Admins%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
-<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/138</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Warum%20scheitert%20%2Fv1.0%2Fme%2Fchats%20mit%20dieser%20Aktion%20auch%20f%C3%BCr%20Admins%3F%0A%0AA)%20Dem%20Token%20fehlt%20die%20Berechtigung%20f%C3%BCr%20Chats%0AB)%20Chats%20lassen%20sich%20%C3%BCber%20Graph%20gar%20nicht%20lesen%0AC)%20Die%20Base%20Resource%20URL%20ist%20falsch%20gesetzt%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Fmicrosoft-graph-ohne-app-registrierung%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?&#10;&#10;A) Dem Token fehlt die Berechtigung für Chats&#10;B) Chats lassen sich über Graph gar nicht lesen&#10;C) Die Base Resource URL ist falsch gesetzt&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20138&amp;body=Frage%3A%20Warum%20scheitert%20%2Fv1.0%2Fme%2Fchats%20mit%20dieser%20Aktion%20auch%20f%C3%BCr%20Admins%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: powerautomate.ninja/138</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-138" rel="noopener">PowerPlatformTip #138</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz</a>.</p>
 <nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/json-schema-das-null-vertraegt/" rel="prev"><span>Vorherige Technik</span>JSON-Schema, das null verträgt</a><a href="../../techniken/entscheidungen-ueber-ein-geteiltes-postfach/" rel="next"><span>Nächste Technik</span>Entscheidungen über ein geteiltes Postfach</a></nav>

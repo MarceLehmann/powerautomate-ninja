@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Flow-Läufe nacheinander statt gleichzeitig | KMUpower Flow-Dojo</title>
 <meta name="description" content="Flow-Läufe nacheinander statt gleichzeitig: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/flow-laeufe-nacheinander/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/">
+<link rel="canonical" href="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/flow-laeufe-nacheinander/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Flow-Läufe nacheinander statt gleichzeitig | KMUpower Flow-Dojo">
 <meta property="og:description" content="Flow-Läufe nacheinander statt gleichzeitig: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-orange.png">
+<meta property="og:url" content="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-orange.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "@id": "https://powerautomate.ninja/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "url": "https://powerautomate.ninja/",
       "inLanguage": "de-CH",
       "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/#technik",
+      "@id": "https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/#technik",
       "name": "Flow-Läufe nacheinander statt gleichzeitig",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/",
+      "url": "https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/",
       "inLanguage": "de-CH",
       "learningResourceType": "Quiz",
       "educationalLevel": "Oranger Gürtel",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+        "@id": "https://powerautomate.ninja/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/#quiz",
+      "name": "Quizfrage: Flow-Läufe nacheinander statt gleichzeitig",
+      "inLanguage": "de-CH",
+      "educationalLevel": "Oranger Gürtel",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Was passiert mit neuen Auslösungen bei Parallelität 1?",
+          "text": "Was passiert mit neuen Auslösungen bei Parallelität 1?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 1,
+            "text": "Sie warten, bis der laufende Lauf fertig ist",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Richtig. Weitere Läufe stehen in einer Warteschlange und starten nacheinander."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "Sie werden sofort verworfen und nie ausgeführt",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Neue Auslösungen warten. Ob jede zu einem Lauf wird, ist erst unsicher, wenn die Warteschlange voll ist."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "Sie laufen trotzdem parallel, nur langsamer",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. Bei Parallelität 1 läuft genau ein Lauf auf einmal, alle anderen warten."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Start",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+          "item": "https://powerautomate.ninja/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniken",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+          "item": "https://powerautomate.ninja/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Flow-Läufe nacheinander statt gleichzeitig",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/"
+          "item": "https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20passiert%20mit%20neuen%20Ausl%C3%B6sungen%20bei%20Parallelit%C3%A4t%201%3F%0A%0AA)%20Sie%20werden%20sofort%20verworfen%20und%20nie%20ausgef%C3%BChrt%0AB)%20Sie%20warten%2C%20bis%20der%20laufende%20Lauf%20fertig%20ist%0AC)%20Sie%20laufen%20trotzdem%20parallel%2C%20nur%20langsamer%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Fflow-laeufe-nacheinander%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was passiert mit neuen Auslösungen bei Parallelität 1?&#10;&#10;A) Sie werden sofort verworfen und nie ausgeführt&#10;B) Sie warten, bis der laufende Lauf fertig ist&#10;C) Sie laufen trotzdem parallel, nur langsamer&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/flow-laeufe-nacheinander/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%2035&amp;body=Frage%3A%20Was%20passiert%20mit%20neuen%20Ausl%C3%B6sungen%20bei%20Parallelit%C3%A4t%201%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
-<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/35</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20passiert%20mit%20neuen%20Ausl%C3%B6sungen%20bei%20Parallelit%C3%A4t%201%3F%0A%0AA)%20Sie%20werden%20sofort%20verworfen%20und%20nie%20ausgef%C3%BChrt%0AB)%20Sie%20warten%2C%20bis%20der%20laufende%20Lauf%20fertig%20ist%0AC)%20Sie%20laufen%20trotzdem%20parallel%2C%20nur%20langsamer%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Fflow-laeufe-nacheinander%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was passiert mit neuen Auslösungen bei Parallelität 1?&#10;&#10;A) Sie werden sofort verworfen und nie ausgeführt&#10;B) Sie warten, bis der laufende Lauf fertig ist&#10;C) Sie laufen trotzdem parallel, nur langsamer&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%2035&amp;body=Frage%3A%20Was%20passiert%20mit%20neuen%20Ausl%C3%B6sungen%20bei%20Parallelit%C3%A4t%201%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: powerautomate.ninja/35</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-35" rel="noopener">PowerPlatformTip #35</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/limits-and-config" rel="noopener">Limits of automated, scheduled, and instant flows</a>.</p>
 <nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/fehler-mit-try-catch-finally-abfangen/" rel="prev"><span>Vorherige Technik</span>Fehler mit Try, Catch und Finally abfangen</a><a href="../../techniken/timeout-fuer-lange-aktionen/" rel="next"><span>Nächste Technik</span>Timeout für lange Aktionen festlegen</a></nav>

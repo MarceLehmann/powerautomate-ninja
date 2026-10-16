@@ -1,7 +1,175 @@
+# KMUpower Flow-Dojo: robots.txt (erzeugt von scripts/build.mjs)
+# Inhalte frei fuer Suche, KI-Training und KI-Antworten (contentsignals.org).
+# Die Content-Signal-Zeile steht in jeder Gruppe, weil ein Crawler nach RFC 9309 nur seine eigene Gruppe liest.
+
 User-agent: *
 Allow: /
-Disallow: /powerautomate-ninja/templates/
-Disallow: /powerautomate-ninja/scripts/
-Disallow: /powerautomate-ninja/data/
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
 
-Sitemap: https://marcelehmann.github.io/powerautomate-ninja/sitemap.xml
+User-agent: Googlebot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Bingbot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Slurp
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Applebot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: GPTBot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Claude-User
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: MistralAI-User
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+User-agent: CCBot
+Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+Sitemap: https://powerautomate.ninja/sitemap.xml
+
+# Uebersicht fuer KI-Antwortsysteme: https://powerautomate.ninja/llms.txt

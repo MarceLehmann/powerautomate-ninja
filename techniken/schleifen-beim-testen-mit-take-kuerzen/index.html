@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Schleifen beim Testen mit take() kürzen | KMUpower Flow-Dojo</title>
 <meta name="description" content="Schleifen beim Testen mit take() kürzen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/schleifen-beim-testen-mit-take-kuerzen/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
+<link rel="canonical" href="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/schleifen-beim-testen-mit-take-kuerzen/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Schleifen beim Testen mit take() kürzen | KMUpower Flow-Dojo">
 <meta property="og:description" content="Schleifen beim Testen mit take() kürzen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/guertel-gelb.png">
+<meta property="og:url" content="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-gelb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website",
+      "@id": "https://powerautomate.ninja/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/",
+      "url": "https://powerautomate.ninja/",
       "inLanguage": "de-CH",
       "description": "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/#technik",
+      "@id": "https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/#technik",
       "name": "Schleifen beim Testen mit take() kürzen",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/",
+      "url": "https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/",
       "inLanguage": "de-CH",
       "learningResourceType": "Quiz",
       "educationalLevel": "Gelber Gürtel",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/#website"
+        "@id": "https://powerautomate.ninja/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/#quiz",
+      "name": "Quizfrage: Schleifen beim Testen mit take() kürzen",
+      "inLanguage": "de-CH",
+      "educationalLevel": "Gelber Gürtel",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-148-take-expression-limit-apply-to-each/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Was liefert take(array, 5), wenn das Array nur drei Einträge hat?",
+          "text": "Was liefert take(array, 5), wenn das Array nur drei Einträge hat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 0,
+            "text": "Alle drei Einträge, ohne Fehler",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Richtig. take() nimmt höchstens die angegebene Anzahl. Sind es weniger, kommen alle vorhandenen Einträge zurück."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Einen Fehler, weil Einträge fehlen",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. take() bricht nicht ab, wenn das Array kürzer ist als die gewünschte Anzahl."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "Drei Einträge und zwei leere dazu",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Falsch. take() füllt nichts auf. Es schneidet nur ab, was über die Anzahl hinausgeht."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Start",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/"
+          "item": "https://powerautomate.ninja/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniken",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/"
+          "item": "https://powerautomate.ninja/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Schleifen beim Testen mit take() kürzen",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/"
+          "item": "https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20liefert%20take(array%2C%205)%2C%20wenn%20das%20Array%20nur%20drei%20Eintr%C3%A4ge%20hat%3F%0A%0AA)%20Alle%20drei%20Eintr%C3%A4ge%2C%20ohne%20Fehler%0AB)%20Einen%20Fehler%2C%20weil%20Eintr%C3%A4ge%20fehlen%0AC)%20Drei%20Eintr%C3%A4ge%20und%20zwei%20leere%20dazu%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Ftechniken%2Fschleifen-beim-testen-mit-take-kuerzen%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was liefert take(array, 5), wenn das Array nur drei Einträge hat?&#10;&#10;A) Alle drei Einträge, ohne Fehler&#10;B) Einen Fehler, weil Einträge fehlen&#10;C) Drei Einträge und zwei leere dazu&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20148&amp;body=Frage%3A%20Was%20liefert%20take(array%2C%205)%2C%20wenn%20das%20Array%20nur%20drei%20Eintr%C3%A4ge%20hat%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
-<p class="klein">Kurzadresse: marcelehmann.github.io/powerautomate-ninja/148</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20liefert%20take(array%2C%205)%2C%20wenn%20das%20Array%20nur%20drei%20Eintr%C3%A4ge%20hat%3F%0A%0AA)%20Alle%20drei%20Eintr%C3%A4ge%2C%20ohne%20Fehler%0AB)%20Einen%20Fehler%2C%20weil%20Eintr%C3%A4ge%20fehlen%0AC)%20Drei%20Eintr%C3%A4ge%20und%20zwei%20leere%20dazu%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Fschleifen-beim-testen-mit-take-kuerzen%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was liefert take(array, 5), wenn das Array nur drei Einträge hat?&#10;&#10;A) Alle drei Einträge, ohne Fehler&#10;B) Einen Fehler, weil Einträge fehlen&#10;C) Drei Einträge und zwei leere dazu&#10;&#10;Auflösung mit Erklärung im KMUpower Flow-Dojo: https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20Fehler%20in%20Frage%20148&amp;body=Frage%3A%20Was%20liefert%20take(array%2C%205)%2C%20wenn%20das%20Array%20nur%20drei%20Eintr%C3%A4ge%20hat%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<p class="klein">Kurzadresse: powerautomate.ninja/148</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-148-take-expression-limit-apply-to-each/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-148" rel="noopener">PowerPlatformTip #148</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference" rel="noopener">Reference for functions in workflow expressions</a>.</p>
 <nav class="blaettern" aria-label="Weitere Techniken"><a href="../../techniken/sicherer-zugriff-mit-fragezeichen/" rel="prev"><span>Vorherige Technik</span>Sicherer Zugriff mit dem Operator ?</a><a href="../../techniken/float-vor-div/" rel="next"><span>Nächste Technik</span>float() vor div() für korrekte Dezimalstellen</a></nav>

@@ -304,3 +304,5 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 /* Sprachumschalter DE/EN im Kopf */
 .sprache { font-weight: 600; font-size: .95rem; letter-spacing: .04em; text-decoration: none; }
 .sprache:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+.marke__text b { white-space: nowrap; }
+@media (max-width: 359px) { .kopf__aktionen .knopf-icon { min-width: 40px; padding: 0 .3rem; } .kopf__innen { gap: .3rem; } }

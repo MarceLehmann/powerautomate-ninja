@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Format the date directly in utcNow() | KMUpower Flow-Dojo</title>
 <meta name="description" content="Format the date directly in utcNow(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/datum-direkt-mit-utcnow-formatieren/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/datum-direkt-mit-utcnow-formatieren/">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/datum-direkt-mit-utcnow-formatieren/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/datum-direkt-mit-utcnow-formatieren/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Format the date directly in utcNow() | KMUpower Flow-Dojo">
 <meta property="og:description" content="Format the date directly in utcNow(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-weiss.png">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-weiss.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "@id": "https://powerautomate.ninja/en/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "url": "https://powerautomate.ninja/en/",
       "inLanguage": "en",
       "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/#technik",
+      "@id": "https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/#technik",
       "name": "Format the date directly in utcNow()",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/",
+      "url": "https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/",
       "inLanguage": "en",
       "learningResourceType": "Quiz",
       "educationalLevel": "White belt",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/#quiz",
+      "name": "Quiz question: Format the date directly in utcNow()",
+      "inLanguage": "en",
+      "educationalLevel": "White belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "What does the expression utcNow('dd.MM.yyyy') return?",
+          "text": "What does the expression utcNow('dd.MM.yyyy') return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 2,
+            "text": "Today's date in the format day.month.year",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. utcNow() accepts the format as a parameter, so you do not need formatDateTime() for it."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "The current time in Swiss local time",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. The format contains no hours, and utcNow() always works in UTC, not in Swiss time."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "An error, because formatDateTime() is missing",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. The expression is valid. utcNow() formats by itself, so the second function is not needed."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+          "item": "https://powerautomate.ninja/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniques",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+          "item": "https://powerautomate.ninja/en/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Format the date directly in utcNow()",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/"
+          "item": "https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20does%20the%20expression%20utcNow('dd.MM.yyyy')%20return%3F%0A%0AA)%20The%20current%20time%20in%20Swiss%20local%20time%0AB)%20An%20error%2C%20because%20formatDateTime()%20is%20missing%0AC)%20Today's%20date%20in%20the%20format%20day.month.year%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fdatum-direkt-mit-utcnow-formatieren%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What does the expression utcNow('dd.MM.yyyy') return?&#10;&#10;A) The current time in Swiss local time&#10;B) An error, because formatDateTime() is missing&#10;C) Today's date in the format day.month.year&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%206&amp;body=Question%3A%20What%20does%20the%20expression%20utcNow('dd.MM.yyyy')%20return%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
-<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/6</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20does%20the%20expression%20utcNow('dd.MM.yyyy')%20return%3F%0A%0AA)%20The%20current%20time%20in%20Swiss%20local%20time%0AB)%20An%20error%2C%20because%20formatDateTime()%20is%20missing%0AC)%20Today's%20date%20in%20the%20format%20day.month.year%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fdatum-direkt-mit-utcnow-formatieren%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What does the expression utcNow('dd.MM.yyyy') return?&#10;&#10;A) The current time in Swiss local time&#10;B) An error, because formatDateTime() is missing&#10;C) Today's date in the format day.month.year&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%206&amp;body=Question%3A%20What%20does%20the%20expression%20utcNow('dd.MM.yyyy')%20return%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/6</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-6" rel="noopener">PowerPlatformTip #6</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference" rel="noopener">Reference for functions in workflow expressions</a>.</p>
 <nav class="blaettern" aria-label="More techniques"><a href="../../techniken/"><span>Back</span>To the technique wall</a><a href="../../techniken/flow-testen-vor-dem-einschalten/" rel="next"><span>Next technique</span>Test a flow before it goes live</a></nav>

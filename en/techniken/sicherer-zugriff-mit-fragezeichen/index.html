@@ -16,20 +16,18 @@
 <meta name="generator" content="KMUpower Flow-Dojo build">
 <title>Safe access with the ? operator | KMUpower Flow-Dojo</title>
 <meta name="description" content="Safe access with the ? operator: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta name="robots" content="noindex">
-<meta name="dojo-build" content="testphase">
-<link rel="canonical" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/">
-<link rel="alternate" hreflang="de" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/sicherer-zugriff-mit-fragezeichen/">
-<link rel="alternate" hreflang="en" href="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/">
-<link rel="alternate" hreflang="x-default" href="https://marcelehmann.github.io/powerautomate-ninja/techniken/sicherer-zugriff-mit-fragezeichen/">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/sicherer-zugriff-mit-fragezeichen/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/sicherer-zugriff-mit-fragezeichen/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="KMUpower Flow-Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Safe access with the ? operator | KMUpower Flow-Dojo">
 <meta property="og:description" content="Safe access with the ? operator: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
-<meta property="og:url" content="https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/">
-<meta property="og:image" content="https://marcelehmann.github.io/powerautomate-ninja/assets/img/en/guertel-gelb.png">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gelb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,9 +37,9 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website",
+      "@id": "https://powerautomate.ninja/en/#website",
       "name": "KMUpower Flow-Dojo",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/",
+      "url": "https://powerautomate.ninja/en/",
       "inLanguage": "en",
       "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
       "publisher": {
@@ -57,9 +55,9 @@
     },
     {
       "@type": "LearningResource",
-      "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/#technik",
+      "@id": "https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/#technik",
       "name": "Safe access with the ? operator",
-      "url": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/",
+      "url": "https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/",
       "inLanguage": "en",
       "learningResourceType": "Quiz",
       "educationalLevel": "Yellow belt",
@@ -72,8 +70,61 @@
         "@id": "https://kmupower.com/#organization"
       },
       "isPartOf": {
-        "@id": "https://marcelehmann.github.io/powerautomate-ninja/en/#website"
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/#quiz"
       }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/#quiz",
+      "name": "Quiz question: Safe access with the ? operator",
+      "inLanguage": "en",
+      "educationalLevel": "Yellow belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-59-handle-dynamic-content/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "What does item()?['id'] return when the property id is missing?",
+          "text": "What does item()?['id'] return when the property id is missing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 0,
+            "text": "The value null, and the flow keeps running",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. The question mark turns a missing property into null instead of failing the action."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "An error that stops the action immediately",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. That happens without the question mark: item()['id'] fails with InvalidTemplate."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "The value of the previous item in the array",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. The expression only reads the current item and takes no values from other items."
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -82,19 +133,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/"
+          "item": "https://powerautomate.ninja/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Techniques",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/"
+          "item": "https://powerautomate.ninja/en/techniken/"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Safe access with the ? operator",
-          "item": "https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/"
+          "item": "https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/"
         }
       ]
     }
@@ -178,8 +229,8 @@
 
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20does%20item()%3F%5B'id'%5D%20return%20when%20the%20property%20id%20is%20missing%3F%0A%0AA)%20The%20value%20null%2C%20and%20the%20flow%20keeps%20running%0AB)%20An%20error%20that%20stops%20the%20action%20immediately%0AC)%20The%20value%20of%20the%20previous%20item%20in%20the%20array%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fmarcelehmann.github.io%2Fpowerautomate-ninja%2Fen%2Ftechniken%2Fsicherer-zugriff-mit-fragezeichen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What does item()?['id'] return when the property id is missing?&#10;&#10;A) The value null, and the flow keeps running&#10;B) An error that stops the action immediately&#10;C) The value of the previous item in the array&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://marcelehmann.github.io/powerautomate-ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%2059&amp;body=Question%3A%20What%20does%20item()%3F%5B'id'%5D%20return%20when%20the%20property%20id%20is%20missing%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
-<p class="klein">Short link: marcelehmann.github.io/powerautomate-ninja/en/59</p>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20does%20item()%3F%5B'id'%5D%20return%20when%20the%20property%20id%20is%20missing%3F%0A%0AA)%20The%20value%20null%2C%20and%20the%20flow%20keeps%20running%0AB)%20An%20error%20that%20stops%20the%20action%20immediately%0AC)%20The%20value%20of%20the%20previous%20item%20in%20the%20array%0A%0AAnswer%20with%20explanation%20in%20the%20KMUpower%20Flow-Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fsicherer-zugriff-mit-fragezeichen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What does item()?['id'] return when the property id is missing?&#10;&#10;A) The value null, and the flow keeps running&#10;B) An error that stops the action immediately&#10;C) The value of the previous item in the array&#10;&#10;Answer with explanation in the KMUpower Flow-Dojo: https://powerautomate.ninja/en/techniken/sicherer-zugriff-mit-fragezeichen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Flow-Dojo%3A%20error%20in%20question%2059&amp;body=Question%3A%20What%20does%20item()%3F%5B'id'%5D%20return%20when%20the%20property%20id%20is%20missing%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/59</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-59-handle-dynamic-content/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-59" rel="noopener">PowerPlatformTip #59</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-definition-language" rel="noopener">Workflow Definition Language schema reference</a>.</p>
 <nav class="blaettern" aria-label="More techniques"><a href="../../techniken/mit-static-result-testen/" rel="prev"><span>Previous technique</span>Test with Static Result without changing data</a><a href="../../techniken/schleifen-beim-testen-mit-take-kuerzen/" rel="next"><span>Next technique</span>Shorten loops with take() while testing</a></nav>
