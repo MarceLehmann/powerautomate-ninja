@@ -3,9 +3,11 @@
 @font-face { font-family: "Dojo Display"; src: url("../fonts/dojo-display-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: optional; }
 :root {
   color-scheme: light;
-  --paper: #F4EFE6; --surface: #FFFCF6; --surface-2: #E9E2D4;
-  --ink: #15171B; --ink-muted: #4E525B;
-  --line: #D8CFBE; --line-strong: #8A7F6C;
+  --paper: #EDF2F9; --surface: #FAFCFF; --surface-2: #DDE5F1;
+  --ink: #15171B; --ink-muted: #4A5160;
+  --line: #C9D4E4; --line-strong: #6E7C93;
+  --site: #0F5BB5;
+  --tusch-koerper: var(--ink); --tusch-kontur: none;
   --signal: #B4301A; --on-signal: #FFFFFF;
   --ok: #2E6B4F; --falsch: #A3261A; --premium: #8A5A00;
   --focus: #B4301A;
@@ -31,8 +33,9 @@ html[data-guertel="6"] { --belt-current: var(--belt-6); } html[data-guertel="7"]
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper: #0E0F12; --surface: #181A1F; --surface-2: #20232A;
-    --ink: #EEE9DF; --ink-muted: #A8A398; --line: #2A2D34; --line-strong: #6F6A62;
+    --paper: #0B1019; --surface: #141B27; --surface-2: #1C2533;
+    --ink: #EAEEF5; --ink-muted: #A3ADBD; --line: #273245; --line-strong: #65738C;
+    --site: #82B4F2; --tusch-koerper: #2C313B; --tusch-kontur: var(--ink);
     --signal: #FF6A47; --on-signal: #140A06; --focus: #FF6A47;
     --ok: #6FC79E; --falsch: #FF8A70; --premium: #E3B35A;
     --shadow: 0 10px 30px -14px rgb(0 0 0 / .6);
@@ -40,8 +43,9 @@ html[data-guertel="6"] { --belt-current: var(--belt-6); } html[data-guertel="7"]
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #0E0F12; --surface: #181A1F; --surface-2: #20232A;
-  --ink: #EEE9DF; --ink-muted: #A8A398; --line: #2A2D34; --line-strong: #6F6A62;
+  --paper: #0B1019; --surface: #141B27; --surface-2: #1C2533;
+  --ink: #EAEEF5; --ink-muted: #A3ADBD; --line: #273245; --line-strong: #65738C;
+  --site: #82B4F2; --tusch-koerper: #2C313B; --tusch-kontur: var(--ink);
   --signal: #FF6A47; --on-signal: #140A06; --focus: #FF6A47;
   --ok: #6FC79E; --falsch: #FF8A70; --premium: #E3B35A;
   --shadow: 0 10px 30px -14px rgb(0 0 0 / .6);
@@ -102,7 +106,7 @@ html.js .knopf-icon[data-nur-js], html.js .knopf[data-nur-js] { display: inline-
 html.js [data-ohne-js] { display: none !important; }
 
 /* Kopf */
-.kopf { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.kopf { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 3px solid var(--site); }
 .kopf__innen { display: flex; align-items: center; gap: .5rem; min-height: var(--kopf-h); }
 .marke { display: inline-flex; align-items: center; gap: .55rem; color: var(--ink); text-decoration: none; min-height: 44px; margin-right: auto; }
 .marke__knoten { width: 30px; height: 30px; flex: none; }
@@ -111,7 +115,7 @@ html.js [data-ohne-js] { display: none !important; }
 .marke { min-width: 0; }
 .marke__text { display: flex; flex-direction: column; gap: .15rem; line-height: 1; font-family: var(--font-display); font-stretch: 87.5%; min-width: 0; }
 .marke__text b { font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.02; overflow-wrap: normal; }
-.marke__text small { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+.marke__text small { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--site); font-weight: 700; white-space: nowrap; }
 @media (min-width: 420px) { .marke__text b { font-size: 1.15rem; } }
 @media (min-width: 600px) { .marke__text b { font-size: 1.3rem; white-space: nowrap; } .marke__text small { font-size: .7rem; } }
 .nav { display: none; }
@@ -129,7 +133,6 @@ html.js [data-ohne-js] { display: none !important; }
 .menue li a { display: flex; align-items: center; min-height: 52px; font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
 @media (min-width: 900px) {
   .nav { display: block; }
-  .kopf__menue { display: none !important; }
   .knopf-icon kbd { display: inline; }
 }
 
@@ -200,6 +203,7 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .quiz__status.ok { color: var(--ok); } .quiz__status.nein { color: var(--falsch); }
 .code-block { position: relative; margin: 0 0 1rem; }
 .code-block pre { margin: 0; padding: 1rem 1rem 3.4rem; background: #15171B; color: #EEE9DF; border-radius: var(--r-md); white-space: pre-wrap; word-break: break-word; overflow-x: auto; max-width: 100%; font-size: .92rem; line-height: 1.5; }
+.code-block pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
 .code-block .knopf { position: absolute; right: .5rem; bottom: .5rem; background: #2A2D34; color: #EEE9DF; border-color: #6F6A62; }
 .zwei { display: grid; gap: 1rem; }
 @media (min-width: 720px) { .zwei { grid-template-columns: 1fr 1fr; } }
@@ -311,3 +315,44 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .sprache { font-weight: 600; font-size: .95rem; letter-spacing: .04em; text-decoration: none; }
 .sprache:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
 @media (max-width: 359px) { .kopf__aktionen .knopf-icon { min-width: 40px; padding: 0 .3rem; } .kopf__innen { gap: .3rem; } .marke { gap: .4rem; } .marke__text b { font-size: .9rem; } .marke__text small { font-size: .6rem; letter-spacing: .08em; } }
+/* Tusch, die Figur des Dojo (aus copilot.ninja, 16.10.2026) */
+.tusch { display: inline-block; width: 120px; height: 160px; line-height: 0; flex: none; }
+.tusch .tusch__svg { width: 100%; height: 100%; overflow: visible; }
+.t-figur, .t-figur * { transform-box: fill-box; }
+.t-figur { transform-origin: 50% 100%; }
+.t-koerper { fill: var(--tusch-koerper); stroke: var(--tusch-kontur); stroke-width: 1.5; }
+.t-gesicht { fill: var(--paper); }
+.t-augen { fill: none; stroke: var(--ink); stroke-width: 3.6; stroke-linecap: round; transform-origin: 50% 50%; }
+.t-band, .t-pinsel-spitze { fill: var(--signal); }
+.t-guertel, .t-guertel-enden { fill: var(--belt-current); stroke: var(--line-strong); stroke-width: 1.2; stroke-linejoin: round; }
+.t-pinsel { transform-origin: 0 100%; }
+.t-pinsel-stiel { fill: none; stroke: var(--tusch-koerper); stroke-width: 3; stroke-linecap: round; }
+.t-hand { fill: var(--tusch-koerper); stroke: var(--tusch-kontur); stroke-width: 1.2; }
+.t-rolle, .t-strich { display: none; }
+.tusch--zeigen .t-pinsel { transform: rotate(56deg); }
+.tusch--spaehen { overflow: hidden; }
+.tusch--spaehen .t-figur { transform: translateY(46%); }
+/* Hero mit Tusch (beide Dojos gleich) */
+.hero { position: relative; }
+.hero__tusch { position: absolute; top: clamp(1.6rem, 1rem + 4vw, 4.2rem); right: var(--gutter); width: 60px; height: 80px; pointer-events: none; }
+.hero__tusch .tusch { width: 100%; height: 100%; }
+.hero__band { max-width: min(26rem, calc(100% - 76px)); }
+.hero > .label { max-width: calc(100% - 76px); }
+@media (min-width: 720px) { .hero__tusch { width: 120px; height: 160px; top: 50%; transform: translateY(-50%); right: calc(var(--gutter) + 2rem); } .hero__band { max-width: 26rem; } .hero > .label { max-width: none; } .hero .lead { max-width: min(40rem, calc(100% - 180px)); } }
+@media (min-width: 1040px) { .hero__tusch { width: 168px; height: 224px; right: calc(var(--gutter) + 5rem); } }
+/* Tusch im Kopf, beim Absender, neben Pruefung, Mein Dojo, Guertel und 404 */
+.marke .tusch { width: 27px; height: 36px; }
+.absender-block { display: flex; align-items: flex-start; gap: 1rem; }
+.absender-block .tusch { width: 60px; height: 80px; }
+.absender-block .absender { margin: 0; }
+.dojo-kopf { display: flex; align-items: flex-start; gap: 1rem; }
+.dojo-kopf .tusch { width: 60px; height: 80px; }
+.dojo-kopf__text { min-width: 0; flex: 1; }
+@media (min-width: 720px) { .dojo-kopf { gap: 1.5rem; } .dojo-kopf .tusch { width: 90px; height: 120px; } }
+.guertel-kopf { flex-wrap: wrap; }
+.guertel-kopf > div { flex: 1 1 14rem; min-width: 0; }
+.guertel-kopf__tusch { line-height: 0; flex: none; }
+.guertel-kopf__tusch .tusch { width: 60px; height: 80px; }
+@media (min-width: 720px) { .guertel-kopf__tusch .tusch { width: 90px; height: 120px; } }
+[data-guertel-nr] > .tusch .t-guertel, [data-guertel-nr] > .tusch .t-guertel-enden { fill: var(--k); }
+.tusch--404 { display: block; width: 90px; height: 120px; margin-bottom: .5rem; }

@@ -6,6 +6,12 @@ Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gür
 
 Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung zu Microsoft.
 
+## Tusch und Farbton (seit 16.10.2026)
+
+- Figur «Tusch» aus copilot.ninja: `templates/partials/tusch.svg` (in `engine-sync.mjs` unter GLEICH, nur in copilot-ninja ändern). Im Build `tusch(pose)`, Posen `ruhe`, `zeigen`, `spaehen`. Einsatz: Marke in Kopf und Menü, Hero der Startseite, Absender-Block (mit Querverweis auf copilot.ninja), /pruefung/ und /dojo/ (trägt den eigenen Gürtel über `--belt-current`), /guertel/<farbe>/ (trägt diesen Gürtel über `data-guertel-nr`), 404 (spähend), Favicon (Kopf). Der Gurtknoten bleibt für Ergebnis- und Gürtelbilder.
+- Eigener Farbton Power-Automate-Blau, Kontraste nach WCAG AA geprüft: hell Papier `#EDF2F9`, Akzent `--site: #0F5BB5`; dunkel Papier `#0B1019`, Akzent `#82B4F2`. Akzent nur für die Kopflinie und die Unterzeile der Marke. Signal (Rot), ok und premium wie copilot.ninja.
+- Menü: letzter Punkt «Dojo für Copilot» bzw. «Dojo for Copilot», Menüknopf auf allen Breiten sichtbar.
+
 ## Seiten
 
 | Pfad | Inhalt |

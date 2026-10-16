@@ -1,4 +1,4 @@
-Titelschrift des KMUpower Dojo, selbst gehostet (keine Anfrage an fremde Server).
+Titelschrift des PowerPlatformAcademy Dojo, selbst gehostet (keine Anfrage an fremde Server).
 
 Schrift: Barlow Semi Condensed, Schnitte 600 und 700, Teilmenge Latin
 Herkunft: Fontsource 5.1.0 (@fontsource/barlow-semi-condensed), heruntergeladen am 15.10.2026

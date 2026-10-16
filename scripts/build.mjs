@@ -77,7 +77,9 @@ function partial(name) {
   // Sprachfassung templates/partials/<name>.en.html, wenn vorhanden
   const key = `${name}.${L}`;
   if (!partialCache[key]) {
-    const datei = L !== 'de' && gibtEs(`templates/partials/${name}.${L}.html`) ? `templates/partials/${name}.${L}.html` : `templates/partials/${name}.html`;
+    // .svg-Partials (tusch.svg) sind sprachneutral
+    const datei = gibtEs(`templates/partials/${name}.svg`) ? `templates/partials/${name}.svg`
+      : L !== 'de' && gibtEs(`templates/partials/${name}.${L}.html`) ? `templates/partials/${name}.${L}.html` : `templates/partials/${name}.html`;
     if (!gibtEs(datei)) { fehler(`Partial fehlt: ${datei}`); return ''; }
     partialCache[key] = lies(datei).replace(/\s+$/, '');
   }
@@ -216,7 +218,10 @@ const ICONS = {
 };
 // Gurtknoten als Zeichen der Seite (keine Microsoft-Farben, keine Produktsymbole)
 const KNOTEN_PFADE = '<path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/>';
-const markeKnoten = `<svg class="marke__knoten" viewBox="0 0 32 32" aria-hidden="true" focusable="false">${KNOTEN_PFADE}</svg>`;
+// Tusch, die Figur des Dojo (aus copilot.ninja, templates/partials/tusch.svg). Posen: ruhe, zeigen, spaehen
+const tusch = (pose, extra = '') => `<span class="tusch tusch--${pose}${extra ? ' ' + extra : ''}" aria-hidden="true">${partial('tusch')}</span>`;
+// Kopf mit Tusch daneben (Pruefung, Mein Dojo): Figur links, Text rechts
+const dojoKopf = (inhalt, nr = 0) => `<div class="dojo-kopf"${nr ? ` data-guertel-nr="${nr}"` : ''}>${tusch('ruhe')}<div class="dojo-kopf__text">${inhalt}</div></div>`;
 const bandPunkt = (n) => `<span class="band-punkt" data-guertel-nr="${n}" aria-hidden="true"></span>`;
 const guertelTag = (n) => `<span class="guertel-tag" data-guertel-nr="${n}">${bandPunkt(n)}${esc(GUERTEL[n - 1].name)}</span>`;
 function lizenzBadge(t) {
@@ -281,7 +286,7 @@ function seite(relL, p) {
   const andere = L === 'en' ? '' : 'en/';
   const cur = (n) => NAV[p.seite] === n ? (/^(wand|pruefung|premium|dojo)$/.test(p.seite) ? ' aria-current="page"' : ' aria-current="true"') : '';
   const ctx = {
-    r, lr, name: NAME, marke_knoten: markeKnoten,
+    r, lr, name: NAME, marke_tusch: tusch('ruhe'),
     icon_suche: ICONS.suche, icon_sonne: ICONS.sonne, icon_mond: ICONS.mond, icon_menue: ICONS.menue, icon_zu: ICONS.zu,
     cur_techniken: cur('techniken'), cur_pruefung: cur('pruefung'), cur_premium: cur('premium'), cur_dojo: cur('dojo'),
     js_extra: (p.js || []).map(s => `<script src="${r}assets/js/${s}" defer></script>`).join('\n'),
@@ -367,6 +372,7 @@ function baueStart() {
   <h1 id="h1">${T('Welcher <span class="strich">Flow-Gürtel</span> bist du?', 'Which <span class="strich">flow belt</span> are you?')}</h1>
   <p class="lead">${T(`${PRUEF_ANZAHL()} Fragen, rund vier Minuten. Danach weisst du, was du als Nächstes lernst.`, `${PRUEF_ANZAHL()} questions, about four minutes. Then you know what to learn next.`)}</p>
   <div class="knopf-reihe"><a class="knopf knopf--primaer" href="pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a><a class="knopf" href="premium/">${T('Reicht meine Lizenz?', 'Is my license enough?')}</a></div>
+  <span class="hero__tusch">${tusch('ruhe')}</span>
 </section>
 <section class="block" aria-labelledby="h-lizenz"><div class="wrap sektion--eng">
   <div class="lcheck">
@@ -389,7 +395,7 @@ function baueStart() {
   <p class="knopf-reihe"><a class="knopf" href="techniken/">${T('Alle Techniken ansehen', 'See all techniques')}</a></p>
 </div></section>
 <section class="block" aria-label="${T('Absender', 'About the author')}"><div class="wrap sektion--eng">
-  <p class="absender">${T('Von Marcel Lehmann, KMUpower. Die Fragen stammen aus den wöchentlichen Tipps auf powerplatformtip.com. Wer Flows mit Begleitung lernen will', 'By Marcel Lehmann, KMUpower. The questions come from the weekly tips on powerplatformtip.com. If you want to learn flows with guidance')}: <a href="${esc(kursUrl('start'))}" rel="noopener">${esc(KURS_NAME())}</a>.</p>
+  <div class="absender-block">${tusch('zeigen')}<p class="absender">${T('Von Marcel Lehmann, KMUpower. Die Fragen stammen aus den wöchentlichen Tipps auf powerplatformtip.com. Wer Flows mit Begleitung lernen will', 'By Marcel Lehmann, KMUpower. The questions come from the weekly tips on powerplatformtip.com. If you want to learn flows with guidance')}: <a href="${esc(kursUrl('start'))}" rel="noopener">${esc(KURS_NAME())}</a>. ${T('Dasselbe Dojo für Microsoft Copilot Chat und Copilot Studio', 'The same dojo for Microsoft Copilot Chat and Copilot Studio')}: <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>.</p></div>
 </div></section>
 </main>`;
   seite('index.html', {
@@ -515,9 +521,9 @@ function bauePruefung() {
   const n = PRUEF_ANZAHL();
   const haupt = `<main id="main"><div class="wrap sektion--eng pruef">
 ${krumenHtml('../', [[T('Gürtelprüfung', 'Belt exam'), './']])}
-<span class="label">${T('Selbsttest', 'Self-assessment')}</span>
+${dojoKopf(`<span class="label">${T('Selbsttest', 'Self-assessment')}</span>
 <h1 id="h1">${T('Gürtelprüfung', 'Belt exam')}</h1>
-<p class="lead">${T(`${n} Fragen von Weiss bis Braun, zwei je Gürtel. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.`, `${n} questions from white to brown, two per belt. Two wrong answers in one belt end the exam.`)}</p>
+<p class="lead">${T(`${n} Fragen von Weiss bis Braun, zwei je Gürtel. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.`, `${n} questions from white to brown, two per belt. Two wrong answers in one belt end the exam.`)}</p>`)}
 <div data-pruefung data-anzahl="${n}">
 <p class="knopf-reihe"><button type="button" class="knopf knopf--primaer" data-pruefung-start data-nur-js>${T('Prüfung starten', 'Start the exam')}</button></p>
 <p class="klein" data-nur-js>${T(`Die Fragen kommen zufällig aus ${POOL.length} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.`, `The questions are drawn at random from ${POOL.length} questions on the tips. Your result stays in your browser.`)}</p>
@@ -583,7 +589,7 @@ function baueGuertel(g) {
   const naechster = GUERTEL[g.nr];
   const haupt = `<main id="main"><div class="wrap sektion--eng">
 ${krumenHtml(r, [[T('Gürtelweg', 'Belt path'), '../../techniken/'], [g.name, './']])}
-<div class="ergebnis__abzeichen">${abzeichenSvg(g.nr)}<div><span class="label">${T(`Stufe ${g.nr} von 7`, `Level ${g.nr} of 7`)}</span><h1 id="h1">${esc(g.name)}: ${esc(g.leitwort)}</h1></div></div>
+<div class="ergebnis__abzeichen guertel-kopf">${abzeichenSvg(g.nr)}<span class="guertel-kopf__tusch" data-guertel-nr="${g.nr}">${tusch('ruhe')}</span><div><span class="label">${T(`Stufe ${g.nr} von 7`, `Level ${g.nr} of 7`)}</span><h1 id="h1">${esc(g.name)}: ${esc(g.leitwort)}</h1></div></div>
 <p class="lead">${esc(g.erreicht_satz)}</p>
 <section class="abschnitt" aria-labelledby="h-kann"><h2 id="h-kann">${T('Das kannst du mit diesem Gürtel', 'What you can do with this belt')}</h2><p>${esc(g.kannst_du)}</p>
 ${g.nr === 7 && !drin.length ? `<p class="leer-hinweis">${T('Die Meisterprüfung folgt. Die Techniken dazu entstehen aus Tipps, die gerade überarbeitet werden: ein Switch-Router als Werkzeug für Agents und Connector-Aufrufe, die sich selbst korrigieren.', 'The master exam is coming soon. Its techniques come from tips that are being revised right now: a switch router as a tool for agents and connector calls that correct themselves.')}</p>` : `<p class="klein">${T(`${drin.length} ${drin.length === 1 ? 'Technik' : 'Techniken'} mit eigener Seite, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'} in der Gürtelprüfung.`, `${drin.length} ${drin.length === 1 ? 'technique' : 'techniques'} with their own page, ${fr} ${fr === 1 ? 'question' : 'questions'} in the belt exam.`)}</p>`}
@@ -607,9 +613,9 @@ function baueDojo() {
 <ul class="dojo-liste">${drin.map(t => `<li data-technik="${esc(t.schluessel)}"><a href="../techniken/${t.slug}/">${esc(t.titel_de)}</a><span class="status" data-status-text>${T('offen', 'open')}</span></li>`).join('')}</ul></section>`;
   }).join('\n');
   const haupt = `<main id="main"><div class="wrap sektion--eng pruef">
-<span class="label">${T('Dein Fortschritt', 'Your progress')}</span>
+${dojoKopf(`<span class="label">${T('Dein Fortschritt', 'Your progress')}</span>
 <h1 id="h1">${T('Mein Dojo', 'My dojo')}</h1>
-<p class="lead" data-dojo-stand>${T('Hier siehst du, welche Techniken du geübt hast und welchen Gürtel du in der Prüfung erreicht hast. Alles bleibt in deinem Browser.', 'Here you see which techniques you have practiced and which belt you reached in the exam. Everything stays in your browser.')}</p>
+<p class="lead" data-dojo-stand>${T('Hier siehst du, welche Techniken du geübt hast und welchen Gürtel du in der Prüfung erreicht hast. Alles bleibt in deinem Browser.', 'Here you see which techniques you have practiced and which belt you reached in the exam. Everything stays in your browser.')}</p>`)}
 <p class="knopf-reihe"><a class="knopf knopf--primaer" href="../pruefung/">${T('Gürtelprüfung', 'Belt exam')}</a><a class="knopf" href="../heute/">${T('Technik des Tages', 'Technique of the day')}</a></p>
 ${liste}
 <section class="abschnitt" aria-labelledby="h-loeschen"><h2 id="h-loeschen">${T('Daten löschen', 'Delete data')}</h2><p>${T('Dein Fortschritt liegt nur im lokalen Speicher dieses Browsers. Mit einem Klick ist er weg.', 'Your progress is only stored in the local storage of this browser. One click and it is gone.')}</p><p><button type="button" class="knopf knopf--leise" data-dojo-loeschen data-nur-js>${T('Alles löschen', 'Delete everything')}</button></p><p class="status-zeile" data-dojo-meldung role="status" aria-live="polite"></p></section>
@@ -769,6 +775,7 @@ ${T(`<h1 id="h1">Datenschutz</h1>
   seite('404.html', {
     seite: '404', absolut: true, titel: T(`Seite nicht gefunden | ${TITEL_SUFFIX}`, `Page not found | ${TITEL_SUFFIX}`), noindex: true, beschreibung: T('Diese Seite gibt es nicht.', 'This page does not exist.'),
     haupt: `<main id="main"><div class="wrap sektion">
+${tusch('spaehen', 'tusch--404')}
 <span class="label">${T('Fehler 404', 'Error 404')}</span>
 <h1 id="h1">${T('Diese Seite gibt es nicht.', 'This page does not exist.')}</h1>
 <p class="lead">${T(`Der Link ist falsch oder die Seite ist umgezogen. Eine Kurzadresse wie ${esc(KURZ_BASIS)}/158 führt direkt zur Technik zu diesem Tipp.`, `The link is wrong or the page has moved. A short link like ${esc(KURZ_BASIS)}/en/158 takes you straight to the technique for that tip.`)}</p>
@@ -852,7 +859,8 @@ function falte(zeile) {
   return teile.join('\r\n ');
 }
 function baueBilder() {
-  if (L === 'de') schreibe('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#F4EFE6"/><g transform="translate(0 -1)"><path d="M2 11h28v7H2z" fill="#B4301A" stroke="#15171B" stroke-width="1.4"/><path d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4" fill="#B4301A" stroke="#15171B" stroke-width="1.4"/><rect x="11.5" y="8.5" width="9" height="12" rx="2.2" fill="#15171B"/></g></svg>\n`);
+  // Favicon: Kopf von Tusch wie copilot.ninja, Hintergrund im Papierton dieser Seite
+  if (L === 'de') schreibe('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 -4 96 96"><rect x="20" y="-4" width="96" height="96" rx="16" fill="#EDF2F9"/><path fill="#B4301A" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path fill="#15171B" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path fill="#EDF2F9" d="M31 38l62-5 1 13-63 5z"/><path fill="none" stroke="#15171B" stroke-width="4.2" stroke-linecap="round" d="M46 44.6h9M68 42.4h9"/></svg>\n`);
   const schrift = "Bahnschrift, 'Arial Narrow', sans-serif";
   const karteSvg = (titel1, titel2, unter, hex) => `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <rect width="1200" height="630" fill="#F4EFE6"/>

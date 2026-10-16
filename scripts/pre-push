@@ -1,5 +1,5 @@
 #!/bin/sh
-# KMUpower Dojo: verhindert, dass ein Vorschau-Build (Banner) veroeffentlicht wird.
+# PowerPlatformAcademy Dojo: verhindert, dass ein Vorschau-Build (Banner) veroeffentlicht wird.
 # Einrichten: cp scripts/pre-push .git/hooks/pre-push
 # Vorher: node scripts/build.mjs --produktion
 # Testphase (Marcel 15.10.2026): Build mit --testphase ist erlaubt, wenn jede Seite noindex traegt und kein Banner da ist.

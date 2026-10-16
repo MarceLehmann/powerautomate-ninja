@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CFG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const ANDERE = path.resolve(ROOT, CFG.copilot_ninja_pfad);
-const GLEICH = ['scripts/pre-push', 'assets/fonts/dojo-display-600.woff2', 'assets/fonts/dojo-display-700.woff2', 'assets/fonts/OFL.txt', 'assets/fonts/LIESMICH.txt'];
+const GLEICH = ['scripts/pre-push', 'assets/fonts/dojo-display-600.woff2', 'assets/fonts/dojo-display-700.woff2', 'assets/fonts/OFL.txt', 'assets/fonts/LIESMICH.txt', 'templates/partials/tusch.svg'];
 const ANGEPASST = ['scripts/links.mjs', 'assets/js/theme-init.js'];
 
 if (!fs.existsSync(ANDERE)) { console.error(`copilot-ninja nicht gefunden: ${ANDERE}`); process.exit(1); }
