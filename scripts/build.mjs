@@ -405,6 +405,17 @@ function baueStart() {
   });
 }
 const KURS_NAME = () => T(`${CFG.kurs_name} der Power Platform Academy`, 'Power Automate live course of the Power Platform Academy');
+// Kursstatus wie auf der Kursseite der Academy (17.10.2026: «Auf die Warteliste», «Neue Termine folgen in Kürze»), Feld kurs_status in
+// site.config.json. Steuert jede Kurszeile (Technik-Seiten, Gürtelprüfung). Sobald Termine buchbar sind: "termine". Gleiche Regel in copilot-ninja.
+const KURS_LINK_NAME = () => T(CFG.kurs_name, 'Power Automate live course');
+const kursStatusSatz = () => CFG.kurs_status === 'warteliste'
+  ? T('Die nächsten Termine stehen noch nicht fest, auf der Kursseite setzt du dich auf die Warteliste.', 'The next dates are not set yet, you can join the waiting list on the course page.')
+  : T('Termine und Anmeldung findest du auf der Kursseite.', 'Dates and registration are on the course page.');
+// Kurszeile der gemeinsamen Dojo-Vorlage (UX-Review 17.10.2026, Q12): gleicher Satzbau wie copilot.ninja, unter «Nächste Technik»
+function kursZeile(stelle) {
+  const link = `<a href="${esc(kursUrl(stelle))}" rel="noopener">${esc(KURS_LINK_NAME())}</a>`;
+  return `<p class="kurs-zeile" data-kurs-status="${esc(CFG.kurs_status)}">${T(`Lieber mit Begleitung weiter? Der ${link} der Power Platform Academy läuft über vier Wochen. `, `Prefer to continue with guidance? The ${link} at the Power Platform Academy runs over four weeks. `)}${kursStatusSatz()}</p>`;
+}
 
 function filterHtml() {
   const themen = [...new Set(SEITEN.map(t => t.thema))].sort((a, b) => a.localeCompare(b, L));
@@ -452,7 +463,7 @@ function baueTechnik(t, i) {
   const url = urlTechnik(t);
   const vor = SEITEN[i - 1], nach = SEITEN[i + 1];
   const q = t.quiz;
-  const kurs = t.guertel >= 4 ? `<p class="kurs-zeile">${T('Lieber mit Begleitung? Der', 'Prefer to learn with guidance? The')} <a href="${esc(kursUrl(`technik-${t.tipp_nr}`))}" rel="noopener">${esc(KURS_NAME())}</a> ${T('führt in vier Wochen von den Grundlagen bis zu Error Handling und Scopes.', 'takes you from the basics to error handling and scopes in four weeks.')}</p>` : '';
+  const kurs = kursZeile(`technik-${t.tipp_nr}`);
   const indexierbar = !TESTPHASE;
   const belege = (t.lizenz_belege || []).map(b => `<a href="${esc(b.url)}" rel="noopener">${esc(b.titel)}</a>`).join(', ');
   const haupt = `<main id="main"><div class="wrap">
@@ -481,7 +492,6 @@ ${t.ausdruck ? `<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="
 <section class="abschnitt" aria-label="${T('Dein Stand', 'Your progress')}">
 <button type="button" class="knopf" data-geuebt="${esc(t.schluessel)}" aria-pressed="false" data-nur-js>${T('Als geübt markieren', 'Mark as practiced')}</button>
 <p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
-${kurs}
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">${T('Teilen', 'Share')}</h2>
 <div class="knopf-reihe"><a class="knopf knopf--klein" href="${esc(linkedinUrl(teilenText(t)))}" rel="noopener">${T('Als Quizfrage auf LinkedIn teilen', 'Share as a quiz question on LinkedIn')}</a><button type="button" class="knopf knopf--klein" data-kopieren-text="${esc(teilenText(t)).replace(/\n/g, '&#10;')}" data-nur-js>${T('Text kopieren', 'Copy text')}</button><a class="knopf knopf--leise knopf--klein" href="${esc(mailtoFehler(t))}">${T('Fehler in dieser Frage melden', 'Report an error in this question')}</a></div>
@@ -489,6 +499,7 @@ ${kurs}
 </section>
 <p class="quelle">${T('Quelle', 'Source')}: <a href="${esc(mitUtm(t.tipp_url, `quelle-${t.tipp_nr}`))}" rel="noopener">${esc(tippLabel(t))}</a>, Microsoft Learn: <a href="${esc(t.learn_url)}" rel="noopener">${esc(t.learn_titel)}</a>.</p>
 <nav class="blaettern" aria-label="${T('Weitere Techniken', 'More techniques')}">${vor ? `<a href="${r}techniken/${vor.slug}/" rel="prev"><span>${T('Vorherige Technik', 'Previous technique')}</span>${esc(vor.titel_de)}</a>` : `<a href="${r}techniken/"><span>${T('Zurück', 'Back')}</span>${T('Zur Technik-Wand', 'To the technique wall')}</a>`}${nach ? `<a href="${r}techniken/${nach.slug}/" rel="next"><span>${T('Nächste Technik', 'Next technique')}</span>${esc(nach.titel_de)}</a>` : `<a href="${r}pruefung/" rel="next"><span>${T('Geschafft', 'Done')}</span>${T('Zur Gürtelprüfung', 'To the belt exam')}</a>`}</nav>
+${kurs}
 </article>
 </div></main>`;
   seite(`techniken/${t.slug}/index.html`, {
@@ -817,7 +828,7 @@ function baueDaten() {
   schreibe(`assets/data/tag${sfx}.json`, JSON.stringify({ start: daten.tag_start, eintraege: folge.map(t => ({ k: t.schluessel, slug: t.slug, titel: t.titel_de, g: t.guertel, lizenz: t.lizenz, start: FUER_START(t), frage: t.quiz.frage, antworten: t.quiz.antworten })) }));
   const pool = POOL.map(t => ({ k: t.schluessel, g: t.guertel, frage: t.quiz.frage, antworten: t.quiz.antworten, richtig: t.quiz.richtig_index, erkl: (t.quiz.erklaerungen || [])[t.quiz.richtig_index] || '', url: t.seite ? `techniken/${t.slug}/` : mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), tipp: mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), titel: t.seite ? t.titel_de : tippLabel(t), tipp_label: tippLabel(t), seite: !!t.seite }));
   const guertel = GUERTEL.map(g => ({ nr: g.nr, farbe: g.farbe, name: g.name, akk: g.akk, kurz: g.kurz, leitwort: g.leitwort, kann: g.kannst_du, hex: g.hex, naechste: SEITEN.filter(t => t.guertel === g.nr).slice(0, 3).map(t => ({ titel: t.titel_de, url: `techniken/${t.slug}/` })) }));
-  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME() }, guertel, fragen: pool }));
+  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME(), link_name: KURS_LINK_NAME(), status: CFG.kurs_status, status_satz: kursStatusSatz() }, guertel, fragen: pool }));
 
   const montag = (() => { const d = new Date(DATUM + 'T00:00:00Z'); do d.setUTCDate(d.getUTCDate() + 1); while (d.getUTCDay() !== 1); return d.toISOString().slice(0, 10).replace(/-/g, ''); })();
   const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//PowerPlatformAcademy Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'en' ? '-en' : ''}@kmupower.com`,

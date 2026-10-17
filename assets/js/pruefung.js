@@ -95,7 +95,8 @@
         '<a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=' + encodeURIComponent(text) + '" rel="noopener">' + tx('Auf LinkedIn teilen', 'Share on LinkedIn') + '</a>' +
         '<button type="button" class="knopf knopf--klein" data-text-kopieren>' + tx('Text kopieren', 'Copy text') + '</button></div>' : '') +
       '<div class="knopf-reihe"><a class="knopf" href="' + LR + 'kalender/montag.ics" download>' + tx('Jeden Montag eine Frage im Kalender', 'A question in your calendar every Monday') + '</a><button type="button" class="knopf knopf--leise" data-nochmal>' + tx('Prüfung neu starten', 'Restart the exam') + '</button></div>' +
-      '<p class="kurs-zeile">' + (res <= 3 ? tx('Grundlagen mit Begleitung lernen: ', 'Learn the basics with guidance: ') : tx('Weiter mit Error Handling und Scopes, live begleitet: ', 'Continue with error handling and scopes, live and guided: ')) + '<a href="' + esc(kurs) + '" rel="noopener">' + esc(daten.kurs.name) + '</a></p>' +
+      /* Kurszeile an den Kursstatus gekoppelt (UX-Review 17.10.2026 Q10): Status und Satz kommen aus site.config.json ueber pool.json */
+      '<p class="kurs-zeile" data-kurs-status="' + esc(daten.kurs.status || '') + '">' + (res <= 3 ? tx('Grundlagen mit Begleitung lernen? Der ', 'Learn the basics with guidance? The ') : tx('Error Handling und Scopes mit Begleitung vertiefen? Der ', 'Go deeper into error handling and scopes with guidance? The ')) + '<a href="' + esc(kurs) + '" rel="noopener">' + esc(daten.kurs.link_name || daten.kurs.name) + '</a>' + tx(' der Power Platform Academy läuft über vier Wochen. ', ' at the Power Platform Academy runs over four weeks. ') + esc(daten.kurs.status_satz || '') + '</p>' +
       '</section>';
     var fbx = box.querySelector('.fortschritt'); if (fbx) fbx.style.setProperty('--n', fragen.length);
     var t2 = box.querySelector('#erg-titel'); if (t2) t2.focus();

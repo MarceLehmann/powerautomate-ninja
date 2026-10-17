@@ -184,6 +184,10 @@ a.pfadzeile__name:hover { color: var(--signal); }
 .krumen ol { display: flex; flex-wrap: wrap; gap: .3rem; list-style: none; padding: 0; margin: 1rem 0 0; font-size: .9rem; }
 .krumen li + li::before { content: "/"; margin-right: .3rem; color: var(--ink-muted); }
 .krumen a { color: var(--ink-muted); }
+/* Klickziele mindestens 24 px (WCAG 2.5.8, UX-Review 17.10.2026 Q13). Padding an Inline-Links vergroessert die Trefferflaeche,
+   ohne den Zeilenfall zu aendern. Gleiche Regeln in copilot-ninja. */
+.krumen a { display: inline-flex; align-items: center; min-height: 24px; }
+.karte h3 a, .arrow-list a, .klein a, .kurs-zeile a, .quelle a, p a:not([class]) { padding-block: 3px; }
 .tk { max-width: 46rem; }
 .tk__kopf { padding-top: 1.2rem; }
 .tk__kopf h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.4rem); }
@@ -215,7 +219,7 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .tipp-knopf span { font-size: .9rem; opacity: .8; }
 .tipp-knopf:hover { background: var(--signal); color: var(--on-signal); }
 .status-zeile { font-size: .95rem; color: var(--ok); font-weight: 600; min-height: 1.5em; margin: .4rem 0 0; }
-.kurs-zeile { font-size: .95rem; color: var(--ink-muted); }
+.kurs-zeile { max-width: 66ch; margin: 1rem 0 0; font-size: .95rem; color: var(--ink-muted); }
 .quelle { font-size: .9rem; color: var(--ink-muted); border-top: 1px solid var(--line); padding-top: 1rem; }
 .blaettern { display: grid; gap: .6rem; margin: 1.5rem 0; }
 .blaettern a { display: flex; flex-direction: column; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: var(--r-md); text-decoration: none; color: var(--ink); min-height: 44px; }
@@ -274,7 +278,7 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .lfrage .klein { margin: -.3rem 0 .6rem; }
 .wahl { display: flex; align-items: center; gap: .7rem; min-height: 52px; padding: .5rem .9rem; border: 2px solid var(--line-strong); border-radius: var(--r-md); background: var(--paper); cursor: pointer; margin-bottom: .5rem; }
 .wahl:has(input:checked) { border-color: var(--ink); background: var(--surface-2); }
-.wahl input { width: 22px; height: 22px; accent-color: var(--signal); flex: none; }
+.wahl input { width: 24px; height: 24px; accent-color: var(--signal); flex: none; }
 
 /* Dojo */
 .dojo-liste { list-style: none; padding: 0; margin: 0 0 1rem; }

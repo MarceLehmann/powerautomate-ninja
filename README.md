@@ -44,6 +44,14 @@ Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung
 | `scripts/engine-sync.mjs` | Abgleich der gemeinsamen Engine-Dateien mit copilot-ninja |
 | `scripts/pre-push` | Git-Hook, identisch mit copilot-ninja |
 
+## Kurszeile und Kursstatus (UX-Review 17.10.2026, Paket 1)
+
+Eine Kurszeile zur Academy in der gemeinsamen Dojo-Vorlage, gleicher Satzbau wie copilot.ninja: auf jeder Technik-Seite unter «Nächste Technik» (alle Gürtel) und im Ergebnis der Gürtelprüfung. Quelle ist `kursZeile()` in `scripts/build.mjs`, die Prüfung liest Name, Status und Satz aus `assets/data/pool.json`.
+
+`kurs_status` in `site.config.json` folgt der Kursseite der Academy: `warteliste` (Stand 17.10.2026: «Auf die Warteliste», «Neue Termine folgen in Kürze») oder `termine`, sobald Termine buchbar sind. Das Prüfungsergebnis verspricht nichts, was der Kurs gerade nicht anbietet. In copilot-ninja heisst der Wert `KURS_STATUS` in `scripts/build.mjs`. Beide gleich halten.
+
+Klickziele mindestens 24 px (WCAG 2.5.8): Regeln unter `.krumen a` in `templates/css/site.css`.
+
 ## Befehle
 
 ```
