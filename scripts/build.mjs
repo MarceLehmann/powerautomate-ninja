@@ -395,7 +395,7 @@ function baueStart() {
   <p class="knopf-reihe"><a class="knopf" href="techniken/">${T('Alle Techniken ansehen', 'See all techniques')}</a></p>
 </div></section>
 <section class="block" aria-label="${T('Absender', 'About the author')}"><div class="wrap sektion--eng">
-  <div class="absender-block">${tusch('zeigen')}<p class="absender">${T('Von Marcel Lehmann, KMUpower. Die Fragen stammen aus den wöchentlichen Tipps auf powerplatformtip.com. Wer Flows mit Begleitung lernen will', 'By Marcel Lehmann, KMUpower. The questions come from the weekly tips on powerplatformtip.com. If you want to learn flows with guidance')}: <a href="${esc(kursUrl('start'))}" rel="noopener">${esc(KURS_NAME())}</a>. ${T('Dasselbe Dojo für Microsoft Copilot Chat und Copilot Studio', 'The same dojo for Microsoft Copilot Chat and Copilot Studio')}: <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>.</p></div>
+  <div class="absender-block">${tusch('zeigen')}<p class="absender">${T('Von Marcel Lehmann, KMUpower. Die Fragen stammen aus den wöchentlichen Tipps auf powerplatformtip.com. Wer Flows mit Begleitung lernen will', 'By Marcel Lehmann, KMUpower. The questions come from the weekly tips on powerplatformtip.com. If you want to learn flows with guidance')}: <a href="${esc(kursUrl('start'))}" rel="noopener">${esc(KURS_NAME())}</a>${T('', ' (in German)')}. ${T('Dasselbe Dojo für Microsoft Copilot Chat und Copilot Studio', 'The same dojo for Microsoft Copilot Chat and Copilot Studio')}: <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>.</p></div>
 </div></section>
 </main>`;
   seite('index.html', {
@@ -414,7 +414,7 @@ const kursStatusSatz = () => CFG.kurs_status === 'warteliste'
 // Kurszeile der gemeinsamen Dojo-Vorlage (UX-Review 17.10.2026, Q12): gleicher Satzbau wie copilot.ninja, unter «Nächste Technik»
 function kursZeile(stelle) {
   const link = `<a href="${esc(kursUrl(stelle))}" rel="noopener">${esc(KURS_LINK_NAME())}</a>`;
-  return `<p class="kurs-zeile" data-kurs-status="${esc(CFG.kurs_status)}">${T(`Lieber mit Begleitung weiter? Der ${link} der Power Platform Academy läuft über vier Wochen. `, `Prefer to continue with guidance? The ${link} at the Power Platform Academy runs over four weeks. `)}${kursStatusSatz()}</p>`;
+  return `<p class="kurs-zeile" data-kurs-status="${esc(CFG.kurs_status)}">${T(`Lieber mit Begleitung weiter? Der ${link} der Power Platform Academy läuft über vier Wochen. `, `Prefer to continue with guidance? The ${link} (in German) at the Power Platform Academy runs over four weeks. `)}${kursStatusSatz()}</p>`;
 }
 
 function filterHtml() {
@@ -673,7 +673,7 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 <p>The PowerPlatformAcademy Dojo is part of the <a href="${esc(ACADEMY_DOJO())}" rel="noopener">Power Platform Academy</a>. There is a separate dojo for Copilot at <a href="${esc(COPILOT_DOJO())}" rel="noopener" hreflang="en">copilot.ninja</a>.</p>
 <h2>Found an error?</h2>
 <p>Every technique page has the link "Report an error in this question". Or write directly to <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>
-<p>If you want to learn flows with guidance: `)}<a href="${esc(kursUrl('ueber'))}" rel="noopener">${esc(KURS_NAME())}</a>.</p>
+<p>If you want to learn flows with guidance: `)}<a href="${esc(kursUrl('ueber'))}" rel="noopener">${esc(KURS_NAME())}</a>${T('', ' (in German)')}.</p>
 </div></div></main>`;
   seite('ueber/index.html', { seite: 'ueber', titel: T(`Über das Dojo | ${TITEL_SUFFIX}`, `About the dojo | ${TITEL_SUFFIX}`), haupt: ueber, beschreibung: T('Wie das PowerPlatformAcademy Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.', 'How the PowerPlatformAcademy Dojo works, where the questions come from and what the site is not.') });
 
