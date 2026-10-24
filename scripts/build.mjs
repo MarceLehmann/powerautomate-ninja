@@ -254,10 +254,10 @@ const LQ = () => [
     { v: 'm365', text: T('Nur SharePoint, Outlook, Teams oder Excel', 'Only SharePoint, Outlook, Teams or Excel'), wirkung: 'standard' },
     { v: 'andere', text: T('Auch andere Systeme oder Fachanwendungen', 'Other systems or business applications too'), wirkung: 'pruefen', punkt: T('Connectoren zu anderen Systemen: Ob sie Standard oder Premium sind, zeigt die Liste der Premium-Connectoren.', 'Connectors to other systems: the list of premium connectors shows whether they are standard or premium.') },
     { v: 'unklar', text: T('Weiss ich noch nicht', 'I do not know yet'), wirkung: 'pruefen', punkt: T('Datenquellen klären und in der Liste der Premium-Connectoren nachsehen.', 'Clarify the data sources and check them in the list of premium connectors.') }] },
-  { id: 'q2', frage: T('Brauchst du einen Custom Connector oder «HTTP with Microsoft Entra ID»?', 'Do you need a custom connector or "HTTP with Microsoft Entra ID"?'), hinweis: '', optionen: [
+  { id: 'q2', frage: T('Ruft dein Flow eine Web-Schnittstelle direkt auf, mit der Aktion HTTP, einem Custom Connector oder «HTTP with Microsoft Entra ID»?', 'Does your flow call a web API directly, with the HTTP action, a custom connector or "HTTP with Microsoft Entra ID"?'), hinweis: '', optionen: [
     { v: 'nein', text: T('Nein', 'No'), wirkung: 'standard' },
-    { v: 'ja', text: T('Ja', 'Yes'), wirkung: 'premium', punkt: T('Custom Connector oder HTTP with Microsoft Entra ID', 'Custom connector or HTTP with Microsoft Entra ID') },
-    { v: 'andere', text: T('Ich rufe eine andere Web-Schnittstelle auf', 'I call a different web API'), wirkung: 'pruefen', punkt: T('Für andere Web-Schnittstellen: Prüfe bei einem Premium-Kennzeichen, ob deine vorhandene Lizenz die Nutzung abdeckt.', 'For other web APIs: if the action shows the premium label, check whether your existing license covers its use.') }] },
+    { v: 'ja', text: T('Ja', 'Yes'), wirkung: 'premium', punkt: T('Aktion HTTP, Custom Connector oder HTTP with Microsoft Entra ID', 'HTTP action, custom connector or HTTP with Microsoft Entra ID') },
+    { v: 'unklar', text: T('Weiss ich noch nicht', 'I do not know yet'), wirkung: 'pruefen', punkt: T('Aufruf der Web-Schnittstelle klären: Die Aktion HTTP, Custom Connectors und HTTP with Microsoft Entra ID sind Premium.', 'Clarify how the web API is called: the HTTP action, custom connectors and HTTP with Microsoft Entra ID are premium.') }] },
   { id: 'q3', frage: T('Liest oder schreibt dein Flow Daten in Dataverse?', 'Does your flow read or write data in Dataverse?'), hinweis: '', optionen: [
     { v: 'nein', text: T('Nein', 'No'), wirkung: 'standard' },
     { v: 'ja', text: T('Ja', 'Yes'), wirkung: 'premium', punkt: 'Microsoft Dataverse' }] },
@@ -547,7 +547,7 @@ ${dojoKopf(`<span class="label">${T('Selbsttest', 'Self-assessment')}</span>
 <p class="lead">${T(`${n} Fragen von Weiss bis Braun, zwei je Gürtel. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.`, `${n} questions from white to brown, two per belt. Two wrong answers in one belt end the exam.`)}</p>`)}
 <div data-pruefung data-anzahl="${n}">
 <p class="knopf-reihe"><button type="button" class="knopf knopf--primaer" data-pruefung-start data-nur-js>${T('Prüfung starten', 'Start the exam')}</button></p>
-<p class="klein" data-nur-js>${T(`Die Fragen kommen zufällig aus ${POOL.length} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.`, `The questions are drawn at random from ${POOL.length} questions on the tips. Your result stays in your browser.`)}</p>
+<p class="klein" data-nur-js>${T(`Die Fragen kommen zufällig aus ${POOL.filter(t => t.guertel <= 6).length} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.`, `The questions are drawn at random from ${POOL.filter(t => t.guertel <= 6).length} questions on the tips. Your result stays in your browser.`)}</p>
 <p class="leer-hinweis" data-ohne-js>${T('Die Gürtelprüfung braucht JavaScript. Alle Fragen mit Auflösung findest du auch auf den', 'The belt exam needs JavaScript. You also find questions with solutions on the')} <a href="../techniken/">${T('Technik-Seiten', 'technique pages')}</a>.</p>
 </div>
 <section class="abschnitt" aria-labelledby="h-regeln"><h2 id="h-regeln">${T('So wird gewertet', 'How it is scored')}</h2>
@@ -586,9 +586,11 @@ ${fragen}
 ${T(`<li>Microsoft-365-Lizenzen mit Power-Automate-Nutzungsrechten decken nur Standard-Connectoren ab.</li>
 <li>Premium-Connectoren oder -Funktionen brauchen je nach Fall Power Automate Premium (Per User), Power Automate Process (Per Flow), Power Apps Premium oder Nutzungsrechte aus anderen Lizenzen.</li>
 <li>Bei Flows in einer Power App oder im Kontext einer Dynamics-365-Anwendung können entsprechende Nutzungsrechte reichen. Prüfe den konkreten Kontext und die vorhandenen Lizenzen.</li>
+<li>Nutzt ein Flow Premium-Connectoren, braucht bei automatisierten und geplanten Flows der Besitzer die Lizenz, bei Instant Flows jede Person, die ihn startet. Statt aller Personen lässt sich der Flow mit Process lizenzieren.</li>
 <li>Welche Lizenz hast du schon? Prüfe die Zuweisung in deinem Tenant oder frage deine IT oder deinen Microsoft-Partner.</li>`, `<li>Microsoft 365 licenses with Power Automate usage rights cover standard connectors only.</li>
 <li>Premium connectors or features may require Power Automate Premium (Per User), Power Automate Process (Per Flow), Power Apps Premium or usage rights from other licenses, depending on the case.</li>
 <li>Flows within a Power App or in the context of a Dynamics 365 application may be covered by those usage rights. Check the specific context and existing licenses.</li>
+<li>If a flow uses premium connectors, the owner needs the license for automated and scheduled flows, and every person who starts it needs one for instant flows. Instead of licensing every person, you can license the flow with Process.</li>
 <li>Which license do you already have? Check assignments in your tenant or ask your IT team or Microsoft partner.</li>`)}
 </ul>
 <p class="klein">${T(`Quellen, Stand ${stand}`, `Sources, as of ${stand}`)}: ${LQUELLEN().map(q => `<a href="${q.url}" rel="noopener">${esc(q.titel)}</a>`).join(', ')}.</p>
@@ -617,7 +619,7 @@ ${krumenHtml(r, [[T('Gürtelweg', 'Belt path'), '../../techniken/'], [g.name, '.
 ${g.nr === 7 && !drin.length ? `<p class="leer-hinweis">${T('In Arbeit: Ein Tipp ist im Fragenpool, noch keine Technikseite ist freigegeben. Der schwarze Gürtel ist noch nicht Teil der Prüfung.', 'In progress: one tip is in the question pool; no technique page has been released yet. The black belt is not yet part of the exam.')}</p>` : `<p class="klein">${T(`${drin.length} ${drin.length === 1 ? 'Technik' : 'Techniken'} mit eigener Seite, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'} in der Gürtelprüfung.`, `${drin.length} ${drin.length === 1 ? 'technique' : 'techniques'} with their own page, ${fr} ${fr === 1 ? 'question' : 'questions'} in the belt exam.`)}</p>`}
 </section>
 ${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul>` : ''}
-<p class="knopf-reihe"><a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>${naechster && g.nr < 6 ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${T('Weiter zu', 'On to the')} ${esc(T(naechster.name, naechster.name.toLowerCase()))}</a>` : ''}</p>
+<p class="knopf-reihe"><a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>${naechster && g.nr < 6 ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${esc(T('Weiter zum ' + naechster.akk.replace(/^den /, ''), 'On to the ' + naechster.name.toLowerCase()))}</a>` : ''}</p>
 </div></main>`;
   seite(`guertel/${g.farbe}/index.html`, {
     seite: 'guertel', titel: `${g.name}: ${g.leitwort} | ${TITEL_SUFFIX}`, haupt,

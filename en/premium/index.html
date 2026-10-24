@@ -140,11 +140,11 @@
 <label class="wahl"><input type="radio" name="q1" value="unklar" data-wirkung="pruefen" data-punkt="Clarify the data sources and check them in the list of premium connectors."><span>I do not know yet</span></label>
 </fieldset>
 <fieldset class="lfrage" id="q2">
-<legend>2. Do you need a custom connector or &quot;HTTP with Microsoft Entra ID&quot;?</legend>
+<legend>2. Does your flow call a web API directly, with the HTTP action, a custom connector or &quot;HTTP with Microsoft Entra ID&quot;?</legend>
 
 <label class="wahl"><input type="radio" name="q2" value="nein" data-wirkung="standard" data-punkt=""><span>No</span></label>
-<label class="wahl"><input type="radio" name="q2" value="ja" data-wirkung="premium" data-punkt="Custom connector or HTTP with Microsoft Entra ID"><span>Yes</span></label>
-<label class="wahl"><input type="radio" name="q2" value="andere" data-wirkung="pruefen" data-punkt="For other web APIs: if the action shows the premium label, check whether your existing license covers its use."><span>I call a different web API</span></label>
+<label class="wahl"><input type="radio" name="q2" value="ja" data-wirkung="premium" data-punkt="HTTP action, custom connector or HTTP with Microsoft Entra ID"><span>Yes</span></label>
+<label class="wahl"><input type="radio" name="q2" value="unklar" data-wirkung="pruefen" data-punkt="Clarify how the web API is called: the HTTP action, custom connectors and HTTP with Microsoft Entra ID are premium."><span>I do not know yet</span></label>
 </fieldset>
 <fieldset class="lfrage" id="q3">
 <legend>3. Does your flow read or write data in Dataverse?</legend>
@@ -164,6 +164,7 @@
 <li>Microsoft 365 licenses with Power Automate usage rights cover standard connectors only.</li>
 <li>Premium connectors or features may require Power Automate Premium (Per User), Power Automate Process (Per Flow), Power Apps Premium or usage rights from other licenses, depending on the case.</li>
 <li>Flows within a Power App or in the context of a Dynamics 365 application may be covered by those usage rights. Check the specific context and existing licenses.</li>
+<li>If a flow uses premium connectors, the owner needs the license for automated and scheduled flows, and every person who starts it needs one for instant flows. Instead of licensing every person, you can license the flow with Process.</li>
 <li>Which license do you already have? Check assignments in your tenant or ask your IT team or Microsoft partner.</li>
 </ul>
 <p class="klein">Sources, as of 2026-10-16: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>, <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license" rel="noopener">Deep dive on specific licenses</a>, <a href="https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-standard-connectors" rel="noopener">List of all Standard tier connectors</a>, <a href="https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-premium-connectors" rel="noopener">List of all Premium tier connectors</a>, <a href="https://learn.microsoft.com/en-us/connectors/commondataserviceforapps/" rel="noopener">Microsoft Dataverse connector reference</a>, <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized) connector reference</a>.</p>

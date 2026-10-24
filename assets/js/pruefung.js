@@ -64,7 +64,7 @@
     fb.innerHTML = '<div class="feedback ' + (ok ? 'ok' : 'nein') + '"><p><strong>' + (ok ? tx('Richtig.', 'Correct.') : tx('Nicht ganz. Richtig ist: ', 'Not quite. The correct answer is: ') + esc(q.f.antworten[q.f.richtig]) + '.') + '</strong></p>' +
       (q.f.erkl ? '<p>' + esc(q.f.erkl.replace(/^(Richtig|Correct)\.\s*/, '')) + '</p>' : '') +
       '<p>' + (q.f.seite ? '<a href="' + esc(link(q.f.url)) + '">' + tx('Zur Technik: ', 'To the technique: ') + esc(q.f.titel) + '</a><br>' : '') + '<a href="' + esc(q.f.tipp || q.f.url) + '" rel="noopener">' + tx('Zum Tipp: ', 'To the tip: ') + esc(q.f.tipp_label || q.f.titel) + '</a></p></div>' +
-      (abbruch ? '<p class="klein">' + tx('Zwei falsche Antworten im ' + esc(daten.guertel[q.f.g - 1].name) + '. Die Prüfung endet hier.', 'Two wrong answers in the ' + esc(daten.guertel[q.f.g - 1].name.toLowerCase()) + '. The exam ends here.') + '</p>' : '') +
+      (abbruch ? '<p class="klein">' + tx('Zwei falsche Antworten im ' + esc(daten.guertel[q.f.g - 1].akk.replace(/^den /, '')) + '. Die Prüfung endet hier.', 'Two wrong answers in the ' + esc(daten.guertel[q.f.g - 1].name.toLowerCase()) + '. The exam ends here.') + '</p>' : '') +
       '<p class="knopf-reihe"><button type="button" class="knopf knopf--primaer" data-weiter>' + (ende ? tx('Zum Ergebnis', 'See result') : tx('Nächste Frage', 'Next question')) + '</button></p>';
     var w = fb.querySelector('[data-weiter]');
     w.addEventListener('click', function () { if (ende) ergebnis(abbruch); else { idx++; zeige(); } });

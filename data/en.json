@@ -908,12 +908,12 @@
         "antworten": [
           "Get file content in the SharePoint connector",
           "The HTTP action with a GET request",
-          "Upload from URL in the OneDrive connector"
+          "Upload file from URL in the OneDrive connector"
         ],
         "erklaerungen": [
           "",
           "",
-          "Upload from URL saves the page as a file in OneDrive, then Get file content reads it as text. Both are standard actions, the HTTP action would be premium."
+          "Upload file from URL saves the page as a file in OneDrive, then Get file content reads it as text. Both are standard actions, the HTTP action would be premium."
         ]
       },
       "lernziel": "You save web content with a standard action.",
@@ -1156,7 +1156,7 @@
         "erklaerungen": [
           "",
           "",
-          "The standard approval process does not reach external recipients. Send email with options goes to any valid address, and you process the response in the flow."
+          "The standard approval reaches external people only as guest users in your tenant, with an accepted invitation and a Power Automate license. Send email with options goes to any valid address, and you process the response in the flow."
         ]
       },
       "lernziel": "You get approvals from people outside your organization as well.",
@@ -1515,7 +1515,7 @@
       "lernziel": "You build approvals that may stay open for longer than 30 days.",
       "thema": "Approvals",
       "titel": "Keep approvals alive beyond 30 days",
-      "kurztext": "A flow run ends after {limit:laufzeit_max}. If an approval waits longer, it runs into nothing and nobody notices. The fix: the flow restarts itself. A SharePoint list gets a Yes/No column TriggerFlow. Thanks to a trigger condition, the trigger \"When an item is created or modified\" only fires when it is Yes, and the first action immediately sets it to No. The approval gets a timeout just below the limit, for example P29D. When it expires, an action that runs after \"has timed out\" sets TriggerFlow back to Yes, and a new run starts. If you don't want a new email, you split \"Create an approval\" and \"Wait for an approval\" and store the approval ID.",
+      "kurztext": "A flow run ends after {limit:laufzeit_max}. If an approval waits longer, it runs into nothing and nobody notices. The fix: the flow restarts itself. A SharePoint list gets a Yes/No column TriggerFlow. Thanks to a trigger condition, the trigger \"When an item is created or modified\" only fires when it is Yes, and the first action immediately sets it to No. The approval gets a timeout below 28 days, for example P27D. According to Microsoft, a flow cannot wait longer than that for an approval. When the timeout expires, an action that runs after \"has timed out\" sets TriggerFlow back to Yes, and a new run starts. If you don't want a new email, you split \"Create an approval\" and \"Wait for an approval\" and store the approval ID.",
       "wann_ja": "For contracts, budgets, legal reviews and other decisions that can take longer than a month.",
       "wann_nein": "When the decision is sure to be made within {limit:laufzeit_max}. Then a timeout with a path for \"has timed out\" is enough.",
       "fehler": "Leaving out the trigger condition. Every change to the item then starts a new run, and the flow keeps calling itself.",
@@ -2039,7 +2039,7 @@
         ],
         "erklaerungen": [
           "",
-          "The version history only covers flows that still exist. For a deleted flow you need a backup, for example a regular solution export.",
+          "The version history only covers flows that still exist. An admin can restore a deleted flow only within 21 days. After that, only a backup helps, for example a regular solution export.",
           ""
         ]
       },

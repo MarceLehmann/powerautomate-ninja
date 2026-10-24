@@ -1454,13 +1454,13 @@
         "antworten": [
           "«Get file content» im SharePoint-Connector",
           "Die HTTP-Aktion mit einem GET-Aufruf",
-          "«Upload from URL» im OneDrive-Connector"
+          "«Upload file from URL» im OneDrive-Connector"
         ],
         "richtig_index": 2,
         "erklaerungen": [
           "",
           "",
-          "«Upload from URL» speichert die Seite als Datei in OneDrive, danach liest du sie mit «Get file content» als Text. Beides sind Standardaktionen, die HTTP-Aktion wäre Premium."
+          "«Upload file from URL» speichert die Seite als Datei in OneDrive, danach liest du sie mit «Get file content» als Text. Beides sind Standardaktionen, die HTTP-Aktion wäre Premium."
         ]
       },
       "lernziel": "Du speicherst Webinhalte mit einer Standardaktion."
@@ -1849,7 +1849,7 @@
         "erklaerungen": [
           "",
           "",
-          "Der Standard-Approval-Prozess erreicht externe Empfänger nicht. «Send email with options» geht an jede gültige Adresse, die Antwort verarbeitest du im Flow."
+          "Die Standard-Approval erreicht Externe nur als Gastbenutzer im Tenant, mit angenommener Einladung und Power-Automate-Lizenz. «Send email with options» geht an jede gültige Adresse, die Antwort verarbeitest du im Flow."
         ]
       },
       "lernziel": "Du holst Genehmigungen auch von Personen ausserhalb der Organisation ein."
@@ -2401,7 +2401,7 @@
       "slug": "approvals-ueber-30-tage",
       "titel_de": "Approvals über 30 Tage am Leben halten",
       "ausdruck": "@equals(triggerOutputs()?['body/TriggerFlow'], true)",
-      "kurztext_de": "Ein Flow-Lauf endet nach {limit:laufzeit_max}. Wartet eine Approval länger, läuft sie ins Leere, und niemand merkt es. Die Lösung: Der Flow startet sich selbst neu. Eine SharePoint-Liste bekommt die Spalte TriggerFlow (Ja/Nein). Der Trigger «When an item is created or modified» läuft dank einer Trigger Condition nur, wenn sie auf Ja steht, und die erste Aktion setzt sie sofort auf Nein. Die Approval bekommt einen Timeout knapp unter der Grenze, etwa P29D. Läuft er ab, setzt eine Aktion mit «has timed out» TriggerFlow wieder auf Ja, und ein neuer Lauf beginnt. Willst du keine neue Mail, trennst du «Create an approval» und «Wait for an approval» und speicherst die Approval-ID.",
+      "kurztext_de": "Ein Flow-Lauf endet nach {limit:laufzeit_max}. Wartet eine Approval länger, läuft sie ins Leere, und niemand merkt es. Die Lösung: Der Flow startet sich selbst neu. Eine SharePoint-Liste bekommt die Spalte TriggerFlow (Ja/Nein). Der Trigger «When an item is created or modified» läuft dank einer Trigger Condition nur, wenn sie auf Ja steht, und die erste Aktion setzt sie sofort auf Nein. Die Approval bekommt einen Timeout unter 28 Tagen, etwa P27D. Länger kann ein Flow laut Microsoft nicht auf eine Approval warten. Läuft der Timeout ab, setzt eine Aktion mit «has timed out» TriggerFlow wieder auf Ja, und ein neuer Lauf beginnt. Willst du keine neue Mail, trennst du «Create an approval» und «Wait for an approval» und speicherst die Approval-ID.",
       "wann_ja": "Bei Verträgen, Budgets, Rechtsprüfungen und anderen Entscheiden, die länger als einen Monat liegen können.",
       "wann_nein": "Wenn die Entscheidung sicher innerhalb von {limit:laufzeit_max} fällt. Dann reicht ein Timeout mit Pfad für «has timed out».",
       "fehler": "Die Trigger Condition weglassen. Dann startet jede Änderung am Element einen neuen Lauf, und der Flow ruft sich endlos selbst auf.",
@@ -3278,7 +3278,7 @@
         "richtig_index": 1,
         "erklaerungen": [
           "",
-          "Die Versionshistorie deckt nur Flows ab, die noch existieren. Für einen ganz gelöschten Flow brauchst du eine Sicherung, etwa einen regelmässigen Export als Solution.",
+          "Die Versionshistorie deckt nur Flows ab, die noch existieren. Einen gelöschten Flow holt ein Admin nur innerhalb von 21 Tagen zurück. Danach hilft nur eine Sicherung, etwa ein regelmässiger Export als Solution.",
           ""
         ]
       },
