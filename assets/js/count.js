@@ -1,4 +1,5 @@
 // Self-hosted copy of https://gc.zgo.at/count.js (GoatCounter), upstream Last-Modified 2026-07-28, downloaded 2026-10-16.
+// Locally modified on 2026-10-24: query strings are not sent. The sha256 below refers to the unmodified upstream file.
 // sha256 of the unmodified upstream file: 792b7abd26c1fb6ae62906833e09a301251e2641816e69e4f95aba518f3fe3f0
 // GoatCounter: https://www.goatcounter.com
 // This file is released under the ISC license: https://opensource.org/licenses/ISC
@@ -29,7 +30,6 @@
 			e: !!(vars.event || goatcounter.event),
 			s: window.screen.width,
 			b: is_bot(),
-			q: location.search,
 		}
 
 		var rcb, pcb, tcb  // Save callbacks to apply later.
@@ -98,7 +98,7 @@
 			if (a.hostname.replace(/^www\./, '') === location.hostname.replace(/^www\./, ''))
 				loc = a
 		}
-		return (loc.pathname + loc.search) || '/'
+		return loc.pathname || '/'
 	}
 
 	// Run function after DOM is loaded.

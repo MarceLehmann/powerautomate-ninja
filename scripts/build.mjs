@@ -575,6 +575,7 @@ ${krumenHtml('../', [[T('Lizenz-Check', 'License check'), './']])}
 <span class="label">${T(`Lizenz-Check, Stand ${stand}`, `License check, as of ${stand}`)}</span>
 <h1 id="h1">${T('Reicht meine Lizenz?', 'Is my license enough?')}</h1>
 <p class="lead">${T('Vier Fragen zu deinem Flow als erste Einschätzung. Welche Lizenz hast du schon? Auch vorhandene Nutzungsrechte und der Kontext des Flows zählen.', 'Four questions about your flow for an initial assessment. Which license do you already have? Existing usage rights and the context of the flow matter too.')}</p>
+<p class="lizenz-hinweis">${T('Keine Lizenzberatung. Lizenzen und Preise können sich seit der Veröffentlichung geändert haben. Die Angaben sind ein Anhaltspunkt.', 'Not licensing advice. Licences and prices may have changed since publication. The information is a guide only.')}</p>
 <div class="urteil pruefen" data-urteil role="status" aria-live="polite">${T('Beantworte die vier Fragen, das Urteil erscheint hier.', 'Answer the four questions and the verdict appears here.')}</div>
 <ul class="arrow-list" data-urteil-liste></ul>
 <form data-lizenz-check>
@@ -590,7 +591,7 @@ ${T(`<li>Microsoft-365-Lizenzen mit Power-Automate-Nutzungsrechten decken nur St
 <li>Flows within a Power App or in the context of a Dynamics 365 application may be covered by those usage rights. Check the specific context and existing licenses.</li>
 <li>Which license do you already have? Check assignments in your tenant or ask your IT team or Microsoft partner.</li>`)}
 </ul>
-<p class="klein">${T(`Quellen, Stand ${stand}`, `Sources, as of ${stand}`)}: ${LQUELLEN().map(q => `<a href="${q.url}" rel="noopener">${esc(q.titel)}</a>`).join(', ')}. ${T('Keine Lizenzberatung im Einzelfall: Für Verträge fragst du deinen Microsoft-Partner.', 'No licensing advice for individual cases: for contracts, ask your Microsoft partner.')}</p>
+<p class="klein">${T(`Quellen, Stand ${stand}`, `Sources, as of ${stand}`)}: ${LQUELLEN().map(q => `<a href="${q.url}" rel="noopener">${esc(q.titel)}</a>`).join(', ')}.</p>
 </section>
 <section class="abschnitt" aria-labelledby="h-standard"><h2 id="h-standard">${T('Diese Techniken laufen mit Standard', 'These techniques run with Standard')}</h2>
 <ul class="dojo-liste">${standard.map(t => `<li data-guertel-nr="${t.guertel}">${bandPunkt(t.guertel)}<a href="../techniken/${t.slug}/">${esc(t.titel_de)}</a></li>`).join('')}</ul>
@@ -660,7 +661,7 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 </ul>
 <h2>Woher die Inhalte kommen</h2>
 <p>Alle Fragen stammen aus den wöchentlichen Tipps von Marcel Lehmann auf powerplatformtip.com. Ins Dojo kommen nur Tipps, die nach der letzten Durchsicht aktuell sind. Lizenzangaben und Zahlen zu Limits stützen sich auf Microsoft Learn, mit Link auf jeder Seite. Ist eine Erklärung hier falsch, wird zuerst der Tipp korrigiert und danach das Dojo.</p>
-<p>Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Anfrage enthält auch Seitentitel und vollständige Query-Zeichenfolge. Einzelheiten stehen im <a href="../datenschutz/">Datenschutz</a>.</p>
+<p>Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Anfrage enthält den Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Einzelheiten stehen im <a href="../datenschutz/">Datenschutz</a>.</p>
 <h2>Was das Dojo nicht ist</h2>
 <p>Kein Angebot von Microsoft, keine Zertifizierung und keine Lizenzberatung im Einzelfall. Die Gürtel sind eine Lernhilfe dieser Seite.</p>
 <h2>Teil der Power Platform Academy</h2>
@@ -678,7 +679,7 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 </ul>
 <h2>Where the content comes from</h2>
 <p>All questions come from the weekly tips by Marcel Lehmann on powerplatformtip.com. Only tips that are current after the last review make it into the dojo. License statements and limit numbers are based on Microsoft Learn, with a link on every page. If an explanation here is wrong, the tip is corrected first and the dojo after that.</p>
-<p>Visits are counted without cookies; only totals without personal identifiers are stored. The request also includes the page title and full query string. See the <a href="../datenschutz/">privacy notice</a> for details.</p>
+<p>Visits are counted without cookies; only totals without personal identifiers are stored. The request includes the page path and page title, but no query string or fragment. See the <a href="../datenschutz/">privacy notice</a> for details.</p>
 <h2>What the dojo is not</h2>
 <p>Not a Microsoft offering, not a certification and no licensing advice for individual cases. The belts are a learning aid of this website.</p>
 <h2>Part of the Power Platform Academy</h2>
@@ -805,10 +806,10 @@ function baueSitemap(indexierbar) {
   setzeSprache('de');
   const de = [`# ${NAME} · ${ZUSATZ}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
     '## Seiten', '', `- [Gürtelprüfung](${BASE_URL}pruefung/): Selbsttest von Weiss bis Braun`, `- [Lizenz-Check](${BASE_URL}premium/): Reicht die Lizenz aus Microsoft 365?`, `- [Alle Techniken](${BASE_URL}techniken/): nach Gürtel geordnet`, `- [Über](${BASE_URL}ueber/): Methode und Herkunft der Fragen`, '',
-    'Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitentitel und vollständige Query-Zeichenfolge. Details: ' + BASE_URL + 'datenschutz/', '', '## Techniken', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Grundlage: ${t.tipp_url}`), ''];
+    'Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Details: ' + BASE_URL + 'datenschutz/', '', '## Techniken', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Grundlage: ${t.tipp_url}`), ''];
   setzeSprache('en');
   const en = ['## English', '', `- [Home](${BASE_URL}en/): English version`, `- [Belt exam](${BASE_URL}en/pruefung/): self-assessment from white to brown`, `- [License check](${BASE_URL}en/premium/): is the license from Microsoft 365 enough?`, `- [All techniques](${BASE_URL}en/techniken/): ordered by belt`, '',
-    'Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page title and full query string. Details: ' + BASE_URL + 'en/datenschutz/', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Based on: ${t.tipp_url}`), ''];
+    'Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page path and page title, but no query string or fragment. Details: ' + BASE_URL + 'en/datenschutz/', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Based on: ${t.tipp_url}`), ''];
   schreibe('llms.txt', [...de, ...en].join('\n'));
 }
 function falte(zeile) {

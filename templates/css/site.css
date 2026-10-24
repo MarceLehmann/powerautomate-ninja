@@ -273,6 +273,7 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .urteil { font-family: var(--font-display); font-stretch: 87.5%; font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.3rem); line-height: 1.1; font-weight: 700; padding: 1rem 1.2rem; border-radius: var(--r-lg); background: var(--surface); border-left: 8px solid var(--ok); margin-bottom: 1rem; }
 .urteil.premium { border-left-color: var(--premium); }
 .urteil.pruefen { border-left-color: var(--line-strong); }
+.lizenz-hinweis { padding: .9rem 1rem; border: 2px solid var(--line-strong); border-radius: var(--r-md); background: var(--surface); color: var(--ink); font-size: 1rem; font-weight: 600; line-height: 1.5; }
 .lfrage { border: 0; padding: 0; margin: 0 0 1.4rem; min-width: 0; }
 .lfrage legend { font-weight: 700; font-size: 1.1rem; margin-bottom: .6rem; padding: 0; }
 .lfrage .klein { margin: -.3rem 0 .6rem; }

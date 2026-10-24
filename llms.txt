@@ -9,7 +9,7 @@
 - [Alle Techniken](https://powerautomate.ninja/techniken/): nach Gürtel geordnet
 - [Über](https://powerautomate.ninja/ueber/): Methode und Herkunft der Fragen
 
-Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitentitel und vollständige Query-Zeichenfolge. Details: https://powerautomate.ninja/datenschutz/
+Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Details: https://powerautomate.ninja/datenschutz/
 
 ## Techniken
 
@@ -45,7 +45,7 @@ Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Persone
 - [License check](https://powerautomate.ninja/en/premium/): is the license from Microsoft 365 enough?
 - [All techniques](https://powerautomate.ninja/en/techniken/): ordered by belt
 
-Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page title and full query string. Details: https://powerautomate.ninja/en/datenschutz/
+Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page path and page title, but no query string or fragment. Details: https://powerautomate.ninja/en/datenschutz/
 
 - [Format the date directly in utcNow()](https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/
 - [Test a flow before it goes live](https://powerautomate.ninja/en/techniken/flow-testen-vor-dem-einschalten/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-9-powerautomate-preview/
