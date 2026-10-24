@@ -1,0 +1,49 @@
+name: "Pages deploy"
+
+# Veroeffentlicht nur den gebauten Teil der Website. Die Quellen (data, scripts, templates, _recherche,
+# README, interne Dateien) bleiben im Repository, werden aber nicht ausgeliefert.
+# Die Seiten sind im Repository bereits fertig gebaut (node scripts/build.mjs --produktion vor dem Push,
+# dazu der pre-push-Hook). Hier wird nur kopiert, nicht gebaut.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Nur den gebauten Teil in _site kopieren
+        run: |
+          mkdir _site
+          rsync -a \
+            --exclude='.git' --exclude='.github' --exclude='.gitignore' \
+            --exclude='/data' --exclude='/scripts' --exclude='/templates' \
+            --exclude='/_recherche' --exclude='/node_modules' \
+            --exclude='/README*' --exclude='/CODEX_BERICHT.txt' --exclude='/review-browser*' \
+            --exclude='desktop.ini' --exclude='Thumbs.db' --exclude='/_site' \
+            ./ _site/
+          touch _site/.nojekyll
+          test -f _site/index.html
+          test -f _site/CNAME
+          ls _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
