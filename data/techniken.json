@@ -984,17 +984,17 @@
       "seite": false,
       "pool": true,
       "quiz": {
-        "frage": "Wie viele Operationen bündelt ein $batch-Aufruf an SharePoint höchstens?",
+        "frage": "Was passiert in einem SharePoint-$batch, wenn eine Operation eines ChangeSets scheitert?",
         "antworten": [
-          "1000",
-          "100",
-          "5000"
+          "Die anderen laufen trotzdem, nichts wird zurückgerollt",
+          "Alle Operationen des ChangeSets werden zurückgerollt",
+          "Der ganze $batch-Aufruf wird abgelehnt"
         ],
         "richtig_index": 0,
         "erklaerungen": [
-          "Die SharePoint REST API nimmt bis zu 1000 Create-, Update- oder Delete-Operationen in einem $batch-Aufruf an. Statt hunderter Einzelaktionen schickst du einen HTTP-Aufruf.",
-          "",
-          ""
+          "Richtig. Der SharePoint-$batch ist nicht transaktional, auch nicht für ChangeSets mit mehreren Operationen: Scheitert eine, werden die anderen trotzdem ausgeführt und nicht zurückgerollt. Prüfe deshalb die Antwort jeder einzelnen Operation.",
+          "Falsch. Das wäre ein \"alles oder nichts\". SharePoint bietet das nicht, auch nicht für ChangeSets mit mehreren Operationen.",
+          "Falsch. Der Aufruf wird angenommen und jede Operation einzeln ausgeführt. Ein Fehler stoppt die übrigen nicht."
         ]
       },
       "lernziel": "Du verarbeitest grosse Mengen SharePoint-Einträge mit Batch-Aufrufen statt Einzelaktionen."
@@ -2484,7 +2484,7 @@
       "lernziel": "Du verhinderst, dass Sonderzeichen Filter und Aufrufe brechen.",
       "slug": "apostrophe-und-sonderzeichen-codieren",
       "titel_de": "Apostrophe und Sonderzeichen richtig codieren",
-      "ausdruck": "replace(Title,'''','''''')",
+      "ausdruck": "replace(triggerOutputs()?['body/Title'],'''','''''')",
       "kurztext_de": "Sonderzeichen in Werten brechen Abfragen und Anfragen, weil der Flow sie als Teil der Syntax liest. Welche Lösung passt, hängt davon ab, wohin der Wert geht. In einem OData-Filter wie Title eq 'Tom's Diner' beendet der Apostroph den Text zu früh. Du verdoppelst ihn mit replace(), dann steht in der Abfrage 'Tom''s Diner'. Für Werte in einer URL nutzt du encodeUriComponent(), das Leerzeichen, Fragezeichen und Apostrophe in Prozent-Codes umwandelt. Codierte Werte von aussen liest du mit decodeUriComponent() zurück. Für Text im Body einer JSON-Anfrage baust du das Objekt mit setProperty() und json() auf. Dann maskiert der Flow Anführungszeichen, Backslashes und Zeilenumbrüche selbst.",
       "wann_ja": "Wenn Namen, Titel oder Freitext in Filtern, URLs oder JSON-Anfragen landen.",
       "wann_nein": "Wenn der Wert nur angezeigt oder in ein Feld geschrieben wird und nie Teil einer Abfrage oder URL ist.",

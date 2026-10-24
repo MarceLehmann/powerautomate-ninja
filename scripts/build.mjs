@@ -527,7 +527,7 @@ ${kurs}
 }
 
 function baueHeute() {
-  const t = heuteTechnik(false);
+  const t = heuteTechnik(true); // dieselbe Rotation wie die Startseite (Marcel 24.10.2026, 369)
   const haupt = `<main id="main"><div class="wrap sektion--eng">
 <span class="label">${T('Technik des Tages', 'Technique of the day')}</span>
 <h1 id="h1">${T('Die Frage von heute', "Today's question")}</h1>

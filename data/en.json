@@ -610,16 +610,16 @@
     },
     "47": {
       "quiz": {
-        "frage": "How many operations does one SharePoint $batch call bundle at most?",
+        "frage": "What happens in a SharePoint $batch when one operation of a ChangeSet fails?",
         "antworten": [
-          "1000",
-          "100",
-          "5000"
+          "The others still complete, nothing is rolled back",
+          "All operations of the ChangeSet are rolled back",
+          "The whole $batch call is rejected"
         ],
         "erklaerungen": [
-          "The SharePoint REST API accepts up to 1000 create, update or delete operations in one $batch call. Instead of hundreds of single actions you send one HTTP request.",
-          "",
-          ""
+          "Correct. A SharePoint $batch is not transactional, not even for ChangeSets with more than one operation: if one fails, the others still run and are not rolled back. So check the response of each single operation.",
+          "Wrong. That would be all-or-nothing. SharePoint does not offer it, not even for ChangeSets with more than one operation.",
+          "Wrong. The call is accepted and each operation runs on its own. One failure does not stop the others."
         ]
       },
       "lernziel": "You process large numbers of SharePoint items with batch calls instead of single actions.",

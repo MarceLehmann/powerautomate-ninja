@@ -148,7 +148,7 @@
   /* Technik des Tages: nach lokalem Datum, fuer alle am selben Tag dieselbe */
   var karteTag = $('[data-heute-karte]');
   if (karteTag) {
-    var nurStart = !$('[data-heute-alle]');
+    var nurStart = true; // Startseite und /heute/ zeigen dieselbe Technik des Tages (369)
     fetch(R + 'assets/data/tag' + SFX + '.json').then(function (r) { return r.json(); }).then(function (j) {
       var folge = (j.eintraege || []).filter(function (t) { return !nurStart || t.start; });
       if (!folge.length) return;
