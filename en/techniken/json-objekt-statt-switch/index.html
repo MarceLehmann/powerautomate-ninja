@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>JSON object instead of Switch | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>JSON object instead of Switch | Flow Dojo</title>
 <meta name="description" content="JSON object instead of Switch: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/json-objekt-statt-switch/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/json-objekt-statt-switch/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="JSON object instead of Switch | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="JSON object instead of Switch | Flow Dojo">
 <meta property="og:description" content="JSON object instead of Switch: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/json-objekt-statt-switch/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gruen.png">
@@ -93,8 +93,8 @@
           "@type": "Question",
           "eduQuestionType": "Multiple choice",
           "learningResourceType": "Practice problem",
-          "name": "What are the two ? for in outputs('Compose')?[InputValue]?['Title']?",
-          "text": "What are the two ? for in outputs('Compose')?[InputValue]?['Title']?",
+          "name": "What are the two ? for in outputs('Compose')?[variables('InputValue')]?['Title']?",
+          "text": "What are the two ? for in outputs('Compose')?[variables('InputValue')]?['Title']?",
           "acceptedAnswer": {
             "@type": "Answer",
             "position": 0,
@@ -211,7 +211,7 @@
 </header>
 <section class="quiz" id="quiz" data-quiz data-richtig="0" data-guertel-nr="4" aria-labelledby="h-quiz">
 <h2 id="h-quiz" class="label">Quiz question</h2>
-<p class="quiz__frage">What are the two ? for in outputs('Compose')?[InputValue]?['Title']?</p>
+<p class="quiz__frage">What are the two ? for in outputs('Compose')?[variables('InputValue')]?['Title']?</p>
 <ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>They prevent an error when a key is unknown</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>They mark the values as optional inputs</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>They automatically convert the result to text</span></button></li></ul>
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
@@ -219,18 +219,18 @@
 <ol class="aufloesung"><li class="richtig"><b>A) They prevent an error when a key is unknown</b>Correct. If the key or the field is missing, the expression returns null instead of an error.</li><li class="falsch"><b>B) They mark the values as optional inputs</b>Wrong. The question mark has nothing to do with inputs. It only protects the access to a property.</li><li class="falsch"><b>C) They automatically convert the result to text</b>Wrong. The question mark does not change the type. For text you need string().</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>A Switch with a dozen cases or Conditions nested three levels deep is hard to read, and every new case means changing the structure of the flow. Often the only goal is to look up a value for a key. For that you store a JSON object with all cases in a Compose action, for example A, B and C, each with a title and a description. You get the matching value with an expression like outputs('Compose')?[InputValue]?['Title']. The two question marks prevent an error when the key or the field is missing. With coalesce() you set a fallback value for unknown keys. You add new cases in the JSON, the flow itself stays the same.</p></section>
-<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>outputs('Compose')?[InputValue]?['Title']</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>A Switch with a dozen cases or Conditions nested three levels deep is hard to read, and every new case means changing the structure of the flow. Often the only goal is to look up a value for a key. For that you store a JSON object with all cases in a Compose action, for example A, B and C, each with a title and a description. You get the matching value with an expression like outputs('Compose')?[variables('InputValue')]?['Title']. The two question marks prevent an error when the key or the field is missing. With coalesce() you set a fallback value for unknown keys. You add new cases in the JSON, the flow itself stays the same.</p></section>
+<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>outputs('Compose')?[variables('InputValue')]?['Title']</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>When a Switch only looks up values: statuses, texts, addresses or settings per environment.</p></div><div class="karte-text"><h3>Better not</h3><p>When the cases should trigger different actions. Then Switch remains the right tool.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Not catching unknown keys. Without coalesce(), null travels on and only surfaces much later.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-100-bypassing-complexity-in-powerautomate/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-100" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #100, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="100" aria-pressed="false" data-nur-js>Mark as practiced</button>
 <p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20are%20the%20two%20%3F%20for%20in%20outputs('Compose')%3F%5BInputValue%5D%3F%5B'Title'%5D%3F%0A%0AA)%20They%20prevent%20an%20error%20when%20a%20key%20is%20unknown%0AB)%20They%20mark%20the%20values%20as%20optional%20inputs%0AC)%20They%20automatically%20convert%20the%20result%20to%20text%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fjson-objekt-statt-switch%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What are the two ? for in outputs('Compose')?[InputValue]?['Title']?&#10;&#10;A) They prevent an error when a key is unknown&#10;B) They mark the values as optional inputs&#10;C) They automatically convert the result to text&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/json-objekt-statt-switch/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%20100&amp;body=Question%3A%20What%20are%20the%20two%20%3F%20for%20in%20outputs('Compose')%3F%5BInputValue%5D%3F%5B'Title'%5D%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20What%20are%20the%20two%20%3F%20for%20in%20outputs('Compose')%3F%5Bvariables('InputValue')%5D%3F%5B'Title'%5D%3F%0A%0AA)%20They%20prevent%20an%20error%20when%20a%20key%20is%20unknown%0AB)%20They%20mark%20the%20values%20as%20optional%20inputs%0AC)%20They%20automatically%20convert%20the%20result%20to%20text%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fjson-objekt-statt-switch%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: What are the two ? for in outputs('Compose')?[variables('InputValue')]?['Title']?&#10;&#10;A) They prevent an error when a key is unknown&#10;B) They mark the values as optional inputs&#10;C) They automatically convert the result to text&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/json-objekt-statt-switch/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%20100&amp;body=Question%3A%20What%20are%20the%20two%20%3F%20for%20in%20outputs('Compose')%3F%5Bvariables('InputValue')%5D%3F%5B'Title'%5D%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
 <p class="klein">Short link: powerautomate.ninja/en/100</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-100-bypassing-complexity-in-powerautomate/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-100" rel="noopener">PowerPlatformTip #100</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/data-operations" rel="noopener">Use data operations in Power Automate</a>.</p>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

@@ -15,7 +15,7 @@
 <script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Schleifen beim Testen mit take() kürzen | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Schleifen beim Testen mit take() kürzen | Flow Dojo</title>
 <meta name="description" content="Schleifen beim Testen mit take() kürzen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="Schleifen beim Testen mit take() kürzen | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Schleifen beim Testen mit take() kürzen | Flow Dojo">
 <meta property="og:description" content="Schleifen beim Testen mit take() kürzen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-gelb.png">
@@ -219,11 +219,11 @@
 <ol class="aufloesung"><li class="richtig"><b>A) Alle drei Einträge, ohne Fehler</b>Richtig. take() nimmt höchstens die angegebene Anzahl. Sind es weniger, kommen alle vorhandenen Einträge zurück.</li><li class="falsch"><b>B) Einen Fehler, weil Einträge fehlen</b>Falsch. take() bricht nicht ab, wenn das Array kürzer ist als die gewünschte Anzahl.</li><li class="falsch"><b>C) Drei Einträge und zwei leere dazu</b>Falsch. take() füllt nichts auf. Es schneidet nur ab, was über die Anzahl hinausgeht.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Eine Schleife über Hunderte Einträge zu testen, kostet bei jedem Lauf Zeit und Aktionen. Mit take() verarbeitest du beim Testen nur die ersten Einträge. Du ersetzt die Eingabe von Apply to each durch einen Ausdruck wie take(outputs('Select'), 5). Die Schleife läuft dann genau fünfmal, egal wie gross das Array ist. Hat das Array weniger Einträge, liefert take() einfach alle, ohne Fehler. So prüfst du die Logik in der Schleife an wenigen echten Datensätzen. Stimmt alles, nimmst du take() wieder heraus und wählst die ursprüngliche Ausgabe neu aus. Der Aufbau des Flows bleibt dabei unverändert.</p></section>
-<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">Der Ausdruck aus dem Tipp</h2><div class="code-block"><pre id="ausdruck"><code>take(outputs('Select'), 5)</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Kopieren</button></div></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Eine Schleife über Hunderte Einträge zu testen, kostet bei jedem Lauf Zeit und Aktionen. Mit take() verarbeitest du beim Testen nur die ersten Einträge. Du ersetzt die Eingabe von Apply to each durch einen Ausdruck wie take(body('Select'), 5). Die Schleife läuft dann höchstens fünfmal, egal wie gross das Array ist. Hat das Array weniger Einträge, liefert take() einfach alle, ohne Fehler. So prüfst du die Logik in der Schleife an wenigen echten Datensätzen. Stimmt alles, nimmst du take() wieder heraus und wählst die ursprüngliche Ausgabe neu aus. Der Aufbau des Flows bleibt dabei unverändert.</p></section>
+
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Beim Testen von Schleifen über grosse Listen oder Tabellen, bevor du den Flow auf alle Daten loslässt.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Im Betrieb. Bleibt take() im Flow, verarbeitet er dauerhaft nur die ersten Einträge.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>take() nach dem Test im Flow vergessen. Ein Hinweis in der Aktion erinnert dich daran, es wieder zu entfernen.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
 <section class="abschnitt" aria-label="Ganzer Tipp"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-148-take-expression-limit-apply-to-each/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-148" rel="noopener"><strong>Ganzer Tipp mit Screenshots auf powerplatformtip.com</strong><span>PowerPlatformTip #148, auf Englisch</span></a></section>
 <section class="abschnitt" aria-label="Dein Stand">
 <button type="button" class="knopf" data-geuebt="148" aria-pressed="false" data-nur-js>Als geübt markieren</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
-        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, nur eine anonyme Zugriffszählung. Dein Fortschritt bleibt in deinem Browser.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung. Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Dein Fortschritt bleibt in deinem Browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

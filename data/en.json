@@ -60,9 +60,9 @@
       "name": "Black belt",
       "kurz": "Black",
       "akk": "the black belt",
-      "leitwort": "Master exam",
-      "kannst_du": "Flows as tools for agents: routers and calls that correct themselves.",
-      "erreicht_satz": "You build flows that agents can rely on."
+      "leitwort": "Master exam in progress",
+      "kannst_du": "In progress: one tip is in the question pool; no technique page has been released yet.",
+      "erreicht_satz": "The black belt is in progress. The techniques and master exam have not been fully released yet."
     }
   ],
   "techniken": {
@@ -122,7 +122,7 @@
           "In a separate Condition at the start of the flow"
         ],
         "erklaerungen": [
-          "Wrong. A variable does not make the flow faster. Inside loops it even stops Apply to each from running in parallel.",
+          "Wrong. A variable does not make the flow faster. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially.",
           "Correct. Fixed values need no variable. Compose or Parse JSON make it clear that the value does not change.",
           "Wrong. A Condition checks something and branches. It is not meant for storing a fixed value."
         ]
@@ -130,7 +130,7 @@
       "lernziel": "You use variables only for values that actually change.",
       "thema": "Flow structure & readability",
       "titel": "Fixed values in Compose instead of variables",
-      "kurztext": "Many flows start with a row of Initialize variable actions for values that never change: an email address, a list URL, a threshold. Fixed values do not need a variable. A single value goes into a Compose action. Several related values go into Parse JSON as one JSON object, and you read them with an expression like outputs('Parse_JSON')?['settingName']. The flow gets shorter, and everyone sees right away that these values are fixed. There is also a practical reason: when you set a variable inside a loop, Apply to each can only run sequentially. Keep variables for values that really change during the run, such as a running total.",
+      "kurztext": "Many flows start with a row of Initialize variable actions for values that never change: an email address, a list URL, a threshold. Fixed values do not need a variable. A single value goes into a Compose action. Several related values go into Parse JSON as one JSON object, and you read them with an expression like body('Parse_JSON')?['settingName']. The flow gets shorter, and everyone sees right away that these values are fixed. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially. Set Apply to each: Concurrency control, Degree of parallelism 1. Keep variables for values that really change during the run, such as a running total.",
       "wann_ja": "For settings that stay the same during the run: addresses, URLs, thresholds, texts.",
       "wann_nein": "For values that change during the run, such as a total or an array you fill step by step. That is what variables are for.",
       "fehler": "Marking fields as required in the Parse JSON schema that are sometimes missing. The run then fails on schema validation.",
@@ -269,7 +269,7 @@
     },
     "12": {
       "quiz": {
-        "frage": "What do you check after pasting from My clipboard?",
+        "frage": "What do you check after pasting copied actions?",
         "antworten": [
           "The licenses of everyone who uses the flow",
           "Whether the Scope was deleted in the old flow",
@@ -283,8 +283,8 @@
       },
       "lernziel": "You use Scopes as reusable building blocks.",
       "thema": "Flow structure & readability",
-      "titel": "Reuse actions with My clipboard",
-      "kurztext": "Some blocks show up in almost every flow: a notification, a log entry, an error message. Instead of clicking them together again each time, you put the actions in a Scope and choose Copy to my clipboard from the Scope's menu. In the next flow you find the block in the action picker under My clipboard and paste it with all its settings. Afterwards you check two things: connections are not copied, so you reconnect the actions. And dynamic content that pointed to the trigger or earlier actions of the old flow needs to be mapped again. My clipboard is tied to your browser. For building blocks a whole team uses, a child flow is the better choice.",
+      "titel": "Copy and reuse actions",
+      "kurztext": "Some blocks appear in almost every flow: a notification, a log entry, an error message. In the new designer, select the action and choose \"Copy action\". At the target position, choose \"Paste an action\". In the classic designer, use \"Copy to my clipboard\" from the action or Scope menu. Insert the block through \"My clipboard\" in the action picker. Afterwards, check connections and dynamic content. References to the trigger or earlier actions of the old flow need to be mapped again. My clipboard is tied to your browser. For building blocks a whole team uses, a child flow is a better choice.",
       "wann_ja": "For blocks you build again and again yourself, such as an error message or a log entry.",
       "wann_nein": "For building blocks that several people should use. My clipboard is tied to your browser, a child flow fits better here.",
       "fehler": "Running the pasted block without resetting the references to the trigger and earlier actions.",
@@ -299,25 +299,25 @@
     },
     "15": {
       "quiz": {
-        "frage": "How do you set Configure run after on the Catch scope?",
+        "frage": "Where do you put Terminate so Finally can clean up first?",
         "antworten": [
-          "has failed and has timed out on, is successful off",
-          "Tick all four statuses so Catch always runs",
-          "Tick only is successful so Catch follows Try"
+          "Inside Catch, just before the error notification",
+          "After Finally, only if Catch ran",
+          "Before Try, with status Failed"
         ],
         "erklaerungen": [
-          "Correct. That way Catch only runs when something in the Try scope fails or takes too long.",
-          "Wrong. That is how you set up Finally. Catch would otherwise also start after every successful run.",
-          "Wrong. Then Catch would only run when everything works, exactly when there is nothing to catch."
+          "Wrong. A Terminate inside Catch ends the flow immediately and skips Finally.",
+          "Correct. Finally cleans up first. A Condition then allows Terminate with status Failed only if Catch ran.",
+          "Wrong. Terminate would end the flow before Try runs its actions."
         ]
       },
       "lernziel": "You build the try-catch-finally pattern into every important flow.",
       "thema": "Error handling",
       "titel": "Catch errors with Try, Catch and Finally",
-      "kurztext": "Without error handling, a flow stops at the first failing action, and nobody finds out. With three scopes you rebuild the pattern from programming. The Try scope holds the actual logic. The Catch scope runs only when Try fails: under Configure run after you tick has failed and has timed out and leave is successful unchecked. There you notify someone or write a log entry. The Finally scope always runs, with all four statuses ticked, and cleans up. With result('Try') you read in Catch which action failed. If the run should show as failed in the run history, add a Terminate action with the status Failed in Catch.",
+      "kurztext": "The Try scope holds the main logic. For Catch, enable only has failed and has timed out of Try under Configure run after. There you log the error, for example with result('Try'), or notify someone. Finally follows Catch with all four Run after statuses enabled and performs cleanup. After Finally, add a Condition with all four Finally statuses enabled in Run after. Check whether Catch ran, meaning its status was not Skipped. Only the error branch runs Terminate with status Failed. The success branch ends without Terminate. A Terminate inside Catch ends the flow immediately and skips Finally. This handles the error first, cleans up next and sets the failed status last.",
       "wann_ja": "In every flow whose failure someone needs to notice: interfaces, files, records in Dataverse.",
       "wann_nein": "In a short test flow that you start yourself and whose run you follow directly.",
-      "fehler": "Leaving critical actions outside the Try scope. Catch never sees what fails there.",
+      "fehler": "Putting Terminate in Catch. Place it after Finally in a branch that only runs if Catch ran.",
       "suchbegriffe": [
         "Try",
         "Catch",
@@ -498,7 +498,7 @@
       "lernziel": "You prevent conflicts by letting flow instances run one after another.",
       "thema": "Loops & concurrency",
       "titel": "Run flows one after another",
-      "kurztext": "An automated flow starts on every new event, even if the previous run has not finished yet. When two runs work on the same data at the same time, you get duplicates, or one run overwrites the other. In the trigger settings you turn on Concurrency Control and set the degree of parallelism to 1. Then only one run is active at a time, further runs wait and start in order. That costs time but protects the data. The queue is limited: at most {limit:trigger_warteschlange} runs can wait. And think before you do it: you can only turn off Concurrency Control on the trigger by deleting the trigger and adding it again.",
+      "kurztext": "An automated flow starts on every new event, even if the previous run has not finished yet. When two runs work on the same data at the same time, you get duplicates, or one run overwrites the other. In the trigger settings you turn on Concurrency Control and set the degree of parallelism to 1. Then only one run is active at a time, further runs wait and start in order. That costs time but protects the data. The queue is limited: at most {limit:trigger_warteschlange} runs can wait. Consider this before enabling it: you can only turn off Concurrency Control on the trigger by deleting the trigger and adding it again.",
       "wann_ja": "When several runs work on the same list, the same file or the same counter.",
       "wann_nein": "When a large number of events arrive in a short time. The queue is limited, and one run after the other becomes a bottleneck.",
       "fehler": "Turning on Concurrency Control on the trigger just to try it out. The only way back is to delete the trigger and add it again.",
@@ -528,7 +528,7 @@
       "lernziel": "You test flows with simulated results without changing real data.",
       "thema": "Testing & debugging",
       "titel": "Test with Static Result without changing data",
-      "kurztext": "Some actions you don't want to actually run while testing: they send emails, change records or take a long time. With Static Result you give an action a fixed result. In the designer you turn on Enable Static Result in the Testing section of the action and define which output it should return. On the next run the action counts as successful without being executed. The following steps continue with your predefined output. That way you test the logic after it calmly and with different cases, without touching real data. Before the flow goes into production, you turn the static result off again.",
+      "kurztext": "Some actions you don't want to actually run while testing: they send emails, change records or take a long time. With Static Result you give an action a fixed result. In the new designer, enable \"Static result\" in the action's \"Testing\" section and set the output values. In the classic designer, open the action's \"Settings\" menu, then \"Static result\". On the next run the action counts as successful without being executed. The following steps continue with your predefined output. That way you test the logic after it calmly and with different cases, without touching real data. Before the flow goes into production, you turn the static result off again.",
       "wann_ja": "For actions that send emails, change data or take long, while you test the steps after them.",
       "wann_nein": "In production. If Static Result stays on, the flow never actually runs the action.",
       "fehler": "Leaving Static Result on after testing. The flow reports success although the action never ran.",
@@ -785,14 +785,14 @@
         ],
         "erklaerungen": [
           "Wrong. Concurrency saves the most time precisely when there are many independent items.",
-          "Correct. Parallel iterations read and write the same variable at the same time and overwrite each other.",
+          "Correct. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially.",
           "Wrong. The source does not matter. What counts is whether the iterations depend on each other."
         ]
       },
       "lernziel": "You speed up loops with concurrency and recognize when it corrupts results.",
       "thema": "Loops & concurrency",
       "titel": "Run Apply to each in parallel",
-      "kurztext": "Apply to each processes items one after another by default. With hundreds of items that takes time, even when every iteration stands on its own. In the loop settings you turn on Concurrency control and raise the degree of parallelism to at most {limit:schleife_parallel_max}. Several iterations then run at the same time, and the loop often finishes in a fraction of the time. This only works when the iterations are independent. If the loop increments a counter or appends values to an array, the iterations overwrite each other. In that case build the result with Select or union() instead of variables. Too much parallelism against the same connector can also lead to throttling.",
+      "kurztext": "Apply to each processes items sequentially by default. If iterations are independent, turn on Concurrency control in the loop settings and raise Degree of parallelism to at most {limit:schleife_parallel_max}. Several iterations then run at the same time. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially. Set Apply to each: Concurrency control, Degree of parallelism 1. This applies to counters or arrays you append values to. For independent iterations, you can build the result with Select or union() instead. Also check the order: if a step needs the previous step's result, parallelism does not fit. Too many concurrent calls to the same connector can also cause throttling.",
       "wann_ja": "When every iteration stands on its own, such as one email per person or one update per record.",
       "wann_nein": "When iterations change the same variable or the order matters.",
       "fehler": "Turning on concurrency and still using Increment variable inside the loop. The counter is wrong afterwards.",
@@ -824,24 +824,24 @@
     },
     "89": {
       "quiz": {
-        "frage": "What is an action's Code View good for?",
+        "frage": "Where do you edit the flow as JSON in the new designer?",
         "antworten": [
-          "Editing the action directly in JSON",
-          "Exporting the whole flow as a file",
-          "Reading an action's expressions in full"
+          "In Code view in the designer",
+          "In My clipboard in the action picker",
+          "In the run history of the last run"
         ],
         "erklaerungen": [
-          "Wrong. Code View is read-only. You make changes in the designer or in the expression editor.",
-          "Wrong. Code View shows only that one action. It has nothing to do with exporting the flow.",
-          "Correct. Code View shows the action's definition with all expressions, exactly as the flow runs them."
+          "Correct. Use Code view in the new designer. In the classic designer, read actions with Peek code or use export.",
+          "Wrong. My clipboard is for copying actions in the classic designer.",
+          "Wrong. Run history shows past runs; you do not edit the flow definition there."
         ]
       },
       "lernziel": "You read an action's definition to find errors faster.",
       "thema": "Testing & debugging",
       "titel": "Look behind an action with Code View",
-      "kurztext": "In the designer you see fields, icons and dynamic content. What the action really runs is in its definition. From the action's menu with the three dots you open Code View, formerly Peek code. It shows the action as JSON, with all inputs and the complete expressions. You see, for example, that a harmless-looking field hides a nested concat() expression. That helps with debugging and with learning: you see how someone else solved a step and reuse the expression in your own flow. Code View is read-only. You still change the action in the designer.",
+      "kurztext": "In the designer you see fields, icons and dynamic content. The JSON definition shows how these settings fit together. In the new designer, use \"Code view\" to edit the flow as JSON. Check action names, inputs and expressions before saving. In the classic designer, open \"Peek code\" to read an action's definition. Use export there for the definition of the whole flow. This lets you spot a nested concat() expression behind a field, for example. It helps with debugging and learning: you read how a step is built and can reuse its expression in your own flow. Test the flow after making changes.",
       "wann_ja": "When a field returns something other than expected and you want to see which expression is really behind it.",
-      "wann_nein": "When you want to change something. You do that in the designer, Code View is read-only.",
+      "wann_nein": "When you only want to change a field value. The input field in the designer is usually easier to follow.",
       "fehler": "Checking only the visible field in the designer. Only Code View shows the complete expression with all its functions.",
       "suchbegriffe": [
         "Code View",
@@ -972,7 +972,7 @@
     },
     "100": {
       "quiz": {
-        "frage": "What are the two ? for in outputs('Compose')?[InputValue]?['Title']?",
+        "frage": "What are the two ? for in outputs('Compose')?[variables('InputValue')]?['Title']?",
         "antworten": [
           "They prevent an error when a key is unknown",
           "They mark the values as optional inputs",
@@ -987,7 +987,7 @@
       "lernziel": "You replace branches with a lookup in a JSON object.",
       "thema": "JSON & data conversion",
       "titel": "JSON object instead of Switch",
-      "kurztext": "A Switch with a dozen cases or Conditions nested three levels deep is hard to read, and every new case means changing the structure of the flow. Often the only goal is to look up a value for a key. For that you store a JSON object with all cases in a Compose action, for example A, B and C, each with a title and a description. You get the matching value with an expression like outputs('Compose')?[InputValue]?['Title']. The two question marks prevent an error when the key or the field is missing. With coalesce() you set a fallback value for unknown keys. You add new cases in the JSON, the flow itself stays the same.",
+      "kurztext": "A Switch with a dozen cases or Conditions nested three levels deep is hard to read, and every new case means changing the structure of the flow. Often the only goal is to look up a value for a key. For that you store a JSON object with all cases in a Compose action, for example A, B and C, each with a title and a description. You get the matching value with an expression like outputs('Compose')?[variables('InputValue')]?['Title']. The two question marks prevent an error when the key or the field is missing. With coalesce() you set a fallback value for unknown keys. You add new cases in the JSON, the flow itself stays the same.",
       "wann_ja": "When a Switch only looks up values: statuses, texts, addresses or settings per environment.",
       "wann_nein": "When the cases should trigger different actions. Then Switch remains the right tool.",
       "fehler": "Not catching unknown keys. Without coalesce(), null travels on and only surfaces much later.",
@@ -1083,7 +1083,7 @@
     },
     "109": {
       "quiz": {
-        "frage": "What does the timeout value P2W on an action mean?",
+        "frage": "What does the timeout value P14D on an action mean?",
         "antworten": [
           "The action only starts after two weeks",
           "The action runs twice a week",
@@ -1092,13 +1092,13 @@
         "erklaerungen": [
           "Wrong. A timeout delays nothing. It defines when a running action counts as timed out.",
           "Wrong. A timeout does not repeat an action. Repetitions are handled by the Retry Policy.",
-          "Correct. P2W is a duration in ISO 8601 format and stands for two weeks."
+          "Correct. P14D is an ISO 8601 duration for 14 days, or two weeks."
         ]
       },
       "lernziel": "You protect long approvals against timeouts.",
       "thema": "Approvals",
       "titel": "Set a timeout for long-running actions",
-      "kurztext": "An approval or another action that waits for people can take longer than planned. In the action settings you define under Timeout how long it may wait at most. You write the duration in ISO 8601 format: P1D is one day, P2W is two weeks, PT2H is two hours. When the time runs out, the action counts as timed out. So that the flow does not simply fail, add an action whose Configure run after is set to has timed out only. There you send a reminder, escalate or start a new request. On top of that, every flow run is limited to {limit:laufzeit_max}.",
+      "kurztext": "An approval or another action that waits for people can take longer than planned. In the action settings you define under Timeout how long it may wait at most. You write the duration in ISO 8601 format: P1D is one day, P14D is 14 days, PT2H is two hours. When the time runs out, the action counts as timed out. So that the flow does not simply fail, add an action whose Configure run after is set to has timed out only. There you send a reminder, escalate or start a new request. On top of that, every flow run is limited to {limit:laufzeit_max}.",
       "wann_ja": "For approvals and other actions that wait for a response whose duration you do not know.",
       "wann_nein": "When the process can exceed the run duration limit of {limit:laufzeit_max}. A timeout is not enough then, because the whole run ends before.",
       "fehler": "Setting the timeout but building no path for has timed out. The run then fails anyway.",
@@ -1108,7 +1108,7 @@
         "Approval",
         "has timed out",
         "Configure run after",
-        "P2W"
+        "P14D"
       ]
     },
     "111": {
@@ -1385,24 +1385,24 @@
     },
     "138": {
       "quiz": {
-        "frage": "Why does /v1.0/me/chats fail with this action, even for admins?",
+        "frage": "Why can a Graph request fail with 403 despite an admin role?",
         "antworten": [
-          "The token lacks the permission for chats",
+          "The token lacks the required permission",
           "Chats cannot be read through Graph at all",
           "The Base Resource URL is set incorrectly"
         ],
         "erklaerungen": [
-          "Correct. The connector has a fixed list of permissions. Chats are not on it, and the account's role does not change that.",
+          "Correct. Token permissions limit access. An admin role does not extend them.",
           "Wrong. Graph does offer chats. Only the matching permission is missing from this connector's token.",
-          "Wrong. With a wrong base URL every call would fail. But /v1.0/me works."
+          "Wrong. An incorrect base URL can also cause problems, but does not explain a missing token permission."
         ]
       },
       "lernziel": "You call Microsoft Graph from a flow without an app registration.",
       "thema": "HTTP & Microsoft Graph",
       "titel": "Call Microsoft Graph without an app registration",
-      "kurztext": "To call Microsoft Graph you normally register an app in Microsoft Entra ID and manage secrets or certificates. The action HTTP with Microsoft Entra ID (preauthorized) takes care of that for you. You sign in once and set both Base Resource URL and Resource URI to https://graph.microsoft.com. Then you choose the method and endpoint, for example GET on /v1.0/me, and the connector gets the token itself. The catch: the token carries a fixed list of permissions. Profile, groups, files, mail and calendar work. Chats, presence or sign-in logs do not, not even with an admin role. You get further pages of a response through @odata.nextLink.",
-      "wann_ja": "For Graph queries on behalf of the signed-in person: profile, groups, files, mail, calendar.",
-      "wann_nein": "When you need chats, presence, sign-in logs or Intune, or when you have no premium license.",
+      "kurztext": "For Microsoft Graph you normally register an app in Microsoft Entra ID and manage secrets or certificates. The \"Invoke an HTTP request\" action of the \"HTTP with Microsoft Entra ID (preauthorized)\" connector handles token acquisition. Sign in and set Base Resource URL and Resource URI to https://graph.microsoft.com. Then choose the method and endpoint, for example GET on /v1.0/me. Access depends on the token permissions. Possible targets include Microsoft Graph or SharePoint, depending on the connector. Check the supported services and permissions for your connector. An admin role does not extend token permissions. Use @odata.nextLink to fetch further pages of a Graph response.",
+      "wann_ja": "For requests on behalf of the signed-in person, where the connector provides the required permissions.",
+      "wann_nein": "When the connector lacks the required permissions or you lack suitable premium usage rights.",
       "fehler": "Treating a 403 as a wrong query. If the permission is missing from the token, no other syntax will help.",
       "suchbegriffe": [
         "Microsoft Graph",
@@ -1594,7 +1594,7 @@
       "lernziel": "You test loops with a few items without restructuring the flow.",
       "thema": "Testing & debugging",
       "titel": "Shorten loops with take() while testing",
-      "kurztext": "Testing a loop over hundreds of items costs time and actions on every run. With take() you process only the first items while testing. You replace the input of Apply to each with an expression like take(outputs('Select'), 5). The loop then runs exactly five times, no matter how large the array is. If the array has fewer items, take() simply returns all of them, without an error. This way you check the logic inside the loop on a few real records. Once everything works, you remove take() and select the original output again. The structure of the flow stays unchanged.",
+      "kurztext": "Testing a loop over hundreds of items costs time and actions on every run. With take() you process only the first items while testing. You replace the input of Apply to each with an expression like take(body('Select'), 5). The loop then runs at most five times, no matter how large the array is. If the array has fewer items, take() simply returns all of them, without an error. This way you check the logic inside the loop on a few real records. Once everything works, you remove take() and select the original output again. The structure of the flow stays unchanged.",
       "wann_ja": "When testing loops over large lists or tables, before you let the flow loose on all data.",
       "wann_nein": "In production. If take() stays in the flow, it permanently processes only the first items.",
       "fehler": "Forgetting take() in the flow after testing. A note on the action reminds you to remove it again.",
@@ -1617,17 +1617,17 @@
         ],
         "erklaerungen": [
           "Wrong. This action creates no approval and therefore does not appear in the Approvals center.",
-          "Correct. SelectedOption contains the clicked button, UserEmailAddress the person who clicked.",
-          "Wrong. No email comes back. The click goes straight to the waiting flow."
+          "Correct. Check that SelectedOption is populated. HTML responses can leave fields empty, and UserEmailAddress is not reliable.",
+          "Wrong. This action returns output fields. Processing a reply email requires a separate flow."
         ]
       },
       "lernziel": "You collect approvals through a shared mailbox.",
       "thema": "Approvals",
       "titel": "Decisions through a shared mailbox",
-      "kurztext": "If you assign Start and wait for an approval to a shared mailbox, everyone sees the email, but clicking Approve has no effect. The approval belongs to the mailbox identity, and the person who clicks is not registered as the approver. The solution is the action Send email with options from Office 365 Outlook. You put the shared mailbox in To and the buttons in User Options, for example Approve,Reject. Anyone with access to the mailbox can respond. The answer is in SelectedOption, and UserEmailAddress shows who clicked. This creates no entry in the Approvals center. If you want to trace the decision, you write it to a list yourself.",
+      "kurztext": "A shared mailbox is not a personal approver identity. Actionable Messages do not work in shared mailboxes. The Office 365 Outlook action \"Send email with options\" can be an alternative: put the mailbox in To and the choices in User Options, for example Approve,Reject. With HTML responses, returned fields can be empty. Check SelectedOption and UserEmailAddress before recording a decision. UserEmailAddress is not reliable evidence of who responded. If required details are missing, you need another response route, such as a link to a form. The action creates no entry in the Approvals center. Test the process with the mailbox and email client you use before putting it into service.",
       "wann_ja": "For support, finance or dispatch mailboxes where whoever is available decides.",
-      "wann_nein": "When you need the history in the Approvals center or a specific person has to decide.",
-      "fehler": "Not saving the answer. Without your own record there is no log of who decided what.",
+      "wann_nein": "When you need a personal approval or Approvals center history. Empty HTML responses require another response route.",
+      "fehler": "Saving UserEmailAddress as identity evidence without checking it. Check that it is populated and use another response route if details are missing.",
       "suchbegriffe": [
         "approval",
         "shared mailbox",
@@ -1663,18 +1663,18 @@
           "ID, versions and metadata are kept"
         ],
         "erklaerungen": [
-          "Wrong. Copying works, but it creates a new item with a new ID and no version history.",
-          "Wrong. SharePoint ignores a changed extension in FileLeafRef. For that you need MoveTo.",
+          "Wrong. Copying is possible, but generally creates a new item. Version history and metadata may be lost.",
+          "Wrong. In the tip's example, changing the extension through FileLeafRef had no effect. Use MoveTo for that.",
           "Correct. MERGE on FileLeafRef only changes the name. The item itself stays the same."
         ]
       },
       "lernziel": "You rename SharePoint files without copying them.",
       "thema": "SharePoint REST",
       "titel": "Rename a SharePoint file via REST",
-      "kurztext": "The SharePoint connector has no rename action. Copying and deleting creates a new file with a new ID, without version history and metadata. A single call with \"Send an HTTP request to SharePoint\" is cleaner. You send a POST to the list item of the file and turn it into an update with the headers IF-MATCH: * and X-HTTP-Method: MERGE. The body contains only the FileLeafRef field with the new file name including the extension. With the odata=nometadata headers you don't need a __metadata entry. A 204 response means success. ID, versions, permissions and metadata are kept. You cannot change the file extension this way, MoveTo does that.",
+      "kurztext": "The SharePoint connector has no rename action. Copying and deleting generally creates a new file with a new ID. Version history and metadata may be lost. A single call with \"Send an HTTP request to SharePoint\" is cleaner. You send a POST to the list item of the file and turn it into an update with the headers IF-MATCH: * and X-HTTP-Method: MERGE. The body contains only the FileLeafRef field with the new file name including the extension. With the odata=nometadata headers you don't need a __metadata entry. A 204 response means success. ID, versions, permissions and metadata are kept. In the tip's example, changing the extension this way had no effect. Use MoveTo for that.",
       "wann_ja": "For naming conventions, reference numbers in the file name or corrections to uploaded files.",
       "wann_nein": "When the file extension or the folder should change. MoveTo is the right call for that.",
-      "fehler": "Writing the name without the extension into FileLeafRef. The file name always includes the extension.",
+      "fehler": "Omitting the extension when renaming. Keep it in the new file name and check the name after the request.",
       "suchbegriffe": [
         "SharePoint",
         "rename",
@@ -1931,10 +1931,10 @@
       "lernziel": "You pass the real error message on to people or agents.",
       "thema": "Error handling",
       "titel": "Read the real error message with result()",
-      "kurztext": "If a flow fails at night, the reason is in the run history. The people who need to know often cannot open it. The result() function gets you the details: result('Try') returns an array with all top-level actions of the scope Try, each with name, status, code and, for failures, an error object with the message. In an action that only runs on has failed, you filter the array with Filter array for status equal to Failed. You get the text with first(body('Filter_array'))?['error']?['message'] and send it by email. result() only works with a Scope, Apply to each or Until. If the error sits deeper, you apply result() to the inner level.",
+      "kurztext": "If a flow fails at night, the reason is in the run history. The people who need to know often cannot open it. The result() function gets you the details: result('Try') returns an array with all top-level actions of the scope Try, with fields such as name, status and code, plus an error object with a message depending on the failure. In an action that only runs on has failed, you filter the array with Filter array for status equal to Failed. You get the text with first(body('Filter_array'))?['error']?['message'] and send it by email. result() only works with a Scope, Apply to each or Until. For nested failures, inspect the inner container. Only read a message if the filtered array is not empty.",
       "wann_ja": "When business users, admins or an agent need to know why a run failed.",
       "wann_nein": "For actions outside the scope. result() only sees what is inside the container.",
-      "fehler": "Reading only the top level. Errors in a Condition or an inner Scope only appear in the result() of that level.",
+      "fehler": "Reading only the top level. For nested actions, inspect the inner container and check whether error.message exists.",
       "suchbegriffe": [
         "result",
         "error message",

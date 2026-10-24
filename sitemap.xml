@@ -78,20 +78,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/guertel/schwarz/"/>
   </url>
   <url>
-    <loc>https://powerautomate.ninja/heute/</loc>
-    <lastmod>2026-10-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/heute/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/heute/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/heute/"/>
-  </url>
-  <url>
-    <loc>https://powerautomate.ninja/dojo/</loc>
-    <lastmod>2026-10-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/dojo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/dojo/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/dojo/"/>
-  </url>
-  <url>
     <loc>https://powerautomate.ninja/ueber/</loc>
     <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/ueber/"/>
@@ -356,20 +342,6 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/guertel/schwarz/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/guertel/schwarz/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/guertel/schwarz/"/>
-  </url>
-  <url>
-    <loc>https://powerautomate.ninja/en/heute/</loc>
-    <lastmod>2026-10-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/heute/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/heute/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/heute/"/>
-  </url>
-  <url>
-    <loc>https://powerautomate.ninja/en/dojo/</loc>
-    <lastmod>2026-10-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/dojo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/dojo/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/dojo/"/>
   </url>
   <url>
     <loc>https://powerautomate.ninja/en/ueber/</loc>

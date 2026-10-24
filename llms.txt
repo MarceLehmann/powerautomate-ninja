@@ -9,11 +9,13 @@
 - [Alle Techniken](https://powerautomate.ninja/techniken/): nach Gürtel geordnet
 - [Über](https://powerautomate.ninja/ueber/): Methode und Herkunft der Fragen
 
+Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitentitel und vollständige Query-Zeichenfolge. Details: https://powerautomate.ninja/datenschutz/
+
 ## Techniken
 
 - [Datum direkt in utcNow() formatieren](https://powerautomate.ninja/techniken/datum-direkt-mit-utcnow-formatieren/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/
 - [Flow testen, bevor er live geht](https://powerautomate.ninja/techniken/flow-testen-vor-dem-einschalten/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-9-powerautomate-preview/
-- [Aktionen über My clipboard wiederverwenden](https://powerautomate.ninja/techniken/aktionen-ueber-my-clipboard-wiederverwenden/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-12-components-for-powerautomate/
+- [Aktionen kopieren und wiederverwenden](https://powerautomate.ninja/techniken/aktionen-ueber-my-clipboard-wiederverwenden/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-12-components-for-powerautomate/
 - [Mit Code View hinter eine Aktion schauen](https://powerautomate.ninja/techniken/mit-code-view-hinter-eine-aktion-schauen/): Weisser Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-89-code-view-peak-code/
 - [Filter array im Advanced Mode](https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/
 - [Feste Werte in Compose statt in Variablen](https://powerautomate.ninja/techniken/feste-werte-in-compose-statt-variablen/): Gelber Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-5-less-variables/
@@ -43,9 +45,11 @@
 - [License check](https://powerautomate.ninja/en/premium/): is the license from Microsoft 365 enough?
 - [All techniques](https://powerautomate.ninja/en/techniken/): ordered by belt
 
+Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page title and full query string. Details: https://powerautomate.ninja/en/datenschutz/
+
 - [Format the date directly in utcNow()](https://powerautomate.ninja/en/techniken/datum-direkt-mit-utcnow-formatieren/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-6-formatdatetime-in-utcnow/
 - [Test a flow before it goes live](https://powerautomate.ninja/en/techniken/flow-testen-vor-dem-einschalten/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-9-powerautomate-preview/
-- [Reuse actions with My clipboard](https://powerautomate.ninja/en/techniken/aktionen-ueber-my-clipboard-wiederverwenden/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-12-components-for-powerautomate/
+- [Copy and reuse actions](https://powerautomate.ninja/en/techniken/aktionen-ueber-my-clipboard-wiederverwenden/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-12-components-for-powerautomate/
 - [Look behind an action with Code View](https://powerautomate.ninja/en/techniken/mit-code-view-hinter-eine-aktion-schauen/): White belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-89-code-view-peak-code/
 - [Filter array in Advanced Mode](https://powerautomate.ninja/en/techniken/filter-array-im-advanced-mode/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/
 - [Fixed values in Compose instead of variables](https://powerautomate.ninja/en/techniken/feste-werte-in-compose-statt-variablen/): Yellow belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-5-less-variables/

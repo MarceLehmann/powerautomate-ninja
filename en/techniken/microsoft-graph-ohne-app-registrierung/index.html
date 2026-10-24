@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Call Microsoft Graph without an app registration | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Call Microsoft Graph without an app registration | Flow Dojo</title>
 <meta name="description" content="Call Microsoft Graph without an app registration: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/microsoft-graph-ohne-app-registrierung/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/microsoft-graph-ohne-app-registrierung/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Call Microsoft Graph without an app registration | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Call Microsoft Graph without an app registration | Flow Dojo">
 <meta property="og:description" content="Call Microsoft Graph without an app registration: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/microsoft-graph-ohne-app-registrierung/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gruen.png">
@@ -93,15 +93,15 @@
           "@type": "Question",
           "eduQuestionType": "Multiple choice",
           "learningResourceType": "Practice problem",
-          "name": "Why does /v1.0/me/chats fail with this action, even for admins?",
-          "text": "Why does /v1.0/me/chats fail with this action, even for admins?",
+          "name": "Why can a Graph request fail with 403 despite an admin role?",
+          "text": "Why can a Graph request fail with 403 despite an admin role?",
           "acceptedAnswer": {
             "@type": "Answer",
             "position": 0,
-            "text": "The token lacks the permission for chats",
+            "text": "The token lacks the required permission",
             "answerExplanation": {
               "@type": "Comment",
-              "text": "Correct. The connector has a fixed list of permissions. Chats are not on it, and the account's role does not change that."
+              "text": "Correct. Token permissions limit access. An admin role does not extend them."
             }
           },
           "suggestedAnswer": [
@@ -120,7 +120,7 @@
               "text": "The Base Resource URL is set incorrectly",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Wrong. With a wrong base URL every call would fail. But /v1.0/me works."
+                "text": "Wrong. An incorrect base URL can also cause problems, but does not explain a missing token permission."
               }
             }
           ]
@@ -211,26 +211,26 @@
 </header>
 <section class="quiz" id="quiz" data-quiz data-richtig="0" data-guertel-nr="4" aria-labelledby="h-quiz">
 <h2 id="h-quiz" class="label">Quiz question</h2>
-<p class="quiz__frage">Why does /v1.0/me/chats fail with this action, even for admins?</p>
-<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>The token lacks the permission for chats</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Chats cannot be read through Graph at all</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>The Base Resource URL is set incorrectly</span></button></li></ul>
+<p class="quiz__frage">Why can a Graph request fail with 403 despite an admin role?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>The token lacks the required permission</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Chats cannot be read through Graph at all</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>The Base Resource URL is set incorrectly</span></button></li></ul>
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Solution</h3>
-<ol class="aufloesung"><li class="richtig"><b>A) The token lacks the permission for chats</b>Correct. The connector has a fixed list of permissions. Chats are not on it, and the account's role does not change that.</li><li class="falsch"><b>B) Chats cannot be read through Graph at all</b>Wrong. Graph does offer chats. Only the matching permission is missing from this connector's token.</li><li class="falsch"><b>C) The Base Resource URL is set incorrectly</b>Wrong. With a wrong base URL every call would fail. But /v1.0/me works.</li></ol>
+<ol class="aufloesung"><li class="richtig"><b>A) The token lacks the required permission</b>Correct. Token permissions limit access. An admin role does not extend them.</li><li class="falsch"><b>B) Chats cannot be read through Graph at all</b>Wrong. Graph does offer chats. Only the matching permission is missing from this connector's token.</li><li class="falsch"><b>C) The Base Resource URL is set incorrectly</b>Wrong. An incorrect base URL can also cause problems, but does not explain a missing token permission.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>To call Microsoft Graph you normally register an app in Microsoft Entra ID and manage secrets or certificates. The action HTTP with Microsoft Entra ID (preauthorized) takes care of that for you. You sign in once and set both Base Resource URL and Resource URI to https://graph.microsoft.com. Then you choose the method and endpoint, for example GET on /v1.0/me, and the connector gets the token itself. The catch: the token carries a fixed list of permissions. Profile, groups, files, mail and calendar work. Chats, presence or sign-in logs do not, not even with an admin role. You get further pages of a response through @odata.nextLink.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>For Microsoft Graph you normally register an app in Microsoft Entra ID and manage secrets or certificates. The &quot;Invoke an HTTP request&quot; action of the &quot;HTTP with Microsoft Entra ID (preauthorized)&quot; connector handles token acquisition. Sign in and set Base Resource URL and Resource URI to https://graph.microsoft.com. Then choose the method and endpoint, for example GET on /v1.0/me. Access depends on the token permissions. Possible targets include Microsoft Graph or SharePoint, depending on the connector. Check the supported services and permissions for your connector. An admin role does not extend token permissions. Use @odata.nextLink to fetch further pages of a Graph response.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>https://graph.microsoft.com</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
-<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>For Graph queries on behalf of the signed-in person: profile, groups, files, mail, calendar.</p></div><div class="karte-text"><h3>Better not</h3><p>When you need chats, presence, sign-in logs or Intune, or when you have no premium license.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>For requests on behalf of the signed-in person, where the connector provides the required permissions.</p></div><div class="karte-text"><h3>Better not</h3><p>When the connector lacks the required permissions or you lack suitable premium usage rights.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Treating a 403 as a wrong query. If the permission is missing from the token, no other syntax will help.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--premium">Premium</span> Needs Power Automate Premium or another license that includes premium connectors. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--premium">Premium</span> Premium connectors or features require suitable usage rights, for example from Power Automate Premium, Process, Power Apps or Dynamics 365. Check existing licenses in the license check. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-138" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #138, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="138" aria-pressed="false" data-nur-js>Mark as practiced</button>
 <p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Why%20does%20%2Fv1.0%2Fme%2Fchats%20fail%20with%20this%20action%2C%20even%20for%20admins%3F%0A%0AA)%20The%20token%20lacks%20the%20permission%20for%20chats%0AB)%20Chats%20cannot%20be%20read%20through%20Graph%20at%20all%0AC)%20The%20Base%20Resource%20URL%20is%20set%20incorrectly%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fmicrosoft-graph-ohne-app-registrierung%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Why does /v1.0/me/chats fail with this action, even for admins?&#10;&#10;A) The token lacks the permission for chats&#10;B) Chats cannot be read through Graph at all&#10;C) The Base Resource URL is set incorrectly&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/microsoft-graph-ohne-app-registrierung/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%20138&amp;body=Question%3A%20Why%20does%20%2Fv1.0%2Fme%2Fchats%20fail%20with%20this%20action%2C%20even%20for%20admins%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Why%20can%20a%20Graph%20request%20fail%20with%20403%20despite%20an%20admin%20role%3F%0A%0AA)%20The%20token%20lacks%20the%20required%20permission%0AB)%20Chats%20cannot%20be%20read%20through%20Graph%20at%20all%0AC)%20The%20Base%20Resource%20URL%20is%20set%20incorrectly%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fmicrosoft-graph-ohne-app-registrierung%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Why can a Graph request fail with 403 despite an admin role?&#10;&#10;A) The token lacks the required permission&#10;B) Chats cannot be read through Graph at all&#10;C) The Base Resource URL is set incorrectly&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/microsoft-graph-ohne-app-registrierung/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%20138&amp;body=Question%3A%20Why%20can%20a%20Graph%20request%20fail%20with%20403%20despite%20an%20admin%20role%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
 <p class="klein">Short link: powerautomate.ninja/en/138</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/PowerPlatformTip-138-Graph-API-HTTP/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-138" rel="noopener">PowerPlatformTip #138</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/webcontents/" rel="noopener">HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz</a>.</p>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

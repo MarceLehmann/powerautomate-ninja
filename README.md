@@ -2,7 +2,7 @@
 
 Name seit 16.10.2026 (vorher «KMUpower Flow-Dojo»). Gehört zur Power Platform Academy, Schwesterseite für Copilot: copilot.ninja.
 
-Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch (/) und Englisch (/en/). Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Live seit 16.10.2026 unter https://powerautomate.ninja/ (GitHub Pages, Custom Domain, HTTPS erzwungen). Alle Inhalte von Marcel freigegeben, jede Seite indexierbar (ausser 404 und Kurzadressen).
+Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch (/) und Englisch (/en/). Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Live seit 16.10.2026 unter https://powerautomate.ninja/ (GitHub Pages, Custom Domain, HTTPS erzwungen). Alle Inhalte von Marcel freigegeben, jede Seite indexierbar (ausser 404, Kurzadressen, /heute/ und /dojo/ in beiden Sprachen).
 
 Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung zu Microsoft.
 
@@ -35,6 +35,7 @@ Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung
 | `data/techniken.json` | einzige Inhaltsquelle (108 Tipps, `pool` = Prüfungsfrage, `seite` = eigene Technik-Seite, `pool_ausschluss` = Grund, warum eine Frage nicht in die Prüfung kommt) |
 | `data/en.json` | englische Texte je Technik (Schlüssel wie techniken.json) und Gürtel. Limits auf Englisch: `text_en` in limits.json |
 | `data/limits.json` | alle Zahlen zu Limits mit Learn-Quelle, in Texten als `{limit:schluessel}` |
+| `templates/datenschutz*.html` | Datenschutztexte in DE und EN |
 | `templates/partials/`, `templates/css/site.css` | Rahmen und CSS-Quelle, englischer Rahmen in `*.en.html` |
 | `assets/js/` | `site.js` (Theme, Suche, Quiz, Fortschritt, Filter), `pruefung.js`, `premium.js`, `theme-init.js` |
 | `scripts/build.mjs` | erzeugt alle Seiten und prüft Texte, Lizenzbelege und Ausdrücke |
@@ -64,7 +65,7 @@ node scripts/engine-sync.mjs           Abgleich mit copilot-ninja
 
 Node 18 oder neuer, keine Abhängigkeiten. Einrichten auf einem neuen Rechner: `cp scripts/pre-push .git/hooks/pre-push`.
 
-Der Build bricht ab bei: Gedankenstrich, Eszett, Emoji, Testhinweis im Text; Technik ohne Lizenzbeleg bei Microsoft Learn; Ausdruck, der nicht wörtlich im Tipp steht (geprüft gegen den lokalen Klon `../PowerPlatformTip_LIVE/_posts`); Kurztext ausserhalb 80 bis 150 Wörter; Antwort über 12 Wörter; Inline-Skript, style-Attribut, fremde Quelle; «Power Automate» im Seitentitel (erlaubt nur im Zusatz «PowerPlatformAcademy Dojo · Power Automate», `name` und `zusatz` in site.config.json).
+Der Build bricht ab bei: Gedankenstrich, Eszett, Emoji, Testhinweis im Text; Technik ohne Lizenzbeleg bei Microsoft Learn; Ausdruck, der nicht wörtlich im Tipp steht (geprüft gegen den lokalen Klon `../PowerPlatformTip_LIVE/_posts`); Kurztext ausserhalb 80 bis 150 Wörter; Antwort über 12 Wörter; Inline-Skript, style-Attribut, fremde Quelle; «Power Automate» im Seitentitel (Titelzusatz: `| Flow Dojo`).
 
 ## Livegang und Suchmaschinen
 
@@ -76,4 +77,4 @@ Der Build bricht ab bei: Gedankenstrich, Eszett, Emoji, Testhinweis im Text; Tec
 
 Pages liefert den ganzen Branch aus, also auch `data/`, `scripts/` und `templates/`. `robots.txt` sperrt sie ab eigener Domain. `_recherche/` liegt nur lokal (`.gitignore`).
 
-Keine Cookies, kein Tracking. Einzige Anfrage an einen fremden Server ist die anonyme Zugriffszählung mit GoatCounter: `assets/js/count.js` selbst gehostet, Endpunkt https://powerautomate-ninja.goatcounter.com/count, in der CSP (`templates/partials/head.html`) unter connect-src und img-src freigegeben. Schrift selbst ausgeliefert (Barlow Semi Condensed, SIL OFL 1.1, `assets/fonts/LIESMICH.txt`).
+Keine Cookies, kein Tracking. Einzige Anfrage an einen fremden Server ist die Zugriffszählung ohne Cookies mit GoatCounter, gespeichert werden nur Summen ohne Personenbezug: `assets/js/count.js` selbst gehostet, Endpunkt https://powerautomate-ninja.goatcounter.com/count, in der CSP (`templates/partials/head.html`) unter connect-src und img-src freigegeben. Schrift selbst ausgeliefert (Barlow Semi Condensed, SIL OFL 1.1, `assets/fonts/LIESMICH.txt`).

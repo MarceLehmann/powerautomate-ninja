@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Read the real error message with result() | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Read the real error message with result() | Flow Dojo</title>
 <meta name="description" content="Read the real error message with result(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Read the real error message with result() | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Read the real error message with result() | Flow Dojo">
 <meta property="og:description" content="Read the real error message with result(): quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-blau.png">
@@ -219,11 +219,11 @@
 <ol class="aufloesung"><li class="falsch"><b>A) Any action anywhere in the whole flow</b>Wrong. If result() points to a simple action such as Compose, even saving fails.</li><li class="falsch"><b>B) Only the trigger at the start of the flow</b>Wrong. The trigger contains no actions. result() needs a container with actions inside.</li><li class="richtig"><b>C) A Scope, Apply to each or Until</b>Correct. result() reads the actions inside such a container. If it points to a simple action, the flow cannot be saved.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>If a flow fails at night, the reason is in the run history. The people who need to know often cannot open it. The result() function gets you the details: result('Try') returns an array with all top-level actions of the scope Try, each with name, status, code and, for failures, an error object with the message. In an action that only runs on has failed, you filter the array with Filter array for status equal to Failed. You get the text with first(body('Filter_array'))?['error']?['message'] and send it by email. result() only works with a Scope, Apply to each or Until. If the error sits deeper, you apply result() to the inner level.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>If a flow fails at night, the reason is in the run history. The people who need to know often cannot open it. The result() function gets you the details: result('Try') returns an array with all top-level actions of the scope Try, with fields such as name, status and code, plus an error object with a message depending on the failure. In an action that only runs on has failed, you filter the array with Filter array for status equal to Failed. You get the text with first(body('Filter_array'))?['error']?['message'] and send it by email. result() only works with a Scope, Apply to each or Until. For nested failures, inspect the inner container. Only read a message if the filtered array is not empty.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>first(body('Filter_array'))?['error']?['message']</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>When business users, admins or an agent need to know why a run failed.</p></div><div class="karte-text"><h3>Better not</h3><p>For actions outside the scope. result() only sees what is inside the container.</p></div></div></section>
-<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Reading only the top level. Errors in a Condition or an inner Scope only appear in the result() of that level.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Reading only the top level. For nested actions, inspect the inner container and check whether error.message exists.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-168" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #168, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="168" aria-pressed="false" data-nur-js>Mark as practiced</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

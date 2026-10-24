@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Catch errors with Try, Catch and Finally | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Catch errors with Try, Catch and Finally | Flow Dojo</title>
 <meta name="description" content="Catch errors with Try, Catch and Finally: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/fehler-mit-try-catch-finally-abfangen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/fehler-mit-try-catch-finally-abfangen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Catch errors with Try, Catch and Finally | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Catch errors with Try, Catch and Finally | Flow Dojo">
 <meta property="og:description" content="Catch errors with Try, Catch and Finally: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/fehler-mit-try-catch-finally-abfangen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-orange.png">
@@ -93,34 +93,34 @@
           "@type": "Question",
           "eduQuestionType": "Multiple choice",
           "learningResourceType": "Practice problem",
-          "name": "How do you set Configure run after on the Catch scope?",
-          "text": "How do you set Configure run after on the Catch scope?",
+          "name": "Where do you put Terminate so Finally can clean up first?",
+          "text": "Where do you put Terminate so Finally can clean up first?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "position": 0,
-            "text": "has failed and has timed out on, is successful off",
+            "position": 1,
+            "text": "After Finally, only if Catch ran",
             "answerExplanation": {
               "@type": "Comment",
-              "text": "Correct. That way Catch only runs when something in the Try scope fails or takes too long."
+              "text": "Correct. Finally cleans up first. A Condition then allows Terminate with status Failed only if Catch ran."
             }
           },
           "suggestedAnswer": [
             {
               "@type": "Answer",
-              "position": 1,
-              "text": "Tick all four statuses so Catch always runs",
+              "position": 0,
+              "text": "Inside Catch, just before the error notification",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Wrong. That is how you set up Finally. Catch would otherwise also start after every successful run."
+                "text": "Wrong. A Terminate inside Catch ends the flow immediately and skips Finally."
               }
             },
             {
               "@type": "Answer",
               "position": 2,
-              "text": "Tick only is successful so Catch follows Try",
+              "text": "Before Try, with status Failed",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Wrong. Then Catch would only run when everything works, exactly when there is nothing to catch."
+                "text": "Wrong. Terminate would end the flow before Try runs its actions."
               }
             }
           ]
@@ -209,28 +209,28 @@
 <ul class="metazeile"><li><span class="guertel-tag" data-guertel-nr="3"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span>Orange belt</span></li><li><span class="badge badge--standard">Standard</span></li><li class="tk__nr">Tip 15</li></ul>
 <h1 id="h1">Catch errors with Try, Catch and Finally</h1>
 </header>
-<section class="quiz" id="quiz" data-quiz data-richtig="0" data-guertel-nr="3" aria-labelledby="h-quiz">
+<section class="quiz" id="quiz" data-quiz data-richtig="1" data-guertel-nr="3" aria-labelledby="h-quiz">
 <h2 id="h-quiz" class="label">Quiz question</h2>
-<p class="quiz__frage">How do you set Configure run after on the Catch scope?</p>
-<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>has failed and has timed out on, is successful off</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Tick all four statuses so Catch always runs</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>Tick only is successful so Catch follows Try</span></button></li></ul>
+<p class="quiz__frage">Where do you put Terminate so Finally can clean up first?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>Inside Catch, just before the error notification</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>After Finally, only if Catch ran</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>Before Try, with status Failed</span></button></li></ul>
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Solution</h3>
-<ol class="aufloesung"><li class="richtig"><b>A) has failed and has timed out on, is successful off</b>Correct. That way Catch only runs when something in the Try scope fails or takes too long.</li><li class="falsch"><b>B) Tick all four statuses so Catch always runs</b>Wrong. That is how you set up Finally. Catch would otherwise also start after every successful run.</li><li class="falsch"><b>C) Tick only is successful so Catch follows Try</b>Wrong. Then Catch would only run when everything works, exactly when there is nothing to catch.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) Inside Catch, just before the error notification</b>Wrong. A Terminate inside Catch ends the flow immediately and skips Finally.</li><li class="richtig"><b>B) After Finally, only if Catch ran</b>Correct. Finally cleans up first. A Condition then allows Terminate with status Failed only if Catch ran.</li><li class="falsch"><b>C) Before Try, with status Failed</b>Wrong. Terminate would end the flow before Try runs its actions.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Without error handling, a flow stops at the first failing action, and nobody finds out. With three scopes you rebuild the pattern from programming. The Try scope holds the actual logic. The Catch scope runs only when Try fails: under Configure run after you tick has failed and has timed out and leave is successful unchecked. There you notify someone or write a log entry. The Finally scope always runs, with all four statuses ticked, and cleans up. With result('Try') you read in Catch which action failed. If the run should show as failed in the run history, add a Terminate action with the status Failed in Catch.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>The Try scope holds the main logic. For Catch, enable only has failed and has timed out of Try under Configure run after. There you log the error, for example with result('Try'), or notify someone. Finally follows Catch with all four Run after statuses enabled and performs cleanup. After Finally, add a Condition with all four Finally statuses enabled in Run after. Check whether Catch ran, meaning its status was not Skipped. Only the error branch runs Terminate with status Failed. The success branch ends without Terminate. A Terminate inside Catch ends the flow immediately and skips Finally. This handles the error first, cleans up next and sets the failed status last.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>result('Try')</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>In every flow whose failure someone needs to notice: interfaces, files, records in Dataverse.</p></div><div class="karte-text"><h3>Better not</h3><p>In a short test flow that you start yourself and whose run you follow directly.</p></div></div></section>
-<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Leaving critical actions outside the Try scope. Catch never sees what fails there.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Putting Terminate in Catch. Place it after Finally in a branch that only runs if Catch ran.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-15" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #15, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="15" aria-pressed="false" data-nur-js>Mark as practiced</button>
 <p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20How%20do%20you%20set%20Configure%20run%20after%20on%20the%20Catch%20scope%3F%0A%0AA)%20has%20failed%20and%20has%20timed%20out%20on%2C%20is%20successful%20off%0AB)%20Tick%20all%20four%20statuses%20so%20Catch%20always%20runs%0AC)%20Tick%20only%20is%20successful%20so%20Catch%20follows%20Try%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Ffehler-mit-try-catch-finally-abfangen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: How do you set Configure run after on the Catch scope?&#10;&#10;A) has failed and has timed out on, is successful off&#10;B) Tick all four statuses so Catch always runs&#10;C) Tick only is successful so Catch follows Try&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/fehler-mit-try-catch-finally-abfangen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%2015&amp;body=Question%3A%20How%20do%20you%20set%20Configure%20run%20after%20on%20the%20Catch%20scope%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Where%20do%20you%20put%20Terminate%20so%20Finally%20can%20clean%20up%20first%3F%0A%0AA)%20Inside%20Catch%2C%20just%20before%20the%20error%20notification%0AB)%20After%20Finally%2C%20only%20if%20Catch%20ran%0AC)%20Before%20Try%2C%20with%20status%20Failed%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Ffehler-mit-try-catch-finally-abfangen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Where do you put Terminate so Finally can clean up first?&#10;&#10;A) Inside Catch, just before the error notification&#10;B) After Finally, only if Catch ran&#10;C) Before Try, with status Failed&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/fehler-mit-try-catch-finally-abfangen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%2015&amp;body=Question%3A%20Where%20do%20you%20put%20Terminate%20so%20Finally%20can%20clean%20up%20first%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
 <p class="klein">Short link: powerautomate.ninja/en/15</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-15" rel="noopener">PowerPlatformTip #15</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/error-handling" rel="noopener">Employ robust error handling</a>.</p>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

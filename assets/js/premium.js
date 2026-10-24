@@ -15,10 +15,12 @@
     var premium = [], pruefen = [];
     gewaehlt.forEach(function (x) { if (!x) return; var w = x.getAttribute('data-wirkung'), pt = x.getAttribute('data-punkt'); if (w === 'premium') premium.push(pt); if (w === 'pruefen') pruefen.push(pt); });
     var klasse = 'urteil', text, punkte = [];
-    if (premium.length) { klasse += ' premium'; text = tx('Du brauchst Power Automate Premium für: ', 'You need Power Automate Premium for: ') + premium.join(', ') + '.'; punkte = pruefen; }
-    else if (offen) { klasse += ' pruefen'; text = offen === fragen.length ? tx('Beantworte die vier Fragen, das Urteil erscheint hier.', 'Answer the four questions and the verdict appears here.') : tx('Noch ' + offen + (offen === 1 ? ' Frage' : ' Fragen') + ' offen. Bisher spricht nichts gegen die Lizenz aus Microsoft 365.', offen + (offen === 1 ? ' question' : ' questions') + ' still open. So far nothing speaks against the license from Microsoft 365.'); punkte = pruefen; }
-    else if (pruefen.length) { klasse += ' pruefen'; text = tx('Wahrscheinlich reicht die Lizenz aus Microsoft 365. Prüfe noch diesen Punkt:', 'The license from Microsoft 365 is probably enough. Check this point as well:'); punkte = pruefen; }
-    else { text = tx('Für deinen Fall reicht die Lizenz aus Microsoft 365.', 'For your case, the license from Microsoft 365 is enough.'); }
+    if (premium.length) { klasse += ' premium'; text = tx('Wahrscheinlich Premium nötig für: ', 'Premium probably needed for: ') + premium.join(', ') + '.'; punkte = pruefen; }
+    else if (offen) { klasse += ' pruefen'; text = offen === fragen.length ? tx('Beantworte die vier Fragen, das Urteil erscheint hier.', 'Answer the four questions and the verdict appears here.') : tx('Noch ' + offen + (offen === 1 ? ' Frage' : ' Fragen') + ' offen. Möglicherweise reicht deine Lizenz aus Microsoft 365. Welche Lizenz hast du schon?', offen + (offen === 1 ? ' question' : ' questions') + ' still open. Your Microsoft 365 license may be enough. Which license do you already have?'); punkte = pruefen; }
+    else if (pruefen.length) { klasse += ' pruefen'; text = tx('Möglicherweise reicht deine Lizenz aus Microsoft 365. Welche Lizenz hast du schon? Prüfe noch:', 'Your Microsoft 365 license may be enough. Which license do you already have? Also check:'); punkte = pruefen; }
+    else { text = tx('Möglicherweise reicht deine Lizenz aus Microsoft 365. Welche Lizenz hast du schon?', 'Your Microsoft 365 license may be enough. Which license do you already have?'); }
+    if (premium.length) punkte = [tx('Welche Lizenz hast du schon? Je nach Kontext können Power Automate Premium (Per User), Process (Per Flow), Power Apps Premium oder Nutzungsrechte etwa aus Dynamics 365 passen.', 'Which license do you already have? Depending on context, Power Automate Premium (Per User), Process (Per Flow), Power Apps Premium or usage rights such as those from Dynamics 365 may cover it.')].concat(punkte);
+    if (gewaehlt.some(function (x) { return !!x; })) punkte = punkte.concat([tx('Prüfe die Nutzungsrechte in deinem Tenant oder frage deine IT oder deinen Microsoft-Partner.', 'Check usage rights in your tenant or ask your IT team or Microsoft partner.')]);
     urteil.className = klasse; urteil.textContent = text;
     if (liste) liste.innerHTML = punkte.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
   }

@@ -15,7 +15,7 @@
 <script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>SharePoint-Datei per REST umbenennen | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>SharePoint-Datei per REST umbenennen | Flow Dojo</title>
 <meta name="description" content="SharePoint-Datei per REST umbenennen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/techniken/sharepoint-datei-per-rest-umbenennen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/sharepoint-datei-per-rest-umbenennen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="SharePoint-Datei per REST umbenennen | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="SharePoint-Datei per REST umbenennen | Flow Dojo">
 <meta property="og:description" content="SharePoint-Datei per REST umbenennen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/techniken/sharepoint-datei-per-rest-umbenennen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-gruen.png">
@@ -111,7 +111,7 @@
               "text": "Kopieren geht in Bibliotheken grundsätzlich nicht",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Falsch. Kopieren geht, erzeugt aber ein neues Element mit neuer ID und ohne Versionsverlauf."
+                "text": "Falsch. Kopieren ist möglich, erzeugt in der Regel aber ein neues Element. Versionsverlauf und Metadaten können verloren gehen."
               }
             },
             {
@@ -120,7 +120,7 @@
               "text": "FileLeafRef ändert auch gleich die Dateiendung",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Falsch. Eine geänderte Endung ignoriert SharePoint bei FileLeafRef. Dafür brauchst du MoveTo."
+                "text": "Falsch. Im Beispiel des Tipps blieb die Änderung der Endung über FileLeafRef wirkungslos. Dafür nutze MoveTo."
               }
             }
           ]
@@ -216,14 +216,14 @@
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Auflösung</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) Kopieren geht in Bibliotheken grundsätzlich nicht</b>Falsch. Kopieren geht, erzeugt aber ein neues Element mit neuer ID und ohne Versionsverlauf.</li><li class="falsch"><b>B) FileLeafRef ändert auch gleich die Dateiendung</b>Falsch. Eine geänderte Endung ignoriert SharePoint bei FileLeafRef. Dafür brauchst du MoveTo.</li><li class="richtig"><b>C) ID, Versionen und Metadaten bleiben erhalten</b>Richtig. MERGE auf FileLeafRef ändert nur den Namen. Das Element selbst bleibt dasselbe.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) Kopieren geht in Bibliotheken grundsätzlich nicht</b>Falsch. Kopieren ist möglich, erzeugt in der Regel aber ein neues Element. Versionsverlauf und Metadaten können verloren gehen.</li><li class="falsch"><b>B) FileLeafRef ändert auch gleich die Dateiendung</b>Falsch. Im Beispiel des Tipps blieb die Änderung der Endung über FileLeafRef wirkungslos. Dafür nutze MoveTo.</li><li class="richtig"><b>C) ID, Versionen und Metadaten bleiben erhalten</b>Richtig. MERGE auf FileLeafRef ändert nur den Namen. Das Element selbst bleibt dasselbe.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Der SharePoint-Connector hat keine Aktion zum Umbenennen. Kopieren und Löschen erzeugt eine neue Datei mit neuer ID, ohne Versionsverlauf und Metadaten. Sauberer ist ein einziger Aufruf mit «Send an HTTP request to SharePoint». Du schickst einen POST an das Listenelement der Datei und machst ihn mit den Kopfzeilen IF-MATCH: * und X-HTTP-Method: MERGE zu einer Änderung. Im Body steht nur das Feld FileLeafRef mit dem neuen Dateinamen samt Endung. Mit den Kopfzeilen odata=nometadata brauchst du keinen Eintrag __metadata. Die Antwort 204 bedeutet Erfolg. ID, Versionen, Berechtigungen und Metadaten bleiben erhalten. Die Dateiendung lässt sich so nicht ändern, dafür gibt es MoveTo.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Der SharePoint-Connector hat keine Aktion zum Umbenennen. Kopieren und Löschen erzeugt in der Regel eine neue Datei mit neuer ID. Versionsverlauf und Metadaten können dabei verloren gehen. Sauberer ist ein einziger Aufruf mit «Send an HTTP request to SharePoint». Du schickst einen POST an das Listenelement der Datei und machst ihn mit den Kopfzeilen IF-MATCH: * und X-HTTP-Method: MERGE zu einer Änderung. Im Body steht nur das Feld FileLeafRef mit dem neuen Dateinamen samt Endung. Mit den Kopfzeilen odata=nometadata brauchst du keinen Eintrag __metadata. Die Antwort 204 bedeutet Erfolg. ID, Versionen, Berechtigungen und Metadaten bleiben erhalten. Im Beispiel des Tipps blieb eine Änderung der Dateiendung wirkungslos. Dafür nutzt du MoveTo.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">Der Ausdruck aus dem Tipp</h2><div class="code-block"><pre id="ausdruck"><code>X-HTTP-Method: MERGE</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Kopieren</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Für Namenskonventionen, Referenznummern im Dateinamen oder Korrekturen an hochgeladenen Dateien.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Wenn sich die Dateiendung oder der Ordner ändern soll. Dafür ist MoveTo der richtige Aufruf.</p></div></div></section>
-<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Den Namen ohne Endung in FileLeafRef schreiben. Der Dateiname enthält die Endung immer mit.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/sharepointonline/" rel="noopener">SharePoint, Connector-Referenz</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Die Endung beim Umbenennen weglassen. Behalte sie im neuen Dateinamen bei und prüfe den Namen nach dem Aufruf.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/sharepointonline/" rel="noopener">SharePoint, Connector-Referenz</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
 <section class="abschnitt" aria-label="Ganzer Tipp"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-153" rel="noopener"><strong>Ganzer Tipp mit Screenshots auf powerplatformtip.com</strong><span>PowerPlatformTip #153, auf Englisch</span></a></section>
 <section class="abschnitt" aria-label="Dein Stand">
 <button type="button" class="knopf" data-geuebt="153" aria-pressed="false" data-nur-js>Als geübt markieren</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
-        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, nur eine anonyme Zugriffszählung. Dein Fortschritt bleibt in deinem Browser.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung. Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Dein Fortschritt bleibt in deinem Browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

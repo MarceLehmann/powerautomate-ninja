@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Fixed values in Compose instead of variables | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Fixed values in Compose instead of variables | Flow Dojo</title>
 <meta name="description" content="Fixed values in Compose instead of variables: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/feste-werte-in-compose-statt-variablen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/feste-werte-in-compose-statt-variablen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Fixed values in Compose instead of variables | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Fixed values in Compose instead of variables | Flow Dojo">
 <meta property="og:description" content="Fixed values in Compose instead of variables: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/feste-werte-in-compose-statt-variablen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gelb.png">
@@ -111,7 +111,7 @@
               "text": "In a variable, so the flow runs faster",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Wrong. A variable does not make the flow faster. Inside loops it even stops Apply to each from running in parallel."
+                "text": "Wrong. A variable does not make the flow faster. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially."
               }
             },
             {
@@ -216,14 +216,14 @@
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Solution</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) In a variable, so the flow runs faster</b>Wrong. A variable does not make the flow faster. Inside loops it even stops Apply to each from running in parallel.</li><li class="richtig"><b>B) In a Compose action or in Parse JSON</b>Correct. Fixed values need no variable. Compose or Parse JSON make it clear that the value does not change.</li><li class="falsch"><b>C) In a separate Condition at the start of the flow</b>Wrong. A Condition checks something and branches. It is not meant for storing a fixed value.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) In a variable, so the flow runs faster</b>Wrong. A variable does not make the flow faster. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially.</li><li class="richtig"><b>B) In a Compose action or in Parse JSON</b>Correct. Fixed values need no variable. Compose or Parse JSON make it clear that the value does not change.</li><li class="falsch"><b>C) In a separate Condition at the start of the flow</b>Wrong. A Condition checks something and branches. It is not meant for storing a fixed value.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Many flows start with a row of Initialize variable actions for values that never change: an email address, a list URL, a threshold. Fixed values do not need a variable. A single value goes into a Compose action. Several related values go into Parse JSON as one JSON object, and you read them with an expression like outputs('Parse_JSON')?['settingName']. The flow gets shorter, and everyone sees right away that these values are fixed. There is also a practical reason: when you set a variable inside a loop, Apply to each can only run sequentially. Keep variables for values that really change during the run, such as a running total.</p></section>
-<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>outputs('Parse_JSON')?['settingName']</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Many flows start with a row of Initialize variable actions for values that never change: an email address, a list URL, a threshold. Fixed values do not need a variable. A single value goes into a Compose action. Several related values go into Parse JSON as one JSON object, and you read them with an expression like body('Parse_JSON')?['settingName']. The flow gets shorter, and everyone sees right away that these values are fixed. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially. Set Apply to each: Concurrency control, Degree of parallelism 1. Keep variables for values that really change during the run, such as a running total.</p></section>
+
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>For settings that stay the same during the run: addresses, URLs, thresholds, texts.</p></div><div class="karte-text"><h3>Better not</h3><p>For values that change during the run, such as a total or an array you fill step by step. That is what variables are for.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Marking fields as required in the Parse JSON schema that are sometimes missing. The run then fails on schema validation.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-5-less-variables/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-5" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #5, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="5" aria-pressed="false" data-nur-js>Mark as practiced</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

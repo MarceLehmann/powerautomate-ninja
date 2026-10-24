@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Decisions through a shared mailbox | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Decisions through a shared mailbox | Flow Dojo</title>
 <meta name="description" content="Decisions through a shared mailbox: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Decisions through a shared mailbox | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Decisions through a shared mailbox | Flow Dojo">
 <meta property="og:description" content="Decisions through a shared mailbox: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gruen.png">
@@ -101,7 +101,7 @@
             "text": "From the dynamic value SelectedOption",
             "answerExplanation": {
               "@type": "Comment",
-              "text": "Correct. SelectedOption contains the clicked button, UserEmailAddress the person who clicked."
+              "text": "Correct. Check that SelectedOption is populated. HTML responses can leave fields empty, and UserEmailAddress is not reliable."
             }
           },
           "suggestedAnswer": [
@@ -120,7 +120,7 @@
               "text": "From a reply email sent to the flow",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Wrong. No email comes back. The click goes straight to the waiting flow."
+                "text": "Wrong. This action returns output fields. Processing a reply email requires a separate flow."
               }
             }
           ]
@@ -216,14 +216,14 @@
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Solution</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) From the mailbox's Approvals center</b>Wrong. This action creates no approval and therefore does not appear in the Approvals center.</li><li class="richtig"><b>B) From the dynamic value SelectedOption</b>Correct. SelectedOption contains the clicked button, UserEmailAddress the person who clicked.</li><li class="falsch"><b>C) From a reply email sent to the flow</b>Wrong. No email comes back. The click goes straight to the waiting flow.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) From the mailbox's Approvals center</b>Wrong. This action creates no approval and therefore does not appear in the Approvals center.</li><li class="richtig"><b>B) From the dynamic value SelectedOption</b>Correct. Check that SelectedOption is populated. HTML responses can leave fields empty, and UserEmailAddress is not reliable.</li><li class="falsch"><b>C) From a reply email sent to the flow</b>Wrong. This action returns output fields. Processing a reply email requires a separate flow.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>If you assign Start and wait for an approval to a shared mailbox, everyone sees the email, but clicking Approve has no effect. The approval belongs to the mailbox identity, and the person who clicks is not registered as the approver. The solution is the action Send email with options from Office 365 Outlook. You put the shared mailbox in To and the buttons in User Options, for example Approve,Reject. Anyone with access to the mailbox can respond. The answer is in SelectedOption, and UserEmailAddress shows who clicked. This creates no entry in the Approvals center. If you want to trace the decision, you write it to a list yourself.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>A shared mailbox is not a personal approver identity. Actionable Messages do not work in shared mailboxes. The Office 365 Outlook action &quot;Send email with options&quot; can be an alternative: put the mailbox in To and the choices in User Options, for example Approve,Reject. With HTML responses, returned fields can be empty. Check SelectedOption and UserEmailAddress before recording a decision. UserEmailAddress is not reliable evidence of who responded. If required details are missing, you need another response route, such as a link to a form. The action creates no entry in the Approvals center. Test the process with the mailbox and email client you use before putting it into service.</p></section>
 
-<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>For support, finance or dispatch mailboxes where whoever is available decides.</p></div><div class="karte-text"><h3>Better not</h3><p>When you need the history in the Approvals center or a specific person has to decide.</p></div></div></section>
-<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Not saving the answer. Without your own record there is no log of who decided what.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/office365/" rel="noopener">Office 365 Outlook, Connector-Referenz</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>For support, finance or dispatch mailboxes where whoever is available decides.</p></div><div class="karte-text"><h3>Better not</h3><p>When you need a personal approval or Approvals center history. Empty HTML responses require another response route.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Saving UserEmailAddress as identity evidence without checking it. Check that it is populated and use another response route if details are missing.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/office365/" rel="noopener">Office 365 Outlook, Connector-Referenz</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-149-approvals-to-a-shared-mailbox/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-149" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #149, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="149" aria-pressed="false" data-nur-js>Mark as practiced</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Test with Static Result without changing data | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Test with Static Result without changing data | Flow Dojo</title>
 <meta name="description" content="Test with Static Result without changing data: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/mit-static-result-testen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/mit-static-result-testen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Test with Static Result without changing data | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Test with Static Result without changing data | Flow Dojo">
 <meta property="og:description" content="Test with Static Result without changing data: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/mit-static-result-testen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gelb.png">
@@ -219,11 +219,11 @@
 <ol class="aufloesung"><li class="falsch"><b>A) It runs, but its output is not saved</b>Wrong. With Static Result the action does not run at all. That is exactly why it changes no data.</li><li class="falsch"><b>B) It only runs when you start the flow manually</b>Wrong. Static Result does not depend on how the flow starts. It applies to every run as long as it is turned on.</li><li class="richtig"><b>C) It returns a fixed output without running</b>Correct. The action counts as successful and passes on the predefined result without actually running.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Some actions you don't want to actually run while testing: they send emails, change records or take a long time. With Static Result you give an action a fixed result. In the designer you turn on Enable Static Result in the Testing section of the action and define which output it should return. On the next run the action counts as successful without being executed. The following steps continue with your predefined output. That way you test the logic after it calmly and with different cases, without touching real data. Before the flow goes into production, you turn the static result off again.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Some actions you don't want to actually run while testing: they send emails, change records or take a long time. With Static Result you give an action a fixed result. In the new designer, enable &quot;Static result&quot; in the action's &quot;Testing&quot; section and set the output values. In the classic designer, open the action's &quot;Settings&quot; menu, then &quot;Static result&quot;. On the next run the action counts as successful without being executed. The following steps continue with your predefined output. That way you test the logic after it calmly and with different cases, without touching real data. Before the flow goes into production, you turn the static result off again.</p></section>
 
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>For actions that send emails, change data or take long, while you test the steps after them.</p></div><div class="karte-text"><h3>Better not</h3><p>In production. If Static Result stays on, the flow never actually runs the action.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Leaving Static Result on after testing. The flow reports success although the action never ran.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-36-static-result/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-36" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #36, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="36" aria-pressed="false" data-nur-js>Mark as practiced</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

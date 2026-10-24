@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Rename a SharePoint file via REST | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Rename a SharePoint file via REST | Flow Dojo</title>
 <meta name="description" content="Rename a SharePoint file via REST: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/sharepoint-datei-per-rest-umbenennen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/sharepoint-datei-per-rest-umbenennen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Rename a SharePoint file via REST | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Rename a SharePoint file via REST | Flow Dojo">
 <meta property="og:description" content="Rename a SharePoint file via REST: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/sharepoint-datei-per-rest-umbenennen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gruen.png">
@@ -111,7 +111,7 @@
               "text": "Copying is never possible in libraries",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Wrong. Copying works, but it creates a new item with a new ID and no version history."
+                "text": "Wrong. Copying is possible, but generally creates a new item. Version history and metadata may be lost."
               }
             },
             {
@@ -120,7 +120,7 @@
               "text": "FileLeafRef also changes the file extension",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Wrong. SharePoint ignores a changed extension in FileLeafRef. For that you need MoveTo."
+                "text": "Wrong. In the tip's example, changing the extension through FileLeafRef had no effect. Use MoveTo for that."
               }
             }
           ]
@@ -216,14 +216,14 @@
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Solution</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) Copying is never possible in libraries</b>Wrong. Copying works, but it creates a new item with a new ID and no version history.</li><li class="falsch"><b>B) FileLeafRef also changes the file extension</b>Wrong. SharePoint ignores a changed extension in FileLeafRef. For that you need MoveTo.</li><li class="richtig"><b>C) ID, versions and metadata are kept</b>Correct. MERGE on FileLeafRef only changes the name. The item itself stays the same.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) Copying is never possible in libraries</b>Wrong. Copying is possible, but generally creates a new item. Version history and metadata may be lost.</li><li class="falsch"><b>B) FileLeafRef also changes the file extension</b>Wrong. In the tip's example, changing the extension through FileLeafRef had no effect. Use MoveTo for that.</li><li class="richtig"><b>C) ID, versions and metadata are kept</b>Correct. MERGE on FileLeafRef only changes the name. The item itself stays the same.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>The SharePoint connector has no rename action. Copying and deleting creates a new file with a new ID, without version history and metadata. A single call with &quot;Send an HTTP request to SharePoint&quot; is cleaner. You send a POST to the list item of the file and turn it into an update with the headers IF-MATCH: * and X-HTTP-Method: MERGE. The body contains only the FileLeafRef field with the new file name including the extension. With the odata=nometadata headers you don't need a __metadata entry. A 204 response means success. ID, versions, permissions and metadata are kept. You cannot change the file extension this way, MoveTo does that.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>The SharePoint connector has no rename action. Copying and deleting generally creates a new file with a new ID. Version history and metadata may be lost. A single call with &quot;Send an HTTP request to SharePoint&quot; is cleaner. You send a POST to the list item of the file and turn it into an update with the headers IF-MATCH: * and X-HTTP-Method: MERGE. The body contains only the FileLeafRef field with the new file name including the extension. With the odata=nometadata headers you don't need a __metadata entry. A 204 response means success. ID, versions, permissions and metadata are kept. In the tip's example, changing the extension this way had no effect. Use MoveTo for that.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>X-HTTP-Method: MERGE</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>For naming conventions, reference numbers in the file name or corrections to uploaded files.</p></div><div class="karte-text"><h3>Better not</h3><p>When the file extension or the folder should change. MoveTo is the right call for that.</p></div></div></section>
-<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Writing the name without the extension into FileLeafRef. The file name always includes the extension.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/sharepointonline/" rel="noopener">SharePoint, Connector-Referenz</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Omitting the extension when renaming. Keep it in the new file name and check the name after the request.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/sharepointonline/" rel="noopener">SharePoint, Connector-Referenz</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-153" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #153, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="153" aria-pressed="false" data-nur-js>Mark as practiced</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

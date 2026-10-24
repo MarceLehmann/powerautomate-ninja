@@ -40,9 +40,9 @@
     },
     {
       "nr": 7,
-      "leitwort": "Meisterprüfung",
-      "kannst_du": "Flows als Werkzeuge für Agents: Router und Aufrufe, die sich selbst korrigieren.",
-      "erreicht_satz": "Du baust Flows, auf die sich Agents verlassen können."
+      "leitwort": "Meisterprüfung in Arbeit",
+      "kannst_du": "In Arbeit: Ein Tipp ist im Fragenpool, noch keine Technikseite ist freigegeben.",
+      "erreicht_satz": "Der schwarze Gürtel ist in Arbeit. Techniken und Meisterprüfung sind noch nicht vollständig freigegeben."
     }
   ],
   "tag_start": "2026-10-19",
@@ -169,7 +169,7 @@
         ],
         "richtig_index": 1,
         "erklaerungen": [
-          "Falsch. Eine Variable macht den Flow nicht schneller. In Schleifen verhindert sie sogar, dass Apply to each parallel läuft.",
+          "Falsch. Eine Variable macht den Flow nicht schneller. Variablen in parallelen Schleifen liefern unvorhersehbare Ergebnisse. Mit Variablen muss die Schleife sequenziell laufen.",
           "Richtig. Feste Werte brauchen keine Variable. Compose oder Parse JSON zeigen klar, dass sich der Wert nicht ändert.",
           "Falsch. Eine Condition prüft etwas und verzweigt. Zum Ablegen eines festen Werts ist sie nicht da."
         ]
@@ -177,8 +177,8 @@
       "lernziel": "Du setzt Variablen nur für Werte ein, die sich wirklich ändern.",
       "slug": "feste-werte-in-compose-statt-variablen",
       "titel_de": "Feste Werte in Compose statt in Variablen",
-      "ausdruck": "outputs('Parse_JSON')?['settingName']",
-      "kurztext_de": "Viele Flows beginnen mit einer Reihe von «Initialize variable» für Werte, die sich nie ändern: eine Mailadresse, eine Listen-URL, ein Schwellenwert. Für feste Werte brauchst du keine Variable. Ein einzelner Wert gehört in eine Compose-Aktion. Mehrere zusammengehörige Werte legst du als JSON-Objekt in Parse JSON ab und greifst mit einem Ausdruck wie outputs('Parse_JSON')?['settingName'] darauf zu. Der Flow wird kürzer, und alle sehen sofort, dass diese Werte fest sind. Dazu kommt ein Grund aus der Praxis: Setzt du eine Variable in einer Schleife, läuft Apply to each nur noch nacheinander. Variablen behältst du für Werte, die sich während des Laufs wirklich ändern, etwa eine laufende Summe.",
+      "ausdruck": "",
+      "kurztext_de": "Viele Flows beginnen mit einer Reihe von «Initialize variable» für Werte, die sich nie ändern: eine Mailadresse, eine Listen-URL, ein Schwellenwert. Für feste Werte brauchst du keine Variable. Ein einzelner Wert gehört in eine Compose-Aktion. Mehrere zusammengehörige Werte legst du als JSON-Objekt in Parse JSON ab und greifst mit einem Ausdruck wie body('Parse_JSON')?['settingName'] darauf zu. Der Flow wird kürzer, und alle sehen sofort, dass diese Werte fest sind. Variablen in parallelen Schleifen liefern unvorhersehbare Ergebnisse. Mit Variablen muss die Schleife sequenziell laufen. Wähle dafür Apply to each: Concurrency control, Degree of parallelism 1. Variablen behältst du für Werte, die sich während des Laufs wirklich ändern, etwa eine laufende Summe.",
       "wann_ja": "Für Einstellungen, die während des Laufs gleich bleiben: Adressen, URLs, Schwellenwerte, Texte.",
       "wann_nein": "Für Werte, die sich im Lauf ändern, etwa eine Summe oder ein Array, das du Schritt für Schritt füllst. Dafür sind Variablen da.",
       "fehler": "Im Schema von Parse JSON Felder als Pflicht markieren, die manchmal fehlen. Dann scheitert der Lauf an der Schemaprüfung.",
@@ -417,7 +417,7 @@
       "seite": true,
       "pool": true,
       "quiz": {
-        "frage": "Was prüfst du nach dem Einfügen aus My clipboard?",
+        "frage": "Was prüfst du nach dem Einfügen kopierter Aktionen?",
         "antworten": [
           "Die Lizenzen aller Personen, die den Flow nutzen",
           "Ob der Scope im alten Flow gelöscht wurde",
@@ -432,8 +432,8 @@
       },
       "lernziel": "Du nutzt Scopes als wiederverwendbare Bausteine.",
       "slug": "aktionen-ueber-my-clipboard-wiederverwenden",
-      "titel_de": "Aktionen über My clipboard wiederverwenden",
-      "kurztext_de": "Gewisse Abläufe baust du in fast jedem Flow: eine Benachrichtigung, einen Protokolleintrag, eine Fehlermeldung. Statt sie jedes Mal neu zusammenzuklicken, legst du die Aktionen in einen Scope und wählst im Menü des Scopes «Copy to my clipboard». Im nächsten Flow findest du den Block in der Aktionsauswahl unter «My clipboard» und fügst ihn mit allen Einstellungen ein. Zwei Dinge prüfst du danach: Verbindungen kommen nicht mit, die Aktionen verbindest du neu. Und dynamische Inhalte, die auf den Trigger oder frühere Aktionen des alten Flows zeigten, ordnest du neu zu. My clipboard ist an deinen Browser gebunden. Für Bausteine, die ein ganzes Team nutzt, ist ein Child Flow der bessere Weg.",
+      "titel_de": "Aktionen kopieren und wiederverwenden",
+      "kurztext_de": "Gewisse Abläufe baust du in fast jedem Flow: eine Benachrichtigung, einen Protokolleintrag, eine Fehlermeldung. Im neuen Designer wählst du die Aktion und dann \"Copy action\". An der gewünschten Stelle wählst du \"Paste an action\". Im klassischen Designer geht es über das Menü der Aktion oder des Scopes: \"Copy to my clipboard\". In der Aktionsauswahl fügst du den Block über \"My clipboard\" ein. Prüfe danach Verbindungen und dynamische Inhalte. Verweise auf den Trigger oder frühere Aktionen des alten Flows musst du neu zuordnen. My clipboard ist an deinen Browser gebunden. Für Bausteine, die ein ganzes Team nutzt, eignet sich ein Child Flow.",
       "wann_ja": "Für Blöcke, die du selbst immer wieder baust, etwa eine Fehlermeldung oder einen Protokolleintrag.",
       "wann_nein": "Für Bausteine, die mehrere Personen nutzen sollen. My clipboard ist an deinen Browser gebunden, dafür eignet sich ein Child Flow.",
       "fehler": "Den eingefügten Block laufen lassen, ohne die Verweise auf Trigger und frühere Aktionen neu zu setzen.",
@@ -468,27 +468,27 @@
       "seite": true,
       "pool": true,
       "quiz": {
-        "frage": "Wie stellst du «Configure run after» beim Scope Catch ein?",
+        "frage": "Wo setzt du Terminate, damit Finally vorher aufräumt?",
         "antworten": [
-          "has failed und has timed out an, is successful aus",
-          "Alle vier Status anhaken, damit Catch immer läuft",
-          "Nur is successful anhaken, damit Catch nachfolgt"
+          "Im Catch-Scope direkt vor der Fehlermeldung",
+          "Nach Finally, nur wenn Catch gelaufen ist",
+          "Vor Try, mit dem Status Failed"
         ],
-        "richtig_index": 0,
+        "richtig_index": 1,
         "erklaerungen": [
-          "Richtig. So läuft Catch nur, wenn im Scope Try etwas scheitert oder zu lange dauert.",
-          "Falsch. So stellst du Finally ein. Catch würde sonst auch nach jedem erfolgreichen Lauf starten.",
-          "Falsch. Dann liefe Catch nur, wenn alles klappt, also genau dann, wenn es nichts abzufangen gibt."
+          "Falsch. Ein Terminate im Catch-Scope beendet den Flow sofort, der Finally-Scope wird dann übersprungen.",
+          "Richtig. Finally räumt zuerst auf. Danach lässt eine Condition Terminate mit Status Failed nur zu, wenn Catch gelaufen ist.",
+          "Falsch. Terminate würde den Flow beenden, bevor Try seine Aktionen ausführt."
         ]
       },
       "lernziel": "Du baust das Try-Catch-Finally-Muster in jeden wichtigen Flow ein.",
       "slug": "fehler-mit-try-catch-finally-abfangen",
       "titel_de": "Fehler mit Try, Catch und Finally abfangen",
       "ausdruck": "result('Try')",
-      "kurztext_de": "Ohne Fehlerbehandlung bleibt ein Flow bei der ersten fehlerhaften Aktion stehen, und niemand erfährt davon. Mit drei Scopes baust du das Muster aus der Programmierung nach. Im Scope Try steht die eigentliche Logik. Der Scope Catch läuft nur, wenn Try scheitert: Unter «Configure run after» hakst du «has failed» und «has timed out» an und lässt «is successful» leer. Dort benachrichtigst du jemanden oder schreibst ein Protokoll. Der Scope Finally läuft immer, mit allen vier Status angehakt, und räumt auf. Mit result('Try') liest du im Catch aus, welche Aktion gescheitert ist. Soll der Lauf in der Übersicht als fehlgeschlagen erscheinen, setzt du im Catch eine Terminate-Aktion mit dem Status Failed.",
+      "kurztext_de": "Im Scope Try steht die eigentliche Logik. Für Catch aktivierst du unter Configure run after nur has failed und has timed out von Try. Dort protokollierst du den Fehler, etwa mit result('Try'), oder benachrichtigst jemanden. Finally folgt auf Catch, mit allen vier Status in Run after, und räumt auf. Nach Finally folgt eine Condition mit allen vier Status von Finally in Run after. Sie prüft, ob Catch gelaufen ist, also nicht Skipped war. Nur im Fehlerzweig folgt Terminate mit Status Failed, nach Finally. Der Erfolgszweig endet ohne Terminate. Ein Terminate im Catch-Scope beendet den Flow sofort, der Finally-Scope wird dann übersprungen. So wird erst der Fehler behandelt, dann aufgeräumt und zuletzt der Lauf als fehlgeschlagen beendet.",
       "wann_ja": "In jedem Flow, dessen Ausfall jemand bemerken muss: Schnittstellen, Dateien, Datensätze in Dataverse.",
       "wann_nein": "Bei einem kurzen Testflow, den du selbst startest und dessen Lauf du direkt verfolgst.",
-      "fehler": "Kritische Aktionen ausserhalb des Scopes Try lassen. Was dort scheitert, sieht Catch nie.",
+      "fehler": "Terminate in Catch setzen. Lege es nach Finally in einen Zweig, der nur läuft, wenn Catch gelaufen ist.",
       "lizenz": "standard",
       "lizenz_belege": [
         {
@@ -793,7 +793,7 @@
       "lernziel": "Du verhinderst Konflikte, indem du Flow-Instanzen nacheinander laufen lässt.",
       "slug": "flow-laeufe-nacheinander",
       "titel_de": "Flow-Läufe nacheinander statt gleichzeitig",
-      "kurztext_de": "Ein automatisierter Flow startet bei jedem neuen Ereignis, auch wenn der vorherige Lauf noch nicht fertig ist. Bearbeiten zwei Läufe gleichzeitig dieselben Daten, entstehen Duplikate, oder ein Lauf überschreibt den anderen. In den Einstellungen des Triggers schaltest du Concurrency Control ein und setzt den Grad der Parallelität auf 1. Dann läuft immer nur ein Lauf, weitere warten und starten der Reihe nach. Das kostet Zeit, sichert aber die Daten. Die Warteschlange ist begrenzt: Es warten höchstens {limit:trigger_warteschlange} Läufe. Und überlege dir den Schritt vorher: Concurrency Control am Trigger lässt sich nur ausschalten, indem du den Trigger löschst und neu einfügst.",
+      "kurztext_de": "Ein automatisierter Flow startet bei jedem neuen Ereignis, auch wenn der vorherige Lauf noch nicht fertig ist. Bearbeiten zwei Läufe gleichzeitig dieselben Daten, entstehen Duplikate, oder ein Lauf überschreibt den anderen. In den Einstellungen des Triggers schaltest du Concurrency Control ein und setzt den Grad der Parallelität auf 1. Dann läuft immer nur ein Lauf, weitere warten und starten der Reihe nach. Das kostet Zeit, sichert aber die Daten. Die Warteschlange ist begrenzt: Es warten höchstens {limit:trigger_warteschlange} Läufe. Überlege dir deshalb vor dem Einschalten: Concurrency Control am Trigger lässt sich nur ausschalten, indem du den Trigger löschst und neu einfügst.",
       "wann_ja": "Wenn mehrere Läufe dieselbe Liste, dieselbe Datei oder denselben Zähler bearbeiten.",
       "wann_nein": "Wenn sehr viele Ereignisse in kurzer Zeit eintreffen. Die Warteschlange ist begrenzt, und ein Lauf nach dem anderen wird zum Engpass.",
       "fehler": "Concurrency Control am Trigger zum Ausprobieren einschalten. Zurück geht es nur, indem du den Trigger löschst und neu einfügst.",
@@ -846,7 +846,7 @@
       "lernziel": "Du testest Flows mit simulierten Ergebnissen, ohne echte Daten zu verändern.",
       "slug": "mit-static-result-testen",
       "titel_de": "Mit Static Result testen, ohne Daten zu ändern",
-      "kurztext_de": "Manche Aktionen willst du beim Testen nicht wirklich ausführen: Sie verschicken Mails, ändern Datensätze oder dauern lange. Mit Static Result gibst du einer Aktion ein festes Ergebnis vor. Im Designer schaltest du dafür im Bereich Testing der Aktion «Enable Static Result» ein und legst fest, welche Ausgabe sie liefern soll. Beim nächsten Lauf gilt die Aktion als erfolgreich, ohne dass sie ausgeführt wird. Die folgenden Schritte arbeiten mit deiner vorgegebenen Ausgabe weiter. So testest du die Logik danach in Ruhe und mit verschiedenen Fällen, ohne echte Daten anzufassen. Vor dem Einsatz im Betrieb schaltest du das statische Ergebnis wieder aus.",
+      "kurztext_de": "Manche Aktionen willst du beim Testen nicht wirklich ausführen: Sie verschicken Mails, ändern Datensätze oder dauern lange. Mit Static Result gibst du einer Aktion ein festes Ergebnis vor. Im neuen Designer aktivierst du im Bereich \"Testing\" der Aktion \"Static result\" und setzt die Ausgabewerte. Im klassischen Designer öffnest du das Menü \"Settings\" der Aktion und dort \"Static result\". Beim nächsten Lauf gilt die Aktion als erfolgreich, ohne dass sie ausgeführt wird. Die folgenden Schritte arbeiten mit deiner vorgegebenen Ausgabe weiter. So testest du die Logik danach in Ruhe und mit verschiedenen Fällen, ohne echte Daten anzufassen. Vor dem Einsatz im Betrieb schaltest du das statische Ergebnis wieder aus.",
       "wann_ja": "Für Aktionen, die Mails senden, Daten ändern oder lange dauern, während du die Schritte danach testest.",
       "wann_nein": "Im Betrieb. Bleibt Static Result eingeschaltet, führt der Flow die Aktion nie wirklich aus.",
       "fehler": "Static Result nach dem Testen eingeschaltet lassen. Der Flow meldet Erfolg, obwohl die Aktion nie gelaufen ist.",
@@ -1252,14 +1252,14 @@
         "richtig_index": 1,
         "erklaerungen": [
           "Falsch. Gerade bei vielen unabhängigen Einträgen spart Parallelität am meisten Zeit.",
-          "Richtig. Parallele Durchläufe lesen und schreiben dieselbe Variable gleichzeitig und überschreiben sich.",
+          "Richtig. Variablen in parallelen Schleifen liefern unvorhersehbare Ergebnisse. Mit Variablen muss die Schleife sequenziell laufen.",
           "Falsch. Die Quelle spielt keine Rolle. Entscheidend ist, ob die Durchläufe voneinander abhängen."
         ]
       },
       "lernziel": "Du beschleunigst Schleifen parallel und erkennst, wann das Ergebnisse verfälscht.",
       "slug": "apply-to-each-parallel",
       "titel_de": "Apply to each parallel laufen lassen",
-      "kurztext_de": "Apply to each arbeitet die Einträge standardmässig nacheinander ab. Bei Hunderten Einträgen dauert das, auch wenn jeder Durchlauf für sich allein steht. In den Einstellungen der Schleife schaltest du Concurrency Control ein und erhöhst den Grad der Parallelität auf höchstens {limit:schleife_parallel_max}. Dann laufen mehrere Durchläufe gleichzeitig, und die Schleife ist oft in einem Bruchteil der Zeit fertig. Das geht nur, wenn die Durchläufe unabhängig sind. Erhöht die Schleife einen Zähler oder hängt sie Werte an ein Array an, überschreiben sich die Durchläufe gegenseitig. Baue das Ergebnis dann mit Select oder union() statt mit Variablen. Zu viel Parallelität gegen denselben Connector kann zudem zu Drosselung führen.",
+      "kurztext_de": "Apply to each arbeitet Einträge standardmässig nacheinander ab. Sind die Durchläufe unabhängig, kannst du in den Einstellungen Concurrency control einschalten und Degree of parallelism auf höchstens {limit:schleife_parallel_max} erhöhen. Dann laufen mehrere Durchläufe gleichzeitig. Variablen in parallelen Schleifen liefern unvorhersehbare Ergebnisse. Mit Variablen muss die Schleife sequenziell laufen. Wähle dafür Apply to each: Concurrency control, Degree of parallelism 1. Das betrifft etwa Zähler oder Arrays, an die du Werte anhängst. Für unabhängige Durchläufe kannst du das Ergebnis stattdessen mit Select oder union() aufbauen. Prüfe auch die Reihenfolge: Wenn ein Schritt das Ergebnis des vorherigen braucht, passt Parallelität nicht. Zu viele gleichzeitige Aufrufe an denselben Connector können zudem zu Drosselung führen.",
       "wann_ja": "Wenn jeder Durchlauf für sich steht, etwa eine Mail pro Person oder ein Update pro Datensatz.",
       "wann_nein": "Wenn Durchläufe dieselbe Variable ändern oder die Reihenfolge wichtig ist.",
       "fehler": "Parallelität einschalten und im Innern weiter «Increment variable» nutzen. Der Zähler stimmt danach nicht mehr.",
@@ -1322,25 +1322,25 @@
       "seite": true,
       "pool": true,
       "quiz": {
-        "frage": "Wofür eignet sich Code View einer Aktion?",
+        "frage": "Wo bearbeitest du im neuen Designer den Flow als JSON?",
         "antworten": [
-          "Die Aktion direkt im JSON bearbeiten",
-          "Den ganzen Flow als Datei exportieren",
-          "Die Ausdrücke einer Aktion vollständig lesen"
+          "In Code view im Designer",
+          "In My clipboard der Aktionsauswahl",
+          "In der Run history des letzten Laufs"
         ],
-        "richtig_index": 2,
+        "richtig_index": 0,
         "erklaerungen": [
-          "Falsch. Code View ist schreibgeschützt. Änderungen machst du im Designer oder im Ausdruckseditor.",
-          "Falsch. Code View zeigt nur die eine Aktion. Mit dem Export des Flows hat die Ansicht nichts zu tun.",
-          "Richtig. Code View zeigt die Definition der Aktion mit allen Ausdrücken, so wie der Flow sie ausführt."
+          "Richtig. Im neuen Designer nutzt du Code view. Im klassischen Designer liest du Aktionen mit Peek code oder nutzt den Export.",
+          "Falsch. My clipboard gehört zum Kopieren von Aktionen im klassischen Designer.",
+          "Falsch. Die Run history zeigt vergangene Läufe, dort bearbeitest du nicht die Flow-Definition."
         ]
       },
       "lernziel": "Du liest die Definition einer Aktion, um Fehler schneller zu finden.",
       "slug": "mit-code-view-hinter-eine-aktion-schauen",
       "titel_de": "Mit Code View hinter eine Aktion schauen",
-      "kurztext_de": "Im Designer siehst du Felder, Symbole und dynamische Inhalte. Was die Aktion wirklich ausführt, steht in ihrer Definition. Über das Menü einer Aktion mit den drei Punkten öffnest du Code View, früher «Peek code». Dort steht die Aktion als JSON, mit allen Eingaben und den vollständigen Ausdrücken. Du siehst etwa, dass hinter einem harmlosen Feld ein verschachtelter concat()-Ausdruck steckt. Das hilft beim Fehlersuchen und beim Lernen: Du erkennst, wie jemand anderes einen Schritt gelöst hat, und übernimmst den Ausdruck in deinen eigenen Flow. Code View ist nur zum Lesen da. Ändern kannst du die Aktion weiterhin im Designer.",
+      "kurztext_de": "Im Designer siehst du Felder, Symbole und dynamische Inhalte. Die JSON-Definition zeigt dir, wie diese Angaben zusammenhängen. Im neuen Designer nutzt du \"Code view\" zum Bearbeiten des Flows als JSON. Prüfe dabei Aktionsnamen, Eingaben und Ausdrücke, bevor du speicherst. Im klassischen Designer öffnest du \"Peek code\", um die Definition einer Aktion zu lesen. Für die Definition des gesamten Flows nutzt du dort den Export. So erkennst du etwa einen verschachtelten concat()-Ausdruck hinter einem Feld. Das hilft beim Fehlersuchen und beim Lernen: Du liest, wie ein Schritt aufgebaut ist, und kannst den Ausdruck im eigenen Flow verwenden. Teste den Flow nach einer Änderung.",
       "wann_ja": "Wenn ein Feld etwas anderes liefert als erwartet und du sehen willst, welcher Ausdruck wirklich dahinter steht.",
-      "wann_nein": "Wenn du etwas ändern willst. Das machst du im Designer, Code View ist schreibgeschützt.",
+      "wann_nein": "Wenn du nur einen Feldwert ändern willst. Dafür ist das Eingabefeld im Designer meist übersichtlicher.",
       "fehler": "Nur das sichtbare Feld im Designer prüfen. Erst in Code View siehst du den vollständigen Ausdruck mit allen Funktionen.",
       "lizenz": "standard",
       "lizenz_belege": [
@@ -1554,7 +1554,7 @@
       "seite": true,
       "pool": true,
       "quiz": {
-        "frage": "Wozu dienen die zwei ? in outputs('Compose')?[InputValue]?['Title']?",
+        "frage": "Wozu dienen die zwei ? in outputs('Compose')?[variables('InputValue')]?['Title']?",
         "antworten": [
           "Sie verhindern einen Fehler bei unbekanntem Schlüssel",
           "Sie markieren die Werte als optionale Eingaben",
@@ -1570,8 +1570,8 @@
       "lernziel": "Du ersetzt Verzweigungen durch Nachschlagen in einem JSON-Objekt.",
       "slug": "json-objekt-statt-switch",
       "titel_de": "JSON-Objekt statt Switch",
-      "ausdruck": "outputs('Compose')?[InputValue]?['Title']",
-      "kurztext_de": "Ein Switch mit einem Dutzend Fällen oder Bedingungen über drei Ebenen ist schwer zu lesen, und für jeden neuen Fall änderst du den Aufbau des Flows. Oft geht es nur darum, zu einem Schlüssel einen Wert nachzuschlagen. Dafür legst du in einer Compose-Aktion ein JSON-Objekt mit allen Fällen ab, etwa A, B und C mit je Titel und Beschreibung. Den passenden Wert holst du mit einem Ausdruck wie outputs('Compose')?[InputValue]?['Title']. Die beiden Fragezeichen verhindern einen Fehler, wenn der Schlüssel oder das Feld fehlt. Mit coalesce() setzt du für unbekannte Schlüssel einen Ersatzwert. Neue Fälle ergänzt du im JSON, der Flow selbst bleibt gleich.",
+      "ausdruck": "outputs('Compose')?[variables('InputValue')]?['Title']",
+      "kurztext_de": "Ein Switch mit einem Dutzend Fällen oder Bedingungen über drei Ebenen ist schwer zu lesen, und für jeden neuen Fall änderst du den Aufbau des Flows. Oft geht es nur darum, zu einem Schlüssel einen Wert nachzuschlagen. Dafür legst du in einer Compose-Aktion ein JSON-Objekt mit allen Fällen ab, etwa A, B und C mit je Titel und Beschreibung. Den passenden Wert holst du mit einem Ausdruck wie outputs('Compose')?[variables('InputValue')]?['Title']. Die beiden Fragezeichen verhindern einen Fehler, wenn der Schlüssel oder das Feld fehlt. Mit coalesce() setzt du für unbekannte Schlüssel einen Ersatzwert. Neue Fälle ergänzt du im JSON, der Flow selbst bleibt gleich.",
       "wann_ja": "Wenn ein Switch nur Werte nachschlägt: Status, Texte, Adressen oder Einstellungen pro Umgebung.",
       "wann_nein": "Wenn die Fälle unterschiedliche Aktionen auslösen sollen. Dann bleibt Switch das richtige Werkzeug.",
       "fehler": "Unbekannte Schlüssel nicht abfangen. Ohne coalesce() läuft null weiter und fällt erst viel später auf.",
@@ -1734,7 +1734,7 @@
       "seite": true,
       "pool": true,
       "quiz": {
-        "frage": "Was bedeutet der Timeout-Wert P2W bei einer Aktion?",
+        "frage": "Was bedeutet der Timeout-Wert P14D bei einer Aktion?",
         "antworten": [
           "Die Aktion startet erst nach zwei Wochen",
           "Die Aktion läuft zweimal pro Woche",
@@ -1744,14 +1744,14 @@
         "erklaerungen": [
           "Falsch. Timeout verzögert nichts. Er legt fest, wann eine laufende Aktion als abgelaufen gilt.",
           "Falsch. Timeout wiederholt keine Aktion. Wiederholungen regelt die Retry Policy.",
-          "Richtig. P2W ist eine Dauer im Format ISO 8601 und steht für zwei Wochen."
+          "Richtig. P14D ist eine ISO-8601-Dauer und steht für 14 Tage, also zwei Wochen."
         ]
       },
       "lernziel": "Du sicherst lange Approvals gegen Timeouts ab.",
       "slug": "timeout-fuer-lange-aktionen",
       "titel_de": "Timeout für lange Aktionen festlegen",
-      "ausdruck": "P2W",
-      "kurztext_de": "Eine Approval oder eine andere Aktion, die auf Menschen wartet, kann länger dauern als geplant. In den Einstellungen der Aktion legst du unter Timeout fest, wie lange sie höchstens warten darf. Die Dauer schreibst du im Format ISO 8601: P1D ist ein Tag, P2W sind zwei Wochen, PT2H zwei Stunden. Läuft die Zeit ab, gilt die Aktion als abgelaufen. Damit der Flow dann nicht einfach scheitert, hängst du eine Aktion an, deren «Configure run after» nur auf «has timed out» steht. Dort erinnerst du, eskalierst oder startest eine neue Anfrage. Über allem gilt die Laufzeitgrenze eines Flows von {limit:laufzeit_max}.",
+      "ausdruck": "",
+      "kurztext_de": "Eine Approval oder eine andere Aktion, die auf Menschen wartet, kann länger dauern als geplant. In den Einstellungen der Aktion legst du unter Timeout fest, wie lange sie höchstens warten darf. Die Dauer schreibst du im Format ISO 8601: P1D ist ein Tag, P14D sind 14 Tage, PT2H zwei Stunden. Läuft die Zeit ab, gilt die Aktion als abgelaufen. Damit der Flow dann nicht einfach scheitert, hängst du eine Aktion an, deren «Configure run after» nur auf «has timed out» steht. Dort erinnerst du, eskalierst oder startest eine neue Anfrage. Über allem gilt die Laufzeitgrenze eines Flows von {limit:laufzeit_max}.",
       "wann_ja": "Bei Approvals und anderen Aktionen, die auf eine Antwort warten, deren Dauer du nicht kennst.",
       "wann_nein": "Wenn der Prozess die Laufzeitgrenze von {limit:laufzeit_max} überschreiten kann. Dann reicht ein Timeout nicht, weil der ganze Lauf vorher endet.",
       "fehler": "Den Timeout setzen, aber keinen Pfad für «has timed out» bauen. Dann scheitert der Lauf trotzdem.",
@@ -1771,7 +1771,7 @@
         "Approval",
         "has timed out",
         "Configure run after",
-        "P2W"
+        "P14D"
       ],
       "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
       "learn_titel": "Limits of automated, scheduled, and instant flows"
@@ -2203,26 +2203,26 @@
       "seite": true,
       "pool": true,
       "quiz": {
-        "frage": "Warum scheitert /v1.0/me/chats mit dieser Aktion auch für Admins?",
+        "frage": "Warum kann ein Graph-Aufruf trotz Adminrolle mit 403 scheitern?",
         "antworten": [
-          "Dem Token fehlt die Berechtigung für Chats",
+          "Dem Token fehlt die nötige Berechtigung",
           "Chats lassen sich über Graph gar nicht lesen",
           "Die Base Resource URL ist falsch gesetzt"
         ],
         "richtig_index": 0,
         "erklaerungen": [
-          "Richtig. Der Connector hat eine feste Liste an Berechtigungen. Chats gehören nicht dazu, die Rolle des Kontos ändert daran nichts.",
+          "Richtig. Die Berechtigungen im Token begrenzen den Zugriff. Eine Adminrolle erweitert sie nicht.",
           "Falsch. Graph bietet Chats an. Es fehlt nur die passende Berechtigung im Token dieses Connectors.",
-          "Falsch. Mit einer falschen Basis-URL scheiterten alle Aufrufe. /v1.0/me funktioniert aber."
+          "Falsch. Auch eine falsche Basis-URL kann Probleme verursachen, erklärt aber keine fehlende Berechtigung im Token."
         ]
       },
       "lernziel": "Du rufst Microsoft Graph aus einem Flow ohne App-Registrierung auf.",
       "slug": "microsoft-graph-ohne-app-registrierung",
       "titel_de": "Microsoft Graph ohne App-Registrierung aufrufen",
       "ausdruck": "https://graph.microsoft.com",
-      "kurztext_de": "Für Aufrufe an Microsoft Graph registrierst du normalerweise eine App in Microsoft Entra ID und verwaltest Secrets oder Zertifikate. Die Aktion «HTTP with Microsoft Entra ID (preauthorized)» nimmt dir das ab. Du meldest dich einmal an und setzt Base Resource URL und Resource URI beide auf https://graph.microsoft.com. Danach wählst du Methode und Endpunkt, etwa GET auf /v1.0/me, und der Connector holt das Token selbst. Der Haken: Das Token trägt eine feste Liste an Berechtigungen. Profil, Gruppen, Dateien, Mails und Kalender gehen, Chats, Präsenz oder Anmeldeprotokolle nicht, auch nicht mit einer Adminrolle. Weitere Seiten einer Antwort holst du über @odata.nextLink.",
-      "wann_ja": "Für Graph-Abfragen im Namen der angemeldeten Person: Profil, Gruppen, Dateien, Mails, Kalender.",
-      "wann_nein": "Wenn du Chats, Präsenz, Anmeldeprotokolle oder Intune brauchst oder keine Premium-Lizenz hast.",
+      "kurztext_de": "Für Microsoft Graph registrierst du normalerweise eine App in Microsoft Entra ID und verwaltest Secrets oder Zertifikate. Die Aktion \"Invoke an HTTP request\" des Connectors \"HTTP with Microsoft Entra ID (preauthorized)\" übernimmt die Tokenbeschaffung. Du meldest dich an und setzt Base Resource URL und Resource URI auf https://graph.microsoft.com. Danach wählst du Methode und Endpunkt, etwa GET auf /v1.0/me. Der Zugriff hängt von den Berechtigungen des Tokens ab. Mögliche Ziele sind je nach Connector zum Beispiel Microsoft Graph oder SharePoint. Prüfe die unterstützten Dienste und Berechtigungen für deinen Connector. Eine Adminrolle erweitert die Tokenberechtigungen nicht. Weitere Seiten einer Graph-Antwort holst du über @odata.nextLink.",
+      "wann_ja": "Für Abfragen im Namen der angemeldeten Person, soweit der Connector die nötigen Berechtigungen mitbringt.",
+      "wann_nein": "Wenn dem Connector die nötigen Berechtigungen oder dir passende Nutzungsrechte für Premium fehlen.",
       "fehler": "Einen 403 für eine falsche Abfrage halten. Fehlt die Berechtigung im Token, hilft keine andere Schreibweise.",
       "lizenz": "premium",
       "lizenz_belege": [
@@ -2536,8 +2536,8 @@
       "lernziel": "Du testest Schleifen mit wenigen Einträgen, ohne den Flow umzubauen.",
       "slug": "schleifen-beim-testen-mit-take-kuerzen",
       "titel_de": "Schleifen beim Testen mit take() kürzen",
-      "ausdruck": "take(outputs('Select'), 5)",
-      "kurztext_de": "Eine Schleife über Hunderte Einträge zu testen, kostet bei jedem Lauf Zeit und Aktionen. Mit take() verarbeitest du beim Testen nur die ersten Einträge. Du ersetzt die Eingabe von Apply to each durch einen Ausdruck wie take(outputs('Select'), 5). Die Schleife läuft dann genau fünfmal, egal wie gross das Array ist. Hat das Array weniger Einträge, liefert take() einfach alle, ohne Fehler. So prüfst du die Logik in der Schleife an wenigen echten Datensätzen. Stimmt alles, nimmst du take() wieder heraus und wählst die ursprüngliche Ausgabe neu aus. Der Aufbau des Flows bleibt dabei unverändert.",
+      "ausdruck": "",
+      "kurztext_de": "Eine Schleife über Hunderte Einträge zu testen, kostet bei jedem Lauf Zeit und Aktionen. Mit take() verarbeitest du beim Testen nur die ersten Einträge. Du ersetzt die Eingabe von Apply to each durch einen Ausdruck wie take(body('Select'), 5). Die Schleife läuft dann höchstens fünfmal, egal wie gross das Array ist. Hat das Array weniger Einträge, liefert take() einfach alle, ohne Fehler. So prüfst du die Logik in der Schleife an wenigen echten Datensätzen. Stimmt alles, nimmst du take() wieder heraus und wählst die ursprüngliche Ausgabe neu aus. Der Aufbau des Flows bleibt dabei unverändert.",
       "wann_ja": "Beim Testen von Schleifen über grosse Listen oder Tabellen, bevor du den Flow auf alle Daten loslässt.",
       "wann_nein": "Im Betrieb. Bleibt take() im Flow, verarbeitet er dauerhaft nur die ersten Einträge.",
       "fehler": "take() nach dem Test im Flow vergessen. Ein Hinweis in der Aktion erinnert dich daran, es wieder zu entfernen.",
@@ -2580,17 +2580,17 @@
         "richtig_index": 1,
         "erklaerungen": [
           "Falsch. Diese Aktion legt keine Approval an und erscheint deshalb nicht im Approvals-Center.",
-          "Richtig. SelectedOption enthält den geklickten Knopf, UserEmailAddress die Person, die geklickt hat.",
-          "Falsch. Es kommt keine Mail zurück. Der Klick geht direkt an den wartenden Flow."
+          "Richtig. Prüfe, ob SelectedOption gefüllt ist. Bei HTML-Antworten können Felder leer sein, auch UserEmailAddress ist nicht verlässlich.",
+          "Falsch. Diese Aktion liefert Rückgabefelder. Für die Auswertung einer Antwortmail brauchst du einen eigenen Ablauf."
         ]
       },
       "lernziel": "Du holst Genehmigungen über ein gemeinsames Postfach ein.",
       "slug": "entscheidungen-ueber-ein-geteiltes-postfach",
       "titel_de": "Entscheidungen über ein geteiltes Postfach",
-      "kurztext_de": "Weist du «Start and wait for an approval» einem geteilten Postfach zu, sehen alle die Mail, aber ein Klick auf Approve bleibt wirkungslos. Die Approval gehört zur Identität des Postfachs, und wer klickt, ist nicht als Genehmiger eingetragen. Die Lösung ist die Aktion «Send email with options» aus Office 365 Outlook. Du trägst das geteilte Postfach bei To ein und die Knöpfe bei User Options, etwa Approve,Reject. Wer Zugriff auf das Postfach hat, kann antworten. Die Antwort steht in SelectedOption, und UserEmailAddress zeigt, wer geklickt hat. Einen Eintrag im Approvals-Center gibt es dabei nicht. Willst du die Entscheidung nachvollziehen, schreibst du sie selbst in eine Liste.",
+      "kurztext_de": "Ein geteiltes Postfach ist keine persönliche Genehmigeridentität. Actionable Messages funktionieren darin nicht. Die Aktion \"Send email with options\" aus Office 365 Outlook kann eine Alternative sein: Trage das Postfach bei To ein und die Optionen bei User Options, etwa Approve,Reject. Bei Antworten über HTML können Rückgabefelder leer sein. Prüfe deshalb SelectedOption und UserEmailAddress, bevor du eine Entscheidung protokollierst. UserEmailAddress ist kein verlässlicher Nachweis, wer geantwortet hat. Fehlen die benötigten Angaben, brauchst du einen anderen Antwortweg, etwa einen Link zu einem Formular. Einen Eintrag im Approvals-Center erzeugt die Aktion nicht. Prüfe den Ablauf mit dem verwendeten Postfach und Mailclient, bevor du ihn einsetzt.",
       "wann_ja": "Für Support-, Finanz- oder Dispositionspostfächer, in denen entscheidet, wer gerade da ist.",
-      "wann_nein": "Wenn du die Historie im Approvals-Center brauchst oder eine bestimmte Person entscheiden muss.",
-      "fehler": "Die Antwort nicht speichern. Ohne eigenen Eintrag gibt es kein Protokoll, wer wie entschieden hat.",
+      "wann_nein": "Wenn du eine persönliche Genehmigung oder die Historie im Approvals-Center brauchst. Leere HTML-Rückgaben brauchen einen anderen Antwortweg.",
+      "fehler": "UserEmailAddress ungeprüft als Identitätsnachweis speichern. Prüfe das Feld auf Inhalt und nutze bei fehlenden Angaben einen anderen Antwortweg.",
       "lizenz": "standard",
       "lizenz_belege": [
         {
@@ -2656,8 +2656,8 @@
         ],
         "richtig_index": 2,
         "erklaerungen": [
-          "Falsch. Kopieren geht, erzeugt aber ein neues Element mit neuer ID und ohne Versionsverlauf.",
-          "Falsch. Eine geänderte Endung ignoriert SharePoint bei FileLeafRef. Dafür brauchst du MoveTo.",
+          "Falsch. Kopieren ist möglich, erzeugt in der Regel aber ein neues Element. Versionsverlauf und Metadaten können verloren gehen.",
+          "Falsch. Im Beispiel des Tipps blieb die Änderung der Endung über FileLeafRef wirkungslos. Dafür nutze MoveTo.",
           "Richtig. MERGE auf FileLeafRef ändert nur den Namen. Das Element selbst bleibt dasselbe."
         ]
       },
@@ -2665,10 +2665,10 @@
       "slug": "sharepoint-datei-per-rest-umbenennen",
       "titel_de": "SharePoint-Datei per REST umbenennen",
       "ausdruck": "X-HTTP-Method: MERGE",
-      "kurztext_de": "Der SharePoint-Connector hat keine Aktion zum Umbenennen. Kopieren und Löschen erzeugt eine neue Datei mit neuer ID, ohne Versionsverlauf und Metadaten. Sauberer ist ein einziger Aufruf mit «Send an HTTP request to SharePoint». Du schickst einen POST an das Listenelement der Datei und machst ihn mit den Kopfzeilen IF-MATCH: * und X-HTTP-Method: MERGE zu einer Änderung. Im Body steht nur das Feld FileLeafRef mit dem neuen Dateinamen samt Endung. Mit den Kopfzeilen odata=nometadata brauchst du keinen Eintrag __metadata. Die Antwort 204 bedeutet Erfolg. ID, Versionen, Berechtigungen und Metadaten bleiben erhalten. Die Dateiendung lässt sich so nicht ändern, dafür gibt es MoveTo.",
+      "kurztext_de": "Der SharePoint-Connector hat keine Aktion zum Umbenennen. Kopieren und Löschen erzeugt in der Regel eine neue Datei mit neuer ID. Versionsverlauf und Metadaten können dabei verloren gehen. Sauberer ist ein einziger Aufruf mit «Send an HTTP request to SharePoint». Du schickst einen POST an das Listenelement der Datei und machst ihn mit den Kopfzeilen IF-MATCH: * und X-HTTP-Method: MERGE zu einer Änderung. Im Body steht nur das Feld FileLeafRef mit dem neuen Dateinamen samt Endung. Mit den Kopfzeilen odata=nometadata brauchst du keinen Eintrag __metadata. Die Antwort 204 bedeutet Erfolg. ID, Versionen, Berechtigungen und Metadaten bleiben erhalten. Im Beispiel des Tipps blieb eine Änderung der Dateiendung wirkungslos. Dafür nutzt du MoveTo.",
       "wann_ja": "Für Namenskonventionen, Referenznummern im Dateinamen oder Korrekturen an hochgeladenen Dateien.",
       "wann_nein": "Wenn sich die Dateiendung oder der Ordner ändern soll. Dafür ist MoveTo der richtige Aufruf.",
-      "fehler": "Den Namen ohne Endung in FileLeafRef schreiben. Der Dateiname enthält die Endung immer mit.",
+      "fehler": "Die Endung beim Umbenennen weglassen. Behalte sie im neuen Dateinamen bei und prüfe den Namen nach dem Aufruf.",
       "lizenz": "standard",
       "lizenz_belege": [
         {
@@ -2795,7 +2795,7 @@
     {
       "schluessel": "157",
       "tipp_nr": 157,
-      "tipp_titel": "Run Office Scripts from Power Automate – 20 Everyday Excel Automations",
+      "tipp_titel": "Run Office Scripts from Power Automate: 20 Everyday Excel Automations",
       "tipp_datum": "2026-04-30",
       "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-157-run-office-scripts-power-automate/",
       "guertel": 3,
@@ -3105,10 +3105,10 @@
       "slug": "echte-fehlermeldung-mit-result-auslesen",
       "titel_de": "Die echte Fehlermeldung mit result() auslesen",
       "ausdruck": "first(body('Filter_array'))?['error']?['message']",
-      "kurztext_de": "Scheitert ein Flow nachts, steht der Grund in der Run history. Wer ihn kennen muss, kann sie oft nicht öffnen. Die Funktion result() holt dir die Details: result('Try') liefert ein Array mit allen Aktionen der obersten Ebene des Scopes Try, je mit name, status, code und bei Fehlern einem Objekt error mit der Meldung. In einer Aktion, die nur bei «has failed» läuft, filterst du das Array mit Filter array auf status gleich Failed. Den Text holst du mit first(body('Filter_array'))?['error']?['message'] und schickst ihn per Mail weiter. result() funktioniert nur mit einem Scope, Apply to each oder Until. Liegt der Fehler tiefer, wendest du result() auf die innere Ebene an.",
+      "kurztext_de": "Scheitert ein Flow nachts, steht der Grund in der Run history. Wer ihn kennen muss, kann sie oft nicht öffnen. Die Funktion result() holt dir die Details: result('Try') liefert ein Array mit allen Aktionen der obersten Ebene des Scopes Try, mit Angaben wie name, status und code sowie je nach Fehler einem Objekt error mit der Meldung. In einer Aktion, die nur bei «has failed» läuft, filterst du das Array mit Filter array auf status gleich Failed. Den Text holst du mit first(body('Filter_array'))?['error']?['message'] und schickst ihn per Mail weiter. result() funktioniert nur mit einem Scope, Apply to each oder Until. Bei verschachtelten Fehlern prüfst du den inneren Container. Lies eine Meldung nur aus, wenn das gefilterte Array nicht leer ist.",
       "wann_ja": "Wenn Fachleute, Admins oder ein Agent wissen müssen, warum ein Lauf gescheitert ist.",
       "wann_nein": "Für Aktionen ausserhalb des Scopes. result() sieht nur, was im Container steht.",
-      "fehler": "Nur die oberste Ebene auslesen. Fehler in einer Condition oder einem inneren Scope stehen erst im result() dieser Ebene.",
+      "fehler": "Nur die oberste Ebene auslesen. Prüfe bei verschachtelten Aktionen den inneren Container und ob error.message vorhanden ist.",
       "lizenz": "standard",
       "lizenz_belege": [
         {
@@ -3157,7 +3157,7 @@
     {
       "schluessel": "170",
       "tipp_nr": 170,
-      "tipp_titel": "One Flow, Many Tools – a Switch Router for Copilot Studio Agents",
+      "tipp_titel": "One Flow, Many Tools: a Switch Router for Copilot Studio Agents",
       "tipp_datum": "2026-08-20",
       "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-170-flow-as-agent-tool-switch-router/",
       "guertel": 6,

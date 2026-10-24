@@ -15,7 +15,7 @@
 <script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Flow-Läufe nacheinander statt gleichzeitig | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Flow-Läufe nacheinander statt gleichzeitig | Flow Dojo</title>
 <meta name="description" content="Flow-Läufe nacheinander statt gleichzeitig: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="Flow-Läufe nacheinander statt gleichzeitig | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Flow-Läufe nacheinander statt gleichzeitig | Flow Dojo">
 <meta property="og:description" content="Flow-Läufe nacheinander statt gleichzeitig: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/techniken/flow-laeufe-nacheinander/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-orange.png">
@@ -219,11 +219,11 @@
 <ol class="aufloesung"><li class="falsch"><b>A) Sie werden sofort verworfen und nie ausgeführt</b>Falsch. Neue Auslösungen warten. Ob jede zu einem Lauf wird, ist erst unsicher, wenn die Warteschlange voll ist.</li><li class="richtig"><b>B) Sie warten, bis der laufende Lauf fertig ist</b>Richtig. Weitere Läufe stehen in einer Warteschlange und starten nacheinander.</li><li class="falsch"><b>C) Sie laufen trotzdem parallel, nur langsamer</b>Falsch. Bei Parallelität 1 läuft genau ein Lauf auf einmal, alle anderen warten.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Ein automatisierter Flow startet bei jedem neuen Ereignis, auch wenn der vorherige Lauf noch nicht fertig ist. Bearbeiten zwei Läufe gleichzeitig dieselben Daten, entstehen Duplikate, oder ein Lauf überschreibt den anderen. In den Einstellungen des Triggers schaltest du Concurrency Control ein und setzt den Grad der Parallelität auf 1. Dann läuft immer nur ein Lauf, weitere warten und starten der Reihe nach. Das kostet Zeit, sichert aber die Daten. Die Warteschlange ist begrenzt: Es warten höchstens 11 Läufe. Und überlege dir den Schritt vorher: Concurrency Control am Trigger lässt sich nur ausschalten, indem du den Trigger löschst und neu einfügst.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Ein automatisierter Flow startet bei jedem neuen Ereignis, auch wenn der vorherige Lauf noch nicht fertig ist. Bearbeiten zwei Läufe gleichzeitig dieselben Daten, entstehen Duplikate, oder ein Lauf überschreibt den anderen. In den Einstellungen des Triggers schaltest du Concurrency Control ein und setzt den Grad der Parallelität auf 1. Dann läuft immer nur ein Lauf, weitere warten und starten der Reihe nach. Das kostet Zeit, sichert aber die Daten. Die Warteschlange ist begrenzt: Es warten höchstens 11 Läufe. Überlege dir deshalb vor dem Einschalten: Concurrency Control am Trigger lässt sich nur ausschalten, indem du den Trigger löschst und neu einfügst.</p></section>
 
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Wenn mehrere Läufe dieselbe Liste, dieselbe Datei oder denselben Zähler bearbeiten.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Wenn sehr viele Ereignisse in kurzer Zeit eintreffen. Die Warteschlange ist begrenzt, und ein Lauf nach dem anderen wird zum Engpass.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Concurrency Control am Trigger zum Ausprobieren einschalten. Zurück geht es nur, indem du den Trigger löschst und neu einfügst.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
 <section class="abschnitt" aria-label="Ganzer Tipp"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-35-concurrent-control/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-35" rel="noopener"><strong>Ganzer Tipp mit Screenshots auf powerplatformtip.com</strong><span>PowerPlatformTip #35, auf Englisch</span></a></section>
 <section class="abschnitt" aria-label="Dein Stand">
 <button type="button" class="knopf" data-geuebt="35" aria-pressed="false" data-nur-js>Als geübt markieren</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
-        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, nur eine anonyme Zugriffszählung. Dein Fortschritt bleibt in deinem Browser.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung. Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Dein Fortschritt bleibt in deinem Browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

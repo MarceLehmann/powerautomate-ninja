@@ -15,7 +15,7 @@
 <script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Timeout für lange Aktionen festlegen | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Timeout für lange Aktionen festlegen | Flow Dojo</title>
 <meta name="description" content="Timeout für lange Aktionen festlegen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="Timeout für lange Aktionen festlegen | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Timeout für lange Aktionen festlegen | Flow Dojo">
 <meta property="og:description" content="Timeout für lange Aktionen festlegen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-orange.png">
@@ -93,15 +93,15 @@
           "@type": "Question",
           "eduQuestionType": "Multiple choice",
           "learningResourceType": "Practice problem",
-          "name": "Was bedeutet der Timeout-Wert P2W bei einer Aktion?",
-          "text": "Was bedeutet der Timeout-Wert P2W bei einer Aktion?",
+          "name": "Was bedeutet der Timeout-Wert P14D bei einer Aktion?",
+          "text": "Was bedeutet der Timeout-Wert P14D bei einer Aktion?",
           "acceptedAnswer": {
             "@type": "Answer",
             "position": 2,
             "text": "Die Aktion wartet höchstens zwei Wochen",
             "answerExplanation": {
               "@type": "Comment",
-              "text": "Richtig. P2W ist eine Dauer im Format ISO 8601 und steht für zwei Wochen."
+              "text": "Richtig. P14D ist eine ISO-8601-Dauer und steht für 14 Tage, also zwei Wochen."
             }
           },
           "suggestedAnswer": [
@@ -211,26 +211,26 @@
 </header>
 <section class="quiz" id="quiz" data-quiz data-richtig="2" data-guertel-nr="3" aria-labelledby="h-quiz">
 <h2 id="h-quiz" class="label">Quizfrage</h2>
-<p class="quiz__frage">Was bedeutet der Timeout-Wert P2W bei einer Aktion?</p>
+<p class="quiz__frage">Was bedeutet der Timeout-Wert P14D bei einer Aktion?</p>
 <ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>Die Aktion startet erst nach zwei Wochen</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Die Aktion läuft zweimal pro Woche</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>Die Aktion wartet höchstens zwei Wochen</span></button></li></ul>
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Auflösung</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) Die Aktion startet erst nach zwei Wochen</b>Falsch. Timeout verzögert nichts. Er legt fest, wann eine laufende Aktion als abgelaufen gilt.</li><li class="falsch"><b>B) Die Aktion läuft zweimal pro Woche</b>Falsch. Timeout wiederholt keine Aktion. Wiederholungen regelt die Retry Policy.</li><li class="richtig"><b>C) Die Aktion wartet höchstens zwei Wochen</b>Richtig. P2W ist eine Dauer im Format ISO 8601 und steht für zwei Wochen.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) Die Aktion startet erst nach zwei Wochen</b>Falsch. Timeout verzögert nichts. Er legt fest, wann eine laufende Aktion als abgelaufen gilt.</li><li class="falsch"><b>B) Die Aktion läuft zweimal pro Woche</b>Falsch. Timeout wiederholt keine Aktion. Wiederholungen regelt die Retry Policy.</li><li class="richtig"><b>C) Die Aktion wartet höchstens zwei Wochen</b>Richtig. P14D ist eine ISO-8601-Dauer und steht für 14 Tage, also zwei Wochen.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Eine Approval oder eine andere Aktion, die auf Menschen wartet, kann länger dauern als geplant. In den Einstellungen der Aktion legst du unter Timeout fest, wie lange sie höchstens warten darf. Die Dauer schreibst du im Format ISO 8601: P1D ist ein Tag, P2W sind zwei Wochen, PT2H zwei Stunden. Läuft die Zeit ab, gilt die Aktion als abgelaufen. Damit der Flow dann nicht einfach scheitert, hängst du eine Aktion an, deren «Configure run after» nur auf «has timed out» steht. Dort erinnerst du, eskalierst oder startest eine neue Anfrage. Über allem gilt die Laufzeitgrenze eines Flows von 30 Tagen.</p></section>
-<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">Der Ausdruck aus dem Tipp</h2><div class="code-block"><pre id="ausdruck"><code>P2W</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Kopieren</button></div></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Eine Approval oder eine andere Aktion, die auf Menschen wartet, kann länger dauern als geplant. In den Einstellungen der Aktion legst du unter Timeout fest, wie lange sie höchstens warten darf. Die Dauer schreibst du im Format ISO 8601: P1D ist ein Tag, P14D sind 14 Tage, PT2H zwei Stunden. Läuft die Zeit ab, gilt die Aktion als abgelaufen. Damit der Flow dann nicht einfach scheitert, hängst du eine Aktion an, deren «Configure run after» nur auf «has timed out» steht. Dort erinnerst du, eskalierst oder startest eine neue Anfrage. Über allem gilt die Laufzeitgrenze eines Flows von 30 Tagen.</p></section>
+
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Bei Approvals und anderen Aktionen, die auf eine Antwort warten, deren Dauer du nicht kennst.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Wenn der Prozess die Laufzeitgrenze von 30 Tagen überschreiten kann. Dann reicht ein Timeout nicht, weil der ganze Lauf vorher endet.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Den Timeout setzen, aber keinen Pfad für «has timed out» bauen. Dann scheitert der Lauf trotzdem.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
 <section class="abschnitt" aria-label="Ganzer Tipp"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-109-use-timeout/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-109" rel="noopener"><strong>Ganzer Tipp mit Screenshots auf powerplatformtip.com</strong><span>PowerPlatformTip #109, auf Englisch</span></a></section>
 <section class="abschnitt" aria-label="Dein Stand">
 <button type="button" class="knopf" data-geuebt="109" aria-pressed="false" data-nur-js>Als geübt markieren</button>
 <p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Teilen</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P2W%20bei%20einer%20Aktion%3F%0A%0AA)%20Die%20Aktion%20startet%20erst%20nach%20zwei%20Wochen%0AB)%20Die%20Aktion%20l%C3%A4uft%20zweimal%20pro%20Woche%0AC)%20Die%20Aktion%20wartet%20h%C3%B6chstens%20zwei%20Wochen%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Ftimeout-fuer-lange-aktionen%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was bedeutet der Timeout-Wert P2W bei einer Aktion?&#10;&#10;A) Die Aktion startet erst nach zwei Wochen&#10;B) Die Aktion läuft zweimal pro Woche&#10;C) Die Aktion wartet höchstens zwei Wochen&#10;&#10;Auflösung mit Erklärung im PowerPlatformAcademy Dojo: https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20Fehler%20in%20Frage%20109&amp;body=Frage%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P2W%20bei%20einer%20Aktion%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quizfrage%20f%C3%BCr%20alle%2C%20die%20Flows%20bauen%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P14D%20bei%20einer%20Aktion%3F%0A%0AA)%20Die%20Aktion%20startet%20erst%20nach%20zwei%20Wochen%0AB)%20Die%20Aktion%20l%C3%A4uft%20zweimal%20pro%20Woche%0AC)%20Die%20Aktion%20wartet%20h%C3%B6chstens%20zwei%20Wochen%0A%0AAufl%C3%B6sung%20mit%20Erkl%C3%A4rung%20im%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ftechniken%2Ftimeout-fuer-lange-aktionen%2F" rel="noopener">Als Quizfrage auf LinkedIn teilen</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quizfrage für alle, die Flows bauen: Was bedeutet der Timeout-Wert P14D bei einer Aktion?&#10;&#10;A) Die Aktion startet erst nach zwei Wochen&#10;B) Die Aktion läuft zweimal pro Woche&#10;C) Die Aktion wartet höchstens zwei Wochen&#10;&#10;Auflösung mit Erklärung im PowerPlatformAcademy Dojo: https://powerautomate.ninja/techniken/timeout-fuer-lange-aktionen/" data-nur-js>Text kopieren</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20Fehler%20in%20Frage%20109&amp;body=Frage%3A%20Was%20bedeutet%20der%20Timeout-Wert%20P14D%20bei%20einer%20Aktion%3F%0A%0AWas%20stimmt%20nicht%3F%0A%0A">Fehler in dieser Frage melden</a></div>
 <p class="klein">Kurzadresse: powerautomate.ninja/109</p>
 </section>
 <p class="quelle">Quelle: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-109-use-timeout/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-109" rel="noopener">PowerPlatformTip #109</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/limits-and-config" rel="noopener">Limits of automated, scheduled, and instant flows</a>.</p>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
-        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, nur eine anonyme Zugriffszählung. Dein Fortschritt bleibt in deinem Browser.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung. Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Dein Fortschritt bleibt in deinem Browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

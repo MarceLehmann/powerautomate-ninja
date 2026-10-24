@@ -15,8 +15,8 @@
 <script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Privacy | PowerPlatformAcademy Dojo · Power Automate</title>
-<meta name="description" content="Privacy in the PowerPlatformAcademy Dojo: no cookies, anonymous visit counting, progress only in your browser.">
+<title>Privacy | Flow Dojo</title>
+<meta name="description" content="Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.">
 <link rel="canonical" href="https://powerautomate.ninja/en/datenschutz/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/datenschutz/">
 <link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/datenschutz/">
@@ -25,8 +25,8 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Privacy | PowerPlatformAcademy Dojo · Power Automate">
-<meta property="og:description" content="Privacy in the PowerPlatformAcademy Dojo: no cookies, anonymous visit counting, progress only in your browser.">
+<meta property="og:title" content="Privacy | Flow Dojo">
+<meta property="og:description" content="Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.">
 <meta property="og:url" content="https://powerautomate.ninja/en/datenschutz/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -85,44 +85,47 @@
 <nav class="krumen" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li><a href="./" aria-current="page">Privacy</a></li></ol></nav>
 <div class="prose sektion--eng">
 <h1 id="h1">Privacy</h1>
-<p>As of: 2026-10-16</p>
+<p>As of: 2026-10-24</p>
 <h2>In short</h2>
 <ul class="arrow-list">
-<li>This website sets no cookies.</li>
-<li>Visits are counted anonymously with GoatCounter, without cookies and without storing your IP address. There is no tracking across websites.</li>
-<li>There are no accounts and no forms that send anything.</li>
-<li>Fonts, scripts and images come from this website itself. The only connection to a third party is the count request to GoatCounter.</li>
-<li>What you mark in the dojo or reach in the exam stays in your browser. I receive none of it.</li>
+<li>This website sets no cookies. Visits are counted without cookies; only totals without personal identifiers are stored.</li>
+<li>The GoatCounter request also includes the page title and full query string. The IP address is processed briefly but is not stored.</li>
+<li>Progress and settings stay in your browser. The first automatic language redirect can store a language choice without a click.</li>
+<li>GitHub Pages processes technical access data for hosting. There are no accounts and no forms that send anything.</li>
 </ul>
 <h2>Responsible</h2>
 <p>Marcel Lehmann (trade name KMUpower), reachable at <a href="mailto:marcel.lehmann@kmupower.com">marcel.lehmann@kmupower.com</a>. Full details are in the <a href="../impressum/">legal notice</a>.</p>
 <h2>Hosting on GitHub Pages</h2>
-<p>The website is hosted on GitHub Pages, operated by GitHub Inc. in the USA. When you open a page, GitHub processes technically necessary access data in server logs, for example your IP address and the time of access. I do not analyze these logs. Data may be transferred to the USA in the process. Details are in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub privacy statement</a>.</p>
-<h2 id="zugriffszaehlung">Anonymous visit counting with GoatCounter</h2>
-<p>So that I can see which techniques are read, the website counts visits with GoatCounter. The provider is GoatCounter.com, operated by Martin Tournoij in Ireland; the data is stored on servers of Hetzner Online GmbH in Finland and Germany. This website serves the counting script itself, only the count request goes to GoatCounter.</p>
-<p>For each page view, GoatCounter receives the page address, the referring page, the browser identifier (User-Agent), the screen width, the browser language and your IP address. Only totals per day or hour are stored: page path, referring page, browser and operating system with version, country, language and screen width. Your IP address and the full browser identifier are not stored. So that a reload does not count twice, GoatCounter keeps a combination of site, IP address and browser identifier in memory for at most 8 hours, never on disk. No cookies are set, nothing is stored in your browser and no data is passed on to third parties. The basis is my interest in knowing which content is used. Details are in the <a href="https://www.goatcounter.com/help/privacy" rel="noopener">GoatCounter privacy policy</a>. If you do not want to be counted, block requests to goatcounter.com with a content blocker. The website works exactly the same.</p>
+<p>The website is hosted on GitHub Pages, operated by GitHub Inc. in the USA, a Microsoft subsidiary. GitHub processes technically necessary access data in server logs, such as your IP address and the time of access. The purpose is to provide a secure, reliable website. The basis is my legitimate interest under Art. 6(1)(f) GDPR, where applicable; processing also follows the Swiss FADP. I do not analyze these logs. Retention follows GitHub's rules.</p>
+<p>Data may be transferred to the USA. The basis is the EU-US Data Privacy Framework or Swiss-US Data Privacy Framework, insofar as GitHub is certified according to GitHub's statements, with standard contractual clauses as an alternative. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub privacy statement</a> for details.</p>
+<h2 id="zugriffszaehlung">Visit counting without cookies with GoatCounter</h2>
+<p>The website counts visits with GoatCounter so I can see which techniques are read. The provider is GoatCounter.com, operated by Martin Tournoij in Ireland. Data is held on Hetzner Online GmbH servers in Finland and Germany. This website serves the counting script itself; count requests go to GoatCounter.</p>
+<p>The script sends the page path, referring page (document.referrer), page title (document.title), screen width, a bot detection indicator and the current address's full query string (location.search). The path comes from a canonical link on the same domain if available, otherwise from the current address including its query. A random value prevents browser caching. The request also technically transmits the IP address and browser identifier. Browser language may be transmitted through the request. Query parameters can include license check answers, for example.</p>
+<p>Only totals without personal identifiers are stored, for example by day or hour, page path, referrer, browser, operating system, country, language and screen width. The IP address is processed briefly but is not stored; the full browser identifier is not stored either. A combination of page, IP address and browser identifier is processed temporarily in memory to recognize repeat visits. The purpose is to understand which content is used. The basis is my legitimate interest in improving the content under Art. 6(1)(f) GDPR, where applicable; processing also follows the Swiss FADP. See the <a href="https://www.goatcounter.com/help/privacy" rel="noopener">GoatCounter privacy policy</a> for details.</p>
+<p>You can block requests to goatcounter.com with a content blocker. Opening a page with <code>#toggle-goatcounter</code> at the end of the address makes the script set <code>skipgc</code> to <code>t</code> in localStorage. This browser is then excluded from counting. Opening the same address again removes the entry and enables counting. You can also delete <code>skipgc</code> through website data in your browser settings.</p>
 <h2 id="dein-fortschritt">Your progress in the dojo</h2>
-<p>Some settings and your progress are stored in your browser's local storage (localStorage). This is not a cookie. The entries stay on your device and are never sent to me or to third parties. Nothing is written until you do something.</p>
+<p>Settings and progress are kept in your browser's local storage (localStorage). These entries stay on your device and are not transmitted.</p>
 <ul class="arrow-list">
-<li><code>fd-theme</code>: "light" or "dark". Remembers light or dark mode.</li>
-<li><code>fd-lang</code>: "de" or "en". Remembers your language choice so the home page does not redirect you again. Set when you switch the language or when the home page redirects you to English once.</li>
-<li><code>fd-dojo-v1</code>: your practiced techniques with date and your belt from the exam with date. Applies to both languages.</li>
+<li><code>fd-theme</code>: saves your light or dark mode choice as <code>light</code> or <code>dark</code>.</li>
+<li><code>fd-dojo-v1</code>: after your actions, stores practiced techniques with dates and your exam belt with a date. Applies to both languages.</li>
 </ul>
-<p>Deleting: under <a href="../dojo/">My dojo</a>, "Delete everything" removes all entries. You can also delete them in your browser settings.</p>
-<p>The result image of the belt exam is created in your browser. It is never uploaded.</p>
+<h2>Language redirect and storage</h2>
+<p><code>fd-lang</code> stores <code>de</code> or <code>en</code>. On a first visit to the German home page without a saved language choice, the website checks your browser languages. If none is German and a language is available, it saves <code>en</code> without a click and redirects to the English home page. This excludes detected crawlers and only happens if storage is available. Clicking the language switch also saves your choice. The entry prevents another automatic redirect, is not used for tracking and stays in your browser.</p>
+<p>In <a href="../dojo/">My dojo</a>, "Delete everything" removes progress, theme and language choice. It leaves <code>skipgc</code> in place. You can also delete all entries through website data in your browser settings. The belt exam result image is created in your browser and is not uploaded.</p>
 <h2>If you write to me</h2>
-<p>The link "Report an error in this question" only prepares an email in your own mail program. Nothing is sent until you click send there. I use your email address and the content only to reply and to correct the question, and I delete the email once that is done.</p>
+<p>The "Report an error in this question" link prepares an email in your mail program. Nothing is sent until you click send there. I use your email address and the content only to reply and correct the question, and delete the email once that is done.</p>
 <h2>Links to other websites</h2>
-<p>This website links to powerplatformtip.com, Microsoft Learn, the Power Platform Academy, LinkedIn and other websites. Only when you click a link does the provider receive your data. Links to powerplatformtip.com and the Academy carry a source parameter in the address (utm_source=powerautomate.ninja). This website does not evaluate the parameter itself, the target website does so under its own privacy policy.</p>
+<p>This website links to powerplatformtip.com, Microsoft Learn, the Power Platform Academy, LinkedIn and other websites. When you click a link, that provider receives your access data. Links to powerplatformtip.com and the Academy carry a source parameter (utm_source=powerautomate.ninja). The target website evaluates it under its own privacy policy.</p>
 <h2>Your rights</h2>
-<p>Under the Swiss Federal Act on Data Protection you can request information or deletion. The website itself does not store any personal data with me, and the GoatCounter counts contain none either. For the hosting logs, contact GitHub. For everything else, write to me at <a href="mailto:marcel.lehmann@kmupower.com">marcel.lehmann@kmupower.com</a>.</p>
+<p>Under the Swiss FADP and, where applicable, the GDPR, you can request access, rectification, erasure, restriction of processing and data portability or delivery of your data. You can object to processing based on legitimate interests. Contact <a href="mailto:marcel.lehmann@kmupower.com">marcel.lehmann@kmupower.com</a> to exercise these rights. You can complain to the Swiss Federal Data Protection and Information Commissioner (FDPIC) or a competent EU/EEA supervisory authority.</p>
+
 </div></div></main>
 <footer class="fuss">
   <div class="wrap">
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

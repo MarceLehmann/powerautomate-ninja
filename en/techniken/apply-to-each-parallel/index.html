@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Run Apply to each in parallel | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Run Apply to each in parallel | Flow Dojo</title>
 <meta name="description" content="Run Apply to each in parallel: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/apply-to-each-parallel/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/apply-to-each-parallel/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Run Apply to each in parallel | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Run Apply to each in parallel | Flow Dojo">
 <meta property="og:description" content="Run Apply to each in parallel: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/apply-to-each-parallel/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gruen.png">
@@ -101,7 +101,7 @@
             "text": "When it increments a variable or appends to an array",
             "answerExplanation": {
               "@type": "Comment",
-              "text": "Correct. Parallel iterations read and write the same variable at the same time and overwrite each other."
+              "text": "Correct. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially."
             }
           },
           "suggestedAnswer": [
@@ -216,14 +216,14 @@
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Solution</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) When it has to process more than a hundred items</b>Wrong. Concurrency saves the most time precisely when there are many independent items.</li><li class="richtig"><b>B) When it increments a variable or appends to an array</b>Correct. Parallel iterations read and write the same variable at the same time and overwrite each other.</li><li class="falsch"><b>C) When it reads items from a SharePoint list</b>Wrong. The source does not matter. What counts is whether the iterations depend on each other.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) When it has to process more than a hundred items</b>Wrong. Concurrency saves the most time precisely when there are many independent items.</li><li class="richtig"><b>B) When it increments a variable or appends to an array</b>Correct. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially.</li><li class="falsch"><b>C) When it reads items from a SharePoint list</b>Wrong. The source does not matter. What counts is whether the iterations depend on each other.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Apply to each processes items one after another by default. With hundreds of items that takes time, even when every iteration stands on its own. In the loop settings you turn on Concurrency control and raise the degree of parallelism to at most 50. Several iterations then run at the same time, and the loop often finishes in a fraction of the time. This only works when the iterations are independent. If the loop increments a counter or appends values to an array, the iterations overwrite each other. In that case build the result with Select or union() instead of variables. Too much parallelism against the same connector can also lead to throttling.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Apply to each processes items sequentially by default. If iterations are independent, turn on Concurrency control in the loop settings and raise Degree of parallelism to at most 50. Several iterations then run at the same time. Variables in parallel loops give unpredictable results. If you use variables, the loop has to run sequentially. Set Apply to each: Concurrency control, Degree of parallelism 1. This applies to counters or arrays you append values to. For independent iterations, you can build the result with Select or union() instead. Also check the order: if a step needs the previous step's result, parallelism does not fit. Too many concurrent calls to the same connector can also cause throttling.</p></section>
 
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>When every iteration stands on its own, such as one email per person or one update per record.</p></div><div class="karte-text"><h3>Better not</h3><p>When iterations change the same variable or the order matters.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Turning on concurrency and still using Increment variable inside the loop. The counter is wrong afterwards.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-75-boost-efficiency-with-concurrency-control/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-75" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #75, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="75" aria-pressed="false" data-nur-js>Mark as practiced</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

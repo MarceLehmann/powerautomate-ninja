@@ -15,7 +15,7 @@
 <script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Entscheidungen über ein geteiltes Postfach | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Entscheidungen über ein geteiltes Postfach | Flow Dojo</title>
 <meta name="description" content="Entscheidungen über ein geteiltes Postfach: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="Entscheidungen über ein geteiltes Postfach | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Entscheidungen über ein geteiltes Postfach | Flow Dojo">
 <meta property="og:description" content="Entscheidungen über ein geteiltes Postfach: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/techniken/entscheidungen-ueber-ein-geteiltes-postfach/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-gruen.png">
@@ -101,7 +101,7 @@
             "text": "Aus dem dynamischen Wert SelectedOption",
             "answerExplanation": {
               "@type": "Comment",
-              "text": "Richtig. SelectedOption enthält den geklickten Knopf, UserEmailAddress die Person, die geklickt hat."
+              "text": "Richtig. Prüfe, ob SelectedOption gefüllt ist. Bei HTML-Antworten können Felder leer sein, auch UserEmailAddress ist nicht verlässlich."
             }
           },
           "suggestedAnswer": [
@@ -120,7 +120,7 @@
               "text": "Aus einer Antwortmail an den Flow",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Falsch. Es kommt keine Mail zurück. Der Klick geht direkt an den wartenden Flow."
+                "text": "Falsch. Diese Aktion liefert Rückgabefelder. Für die Auswertung einer Antwortmail brauchst du einen eigenen Ablauf."
               }
             }
           ]
@@ -216,14 +216,14 @@
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Auflösung</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) Aus dem Approvals-Center des Postfachs</b>Falsch. Diese Aktion legt keine Approval an und erscheint deshalb nicht im Approvals-Center.</li><li class="richtig"><b>B) Aus dem dynamischen Wert SelectedOption</b>Richtig. SelectedOption enthält den geklickten Knopf, UserEmailAddress die Person, die geklickt hat.</li><li class="falsch"><b>C) Aus einer Antwortmail an den Flow</b>Falsch. Es kommt keine Mail zurück. Der Klick geht direkt an den wartenden Flow.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) Aus dem Approvals-Center des Postfachs</b>Falsch. Diese Aktion legt keine Approval an und erscheint deshalb nicht im Approvals-Center.</li><li class="richtig"><b>B) Aus dem dynamischen Wert SelectedOption</b>Richtig. Prüfe, ob SelectedOption gefüllt ist. Bei HTML-Antworten können Felder leer sein, auch UserEmailAddress ist nicht verlässlich.</li><li class="falsch"><b>C) Aus einer Antwortmail an den Flow</b>Falsch. Diese Aktion liefert Rückgabefelder. Für die Auswertung einer Antwortmail brauchst du einen eigenen Ablauf.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Weist du «Start and wait for an approval» einem geteilten Postfach zu, sehen alle die Mail, aber ein Klick auf Approve bleibt wirkungslos. Die Approval gehört zur Identität des Postfachs, und wer klickt, ist nicht als Genehmiger eingetragen. Die Lösung ist die Aktion «Send email with options» aus Office 365 Outlook. Du trägst das geteilte Postfach bei To ein und die Knöpfe bei User Options, etwa Approve,Reject. Wer Zugriff auf das Postfach hat, kann antworten. Die Antwort steht in SelectedOption, und UserEmailAddress zeigt, wer geklickt hat. Einen Eintrag im Approvals-Center gibt es dabei nicht. Willst du die Entscheidung nachvollziehen, schreibst du sie selbst in eine Liste.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Ein geteiltes Postfach ist keine persönliche Genehmigeridentität. Actionable Messages funktionieren darin nicht. Die Aktion &quot;Send email with options&quot; aus Office 365 Outlook kann eine Alternative sein: Trage das Postfach bei To ein und die Optionen bei User Options, etwa Approve,Reject. Bei Antworten über HTML können Rückgabefelder leer sein. Prüfe deshalb SelectedOption und UserEmailAddress, bevor du eine Entscheidung protokollierst. UserEmailAddress ist kein verlässlicher Nachweis, wer geantwortet hat. Fehlen die benötigten Angaben, brauchst du einen anderen Antwortweg, etwa einen Link zu einem Formular. Einen Eintrag im Approvals-Center erzeugt die Aktion nicht. Prüfe den Ablauf mit dem verwendeten Postfach und Mailclient, bevor du ihn einsetzt.</p></section>
 
-<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Für Support-, Finanz- oder Dispositionspostfächer, in denen entscheidet, wer gerade da ist.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Wenn du die Historie im Approvals-Center brauchst oder eine bestimmte Person entscheiden muss.</p></div></div></section>
-<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Die Antwort nicht speichern. Ohne eigenen Eintrag gibt es kein Protokoll, wer wie entschieden hat.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/office365/" rel="noopener">Office 365 Outlook, Connector-Referenz</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Für Support-, Finanz- oder Dispositionspostfächer, in denen entscheidet, wer gerade da ist.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Wenn du eine persönliche Genehmigung oder die Historie im Approvals-Center brauchst. Leere HTML-Rückgaben brauchen einen anderen Antwortweg.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>UserEmailAddress ungeprüft als Identitätsnachweis speichern. Prüfe das Feld auf Inhalt und nutze bei fehlenden Angaben einen anderen Antwortweg.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/office365/" rel="noopener">Office 365 Outlook, Connector-Referenz</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
 <section class="abschnitt" aria-label="Ganzer Tipp"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-149-approvals-to-a-shared-mailbox/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-149" rel="noopener"><strong>Ganzer Tipp mit Screenshots auf powerplatformtip.com</strong><span>PowerPlatformTip #149, auf Englisch</span></a></section>
 <section class="abschnitt" aria-label="Dein Stand">
 <button type="button" class="knopf" data-geuebt="149" aria-pressed="false" data-nur-js>Als geübt markieren</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
-        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, nur eine anonyme Zugriffszählung. Dein Fortschritt bleibt in deinem Browser.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung. Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Dein Fortschritt bleibt in deinem Browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

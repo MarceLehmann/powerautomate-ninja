@@ -23,7 +23,7 @@ const BASIS_PFAD = new URL(BASE_URL).pathname;
 const KURZ_BASIS = BASE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
 const NAME = CFG.name;
 const ZUSATZ = CFG.zusatz;
-const TITEL_SUFFIX = `${NAME} · ${ZUSATZ}`; // einziger erlaubter Seitentitel-Zusatz mit «Power Automate»
+const TITEL_SUFFIX = 'Flow Dojo';
 const GENERATOR = '<meta name="generator" content="PowerPlatformAcademy Dojo build">';
 
 const ARGS = process.argv.slice(2);
@@ -229,8 +229,8 @@ function lizenzBadge(t) {
   return '<span class="badge badge--standard">Standard</span>';
 }
 const LIZENZ_SATZ = () => ({
-  standard: T('Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365.', 'Runs without a premium connector, so the license from Microsoft 365 is enough.'),
-  premium: T('Braucht Power Automate Premium oder eine andere Lizenz mit Premium-Connectoren.', 'Needs Power Automate Premium or another license that includes premium connectors.')
+  standard: T('Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow.', 'This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow.'),
+  premium: T('Für Premium-Connectoren oder -Funktionen brauchst du passende Nutzungsrechte, etwa aus Power Automate Premium, Process, Power Apps oder Dynamics 365. Prüfe vorhandene Lizenzen im Lizenz-Check.', 'Premium connectors or features require suitable usage rights, for example from Power Automate Premium, Process, Power Apps or Dynamics 365. Check existing licenses in the license check.')
 });
 const mailtoFehler = (t) => `mailto:${CFG.kontakt}?subject=${encodeURIComponent(T(`${NAME}: Fehler in Frage ${t.tipp_nr || t.schluessel}`, `${NAME}: error in question ${t.tipp_nr || t.schluessel}`))}&body=${encodeURIComponent(T(`Frage: ${t.quiz.frage}\n\nWas stimmt nicht?\n\n`, `Question: ${t.quiz.frage}\n\nWhat is wrong?\n\n`))}`;
 function linkedinUrl(text) { return `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`; }
@@ -257,7 +257,7 @@ const LQ = () => [
   { id: 'q2', frage: T('Brauchst du einen Custom Connector oder «HTTP with Microsoft Entra ID»?', 'Do you need a custom connector or "HTTP with Microsoft Entra ID"?'), hinweis: '', optionen: [
     { v: 'nein', text: T('Nein', 'No'), wirkung: 'standard' },
     { v: 'ja', text: T('Ja', 'Yes'), wirkung: 'premium', punkt: T('Custom Connector oder HTTP with Microsoft Entra ID', 'Custom connector or HTTP with Microsoft Entra ID') },
-    { v: 'andere', text: T('Ich rufe eine andere Web-Schnittstelle auf', 'I call a different web API'), wirkung: 'pruefen', punkt: T('Für andere Web-Schnittstellen: Zeigt die Aktion im Designer das Premium-Kennzeichen, brauchst du Premium.', 'For other web APIs: if the action shows the premium label in the designer, you need Premium.') }] },
+    { v: 'andere', text: T('Ich rufe eine andere Web-Schnittstelle auf', 'I call a different web API'), wirkung: 'pruefen', punkt: T('Für andere Web-Schnittstellen: Prüfe bei einem Premium-Kennzeichen, ob deine vorhandene Lizenz die Nutzung abdeckt.', 'For other web APIs: if the action shows the premium label, check whether your existing license covers its use.') }] },
   { id: 'q3', frage: T('Liest oder schreibt dein Flow Daten in Dataverse?', 'Does your flow read or write data in Dataverse?'), hinweis: '', optionen: [
     { v: 'nein', text: T('Nein', 'No'), wirkung: 'standard' },
     { v: 'ja', text: T('Ja', 'Yes'), wirkung: 'premium', punkt: 'Microsoft Dataverse' }] },
@@ -274,11 +274,21 @@ const LQUELLEN = () => [
   { url: 'https://learn.microsoft.com/en-us/connectors/webcontents/', titel: T('HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz', 'HTTP with Microsoft Entra ID (preauthorized) connector reference') }
 ];
 
+/* Kurze Seitentitel, H1 und Inhalt bleiben ausgeschrieben. */
+function kurzerTitel(titel) {
+  const suffix = ' | ' + TITEL_SUFFIX;
+  const basis = titel.endsWith(suffix) ? titel.slice(0, -suffix.length) : titel;
+  const max = 65 - suffix.length;
+  const kurz = basis.length > max ? basis.slice(0, max - 1).replace(/\s+\S*$/, '') + '…' : basis;
+  return kurz + suffix;
+}
+
 /* Rahmen */
 const NAV = { wand: 'techniken', technik: 'techniken', pruefung: 'pruefung', premium: 'premium', dojo: 'dojo' };
 const alleSeiten = []; // [pfad ohne Sprachpraefix] je Sprache, fuer hreflang und Sitemap
 function seite(relL, p) {
   // relL: Pfad relativ zur Sprachwurzel (index.html, techniken/x/index.html, 404.html)
+  p.titel = kurzerTitel(p.titel);
   const rel = PFX() + relL;
   const r = p.absolut ? BASIS_PFAD : praefix(rel); // Wurzel der Website (Assets)
   const lr = r + PFX(); // Wurzel der aktuellen Sprache (Seiten)
@@ -293,7 +303,7 @@ function seite(relL, p) {
     tipp_fuss: mitUtm('https://www.powerplatformtip.com/', 'fusszeile'), academy_fuss: mitUtm(CFG.academy_url, 'fusszeile'), academy_dojo: ACADEMY_DOJO(), copilot_dojo: COPILOT_DOJO(),
     sprache_href: r + andere + pfad, sprache_code: L === 'en' ? 'de' : 'en', sprache_kurz: L === 'en' ? 'DE' : 'EN', sprache_name: L === 'en' ? 'Deutsche Version' : 'English version'
   };
-  const noindex = TESTPHASE || p.noindex;
+  const noindex = TESTPHASE || p.noindex || ['heute', 'dojo'].includes(p.seite);
   const bild = p.ogBild || `${BASE_URL}${L === 'en' ? 'assets/img/en/og-image.png' : 'og-image.png'}`;
   const canonical = p.absolut ? '' : (p.canonical === false ? '' : BL() + pfad);
   const meta = [GENERATOR, `<title>${esc(p.titel)}</title>`, `<meta name="description" content="${esc(p.beschreibung)}">`];
@@ -352,7 +362,7 @@ function guertelpfadHtml(r) {
     const tk = SEITEN.filter(t => t.guertel === g.nr).length;
     const fr = POOL.filter(t => t.guertel === g.nr).length;
     const ziel = g.nr === 7 && !tk;
-    const zahl = ziel ? T('Ziel', 'Goal') : T(`${tk} ${tk === 1 ? 'Technik' : 'Techniken'}, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'}`, `${tk} ${tk === 1 ? 'technique' : 'techniques'}, ${fr} ${fr === 1 ? 'question' : 'questions'}`);
+    const zahl = ziel ? T('In Arbeit', 'In progress') : T(`${tk} ${tk === 1 ? 'Technik' : 'Techniken'}, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'}`, `${tk} ${tk === 1 ? 'technique' : 'techniques'}, ${fr} ${fr === 1 ? 'question' : 'questions'}`);
     const name = ziel ? `<span class="pfadzeile__name">${esc(g.name)}: ${esc(g.leitwort)}</span>` : `<a class="pfadzeile__name" href="${r}guertel/${g.farbe}/">${esc(g.name)}: ${esc(g.leitwort)}</a>`;
     return `<li class="pfadzeile${ziel ? ' pfadzeile--ziel' : ''}" data-guertel-nr="${g.nr}"><span class="pfadzeile__band" aria-hidden="true"></span>${name}<span class="pfadzeile__zahl">${zahl}</span><p class="pfadzeile__kann">${esc(g.kannst_du)}</p></li>`;
   };
@@ -368,7 +378,7 @@ function baueStart() {
   const haupt = `<main id="main">
 <section class="wrap hero" aria-labelledby="h1">
   <div class="hero__band" aria-hidden="true">${GUERTEL.map(g => `<span data-guertel-nr="${g.nr}"></span>`).join('')}</div>
-  <span class="label">${esc(TITEL_SUFFIX)}</span>
+  <span class="label">${esc(`${NAME} · ${ZUSATZ}`)}</span>
   <h1 id="h1">${T('Welcher <span class="strich">Flow-Gürtel</span> bist du?', 'Which <span class="strich">flow belt</span> are you?')}</h1>
   <p class="lead">${T(`${PRUEF_ANZAHL()} Fragen, rund vier Minuten. Danach weisst du, was du als Nächstes lernst.`, `${PRUEF_ANZAHL()} questions, about four minutes. Then you know what to learn next.`)}</p>
   <div class="knopf-reihe"><a class="knopf knopf--primaer" href="pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a><a class="knopf" href="premium/">${T('Reicht meine Lizenz?', 'Is my license enough?')}</a></div>
@@ -380,7 +390,7 @@ function baueStart() {
     <h2 id="h-lizenz">${T('Reicht die Lizenz aus Microsoft 365 für deinen Flow?', 'Is the license from Microsoft 365 enough for your flow?')}</h2>
     <p class="lcheck__frage">${esc(q1.frage)}</p>
     <ul class="antworten antworten--drei">${q1.optionen.map((o, i) => `<li><a class="antwort" href="premium/?q1=${o.v}#q2"><span class="antwort__b" aria-hidden="true">${BUCHST[i]}</span><span>${esc(o.text)}</span></a></li>`).join('')}</ul>
-    <p class="klein">${T('Vier Fragen, das Urteil mit Quelle bei Microsoft Learn. Keine Preise, nur der Lizenztyp.', 'Four questions, the verdict with a source on Microsoft Learn. No prices, only the license type.')}</p>
+    <p class="klein">${T('Vier Fragen als erste Einschätzung, mit Quellen bei Microsoft Learn. Prüfe auch deine vorhandenen Lizenzen.', 'Four questions for an initial assessment, with sources on Microsoft Learn. Check your existing licenses too.')}</p>
   </div>
 </div></section>
 <section class="block" aria-labelledby="h-tdt"><div class="wrap sektion--eng">
@@ -541,7 +551,7 @@ ${dojoKopf(`<span class="label">${T('Selbsttest', 'Self-assessment')}</span>
 <p class="leer-hinweis" data-ohne-js>${T('Die Gürtelprüfung braucht JavaScript. Alle Fragen mit Auflösung findest du auch auf den', 'The belt exam needs JavaScript. You also find questions with solutions on the')} <a href="../techniken/">${T('Technik-Seiten', 'technique pages')}</a>.</p>
 </div>
 <section class="abschnitt" aria-labelledby="h-regeln"><h2 id="h-regeln">${T('So wird gewertet', 'How it is scored')}</h2>
-<ul class="arrow-list">${T('<li>Ein Gürtel gilt als bestanden, wenn alle seine Fragen richtig sind.</li><li>Dein Ergebnis ist der höchste Gürtel, bis zu dem alle Gürtel bestanden sind.</li><li>Zwei falsche Antworten im selben Gürtel beenden die Prüfung. Den schwarzen Gürtel prüft die Meisterprüfung, sie folgt.</li><li>Nach jeder Frage führt ein Link zum Tipp, aus dem sie stammt.</li>', '<li>You pass a belt when all of its questions are correct.</li><li>Your result is the highest belt up to which you passed every belt.</li><li>Two wrong answers in the same belt end the exam. The black belt is tested in the master exam, which is coming soon.</li><li>After each question, a link takes you to the tip it comes from.</li>')}</ul>
+<ul class="arrow-list">${T('<li>Ein Gürtel gilt als bestanden, wenn alle seine Fragen richtig sind.</li><li>Dein Ergebnis ist der höchste Gürtel, bis zu dem alle Gürtel bestanden sind.</li><li>Zwei falsche Antworten im selben Gürtel beenden die Prüfung. Der schwarze Gürtel und seine Meisterprüfung sind in Arbeit.</li><li>Nach jeder Frage führt ein Link zum Tipp, aus dem sie stammt.</li>', '<li>You pass a belt when all of its questions are correct.</li><li>Your result is the highest belt up to which you passed every belt.</li><li>Two wrong answers in the same belt end the exam. The black belt and its master exam are in progress.</li><li>After each question, a link takes you to the tip it comes from.</li>')}</ul>
 </section>
 </div></main>`;
   seite('pruefung/index.html', {
@@ -564,7 +574,7 @@ ${q.optionen.map(o => `<label class="wahl"><input type="radio" name="${q.id}" va
 ${krumenHtml('../', [[T('Lizenz-Check', 'License check'), './']])}
 <span class="label">${T(`Lizenz-Check, Stand ${stand}`, `License check, as of ${stand}`)}</span>
 <h1 id="h1">${T('Reicht meine Lizenz?', 'Is my license enough?')}</h1>
-<p class="lead">${T('Vier Fragen zu deinem Flow. Das Urteil sagt dir, ob die Lizenz aus Microsoft 365 reicht oder wofür du Power Automate Premium brauchst.', 'Four questions about your flow. The verdict tells you whether the license from Microsoft 365 is enough or what you need Power Automate Premium for.')}</p>
+<p class="lead">${T('Vier Fragen zu deinem Flow als erste Einschätzung. Welche Lizenz hast du schon? Auch vorhandene Nutzungsrechte und der Kontext des Flows zählen.', 'Four questions about your flow for an initial assessment. Which license do you already have? Existing usage rights and the context of the flow matter too.')}</p>
 <div class="urteil pruefen" data-urteil role="status" aria-live="polite">${T('Beantworte die vier Fragen, das Urteil erscheint hier.', 'Answer the four questions and the verdict appears here.')}</div>
 <ul class="arrow-list" data-urteil-liste></ul>
 <form data-lizenz-check>
@@ -572,13 +582,13 @@ ${fragen}
 </form>
 <section class="abschnitt" aria-labelledby="h-grundlage"><h2 id="h-grundlage">${T('Worauf das Urteil beruht', 'What the verdict is based on')}</h2>
 <ul class="arrow-list">
-${T(`<li>Mit einer Lizenz aus Microsoft 365 nutzt du Standard-Connectoren. Verwendet ein Flow keinen Premium-Connector, brauchst du keine Premium-Lizenz.</li>
-<li>Microsoft Dataverse und HTTP with Microsoft Entra ID sind Premium-Connectoren. Custom Connectors und Desktop Flows aus Cloud Flows sind in der Lizenz aus Microsoft 365 nicht enthalten.</li>
-<li>Startet ein automatisierter oder geplanter Flow mit Premium-Connector, braucht nur der Besitzer die Premium-Lizenz. Bei Flows, die Personen per Knopf starten, braucht sie jede Person, die startet.</li>
-<li>Voraussetzung ist, dass dein Abo aus Microsoft 365 Power Automate enthält. Welche Pläne das sind, steht in der Licensing FAQ.</li>`, `<li>With a license from Microsoft 365 you use standard connectors. If a flow uses no premium connector, you do not need a premium license.</li>
-<li>Microsoft Dataverse and HTTP with Microsoft Entra ID are premium connectors. Custom connectors and desktop flows started from cloud flows are not included in the license from Microsoft 365.</li>
-<li>If an automated or scheduled flow with a premium connector runs, only the owner needs the premium license. For flows that people start with a button, every person who starts it needs one.</li>
-<li>This assumes your Microsoft 365 subscription includes Power Automate. The Licensing FAQ lists which plans do.</li>`)}
+${T(`<li>Microsoft-365-Lizenzen mit Power-Automate-Nutzungsrechten decken nur Standard-Connectoren ab.</li>
+<li>Premium-Connectoren oder -Funktionen brauchen je nach Fall Power Automate Premium (Per User), Power Automate Process (Per Flow), Power Apps Premium oder Nutzungsrechte aus anderen Lizenzen.</li>
+<li>Bei Flows in einer Power App oder im Kontext einer Dynamics-365-Anwendung können entsprechende Nutzungsrechte reichen. Prüfe den konkreten Kontext und die vorhandenen Lizenzen.</li>
+<li>Welche Lizenz hast du schon? Prüfe die Zuweisung in deinem Tenant oder frage deine IT oder deinen Microsoft-Partner.</li>`, `<li>Microsoft 365 licenses with Power Automate usage rights cover standard connectors only.</li>
+<li>Premium connectors or features may require Power Automate Premium (Per User), Power Automate Process (Per Flow), Power Apps Premium or usage rights from other licenses, depending on the case.</li>
+<li>Flows within a Power App or in the context of a Dynamics 365 application may be covered by those usage rights. Check the specific context and existing licenses.</li>
+<li>Which license do you already have? Check assignments in your tenant or ask your IT team or Microsoft partner.</li>`)}
 </ul>
 <p class="klein">${T(`Quellen, Stand ${stand}`, `Sources, as of ${stand}`)}: ${LQUELLEN().map(q => `<a href="${q.url}" rel="noopener">${esc(q.titel)}</a>`).join(', ')}. ${T('Keine Lizenzberatung im Einzelfall: Für Verträge fragst du deinen Microsoft-Partner.', 'No licensing advice for individual cases: for contracts, ask your Microsoft partner.')}</p>
 </section>
@@ -588,7 +598,7 @@ ${T(`<li>Mit einer Lizenz aus Microsoft 365 nutzt du Standard-Connectoren. Verwe
 </div></main>`;
   seite('premium/index.html', {
     seite: 'premium', titel: T(`Reicht meine Lizenz für Flows? Lizenz-Check | ${TITEL_SUFFIX}`, `Is my license enough for flows? License check | ${TITEL_SUFFIX}`), haupt, js: ['premium.js'],
-    beschreibung: T('Vier Fragen zu deinem Flow: Reicht die Lizenz aus Microsoft 365 oder brauchst du Power Automate Premium? Mit Quellen bei Microsoft Learn.', 'Four questions about your flow: is the license from Microsoft 365 enough or do you need Power Automate Premium? With sources on Microsoft Learn.'),
+    beschreibung: T('Lizenz-Check für deinen Flow: erste Einschätzung zu Standard, Premium und vorhandenen Nutzungsrechten. Mit Quellen bei Microsoft Learn.', 'License check for your flow: an initial assessment of standard, premium and existing usage rights. With sources on Microsoft Learn.'),
     jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [T('Lizenz-Check', 'License check'), `${BL()}premium/`]])]
   });
 }
@@ -603,14 +613,14 @@ ${krumenHtml(r, [[T('Gürtelweg', 'Belt path'), '../../techniken/'], [g.name, '.
 <div class="ergebnis__abzeichen guertel-kopf">${abzeichenSvg(g.nr)}<span class="guertel-kopf__tusch" data-guertel-nr="${g.nr}">${tusch('ruhe')}</span><div><span class="label">${T(`Stufe ${g.nr} von 7`, `Level ${g.nr} of 7`)}</span><h1 id="h1">${esc(g.name)}: ${esc(g.leitwort)}</h1></div></div>
 <p class="lead">${esc(g.erreicht_satz)}</p>
 <section class="abschnitt" aria-labelledby="h-kann"><h2 id="h-kann">${T('Das kannst du mit diesem Gürtel', 'What you can do with this belt')}</h2><p>${esc(g.kannst_du)}</p>
-${g.nr === 7 && !drin.length ? `<p class="leer-hinweis">${T('Die Meisterprüfung folgt. Die Techniken dazu entstehen aus Tipps, die gerade überarbeitet werden: ein Switch-Router als Werkzeug für Agents und Connector-Aufrufe, die sich selbst korrigieren.', 'The master exam is coming soon. Its techniques come from tips that are being revised right now: a switch router as a tool for agents and connector calls that correct themselves.')}</p>` : `<p class="klein">${T(`${drin.length} ${drin.length === 1 ? 'Technik' : 'Techniken'} mit eigener Seite, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'} in der Gürtelprüfung.`, `${drin.length} ${drin.length === 1 ? 'technique' : 'techniques'} with their own page, ${fr} ${fr === 1 ? 'question' : 'questions'} in the belt exam.`)}</p>`}
+${g.nr === 7 && !drin.length ? `<p class="leer-hinweis">${T('In Arbeit: Ein Tipp ist im Fragenpool, noch keine Technikseite ist freigegeben. Der schwarze Gürtel ist noch nicht Teil der Prüfung.', 'In progress: one tip is in the question pool; no technique page has been released yet. The black belt is not yet part of the exam.')}</p>` : `<p class="klein">${T(`${drin.length} ${drin.length === 1 ? 'Technik' : 'Techniken'} mit eigener Seite, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'} in der Gürtelprüfung.`, `${drin.length} ${drin.length === 1 ? 'technique' : 'techniques'} with their own page, ${fr} ${fr === 1 ? 'question' : 'questions'} in the belt exam.`)}</p>`}
 </section>
 ${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul>` : ''}
 <p class="knopf-reihe"><a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>${naechster && g.nr < 6 ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${T('Weiter zu', 'On to the')} ${esc(T(naechster.name, naechster.name.toLowerCase()))}</a>` : ''}</p>
 </div></main>`;
   seite(`guertel/${g.farbe}/index.html`, {
     seite: 'guertel', titel: `${g.name}: ${g.leitwort} | ${TITEL_SUFFIX}`, haupt,
-    ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`, ogTitel: T(`${g.name} im ${NAME}`, `${g.name} in the ${NAME}`),
+    ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`, ogTitel: `${g.name} | ${TITEL_SUFFIX}`,
     beschreibung: `${g.name}: ${g.kannst_du}`.slice(0, 160),
     jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [g.name, `${BL()}guertel/${g.farbe}/`]])]
   });
@@ -646,10 +656,11 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 <li>Jede Technik beginnt mit einer Quizfrage. Erst raten, dann lesen: So bleibt mehr hängen als beim reinen Lesen.</li>
 <li>Die Auflösung erklärt jede Antwort, auch die falschen. Danach folgen eine kurze Erklärung, der Ausdruck aus dem Tipp, wann du die Technik einsetzt und der häufigste Fehler.</li>
 <li>Die Schritt-für-Schritt-Anleitung mit Screenshots steht im Tipp auf powerplatformtip.com, auf Englisch. Jede Technik verlinkt dorthin.</li>
-<li>Die Gürtelprüfung ordnet dich ein. Der Lizenz-Check sagt dir, ob die Lizenz aus Microsoft 365 reicht.</li>
+<li>Die Gürtelprüfung ordnet dich ein. Der Lizenz-Check gibt eine erste Einschätzung und verweist auf die Prüfung vorhandener Nutzungsrechte.</li>
 </ul>
 <h2>Woher die Inhalte kommen</h2>
 <p>Alle Fragen stammen aus den wöchentlichen Tipps von Marcel Lehmann auf powerplatformtip.com. Ins Dojo kommen nur Tipps, die nach der letzten Durchsicht aktuell sind. Lizenzangaben und Zahlen zu Limits stützen sich auf Microsoft Learn, mit Link auf jeder Seite. Ist eine Erklärung hier falsch, wird zuerst der Tipp korrigiert und danach das Dojo.</p>
+<p>Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Anfrage enthält auch Seitentitel und vollständige Query-Zeichenfolge. Einzelheiten stehen im <a href="../datenschutz/">Datenschutz</a>.</p>
 <h2>Was das Dojo nicht ist</h2>
 <p>Kein Angebot von Microsoft, keine Zertifizierung und keine Lizenzberatung im Einzelfall. Die Gürtel sind eine Lernhilfe dieser Seite.</p>
 <h2>Teil der Power Platform Academy</h2>
@@ -663,10 +674,11 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 <li>Every technique starts with a quiz question. Guess first, then read: more sticks than with reading alone.</li>
 <li>The solution explains every answer, including the wrong ones. Then follow a short explanation, the expression from the tip, when to use the technique and the most common mistake.</li>
 <li>The step-by-step guide with screenshots is in the tip on powerplatformtip.com. Every technique links there.</li>
-<li>The belt exam tells you where you stand. The license check tells you whether the license from Microsoft 365 is enough.</li>
+<li>The belt exam tells you where you stand. The license check gives an initial assessment and points you to checking existing usage rights.</li>
 </ul>
 <h2>Where the content comes from</h2>
 <p>All questions come from the weekly tips by Marcel Lehmann on powerplatformtip.com. Only tips that are current after the last review make it into the dojo. License statements and limit numbers are based on Microsoft Learn, with a link on every page. If an explanation here is wrong, the tip is corrected first and the dojo after that.</p>
+<p>Visits are counted without cookies; only totals without personal identifiers are stored. The request also includes the page title and full query string. See the <a href="../datenschutz/">privacy notice</a> for details.</p>
 <h2>What the dojo is not</h2>
 <p>Not a Microsoft offering, not a certification and no licensing advice for individual cases. The belts are a learning aid of this website.</p>
 <h2>Part of the Power Platform Academy</h2>
@@ -710,77 +722,14 @@ ${T(`<h1 id="h1">Impressum</h1>
 <h2>Copyright</h2>
 <p>You may use the expressions from the tips freely in your organization. You may not publish the other texts, questions or the design of this website as your own without asking first.</p>`)}
 </div></div></main>`;
-  seite('impressum/index.html', { seite: 'recht', titel: T(`Impressum | ${TITEL_SUFFIX}`, `Legal notice | ${TITEL_SUFFIX}`), haupt: impressum, beschreibung: T('Impressum des PowerPlatformAcademy Dojo.', 'Legal notice of the PowerPlatformAcademy Dojo.') });
+  seite('impressum/index.html', { seite: 'recht', titel: T(`Impressum | ${TITEL_SUFFIX}`, `Legal notice | ${TITEL_SUFFIX}`), haupt: impressum, beschreibung: T('Impressum des Flow Dojo: Angaben zu Marcel Lehmann, KMUpower, Kontakt und Hinweise zur Website.', 'Flow Dojo legal notice: details of Marcel Lehmann, KMUpower, contact information and website notices.') });
 
-  const p = CFG.speicher_praefix;
   const datenschutz = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Datenschutz', 'Privacy'), './']])}
 <div class="prose sektion--eng">
-${T(`<h1 id="h1">Datenschutz</h1>
-<p>Stand: ${datumCH(CFG.recht_stand)}</p>
-<h2>Kurz erklärt</h2>
-<ul class="arrow-list">
-<li>Diese Seite setzt keine Cookies.</li>
-<li>Aufrufe werden anonym mit GoatCounter gezählt, ohne Cookies und ohne Speicherung deiner IP-Adresse. Es gibt kein Tracking über Seiten hinweg.</li>
-<li>Es gibt keine Konten und keine Formulare, die etwas senden.</li>
-<li>Schriften, Skripte und Bilder kommen von dieser Seite selbst. Die einzige Verbindung zu einem Dritten ist die Zählanfrage an GoatCounter.</li>
-<li>Was du im Dojo markierst oder in der Prüfung erreichst, bleibt in deinem Browser. Ich erhalte davon nichts.</li>
-</ul>
-<h2>Verantwortlich</h2>
-<p>Marcel Lehmann (Handelsname KMUpower), erreichbar unter <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>. Die vollständigen Angaben stehen im <a href="../impressum/">Impressum</a>.</p>
-<h2>Hosting bei GitHub Pages</h2>
-<p>Die Seite liegt auf GitHub Pages. Betreiber ist GitHub Inc. in den USA. Beim Aufruf verarbeitet GitHub technisch notwendige Zugriffsdaten in Server-Logs, zum Beispiel deine IP-Adresse und den Zeitpunkt des Aufrufs. Ich werte diese Logs nicht aus. Dabei können Daten in die USA übermittelt werden. Einzelheiten stehen in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
-<h2 id="zugriffszaehlung">Anonyme Zugriffszählung mit GoatCounter</h2>
-<p>Damit ich sehe, welche Techniken gelesen werden, zählt die Seite Aufrufe mit GoatCounter. Anbieter ist GoatCounter.com, betrieben von Martin Tournoij in Irland, die Daten liegen auf Servern der Hetzner Online GmbH in Finnland und Deutschland. Das Zählskript liefert diese Seite selbst aus, nur die Zählanfrage geht an GoatCounter.</p>
-<p>Bei jedem Aufruf erhält GoatCounter die Adresse der Seite, die verweisende Seite, die Browserkennung, die Bildschirmbreite, die Browsersprache und deine IP-Adresse. Gespeichert werden nur Summen pro Tag oder Stunde: Seitenpfad, verweisende Seite, Browser und Betriebssystem mit Version, Land, Sprache und Bildschirmbreite. Die IP-Adresse und die vollständige Browserkennung werden nicht gespeichert. Damit ein Neuladen nicht doppelt zählt, hält GoatCounter eine Kombination aus Seite, IP-Adresse und Browserkennung höchstens 8 Stunden im Arbeitsspeicher, nie auf der Festplatte. Es werden keine Cookies gesetzt, nichts im Browser gespeichert und keine Daten an Dritte weitergegeben. Grundlage ist mein Interesse zu wissen, welche Inhalte genutzt werden. Einzelheiten stehen in der <a href="https://www.goatcounter.com/help/privacy" rel="noopener">Datenschutzerklärung von GoatCounter</a>. Wenn du die Zählung nicht willst, blockiere Anfragen an goatcounter.com mit einem Inhaltsblocker. Die Seite funktioniert dann genau gleich.</p>
-<h2 id="dein-fortschritt">Dein Fortschritt im Dojo</h2>
-<p>Einige Einstellungen und dein Fortschritt werden im lokalen Speicher deines Browsers abgelegt (localStorage). Das ist kein Cookie. Die Einträge bleiben auf deinem Gerät und werden nie an mich oder an Dritte übertragen. Geschrieben wird erst, wenn du etwas tust.</p>
-<ul class="arrow-list">
-<li><code>${p}-theme</code>: «light» oder «dark». Merkt sich den Hell- oder Dunkelmodus.</li>
-<li><code>${p}-lang</code>: «de» oder «en». Merkt sich deine Sprachwahl, damit die Startseite dich nicht erneut umleitet. Wird gesetzt, wenn du die Sprache wechselst oder die Startseite dich einmalig auf Englisch weiterleitet.</li>
-<li><code>${p}-dojo-v1</code>: deine geübten Techniken mit Datum und dein Gürtel aus der Prüfung mit Datum. Gilt für beide Sprachen.</li>
-</ul>
-<p>Löschen: Unter <a href="../dojo/">Mein Dojo</a> entfernt «Alles löschen» alle Einträge. Du kannst sie auch in den Einstellungen deines Browsers löschen.</p>
-<p>Das Ergebnisbild der Gürtelprüfung entsteht in deinem Browser. Es wird nirgends hochgeladen.</p>
-<h2>Wenn du mir schreibst</h2>
-<p>Der Link «Fehler in dieser Frage melden» bereitet nur eine Mail in deinem eigenen Mailprogramm vor. Gesendet wird erst, wenn du dort auf Senden klickst. Ich nutze deine Mailadresse und den Inhalt nur, um zu antworten und die Frage zu korrigieren, und lösche die Mail, wenn das erledigt ist.</p>
-<h2>Links zu anderen Seiten</h2>
-<p>Die Seite verlinkt auf powerplatformtip.com, Microsoft Learn, die Power Platform Academy, LinkedIn und weitere Seiten. Erst wenn du einen Link anklickst, erhält der jeweilige Anbieter deine Daten. Die Links zu powerplatformtip.com und zur Academy tragen eine Herkunftsangabe in der Adresse (utm_source=${CFG.utm_source}). Diese Seite selbst wertet den Parameter nicht aus, die Zielseite tut es nach ihrer eigenen Datenschutzerklärung.</p>
-<h2>Deine Rechte</h2>
-<p>Nach dem Schweizer Datenschutzgesetz kannst du Auskunft oder Löschung verlangen. Die Seite selbst speichert keine Personendaten bei mir, auch die Zählung bei GoatCounter enthält keine. Für die Logs beim Hosting wendest du dich an GitHub. Für alles andere schreib mir an <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`, `<h1 id="h1">Privacy</h1>
-<p>As of: ${CFG.recht_stand}</p>
-<h2>In short</h2>
-<ul class="arrow-list">
-<li>This website sets no cookies.</li>
-<li>Visits are counted anonymously with GoatCounter, without cookies and without storing your IP address. There is no tracking across websites.</li>
-<li>There are no accounts and no forms that send anything.</li>
-<li>Fonts, scripts and images come from this website itself. The only connection to a third party is the count request to GoatCounter.</li>
-<li>What you mark in the dojo or reach in the exam stays in your browser. I receive none of it.</li>
-</ul>
-<h2>Responsible</h2>
-<p>Marcel Lehmann (trade name KMUpower), reachable at <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>. Full details are in the <a href="../impressum/">legal notice</a>.</p>
-<h2>Hosting on GitHub Pages</h2>
-<p>The website is hosted on GitHub Pages, operated by GitHub Inc. in the USA. When you open a page, GitHub processes technically necessary access data in server logs, for example your IP address and the time of access. I do not analyze these logs. Data may be transferred to the USA in the process. Details are in the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub privacy statement</a>.</p>
-<h2 id="zugriffszaehlung">Anonymous visit counting with GoatCounter</h2>
-<p>So that I can see which techniques are read, the website counts visits with GoatCounter. The provider is GoatCounter.com, operated by Martin Tournoij in Ireland; the data is stored on servers of Hetzner Online GmbH in Finland and Germany. This website serves the counting script itself, only the count request goes to GoatCounter.</p>
-<p>For each page view, GoatCounter receives the page address, the referring page, the browser identifier (User-Agent), the screen width, the browser language and your IP address. Only totals per day or hour are stored: page path, referring page, browser and operating system with version, country, language and screen width. Your IP address and the full browser identifier are not stored. So that a reload does not count twice, GoatCounter keeps a combination of site, IP address and browser identifier in memory for at most 8 hours, never on disk. No cookies are set, nothing is stored in your browser and no data is passed on to third parties. The basis is my interest in knowing which content is used. Details are in the <a href="https://www.goatcounter.com/help/privacy" rel="noopener">GoatCounter privacy policy</a>. If you do not want to be counted, block requests to goatcounter.com with a content blocker. The website works exactly the same.</p>
-<h2 id="dein-fortschritt">Your progress in the dojo</h2>
-<p>Some settings and your progress are stored in your browser's local storage (localStorage). This is not a cookie. The entries stay on your device and are never sent to me or to third parties. Nothing is written until you do something.</p>
-<ul class="arrow-list">
-<li><code>${p}-theme</code>: "light" or "dark". Remembers light or dark mode.</li>
-<li><code>${p}-lang</code>: "de" or "en". Remembers your language choice so the home page does not redirect you again. Set when you switch the language or when the home page redirects you to English once.</li>
-<li><code>${p}-dojo-v1</code>: your practiced techniques with date and your belt from the exam with date. Applies to both languages.</li>
-</ul>
-<p>Deleting: under <a href="../dojo/">My dojo</a>, "Delete everything" removes all entries. You can also delete them in your browser settings.</p>
-<p>The result image of the belt exam is created in your browser. It is never uploaded.</p>
-<h2>If you write to me</h2>
-<p>The link "Report an error in this question" only prepares an email in your own mail program. Nothing is sent until you click send there. I use your email address and the content only to reply and to correct the question, and I delete the email once that is done.</p>
-<h2>Links to other websites</h2>
-<p>This website links to powerplatformtip.com, Microsoft Learn, the Power Platform Academy, LinkedIn and other websites. Only when you click a link does the provider receive your data. Links to powerplatformtip.com and the Academy carry a source parameter in the address (utm_source=${CFG.utm_source}). This website does not evaluate the parameter itself, the target website does so under its own privacy policy.</p>
-<h2>Your rights</h2>
-<p>Under the Swiss Federal Act on Data Protection you can request information or deletion. The website itself does not store any personal data with me, and the GoatCounter counts contain none either. For the hosting logs, contact GitHub. For everything else, write to me at <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>`)}
+${render(lies(T('templates/datenschutz.html', 'templates/datenschutz.en.html')), { kontakt: CFG.kontakt, stand: T(datumCH(CFG.recht_stand), CFG.recht_stand), utm_source: CFG.utm_source }, 'datenschutz')}
 </div></div></main>`;
-  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${TITEL_SUFFIX}`, `Privacy | ${TITEL_SUFFIX}`), haupt: datenschutz, beschreibung: T('Datenschutz im PowerPlatformAcademy Dojo: keine Cookies, anonyme Zugriffszählung, Fortschritt nur im Browser.', 'Privacy in the PowerPlatformAcademy Dojo: no cookies, anonymous visit counting, progress only in your browser.') });
+  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${TITEL_SUFFIX}`, `Privacy | ${TITEL_SUFFIX}`), haupt: datenschutz, beschreibung: T('Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Fortschritt und Sprachwahl bleiben im Browser.', 'Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.') });
 
   const b = BASIS_PFAD + PFX();
   seite('404.html', {
@@ -805,7 +754,7 @@ function baueKurzadressen() {
 ${GENERATOR}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
-<title>${esc(t.titel_de)} | ${esc(TITEL_SUFFIX)}</title>
+<title>${esc(kurzerTitel(`${t.titel_de} | ${TITEL_SUFFIX}`))}</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="${urlTechnik(t)}">
 <meta http-equiv="refresh" content="0; url=${ziel}">
@@ -842,7 +791,7 @@ function baueSitemap(indexierbar) {
   const url = (p, sprache) => `  <url>\n    <loc>${BASE_URL}${sprache === 'en' ? 'en/' : ''}${p}</loc>\n    <lastmod>${daten.stand}</lastmod>\n${alt(p)}\n  </url>`;
   const eintraege = [];
   for (const s of SPRACHEN) {
-    const pfade = ['', 'pruefung/', 'premium/', 'techniken/', ...FARBEN.map(f => `guertel/${f}/`), 'heute/', 'dojo/', 'ueber/', 'impressum/', 'datenschutz/', ...indexierbar[s].map(t => `techniken/${t.slug}/`)];
+    const pfade = ['', 'pruefung/', 'premium/', 'techniken/', ...FARBEN.map(f => `guertel/${f}/`), 'ueber/', 'impressum/', 'datenschutz/', ...indexierbar[s].map(t => `techniken/${t.slug}/`)];
     eintraege.push(...pfade.map(p => url(p, s)));
   }
   schreibe('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${eintraege.join('\n')}\n</urlset>\n`);
@@ -854,12 +803,12 @@ function baueSitemap(indexierbar) {
   if (CFG.indexnow_key) { if (!/^[a-f0-9]{32}$/.test(CFG.indexnow_key)) fehler('indexnow_key: 32 Hexzeichen'); schreibe(`${CFG.indexnow_key}.txt`, CFG.indexnow_key); }
   if (CFG.domain && new URL(BASE_URL).hostname === CFG.domain) schreibe('CNAME', CFG.domain + '\n');
   setzeSprache('de');
-  const de = [`# ${TITEL_SUFFIX}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
+  const de = [`# ${NAME} · ${ZUSATZ}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
     '## Seiten', '', `- [Gürtelprüfung](${BASE_URL}pruefung/): Selbsttest von Weiss bis Braun`, `- [Lizenz-Check](${BASE_URL}premium/): Reicht die Lizenz aus Microsoft 365?`, `- [Alle Techniken](${BASE_URL}techniken/): nach Gürtel geordnet`, `- [Über](${BASE_URL}ueber/): Methode und Herkunft der Fragen`, '',
-    '## Techniken', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Grundlage: ${t.tipp_url}`), ''];
+    'Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitentitel und vollständige Query-Zeichenfolge. Details: ' + BASE_URL + 'datenschutz/', '', '## Techniken', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Grundlage: ${t.tipp_url}`), ''];
   setzeSprache('en');
   const en = ['## English', '', `- [Home](${BASE_URL}en/): English version`, `- [Belt exam](${BASE_URL}en/pruefung/): self-assessment from white to brown`, `- [License check](${BASE_URL}en/premium/): is the license from Microsoft 365 enough?`, `- [All techniques](${BASE_URL}en/techniken/): ordered by belt`, '',
-    ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Based on: ${t.tipp_url}`), ''];
+    'Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page title and full query string. Details: ' + BASE_URL + 'en/datenschutz/', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Based on: ${t.tipp_url}`), ''];
   schreibe('llms.txt', [...de, ...en].join('\n'));
 }
 function falte(zeile) {
@@ -892,7 +841,7 @@ ${BAND_HEX.map((c, i) => `<rect x="${i * (1200 / 7)}" y="604" width="${1200 / 7 
 `;
   if (L === 'de') schreibe('og-image.svg', karteSvg('Welcher', 'Flow-Gürtel?', 'Fragen und Erklärungen zu Flows, auf Deutsch.', '#FBFAF5'));
   else schreibe('assets/img/en/og-image.svg', karteSvg('Which', 'flow belt?', 'Questions and explanations on flows.', '#FBFAF5'));
-  for (const g of GUERTEL) schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(g.name.split(' ')[0], T('Gürtel', 'belt'), esc(g.erreicht_satz).slice(0, 70), g.hex));
+  for (const g of GUERTEL) schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(g.name.split(' ')[0], T('Gürtel', 'belt'), esc(g.nr === 7 ? T('In Arbeit: noch keine Technikseite freigegeben.', 'In progress: no technique page released yet.') : g.erreicht_satz).slice(0, 70), g.hex));
 }
 function minifiziere(css) {
   const strings = [];
@@ -936,7 +885,7 @@ function abschluss() {
     if (/class="vorschau-banner"/.test(html)) fehler(`${wo}: Vorschau-Banner`);
     const titel = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
     if (!titel) fehler(`${wo}: <title> fehlt`);
-    if (/Power Automate/i.test(titel.split(TITEL_SUFFIX).join(''))) fehler(`${wo}: «Power Automate» im <title> (erlaubt nur im Zusatz «${TITEL_SUFFIX}»)`);
+    if (/Power Automate/i.test(titel)) fehler(`${wo}: «Power Automate» im <title>`);
     if (!kurz) {
       const n = (html.match(/<h1[\s>]/g) || []).length; if (n !== 1) fehler(`${wo}: ${n} statt genau ein <h1>`);
       const sichtbar = html.replace(/<script[\s\S]*?<\/script>/g, '');
@@ -946,9 +895,9 @@ function abschluss() {
       if (!/data-sprache=/.test(html)) fehler(`${wo}: Sprachumschalter fehlt`);
     }
     const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
-    if (/[–—]/.test(text)) fehler(`${wo}: Gedankenstrich im Text`);
+    if (/[\u2013\u2014]/.test(text)) fehler(`${wo}: Gedankenstrich im Text`);
     if (/ - /.test(text.replace(/\s+/g, ' '))) fehler(`${wo}: « - » im Text`);
-    if (/ß/.test(text)) fehler(`${wo}: Eszett im Text`);
+    if (/\u00df/.test(text)) fehler(`${wo}: Eszett im Text`);
     if (/\p{Extended_Pictographic}/u.test(text)) fehler(`${wo}: Emoji im Text`);
     if (/Entwurf|Prüfstempel|Geprüft am/i.test(text)) fehler(`${wo}: Entwurf- oder Prüfhinweis`);
     if (rel.startsWith('en/') && /[äöüÄÖÜ]/.test(text.replace(/Gürtel|Fehraltorf/g, ''))) warnung(`${wo}: Umlaut auf englischer Seite (deutscher Rest?)`);
@@ -956,7 +905,7 @@ function abschluss() {
   for (const f of ['assets/data/pool.json', 'assets/data/pool-en.json', 'assets/data/tag.json', 'assets/data/tag-en.json', 'assets/data/suche.json', 'assets/data/suche-en.json']) {
     if (!gibtEs(f)) { fehler(`${f} fehlt`); continue; }
     const s = lies(f);
-    if (/[–—ß]/.test(s) || /\p{Extended_Pictographic}/u.test(s)) fehler(`${f}: Gedankenstrich, Eszett oder Emoji`);
+    if (/[\u2013\u2014\u00df]/.test(s) || /\p{Extended_Pictographic}/u.test(s)) fehler(`${f}: Gedankenstrich, Eszett oder Emoji`);
   }
   const groesse = (f) => gibtEs(f) ? fs.statSync(path.join(ROOT, f)).size / 1024 : 0;
   for (const [f, kb] of Object.entries({ 'assets/css/site.css': 30, 'assets/js/site.js': 20, 'assets/js/pruefung.js': 16, 'assets/js/premium.js': 6, 'index.html': 40 })) if (groesse(f) > kb) warnung(`Budget: ${f} ${groesse(f).toFixed(1)} KB, geplant ${kb} KB`);

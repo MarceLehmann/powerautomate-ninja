@@ -15,7 +15,7 @@
 <script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Shorten loops with take() while testing | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Shorten loops with take() while testing | Flow Dojo</title>
 <meta name="description" content="Shorten loops with take() while testing: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/en/techniken/schleifen-beim-testen-mit-take-kuerzen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/schleifen-beim-testen-mit-take-kuerzen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
-<meta property="og:title" content="Shorten loops with take() while testing | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Shorten loops with take() while testing | Flow Dojo">
 <meta property="og:description" content="Shorten loops with take() while testing: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/en/techniken/schleifen-beim-testen-mit-take-kuerzen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-gelb.png">
@@ -219,11 +219,11 @@
 <ol class="aufloesung"><li class="richtig"><b>A) All three items, without an error</b>Correct. take() returns at most the given number. If there are fewer, all existing items come back.</li><li class="falsch"><b>B) An error, because items are missing</b>Wrong. take() does not fail when the array is shorter than the requested number.</li><li class="falsch"><b>C) Three items plus two empty ones</b>Wrong. take() does not fill anything up. It only cuts off what goes beyond the number.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Testing a loop over hundreds of items costs time and actions on every run. With take() you process only the first items while testing. You replace the input of Apply to each with an expression like take(outputs('Select'), 5). The loop then runs exactly five times, no matter how large the array is. If the array has fewer items, take() simply returns all of them, without an error. This way you check the logic inside the loop on a few real records. Once everything works, you remove take() and select the original output again. The structure of the flow stays unchanged.</p></section>
-<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>take(outputs('Select'), 5)</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>Testing a loop over hundreds of items costs time and actions on every run. With take() you process only the first items while testing. You replace the input of Apply to each with an expression like take(body('Select'), 5). The loop then runs at most five times, no matter how large the array is. If the array has fewer items, take() simply returns all of them, without an error. This way you check the logic inside the loop on a few real records. Once everything works, you remove take() and select the original output again. The structure of the flow stays unchanged.</p></section>
+
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>When testing loops over large lists or tables, before you let the flow loose on all data.</p></div><div class="karte-text"><h3>Better not</h3><p>In production. If take() stays in the flow, it permanently processes only the first items.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Forgetting take() in the flow after testing. A note on the action reminds you to remove it again.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> Runs without a premium connector, so the license from Microsoft 365 is enough. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--standard">Standard</span> This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
 <section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-148-take-expression-limit-apply-to-each/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-148" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #148, with screenshots</span></a></section>
 <section class="abschnitt" aria-label="Your progress">
 <button type="button" class="knopf" data-geuebt="148" aria-pressed="false" data-nur-js>Mark as practiced</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
-        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up, no cookies, only anonymous visit counting. Your progress stays in your browser.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>

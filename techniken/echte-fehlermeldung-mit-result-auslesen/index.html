@@ -15,7 +15,7 @@
 <script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
 
 <meta name="generator" content="PowerPlatformAcademy Dojo build">
-<title>Die echte Fehlermeldung mit result() auslesen | PowerPlatformAcademy Dojo · Power Automate</title>
+<title>Die echte Fehlermeldung mit result() auslesen | Flow Dojo</title>
 <meta name="description" content="Die echte Fehlermeldung mit result() auslesen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <link rel="canonical" href="https://powerautomate.ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="PowerPlatformAcademy Dojo">
 <meta property="og:locale" content="de_CH">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="Die echte Fehlermeldung mit result() auslesen | PowerPlatformAcademy Dojo · Power Automate">
+<meta property="og:title" content="Die echte Fehlermeldung mit result() auslesen | Flow Dojo">
 <meta property="og:description" content="Die echte Fehlermeldung mit result() auslesen: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.">
 <meta property="og:url" content="https://powerautomate.ninja/techniken/echte-fehlermeldung-mit-result-auslesen/">
 <meta property="og:image" content="https://powerautomate.ninja/assets/img/guertel-blau.png">
@@ -219,11 +219,11 @@
 <ol class="aufloesung"><li class="falsch"><b>A) Auf jede beliebige Aktion im ganzen Flow</b>Falsch. Zeigt result() auf eine einfache Aktion wie Compose, scheitert schon das Speichern.</li><li class="falsch"><b>B) Nur auf den Trigger am Anfang des Flows</b>Falsch. Der Trigger enthält keine Aktionen. result() braucht einen Container mit Aktionen darin.</li><li class="richtig"><b>C) Auf einen Scope, Apply to each oder Until</b>Richtig. result() liest die Aktionen in einem solchen Container. Zeigt es auf eine einfache Aktion, lässt sich der Flow nicht speichern.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Scheitert ein Flow nachts, steht der Grund in der Run history. Wer ihn kennen muss, kann sie oft nicht öffnen. Die Funktion result() holt dir die Details: result('Try') liefert ein Array mit allen Aktionen der obersten Ebene des Scopes Try, je mit name, status, code und bei Fehlern einem Objekt error mit der Meldung. In einer Aktion, die nur bei «has failed» läuft, filterst du das Array mit Filter array auf status gleich Failed. Den Text holst du mit first(body('Filter_array'))?['error']?['message'] und schickst ihn per Mail weiter. result() funktioniert nur mit einem Scope, Apply to each oder Until. Liegt der Fehler tiefer, wendest du result() auf die innere Ebene an.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Worum es geht</h2><p>Scheitert ein Flow nachts, steht der Grund in der Run history. Wer ihn kennen muss, kann sie oft nicht öffnen. Die Funktion result() holt dir die Details: result('Try') liefert ein Array mit allen Aktionen der obersten Ebene des Scopes Try, mit Angaben wie name, status und code sowie je nach Fehler einem Objekt error mit der Meldung. In einer Aktion, die nur bei «has failed» läuft, filterst du das Array mit Filter array auf status gleich Failed. Den Text holst du mit first(body('Filter_array'))?['error']?['message'] und schickst ihn per Mail weiter. result() funktioniert nur mit einem Scope, Apply to each oder Until. Bei verschachtelten Fehlern prüfst du den inneren Container. Lies eine Meldung nur aus, wenn das gefilterte Array nicht leer ist.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">Der Ausdruck aus dem Tipp</h2><div class="code-block"><pre id="ausdruck"><code>first(body('Filter_array'))?['error']?['message']</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Kopieren</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Wann einsetzen, wann nicht</h2><div class="zwei"><div class="karte-text"><h3>Einsetzen</h3><p>Wenn Fachleute, Admins oder ein Agent wissen müssen, warum ein Lauf gescheitert ist.</p></div><div class="karte-text"><h3>Lieber nicht</h3><p>Für Aktionen ausserhalb des Scopes. result() sieht nur, was im Container steht.</p></div></div></section>
-<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Nur die oberste Ebene auslesen. Fehler in einer Condition oder einem inneren Scope stehen erst im result() dieser Ebene.</p></section>
-<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Läuft ohne Premium-Connector, also mit der Lizenz aus Microsoft 365. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Häufigster Fehler</h2><p>Nur die oberste Ebene auslesen. Prüfe bei verschachtelten Aktionen den inneren Container und ob error.message vorhanden ist.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Lizenz</h2><p><span class="badge badge--standard">Standard</span> Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow. Beleg bei Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Für deinen ganzen Flow: <a href="../../premium/">Lizenz-Check</a>.</p></section>
 <section class="abschnitt" aria-label="Ganzer Tipp"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-168" rel="noopener"><strong>Ganzer Tipp mit Screenshots auf powerplatformtip.com</strong><span>PowerPlatformTip #168, auf Englisch</span></a></section>
 <section class="abschnitt" aria-label="Dein Stand">
 <button type="button" class="knopf" data-geuebt="168" aria-pressed="false" data-nur-js>Als geübt markieren</button>
@@ -243,7 +243,7 @@
     <div class="fuss__raster">
       <div>
         <p class="fuss__klar">Unabhängige Website, keine Verbindung zu Microsoft.</p>
-        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung, ohne Cookies, nur eine anonyme Zugriffszählung. Dein Fortschritt bleibt in deinem Browser.</p>
+        <p>Fragen und Erklärungen zu Flows, auf Deutsch, aus den Tipps von <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Ohne Anmeldung. Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Dein Fortschritt bleibt in deinem Browser.</p>
       </div>
       <nav aria-labelledby="fuss-dojo">
         <h2 id="fuss-dojo">Dojo</h2>
