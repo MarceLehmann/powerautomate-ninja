@@ -93,15 +93,15 @@
           "@type": "Question",
           "eduQuestionType": "Multiple choice",
           "learningResourceType": "Practice problem",
-          "name": "Where do you edit the flow as JSON in the new designer?",
-          "text": "Where do you edit the flow as JSON in the new designer?",
+          "name": "Where do you read the JSON of an action in the new designer?",
+          "text": "Where do you read the JSON of an action in the new designer?",
           "acceptedAnswer": {
             "@type": "Answer",
             "position": 0,
-            "text": "In Code view in the designer",
+            "text": "In the Code view tab of the action",
             "answerExplanation": {
               "@type": "Comment",
-              "text": "Correct. Use Code view in the new designer. In the classic designer, read actions with Peek code or use export."
+              "text": "Correct. Code view shows the JSON definition of the selected action or trigger. You cannot edit it there. In the classic designer the feature is called Peek code."
             }
           },
           "suggestedAnswer": [
@@ -211,15 +211,15 @@
 </header>
 <section class="quiz" id="quiz" data-quiz data-richtig="0" data-guertel-nr="1" aria-labelledby="h-quiz">
 <h2 id="h-quiz" class="label">Quiz question</h2>
-<p class="quiz__frage">Where do you edit the flow as JSON in the new designer?</p>
-<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>In Code view in the designer</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>In My clipboard in the action picker</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>In the run history of the last run</span></button></li></ul>
+<p class="quiz__frage">Where do you read the JSON of an action in the new designer?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>In the Code view tab of the action</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>In My clipboard in the action picker</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>In the run history of the last run</span></button></li></ul>
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Solution</h3>
-<ol class="aufloesung"><li class="richtig"><b>A) In Code view in the designer</b>Correct. Use Code view in the new designer. In the classic designer, read actions with Peek code or use export.</li><li class="falsch"><b>B) In My clipboard in the action picker</b>Wrong. My clipboard is for copying actions in the classic designer.</li><li class="falsch"><b>C) In the run history of the last run</b>Wrong. Run history shows past runs; you do not edit the flow definition there.</li></ol>
+<ol class="aufloesung"><li class="richtig"><b>A) In the Code view tab of the action</b>Correct. Code view shows the JSON definition of the selected action or trigger. You cannot edit it there. In the classic designer the feature is called Peek code.</li><li class="falsch"><b>B) In My clipboard in the action picker</b>Wrong. My clipboard is for copying actions in the classic designer.</li><li class="falsch"><b>C) In the run history of the last run</b>Wrong. Run history shows past runs; you do not edit the flow definition there.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>In the designer you see fields, icons and dynamic content. The JSON definition shows how these settings fit together. In the new designer, use &quot;Code view&quot; to edit the flow as JSON. Check action names, inputs and expressions before saving. In the classic designer, open &quot;Peek code&quot; to read an action's definition. Use export there for the definition of the whole flow. This lets you spot a nested concat() expression behind a field, for example. It helps with debugging and learning: you read how a step is built and can reuse its expression in your own flow. Test the flow after making changes.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>In the designer you see fields, icons and dynamic content. The JSON definition shows how these settings fit together. In the new designer, open the action and select &quot;Code view&quot; to read its JSON. You cannot edit it there. Check action names, inputs and expressions. In the classic designer, open &quot;Peek code&quot; to read an action's definition. Use export there for the definition of the whole flow. This lets you spot a nested concat() expression behind a field, for example. It helps with debugging and learning: you read how a step is built and can reuse its expression in your own flow.</p></section>
 
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>When a field returns something other than expected and you want to see which expression is really behind it.</p></div><div class="karte-text"><h3>Better not</h3><p>When you only want to change a field value. The input field in the designer is usually easier to follow.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Checking only the visible field in the designer. Only Code View shows the complete expression with all its functions.</p></section>
@@ -230,7 +230,7 @@
 <p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
 </section>
 <section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
-<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Where%20do%20you%20edit%20the%20flow%20as%20JSON%20in%20the%20new%20designer%3F%0A%0AA)%20In%20Code%20view%20in%20the%20designer%0AB)%20In%20My%20clipboard%20in%20the%20action%20picker%0AC)%20In%20the%20run%20history%20of%20the%20last%20run%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fmit-code-view-hinter-eine-aktion-schauen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Where do you edit the flow as JSON in the new designer?&#10;&#10;A) In Code view in the designer&#10;B) In My clipboard in the action picker&#10;C) In the run history of the last run&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/mit-code-view-hinter-eine-aktion-schauen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%2089&amp;body=Question%3A%20Where%20do%20you%20edit%20the%20flow%20as%20JSON%20in%20the%20new%20designer%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Where%20do%20you%20read%20the%20JSON%20of%20an%20action%20in%20the%20new%20designer%3F%0A%0AA)%20In%20the%20Code%20view%20tab%20of%20the%20action%0AB)%20In%20My%20clipboard%20in%20the%20action%20picker%0AC)%20In%20the%20run%20history%20of%20the%20last%20run%0A%0AAnswer%20with%20explanation%20in%20the%20PowerPlatformAcademy%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fmit-code-view-hinter-eine-aktion-schauen%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Where do you read the JSON of an action in the new designer?&#10;&#10;A) In the Code view tab of the action&#10;B) In My clipboard in the action picker&#10;C) In the run history of the last run&#10;&#10;Answer with explanation in the PowerPlatformAcademy Dojo: https://powerautomate.ninja/en/techniken/mit-code-view-hinter-eine-aktion-schauen/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=PowerPlatformAcademy%20Dojo%3A%20error%20in%20question%2089&amp;body=Question%3A%20Where%20do%20you%20read%20the%20JSON%20of%20an%20action%20in%20the%20new%20designer%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
 <p class="klein">Short link: powerautomate.ninja/en/89</p>
 </section>
 <p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-89-code-view-peak-code/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-89" rel="noopener">PowerPlatformTip #89</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/flows-designer" rel="noopener">Explore the cloud flows designer</a>.</p>

@@ -212,7 +212,7 @@
           "The action outputs stored in the run history"
         ],
         "erklaerungen": [
-          "Flows and apps sit in a solution, and a scheduled flow exports it regularly as a ZIP to SharePoint, OneDrive or Azure Blob. You import that file again when you need to restore.",
+          "Flows and apps in a solution (solution-aware) can be exported, and a scheduled flow exports it regularly as a ZIP to SharePoint, OneDrive or Azure Blob. You import that file again when you need to restore.",
           "",
           ""
         ]
@@ -405,7 +405,7 @@
           "intersection() with both arrays"
         ],
         "erklaerungen": [
-          "union() removes duplicate items. With join() both arrays become text, concat() appends them and split() turns the result back into an array.",
+          "union() removes duplicate items. With join() both arrays become text, concat() appends them and split() turns the result back into an array. This applies to simple values. If the values contain the separator or are objects, use Apply to each with Append to array variable.",
           "",
           ""
         ]
@@ -824,14 +824,14 @@
     },
     "89": {
       "quiz": {
-        "frage": "Where do you edit the flow as JSON in the new designer?",
+        "frage": "Where do you read the JSON of an action in the new designer?",
         "antworten": [
-          "In Code view in the designer",
+          "In the Code view tab of the action",
           "In My clipboard in the action picker",
           "In the run history of the last run"
         ],
         "erklaerungen": [
-          "Correct. Use Code view in the new designer. In the classic designer, read actions with Peek code or use export.",
+          "Correct. Code view shows the JSON definition of the selected action or trigger. You cannot edit it there. In the classic designer the feature is called Peek code.",
           "Wrong. My clipboard is for copying actions in the classic designer.",
           "Wrong. Run history shows past runs; you do not edit the flow definition there."
         ]
@@ -839,7 +839,7 @@
       "lernziel": "You read an action's definition to find errors faster.",
       "thema": "Testing & debugging",
       "titel": "Look behind an action with Code View",
-      "kurztext": "In the designer you see fields, icons and dynamic content. The JSON definition shows how these settings fit together. In the new designer, use \"Code view\" to edit the flow as JSON. Check action names, inputs and expressions before saving. In the classic designer, open \"Peek code\" to read an action's definition. Use export there for the definition of the whole flow. This lets you spot a nested concat() expression behind a field, for example. It helps with debugging and learning: you read how a step is built and can reuse its expression in your own flow. Test the flow after making changes.",
+      "kurztext": "In the designer you see fields, icons and dynamic content. The JSON definition shows how these settings fit together. In the new designer, open the action and select \"Code view\" to read its JSON. You cannot edit it there. Check action names, inputs and expressions. In the classic designer, open \"Peek code\" to read an action's definition. Use export there for the definition of the whole flow. This lets you spot a nested concat() expression behind a field, for example. It helps with debugging and learning: you read how a step is built and can reuse its expression in your own flow.",
       "wann_ja": "When a field returns something other than expected and you want to see which expression is really behind it.",
       "wann_nein": "When you only want to change a field value. The input field in the designer is usually easier to follow.",
       "fehler": "Checking only the visible field in the designer. Only Code View shows the complete expression with all its functions.",
@@ -1291,7 +1291,7 @@
         ],
         "erklaerungen": [
           "",
-          "split() breaks the CSV into lines and fields, Select maps the values to the column names, and Parse JSON makes the result usable. All of them are standard actions.",
+          "split() breaks the CSV into lines and fields, Select maps the values to the column names, and Parse JSON makes the result usable. All of them are standard actions. split() is enough for simple CSV without quoted separators.",
           ""
         ]
       },
@@ -1424,7 +1424,7 @@
         "erklaerungen": [
           "",
           "",
-          "The tag follows a plus sign right before the @. The sender address then shows which flow sent the email."
+          "The tag follows a plus sign right before the @. You cannot send from a plus address, but you can send to it and set it as Reply To. The recipient or reply address then shows which flow an email belongs to."
         ]
       },
       "lernziel": "You make automated emails traceable with plus addresses.",
@@ -1432,16 +1432,16 @@
     },
     "140": {
       "quiz": {
-        "frage": "Which two building blocks read invoices within free tiers and summarize them?",
+        "frage": "Which Azure service extracts invoice data within the free tier?",
         "antworten": [
-          "Power BI and an Excel workbook",
-          "Teams chats and a SharePoint list",
-          "An OCR connector and Azure AI Language"
+          "Power BI with an Excel workbook as storage",
+          "Teams chats with a SharePoint list as storage",
+          "Azure AI Document Intelligence with prebuilt-invoice"
         ],
         "erklaerungen": [
           "",
           "",
-          "A free-tier OCR connector reads the text from the PDF, Azure AI Language summarizes it. That keeps up to 500 pages per month free."
+          "The Free tier F0 processes 500 pages per month, but only the first 2 pages per request. For one-page invoices that covers 500 invoices. The connector is a standard connector."
         ]
       },
       "lernziel": "You process invoices automatically within free quotas.",
@@ -1908,7 +1908,7 @@
         "erklaerungen": [
           "",
           "",
-          "dateDiff() does not exist. You subtract the ticks() of both timestamps and divide by 864000000000 to get the days as a number."
+          "dateDiff() does not exist. dateDifference(start, end) returns the difference as a timespan, such as 1268.00:00:00. If you want days as a number, subtract the ticks() and divide by 864000000000."
         ]
       },
       "lernziel": "You calculate time differences and compare dates reliably.",

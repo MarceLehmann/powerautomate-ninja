@@ -322,7 +322,7 @@
         ],
         "richtig_index": 0,
         "erklaerungen": [
-          "Flows und Apps liegen in einer Solution, ein geplanter Flow exportiert sie regelmässig als ZIP nach SharePoint, OneDrive oder Azure Blob. Diese Datei importierst du im Notfall wieder.",
+          "Flows und Apps in einer Solution (solution-aware) lassen sich exportieren, ein geplanter Flow exportiert sie regelmässig als ZIP nach SharePoint, OneDrive oder Azure Blob. Diese Datei importierst du im Notfall wieder.",
           "",
           ""
         ]
@@ -655,7 +655,7 @@
         ],
         "richtig_index": 0,
         "erklaerungen": [
-          "union() entfernt doppelte Einträge. Mit join() werden beide Arrays zu Text, concat() hängt sie aneinander und split() macht wieder ein Array daraus.",
+          "union() entfernt doppelte Einträge. Mit join() werden beide Arrays zu Text, concat() hängt sie aneinander und split() macht wieder ein Array daraus. Das gilt für einfache Werte. Enthalten die Werte das Trennzeichen oder sind es Objekte, nimmst du Apply to each mit Append to array variable.",
           "",
           ""
         ]
@@ -1322,15 +1322,15 @@
       "seite": true,
       "pool": true,
       "quiz": {
-        "frage": "Wo bearbeitest du im neuen Designer den Flow als JSON?",
+        "frage": "Wo liest du im neuen Designer das JSON einer Aktion?",
         "antworten": [
-          "In Code view im Designer",
+          "Im Tab Code view der Aktion",
           "In My clipboard der Aktionsauswahl",
           "In der Run history des letzten Laufs"
         ],
         "richtig_index": 0,
         "erklaerungen": [
-          "Richtig. Im neuen Designer nutzt du Code view. Im klassischen Designer liest du Aktionen mit Peek code oder nutzt den Export.",
+          "Richtig. Code view zeigt die JSON-Definition der gewählten Aktion oder des Triggers. Bearbeiten kannst du sie dort nicht. Im klassischen Designer heisst die Funktion Peek code.",
           "Falsch. My clipboard gehört zum Kopieren von Aktionen im klassischen Designer.",
           "Falsch. Die Run history zeigt vergangene Läufe, dort bearbeitest du nicht die Flow-Definition."
         ]
@@ -1338,7 +1338,7 @@
       "lernziel": "Du liest die Definition einer Aktion, um Fehler schneller zu finden.",
       "slug": "mit-code-view-hinter-eine-aktion-schauen",
       "titel_de": "Mit Code View hinter eine Aktion schauen",
-      "kurztext_de": "Im Designer siehst du Felder, Symbole und dynamische Inhalte. Die JSON-Definition zeigt dir, wie diese Angaben zusammenhängen. Im neuen Designer nutzt du \"Code view\" zum Bearbeiten des Flows als JSON. Prüfe dabei Aktionsnamen, Eingaben und Ausdrücke, bevor du speicherst. Im klassischen Designer öffnest du \"Peek code\", um die Definition einer Aktion zu lesen. Für die Definition des gesamten Flows nutzt du dort den Export. So erkennst du etwa einen verschachtelten concat()-Ausdruck hinter einem Feld. Das hilft beim Fehlersuchen und beim Lernen: Du liest, wie ein Schritt aufgebaut ist, und kannst den Ausdruck im eigenen Flow verwenden. Teste den Flow nach einer Änderung.",
+      "kurztext_de": "Im Designer siehst du Felder, Symbole und dynamische Inhalte. Die JSON-Definition zeigt dir, wie diese Angaben zusammenhängen. Im neuen Designer öffnest du die Aktion und wählst \"Code view\", um ihr JSON zu lesen. Bearbeiten kannst du es dort nicht. Prüfe dabei Aktionsnamen, Eingaben und Ausdrücke. Im klassischen Designer öffnest du \"Peek code\", um die Definition einer Aktion zu lesen. Für die Definition des gesamten Flows nutzt du dort den Export. So erkennst du etwa einen verschachtelten concat()-Ausdruck hinter einem Feld. Das hilft beim Fehlersuchen und beim Lernen: Du liest, wie ein Schritt aufgebaut ist, und kannst den Ausdruck im eigenen Flow verwenden.",
       "wann_ja": "Wenn ein Feld etwas anderes liefert als erwartet und du sehen willst, welcher Ausdruck wirklich dahinter steht.",
       "wann_nein": "Wenn du nur einen Feldwert ändern willst. Dafür ist das Eingabefeld im Designer meist übersichtlicher.",
       "fehler": "Nur das sichtbare Feld im Designer prüfen. Erst in Code View siehst du den vollständigen Ausdruck mit allen Funktionen.",
@@ -2056,7 +2056,7 @@
         "richtig_index": 1,
         "erklaerungen": [
           "",
-          "split() trennt die CSV in Zeilen und Felder, Select ordnet die Werte den Spaltennamen zu, und Parse JSON macht das Ergebnis nutzbar. Alles sind Standardaktionen.",
+          "split() trennt die CSV in Zeilen und Felder, Select ordnet die Werte den Spaltennamen zu, und Parse JSON macht das Ergebnis nutzbar. Alles sind Standardaktionen. split() reicht für einfaches CSV ohne Anführungszeichen mit Trennzeichen.",
           ""
         ]
       },
@@ -2264,7 +2264,7 @@
         "erklaerungen": [
           "",
           "",
-          "Der Zusatz steht nach einem Pluszeichen direkt vor dem @. Am Absender siehst du dann, welcher Flow die Mail geschickt hat."
+          "Der Zusatz steht nach einem Pluszeichen direkt vor dem @. Senden kannst du von einer Plus-Adresse nicht, aber an sie senden und sie als Reply To setzen. Am Empfänger oder an der Antwortadresse siehst du dann, zu welchem Flow eine Mail gehört."
         ]
       },
       "lernziel": "Du machst automatische Mails mit Plus-Adressen rückverfolgbar."
@@ -2280,17 +2280,17 @@
       "seite": false,
       "pool": true,
       "quiz": {
-        "frage": "Welche zwei Bausteine lesen Rechnungen im Gratis-Kontingent und fassen sie zusammen?",
+        "frage": "Welcher Azure-Dienst liest Rechnungen im Gratis-Kontingent aus?",
         "antworten": [
-          "Power BI und eine Excel-Arbeitsmappe",
-          "Teams-Chats und eine SharePoint-Liste",
-          "Ein OCR-Connector und Azure AI Language"
+          "Power BI mit einer Excel-Arbeitsmappe als Ablage",
+          "Teams-Chats mit einer SharePoint-Liste als Ablage",
+          "Azure AI Document Intelligence mit prebuilt-invoice"
         ],
         "richtig_index": 2,
         "erklaerungen": [
           "",
           "",
-          "Ein OCR-Connector im Gratis-Kontingent liest den Text aus dem PDF, Azure AI Language fasst ihn zusammen. So bleiben bis zu 500 Seiten pro Monat kostenlos."
+          "Die Free-Stufe F0 verarbeitet 500 Seiten pro Monat, pro Anfrage aber nur die ersten 2 Seiten. Bei einseitigen Rechnungen reicht das für 500 Rechnungen. Der Connector ist ein Standard-Connector."
         ]
       },
       "lernziel": "Du verarbeitest Rechnungen automatisch im Rahmen kostenloser Kontingente."
@@ -2484,7 +2484,7 @@
       "lernziel": "Du verhinderst, dass Sonderzeichen Filter und Aufrufe brechen.",
       "slug": "apostrophe-und-sonderzeichen-codieren",
       "titel_de": "Apostrophe und Sonderzeichen richtig codieren",
-      "ausdruck": "replace(triggerOutputs()?['body/Title'],'''','''''')",
+      "ausdruck": "replace(varTitle,'''','''''')",
       "kurztext_de": "Sonderzeichen in Werten brechen Abfragen und Anfragen, weil der Flow sie als Teil der Syntax liest. Welche Lösung passt, hängt davon ab, wohin der Wert geht. In einem OData-Filter wie Title eq 'Tom's Diner' beendet der Apostroph den Text zu früh. Du verdoppelst ihn mit replace(), dann steht in der Abfrage 'Tom''s Diner'. Für Werte in einer URL nutzt du encodeUriComponent(), das Leerzeichen, Fragezeichen und Apostrophe in Prozent-Codes umwandelt. Codierte Werte von aussen liest du mit decodeUriComponent() zurück. Für Text im Body einer JSON-Anfrage baust du das Objekt mit setProperty() und json() auf. Dann maskiert der Flow Anführungszeichen, Backslashes und Zeilenumbrüche selbst.",
       "wann_ja": "Wenn Namen, Titel oder Freitext in Filtern, URLs oder JSON-Anfragen landen.",
       "wann_nein": "Wenn der Wert nur angezeigt oder in ein Feld geschrieben wird und nie Teil einer Abfrage oder URL ist.",
@@ -3072,7 +3072,7 @@
         "erklaerungen": [
           "",
           "",
-          "dateDiff() gibt es nicht. Du ziehst die ticks() beider Zeitpunkte voneinander ab und teilst durch 864000000000, dann hast du die Tage als Zahl."
+          "dateDiff() gibt es nicht. dateDifference(Start, Ende) liefert die Differenz als Zeitspanne, etwa 1268.00:00:00. Willst du Tage als Zahl, ziehst du die ticks() ab und teilst durch 864000000000."
         ]
       },
       "lernziel": "Du berechnest Zeitdifferenzen und vergleichst Daten zuverlässig."
