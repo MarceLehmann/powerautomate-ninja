@@ -415,14 +415,14 @@
     },
     "27": {
       "quiz": {
-        "frage": "How do you make the Overwrite toggle visible in Create file?",
+        "frage": "How do you make the Overwrite toggle visible in Create file in the classic designer?",
         "antworten": [
           "Turn off Allow chunking in the settings",
           "Turn on Concurrency control in the settings",
           "Delete the existing file first with Delete file"
         ],
         "erklaerungen": [
-          "As long as chunking is on, Create file hides the Overwrite toggle. Without chunking it appears, but very large files can then fail.",
+          "In the classic designer, Create file hides the Overwrite toggle as long as chunking is on. Without chunking it appears, but very large files can then fail. The new designer has no toggle; Create file replaces an existing file on its own.",
           "",
           ""
         ]
@@ -566,12 +566,12 @@
           "In a separate FetchXML action of the Dataverse connector"
         ],
         "erklaerungen": [
-          "List rows accepts FetchXML directly in the Fetch Xml Query parameter, no separate action is needed. This enables joins and grouping that the OData filter cannot do.",
+          "List rows accepts FetchXML directly in the Fetch Xml Query parameter, no separate action is needed. This enables joins across related tables (link-entity), which the OData filter cannot do. According to Microsoft Learn, List rows does not support aggregations such as sums or grouping with FetchXML.",
           "",
           ""
         ]
       },
-      "lernziel": "You let Dataverse calculate complex queries and totals on the server.",
+      "lernziel": "You let Dataverse run complex queries with joins on the server.",
       "thema": "Reading & writing data"
     },
     "40": {
@@ -1117,12 +1117,12 @@
         "antworten": [
           "The users of the Power Platform environment",
           "A fixed list of names in a Compose action",
-          "\"Search for user (V2)\" from Office 365 Users"
+          "\"Search for users (V2)\" from Office 365 Users"
         ],
         "erklaerungen": [
           "",
           "",
-          "\"Search for user (V2)\" from the Office 365 Users connector returns the people, and a Select action maps them to title and value. These pairs are the choices of the Input.ChoiceSet in the card."
+          "\"Search for users (V2)\" from the Office 365 Users connector returns the people, and a Select action maps them to title and value. These pairs are the choices of the Input.ChoiceSet in the card."
         ]
       },
       "lernziel": "You build multi-stage approvals where each approver picks the next person.",
@@ -1201,12 +1201,12 @@
         "frage": "What do you do so a copied action works inside a Switch?",
         "antworten": [
           "Delete the Switch and create it again from scratch",
-          "Paste outside, drag into the branch, reset references",
+          "Paste into the branch and reset references to other branches",
           "Turn on Concurrency control in the settings"
         ],
         "erklaerungen": [
           "",
-          "The copied action often points to outputs that are not reachable in the branch. You paste it higher up, drag it into the branch and map the dynamic content again.",
+          "The copied action often points to outputs that are not reachable in the branch. You paste it directly into the target branch and reset the references that point to another branch.",
           ""
         ]
       },
@@ -1375,7 +1375,7 @@
           "Flows no longer need any connections"
         ],
         "erklaerungen": [
-          "Whoever starts the flow from the app triggers it with the Power Apps (V2) trigger in their own context. A scheduled flow, by contrast, always runs as its owner.",
+          "Whoever starts the flow from the app triggers it with the Power Apps (V2) trigger in their own context, provided the connections are set to Provided by run-only user. Embedded connections keep running as the person who created them. A scheduled flow, by contrast, always runs as its owner.",
           "",
           ""
         ]
@@ -1946,14 +1946,14 @@
     },
     "169": {
       "quiz": {
-        "frage": "According to the tip, which environment does For a selected item only run from?",
+        "frage": "According to the tip, from which environment does the SharePoint Automate menu list For a selected item flows only?",
         "antworten": [
           "The Default environment",
           "Only Teams environments",
           "Any production environment"
         ],
         "erklaerungen": [
-          "For a selected item only runs from the Default environment. If the flow lives in a production environment, you start it from a column-formatting button with executeFlow.",
+          "The Automate menu only lists flows from the Default environment. If the flow lives in a production environment, you start it from a column-formatting button with executeFlow.",
           "",
           ""
         ]
@@ -2091,10 +2091,10 @@
         "erklaerungen": [
           "",
           "",
-          "A .docx file is a ZIP archive of XML files. You extract it, replace the placeholder in word/document.xml and zip it again."
+          "A .docx file is a ZIP archive of XML files. A flow cannot zip it again with standard actions, so you save the template as a Word XML Document (*.xml), replace the placeholders with replace() and write the file back with Create file."
         ]
       },
-      "lernziel": "You fill a Word template with standard actions through the XML in the archive.",
+      "lernziel": "You fill a Word template with standard actions through its XML format.",
       "thema": "Files & documents"
     },
     "how-to-track-the-current-progress-of-a-flow-in-the-powerapp": {

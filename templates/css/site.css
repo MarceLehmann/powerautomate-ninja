@@ -187,7 +187,7 @@ a.pfadzeile__name:hover { color: var(--signal); }
 /* Klickziele mindestens 24 px (WCAG 2.5.8, UX-Review 17.10.2026 Q13). Padding an Inline-Links vergroessert die Trefferflaeche,
    ohne den Zeilenfall zu aendern. Gleiche Regeln in copilot-ninja. */
 .krumen a { display: inline-flex; align-items: center; min-height: 24px; }
-.karte h3 a, .arrow-list a, .klein a, .kurs-zeile a, .quelle a, p a:not([class]) { padding-block: 3px; }
+.karte h3 a, .arrow-list a, .klein a, .kurs-zeile a, .quelle a, p a:not([class]) { padding-block: 4px; }
 .tk { max-width: 46rem; }
 .tk__kopf { padding-top: 1.2rem; }
 .tk__kopf h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.4rem); }
