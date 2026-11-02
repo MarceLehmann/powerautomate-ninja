@@ -278,7 +278,7 @@ Method: local clone of `main` served with a static file server; Playwright/Chrom
 
 ## C. Typo fixes applied on this branch (separate commit)
 
-Commit "Aktionsname korrigiert …" on this branch (data/techniken.json, data/en.json and the two generated technique pages; no rebuild run):
+Commit "Aktionsname korrigiert …" on this branch (data/techniken.json, data/en.json and the generated pools assets/data/pool.json and pool-en.json; no rebuild run):
 
 - `Search for user (V2)` → `Search for users (V2)` (technique 111, DE and EN answer and explanation).
 
