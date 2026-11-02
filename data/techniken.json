@@ -2484,7 +2484,7 @@
       "lernziel": "Du verhinderst, dass Sonderzeichen Filter und Aufrufe brechen.",
       "slug": "apostrophe-und-sonderzeichen-codieren",
       "titel_de": "Apostrophe und Sonderzeichen richtig codieren",
-      "ausdruck": "replace(varTitle,'''','''''')",
+      "ausdruck": "replace(variables('varTitle'),'''','''''')",
       "kurztext_de": "Sonderzeichen in Werten brechen Abfragen und Anfragen, weil der Flow sie als Teil der Syntax liest. Welche Lösung passt, hängt davon ab, wohin der Wert geht. In einem OData-Filter wie Title eq 'Tom's Diner' beendet der Apostroph den Text zu früh. Du verdoppelst ihn mit replace(), dann steht in der Abfrage 'Tom''s Diner'. Für Werte in einer URL nutzt du encodeUriComponent(), das Leerzeichen, Fragezeichen und Apostrophe in Prozent-Codes umwandelt. Codierte Werte von aussen liest du mit decodeUriComponent() zurück. Für Text im Body einer JSON-Anfrage baust du das Objekt mit setProperty() und json() auf. Dann maskiert der Flow Anführungszeichen, Backslashes und Zeilenumbrüche selbst.",
       "wann_ja": "Wenn Namen, Titel oder Freitext in Filtern, URLs oder JSON-Anfragen landen.",
       "wann_nein": "Wenn der Wert nur angezeigt oder in ein Feld geschrieben wird und nie Teil einer Abfrage oder URL ist.",
