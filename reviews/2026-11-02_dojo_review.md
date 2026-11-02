@@ -299,3 +299,9 @@ Korrigiert, DE und EN gemeinsam, Seiten mit `node scripts/build.mjs --produktion
 - **Build 146:** nicht mehr nötig, auf main bereits durch Commit dd639e3 behoben; Branch auf main rebased.
 
 Nicht geändert (nur Vorschlag, fachliche Entscheidung): Muhimbi/Nutrient (92), Tipp 15 vs. Technik 15 (Terminate), Erklärung 24, EN-Antworten 166, `pool_ausschluss` 19, Fehlercode 174, Über-Seite (Gastbeiträge). Vorschaubilder (`scripts/karten.mjs`) nicht neu gerendert, Titel und Gürtel der Techniken sind unverändert.
+
+### Nachkorrektur nach Gegenprüfung des Koordinators (2026-11-02)
+
+- **Technik 39:** «distinct» gestrichen, die Erklärung nennt nur noch Joins über link-entity; dass Aggregationen nicht gehen, bleibt (Learn widerspricht sich bei distinct).
+- **Frage 118:** Erklärung gekürzt auf «direkt im Ziel-Zweig einfügen und die Verweise neu setzen», der unbelegte Klickpfad ist raus.
+- Build (`--produktion`) und `links.mjs --livegang` grün, Seiten neu erzeugt.
