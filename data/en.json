@@ -566,7 +566,7 @@
           "In a separate FetchXML action of the Dataverse connector"
         ],
         "erklaerungen": [
-          "List rows accepts FetchXML directly in the Fetch Xml Query parameter, no separate action is needed. This enables joins across related tables (link-entity) and distinct, which the OData filter cannot do. According to Microsoft Learn, List rows does not support aggregations such as sums or grouping with FetchXML.",
+          "List rows accepts FetchXML directly in the Fetch Xml Query parameter, no separate action is needed. This enables joins across related tables (link-entity), which the OData filter cannot do. According to Microsoft Learn, List rows does not support aggregations such as sums or grouping with FetchXML.",
           "",
           ""
         ]
@@ -1206,7 +1206,7 @@
         ],
         "erklaerungen": [
           "",
-          "The copied action often points to outputs that are not reachable in the branch. You paste it directly into the target case (right-click the plus, Paste an action) and replace dynamic content that points to another branch.",
+          "The copied action often points to outputs that are not reachable in the branch. You paste it directly into the target branch and reset the references that point to another branch.",
           ""
         ]
       },

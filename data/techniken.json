@@ -914,7 +914,7 @@
         ],
         "richtig_index": 0,
         "erklaerungen": [
-          "List rows nimmt FetchXML direkt im Parameter Fetch Xml Query an, eine eigene Aktion braucht es nicht. So gehen Joins über verknüpfte Tabellen (link-entity) und distinct, die der OData-Filter nicht kann. Aggregationen wie Summen oder Gruppierungen unterstützt List rows mit FetchXML laut Microsoft Learn nicht.",
+          "List rows nimmt FetchXML direkt im Parameter Fetch Xml Query an, eine eigene Aktion braucht es nicht. So gehen Joins über verknüpfte Tabellen (link-entity), die der OData-Filter nicht kann. Aggregationen wie Summen oder Gruppierungen unterstützt List rows mit FetchXML laut Microsoft Learn nicht.",
           "",
           ""
         ]
@@ -1926,7 +1926,7 @@
         "richtig_index": 1,
         "erklaerungen": [
           "",
-          "Die kopierte Aktion verweist oft auf Ausgaben, die im Zweig nicht erreichbar sind. Du fügst sie direkt im Ziel-Case ein (Rechtsklick auf das Plus, Paste an action) und ersetzt dynamische Inhalte, die auf einen anderen Zweig zeigen.",
+          "Die kopierte Aktion verweist oft auf Ausgaben, die im Zweig nicht erreichbar sind. Du fügst sie direkt im Ziel-Zweig ein und setzt die Verweise neu, die auf einen anderen Zweig zeigen.",
           ""
         ]
       },
