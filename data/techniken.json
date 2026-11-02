@@ -1791,13 +1791,13 @@
         "antworten": [
           "Mit den Benutzern der Power-Platform-Umgebung",
           "Mit einer festen Namensliste in einer Compose-Aktion",
-          "Mit «Search for user (V2)» aus Office 365 Users"
+          "Mit «Search for users (V2)» aus Office 365 Users"
         ],
         "richtig_index": 2,
         "erklaerungen": [
           "",
           "",
-          "«Search for user (V2)» aus dem Office 365 Users-Connector liefert die Personen, eine Select-Aktion formt sie in title und value um. Diese Paare stehen als choices im Input.ChoiceSet der Karte."
+          "«Search for users (V2)» aus dem Office 365 Users-Connector liefert die Personen, eine Select-Aktion formt sie in title und value um. Diese Paare stehen als choices im Input.ChoiceSet der Karte."
         ]
       },
       "lernziel": "Du baust mehrstufige Genehmigungen mit dynamischer Wahl der nächsten Person."

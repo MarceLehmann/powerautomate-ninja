@@ -1117,12 +1117,12 @@
         "antworten": [
           "The users of the Power Platform environment",
           "A fixed list of names in a Compose action",
-          "\"Search for user (V2)\" from Office 365 Users"
+          "\"Search for users (V2)\" from Office 365 Users"
         ],
         "erklaerungen": [
           "",
           "",
-          "\"Search for user (V2)\" from the Office 365 Users connector returns the people, and a Select action maps them to title and value. These pairs are the choices of the Input.ChoiceSet in the card."
+          "\"Search for users (V2)\" from the Office 365 Users connector returns the people, and a Select action maps them to title and value. These pairs are the choices of the Input.ChoiceSet in the card."
         ]
       },
       "lernziel": "You build multi-stage approvals where each approver picks the next person.",
