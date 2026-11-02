@@ -283,3 +283,19 @@ Commit "Aktionsname korrigiert …" on this branch (data/techniken.json, data/en
 - `Search for user (V2)` → `Search for users (V2)` (technique 111, DE and EN answer and explanation).
 
 Not applied (content, suggestion only): the `ausdruck` of 146, the quiz rewordings (27, 118, 169, 39, fill-and-sign), "Muhimbi" → "Nutrient", "Process (Per Flow)", the about-page attribution.
+
+## D. Umsetzung auf diesem Branch (2026-11-02, dritter Auftrag)
+
+Korrigiert, DE und EN gemeinsam, Seiten mit `node scripts/build.mjs --produktion` neu erzeugt, Build und `scripts/links.mjs --livegang` grün (Ausdrucksprüfung gegen den lokalen Klon der Tipps aktiv):
+
+- **Technik 39 (hoch):** Lernziel und Erklärung ohne Summen und Gruppierungen; neu: Joins über link-entity und distinct, mit dem Hinweis aus Learn, dass List rows mit FetchXML keine Aggregationen unterstützt.
+- **Fill-and-sign (hoch):** Erklärung und Lernziel wie im Tipp: Word XML Document, replace(), Create file; kein Entpacken und Packen.
+- **Frage 27:** auf den klassischen Designer eingegrenzt, Hinweis auf den neuen Designer ohne Schalter.
+- **Frage 118:** Antwort und Erklärung auf «im Zweig einfügen, Verweise neu setzen» (Rechtsklick auf das Plus, Paste an action).
+- **Frage 169:** Frage und Erklärung auf das Automate-Menü bezogen, nicht auf den Trigger.
+- **Frage 135:** Zusatz zu «Provided by run-only user» und eingebetteten Verbindungen.
+- **Lizenz-Check:** «Process (Per Flow)» in `scripts/build.mjs` (Seite premium) und `assets/js/premium.js` getrennt: Process pro Flow oder Flow-Gruppe, ersetzt den Per-Flow-Plan, der am 1. Februar 2024 aus der Preisliste genommen wurde.
+- **Klickziele:** `padding-block` der Quellenlinks von 3 auf 4 px (`templates/css/site.css`), damit sie 24 px erreichen.
+- **Build 146:** nicht mehr nötig, auf main bereits durch Commit dd639e3 behoben; Branch auf main rebased.
+
+Nicht geändert (nur Vorschlag, fachliche Entscheidung): Muhimbi/Nutrient (92), Tipp 15 vs. Technik 15 (Terminate), Erklärung 24, EN-Antworten 166, `pool_ausschluss` 19, Fehlercode 174, Über-Seite (Gastbeiträge). Vorschaubilder (`scripts/karten.mjs`) nicht neu gerendert, Titel und Gürtel der Techniken sind unverändert.

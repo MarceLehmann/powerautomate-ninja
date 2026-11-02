@@ -584,11 +584,11 @@ ${fragen}
 <section class="abschnitt" aria-labelledby="h-grundlage"><h2 id="h-grundlage">${T('Worauf das Urteil beruht', 'What the verdict is based on')}</h2>
 <ul class="arrow-list">
 ${T(`<li>Microsoft-365-Lizenzen mit Power-Automate-Nutzungsrechten decken nur Standard-Connectoren ab.</li>
-<li>Premium-Connectoren oder -Funktionen brauchen je nach Fall Power Automate Premium (Per User), Power Automate Process (Per Flow), Power Apps Premium oder Nutzungsrechte aus anderen Lizenzen.</li>
+<li>Premium-Connectoren oder -Funktionen brauchen je nach Fall Power Automate Premium (pro Person), Power Automate Process (pro Flow oder Flow-Gruppe; ersetzt den Per-Flow-Plan, der am 1. Februar 2024 aus der Preisliste genommen wurde), Power Apps Premium oder Nutzungsrechte aus anderen Lizenzen.</li>
 <li>Bei Flows in einer Power App oder im Kontext einer Dynamics-365-Anwendung können entsprechende Nutzungsrechte reichen. Prüfe den konkreten Kontext und die vorhandenen Lizenzen.</li>
 <li>Nutzt ein Flow Premium-Connectoren, braucht bei automatisierten und geplanten Flows der Besitzer die Lizenz, bei Instant Flows jede Person, die ihn startet. Statt aller Personen lässt sich der Flow mit Process lizenzieren.</li>
 <li>Welche Lizenz hast du schon? Prüfe die Zuweisung in deinem Tenant oder frage deine IT oder deinen Microsoft-Partner.</li>`, `<li>Microsoft 365 licenses with Power Automate usage rights cover standard connectors only.</li>
-<li>Premium connectors or features may require Power Automate Premium (Per User), Power Automate Process (Per Flow), Power Apps Premium or usage rights from other licenses, depending on the case.</li>
+<li>Premium connectors or features may require Power Automate Premium (per user), Power Automate Process (per flow or flow group; replaces the per-flow plan that was removed from the price list on 1 February 2024), Power Apps Premium or usage rights from other licenses, depending on the case.</li>
 <li>Flows within a Power App or in the context of a Dynamics 365 application may be covered by those usage rights. Check the specific context and existing licenses.</li>
 <li>If a flow uses premium connectors, the owner needs the license for automated and scheduled flows, and every person who starts it needs one for instant flows. Instead of licensing every person, you can license the flow with Process.</li>
 <li>Which license do you already have? Check assignments in your tenant or ask your IT team or Microsoft partner.</li>`)}
