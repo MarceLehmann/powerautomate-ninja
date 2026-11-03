@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-  PowerPlatformAcademy Dojo (Power Automate): Abgleich der gemeinsamen Engine-Dateien mit copilot-ninja. Liest nur, aendert nichts ausser mit --uebernehmen.
+  Power Platform Dojo (Power Automate): Abgleich der gemeinsamen Engine-Dateien mit copilot-ninja. Liest nur, aendert nichts ausser mit --uebernehmen.
   node scripts/engine-sync.mjs                    zeigt, welche gemeinsamen Dateien abweichen
   node scripts/engine-sync.mjs --uebernehmen <d>  kopiert die Datei <d> aus copilot-ninja hierher (nur Dateien der Liste GLEICH)
 

@@ -1,15 +1,15 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//KMUpower//PowerPlatformAcademy Dojo//EN
+PRODID:-//KMUpower//Power Platform Dojo//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:flow-dojo-montag-en@kmupower.com
-DTSTAMP:20261102T000000Z
+DTSTAMP:20261103T000000Z
 DTSTART:20261109T083000
 DURATION:PT10M
 RRULE:FREQ=WEEKLY;BYDAY=MO
-SUMMARY:PowerPlatformAcademy Dojo: one question
+SUMMARY:Power Platform Dojo: one question
 DESCRIPTION:Ten minutes, one question about flows. The technique of the da
  y is at https://powerautomate.ninja/en/heute/
 URL:https://powerautomate.ninja/en/heute/

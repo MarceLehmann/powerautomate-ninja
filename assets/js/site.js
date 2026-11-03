@@ -1,4 +1,4 @@
-/* PowerPlatformAcademy Dojo (Power Automate): Theme, Menue, Suche, Kopieren, Quiz, Fortschritt, Technik-Wand, Technik des Tages, Mein Dojo.
+/* Power Platform Dojo (Power Automate): Theme, Menue, Suche, Kopieren, Quiz, Fortschritt, Technik-Wand, Technik des Tages, Mein Dojo.
    Kein Tracking, keine Anfragen an fremde Server. Jeder Zugriff auf localStorage in try/catch, alles laeuft auch ohne. */
 (function () {
   'use strict';
@@ -105,6 +105,13 @@
       b.setAttribute('aria-pressed', g ? 'true' : 'false'); b.textContent = g ? tx('Geübt, Markierung entfernen', 'Practiced, remove mark') : tx('Als geübt markieren', 'Mark as practiced');
     });
   }
+  function setzeSenseiHinweis(s) {
+    var hinweis = $('[data-sensei-hinweis]');
+    if (!hinweis) return;
+    var seite = $('main[data-guertel-seite]');
+    var stufe = seite ? parseInt(seite.getAttribute('data-guertel-seite') || '0', 10) : 0;
+    hinweis.hidden = !(s && s.guertel && stufe && s.guertel === stufe);
+  }
   $$('[data-geuebt]').forEach(function (b) {
     b.addEventListener('click', function () {
       var s = lade(), k = b.getAttribute('data-geuebt'), msg = $('[data-geuebt-status]');
@@ -112,9 +119,11 @@
       var ok = speichere(s);
       if (msg) msg.textContent = !ok ? tx('Dein Browser erlaubt kein Speichern. Der Stand bleibt nur bis zum Neuladen.', 'Your browser does not allow saving. Your progress only lasts until you reload.') : s.geuebt[k] ? tx('Gespeichert in deinem Browser. Dein Stand steht unter Mein Dojo.', 'Saved in your browser. Your progress is under My dojo.') : tx('Markierung entfernt.', 'Mark removed.');
       statusAnzeigen();
+      setzeSenseiHinweis(lade());
     });
   });
   statusAnzeigen();
+  setzeSenseiHinweis(lade());
 
   /* Technik-Wand: Filter und Suche */
   var filter = $('[data-filter]');
@@ -179,6 +188,7 @@
       var mm = $('[data-dojo-meldung]'); if (mm) mm.textContent = tx('Gelöscht. Dein Browser speichert für diese Seite nichts mehr.', 'Deleted. Your browser no longer stores anything for this website.');
       stand.textContent = tx('Du hast die Gürtelprüfung noch nicht gemacht. Geübt: 0 von ', 'You have not taken the belt exam yet. Practiced: 0 of ') + gesamt + tx(' Techniken.', ' techniques.');
       statusAnzeigen();
+      setzeSenseiHinweis(lade());
     });
   }
 })();

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-  PowerPlatformAcademy Dojo (Power Automate): Generator und Validierung. Node 18 oder neuer, keine Abhaengigkeiten.
+  Power Platform Dojo (Power Automate): Generator und Validierung. Node 18 oder neuer, keine Abhaengigkeiten.
 
   node scripts/build.mjs --testphase     Testphase: jede Seite noindex, kein Banner (Standard bis zum Livegang)
   node scripts/build.mjs --produktion    Livegang: Index-Regeln aus dem Bauplan, Sitemap nur indexierbare Seiten
@@ -24,7 +24,7 @@ const KURZ_BASIS = BASE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
 const NAME = CFG.name;
 const ZUSATZ = CFG.zusatz;
 const TITEL_SUFFIX = 'Flow Dojo';
-const GENERATOR = '<meta name="generator" content="PowerPlatformAcademy Dojo build">';
+const GENERATOR = '<meta name="generator" content="Power Platform Dojo build">';
 
 const ARGS = process.argv.slice(2);
 const MODUS = ARGS.includes('--produktion') ? 'produktion' : ARGS.includes('--pruefen') ? 'pruefen' : 'testphase';
@@ -70,6 +70,13 @@ const kursUrl = (stelle) => mitUtm(CFG.kurs_url, stelle);
 // Verlinkung der Dojos und der Academy (Fusszeile, Ueber-Seite)
 const ACADEMY_DOJO = () => `${CFG.academy_url}?utm_source=${encodeURIComponent(CFG.utm_source)}&utm_medium=${encodeURIComponent(CFG.utm_medium)}&utm_campaign=dojo&utm_content=footer`;
 const COPILOT_DOJO = () => T(CFG.weitere_dojos.copilot, CFG.weitere_dojos.copilot_en);
+const POWERPLATFORM_DOJO = () => T(CFG.powerplatform_dojo.de, CFG.powerplatform_dojo.en);
+const POWERPLATFORM_LERNPFADE = () => T(CFG.powerplatform_dojo.lernpfade, CFG.powerplatform_dojo.lernpfade_en || CFG.powerplatform_dojo.lernpfade);
+const POWERPLATFORM_MENTORING = () => T(CFG.powerplatform_dojo.mentoring, CFG.powerplatform_dojo.mentoring_en || CFG.powerplatform_dojo.mentoring);
+const SENSEI_HINWEIS = () => T(
+  `Gürtel geschafft? Gib dein Wissen weiter und werde Sensei im Dojo Mentoring: 3 Monate, gratis, 1:1. <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Zum Dojo Mentoring</a>.`,
+  `Belt earned? Pass it on and become a Sensei in Dojo Mentoring: 3 months, free, 1:1. <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Join Dojo Mentoring</a>.`
+);
 
 /* Mini-Templates wie copilot-ninja: {{feld}} escaped, {{{feld}}} roh, {{> partial}} */
 const partialCache = {};
@@ -301,6 +308,7 @@ function seite(relL, p) {
     cur_techniken: cur('techniken'), cur_pruefung: cur('pruefung'), cur_premium: cur('premium'), cur_dojo: cur('dojo'),
     js_extra: (p.js || []).map(s => `<script src="${r}assets/js/${s}" defer></script>`).join('\n'),
     tipp_fuss: mitUtm('https://www.powerplatformtip.com/', 'fusszeile'), academy_fuss: mitUtm(CFG.academy_url, 'fusszeile'), academy_dojo: ACADEMY_DOJO(), copilot_dojo: COPILOT_DOJO(),
+    powerplatform_dojo: POWERPLATFORM_DOJO(), powerplatform_lernpfade: POWERPLATFORM_LERNPFADE(), powerplatform_mentoring: POWERPLATFORM_MENTORING(),
     sprache_href: r + andere + pfad, sprache_code: L === 'en' ? 'de' : 'en', sprache_kurz: L === 'en' ? 'DE' : 'EN', sprache_name: L === 'en' ? 'Deutsche Version' : 'English version'
   };
   const noindex = TESTPHASE || p.noindex || ['heute', 'dojo'].includes(p.seite);
@@ -316,7 +324,8 @@ function seite(relL, p) {
   meta.push(`<meta property="og:type" content="${p.ogTyp || 'website'}">`, `<meta property="og:site_name" content="${esc(NAME)}">`, `<meta property="og:locale" content="${T('de_CH', 'en_US')}">`, `<meta property="og:locale:alternate" content="${T('en_US', 'de_CH')}">`,
     `<meta property="og:title" content="${esc(p.ogTitel || p.titel)}">`, `<meta property="og:description" content="${esc(p.beschreibung)}">`);
   if (canonical) meta.push(`<meta property="og:url" content="${canonical}">`);
-  meta.push(`<meta property="og:image" content="${bild}">`, '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">', '<meta name="twitter:card" content="summary_large_image">');
+  meta.push(`<meta property="og:image" content="${bild}">`, '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">', '<meta name="twitter:card" content="summary_large_image">',
+    `<meta name="twitter:title" content="${esc(p.ogTitel || p.titel)}">`, `<meta name="twitter:description" content="${esc(p.beschreibung)}">`, `<meta name="twitter:image" content="${bild}">`);
   if (p.jsonld) meta.push(jsonLd({ '@context': 'https://schema.org', '@graph': p.jsonld }));
   const html = `<!doctype html>
 <html lang="${LANG_HTML()}" data-seite="${p.seite}" data-r="${r}" data-lr="${lr}">
@@ -392,6 +401,15 @@ function baueStart() {
     <ul class="antworten antworten--drei">${q1.optionen.map((o, i) => `<li><a class="antwort" href="premium/?q1=${o.v}#q2"><span class="antwort__b" aria-hidden="true">${BUCHST[i]}</span><span>${esc(o.text)}</span></a></li>`).join('')}</ul>
     <p class="klein">${T('Vier Fragen als erste Einschätzung, mit Quellen bei Microsoft Learn. Prüfe auch deine vorhandenen Lizenzen.', 'Four questions for an initial assessment, with sources on Microsoft Learn. Check your existing licenses too.')}</p>
   </div>
+</div></section>
+<section class="block" aria-labelledby="h-weiter-dojo"><div class="wrap sektion--eng">
+  <h2 id="h-weiter-dojo">${T('Weiter im Dojo', 'More in the Dojo')}</h2>
+  <ul class="weiter-dojo-liste">
+    <li><a href="${T('https://powerplatformdojo.com/lernpfade/', 'https://powerplatformdojo.com/en/lernpfade/')}" rel="noopener">${T('Lernpfade: in 7 Wochen zur eigenen App', 'Learning paths: build your own app in 7 weeks')}</a></li>
+    <li><a href="${T('https://powerplatformdojo.com/mentoring/', 'https://powerplatformdojo.com/en/mentoring/')}" rel="noopener">${T('Dojo Mentoring: 1:1 mit einem Sensei, 3 Monate, gratis', 'Dojo mentoring: 1:1 with a sensei, 3 months, free')}</a></li>
+    <li><a href="https://copilot.ninja/" rel="noopener">${T('Weitere Disziplin: Copilot Ninja', 'Further discipline: Copilot Ninja')}</a></li>
+  </ul>
+  <p class="klein">${T('Gratis Live-Workshops und bezahlte Kurse findest du in der <a href="https://www.powerplatformacademy.online/" rel="noopener">Power Platform Academy</a>.', 'You can find free live workshops and paid courses at the <a href="https://www.powerplatformacademy.online/" rel="noopener">Power Platform Academy</a>.')}</p>
 </div></section>
 <section class="block" aria-labelledby="h-tdt"><div class="wrap sektion--eng">
   <span class="label">${T('Technik des Tages', 'Technique of the day')}</span>
@@ -611,7 +629,7 @@ function baueGuertel(g) {
   const drin = SEITEN.filter(t => t.guertel === g.nr);
   const fr = POOL.filter(t => t.guertel === g.nr).length;
   const naechster = GUERTEL[g.nr];
-  const haupt = `<main id="main"><div class="wrap sektion--eng">
+  const haupt = `<main id="main" data-guertel-seite="${g.nr}"><div class="wrap sektion--eng">
 ${krumenHtml(r, [[T('Gürtelweg', 'Belt path'), '../../techniken/'], [g.name, './']])}
 <div class="ergebnis__abzeichen guertel-kopf">${abzeichenSvg(g.nr)}<span class="guertel-kopf__tusch" data-guertel-nr="${g.nr}">${tusch('ruhe')}</span><div><span class="label">${T(`Stufe ${g.nr} von 7`, `Level ${g.nr} of 7`)}</span><h1 id="h1">${esc(g.name)}: ${esc(g.leitwort)}</h1></div></div>
 <p class="lead">${esc(g.erreicht_satz)}</p>
@@ -620,6 +638,7 @@ ${g.nr === 7 && !drin.length ? `<p class="leer-hinweis">${T('In Arbeit: Ein Tipp
 </section>
 ${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul>` : ''}
 <p class="knopf-reihe">${g.nr === 7 && !drin.length ? `<a class="knopf knopf--primaer" href="${r}">${T('Zurück zur Übersicht', 'Back to the overview')}</a>` : `<a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>`}${naechster && g.nr < 6 ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${esc(T('Weiter zum ' + naechster.akk.replace(/^den /, ''), 'On to the ' + naechster.name.toLowerCase()))}</a>` : ''}</p>
+<p class="sensei-hinweis klein" data-sensei-hinweis hidden>${SENSEI_HINWEIS()}</p>
 </div></main>`;
   seite(`guertel/${g.farbe}/index.html`, {
     seite: 'guertel', titel: `${g.name}: ${g.leitwort} | ${TITEL_SUFFIX}`, haupt,
@@ -644,7 +663,7 @@ ${dojoKopf(`<span class="label">${T('Dein Fortschritt', 'Your progress')}</span>
 ${liste}
 <section class="abschnitt" aria-labelledby="h-loeschen"><h2 id="h-loeschen">${T('Daten löschen', 'Delete data')}</h2><p>${T('Dein Fortschritt liegt nur im lokalen Speicher dieses Browsers. Mit einem Klick ist er weg.', 'Your progress is only stored in the local storage of this browser. One click and it is gone.')}</p><p><button type="button" class="knopf knopf--leise" data-dojo-loeschen data-nur-js>${T('Alles löschen', 'Delete everything')}</button></p><p class="status-zeile" data-dojo-meldung role="status" aria-live="polite"></p></section>
 </div></main>`;
-  seite('dojo/index.html', { seite: 'dojo', titel: T(`Mein Dojo | ${TITEL_SUFFIX}`, `My dojo | ${TITEL_SUFFIX}`), haupt, beschreibung: T('Dein Fortschritt im PowerPlatformAcademy Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the PowerPlatformAcademy Dojo: practiced techniques and your belt from the exam.') });
+  seite('dojo/index.html', { seite: 'dojo', titel: T(`Mein Dojo | ${TITEL_SUFFIX}`, `My dojo | ${TITEL_SUFFIX}`), haupt, beschreibung: T('Dein Fortschritt im Power Platform Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the Power Platform Dojo: practiced techniques and your belt from the exam.') });
 }
 
 function baueRecht() {
@@ -653,7 +672,7 @@ function baueRecht() {
 ${krumenHtml(r, [[T('Über', 'About'), './']])}
 <div class="prose sektion--eng">
 ${T(`<h1 id="h1">Über das Dojo</h1>
-<p class="lead">Das PowerPlatformAcademy Dojo für Power Automate prüft und erklärt auf Deutsch, was die Tipps auf powerplatformtip.com zeigen. Eine Frage nach der anderen, vom ersten Test bis zur Architektur.</p>
+<p class="lead">Das Power Platform Dojo für Power Automate prüft und erklärt auf Deutsch, was die Tipps auf powerplatformtip.com zeigen. Eine Frage nach der anderen, vom ersten Test bis zur Architektur.</p>
 <h2>Wie es funktioniert</h2>
 <ul class="arrow-list">
 <li>Jede Technik beginnt mit einer Quizfrage. Erst raten, dann lesen: So bleibt mehr hängen als beim reinen Lesen.</li>
@@ -666,12 +685,12 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 <p>Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Anfrage enthält den Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Einzelheiten stehen im <a href="../datenschutz/">Datenschutz</a>.</p>
 <h2>Was das Dojo nicht ist</h2>
 <p>Kein Angebot von Microsoft, keine Zertifizierung und keine Lizenzberatung im Einzelfall. Die Gürtel sind eine Lernhilfe dieser Seite.</p>
-<h2>Teil der Power Platform Academy</h2>
-<p>Das PowerPlatformAcademy Dojo gehört zur <a href="${esc(ACADEMY_DOJO())}" rel="noopener">Power Platform Academy</a>. Für Copilot gibt es ein eigenes Dojo auf <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>.</p>
+<h2>Power Platform Dojo</h2>
+<p>Power Platform Dojo findest du auf <a href="${esc(POWERPLATFORM_DOJO())}" rel="noopener">powerplatformdojo.com</a>. Weitere Disziplinen: <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>, <a href="${esc(POWERPLATFORM_LERNPFADE())}" rel="noopener">Lernpfade</a> und <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Dojo Mentoring</a>.</p>
 <h2>Fehler gefunden?</h2>
 <p>Auf jeder Technik-Seite gibt es den Link «Fehler in dieser Frage melden». Oder schreib direkt an <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>
 <p>Wer Flows mit Begleitung lernen will: `, `<h1 id="h1">About the dojo</h1>
-<p class="lead">The PowerPlatformAcademy Dojo for Power Automate tests and explains what the tips on powerplatformtip.com show. One question after another, from the first test to architecture.</p>
+<p class="lead">The Power Platform Dojo for Power Automate tests and explains what the tips on powerplatformtip.com show. One question after another, from the first test to architecture.</p>
 <h2>How it works</h2>
 <ul class="arrow-list">
 <li>Every technique starts with a quiz question. Guess first, then read: more sticks than with reading alone.</li>
@@ -684,13 +703,13 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 <p>Visits are counted without cookies; only totals without personal identifiers are stored. The request includes the page path and page title, but no query string or fragment. See the <a href="../datenschutz/">privacy notice</a> for details.</p>
 <h2>What the dojo is not</h2>
 <p>Not a Microsoft offering, not a certification and no licensing advice for individual cases. The belts are a learning aid of this website.</p>
-<h2>Part of the Power Platform Academy</h2>
-<p>The PowerPlatformAcademy Dojo is part of the <a href="${esc(ACADEMY_DOJO())}" rel="noopener">Power Platform Academy</a>. There is a separate dojo for Copilot at <a href="${esc(COPILOT_DOJO())}" rel="noopener" hreflang="en">copilot.ninja</a>.</p>
+<h2>Power Platform Dojo</h2>
+<p>Find the Power Platform Dojo at <a href="${esc(POWERPLATFORM_DOJO())}" rel="noopener">powerplatformdojo.com</a>. More disciplines: <a href="${esc(COPILOT_DOJO())}" rel="noopener" hreflang="en">copilot.ninja</a>, <a href="${esc(POWERPLATFORM_LERNPFADE())}" rel="noopener">learning paths</a> and <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Dojo Mentoring</a>.</p>
 <h2>Found an error?</h2>
 <p>Every technique page has the link "Report an error in this question". Or write directly to <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>
 <p>If you want to learn flows with guidance: `)}<a href="${esc(kursUrl('ueber'))}" rel="noopener">${esc(KURS_NAME())}</a>${T('', ' (in German)')}.</p>
 </div></div></main>`;
-  seite('ueber/index.html', { seite: 'ueber', titel: T(`Über das Dojo | ${TITEL_SUFFIX}`, `About the dojo | ${TITEL_SUFFIX}`), haupt: ueber, beschreibung: T('Wie das PowerPlatformAcademy Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.', 'How the PowerPlatformAcademy Dojo works, where the questions come from and what the site is not.') });
+  seite('ueber/index.html', { seite: 'ueber', titel: T(`Über das Dojo | ${TITEL_SUFFIX}`, `About the dojo | ${TITEL_SUFFIX}`), haupt: ueber, beschreibung: T('Wie das Power Platform Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.', 'How the Power Platform Dojo works, where the questions come from and what the site is not.') });
 
   const impressum = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Impressum', 'Legal notice'), './']])}
@@ -780,10 +799,10 @@ function baueDaten() {
   schreibe(`assets/data/tag${sfx}.json`, JSON.stringify({ start: daten.tag_start, eintraege: folge.map(t => ({ k: t.schluessel, slug: t.slug, titel: t.titel_de, g: t.guertel, lizenz: t.lizenz, start: FUER_START(t), frage: t.quiz.frage, antworten: t.quiz.antworten })) }));
   const pool = POOL.map(t => ({ k: t.schluessel, g: t.guertel, frage: t.quiz.frage, antworten: t.quiz.antworten, richtig: t.quiz.richtig_index, erkl: (t.quiz.erklaerungen || [])[t.quiz.richtig_index] || '', url: t.seite ? `techniken/${t.slug}/` : mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), tipp: mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), titel: t.seite ? t.titel_de : tippLabel(t), tipp_label: tippLabel(t), seite: !!t.seite }));
   const guertel = GUERTEL.map(g => ({ nr: g.nr, farbe: g.farbe, name: g.name, akk: g.akk, kurz: g.kurz, leitwort: g.leitwort, kann: g.kannst_du, hex: g.hex, naechste: SEITEN.filter(t => t.guertel === g.nr).slice(0, 3).map(t => ({ titel: t.titel_de, url: `techniken/${t.slug}/` })) }));
-  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME(), link_name: KURS_LINK_NAME(), status: CFG.kurs_status, status_satz: kursStatusSatz() }, guertel, fragen: pool }));
+  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, dojo: { mentoring: POWERPLATFORM_MENTORING() }, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME(), link_name: KURS_LINK_NAME(), status: CFG.kurs_status, status_satz: kursStatusSatz() }, guertel, fragen: pool }));
 
   const montag = (() => { const d = new Date(DATUM + 'T00:00:00Z'); do d.setUTCDate(d.getUTCDate() + 1); while (d.getUTCDay() !== 1); return d.toISOString().slice(0, 10).replace(/-/g, ''); })();
-  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//PowerPlatformAcademy Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'en' ? '-en' : ''}@kmupower.com`,
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//Power Platform Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'en' ? '-en' : ''}@kmupower.com`,
     `DTSTAMP:${DATUM.replace(/-/g, '')}T000000Z`, `DTSTART:${montag}T083000`, 'DURATION:PT10M', 'RRULE:FREQ=WEEKLY;BYDAY=MO', T(`SUMMARY:${NAME}: eine Frage`, `SUMMARY:${NAME}: one question`),
     T(`DESCRIPTION:Zehn Minuten, eine Frage zu Flows. Die Technik des Tages steht unter ${BL()}heute/`, `DESCRIPTION:Ten minutes, one question about flows. The technique of the day is at ${BL()}heute/`), `URL:${BL()}heute/`, 'TRANSP:TRANSPARENT', 'END:VEVENT', 'END:VCALENDAR'];
   schreibe(`${PFX()}kalender/montag.ics`, ics.map(falte).join('\r\n') + '\r\n');
@@ -833,7 +852,7 @@ function baueBilder() {
 ${BAND_HEX.map((c, i) => `<rect x="${i * (1200 / 7)}" y="604" width="${1200 / 7 + 1}" height="26" fill="${c}"/>`).join('')}
 <rect x="0" y="603" width="1200" height="1.5" fill="#6E7C93"/>
 <rect x="0" y="0" width="1200" height="8" fill="#0F5BB5"/>
-<text x="80" y="112" font-family="${schrift}" font-weight="600" font-size="38" fill="#15171B">PowerPlatformAcademy Dojo</text>
+<text x="80" y="112" font-family="${schrift}" font-weight="600" font-size="38" fill="#15171B">Power Platform Dojo</text>
 <text x="80" y="152" font-family="${schrift}" font-weight="700" font-size="26" letter-spacing="3" fill="#0F5BB5">POWER AUTOMATE</text>
 <text x="76" y="270" font-family="${schrift}" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">${titel1}</text>
 <text x="76" y="380" font-family="${schrift}" font-weight="700" font-size="104" letter-spacing="-2" fill="#15171B">${titel2}</text>
@@ -855,7 +874,7 @@ function minifiziere(css) {
 function baueCss() {
   const css = lies('templates/css/site.css');
   if (/@import|url\((?!["']?(data:|\.\.\/fonts\/[\w-]+\.woff2["']?\)))/.test(css)) fehler('site.css: @import oder fremde url() nicht erlaubt');
-  schreibe('assets/css/site.css', `/* PowerPlatformAcademy Dojo. Quelle: templates/css/site.css (nicht hier bearbeiten) */\n${minifiziere(css)}\n`);
+  schreibe('assets/css/site.css', `/* Power Platform Dojo. Quelle: templates/css/site.css (nicht hier bearbeiten) */\n${minifiziere(css)}\n`);
 }
 
 /* Abschlusspruefung */
@@ -939,7 +958,7 @@ if (!fehlerListe.length && MODUS !== 'pruefen') {
   abschluss();
 }
 setzeSprache('de');
-console.log(`\nPowerPlatformAcademy Dojo Build, Modus ${MODUS}, Datum ${DATUM}, Sprachen ${SPRACHEN.join(', ')}`);
+console.log(`\nPower Platform Dojo Build, Modus ${MODUS}, Datum ${DATUM}, Sprachen ${SPRACHEN.join(', ')}`);
 console.log(`Tipps: ${ALLE.length}, Pool ${POOL.length}, Technik-Seiten ${SEITEN.length}, Prüfung ${PRUEF_ANZAHL()} Fragen`);
 console.log(`Pool je Gürtel: ${GUERTEL.map(g => `${g.kurz} ${POOL.filter(t => t.guertel === g.nr).length}`).join(', ')}`);
 const ausgeschlossen = daten.techniken.filter(t => t.pool_ausschluss);

@@ -1,5 +1,5 @@
 {
-  "name": "PowerPlatformAcademy Dojo",
+  "name": "Power Platform Dojo",
   "zusatz": "Power Automate",
   "kurzname": "Dojo",
   "untertitel": "Flows bauen lernen, eine Frage nach der anderen",
@@ -25,5 +25,13 @@
   "weitere_dojos": {
     "copilot": "https://copilot.ninja/",
     "copilot_en": "https://copilot.ninja/en/"
+  },
+  "powerplatform_dojo": {
+    "de": "https://powerplatformdojo.com/",
+    "en": "https://powerplatformdojo.com/en/",
+    "lernpfade": "https://powerplatformdojo.com/lernpfade/",
+    "lernpfade_en": "https://powerplatformdojo.com/en/lernpfade/",
+    "mentoring": "https://powerplatformdojo.com/mentoring/",
+    "mentoring_en": "https://powerplatformdojo.com/en/mentoring/"
   }
 }

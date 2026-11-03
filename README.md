@@ -1,6 +1,6 @@
-# PowerPlatformAcademy Dojo · Power Automate
+# Power Platform Dojo · Power Automate
 
-Name seit 16.10.2026 (vorher «KMUpower Flow-Dojo»). Gehört zur Power Platform Academy, Schwesterseite für Copilot: copilot.ninja.
+Name seit 03.11.2026: Power Platform Dojo. Projekt von Marcel Lehmann mit Lernpfaden und Mentoring auf powerplatformdojo.com.
 
 Statische Website (HTML, CSS, JavaScript): Quizfragen, Erklärungen und ein Gürtelweg für Flows in Power Automate, auf Deutsch (/) und Englisch (/en/). Grundlage sind die Tipps auf powerplatformtip.com, jede Technik verlinkt ihren Tipp. Live seit 16.10.2026 unter https://powerautomate.ninja/ (GitHub Pages, Custom Domain, HTTPS erzwungen). Alle Inhalte von Marcel freigegeben, jede Seite indexierbar (ausser 404, Kurzadressen, /heute/ und /dojo/ in beiden Sprachen).
 
@@ -10,7 +10,7 @@ Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung
 
 - Figur «Tusch» aus copilot.ninja: `templates/partials/tusch.svg` (in `engine-sync.mjs` unter GLEICH, nur in copilot-ninja ändern). Im Build `tusch(pose)`, Posen `ruhe`, `zeigen`, `spaehen`. Einsatz: Marke in Kopf und Menü, Hero der Startseite, Absender-Block (mit Querverweis auf copilot.ninja), /pruefung/ und /dojo/ (trägt den eigenen Gürtel über `--belt-current`), /guertel/<farbe>/ (trägt diesen Gürtel über `data-guertel-nr`), 404 (spähend), Favicon (Kopf). Der Gurtknoten bleibt für Ergebnis- und Gürtelbilder.
 - Eigener Farbton Power-Automate-Blau, Kontraste nach WCAG AA geprüft: hell Papier `#EDF2F9`, Akzent `--site: #0F5BB5`; dunkel Papier `#0B1019`, Akzent `#82B4F2`. Akzent nur für die Kopflinie und die Unterzeile der Marke. Signal (Rot), ok und premium wie copilot.ninja.
-- Menü: letzter Punkt «Dojo für Copilot» bzw. «Dojo for Copilot», Menüknopf auf allen Breiten sichtbar.
+- Navigation und Menü: zusätzlicher Link «Power Platform Dojo» (DE auf https://powerplatformdojo.com/, EN auf https://powerplatformdojo.com/en/), dazu «Dojo für Copilot» bzw. «Dojo for Copilot». Menüknopf auf allen Breiten sichtbar.
 
 ## Seiten
 
