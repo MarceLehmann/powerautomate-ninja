@@ -74,8 +74,8 @@ const POWERPLATFORM_DOJO = () => T(CFG.powerplatform_dojo.de, CFG.powerplatform_
 const POWERPLATFORM_LERNPFADE = () => T(CFG.powerplatform_dojo.lernpfade, CFG.powerplatform_dojo.lernpfade_en || CFG.powerplatform_dojo.lernpfade);
 const POWERPLATFORM_MENTORING = () => T(CFG.powerplatform_dojo.mentoring, CFG.powerplatform_dojo.mentoring_en || CFG.powerplatform_dojo.mentoring);
 const SENSEI_HINWEIS = () => T(
-  `Gürtel geschafft? Gib dein Wissen weiter und werde Sensei im Dojo Mentoring: 3 Monate, gratis, 1:1. <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Zum Dojo Mentoring</a>.`,
-  `Belt earned? Pass it on and become a Sensei in Dojo Mentoring: 3 months, free, 1:1. <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Join Dojo Mentoring</a>.`
+  `Gürtel geschafft? Gib dein Wissen weiter und werde Sensei im Dojo Mentoring: 3 Monate, gratis, 1:1. <a href="${esc(POWERPLATFORM_MENTORING() + "anmelden/")}" rel="noopener">Zum Dojo Mentoring</a>.`,
+  `Belt earned? Pass it on and become a Sensei in Dojo Mentoring: 3 months, free, 1:1. <a href="${esc(POWERPLATFORM_MENTORING() + "anmelden/")}" rel="noopener">Join Dojo Mentoring</a>.`
 );
 
 /* Mini-Templates wie copilot-ninja: {{feld}} escaped, {{{feld}}} roh, {{> partial}} */
