@@ -272,6 +272,8 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .vorschau-bild { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-md); margin: 0 0 .8rem; }
 .uebersicht { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .3rem; }
 .uebersicht li { display: flex; align-items: center; gap: .6rem; font-size: .95rem; }
+.sensei-hinweis h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
+.sensei-hinweis p { margin: 0; }
 .sensei-hinweis { padding: .85rem 1rem; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); margin-bottom: 1rem; }
 .urteil { font-family: var(--font-display); font-stretch: 87.5%; font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.3rem); line-height: 1.1; font-weight: 700; padding: 1rem 1.2rem; border-radius: var(--r-lg); background: var(--surface); border-left: 8px solid var(--ok); margin-bottom: 1rem; }
 .urteil.premium { border-left-color: var(--premium); }
