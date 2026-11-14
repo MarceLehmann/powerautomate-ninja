@@ -1,0 +1,2537 @@
+{
+  "hinweis": "Italienische Fassung. Schlüssel ui und js = deutscher Text aus scripts/build.mjs und assets/js. Techniken mit Schlüsseln wie data/techniken.json. Stand 14.11.2026.",
+  "meta": {
+    "code": "it",
+    "html": "it",
+    "og": "it_IT",
+    "name": "Italiano",
+    "kurz": "IT",
+    "wahl_label": "Lingua",
+    "pruefregeln": {
+      "antwort_max": 15,
+      "kurztext": [
+        80,
+        170
+      ]
+    }
+  },
+  "links": {
+    "powerplatform_dojo": "https://powerplatformdojo.com/it/",
+    "lernpfade": "https://powerplatformdojo.com/it/lernpfade/",
+    "mentoring": "https://powerplatformdojo.com/it/mentoring/",
+    "copilot_dojo": "https://copilot.ninja/en/"
+  },
+  "limits": {
+    "laufzeit_max": "30 giorni",
+    "schleife_parallel_max": "50",
+    "trigger_warteschlange": "11",
+    "trigger_parallel": "da 1 a 100, predefinito 25",
+    "agent_antwort": "100 secondi"
+  },
+  "ui": {
+    "Welcher": "Che cintura",
+    "Flow-Gürtel?": "di flussi?",
+    "Fragen und Erklärungen zu Flows, auf Deutsch.": "Domande e spiegazioni sui flussi, in italiano.",
+    "Mit welchen Datenquellen arbeitet dein Flow?": "Con quali origini dati lavora il tuo flusso?",
+    "SharePoint, Office 365 Outlook, Microsoft Teams und Excel Online (Business) sind Standard-Connectoren.": "SharePoint, Office 365 Outlook, Microsoft Teams ed Excel Online (Business) sono connettori standard.",
+    "Nur SharePoint, Outlook, Teams oder Excel": "Solo SharePoint, Outlook, Teams o Excel",
+    "Auch andere Systeme oder Fachanwendungen": "Anche altri sistemi o applicazioni specialistiche",
+    "Connectoren zu anderen Systemen: Ob sie Standard oder Premium sind, zeigt die Liste der Premium-Connectoren.": "Connettori verso altri sistemi: l'elenco dei connettori premium mostra se sono standard o premium.",
+    "Weiss ich noch nicht": "Non lo so ancora",
+    "Datenquellen klären und in der Liste der Premium-Connectoren nachsehen.": "Chiarisci le origini dati e controllale nell'elenco dei connettori premium.",
+    "Ruft dein Flow eine Web-Schnittstelle direkt auf, mit der Aktion HTTP, einem Custom Connector oder «HTTP with Microsoft Entra ID»?": "Il tuo flusso chiama direttamente un'interfaccia web, con l'azione HTTP, un connettore personalizzato o «HTTP with Microsoft Entra ID»?",
+    "Nein": "No",
+    "Ja": "Sì",
+    "Aktion HTTP, Custom Connector oder HTTP with Microsoft Entra ID": "Azione HTTP, connettore personalizzato o HTTP with Microsoft Entra ID",
+    "Aufruf der Web-Schnittstelle klären: Die Aktion HTTP, Custom Connectors und HTTP with Microsoft Entra ID sind Premium.": "Chiarisci la chiamata all'interfaccia web: l'azione HTTP, i connettori personalizzati e HTTP with Microsoft Entra ID sono premium.",
+    "Liest oder schreibt dein Flow Daten in Dataverse?": "Il tuo flusso legge o scrive dati in Dataverse?",
+    "Soll dein Cloud Flow einen Desktop Flow auf einem Rechner starten?": "Il tuo flusso cloud deve avviare un flusso desktop su un computer?",
+    "Desktop Flows aus einem Cloud Flow (RPA)": "Flussi desktop da un flusso cloud (RPA)",
+    "Welcher <span class=\"strich\">Flow-Gürtel</span> bist du?": "Che cintura <span class=\"strich\">di flussi</span> sei?",
+    "{n} Fragen, rund vier Minuten. Danach weisst du, was du als Nächstes lernst.": "{n} domande, circa quattro minuti. Poi sai cosa imparare come prossimo passo.",
+    "Gürtelprüfung starten": "Avvia l'esame di cintura",
+    "Reicht meine Lizenz?": "La mia licenza basta?",
+    "Lizenz-Check, Frage 1 von {n}": "Verifica della licenza, domanda 1 di {n}",
+    "Reicht die Lizenz aus Microsoft 365 für deinen Flow?": "La licenza di Microsoft 365 basta per il tuo flusso?",
+    "Vier Fragen als erste Einschätzung, mit Quellen bei Microsoft Learn. Prüfe auch deine vorhandenen Lizenzen.": "Quattro domande per una prima valutazione, con fonti su Microsoft Learn. Controlla anche le licenze che hai già.",
+    "Weiter im Dojo": "Avanti nel Dojo",
+    "Lernpfade: in 7 Wochen zur eigenen App": "Percorsi di apprendimento: in 7 settimane alla tua app",
+    "Dojo Mentoring: 1:1 mit einem Sensei, 3 Monate, gratis": "Dojo Mentoring: 1:1 con un Sensei, 3 mesi, gratis",
+    "Weitere Disziplin: Copilot Ninja": "Altra disciplina: Copilot Ninja",
+    "Gratis Live-Workshops und bezahlte Kurse findest du in der <a href=\"https://www.powerplatformacademy.online/\" rel=\"noopener\">Power Platform Academy</a>.": "Workshop live gratuiti e corsi a pagamento li trovi nella <a href=\"https://www.powerplatformacademy.online/\" rel=\"noopener\">Power Platform Academy</a>.",
+    "Technik des Tages": "Tecnica del giorno",
+    "Kennst du die Antwort?": "Conosci la risposta?",
+    "Tippe auf eine Antwort, die Auflösung steht auf der Technik-Seite": "Tocca una risposta, la soluzione è sulla pagina della tecnica",
+    "Der Gürtelweg": "Il percorso delle cinture",
+    "Sieben Gürtel, vom ersten Test bis zur Architektur": "Sette cinture, dal primo test all'architettura",
+    "Techniken": "tecniche",
+    "Die Schwelle.": "La soglia.",
+    "Ab Grün wird es technisch: unsaubere Daten, parallele Schleifen, Aufrufe an SharePoint und Microsoft Graph.": "Dal verde in poi diventa tecnico: dati disordinati, cicli paralleli, chiamate a SharePoint e Microsoft Graph.",
+    "Alle Techniken ansehen": "Vedi tutte le tecniche",
+    "Absender": "L'autore",
+    "Von Marcel Lehmann, KMUpower. Die Fragen stammen aus den wöchentlichen Tipps auf powerplatformtip.com. Wer Flows mit Begleitung lernen will": "Di Marcel Lehmann, KMUpower. Le domande vengono dai tip settimanali su powerplatformtip.com. Chi vuole imparare i flussi con affiancamento",
+    "{kurs} der Power Platform Academy": "{kurs} della Power Platform Academy",
+    "(auf Deutsch)": "(in tedesco)",
+    "Dasselbe Dojo für Microsoft Copilot Chat und Copilot Studio": "Lo stesso dojo per Microsoft Copilot Chat e Copilot Studio",
+    "Flows bauen lernen | Flow Dojo": "Impara a creare flussi | Flow Dojo",
+    "Welcher Flow-Gürtel bist du? Gürtelprüfung, Lizenz-Check und Techniken mit Erklärung für Flows in Power Automate, auf Deutsch.": "Che cintura di flussi sei? Esame di cintura, verifica della licenza e tecniche con spiegazione per i flussi in Power Automate, in italiano.",
+    "Welcher Flow-Gürtel bist du?": "Che cintura di flussi sei?",
+    "Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.": "Domande, spiegazioni e percorso delle cinture per i flussi in Power Automate, in italiano. Sito indipendente senza legame con Microsoft.",
+    "Tipp": "Tip",
+    "Brotkrumen": "Percorso di navigazione",
+    "Start": "Home",
+    "Technik-Wand": "Parete delle tecniche",
+    "Alle Techniken": "Tutte le tecniche",
+    "{n} Techniken mit Quizfrage, Erklärung und Ausdruck. Jede verweist auf den ganzen Tipp mit Screenshots auf powerplatformtip.com.": "{n} tecniche con domanda del quiz, spiegazione ed espressione. Ognuna rimanda al tip completo con screenshot su powerplatformtip.com.",
+    "Techniken durchsuchen": "Cerca tra le tecniche",
+    "Suchen: JSON, Approval, SharePoint": "Cerca: JSON, Approval, SharePoint",
+    "Gürtel": "Cintura",
+    "Thema": "Tema",
+    "Lizenz": "Licenza",
+    "Dein Stand": "Il tuo stato",
+    "Noch offen": "Ancora da fare",
+    "Geübt": "Esercitata",
+    "Alle Techniken für Flows nach Gürtel": "Tutte le tecniche per i flussi, per cintura",
+    "{n} Techniken für Flows in Power Automate, nach Gürtel geordnet. Jede mit Quizfrage, Erklärung auf Deutsch und Link zum ganzen Tipp.": "{n} tecniche per i flussi in Power Automate, ordinate per cintura. Ognuna con domanda del quiz, spiegazione in italiano e link al tip completo.",
+    "Live-Kurs Power Automate": "Corso live Power Automate",
+    "Lieber mit Begleitung weiter? Der {link} der Power Platform Academy läuft über vier Wochen. ": "Preferisci proseguire con affiancamento? Il {link} della Power Platform Academy (in tedesco) dura quattro settimane. ",
+    "Die nächsten Termine stehen noch nicht fest, auf der Kursseite setzt du dich auf die Warteliste.": "Le prossime date non sono ancora fissate, sulla pagina del corso ti metti in lista d'attesa.",
+    "Quizfrage": "Domanda del quiz",
+    "Auflösung": "Soluzione",
+    "Worum es geht": "Di cosa si tratta",
+    "Der Ausdruck aus dem Tipp": "L'espressione dal tip",
+    "Kopieren": "Copia",
+    "Wann einsetzen, wann nicht": "Quando usarla, quando no",
+    "Einsetzen": "Usala",
+    "Lieber nicht": "Meglio di no",
+    "Häufigster Fehler": "Errore più frequente",
+    "Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow.": "Questa tecnica usa connettori standard. I diritti di utilizzo di Microsoft 365 coprono i connettori standard. Controlla i diritti per l'intero flusso.",
+    "Für Premium-Connectoren oder -Funktionen brauchst du passende Nutzungsrechte, etwa aus Power Automate Premium, Process, Power Apps oder Dynamics 365. Prüfe vorhandene Lizenzen im Lizenz-Check.": "Per connettori o funzioni premium servono diritti di utilizzo adeguati, ad esempio da Power Automate Premium, Process, Power Apps o Dynamics 365. Controlla le licenze esistenti nella verifica della licenza.",
+    "Beleg bei Microsoft Learn": "Fonte su Microsoft Learn",
+    "Für deinen ganzen Flow": "Per tutto il tuo flusso",
+    "Lizenz-Check": "Verifica della licenza",
+    "Ganzer Tipp": "Tip completo",
+    "Ganzer Tipp mit Screenshots auf powerplatformtip.com": "Tip completo con screenshot su powerplatformtip.com",
+    ", auf Englisch": ", in inglese",
+    "Als geübt markieren": "Segna come esercitata",
+    "Teilen": "Condividi",
+    "Quizfrage für alle, die Flows bauen": "Domanda del quiz per chi crea flussi",
+    "Auflösung mit Erklärung im {name}": "Soluzione con spiegazione nel {name}",
+    "Als Quizfrage auf LinkedIn teilen": "Condividi come domanda del quiz su LinkedIn",
+    "Text kopieren": "Copia il testo",
+    "{name}: Fehler in Frage {nr}": "{name}: errore nella domanda {nr}",
+    "Frage": "Domanda",
+    "Was stimmt nicht?": "Cosa non va?",
+    "Fehler in dieser Frage melden": "Segnala un errore in questa domanda",
+    "Kurzadresse": "Indirizzo breve",
+    "Quelle": "Fonte",
+    "Weitere Techniken": "Altre tecniche",
+    "Zurück": "Indietro",
+    "Zur Technik-Wand": "Alla parete delle tecniche",
+    "Nächste Technik": "Tecnica successiva",
+    "{titel}: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.": "{titel}: domanda del quiz con soluzione, breve spiegazione in italiano e link al tip completo su powerplatformtip.com.",
+    "Vorherige Technik": "Tecnica precedente",
+    "Geschafft": "Fatto",
+    "Zur Gürtelprüfung": "All'esame di cintura",
+    "Die Frage von heute": "La domanda di oggi",
+    "Jeden Tag eine Frage aus dem Dojo, für alle am selben Tag dieselbe. Antwort antippen, die Auflösung steht auf der Technik-Seite.": "Ogni giorno una domanda dal dojo, uguale per tutti nello stesso giorno. Tocca una risposta, la soluzione è sulla pagina della tecnica.",
+    "Jeden Montag eine Frage im Kalender": "Ogni lunedì una domanda nel calendario",
+    "Jeden Tag eine Quizfrage zu Flows in Power Automate, mit Auflösung und Erklärung.": "Ogni giorno una domanda di quiz sui flussi in Power Automate, con soluzione e spiegazione.",
+    "Gürtelprüfung": "Esame di cintura",
+    "Selbsttest": "Autotest",
+    "{n} Fragen von Weiss bis Schwarz, zwei je Gürtel. Die letzten zwei sind die Meisterprüfung. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.": "{n} domande dalla cintura bianca alla nera, due per cintura. Le ultime due sono l'esame da maestro. Due risposte sbagliate in una cintura terminano l'esame.",
+    "Prüfung starten": "Avvia l'esame",
+    "Die Fragen kommen zufällig aus {n} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.": "Le domande sono estratte a caso da {n} domande sui tip. Il tuo risultato resta nel tuo browser.",
+    "Die Gürtelprüfung braucht JavaScript. Alle Fragen mit Auflösung findest du auch auf den": "L'esame di cintura richiede JavaScript. Trovi tutte le domande con soluzione anche nelle",
+    "Technik-Seiten": "pagine delle tecniche",
+    "So wird gewertet": "Come si valuta",
+    "<li>Ein Gürtel gilt als bestanden, wenn alle seine Fragen richtig sind.</li><li>Dein Ergebnis ist der höchste Gürtel, bis zu dem alle Gürtel bestanden sind.</li><li>Zwei falsche Antworten im selben Gürtel beenden die Prüfung.</li><li>Die Fragen zum schwarzen Gürtel bilden die Meisterprüfung. Du erreichst sie, wenn du alle Gürtel bis Braun bestanden hast.</li><li>Nach jeder Frage führt ein Link zum Tipp, aus dem sie stammt.</li>": "<li>Una cintura è superata quando tutte le sue domande sono corrette.</li><li>Il tuo risultato è la cintura più alta fino alla quale hai superato tutte le cinture.</li><li>Due risposte sbagliate nella stessa cintura terminano l'esame.</li><li>Le domande della cintura nera formano l'esame da maestro. Ci arrivi se hai superato tutte le cinture fino a quella marrone.</li><li>Dopo ogni domanda un link porta al tip da cui proviene.</li>",
+    "Gürtelprüfung für Flows": "Esame di cintura per i flussi",
+    "Welcher Flow-Gürtel bist du? {n} Fragen zu Flows in Power Automate, von Weiss bis Schwarz, mit Ergebnisbild zum Teilen.": "Che cintura di flussi sei? {n} domande sui flussi in Power Automate, dalla cintura bianca alla nera, con immagine del risultato da condividere.",
+    "Lizenz-Check, Stand {stand}": "Verifica della licenza, aggiornata al {stand}",
+    "Vier Fragen zu deinem Flow als erste Einschätzung. Welche Lizenz hast du schon? Auch vorhandene Nutzungsrechte und der Kontext des Flows zählen.": "Quattro domande sul tuo flusso per una prima valutazione. Quale licenza hai già? Contano anche i diritti di utilizzo esistenti e il contesto del flusso.",
+    "Keine Lizenzberatung. Lizenzen und Preise können sich seit der Veröffentlichung geändert haben. Die Angaben sind ein Anhaltspunkt.": "Nessuna consulenza sulle licenze. Licenze e prezzi possono essere cambiati dopo la pubblicazione. Le indicazioni sono solo un punto di riferimento.",
+    "Beantworte die vier Fragen, das Urteil erscheint hier.": "Rispondi alle quattro domande, il verdetto compare qui.",
+    "Worauf das Urteil beruht": "Su cosa si basa il verdetto",
+    "<li>Microsoft-365-Lizenzen mit Power-Automate-Nutzungsrechten decken nur Standard-Connectoren ab.</li>\n<li>Premium-Connectoren oder -Funktionen brauchen je nach Fall Power Automate Premium (pro Person), Power Automate Process (pro Flow oder Flow-Gruppe; ersetzt den Per-Flow-Plan, der am 1. Februar 2024 aus der Preisliste genommen wurde), Power Apps Premium oder Nutzungsrechte aus anderen Lizenzen.</li>\n<li>Bei Flows in einer Power App oder im Kontext einer Dynamics-365-Anwendung können entsprechende Nutzungsrechte reichen. Prüfe den konkreten Kontext und die vorhandenen Lizenzen.</li>\n<li>Nutzt ein Flow Premium-Connectoren, braucht bei automatisierten und geplanten Flows der Besitzer die Lizenz, bei Instant Flows jede Person, die ihn startet. Statt aller Personen lässt sich der Flow mit Process lizenzieren.</li>\n<li>Welche Lizenz hast du schon? Prüfe die Zuweisung in deinem Tenant oder frage deine IT oder deinen Microsoft-Partner.</li>": "<li>Le licenze Microsoft 365 con diritti di utilizzo di Power Automate coprono solo i connettori standard.</li>\n<li>Connettori o funzioni premium richiedono, a seconda del caso, Power Automate Premium (per persona), Power Automate Process (per flusso o gruppo di flussi; sostituisce il piano per flusso, ritirato dal listino il 1° febbraio 2024), Power Apps Premium o diritti di utilizzo di altre licenze.</li>\n<li>Per i flussi in una Power App o nel contesto di un'applicazione Dynamics 365 possono bastare i relativi diritti di utilizzo. Controlla il contesto concreto e le licenze esistenti.</li>\n<li>Se un flusso usa connettori premium, nei flussi automatizzati e pianificati serve la licenza al proprietario, nei flussi istantanei a ogni persona che lo avvia. Invece di licenziare tutte le persone, puoi licenziare il flusso con Process.</li>\n<li>Quale licenza hai già? Controlla l'assegnazione nel tuo tenant oppure chiedi al tuo reparto IT o al tuo partner Microsoft.</li>",
+    "Quellen, Stand {stand}": "Fonti, aggiornate al {stand}",
+    "Microsoft Dataverse, Connector-Referenz": "Microsoft Dataverse, riferimento del connettore",
+    "HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz": "HTTP with Microsoft Entra ID (preauthorized), riferimento del connettore",
+    "Diese Techniken laufen mit Standard": "Queste tecniche funzionano con Standard",
+    "Reicht meine Lizenz für Flows? Lizenz-Check": "La mia licenza basta per i flussi? Verifica della licenza",
+    "Lizenz-Check für deinen Flow: erste Einschätzung zu Standard, Premium und vorhandenen Nutzungsrechten. Mit Quellen bei Microsoft Learn.": "Verifica della licenza per il tuo flusso: prima valutazione su standard, premium e diritti di utilizzo esistenti. Con fonti su Microsoft Learn.",
+    "Gürtelweg": "Percorso delle cinture",
+    "Stufe {nr} von 7": "Livello {nr} di 7",
+    "Das kannst du mit diesem Gürtel": "Cosa puoi fare con questa cintura",
+    "Gürtel geschafft? Gib dein Wissen weiter und werde Sensei im Dojo Mentoring: 3 Monate, gratis, 1:1. <a href=\"{mentoring}\" rel=\"noopener\">Zum Dojo Mentoring</a>.": "Cintura ottenuta? Trasmetti ciò che sai e diventa Sensei nel Dojo Mentoring: 3 mesi, gratis, 1:1. <a href=\"{mentoring}\" rel=\"noopener\">Vai al Dojo Mentoring</a>.",
+    "offen": "da fare",
+    "Dein Fortschritt": "I tuoi progressi",
+    "Mein Dojo": "Il mio dojo",
+    "Hier siehst du, welche Techniken du geübt hast und welchen Gürtel du in der Prüfung erreicht hast. Alles bleibt in deinem Browser.": "Qui vedi quali tecniche hai esercitato e quale cintura hai raggiunto nell'esame. Tutto resta nel tuo browser.",
+    "Daten löschen": "Elimina i dati",
+    "Dein Fortschritt liegt nur im lokalen Speicher dieses Browsers. Mit einem Klick ist er weg.": "I tuoi progressi sono salvati solo nella memoria locale di questo browser. Con un clic spariscono.",
+    "Alles löschen": "Elimina tutto",
+    "Dein Fortschritt im Power Platform Dojo: geübte Techniken und dein Gürtel aus der Prüfung.": "I tuoi progressi nel Power Platform Dojo: tecniche esercitate e la tua cintura dell'esame.",
+    "Über": "Info",
+    "<h1 id=\"h1\">Über das Dojo</h1>\n<p class=\"lead\">Das Power Platform Dojo für Power Automate prüft und erklärt auf Deutsch, was die Tipps auf powerplatformtip.com zeigen. Eine Frage nach der anderen, vom ersten Test bis zur Architektur.</p>\n<h2>Wie es funktioniert</h2>\n<ul class=\"arrow-list\">\n<li>Jede Technik beginnt mit einer Quizfrage. Erst raten, dann lesen: So bleibt mehr hängen als beim reinen Lesen.</li>\n<li>Die Auflösung erklärt jede Antwort, auch die falschen. Danach folgen eine kurze Erklärung, der Ausdruck aus dem Tipp, wann du die Technik einsetzt und der häufigste Fehler.</li>\n<li>Die Schritt-für-Schritt-Anleitung mit Screenshots steht im Tipp auf powerplatformtip.com, auf Englisch. Jede Technik verlinkt dorthin.</li>\n<li>Die Gürtelprüfung ordnet dich ein. Der Lizenz-Check gibt eine erste Einschätzung und verweist auf die Prüfung vorhandener Nutzungsrechte.</li>\n</ul>\n<h2>Woher die Inhalte kommen</h2>\n<p>Alle Fragen stammen aus den wöchentlichen Tipps von Marcel Lehmann auf powerplatformtip.com. Ins Dojo kommen nur Tipps, die nach der letzten Durchsicht aktuell sind. Lizenzangaben und Zahlen zu Limits stützen sich auf Microsoft Learn, mit Link auf jeder Seite. Ist eine Erklärung hier falsch, wird zuerst der Tipp korrigiert und danach das Dojo.</p>\n<p>Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Anfrage enthält den Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Einzelheiten stehen im <a href=\"../datenschutz/\">Datenschutz</a>.</p>\n<h2>Was das Dojo nicht ist</h2>\n<p>Kein Angebot von Microsoft, keine Zertifizierung und keine Lizenzberatung im Einzelfall. Die Gürtel sind eine Lernhilfe dieser Seite.</p>\n<h2>Power Platform Dojo</h2>\n<p>Power Platform Dojo findest du auf <a href=\"{dojo}\" rel=\"noopener\">powerplatformdojo.com</a>. Weitere Disziplinen: <a href=\"{copilot}\" rel=\"noopener\">copilot.ninja</a>, <a href=\"{lernpfade}\" rel=\"noopener\">Lernpfade</a> und <a href=\"{mentoring}\" rel=\"noopener\">Dojo Mentoring</a>.</p>\n<h2>Fehler gefunden?</h2>\n<p>Auf jeder Technik-Seite gibt es den Link «Fehler in dieser Frage melden». Oder schreib direkt an <a href=\"mailto:{kontakt}\">{kontakt}</a>.</p>\n<p>Wer Flows mit Begleitung lernen will: ": "<h1 id=\"h1\">Informazioni sul Dojo</h1>\n<p class=\"lead\">Il Power Platform Dojo per Power Automate verifica e spiega in italiano ciò che mostrano i tip su powerplatformtip.com. Una domanda dopo l'altra, dal primo test all'architettura.</p>\n<h2>Come funziona</h2>\n<ul class=\"arrow-list\">\n<li>Ogni tecnica inizia con una domanda del quiz. Prima indovina, poi leggi: resta in mente più che con la sola lettura.</li>\n<li>La soluzione spiega ogni risposta, anche quelle sbagliate. Seguono una breve spiegazione, l'espressione dal tip, quando usare la tecnica e l'errore più frequente.</li>\n<li>La guida passo per passo con screenshot è nel tip su powerplatformtip.com, in inglese. Ogni tecnica rimanda lì.</li>\n<li>L'esame di cintura ti colloca. La verifica della licenza dà una prima valutazione e rimanda al controllo dei diritti di utilizzo esistenti.</li>\n</ul>\n<h2>Da dove vengono i contenuti</h2>\n<p>Tutte le domande vengono dai tip settimanali di Marcel Lehmann su powerplatformtip.com. Nel Dojo entrano solo tip che sono attuali dopo l'ultima revisione. Le indicazioni sulle licenze e i numeri sui limiti si basano su Microsoft Learn, con link su ogni pagina. Se una spiegazione qui è sbagliata, si corregge prima il tip e poi il Dojo.</p>\n<p>Le visite vengono contate senza cookie, si salvano solo totali senza riferimento a persone. La richiesta contiene il percorso e il titolo della pagina, ma nessuna stringa di query e nessun frammento. I dettagli sono nella <a href=\"../datenschutz/\">privacy</a>.</p>\n<h2>Cosa non è il Dojo</h2>\n<p>Non è un'offerta di Microsoft, non è una certificazione e non è una consulenza sulle licenze per il singolo caso. Le cinture sono un aiuto per imparare di questo sito.</p>\n<h2>Power Platform Dojo</h2>\n<p>Power Platform Dojo lo trovi su <a href=\"{dojo}\" rel=\"noopener\">powerplatformdojo.com</a>. Altre discipline: <a href=\"{copilot}\" rel=\"noopener\">copilot.ninja</a>, <a href=\"{lernpfade}\" rel=\"noopener\">percorsi di apprendimento</a> e <a href=\"{mentoring}\" rel=\"noopener\">Dojo Mentoring</a>.</p>\n<h2>Hai trovato un errore?</h2>\n<p>Su ogni pagina di tecnica c'è il link «Segnala un errore in questa domanda». Oppure scrivi direttamente a <a href=\"mailto:{kontakt}\">{kontakt}</a>.</p>\n<p>Chi vuole imparare i flussi con affiancamento: ",
+    "Über das Dojo": "Informazioni sul Dojo",
+    "Wie das Power Platform Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.": "Come funziona il Power Platform Dojo, da dove vengono le domande e cosa il sito non è.",
+    "Impressum": "Note legali",
+    "<h1 id=\"h1\">Impressum</h1>\n<h2>Anbieter</h2>\n<address>Marcel Lehmann<br>Einzelfirma (Handelsname KMUpower)<br>Weidstrasse 1<br>8320 Fehraltorf<br>Schweiz</address>\n<p>UID: CHE-296.591.945, im UID-Register erfasst seit 01.01.2023 (<a href=\"https://www.uid.admin.ch/Detail.aspx?uid_id=CHE-296.591.945\" rel=\"noopener\">Eintrag im UID-Register</a>).</p>\n<p>E-Mail: <a href=\"mailto:{kontakt}\">{kontakt}</a><br>Web: <a href=\"https://kmupower.com/\" rel=\"noopener\">kmupower.com</a></p>\n<h2>Verantwortlich für den Inhalt</h2>\n<p>Marcel Lehmann.</p>\n<h2>Unabhängigkeit und Marken</h2>\n<p>Microsoft und die Produktnamen der Power Platform (z. B. Power Apps, Power Automate, Copilot Studio) sind Marken der Microsoft-Unternehmensgruppe. Dies ist eine unabhängige Website von Marcel Lehmann. Sie wird nicht von Microsoft betrieben, gesponsert oder unterstützt.</p>\n<h2>Haftung</h2>\n<p>Ich prüfe die Inhalte sorgfältig und gegen die Microsoft-Dokumentation. Für Richtigkeit, Vollständigkeit und Aktualität übernehme ich keine Gewähr. Microsoft ändert Funktionen und Bedingungen. Verbindlich sind die verlinkten Quellen. Die Seite ersetzt keine Lizenz- oder Rechtsberatung.</p>\n<h2>Links</h2>\n<p>Diese Seite verlinkt auf Websites Dritter. Für deren Inhalte sind die jeweiligen Anbieter verantwortlich.</p>\n<h2>Urheberrecht</h2>\n<p>Die Ausdrücke aus den Tipps darfst du in deiner Organisation frei verwenden. Die übrigen Texte, Fragen und die Gestaltung dieser Seite darfst du nicht ohne Rücksprache als eigene veröffentlichen.</p>": "<h1 id=\"h1\">Note legali</h1>\n<h2>Gestore</h2>\n<address>Marcel Lehmann<br>Ditta individuale (ragione sociale KMUpower)<br>Weidstrasse 1<br>8320 Fehraltorf<br>Svizzera</address>\n<p>IDI: CHE-296.591.945, iscritta nel registro IDI dal 01.01.2023 (<a href=\"https://www.uid.admin.ch/Detail.aspx?uid_id=CHE-296.591.945\" rel=\"noopener\">voce nel registro IDI</a>).</p>\n<p>E-mail: <a href=\"mailto:{kontakt}\">{kontakt}</a><br>Web: <a href=\"https://kmupower.com/\" rel=\"noopener\">kmupower.com</a></p>\n<h2>Responsabile dei contenuti</h2>\n<p>Marcel Lehmann.</p>\n<h2>Indipendenza e marchi</h2>\n<p>Microsoft e i nomi dei prodotti della Power Platform (ad es. Power Apps, Power Automate, Copilot Studio) sono marchi del gruppo di aziende Microsoft. Questo è un sito indipendente di Marcel Lehmann. Non è gestito, sponsorizzato né sostenuto da Microsoft.</p>\n<h2>Responsabilità</h2>\n<p>Verifico i contenuti con attenzione e li confronto con la documentazione Microsoft. Non garantisco correttezza, completezza e attualità. Microsoft cambia funzioni e condizioni. Fanno fede le fonti collegate. Il sito non sostituisce una consulenza sulle licenze o legale.</p>\n<h2>Link</h2>\n<p>Questo sito rimanda a siti di terzi. Dei loro contenuti sono responsabili i rispettivi gestori.</p>\n<h2>Diritto d'autore</h2>\n<p>Le espressioni dei tip puoi usarle liberamente nella tua organizzazione. Gli altri testi, le domande e la grafica di questo sito non puoi pubblicarli come tuoi senza previo accordo.</p>",
+    "Impressum des Flow Dojo: Angaben zu Marcel Lehmann, KMUpower, Kontakt und Hinweise zur Website.": "Note legali del Flow Dojo: dati su Marcel Lehmann, KMUpower, contatto e avvertenze sul sito.",
+    "Datenschutz": "Privacy",
+    "Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Fortschritt und Sprachwahl bleiben im Browser.": "Le visite vengono contate senza cookie, si salvano solo totali senza riferimento a persone. Progressi e scelta della lingua restano nel browser.",
+    "Seite nicht gefunden": "Pagina non trovata",
+    "Diese Seite gibt es nicht.": "Questa pagina non esiste.",
+    "Fehler 404": "Errore 404",
+    "Der Link ist falsch oder die Seite ist umgezogen. Eine Kurzadresse wie {kurz} führt direkt zur Technik zu diesem Tipp.": "Il link è sbagliato o la pagina è stata spostata. Un indirizzo breve come {kurz} porta direttamente alla tecnica di quel tip.",
+    "Zu den Techniken": "Alle tecniche",
+    "Zur Startseite": "Alla home page",
+    "Zur Technik": "Alla tecnica",
+    "Unabhängige Website, keine Verbindung zu Microsoft.": "Sito indipendente, nessun legame con Microsoft.",
+    "Artikel auf powerplatformtip.com": "Articolo su powerplatformtip.com",
+    "Richtig": "Esatto",
+    "eine Frage": "una domanda",
+    "Zehn Minuten, eine Frage zu Flows. Die Technik des Tages steht unter {url}": "Dieci minuti, una domanda sui flussi. La tecnica del giorno è su {url}",
+    "Startseite": "Home",
+    "Fassung auf Deutsch": "Versione in italiano",
+    "Selbsttest von Weiss bis Schwarz mit Meisterprüfung": "autotest dalla cintura bianca alla nera con esame da maestro",
+    "Reicht die Lizenz aus Microsoft 365?": "la licenza di Microsoft 365 basta?",
+    "nach Gürtel geordnet": "ordinate per cintura",
+    "Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Details: ": "Le visite vengono contate senza cookie, si salvano solo totali senza riferimento a persone. La richiesta di conteggio contiene percorso e titolo della pagina, ma nessuna stringa di query e nessun frammento. Dettagli: ",
+    "Grundlage": "Base",
+    "Weiter zum {g}": "Continua con {g}",
+    "{n} Technik": "{n} tecnica",
+    "{n} Techniken": "{n} tecniche",
+    "{n} Frage": "{n} domanda",
+    "{n} Fragen": "{n} domande",
+    "{tk} mit eigener Seite, {fr} in der Gürtelprüfung.": "{tk} con pagina propria, {fr} nell'esame di cintura.",
+    "{tk} mit eigener Seite, {fr} in der Meisterprüfung.": "{tk} con pagina propria, {fr} nell'esame da maestro."
+  },
+  "js": {
+    "Hellmodus": "Modalità chiara",
+    "Dunkelmodus": "Modalità scura",
+    "Kopiert.": "Copiato.",
+    "Kopiert": "Copiato",
+    "Tipp": "Tip",
+    "Richtig.": "Esatto.",
+    "Nicht ganz. Richtig ist ": "Non proprio. La risposta corretta è ",
+    "Geübt": "Esercitata",
+    "geübt am ": "esercitata il ",
+    "offen": "da fare",
+    "Geübt, Markierung entfernen": "Esercitata, rimuovi il segno",
+    "Als geübt markieren": "Segna come esercitata",
+    "Dein Browser erlaubt kein Speichern. Der Stand bleibt nur bis zum Neuladen.": "Il tuo browser non consente di salvare. Lo stato resta solo fino al ricaricamento.",
+    "Gespeichert in deinem Browser. Dein Stand steht unter Mein Dojo.": "Salvato nel tuo browser. I tuoi progressi sono sotto Il mio dojo.",
+    "Markierung entfernt.": "Segno rimosso.",
+    " von ": " su ",
+    " Techniken": " tecniche",
+    "Dein Gürtel aus der Prüfung: ": "La tua cintura dall'esame: ",
+    "Du hast die Gürtelprüfung noch nicht gemacht.": "Non hai ancora svolto l'esame di cintura.",
+    "Geübt: ": "Esercitate: ",
+    " Techniken. Alles bleibt in deinem Browser.": " tecniche. Tutto resta nel tuo browser.",
+    "Gelöscht. Dein Browser speichert für diese Seite nichts mehr.": "Eliminato. Il tuo browser non salva più nulla per questo sito.",
+    "Du hast die Gürtelprüfung noch nicht gemacht. Geübt: 0 von ": "Non hai ancora svolto l'esame di cintura. Esercitate: 0 su ",
+    " Techniken.": " tecniche.",
+    "Die Fragen liessen sich nicht laden. Lade die Seite neu oder versuche es später.": "Impossibile caricare le domande. Ricarica la pagina o riprova più tardi.",
+    "Frage ": "Domanda ",
+    ", Meisterprüfung": ", esame da maestro",
+    "Nicht ganz. Richtig ist: ": "Non proprio. La risposta corretta è: ",
+    "Zur Technik: ": "Alla tecnica: ",
+    "Zum Tipp: ": "Al tip: ",
+    "Zwei falsche Antworten im {g}. Die Prüfung endet hier.": "Due risposte sbagliate per {g}. L'esame termina qui.",
+    "Zum Ergebnis": "Al risultato",
+    "Nächste Frage": "Domanda successiva",
+    "nicht geprüft": "non valutato",
+    "bestanden": "superata",
+    " richtig": " corrette",
+    "Ich habe in der Flow-Gürtelprüfung des Power Platform Dojo für Power Automate {g} geschafft.": "Nell'esame di cintura dei flussi del Power Platform Dojo per Power Automate ho ottenuto {g}.",
+    "Schaffst du {g}?": "Riesci a ottenere {g}?",
+    "Schaffst du das auch?": "Ce la fai anche tu?",
+    "Dein Ergebnis": "Il tuo risultato",
+    ", Prüfung beendet": ", esame terminato",
+    "Noch kein Gürtel": "Ancora nessuna cintura",
+    "Das kannst du: ": "Cosa sai fare: ",
+    "Starte mit dem weissen Gürtel: Flows testen, Ein- und Ausgaben lesen, Datumswerte formatieren.": "Inizia con la cintura bianca: testare i flussi, leggere input e output, formattare i valori di data.",
+    "Als Nächstes lernst du": "Cosa imparare dopo",
+    "Zum {g}": "Verso {g}",
+    "Hol dir einen Sensei, 1:1 und gratis": "Trova un Sensei, 1:1 e gratis",
+    "Im Dojo Mentoring begleitet dich ein Sensei 1:1 über 3 Monate, gratis. Du wählst Thema, Sprache, Niveau und Zeitfenster, danach wird dir fair ein passender Sensei zugeteilt.": "Nel Dojo Mentoring un Sensei ti affianca 1:1 per 3 mesi, gratis. Scegli tema, lingua, livello e fascia oraria, poi ti viene assegnato in modo equo un Sensei adatto.",
+    "Mentoring anfragen": "Richiedi il mentoring",
+    "Werde Sensei": "Diventa Sensei",
+    "Du kannst anderen helfen. Im Dojo Mentoring begleitest du als Sensei jemanden 1:1 über 3 Monate, gratis. Zeit und Anzahl Mentees bestimmst du selbst, pausieren kannst du jederzeit.": "Puoi aiutare altri. Nel Dojo Mentoring affianchi come Sensei una persona 1:1 per 3 mesi, gratis. Tempo e numero di mentee li decidi tu, puoi fare una pausa in qualsiasi momento.",
+    "Als Sensei anmelden": "Iscriviti come Sensei",
+    "Teilen": "Condividi",
+    "Ergebnisbild: ": "Immagine del risultato: ",
+    " im Power Platform Dojo, Power Automate": " nel Power Platform Dojo, Power Automate",
+    "Bild herunterladen": "Scarica l'immagine",
+    "Auf LinkedIn teilen": "Condividi su LinkedIn",
+    "Text kopieren": "Copia il testo",
+    "Jeden Montag eine Frage im Kalender": "Ogni lunedì una domanda nel calendario",
+    "Prüfung neu starten": "Riavvia l'esame",
+    "Grundlagen mit Begleitung lernen? Der ": "Vuoi imparare le basi con affiancamento? Il ",
+    "Error Handling und Scopes mit Begleitung vertiefen? Der ": "Vuoi approfondire la gestione degli errori e gli ambiti con affiancamento? Il ",
+    " der Power Platform Academy läuft über vier Wochen. ": " della Power Platform Academy (in tedesco) dura quattro settimane. ",
+    "POWER PLATFORM DOJO  ·  POWER AUTOMATE  ·  GÜRTELPRÜFUNG": "POWER PLATFORM DOJO  ·  POWER AUTOMATE  ·  ESAME DI CINTURA",
+    "Wahrscheinlich Premium nötig für: ": "Probabilmente serve Premium per: ",
+    "Beantworte die vier Fragen, das Urteil erscheint hier.": "Rispondi alle quattro domande, il verdetto compare qui.",
+    "Noch 1 Frage offen. Bisher kein Premium-Merkmal.": "Ancora 1 domanda aperta. Finora nessuna caratteristica premium.",
+    "Noch {n} Fragen offen. Bisher kein Premium-Merkmal.": "Ancora {n} domande aperte. Finora nessuna caratteristica premium.",
+    "Bisher kein Premium-Merkmal. Ob eine Microsoft-365-Lizenz reicht, hängt noch an diesen Punkten:": "Finora nessuna caratteristica premium. Se basta una licenza Microsoft 365 dipende ancora da questi punti:",
+    "Kein Premium-Merkmal gewählt. Dafür reicht in der Regel eine Microsoft-365-Lizenz mit Power-Automate-Nutzungsrechten.": "Nessuna caratteristica premium scelta. Di norma basta una licenza Microsoft 365 con diritti di utilizzo di Power Automate.",
+    "Welche Lizenz hast du schon? Je nach Kontext können Power Automate Premium (pro Person), Process (pro Flow oder Flow-Gruppe, ersetzt den früheren Per-Flow-Plan), Power Apps Premium oder Nutzungsrechte etwa aus Dynamics 365 passen.": "Quale licenza hai già? A seconda del contesto possono andare bene Power Automate Premium (per persona), Process (per flusso o gruppo di flussi, sostituisce il precedente piano per flusso), Power Apps Premium o diritti di utilizzo, ad esempio da Dynamics 365.",
+    "Prüfe die Nutzungsrechte in deinem Tenant oder frage deine IT oder deinen Microsoft-Partner.": "Controlla i diritti di utilizzo nel tuo tenant oppure chiedi al tuo reparto IT o al tuo partner Microsoft."
+  },
+  "guertel": [
+    {
+      "nr": 1,
+      "name": "Cintura bianca",
+      "kurz": "Bianca",
+      "akk": "la cintura bianca",
+      "leitwort": "Utilizzo",
+      "kannst_du": "Testi i flussi, leggi input e output di ogni azione e formatti le date direttamente.",
+      "erreicht_satz": "Conosci la finestra di progettazione e testi prima di attivare un flusso."
+    },
+    {
+      "nr": 2,
+      "name": "Cintura gialla",
+      "kurz": "Gialla",
+      "akk": "la cintura gialla",
+      "leitwort": "Espressioni",
+      "kannst_du": "Scrivi le prime espressioni, filtri e ripulisci le matrici e testi i cicli con pochi elementi.",
+      "erreicht_satz": "Scrivi espressioni che reggono anche con dati incompleti."
+    },
+    {
+      "nr": 3,
+      "name": "Cintura arancione",
+      "kurz": "Arancione",
+      "akk": "la cintura arancione",
+      "leitwort": "Controllo",
+      "kannst_du": "Intercetti gli errori con gli ambiti, gestisci le esecuzioni simultanee e restituisci dati a Power Apps.",
+      "erreicht_satz": "Controlli cosa succede in caso di errori, attese ed esecuzioni parallele."
+    },
+    {
+      "nr": 4,
+      "name": "Cintura verde",
+      "kurz": "Verde",
+      "akk": "la cintura verde",
+      "leitwort": "Protezione",
+      "kannst_du": "Elabori in sicurezza dati disordinati, acceleri i cicli e chiami direttamente SharePoint e Microsoft Graph.",
+      "erreicht_satz": "Costruisci flussi che funzionano con dati reali e disordinati."
+    },
+    {
+      "nr": 5,
+      "name": "Cintura blu",
+      "kurz": "Blu",
+      "akk": "la cintura blu",
+      "leitwort": "Leggere gli errori",
+      "kannst_du": "Leggi il vero messaggio di errore di un ambito e lo inoltri a persone o agenti.",
+      "erreicht_satz": "Sai perché un'esecuzione fallisce senza aprire la cronologia esecuzioni."
+    },
+    {
+      "nr": 6,
+      "name": "Cintura marrone",
+      "kurz": "Marrone",
+      "akk": "la cintura marrone",
+      "leitwort": "Architettura",
+      "kannst_du": "Mantieni in vita i processi per settimane, anche oltre il limite di durata di un flusso.",
+      "erreicht_satz": "Costruisci processi che vivono più a lungo di una singola esecuzione di un flusso."
+    },
+    {
+      "nr": 7,
+      "name": "Cintura nera",
+      "kurz": "Nera",
+      "akk": "la cintura nera",
+      "leitwort": "Flussi per agenti",
+      "kannst_du": "Costruisci flussi come strumenti per gli agenti di Copilot Studio: un flusso per più operazioni, e gli errori tornano come risposta leggibile.",
+      "erreicht_satz": "I tuoi flussi danno agli agenti risposte affidabili, anche quando una chiamata fallisce."
+    }
+  ],
+  "techniken": {
+    "3": {
+      "quiz": {
+        "frage": "Quando passi alla modalità avanzata in Filtra matrice?",
+        "antworten": [
+          "Quando in un filtro servono più condizioni",
+          "Quando vuoi ordinare gli elementi per un campo",
+          "Quando il filtro deve girare direttamente in SharePoint"
+        ],
+        "erklaerungen": [
+          "Esatto. In modalità avanzata scrivi la condizione come espressione e colleghi più controlli con and() o or().",
+          "Sbagliato. Filtra matrice esclude elementi ma non li ordina. L'ordine resta lo stesso.",
+          "Sbagliato. Filtra matrice lavora nel flusso su una matrice già caricata, non nell'origine dati."
+        ]
+      },
+      "lernziel": "Filtri le matrici con espressioni personalizzate in modalità avanzata.",
+      "thema": "Matrici e filtri",
+      "titel": "Filtra matrice in modalità avanzata",
+      "kurztext": "L'azione Filtra matrice offre in modalità semplice una condizione con campo, operatore e valore. In molti casi non basta: due condizioni contemporaneamente, un collegamento con «o» oppure un confronto con un valore calcolato. Invece di mettere più filtri uno dopo l'altro, passi alla modalità avanzata. Lì scrivi la condizione come espressione e combini funzioni come equals(), contains(), and() e or(). Puoi includere anche i contenuti dinamici di azioni precedenti. Così resti con una sola azione e il flusso diventa più chiaro. I confronti semplici la finestra di progettazione continua a mostrarli come campi.",
+      "wann_ja": "Quando vuoi combinare più condizioni o confrontare con valori calcolati.",
+      "wann_nein": "Quando basta un solo confronto. In quel caso la modalità semplice resta più leggibile.",
+      "fehler": "Mettere più azioni Filtra matrice una dopo l'altra, anche se un'espressione con and() fa lo stesso in un solo passaggio.",
+      "suchbegriffe": [
+        "Filtra matrice",
+        "Filter array",
+        "modalità avanzata",
+        "Advanced Mode",
+        "and",
+        "or",
+        "contains",
+        "condizione"
+      ]
+    },
+    "4": {
+      "quiz": {
+        "frage": "A cosa serve un'estensione JSON viewer quando lavori con i flussi?",
+        "antworten": [
+          "Mostrare il JSON grezzo in modo leggibile e strutturato",
+          "Riparare automaticamente i flussi difettosi",
+          "Convertire il JSON in connettori premium"
+        ],
+        "erklaerungen": [
+          "L'estensione indenta il JSON grezzo di un'esecuzione e permette di espandere e comprimere i nodi. Così trovi la proprietà che ti serve nell'espressione.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Leggi più in fretta il JSON delle esecuzioni e trovi le proprietà giuste.",
+      "thema": "Strumenti"
+    },
+    "5": {
+      "quiz": {
+        "frage": "Dove va un indirizzo e-mail che nel flusso non cambia mai?",
+        "antworten": [
+          "In una variabile, così il flusso è più veloce",
+          "In un'azione Componi o in Analizza JSON",
+          "In una Condizione dedicata all'inizio del flusso"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Una variabile non rende il flusso più veloce. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale.",
+          "Esatto. I valori fissi non hanno bisogno di una variabile. Componi o Analizza JSON mostrano chiaramente che il valore non cambia.",
+          "Sbagliato. Una Condizione verifica qualcosa e crea un ramo. Non serve a conservare un valore fisso."
+        ]
+      },
+      "lernziel": "Usi le variabili solo per valori che cambiano davvero.",
+      "thema": "Struttura e leggibilità dei flussi",
+      "titel": "Valori fissi in Componi invece che in variabili",
+      "kurztext": "Molti flussi iniziano con una serie di «Inizializza variabile» per valori che non cambiano mai: un indirizzo e-mail, l'URL di un elenco, una soglia. Per i valori fissi non serve una variabile. Un singolo valore va in un'azione Componi. Più valori collegati li salvi come oggetto JSON in Analizza JSON e ci accedi con un'espressione come body('Parse_JSON')?['settingName']. Il flusso diventa più corto e tutti vedono subito che questi valori sono fissi. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ciascuno: Controllo della concorrenza, Grado di parallelismo 1. Le variabili le tieni per valori che cambiano davvero durante l'esecuzione, come un totale progressivo.",
+      "wann_ja": "Per impostazioni che restano uguali durante l'esecuzione: indirizzi, URL, soglie, testi.",
+      "wann_nein": "Per valori che cambiano durante l'esecuzione, come una somma o una matrice che riempi passo dopo passo. Per questo esistono le variabili.",
+      "fehler": "Segnare come obbligatori nello schema di Analizza JSON campi che a volte mancano. Allora l'esecuzione fallisce nella verifica dello schema.",
+      "suchbegriffe": [
+        "variabili",
+        "Componi",
+        "Compose",
+        "Analizza JSON",
+        "Parse JSON",
+        "Inizializza variabile",
+        "Initialize variable",
+        "impostazioni",
+        "configurazione"
+      ]
+    },
+    "6": {
+      "quiz": {
+        "frage": "Cosa restituisce l'espressione utcNow('dd.MM.yyyy')?",
+        "antworten": [
+          "L'ora attuale nell'ora locale svizzera",
+          "Un errore, perché manca formatDateTime()",
+          "La data di oggi nel formato giorno.mese.anno"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Il formato non contiene ore e utcNow() calcola sempre in UTC, non in ora svizzera.",
+          "Sbagliato. L'espressione è valida. utcNow() formatta da sola, la seconda funzione non serve.",
+          "Esatto. utcNow() accetta il formato come parametro, per questo formatDateTime() non serve."
+        ]
+      },
+      "lernziel": "Formatti la data attuale con una sola espressione.",
+      "thema": "Data e ora",
+      "titel": "Formattare la data direttamente in utcNow()",
+      "kurztext": "Molti flussi hanno bisogno della data di oggi in un formato preciso, per esempio per il nome di un file o per un oggetto. Spesso nel flusso c'è formatDateTime(utcNow(), 'Formato'). Si può fare più breve: utcNow() accetta il formato direttamente come parametro. utcNow('dd.MM.yyyy') restituisce la data nel formato svizzero, senza una seconda funzione. Il risultato è lo stesso, ma l'espressione è più corta e più facile da leggere. Fai attenzione alle maiuscole e minuscole nel formato: MM indica il mese, mm il minuto. E utcNow() restituisce sempre l'ora in UTC. Se ti serve l'ora locale svizzera, la converti con convertTimeZone().",
+      "wann_ja": "Quando ti serve il momento attuale in un formato fisso, per esempio per nomi di file, oggetti di e-mail o log.",
+      "wann_nein": "Quando formatti una data di un elenco o di un'e-mail. In quel caso formatDateTime() con il valore dell'origine resta la scelta giusta.",
+      "fehler": "Scrivere mm invece di MM nel formato. Allora nella data compare il minuto al posto del mese.",
+      "suchbegriffe": [
+        "utcNow",
+        "formatDateTime",
+        "data",
+        "formato",
+        "fuso orario",
+        "convertTimeZone"
+      ]
+    },
+    "7": {
+      "quiz": {
+        "frage": "Cosa restituisce union() con due volte la stessa matrice?",
+        "antworten": [
+          "La matrice senza elementi duplicati",
+          "La matrice ripetuta due volte di seguito",
+          "Solo gli elementi che compaiono due volte"
+        ],
+        "erklaerungen": [
+          "Esatto. union() restituisce ogni valore una sola volta, quindi union(x, x) agisce come DISTINCT.",
+          "Sbagliato. Sarebbe un semplice accodamento. union() invece rimuove i duplicati.",
+          "Sbagliato. union() unisce le matrici e tiene ogni valore una volta, anche quelli che compaiono una sola volta."
+        ]
+      },
+      "lernziel": "Crei valori univoci con union() e poi filtri con Filtra matrice.",
+      "thema": "Matrici e filtri",
+      "titel": "Rimuovere i duplicati con union()",
+      "kurztext": "Quando unisci dati di due origini, nel risultato finiscono presto elementi duplicati. La funzione union() collega due matrici e restituisce ogni valore una sola volta. Ne segue un trucco semplice: se passi due volte la stessa matrice, cioè union(x, x), ottieni la matrice senza duplicati, come DISTINCT in un database. Funziona con valori semplici e con oggetti. Poi restringi il risultato con Filtra matrice agli elementi che ti servono. Due passaggi integrati sostituiscono così un ciclo con condizione e variabile. Se vuoi mantenere i duplicati, union() è la scelta sbagliata.",
+      "wann_ja": "Quando unisci elenchi o vuoi ripulire una matrice prima di continuare.",
+      "wann_nein": "Quando gli elementi doppi devono restare, per esempio per prenotazioni con lo stesso importo.",
+      "fehler": "Rimuovere i duplicati in un ciclo con condizione e variabile, anche se basta una sola espressione.",
+      "suchbegriffe": [
+        "union",
+        "duplicati",
+        "DISTINCT",
+        "matrice",
+        "Filtra matrice",
+        "Filter array",
+        "unire"
+      ]
+    },
+    "8": {
+      "quiz": {
+        "frage": "Su cosa si basa un backup automatico di flussi e app?",
+        "antworten": [
+          "Esportazioni pianificate della soluzione come file ZIP",
+          "Una copia di ogni flusso nella casella di posta del proprietario",
+          "Gli output delle azioni nella cronologia esecuzioni"
+        ],
+        "erklaerungen": [
+          "Flussi e app in una soluzione (solution-aware) si possono esportare. Un flusso pianificato li esporta regolarmente come ZIP in SharePoint, OneDrive o Azure Blob. In caso di emergenza reimporti questo file.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Configuri un backup ricorrente delle tue soluzioni.",
+      "thema": "ALM e governance"
+    },
+    "9": {
+      "quiz": {
+        "frage": "Cosa ti mostra un'esecuzione di test che altrimenti non vedi nella finestra di progettazione?",
+        "antworten": [
+          "Il numero di licenze che il tuo flusso consuma",
+          "Input e output di ogni singola azione",
+          "Un elenco di tutte le persone che usano il flusso"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Un'esecuzione di test verifica la logica del flusso. Non dice nulla sulla licenza.",
+          "Esatto. Nell'esecuzione di test apri ogni azione e vedi quali valori ha ricevuto e restituito.",
+          "Sbagliato. L'esecuzione di test mostra il percorso dei dati nel flusso, non un elenco di utenti."
+        ]
+      },
+      "lernziel": "Testi un flusso prima di attivarlo e leggi i risultati di ogni azione.",
+      "thema": "Test e debug",
+      "titel": "Testare il flusso prima di metterlo in produzione",
+      "kurztext": "Un nuovo flusso raramente funziona senza errori al primo tentativo. Con «Test» nella finestra di progettazione lo avvii manualmente, inserisci tu stesso gli input del trigger e segui l'esecuzione passo dopo passo. Per ogni azione vedi cosa entra e cosa esce. Così trovi il passaggio in cui un valore resta vuoto o un'espressione restituisce qualcosa di diverso da quanto pensavi, prima che dati reali attraversino il flusso. Poi correggi e testi di nuovo, quante volte vuoi. Solo quando input e output sono giusti attivi il flusso per l'uso quotidiano.",
+      "wann_ja": "Prima di ogni attivazione e dopo ogni modifica a trigger, espressioni o condizioni.",
+      "wann_nein": "Quando un'azione invia e-mail reali o modifica dati che non vuoi toccare. In quel caso dalle prima un risultato statico.",
+      "fehler": "Guardare solo il segno di spunta verde senza aprire gli output. «Riuscito» non significa che il valore sia giusto.",
+      "suchbegriffe": [
+        "Test",
+        "esecuzione di test",
+        "debug",
+        "cronologia esecuzioni",
+        "Run history",
+        "Input",
+        "Output"
+      ]
+    },
+    "11": {
+      "quiz": {
+        "frage": "Cosa sostituisci prima di incollare un'espressione di Filtra matrice come condizione del trigger?",
+        "antworten": [
+          "Il carattere @ iniziale con un carattere #",
+          "Niente, l'espressione funziona senza modifiche",
+          "item() con triggerOutputs() o triggerBody()"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Filtra matrice controlla ogni elemento con item(), che nel trigger non esiste. Nella condizione del trigger fai quindi riferimento a triggerOutputs() o triggerBody()."
+        ]
+      },
+      "lernziel": "Scrivi condizioni del trigger in modo che il flusso parta solo con gli eventi giusti.",
+      "thema": "Trigger"
+    },
+    "12": {
+      "quiz": {
+        "frage": "Cosa controlli dopo aver incollato azioni copiate?",
+        "antworten": [
+          "Le licenze di tutte le persone che usano il flusso",
+          "Se l'ambito è stato eliminato nel vecchio flusso",
+          "Connessioni e contenuti dinamici del vecchio flusso"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Copiare e incollare non cambia nulla alla licenza. Contano le impostazioni delle azioni incollate.",
+          "Sbagliato. La copia lascia invariato l'ambito nel vecchio flusso. Entrambi i flussi mantengono le loro azioni.",
+          "Esatto. Le connessioni non vengono copiate e i riferimenti alle azioni del vecchio flusso nel nuovo non si risolvono."
+        ]
+      },
+      "lernziel": "Usi gli ambiti come blocchi riutilizzabili.",
+      "thema": "Struttura e leggibilità dei flussi",
+      "titel": "Copiare e riutilizzare le azioni",
+      "kurztext": "Certi passaggi li costruisci in quasi ogni flusso: una notifica, una voce di log, un messaggio di errore. Nella nuova finestra di progettazione scegli l'azione e poi «Copia azione». Nel punto desiderato scegli «Incolla un'azione». Nella finestra di progettazione classica si fa dal menu dell'azione o dell'ambito: «Copia negli Appunti». Nella selezione delle azioni inserisci il blocco tramite «Appunti». Dopo controlla connessioni e contenuti dinamici. I riferimenti al trigger o ad azioni precedenti del vecchio flusso devi assegnarli di nuovo. Gli Appunti sono legati al tuo browser. Per blocchi che usa un intero team è più adatto un flusso figlio (Child Flow).",
+      "wann_ja": "Per blocchi che costruisci spesso tu stesso, come un messaggio di errore o una voce di log.",
+      "wann_nein": "Per blocchi che devono usare più persone. Gli Appunti sono legati al tuo browser, per questo serve un flusso figlio (Child Flow).",
+      "fehler": "Eseguire il blocco incollato senza reimpostare i riferimenti al trigger e alle azioni precedenti.",
+      "suchbegriffe": [
+        "ambito",
+        "Scope",
+        "Appunti",
+        "clipboard",
+        "copiare",
+        "incollare",
+        "modello",
+        "flusso figlio",
+        "Child Flow"
+      ]
+    },
+    "15": {
+      "quiz": {
+        "frage": "Dove inserisci Termina perché Finally prima faccia pulizia?",
+        "antworten": [
+          "Nell'ambito Catch, subito prima del messaggio di errore",
+          "Dopo Finally, solo se Catch è stato eseguito",
+          "Prima di Try, con lo stato Failed"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Un Termina nell'ambito Catch chiude subito il flusso e l'ambito Finally viene saltato.",
+          "Esatto. Finally pulisce per primo. Poi una Condizione lascia passare Termina con stato Failed solo se Catch è stato eseguito.",
+          "Sbagliato. Termina chiuderebbe il flusso prima che Try esegua le sue azioni."
+        ]
+      },
+      "lernziel": "Inserisci lo schema Try-Catch-Finally in ogni flusso importante.",
+      "thema": "Gestione degli errori",
+      "titel": "Intercettare gli errori con Try, Catch e Finally",
+      "kurztext": "Nell'ambito Try c'è la logica vera e propria. Per Catch attivi in Configura esecuzione dopo solo «non è riuscito» e «è scaduto» di Try. Lì registri l'errore, per esempio con result('Try'), oppure avvisi qualcuno. Finally segue Catch, con tutti e quattro gli stati in Esecuzione dopo, e fa pulizia. Dopo Finally c'è una Condizione con tutti e quattro gli stati di Finally in Esecuzione dopo. Verifica se Catch è stato eseguito, cioè se non era «ignorato». Solo nel ramo di errore segue Termina con stato Failed, dopo Finally. Il ramo di successo termina senza Termina. Un Termina nell'ambito Catch chiude subito il flusso e l'ambito Finally viene saltato. Così prima si gestisce l'errore, poi si fa pulizia e per ultimo l'esecuzione termina come fallita.",
+      "wann_ja": "In ogni flusso il cui guasto qualcuno deve notare: interfacce, file, record in Dataverse.",
+      "wann_nein": "In un breve flusso di test che avvii tu stesso e la cui esecuzione segui direttamente.",
+      "fehler": "Mettere Termina in Catch. Inseriscilo dopo Finally, in un ramo che viene eseguito solo se Catch è stato eseguito.",
+      "suchbegriffe": [
+        "Try",
+        "Catch",
+        "Finally",
+        "ambito",
+        "Scope",
+        "Configura esecuzione dopo",
+        "Configure run after",
+        "gestione degli errori",
+        "Termina",
+        "Terminate"
+      ]
+    },
+    "17": {
+      "quiz": {
+        "frage": "Cosa ti dà «Format data by example» o il suo successore, l'assistente espressioni di Copilot?",
+        "antworten": [
+          "Un modello già pronto per l'intero flusso",
+          "Una nuova origine dati con valori formattati",
+          "L'espressione giusta per il tuo esempio"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Indichi un esempio o descrivi il formato desiderato, e Power Automate genera l'espressione, per esempio formatDateTime() per una data. La funzione classica è stata sostituita dall'assistente espressioni di Copilot."
+        ]
+      },
+      "lernziel": "Ti fai generare le espressioni di formattazione invece di scriverle a memoria.",
+      "thema": "Espressioni"
+    },
+    "18": {
+      "quiz": {
+        "frage": "Come salvi un file protetto da password preso dal web?",
+        "antworten": [
+          "Richiesta HTTP autenticata, poi «Crea file»",
+          "Solo «Carica file da URL» con l'URL del file",
+          "«Recupera contenuto file» direttamente con l'indirizzo web"
+        ],
+        "erklaerungen": [
+          "Con una richiesta HTTP autenticata ottieni il contenuto protetto e lo salvi con «Crea file». «Carica file da URL» va bene solo per i file pubblici.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Scarichi i file dal web con l'azione giusta, a seconda di come sono protetti.",
+      "thema": "File e documenti"
+    },
+    "20": {
+      "quiz": {
+        "frage": "Cosa deve essere un flusso perché tu possa cambiarne direttamente il proprietario?",
+        "antworten": [
+          "Disattivato",
+          "Solution-aware",
+          "Un flusso figlio"
+        ],
+        "erklaerungen": [
+          "",
+          "Se il flusso si trova in una soluzione, cambi il proprietario direttamente in Dettagli. Connessioni e cronologia esecuzioni restano invariate.",
+          ""
+        ]
+      },
+      "lernziel": "Passi i flussi a un nuovo proprietario in modo pulito.",
+      "thema": "ALM e governance"
+    },
+    "21": {
+      "quiz": {
+        "frage": "In un flusso avviato manualmente, dove trovi l'indirizzo e-mail della persona che lo ha avviato?",
+        "antworten": [
+          "In outputs('Compose')?['body']",
+          "In triggerOutputs()?['headers']",
+          "In workflow()?['run']?['name']"
+        ],
+        "erklaerungen": [
+          "",
+          "Il trigger manuale restituisce nelle sue intestazioni, tra l'altro, x-ms-user-email. Leggi l'indirizzo con triggerOutputs()?['headers']?['x-ms-user-email'].",
+          ""
+        ]
+      },
+      "lernziel": "Usi le intestazioni del trigger per avvisare la persona che ha avviato il flusso.",
+      "thema": "Trigger"
+    },
+    "24": {
+      "quiz": {
+        "frage": "Come unisci due matrici mantenendo i duplicati?",
+        "antworten": [
+          "join(), concat() e poi split()",
+          "union() con entrambe le matrici come parametri",
+          "intersection() con entrambe le matrici"
+        ],
+        "erklaerungen": [
+          "union() rimuove le voci duplicate. Con join() le due matrici diventano testo, concat() le accoda e split() ne ricava di nuovo una matrice. Vale per valori semplici. Se i valori contengono il separatore o sono oggetti, usa Applica a ciascuno con Aggiungi a variabile di matrice.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Scegli tra union() e il modello join-concat-split a seconda del caso.",
+      "thema": "Matrici e filtri"
+    },
+    "27": {
+      "quiz": {
+        "frage": "Come rendi visibile l'opzione di sovrascrittura in «Crea file» nella finestra di progettazione classica?",
+        "antworten": [
+          "Disattivare «Allow chunking» nelle impostazioni",
+          "Attivare il controllo della concorrenza nelle impostazioni",
+          "Rimuovere prima il file esistente con «Elimina file»"
+        ],
+        "erklaerungen": [
+          "Nella finestra di progettazione classica «Crea file» nasconde l'opzione di sovrascrittura finché il chunking è attivo. Senza chunking compare, ma i file molto grandi possono fallire. Nella nuova finestra di progettazione non c'è nessuna opzione: Crea file sostituisce da solo un file esistente.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Sovrascrivi i file esistenti in SharePoint senza giri inutili.",
+      "thema": "File e documenti"
+    },
+    "29": {
+      "quiz": {
+        "frage": "A cosa serve aggiungere una proprietà Description nello schema di Analizza JSON?",
+        "antworten": [
+          "Controlla in modo più rigoroso i dati in ingresso rispetto allo schema",
+          "Compare nel contenuto dinamico e distingue i campi con lo stesso nome",
+          "Rende automaticamente il campo obbligatorio nello schema"
+        ],
+        "erklaerungen": [
+          "",
+          "La Description compare nel contenuto dinamico sotto il campo. Così distingui due campi che hanno lo stesso nome.",
+          ""
+        ]
+      },
+      "lernziel": "Rendi chiaramente leggibile il contenuto dinamico di Analizza JSON.",
+      "thema": "JSON e conversione dei dati"
+    },
+    "33": {
+      "quiz": {
+        "frage": "Cosa restituisce coalesce()?",
+        "antworten": [
+          "L'ultimo valore dell'elenco dei parametri",
+          "Il primo valore che non è null",
+          "Tutti i valori uniti in un unico testo"
+        ],
+        "erklaerungen": [
+          "",
+          "coalesce() controlla i valori in ordine e restituisce il primo che non è null. In Power Automate una stringa vuota non conta come null.",
+          ""
+        ]
+      },
+      "lernziel": "Sostituisci i controlli annidati sui valori vuoti con coalesce().",
+      "thema": "Espressioni"
+    },
+    "34": {
+      "quiz": {
+        "frage": "Qual è un vantaggio del trigger PowerApps V2?",
+        "antworten": [
+          "Funziona senza alcuna connessione alle origini dati",
+          "Avvia il flusso automaticamente secondo una pianificazione",
+          "Input tipizzati come testo, numero o sì/no"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Per ogni input definisci il tipo, per esempio testo, numero, sì/no, e-mail o data. Titolo e descrizione degli input compaiono in Power Apps quando chiami Run()."
+        ]
+      },
+      "lernziel": "Usi il trigger PowerApps V2 con input chiari per i flussi delle app.",
+      "thema": "Power Apps e flussi"
+    },
+    "35": {
+      "quiz": {
+        "frage": "Cosa succede alle nuove attivazioni con parallelismo 1?",
+        "antworten": [
+          "Vengono scartate subito e non eseguite mai",
+          "Aspettano che l'esecuzione in corso sia terminata",
+          "Girano comunque in parallelo, solo più lentamente"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Le nuove attivazioni aspettano. Che ognuna diventi un'esecuzione è incerto solo quando la coda è piena.",
+          "Esatto. Le altre esecuzioni restano in coda e partono una dopo l'altra.",
+          "Sbagliato. Con parallelismo 1 viene eseguita una sola esecuzione alla volta, tutte le altre aspettano."
+        ]
+      },
+      "lernziel": "Eviti i conflitti facendo eseguire le istanze del flusso una dopo l'altra.",
+      "thema": "Cicli e parallelismo",
+      "titel": "Esecuzioni del flusso una dopo l'altra invece che insieme",
+      "kurztext": "Un flusso automatizzato parte a ogni nuovo evento, anche se l'esecuzione precedente non è ancora finita. Se due esecuzioni elaborano contemporaneamente gli stessi dati, nascono duplicati oppure un'esecuzione sovrascrive l'altra. Nelle impostazioni del trigger attivi il controllo della concorrenza e imposti il grado di parallelismo su 1. Allora gira sempre una sola esecuzione, le altre aspettano e partono in ordine. Costa tempo, ma protegge i dati. La coda è limitata: al massimo {limit:trigger_warteschlange} esecuzioni possono restare in attesa. Rifletti quindi prima di attivarlo: il controllo della concorrenza sul trigger si può disattivare solo eliminando il trigger e inserendolo di nuovo.",
+      "wann_ja": "Quando più esecuzioni elaborano lo stesso elenco, lo stesso file o lo stesso contatore.",
+      "wann_nein": "Quando arrivano moltissimi eventi in poco tempo. La coda è limitata e un'esecuzione alla volta diventa un collo di bottiglia.",
+      "fehler": "Attivare il controllo della concorrenza sul trigger per provare. Si torna indietro solo eliminando il trigger e inserendolo di nuovo.",
+      "suchbegriffe": [
+        "Controllo della concorrenza",
+        "Concurrency Control",
+        "parallelismo",
+        "trigger",
+        "duplicati",
+        "coda",
+        "una dopo l'altra"
+      ]
+    },
+    "36": {
+      "quiz": {
+        "frage": "Cosa fa il risultato statico su un'azione?",
+        "antworten": [
+          "Viene eseguita, ma il suo output non viene salvato",
+          "Viene eseguita solo se avvii il flusso manualmente",
+          "Fornisce un output fisso senza essere eseguita"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Con il risultato statico l'azione non viene eseguita affatto. Proprio per questo non modifica dati.",
+          "Sbagliato. Il risultato statico non dipende dal tipo di avvio. Vale a ogni esecuzione, finché è attivo.",
+          "Esatto. L'azione risulta riuscita e passa avanti il risultato impostato, senza essere davvero eseguita."
+        ]
+      },
+      "lernziel": "Testi i flussi con risultati simulati, senza modificare dati reali.",
+      "thema": "Test e debug",
+      "titel": "Testare con il risultato statico senza modificare dati",
+      "kurztext": "Alcune azioni durante il test non vuoi eseguirle davvero: inviano e-mail, modificano record o durano a lungo. Con il risultato statico assegni a un'azione un risultato fisso. Nella nuova finestra di progettazione attivi «Risultato statico» nell'area «Test» dell'azione e imposti i valori di output. Nella finestra di progettazione classica apri il menu «Impostazioni» dell'azione e lì «Risultato statico». All'esecuzione successiva l'azione risulta riuscita senza essere eseguita. I passaggi seguenti continuano con l'output che hai impostato. Così testi con calma la logica successiva e con casi diversi, senza toccare dati reali. Prima dell'uso in produzione disattivi di nuovo il risultato statico.",
+      "wann_ja": "Per azioni che inviano e-mail, modificano dati o durano a lungo, mentre testi i passaggi successivi.",
+      "wann_nein": "In produzione. Se il risultato statico resta attivo, il flusso non esegue mai davvero l'azione.",
+      "fehler": "Lasciare il risultato statico attivo dopo il test. Il flusso segnala successo, anche se l'azione non è mai stata eseguita.",
+      "suchbegriffe": [
+        "risultato statico",
+        "Static Result",
+        "Static result",
+        "test",
+        "mock",
+        "simulazione"
+      ]
+    },
+    "37": {
+      "quiz": {
+        "frage": "Cosa ottieni se trasformi una tabella nome/valore in un oggetto JSON?",
+        "antworten": [
+          "Accesso diretto a ogni voce tramite il suo nome",
+          "Una traduzione automatica di tutti i valori della tabella",
+          "Una query più veloce sulla lista SharePoint nel flusso"
+        ],
+        "erklaerungen": [
+          "Invece di scorrere la tabella e confrontare ogni nome, dopo Analizza JSON leggi il valore direttamente tramite il suo nome.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Rendi le tabelle di configurazione direttamente indirizzabili nel flusso.",
+      "thema": "JSON e conversione dei dati"
+    },
+    "39": {
+      "quiz": {
+        "frage": "Dove usi FetchXML in un flusso?",
+        "antworten": [
+          "Nel parametro Fetch Xml Query dell'azione «Elenca righe»",
+          "Nella condizione del trigger di Dataverse",
+          "In un'azione FetchXML dedicata del connettore Dataverse"
+        ],
+        "erklaerungen": [
+          "«Elenca righe» accetta FetchXML direttamente nel parametro Fetch Xml Query, non serve un'azione dedicata. Così puoi fare join tra tabelle collegate (link-entity), cosa che il filtro OData non permette. Le aggregazioni come somme o raggruppamenti, secondo Microsoft Learn, «Elenca righe» con FetchXML non le supporta.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Fai eseguire a Dataverse sul server query complesse con join.",
+      "thema": "Lettura e scrittura dei dati"
+    },
+    "40": {
+      "quiz": {
+        "frage": "Quale passaggio rimuove alla fine tutte le app e i flussi raccolti in una volta sola?",
+        "antworten": [
+          "Esportare come soluzione gestita",
+          "Eliminare la soluzione non gestita",
+          "Eliminare la soluzione gestita importata"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Dopo la reimportazione, app e flussi appartengono alla soluzione gestita. Se la elimini, tutti i componenti contenuti scompaiono in un solo passaggio, senza ulteriori conferme."
+        ]
+      },
+      "lernziel": "Ripulisci in blocco app e flussi di test.",
+      "thema": "ALM e governance"
+    },
+    "45": {
+      "quiz": {
+        "frage": "A cosa servono gli ambiti secondo il consiglio?",
+        "antworten": [
+          "Ad avviare altri flussi dal flusso in esecuzione",
+          "A raggruppare azioni e isolare gli errori",
+          "A salvare variabili tra più esecuzioni"
+        ],
+        "erklaerungen": [
+          "",
+          "Un ambito riunisce più azioni in un blocco. Se qualcosa fallisce al suo interno, reagisci all'intero blocco, e il blocco puoi copiarlo in altri flussi.",
+          ""
+        ]
+      },
+      "lernziel": "Strutturi i flussi in blocchi leggibili con gli ambiti.",
+      "thema": "Struttura e leggibilità dei flussi"
+    },
+    "47": {
+      "quiz": {
+        "frage": "Cosa succede in un $batch di SharePoint se fallisce un'operazione di un ChangeSet?",
+        "antworten": [
+          "Le altre vengono eseguite comunque, nulla viene annullato",
+          "Tutte le operazioni del ChangeSet vengono annullate",
+          "L'intera chiamata $batch viene rifiutata"
+        ],
+        "erklaerungen": [
+          "Esatto. Il $batch di SharePoint non è transazionale, nemmeno per i ChangeSet con più operazioni: se una fallisce, le altre vengono eseguite lo stesso e non vengono annullate. Controlla quindi la risposta di ogni singola operazione.",
+          "Sbagliato. Sarebbe un «tutto o niente». SharePoint non lo offre, nemmeno per i ChangeSet con più operazioni.",
+          "Sbagliato. La chiamata viene accettata e ogni operazione viene eseguita separatamente. Un errore non ferma le altre."
+        ]
+      },
+      "lernziel": "Elabori grandi quantità di elementi SharePoint con chiamate batch invece di azioni singole.",
+      "thema": "SharePoint REST"
+    },
+    "48": {
+      "quiz": {
+        "frage": "Quale via porta un flusso ai colleghi insieme alle sue dipendenze?",
+        "antworten": [
+          "Inviare uno screenshot",
+          "Impacchettarlo in una soluzione",
+          "Condividere la cronologia esecuzioni"
+        ],
+        "erklaerungen": [
+          "",
+          "Una soluzione riunisce app, flussi, riferimenti connessione e tabelle. Con l'esportazione e l'importazione le dipendenze viaggiano insieme.",
+          ""
+        ]
+      },
+      "lernziel": "Scegli la via giusta per condividere i flussi con altri.",
+      "thema": "ALM e governance"
+    },
+    "49": {
+      "quiz": {
+        "frage": "Quale stato riporta il ciclo Esegui fino a quando Conteggio o Timeout lo terminano?",
+        "antworten": [
+          "TimedOut",
+          "Succeeded",
+          "Cancelled"
+        ],
+        "erklaerungen": [
+          "",
+          "Se il ciclo raggiunge Conteggio o Timeout, riporta comunque Succeeded. Se l'attesa è andata a buon fine, lo verifichi quindi dalla variabile dopo il ciclo.",
+          ""
+        ]
+      },
+      "lernziel": "Costruisci cicli di polling con un ritardo e controlli il risultato nella variabile invece che nello stato del ciclo.",
+      "thema": "Cicli e parallelismo"
+    },
+    "51": {
+      "quiz": {
+        "frage": "A cosa ti serve la panoramica di quale flusso richiama quale?",
+        "antworten": [
+          "A risparmiare licenze per i flussi figlio",
+          "Per l'ordine corretto durante la distribuzione",
+          "A eliminare automaticamente i flussi inutilizzati"
+        ],
+        "erklaerungen": [
+          "",
+          "I flussi figlio devono esistere ed essere attivi nell'ambiente di destinazione prima di attivare il flusso padre. La panoramica ti mostra quest'ordine e quali flussi sono coinvolti da una modifica.",
+          ""
+        ]
+      },
+      "lernziel": "Documenti le dipendenze padre-figlio tra i flussi.",
+      "thema": "ALM e governance"
+    },
+    "58": {
+      "quiz": {
+        "frage": "Quando usi le azioni HTTP in Power Automate?",
+        "antworten": [
+          "Solo per testare i flussi prima della produzione",
+          "Per ogni query su una lista SharePoint",
+          "Quando nessun connettore già pronto copre l'API"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Le azioni HTTP richiamano qualsiasi API REST, anche Microsoft Graph. Ti servono dove i connettori già pronti non bastano."
+        ]
+      },
+      "lernziel": "Richiami API senza connettore già pronto tramite HTTP.",
+      "thema": "HTTP e Microsoft Graph"
+    },
+    "59": {
+      "quiz": {
+        "frage": "Cosa restituisce item()?['id'] se la proprietà id manca?",
+        "antworten": [
+          "Il valore null e il flusso continua",
+          "Un errore che interrompe subito l'azione",
+          "Il valore dell'elemento precedente nella matrice"
+        ],
+        "erklaerungen": [
+          "Esatto. Il punto interrogativo trasforma una proprietà mancante in null, invece di far fallire l'azione.",
+          "Sbagliato. Succede senza punto interrogativo: item()['id'] si interrompe con InvalidTemplate.",
+          "Sbagliato. L'espressione accede solo all'elemento corrente e non prende valori da altri elementi."
+        ]
+      },
+      "lernziel": "Accedi in modo robusto a proprietà che possono mancare.",
+      "thema": "Espressioni",
+      "titel": "Accesso sicuro con l'operatore ?",
+      "kurztext": "I dati di elenchi, e-mail o interfacce sono raramente completi. Un'espressione come item()['id'] parte dal presupposto che la proprietà id ci sia sempre. Se manca in un solo elemento, l'azione si interrompe con l'errore InvalidTemplate. Con un punto interrogativo prima della parentesi, cioè item()?['id'], in questo caso l'espressione restituisce null invece di un errore. Il punto interrogativo protegge solo la parentesi davanti a cui si trova. Nei percorsi annidati lo metti quindi prima di ogni livello. Poi decidi cosa deve succedere con null, per esempio con coalesce() e un valore sostitutivo oppure con una Condizione. Contro un tipo di dati sbagliato il punto interrogativo non aiuta.",
+      "wann_ja": "Per ogni accesso a dati i cui campi non sono sempre presenti, come risposte di interfacce o colonne facoltative di un elenco.",
+      "wann_nein": "Quando un campo mancante è un vero errore che vuoi vedere. In quel caso l'azione deve fallire.",
+      "fehler": "Mettere il punto interrogativo solo al primo livello. triggerBody()?['missing']['x'] fallisce comunque se missing manca.",
+      "suchbegriffe": [
+        "punto interrogativo",
+        "null",
+        "InvalidTemplate",
+        "coalesce",
+        "contenuto dinamico",
+        "item()"
+      ]
+    },
+    "61": {
+      "quiz": {
+        "frage": "Quale problema risolvono le variabili di ambiente?",
+        "antworten": [
+          "Licenze mancanti per i connettori premium",
+          "Valori scritti nel codice che cambiano da un ambiente all'altro",
+          "Cicli troppo lenti con grandi quantità di dati"
+        ],
+        "erklaerungen": [
+          "",
+          "Le variabili di ambiente sostituiscono i valori scritti nel codice. Così la stessa soluzione passa da Dev a Test e a Prod senza modifiche.",
+          ""
+        ]
+      },
+      "lernziel": "Costruisci flussi con variabili di ambiente per il trasporto tra ambienti.",
+      "thema": "ALM e governance"
+    },
+    "65": {
+      "quiz": {
+        "frage": "Cosa richiede PowerDocu come input?",
+        "antworten": [
+          "Un'esportazione del tuo flusso, della tua app o della tua soluzione",
+          "Accesso in lettura alla cronologia esecuzioni dell'ambiente",
+          "Una licenza premium per ogni flusso documentato"
+        ],
+        "erklaerungen": [
+          "PowerDocu è uno strumento gratuito per Windows. Esporti flusso, app o soluzione e ottieni una documentazione in Word, Markdown o HTML.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Documenti i flussi in automatico invece che con screenshot.",
+      "thema": "Strumenti"
+    },
+    "71": {
+      "quiz": {
+        "frage": "Con cosa trasformi una matrice in un oggetto, secondo il consiglio?",
+        "antworten": [
+          "Un ciclo Applica a ciascuno con Aggiungi a matrice",
+          "L'azione «Crea tabella HTML» con colonne personalizzate",
+          "Un'azione Seleziona e espressioni replace() annidate"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Seleziona crea le coppie chiave-valore, e le espressioni replace() annidate rimuovono parentesi e separatori finché resta un solo oggetto. Un ciclo non serve."
+        ]
+      },
+      "lernziel": "Trasformi le matrici in oggetti indirizzabili senza cicli.",
+      "thema": "JSON e conversione dei dati"
+    },
+    "75": {
+      "quiz": {
+        "frage": "Quando non devi aumentare il parallelismo di un ciclo?",
+        "antworten": [
+          "Quando deve elaborare più di cento elementi",
+          "Quando incrementa una variabile o la aggiunge a una matrice",
+          "Quando legge elementi da un elenco SharePoint"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Proprio con molti elementi indipendenti il parallelismo fa risparmiare più tempo.",
+          "Esatto. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale.",
+          "Sbagliato. L'origine non conta. Conta se le iterazioni dipendono l'una dall'altra."
+        ]
+      },
+      "lernziel": "Acceleri i cicli in parallelo e riconosci quando questo falsa i risultati.",
+      "thema": "Cicli e parallelismo",
+      "titel": "Eseguire Applica a ciascuno in parallelo",
+      "kurztext": "Applica a ciascuno elabora gli elementi di default uno dopo l'altro. Se le iterazioni sono indipendenti, nelle impostazioni puoi attivare il controllo della concorrenza e portare il grado di parallelismo fino a un massimo di {limit:schleife_parallel_max}. Allora più iterazioni girano contemporaneamente. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ciascuno: Controllo della concorrenza, Grado di parallelismo 1. Riguarda per esempio contatori o matrici a cui aggiungi valori. Per iterazioni indipendenti puoi costruire invece il risultato con Seleziona o union(). Controlla anche l'ordine: se un passaggio ha bisogno del risultato del precedente, il parallelismo non va bene. Troppe chiamate simultanee allo stesso connettore possono inoltre causare limitazioni.",
+      "wann_ja": "Quando ogni iterazione sta a sé, per esempio un'e-mail per persona o un aggiornamento per record.",
+      "wann_nein": "Quando le iterazioni modificano la stessa variabile o l'ordine è importante.",
+      "fehler": "Attivare il parallelismo e continuare a usare dentro «Incrementa variabile». Il contatore poi non è più corretto.",
+      "suchbegriffe": [
+        "Applica a ciascuno",
+        "Apply to each",
+        "Controllo della concorrenza",
+        "Concurrency Control",
+        "parallelismo",
+        "ciclo",
+        "prestazioni",
+        "limitazione"
+      ]
+    },
+    "83": {
+      "quiz": {
+        "frage": "Come tieni separate per argomento le notifiche dei flussi in Teams?",
+        "antworten": [
+          "Il bot Flow pubblica in chat di gruppo, una per argomento",
+          "Tutti i messaggi finiscono in una lista SharePoint",
+          "Tutto va nella chat personale con il bot Flow"
+        ],
+        "erklaerungen": [
+          "Crei una chat di gruppo per argomento e fai pubblicare lì il bot Flow con «Pubblica messaggio in una chat o in un canale». Così non tutti i messaggi finiscono nella stessa chat.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Ordini per argomento le notifiche dei flussi in Teams.",
+      "thema": "E-mail, Teams e calendario"
+    },
+    "89": {
+      "quiz": {
+        "frage": "Dove leggi il JSON di un'azione nella nuova finestra di progettazione?",
+        "antworten": [
+          "Nella scheda Visualizzazione codice dell'azione",
+          "In Appunti, nella selezione delle azioni",
+          "Nella cronologia esecuzioni dell'ultima esecuzione"
+        ],
+        "erklaerungen": [
+          "Esatto. La visualizzazione codice mostra la definizione JSON dell'azione o del trigger scelto. Lì non puoi modificarla. Nella finestra di progettazione classica la funzione si chiama Peek code.",
+          "Sbagliato. Gli Appunti servono a copiare azioni nella finestra di progettazione classica.",
+          "Sbagliato. La cronologia esecuzioni mostra le esecuzioni passate, lì non modifichi la definizione del flusso."
+        ]
+      },
+      "lernziel": "Leggi la definizione di un'azione per trovare prima gli errori.",
+      "thema": "Test e debug",
+      "titel": "Guardare dietro un'azione con la visualizzazione codice",
+      "kurztext": "Nella finestra di progettazione vedi campi, simboli e contenuti dinamici. La definizione JSON ti mostra come queste informazioni sono collegate. Nella nuova finestra di progettazione apri l'azione e scegli «Visualizzazione codice» per leggerne il JSON. Lì non puoi modificarlo. Controlla nomi delle azioni, input ed espressioni. Nella finestra di progettazione classica apri «Peek code» per leggere la definizione di un'azione. Per la definizione dell'intero flusso lì usi l'esportazione. Così riconosci per esempio un'espressione concat() annidata dietro un campo. Aiuta nella ricerca degli errori e nell'apprendimento: leggi come è costruito un passaggio e puoi usare l'espressione nel tuo flusso.",
+      "wann_ja": "Quando un campo restituisce qualcosa di diverso dal previsto e vuoi vedere quale espressione c'è davvero dietro.",
+      "wann_nein": "Quando vuoi solo cambiare il valore di un campo. Per questo il campo di input nella finestra di progettazione è di solito più chiaro.",
+      "fehler": "Controllare solo il campo visibile nella finestra di progettazione. Solo nella visualizzazione codice vedi l'espressione completa con tutte le funzioni.",
+      "suchbegriffe": [
+        "Visualizzazione codice",
+        "Code view",
+        "Peek code",
+        "JSON",
+        "espressione",
+        "debug"
+      ]
+    },
+    "92": {
+      "quiz": {
+        "frage": "Cosa devi considerare con i servizi PDF gratuiti?",
+        "antworten": [
+          "La maggior parte dei connettori è comunque premium",
+          "Funzionano solo con file Word come origine",
+          "In Power Automate non richiedono alcuna connessione"
+        ],
+        "erklaerungen": [
+          "Adobe PDF Services, Encodian, Muhimbi e Cloudmersive offrono quote gratuite. I loro connettori in Power Automate sono però per lo più premium, quindi può servire comunque una licenza premium.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Scegli un servizio PDF adatto a quota e licenza.",
+      "thema": "File e documenti"
+    },
+    "94": {
+      "quiz": {
+        "frage": "Quale file nell'archivio DOCX contiene il testo del documento?",
+        "antworten": [
+          "[Content_Types].xml",
+          "docProps/app.xml",
+          "word/document.xml"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Un file DOCX è un archivio ZIP. Dopo averlo estratto, il testo del documento si trova in word/document.xml."
+        ]
+      },
+      "lernziel": "Estrai il testo dai file Word senza un servizio aggiuntivo.",
+      "thema": "File e documenti"
+    },
+    "95": {
+      "quiz": {
+        "frage": "Dove filtri i dati SharePoint nel modo più efficiente?",
+        "antworten": [
+          "Nella Query filtro di «Recupera elementi»",
+          "In una Condizione per ogni singolo elemento",
+          "Solo dopo il recupero, con un ciclo su tutti"
+        ],
+        "erklaerungen": [
+          "La Filter Query in «Recupera elementi» filtra con OData direttamente in SharePoint. Così il flusso carica solo gli elementi che gli servono, invece di prendere tutto e scremare dopo.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Scrivi filtri OData e carichi solo gli elementi necessari.",
+      "thema": "Lettura e scrittura dei dati"
+    },
+    "96": {
+      "quiz": {
+        "frage": "Con quale azione ottieni il contenuto di una pagina web senza connettore premium?",
+        "antworten": [
+          "«Recupera contenuto file» nel connettore SharePoint",
+          "L'azione HTTP con una chiamata GET",
+          "«Carica file da URL» nel connettore OneDrive"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "«Carica file da URL» salva la pagina come file in OneDrive, poi la leggi come testo con «Recupera contenuto file». Sono entrambe azioni standard, l'azione HTTP sarebbe premium."
+        ]
+      },
+      "lernziel": "Salvi i contenuti web con un'azione standard.",
+      "thema": "File e documenti"
+    },
+    "97": {
+      "quiz": {
+        "frage": "Quanti elementi restituisce «Recupera elementi» di SharePoint per impostazione predefinita, senza Pagination e Top Count?",
+        "antworten": [
+          "256",
+          "5000",
+          "100"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Senza Pagination e senza Top Count, SharePoint restituisce i primi 100 elementi. 256 è il valore predefinito del connettore Excel."
+        ]
+      },
+      "lernziel": "Con la Pagination ottieni tutti gli elementi invece della sola prima pagina.",
+      "thema": "Lettura e scrittura dei dati"
+    },
+    "98": {
+      "quiz": {
+        "frage": "Cosa fanno Secure Inputs e Secure Outputs?",
+        "antworten": [
+          "I dati sensibili vengono nascosti nella cronologia esecuzioni",
+          "I dati vengono inviati cifrati per e-mail al proprietario",
+          "L'azione è più veloce perché si registra meno"
+        ],
+        "erklaerungen": [
+          "Attivi entrambe nelle impostazioni dell'azione. Dopo, la cronologia esecuzioni non mostra più input e output di quell'azione.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Proteggi password e dati personali nei registri delle esecuzioni.",
+      "thema": "Sicurezza e contesto utente"
+    },
+    "99": {
+      "quiz": {
+        "frage": "Come arrivano nel flusso i dati strutturati di ChatGPT?",
+        "antworten": [
+          "Tramite un link con dati codificati nell'URL del trigger",
+          "Come allegato e-mail a una casella che il flusso monitora",
+          "Tramite un file Excel che il flusso legge regolarmente"
+        ],
+        "erklaerungen": [
+          "ChatGPT codifica i dati per l'URL e li accoda all'URL del trigger di un flusso con trigger HTTP. Un clic sul link li invia a Power Automate.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Avvii un flusso tramite un link con i dati di una chat IA.",
+      "thema": "IA e Copilot Studio"
+    },
+    "100": {
+      "quiz": {
+        "frage": "A cosa servono i due ? in outputs('Compose')?[variables('InputValue')]?['Title']?",
+        "antworten": [
+          "Evitano un errore se la chiave è sconosciuta",
+          "Segnano i valori come input facoltativi",
+          "Convertono automaticamente il risultato in testo"
+        ],
+        "erklaerungen": [
+          "Esatto. Se mancano la chiave o il campo, l'espressione restituisce null invece di un errore.",
+          "Sbagliato. Il punto interrogativo non c'entra con gli input. Protegge solo l'accesso a una proprietà.",
+          "Sbagliato. Il punto interrogativo non cambia il tipo. Per il testo serve string()."
+        ]
+      },
+      "lernziel": "Sostituisci le ramificazioni con una ricerca in un oggetto JSON.",
+      "thema": "JSON e conversione dei dati",
+      "titel": "Oggetto JSON invece di Switch",
+      "kurztext": "Uno Switch con una dozzina di casi o condizioni su tre livelli è difficile da leggere, e per ogni nuovo caso cambi la struttura del flusso. Spesso si tratta solo di cercare un valore per una chiave. Per questo salvi in un'azione Componi un oggetto JSON con tutti i casi, per esempio A, B e C, ciascuno con titolo e descrizione. Il valore giusto lo ottieni con un'espressione come outputs('Compose')?[variables('InputValue')]?['Title']. I due punti interrogativi evitano un errore se la chiave o il campo mancano. Con coalesce() imposti un valore sostitutivo per le chiavi sconosciute. I nuovi casi li aggiungi nel JSON, il flusso resta uguale.",
+      "wann_ja": "Quando uno Switch cerca solo valori: stati, testi, indirizzi o impostazioni per ambiente.",
+      "wann_nein": "Quando i casi devono attivare azioni diverse. Allora Switch resta lo strumento giusto.",
+      "fehler": "Non gestire le chiavi sconosciute. Senza coalesce() null prosegue e si nota solo molto più tardi.",
+      "suchbegriffe": [
+        "Switch",
+        "Condizione",
+        "Componi",
+        "Compose",
+        "JSON",
+        "ricerca",
+        "lookup",
+        "coalesce"
+      ]
+    },
+    "102": {
+      "quiz": {
+        "frage": "Quale proprietà tiene nascosto l'elenco degli invitati di un appuntamento in Graph?",
+        "antworten": [
+          "hideAttendees",
+          "isReminderOn",
+          "isOnlineMeeting"
+        ],
+        "erklaerungen": [
+          "Con hideAttendees impostato su true l'elenco degli invitati resta nascosto ai partecipanti. Lo imposti con un PATCH insieme all'elenco attendees aggiornato.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Gestisci i partecipanti di un appuntamento in modo discreto e riservato tramite Graph.",
+      "thema": "HTTP e Microsoft Graph"
+    },
+    "104": {
+      "quiz": {
+        "frage": "Analizza JSON fallisce con «Expected String but got Null». Cosa aiuta?",
+        "antworten": [
+          "Inserire il campo anche nell'elenco required",
+          "Indicare il tipo come elenco con string e null",
+          "Generare lo schema da una nuova risposta di esempio"
+        ],
+        "erklaerungen": [
+          "Sbagliato. required controlla solo se il campo è presente. Non cambia nulla all'errore di tipo con null.",
+          "Esatto. Con [\"string\", \"null\"] lo schema accetta testo e null e la verifica passa.",
+          "Sbagliato. Un nuovo esempio fornisce di nuovo esattamente un tipo per campo. Al prossimo null la verifica fallisce ancora."
+        ]
+      },
+      "lernziel": "Scrivi schemi robusti per API inaffidabili.",
+      "thema": "JSON e conversione dei dati",
+      "titel": "Schema JSON che tollera null",
+      "kurztext": "Analizza JSON verifica ogni risposta rispetto a uno schema. Se generi lo schema da una risposta di esempio, la finestra di progettazione fissa per ogni campo esattamente un tipo, per esempio string. Se più tardi arriva un campo con null, l'azione fallisce con «Invalid type. Expected String but got Null.» La soluzione è un elenco di tipi: \"type\": [\"string\", \"null\"] accetta testo e null. Se un campo a volte manca del tutto, lo togli dall'elenco required. Se può succedere entrambe le cose, fai entrambe. La causa esatta di una verifica fallita si trova negli output dell'azione, nella matrice errors. L'esecuzione stessa segnala solo che la verifica dello schema è fallita.",
+      "wann_ja": "Per risposte di interfacce e moduli in cui i campi possono restare vuoti.",
+      "wann_nein": "Per campi che non devono mai essere vuoti. Lì la verifica dello schema deve fallire e mostrare l'errore.",
+      "fehler": "Leggere solo il messaggio di errore dell'esecuzione. La causa esatta si trova negli output di Analizza JSON, nella matrice errors.",
+      "suchbegriffe": [
+        "Analizza JSON",
+        "Parse JSON",
+        "schema",
+        "null",
+        "required",
+        "Expected String but got Null",
+        "validazione"
+      ]
+    },
+    "105": {
+      "quiz": {
+        "frage": "Come legge l'app la variabile di ambiente senza premium?",
+        "antworten": [
+          "Direttamente dalla tabella Dataverse con una formula",
+          "Con un flusso della soluzione, chiamato in OnStart",
+          "Non la legge, l'app richiede sempre premium"
+        ],
+        "erklaerungen": [
+          "",
+          "Un flusso nella soluzione legge la variabile di ambiente e la restituisce all'app. L'app lo chiama in OnStart e salva il valore in una variabile.",
+          ""
+        ]
+      },
+      "lernziel": "Rendi disponibili i valori di configurazione della soluzione anche alle app standard.",
+      "thema": "Power Apps e flussi"
+    },
+    "106": {
+      "quiz": {
+        "frage": "Cosa fa da segnaposto in Word per i dati del flusso?",
+        "antworten": [
+          "Quick Parts",
+          "Commenti",
+          "Intestazioni"
+        ],
+        "erklaerungen": [
+          "In Word inserisci con Quick Parts una proprietà del documento come segnaposto, che un flusso standard riempie con i dati. Per questo non serve premium.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Crei documenti Word in automatico con strumenti standard.",
+      "thema": "File e documenti"
+    },
+    "109": {
+      "quiz": {
+        "frage": "Cosa significa il valore di timeout P14D in un'azione?",
+        "antworten": [
+          "L'azione parte solo dopo due settimane",
+          "L'azione viene eseguita due volte a settimana",
+          "L'azione aspetta al massimo due settimane"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Il timeout non ritarda nulla. Stabilisce quando un'azione in corso risulta scaduta.",
+          "Sbagliato. Il timeout non ripete nessuna azione. Le ripetizioni le regolano i criteri di ripetizione.",
+          "Esatto. P14D è una durata ISO 8601 e indica 14 giorni, cioè due settimane."
+        ]
+      },
+      "lernziel": "Proteggi le approvazioni lunghe dai timeout.",
+      "thema": "Approvazioni",
+      "titel": "Impostare un timeout per azioni lunghe",
+      "kurztext": "Un'approvazione o un'altra azione che aspetta delle persone può durare più del previsto. Nelle impostazioni dell'azione stabilisci sotto Timeout per quanto tempo può aspettare al massimo. La durata la scrivi nel formato ISO 8601: P1D è un giorno, P14D sono 14 giorni, PT2H due ore. Quando il tempo scade, l'azione risulta scaduta. Perché il flusso non fallisca semplicemente, aggiungi un'azione il cui «Configura esecuzione dopo» è impostato solo su «è scaduto». Lì invii un promemoria, passi al livello superiore o avvii una nuova richiesta. Su tutto vale il limite di durata di un flusso di {limit:laufzeit_max}.",
+      "wann_ja": "Per approvazioni e altre azioni che aspettano una risposta di cui non conosci la durata.",
+      "wann_nein": "Quando il processo può superare il limite di durata di {limit:laufzeit_max}. Allora un timeout non basta, perché l'intera esecuzione termina prima.",
+      "fehler": "Impostare il timeout ma non costruire un percorso per «è scaduto». Allora l'esecuzione fallisce comunque.",
+      "suchbegriffe": [
+        "Timeout",
+        "ISO 8601",
+        "approvazione",
+        "Approval",
+        "è scaduto",
+        "has timed out",
+        "Configura esecuzione dopo",
+        "P14D"
+      ]
+    },
+    "111": {
+      "quiz": {
+        "frage": "Con cosa viene riempito l'elenco di scelta della Adaptive Card?",
+        "antworten": [
+          "Con gli utenti dell'ambiente Power Platform",
+          "Con un elenco fisso di nomi in un'azione Componi",
+          "Con «Cerca utenti (V2)» di Office 365 Users"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "«Cerca utenti (V2)» del connettore Office 365 Users restituisce le persone, e un'azione Seleziona le trasforma in title e value. Queste coppie diventano i choices nell'Input.ChoiceSet della scheda."
+        ]
+      },
+      "lernziel": "Costruisci approvazioni a più livelli con scelta dinamica della persona successiva.",
+      "thema": "Approvazioni"
+    },
+    "112": {
+      "quiz": {
+        "frage": "Quali funzioni usi in Power Automate per uniformare i valori prima di un confronto?",
+        "antworten": [
+          "first() e last()",
+          "length() e add()",
+          "trim() e toLower()"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "trim() rimuove gli spazi all'inizio e alla fine, toLower() scrive tutto in minuscolo. Dopo, un confronto non fallisce più per colpa della scrittura."
+        ]
+      },
+      "lernziel": "Confronti i valori in modo affidabile perché li normalizzi prima.",
+      "thema": "Espressioni"
+    },
+    "114": {
+      "quiz": {
+        "frage": "Quale azione usi, secondo il consiglio, per una semplice approvazione da parte di persone esterne?",
+        "antworten": [
+          "«Crea elemento» in una lista SharePoint",
+          "«Avvia e attendi un'approvazione» standard",
+          "«Invia messaggio di posta elettronica con opzioni»"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "L'approvazione standard raggiunge gli esterni solo come utenti guest nel tenant, con invito accettato e licenza Power Automate. «Invia messaggio di posta elettronica con opzioni» arriva a qualsiasi indirizzo valido, e la risposta la elabori nel flusso."
+        ]
+      },
+      "lernziel": "Ottieni approvazioni anche da persone esterne all'organizzazione.",
+      "thema": "Approvazioni"
+    },
+    "115": {
+      "quiz": {
+        "frage": "Con cosa richiami Azure Document Intelligence da un flusso, secondo il consiglio?",
+        "antworten": [
+          "Con l'azione HTTP, una funzione premium",
+          "Con il connettore standard Excel Online",
+          "Con un'origine di conoscenza in Copilot Studio"
+        ],
+        "erklaerungen": [
+          "Prendi chiave API ed endpoint da Azure e richiami il servizio con l'azione HTTP. In Power Automate questa azione è una funzione premium.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Scegli tra AI Builder e Azure Document Intelligence in base a volume e costi.",
+      "thema": "IA e Copilot Studio"
+    },
+    "117": {
+      "quiz": {
+        "frage": "Come superi, secondo il consiglio, le 50 iterazioni parallele di Applica a ciascuno?",
+        "antworten": [
+          "Con flussi figlio o trigger di database",
+          "Con un limite di Pagination più alto",
+          "Con un secondo trigger nello stesso flusso"
+        ],
+        "erklaerungen": [
+          "Un flusso figlio per ogni elemento, oppure un secondo flusso che reagisce alle nuove righe del database, elabora ogni elemento in modo indipendente. Così il limite di 50 iterazioni parallele del ciclo non vale più.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Distribuisci grandi quantità di dati su flussi paralleli.",
+      "thema": "Cicli e parallelismo"
+    },
+    "118": {
+      "quiz": {
+        "frage": "Cosa fai perché un'azione copiata funzioni in uno Switch?",
+        "antworten": [
+          "Elimini lo Switch e lo ricrei da zero",
+          "La incolli nel ramo e reimposti i riferimenti ad altri rami",
+          "Attivi il controllo della concorrenza nelle impostazioni"
+        ],
+        "erklaerungen": [
+          "",
+          "L'azione copiata spesso rimanda a output non raggiungibili nel ramo. La incolli direttamente nel ramo di destinazione e reimposti i riferimenti che puntano a un altro ramo.",
+          ""
+        ]
+      },
+      "lernziel": "Copi azioni nei rami senza perdere i riferimenti.",
+      "thema": "Struttura e leggibilità dei flussi"
+    },
+    "120": {
+      "quiz": {
+        "frage": "Che cos'è PowerTools di Paul Murana?",
+        "antworten": [
+          "Un connettore Microsoft integrato per attività sul testo",
+          "Un connettore di terze parti per l'elaborazione del testo",
+          "Una funzione di espressione integrata in Power Automate"
+        ],
+        "erklaerungen": [
+          "",
+          "PowerTools è un connettore commerciale di un fornitore indipendente, non un prodotto Microsoft. Aggiunge a Power Automate azioni per pulire ed estrarre testo.",
+          ""
+        ]
+      },
+      "lernziel": "Conosci un'integrazione per quando le espressioni diventano troppo laboriose per lavorare sul testo.",
+      "thema": "Strumenti"
+    },
+    "121": {
+      "quiz": {
+        "frage": "Quale campo contiene il nome del file?",
+        "antworten": [
+          "FileLeafRef",
+          "FileDirRef",
+          "FileRef"
+        ],
+        "erklaerungen": [
+          "FileLeafRef è il nome del file, FileRef il percorso completo e FileDirRef la cartella in cui si trova il file.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Filtri i documenti per nome, percorso e cartella direttamente alla fonte.",
+      "thema": "Lettura e scrittura dei dati"
+    },
+    "123": {
+      "quiz": {
+        "frage": "Da dove ricavi il numero totale di elementi di un elenco?",
+        "antworten": [
+          "Dalla proprietà ItemCount dell'elenco",
+          "Dall'ID più alto presente nell'elenco",
+          "Dalla lunghezza di Recupera elementi senza paginazione"
+        ],
+        "erklaerungen": [
+          "La chiamata REST a /ItemCount restituisce direttamente il numero. In una raccolta le cartelle vengono conteggiate.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Ricavi i valori di un elenco senza caricare tutti gli elementi.",
+      "thema": "SharePoint REST"
+    },
+    "124": {
+      "quiz": {
+        "frage": "Quali file restituisce «Recupera contenuto file» senza passare da Base64?",
+        "antworten": [
+          "Formati immagine come PNG, JPG e GIF",
+          "File Office come DOCX e XLSX",
+          "Formati di testo come JSON, CSV e XML"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "I formati di testo semplice come JSON, CSV, XML o Markdown tornano direttamente come testo. Li elabori senza decodifica Base64."
+        ]
+      },
+      "lernziel": "Elabori file di testo senza decodifiche inutili.",
+      "thema": "File e documenti"
+    },
+    "125": {
+      "quiz": {
+        "frage": "Quali elementi usa il tip per convertire CSV in JSON?",
+        "antworten": [
+          "Crea tabella CSV e Componi",
+          "split(), Seleziona e Analizza JSON",
+          "Un connettore premium per file CSV"
+        ],
+        "erklaerungen": [
+          "",
+          "split() divide il CSV in righe e campi, Seleziona assegna i valori ai nomi di colonna e Analizza JSON rende il risultato utilizzabile. Sono tutte azioni standard. split() basta per CSV semplici senza separatori tra virgolette.",
+          ""
+        ]
+      },
+      "lernziel": "Rendi utilizzabili i file CSV nel flusso come dati strutturati.",
+      "thema": "JSON e conversione dei dati"
+    },
+    "126": {
+      "quiz": {
+        "frage": "Che cosa sostituisce il tip con un'app centrale e un flusso pianificato?",
+        "antworten": [
+          "La connessione Outlook di ogni persona",
+          "Tanti flussi singoli, uno per persona",
+          "La notifica tramite Teams"
+        ],
+        "erklaerungen": [
+          "",
+          "Invece di creare un flusso per ogni persona, un'unica Power App centrale raccoglie i dati e il flusso viene eseguito nel contesto della persona interessata. Un flusso pianificato invia il link all'app.",
+          ""
+        ]
+      },
+      "lernziel": "Automatizzi attività personali in modo centrale invece che con tanti flussi singoli.",
+      "thema": "Sicurezza e contesto utente"
+    },
+    "128": {
+      "quiz": {
+        "frage": "Che cosa ti risparmi accedendo tramite una chiave variabile?",
+        "antworten": [
+          "Strutture Switch e If annidate",
+          "L'azione Analizza JSON con il suo schema",
+          "Il trigger che avvia il flusso"
+        ],
+        "erklaerungen": [
+          "Con body('Parse_JSON')?[variables('key')] ottieni il valore direttamente dalla chiave. Per ogni lingua, ruolo o tipo di messaggio non ti serve più un ramo dedicato.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Ricavi dinamicamente i valori da JSON tramite una chiave.",
+      "thema": "JSON e conversione dei dati"
+    },
+    "129": {
+      "quiz": {
+        "frage": "Ti serve l'esatta grafia. Perché il filtro OData in SharePoint non basta?",
+        "antworten": [
+          "Perché OData restituisce solo 100 elementi",
+          "Perché OData ignora maiuscole e minuscole",
+          "Perché Filtra matrice è più veloce di OData"
+        ],
+        "erklaerungen": [
+          "",
+          "Title eq 'ABC' restituisce anche abc e Abc. Filtra matrice con equals() confronta poi con la grafia esatta.",
+          ""
+        ]
+      },
+      "lernziel": "Filtri i dati SharePoint con la grafia esatta.",
+      "thema": "Lettura e scrittura dei dati"
+    },
+    "133": {
+      "quiz": {
+        "frage": "Come passi in «Aggiorna elemento» il valore di una colonna Choice nell'oggetto JSON?",
+        "antworten": [
+          "Come testo semplice con il nome dell'opzione",
+          "Come oggetto con la proprietà Value",
+          "Come numero con la posizione dell'opzione"
+        ],
+        "erklaerungen": [
+          "",
+          "Le colonne Choice si aspettano un oggetto con la proprietà Value. Il testo semplice viene accettato, ma svuota la colonna.",
+          ""
+        ]
+      },
+      "lernziel": "Aggiorni singoli campi SharePoint senza passare tutti i campi obbligatori.",
+      "thema": "Lettura e scrittura dei dati"
+    },
+    "135": {
+      "quiz": {
+        "frage": "Che cosa ottieni con l'app come punto di partenza?",
+        "antworten": [
+          "Ogni persona esegue il flusso nel proprio contesto",
+          "Tutti i flussi girano con l'account del creatore",
+          "I flussi non richiedono più connessioni"
+        ],
+        "erklaerungen": [
+          "Chi avvia il flusso dall'app lo attiva con il trigger Power Apps (V2) nel proprio contesto, a condizione che le connessioni siano impostate su «Provided by run-only user». Le connessioni incorporate continuano a girare come la persona che le ha create. Un flusso pianificato invece gira sempre come proprietario.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Gestisci un flusso per molte persone senza copie e caos di autorizzazioni.",
+      "thema": "Sicurezza e contesto utente"
+    },
+    "138": {
+      "quiz": {
+        "frage": "Perché una chiamata Graph può fallire con 403 nonostante il ruolo di amministratore?",
+        "antworten": [
+          "Nel token manca l'autorizzazione necessaria",
+          "Le chat non si possono leggere tramite Graph",
+          "L'URL risorsa di base è impostato in modo errato"
+        ],
+        "erklaerungen": [
+          "Esatto. Le autorizzazioni nel token limitano l'accesso. Un ruolo di amministratore non le estende.",
+          "Sbagliato. Graph offre le chat. Manca solo l'autorizzazione giusta nel token di questo connettore.",
+          "Sbagliato. Anche un URL di base errato può causare problemi, ma non spiega un'autorizzazione mancante nel token."
+        ]
+      },
+      "lernziel": "Chiami Microsoft Graph da un flusso senza registrare un'app.",
+      "thema": "HTTP e Microsoft Graph",
+      "titel": "Chiamare Microsoft Graph senza registrazione dell'app",
+      "kurztext": "Per Microsoft Graph di solito registri un'app in Microsoft Entra ID e gestisci segreti o certificati. L'azione «Richiama una richiesta HTTP» del connettore «HTTP con Microsoft Entra ID (preautorizzato)» si occupa di ottenere il token. Accedi e imposti URL risorsa di base e URI risorsa su https://graph.microsoft.com. Poi scegli metodo ed endpoint, per esempio GET su /v1.0/me. L'accesso dipende dalle autorizzazioni del token. Possibili destinazioni sono, a seconda del connettore, per esempio Microsoft Graph o SharePoint. Controlla i servizi e le autorizzazioni supportati dal tuo connettore. Un ruolo di amministratore non estende le autorizzazioni del token. Le altre pagine di una risposta Graph le ottieni tramite @odata.nextLink.",
+      "wann_ja": "Per richieste a nome della persona connessa, se il connettore ha le autorizzazioni necessarie.",
+      "wann_nein": "Quando al connettore mancano le autorizzazioni necessarie o a te i diritti d'uso adeguati per Premium.",
+      "fehler": "Scambiare un 403 per una richiesta sbagliata. Se nel token manca l'autorizzazione, nessun'altra scrittura aiuta.",
+      "suchbegriffe": [
+        "Microsoft Graph",
+        "HTTP con Microsoft Entra ID",
+        "HTTP with Microsoft Entra ID",
+        "Entra ID",
+        "registrazione app",
+        "403",
+        "nextLink"
+      ]
+    },
+    "139": {
+      "quiz": {
+        "frage": "Che aspetto ha un indirizzo plus?",
+        "antworten": [
+          "user@tag.domain.com",
+          "tag.user@domain.com",
+          "user+tag@domain.com"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Il suffisso sta dopo un segno più, subito prima della @. Da un indirizzo plus non puoi inviare, ma puoi inviare a esso e impostarlo come indirizzo di risposta (Reply To). Dal destinatario o dall'indirizzo di risposta vedi poi a quale flusso appartiene una mail."
+        ]
+      },
+      "lernziel": "Rendi tracciabili le e-mail automatiche con gli indirizzi plus.",
+      "thema": "E-mail, Teams e calendario"
+    },
+    "140": {
+      "quiz": {
+        "frage": "Quale servizio Azure legge le fatture nel contingente gratuito?",
+        "antworten": [
+          "Power BI con una cartella di lavoro Excel come archivio",
+          "Chat di Teams con un elenco SharePoint come archivio",
+          "Azure AI Document Intelligence con prebuilt-invoice"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Il livello gratuito F0 elabora 500 pagine al mese, ma per richiesta solo le prime 2 pagine. Per fatture di una pagina bastano per 500 fatture. Il connettore è un connettore standard."
+        ]
+      },
+      "lernziel": "Elabori le fatture automaticamente entro i contingenti gratuiti.",
+      "thema": "IA e Copilot Studio"
+    },
+    "141": {
+      "quiz": {
+        "frage": "Con quale funzione un testo su più righe diventa una matrice?",
+        "antworten": [
+          "split()",
+          "join()",
+          "concat()"
+        ],
+        "erklaerungen": [
+          "split() divide il testo a ogni a capo e restituisce una matrice che scorri con Applica a ciascuno.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Trasformi elenchi di testo in matrici elaborabili.",
+      "thema": "Matrici e filtri"
+    },
+    "142": {
+      "quiz": {
+        "frage": "Quale azione imposta le categorie secondo il tip?",
+        "antworten": [
+          "Aggiorna evento (V4) con il campo delle categorie",
+          "«Invia una richiesta HTTP» nel connettore Office 365 Outlook",
+          "L'azione premium HTTP con un token proprio"
+        ],
+        "erklaerungen": [
+          "",
+          "L'azione «Invia una richiesta HTTP» del connettore Outlook invia un PATCH all'appuntamento e imposta le categorie. Per questo non ti serve il premium.",
+          ""
+        ]
+      },
+      "lernziel": "Categorizzi gli appuntamenti automaticamente con un'azione standard.",
+      "thema": "E-mail, Teams e calendario"
+    },
+    "143": {
+      "quiz": {
+        "frage": "Perché fai valutare all'IA prima solo la miniatura?",
+        "antworten": [
+          "Perché i servizi di IA non elaborano file PDF",
+          "Perché le miniature danno risultati più precisi dei PDF",
+          "Perché ogni pagina elaborata comporta costi di IA"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "I servizi di IA fatturano per pagina o per chiamata e i dati importanti stanno spesso sulla prima pagina. Elabori l'intero PDF solo se la miniatura non basta."
+        ]
+      },
+      "lernziel": "Riduci i costi di IA con un'elaborazione a stadi.",
+      "thema": "IA e Copilot Studio"
+    },
+    "144": {
+      "quiz": {
+        "frage": "Perché la prima azione imposta subito TriggerFlow su No?",
+        "antworten": [
+          "Perché l'approvazione venga eliminata alla scadenza",
+          "Perché le modifiche durante l'esecuzione non causino un nuovo avvio",
+          "Perché chi approva non riceva alcuna e-mail"
+        ],
+        "erklaerungen": [
+          "Sbagliato. TriggerFlow controlla solo l'avvio del flusso. La colonna non c'entra con l'approvazione stessa.",
+          "Esatto. Solo il percorso dopo il timeout riporta TriggerFlow su Sì. Così c'è esattamente un riavvio per ciclo.",
+          "Sbagliato. Se arriva una nuova e-mail dipende dal metodo scelto, non da TriggerFlow."
+        ]
+      },
+      "lernziel": "Costruisci approvazioni che possono restare aperte più di 30 giorni.",
+      "thema": "Approvazioni",
+      "titel": "Mantenere in vita le approvazioni oltre 30 giorni",
+      "kurztext": "Un'esecuzione del flusso termina dopo {limit:laufzeit_max}. Se un'approvazione aspetta più a lungo, finisce nel vuoto e nessuno se ne accorge. La soluzione: il flusso si riavvia da solo. Un elenco SharePoint riceve la colonna TriggerFlow (Sì/No). Il trigger «Quando un elemento viene creato o modificato» grazie a una condizione del trigger come @equals(triggerOutputs()?['body/TriggerFlow'], true) parte solo se la colonna è su Sì, e la prima azione la imposta subito su No. L'approvazione riceve un timeout inferiore a 28 giorni, per esempio P27D. Secondo Microsoft un flusso non può aspettare un'approvazione più a lungo. Quando il timeout scade, un'azione con «è scaduto» riporta TriggerFlow su Sì e inizia una nuova esecuzione. Se non vuoi una nuova e-mail, separi «Crea un'approvazione» e «Attendi un'approvazione» e salvi l'ID dell'approvazione.",
+      "wann_ja": "Per contratti, budget, verifiche legali e altre decisioni che possono restare ferme più di un mese.",
+      "wann_nein": "Quando la decisione arriva di sicuro entro {limit:laufzeit_max}. Allora basta un timeout con un percorso per «è scaduto».",
+      "fehler": "Omettere la condizione del trigger. Allora ogni modifica all'elemento avvia una nuova esecuzione e il flusso si richiama all'infinito.",
+      "suchbegriffe": [
+        "approvazione",
+        "Approval",
+        "30 giorni",
+        "timeout",
+        "TriggerFlow",
+        "condizione del trigger",
+        "Trigger Condition",
+        "riavvio",
+        "Attendi un'approvazione",
+        "Wait for an approval"
+      ]
+    },
+    "145": {
+      "quiz": {
+        "frage": "A cosa serve il Trigger Condition Builder su tools.powerplatformtip.com?",
+        "antworten": [
+          "Avvia i flussi secondo una pianificazione fissa",
+          "Genera condizioni del trigger valide dai tuoi dati",
+          "Esporta le soluzioni in un altro ambiente"
+        ],
+        "erklaerungen": [
+          "",
+          "Inserisci dati di esempio, come un body JSON, e costruisci la condizione in modo visuale. Copi l'espressione finita nelle condizioni del trigger del tuo flusso.",
+          ""
+        ]
+      },
+      "lernziel": "Generi le espressioni più comuni con strumenti invece che a mano.",
+      "thema": "Strumenti"
+    },
+    "146": {
+      "quiz": {
+        "frage": "Come proteggi un apostrofo in un filtro OData?",
+        "antworten": [
+          "Lo codifichi con encodeUriComponent()",
+          "Metti un backslash davanti",
+          "Lo raddoppi con replace()"
+        ],
+        "erklaerungen": [
+          "Sbagliato. encodeUriComponent() serve per gli URL. In un filtro OData rovina la sintassi della query.",
+          "Sbagliato. In OData un backslash non neutralizza un apostrofo. Il testo termina comunque in quel punto.",
+          "Esatto. In OData due apostrofi valgono per un apostrofo nel valore e il filtro resta valido."
+        ]
+      },
+      "lernziel": "Eviti che i caratteri speciali rompano filtri e chiamate.",
+      "thema": "Espressioni",
+      "titel": "Codificare correttamente apostrofi e caratteri speciali",
+      "kurztext": "I caratteri speciali nei valori rompono query e richieste, perché il flusso li legge come parte della sintassi. Quale soluzione va bene dipende da dove va il valore. In un filtro OData come Title eq 'Tom's Diner' l'apostrofo chiude il testo troppo presto. Lo raddoppi con replace(variables('varTitle'),'''','''''') e nella query compare 'Tom''s Diner'. Per i valori in un URL usi encodeUriComponent(), che trasforma spazi, punti interrogativi e apostrofi in codici percentuali. I valori codificati che arrivano da fuori li rileggi con decodeUriComponent(). Per il testo nel body di una richiesta JSON costruisci l'oggetto con setProperty() e json(). Allora il flusso neutralizza da solo virgolette, backslash e a capo.",
+      "wann_ja": "Quando nomi, titoli o testo libero finiscono in filtri, URL o richieste JSON.",
+      "wann_nein": "Quando il valore viene solo mostrato o scritto in un campo e non fa mai parte di una query o di un URL.",
+      "fehler": "Usare encodeUriComponent() in un filtro OData. Codifica anche la sintassi e la query fallisce.",
+      "suchbegriffe": [
+        "apostrofo",
+        "OData",
+        "encodeUriComponent",
+        "decodeUriComponent",
+        "replace",
+        "caratteri speciali",
+        "JSON"
+      ]
+    },
+    "148": {
+      "quiz": {
+        "frage": "Cosa restituisce take(array, 5) se la matrice ha solo tre elementi?",
+        "antworten": [
+          "Tutti e tre gli elementi, senza errori",
+          "Un errore, perché mancano elementi",
+          "Tre elementi e due vuoti in più"
+        ],
+        "erklaerungen": [
+          "Esatto. take() prende al massimo il numero indicato. Se sono meno, restituisce tutti quelli presenti.",
+          "Sbagliato. take() non si interrompe se la matrice è più corta del numero richiesto.",
+          "Sbagliato. take() non riempie nulla. Taglia solo ciò che supera il numero."
+        ]
+      },
+      "lernziel": "Testi i cicli con pochi elementi, senza ricostruire il flusso.",
+      "thema": "Test e debug",
+      "titel": "Accorciare i cicli durante il test con take()",
+      "kurztext": "Testare un ciclo su centinaia di elementi costa tempo e azioni a ogni esecuzione. Con take() durante il test elabori solo i primi elementi. Sostituisci l'input di Applica a ciascuno con un'espressione come take(body('Select'), 5). Il ciclo gira allora al massimo cinque volte, qualunque sia la dimensione della matrice. Se la matrice ha meno elementi, take() li restituisce semplicemente tutti, senza errori. Così verifichi la logica nel ciclo su pochi record reali. Quando tutto torna, togli take() e riselezioni l'output originale. La struttura del flusso resta invariata.",
+      "wann_ja": "Quando testi cicli su grandi elenchi o tabelle, prima di lanciare il flusso su tutti i dati.",
+      "wann_nein": "In produzione. Se take() resta nel flusso, questo elabora per sempre solo i primi elementi.",
+      "fehler": "Dimenticare take() nel flusso dopo il test. Una nota nell'azione ti ricorda di toglierlo.",
+      "suchbegriffe": [
+        "take",
+        "Applica a ciascuno",
+        "Apply to each",
+        "ciclo",
+        "test",
+        "matrice",
+        "limitare"
+      ]
+    },
+    "149": {
+      "quiz": {
+        "frage": "Da dove legge il flusso la decisione in «Invia messaggio di posta elettronica con opzioni»?",
+        "antworten": [
+          "Dal Centro approvazioni della casella",
+          "Dal valore dinamico SelectedOption",
+          "Da un'e-mail di risposta al flusso"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Questa azione non crea un'approvazione e quindi non compare nel Centro approvazioni.",
+          "Esatto. Verifica se SelectedOption è compilato. Con risposte HTML i campi possono essere vuoti, anche UserEmailAddress non è affidabile.",
+          "Sbagliato. Questa azione restituisce campi di ritorno. Per valutare un'e-mail di risposta serve un processo a parte."
+        ]
+      },
+      "lernziel": "Ottieni approvazioni tramite una casella condivisa.",
+      "thema": "Approvazioni",
+      "titel": "Decisioni tramite una casella condivisa",
+      "kurztext": "Una casella condivisa non è l'identità personale di chi approva. I messaggi interattivi (Actionable Messages) lì non funzionano. L'azione «Invia messaggio di posta elettronica con opzioni» di Office 365 Outlook può essere un'alternativa: inserisci la casella in A e le opzioni in Opzioni utente, per esempio Approve,Reject. Con le risposte tramite HTML i campi di ritorno possono essere vuoti. Controlla quindi SelectedOption e UserEmailAddress prima di registrare una decisione. UserEmailAddress non è una prova affidabile di chi ha risposto. Se mancano le informazioni necessarie, serve un altro canale di risposta, per esempio un link a un modulo. L'azione non crea una voce nel Centro approvazioni. Verifica il processo con la casella e il client di posta che usi, prima di impiegarlo.",
+      "wann_ja": "Per caselle di supporto, finanza o disposizione, dove decide chi è presente in quel momento.",
+      "wann_nein": "Quando ti serve un'approvazione personale o la cronologia nel Centro approvazioni. Con risposte HTML vuote serve un altro canale di risposta.",
+      "fehler": "Salvare UserEmailAddress senza controllo come prova di identità. Verifica che il campo sia compilato e con dati mancanti usa un altro canale di risposta.",
+      "suchbegriffe": [
+        "approvazione",
+        "Approval",
+        "casella condivisa",
+        "Shared Mailbox",
+        "Send email with options",
+        "SelectedOption",
+        "Outlook"
+      ]
+    },
+    "150": {
+      "quiz": {
+        "frage": "Con che cosa nasce il Markdown in questo tip?",
+        "antworten": [
+          "Con cicli annidati",
+          "Con un'azione di IA",
+          "Con due Office Script"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Due Office Script convertono JSON e HTML in Markdown, con codice fisso, senza IA e senza premium."
+        ]
+      },
+      "lernziel": "Generi Markdown nel flusso senza IA e senza cicli.",
+      "thema": "File e documenti"
+    },
+    "153": {
+      "quiz": {
+        "frage": "Perché rinomini con FileLeafRef invece di copiare?",
+        "antworten": [
+          "Copiare nelle librerie non è mai possibile",
+          "FileLeafRef cambia subito anche l'estensione del file",
+          "ID, versioni e metadati vengono mantenuti"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Copiare è possibile, ma di solito crea un nuovo elemento. Cronologia delle versioni e metadati possono andare persi.",
+          "Sbagliato. Nell'esempio del tip la modifica dell'estensione tramite FileLeafRef non ha avuto effetto. Per questo usa MoveTo.",
+          "Esatto. MERGE su FileLeafRef cambia solo il nome. L'elemento resta lo stesso."
+        ]
+      },
+      "lernziel": "Rinomini i file SharePoint senza copiarli.",
+      "thema": "SharePoint REST",
+      "titel": "Rinominare un file SharePoint tramite REST",
+      "kurztext": "Il connettore SharePoint non ha un'azione per rinominare. Copiare ed eliminare di solito crea un nuovo file con un nuovo ID. Cronologia delle versioni e metadati possono andare persi. Più pulita è una singola chiamata con «Invia una richiesta HTTP a SharePoint». Invii un POST all'elemento dell'elenco del file e con le intestazioni IF-MATCH: * e X-HTTP-Method: MERGE lo trasformi in una modifica. Nel body c'è solo il campo FileLeafRef con il nuovo nome file, estensione compresa. Con le intestazioni odata=nometadata non serve la voce __metadata. La risposta 204 significa successo. ID, versioni, autorizzazioni e metadati restano. Nell'esempio del tip la modifica dell'estensione del file non ha avuto effetto. Per questo usi MoveTo.",
+      "wann_ja": "Per convenzioni di denominazione, numeri di riferimento nel nome del file o correzioni a file caricati.",
+      "wann_nein": "Quando devono cambiare l'estensione o la cartella. Per questo la chiamata giusta è MoveTo.",
+      "fehler": "Omettere l'estensione durante la ridenominazione. Mantienila nel nuovo nome file e controlla il nome dopo la chiamata.",
+      "suchbegriffe": [
+        "SharePoint",
+        "rinominare",
+        "FileLeafRef",
+        "MERGE",
+        "REST",
+        "Invia una richiesta HTTP a SharePoint",
+        "Send an HTTP request to SharePoint"
+      ]
+    },
+    "154": {
+      "quiz": {
+        "frage": "Quali campi ripristina la chiamata MERGE?",
+        "antworten": [
+          "AuthorId, EditorId, Created e Modified",
+          "Le autorizzazioni e i link di condivisione del file",
+          "Solo il nome del file e il percorso della cartella"
+        ],
+        "erklaerungen": [
+          "Copiando ed eliminando si perdono autore, ultimo modificatore e timestamp. Un MERGE tramite «Invia una richiesta HTTP a SharePoint» li riscrive.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Migri file senza perdere autore e date.",
+      "thema": "SharePoint REST"
+    },
+    "155": {
+      "quiz": {
+        "frage": "Cosa risulta dall'espressione div(75, 200)?",
+        "antworten": [
+          "0, perché entrambi i valori sono numeri interi",
+          "0.375, perché div() restituisce sempre decimali",
+          "Un errore, perché 75 è minore di 200"
+        ],
+        "erklaerungen": [
+          "Esatto. Con due numeri interi div() calcola in modo intero e taglia i decimali.",
+          "Sbagliato. Un decimale esce solo se almeno un valore è decimale, per esempio dopo float().",
+          "Sbagliato. Un dividendo più piccolo non è un errore. La divisione fallirebbe solo con divisore 0."
+        ]
+      },
+      "lernziel": "Calcoli percentuali e rapporti con i decimali corretti.",
+      "thema": "Espressioni",
+      "titel": "float() prima di div() per decimali corretti",
+      "kurztext": "Calcoli una quota da due conteggi e ottieni 0 invece di 37.5. Il motivo: div() calcola in modo intero se entrambi i valori sono numeri interi, e taglia i decimali. div(75, 200) dà quindi 0, e moltiplicato per 100 resta 0. Appena uno dei due valori è un decimale, div() restituisce un decimale. Il modo più sicuro è convertire entrambi i valori con float(). Per la visualizzazione arrotondi il risultato con formatNumber() a due cifre, ma così diventa testo. E proteggi la divisione con if(), se il divisore può essere 0, altrimenti l'azione fallisce. Il risultato di div(float(a), float(b)) resta un numero.",
+      "wann_ja": "Per percentuali, quote e medie da conteggi o da length().",
+      "wann_nein": "Quando vuoi di proposito un numero intero. Allora la divisione intera è giusta, div(7, 2) dà 3.",
+      "fehler": "Continuare a calcolare con il risultato di formatNumber(). È testo e deve prima tornare numero con float().",
+      "suchbegriffe": [
+        "div",
+        "float",
+        "decimali",
+        "percentuale",
+        "formatNumber",
+        "divisione"
+      ]
+    },
+    "157": {
+      "quiz": {
+        "frage": "Con quale azione richiami un Office Script dal flusso?",
+        "antworten": [
+          "«Esegui script» nel connettore Excel Online (Business)",
+          "«Crea file» nel connettore OneDrive for Business",
+          "«Aggiorna una riga» in un ciclo Applica a ciascuno"
+        ],
+        "erklaerungen": [
+          "Lo script si trova in OneDrive, «Esegui script» nel connettore Excel Online (Business) lo esegue sulla cartella di lavoro. Passi i parametri e usi i valori restituiti nel resto del flusso.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Sostituisci lunghe catene di azioni Excel con un Office Script.",
+      "thema": "File e documenti"
+    },
+    "158": {
+      "quiz": {
+        "frage": "Come arrivano dati annidati da un flusso a un'app canvas?",
+        "antworten": [
+          "Con un'uscita dedicata per ogni campo",
+          "Come testo JSON in un'uscita, poi ParseJSON",
+          "Con l'azione Risposta del connettore HTTP"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Le uscite piatte non rappresentano né elenchi né record annidati.",
+          "Esatto. Un'uscita di testo porta qualsiasi struttura e ParseJSON la ricostruisce nell'app.",
+          "Sbagliato. Per questo caso basta «Rispondi a PowerApp o a un flusso». Risposta non serve."
+        ]
+      },
+      "lernziel": "Restituisci dati annidati a un'app senza Premium.",
+      "thema": "Power Apps e flussi",
+      "titel": "Restituire dati del flusso come JSON a Power Apps",
+      "kurztext": "Un flusso spesso fornisce a un'app canvas più di un singolo valore, per esempio un cliente con tutti gli ordini. «Rispondi a PowerApp o a un flusso» conosce però solo uscite piatte come testo, numero o Sì/No. Invece di creare decine di campi, costruisci il risultato nel flusso come JSON, per esempio con Seleziona e Componi, e lo restituisci come un unico campo di testo. In Power Apps ParseJSON rilegge il testo. Senza indicazione di tipo ottieni un valore dinamico e converti i campi con Text(), Value() o Boolean(). Con un Type come secondo argomento ottieni direttamente record e tabelle tipizzati. L'azione Risposta del connettore HTTP per questo non serve.",
+      "wann_ja": "Quando l'app ha bisogno di elenchi o record annidati dal flusso.",
+      "wann_nein": "Con quantità di dati molto grandi. Allora il flusso salva i dati in SharePoint o Dataverse e l'app li legge direttamente.",
+      "fehler": "Usare nelle formule campi di ParseJSON senza conversione. Senza Type ParseJSON restituisce valori dinamici.",
+      "suchbegriffe": [
+        "Power Apps",
+        "ParseJSON",
+        "JSON",
+        "Rispondi a PowerApp o a un flusso",
+        "Respond to a Power App or flow",
+        "app canvas",
+        "restituzione"
+      ]
+    },
+    "160": {
+      "quiz": {
+        "frage": "Quale chiamata viene prima di addroleassignment?",
+        "antworten": [
+          "resetroleinheritance",
+          "getbyid",
+          "breakroleinheritance"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Prima breakroleinheritance interrompe le autorizzazioni ereditate. Poi addroleassignment assegna esattamente i diritti che vuoi."
+        ]
+      },
+      "lernziel": "Limiti automaticamente singoli elementi a persone specifiche.",
+      "thema": "SharePoint REST"
+    },
+    "161": {
+      "quiz": {
+        "frage": "Con quale endpoint crei le colonne nell'elenco di destinazione?",
+        "antworten": [
+          "fields/addfieldasjson",
+          "fields/clonefromschema",
+          "fields/createfieldasxml"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Invii con POST lo SchemaXml di ogni colonna personalizzata a fields/createfieldasxml dell'elenco di destinazione. Così le colonne nascono con gli stessi nomi interni e le stesse impostazioni."
+        ]
+      },
+      "lernziel": "Trasferisci le colonne di un elenco esattamente su un altro sito.",
+      "thema": "SharePoint REST"
+    },
+    "162": {
+      "quiz": {
+        "frage": "Che cosa deve contenere la matrice members per un canale privato?",
+        "antworten": [
+          "Esclusivamente account guest di altri tenant",
+          "Almeno una persona con il ruolo owner",
+          "Tutti i membri del team principale"
+        ],
+        "erklaerungen": [
+          "",
+          "Un canale privato richiede membri già alla creazione e almeno uno di loro ha roles: [\"owner\"]. Altrimenti Graph rifiuta la richiesta con 400.",
+          ""
+        ]
+      },
+      "lernziel": "Crei automaticamente canali Teams privati.",
+      "thema": "HTTP e Microsoft Graph"
+    },
+    "163": {
+      "quiz": {
+        "frage": "Quale tipo di contenuto ottiene il file ICS?",
+        "antworten": [
+          "application/pdf",
+          "text/calendar",
+          "text/plain"
+        ],
+        "erklaerungen": [
+          "",
+          "Il file ICS è testo semplice in formato iCalendar. Se lo allegi come text/calendar, il client di posta offre di aggiungerlo al calendario.",
+          ""
+        ]
+      },
+      "lernziel": "Invii appuntamenti che ogni persona può aggiungere al proprio calendario.",
+      "thema": "E-mail, Teams e calendario"
+    },
+    "164": {
+      "quiz": {
+        "frage": "Quale endpoint Graph invita gli ospiti?",
+        "antworten": [
+          "/v1.0/users",
+          "/v1.0/invitations",
+          "/v1.0/groups"
+        ],
+        "erklaerungen": [
+          "",
+          "Un POST su /v1.0/invitations crea la persona come guest in Microsoft Entra ID. Se vuoi, Graph invia subito anche l'invito.",
+          ""
+        ]
+      },
+      "lernziel": "Inviti automaticamente persone esterne come ospiti.",
+      "thema": "HTTP e Microsoft Graph"
+    },
+    "165": {
+      "quiz": {
+        "frage": "Perché onPremisesSamAccountName e simili mancano nella query normale?",
+        "antworten": [
+          "Sono memorizzati solo in Exchange Online",
+          "Richiedono una licenza apposita per ogni utente",
+          "Arrivano solo se $select li nomina"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Senza $select Graph restituisce solo i campi standard. Se indichi gli attributi in $select, vengono inclusi."
+        ]
+      },
+      "lernziel": "Leggi in modo mirato i campi AD locali tramite Graph.",
+      "thema": "HTTP e Microsoft Graph"
+    },
+    "166": {
+      "quiz": {
+        "frage": "Quale azione ti mostra se una persona è assente?",
+        "antworten": [
+          "«Recupera profilo utente (V2)»",
+          "«Recupera suggerimenti di posta per una cassetta postale (V2)»",
+          "«Recupera visualizzazione calendario degli eventi»"
+        ],
+        "erklaerungen": [
+          "",
+          "«Recupera suggerimenti di posta per una cassetta postale (V2)» con l'opzione automaticReplies mostra se la risposta automatica è attiva. Funziona senza HTTP e senza registrazione dell'app.",
+          ""
+        ]
+      },
+      "lernziel": "Inoltri le approvazioni a un sostituto in caso di assenza.",
+      "thema": "Approvazioni"
+    },
+    "167": {
+      "quiz": {
+        "frage": "Esiste una funzione dateDiff() nelle espressioni dei flussi cloud?",
+        "antworten": [
+          "Sì, ma solo con una licenza premium",
+          "Sì, restituisce la differenza in giorni",
+          "No, calcoli la differenza con ticks()"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "dateDiff() non esiste. dateDifference(inizio, fine) restituisce la differenza come intervallo di tempo, ad esempio 1268.00:00:00. Se vuoi i giorni come numero, sottrai i ticks() e dividi per 864000000000."
+        ]
+      },
+      "lernziel": "Calcoli differenze di tempo e confronti date in modo affidabile.",
+      "thema": "Data e ora"
+    },
+    "168": {
+      "quiz": {
+        "frage": "Su cosa può puntare result() in un'espressione?",
+        "antworten": [
+          "Su qualsiasi azione in tutto il flusso",
+          "Solo sul trigger all'inizio del flusso",
+          "Su un ambito, Applica a ciascuno o Esegui fino a"
+        ],
+        "erklaerungen": [
+          "Sbagliato. Se result() punta a un'azione semplice come Componi, fallisce già il salvataggio.",
+          "Sbagliato. Il trigger non contiene azioni. result() ha bisogno di un contenitore con azioni dentro.",
+          "Esatto. result() legge le azioni in un contenitore di questo tipo. Se punta a un'azione semplice, il flusso non si può salvare."
+        ]
+      },
+      "lernziel": "Inoltri il vero messaggio di errore a persone o agenti.",
+      "thema": "Gestione degli errori",
+      "titel": "Leggere il vero messaggio di errore con result()",
+      "kurztext": "Se un flusso fallisce di notte, il motivo si trova nella cronologia esecuzioni. Chi deve conoscerlo spesso non può aprirla. La funzione result() ti dà i dettagli: result('Try') restituisce una matrice con tutte le azioni del livello superiore dell'ambito Try, con dati come name, status e code e, a seconda dell'errore, un oggetto error con il messaggio. In un'azione che gira solo con «non è riuscito» filtri la matrice con Filtra matrice su status uguale a Failed. Il testo lo ottieni con first(body('Filter_array'))?['error']?['message'] e lo inoltri per e-mail. result() funziona solo con un ambito, Applica a ciascuno o Esegui fino a. Con errori annidati controlli il contenitore interno. Leggi un messaggio solo se la matrice filtrata non è vuota.",
+      "wann_ja": "Quando esperti, amministratori o un agente devono sapere perché un'esecuzione è fallita.",
+      "wann_nein": "Per azioni fuori dall'ambito. result() vede solo ciò che c'è nel contenitore.",
+      "fehler": "Leggere solo il livello superiore. Con azioni annidate controlla il contenitore interno e se error.message è presente.",
+      "suchbegriffe": [
+        "result",
+        "messaggio di errore",
+        "ambito",
+        "Scope",
+        "Filtra matrice",
+        "Filter array",
+        "error",
+        "Copilot Studio"
+      ]
+    },
+    "169": {
+      "quiz": {
+        "frage": "Da quale ambiente il menu Automate in SharePoint mostra i flussi «Per un elemento selezionato», secondo il tip?",
+        "antworten": [
+          "Dall'ambiente predefinito",
+          "Solo dagli ambienti Teams",
+          "Da qualsiasi ambiente di produzione"
+        ],
+        "erklaerungen": [
+          "Il menu Automate elenca solo i flussi dell'ambiente predefinito. Se il flusso si trova in un ambiente di produzione, lo avvii con un pulsante nella formattazione di colonna con executeFlow.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Avvii flussi dagli elenchi con un pulsante, senza ripiegare sul premium.",
+      "thema": "Trigger"
+    },
+    "170": {
+      "quiz": {
+        "frage": "Cosa controlla il parametro action nel flusso router?",
+        "antworten": [
+          "Se il flusso richiede una licenza Premium",
+          "La lingua in cui risponde l'agente",
+          "Lo switch verso get, create o update"
+        ],
+        "erklaerungen": [
+          "Sbagliato. action sceglie solo l'operazione. La licenza dipende da come il flusso viene fatturato, come flusso dell'agente o come flusso cloud.",
+          "Sbagliato. action non c'entra con la lingua dell'agente. Il parametro sceglie l'operazione nel flusso.",
+          "Esatto. Lo Switch su action porta nel ramo get, create o update. Il parametro input porta un filtro OData o un body JSON."
+        ]
+      },
+      "lernziel": "Dai a un agente di Copilot Studio più strumenti con un solo flusso.",
+      "thema": "IA e Copilot Studio",
+      "titel": "Un flusso come router per gli strumenti dell'agente",
+      "kurztext": "Un agente di Copilot Studio deve leggere, creare e modificare dati. Per questo non serve un server MCP con trigger HTTP e connettore personalizzato. Basta un flusso con il trigger «Quando un agente chiama il flusso», che dai all'agente come strumento. Il trigger riceve due input: action con i valori get, create o update e input come testo generico. Uno Switch su action porta nel ramo giusto. Con get, input è un filtro OData e va direttamente nella query di filtro. Con create e update, input è un body JSON che Analizza JSON scompone. Ogni ramo imposta la variabile result, che crei prima dello Switch. Alla fine «Rispondi all'agente» restituisce un JSON fisso, entro {limit:agent_antwort} e con risposta asincrona disattivata. Il valore di input lo leggi con triggerBody()?['text'].",
+      "wann_ja": "Quando un agente interno ha bisogno di più operazioni collegate sulla stessa tabella o lo stesso elenco e vuoi mantenere un solo flusso.",
+      "wann_nein": "Quando l'agente confonde spesso le operazioni. Flussi separati con una descrizione propria li sceglie spesso in modo più affidabile.",
+      "fehler": "Nel ramo update far riferimento ad Analizza JSON del ramo create. Quel ramo non è stato eseguito e l'espressione fallisce.",
+      "suchbegriffe": [
+        "Copilot Studio",
+        "agente",
+        "Switch",
+        "Quando un agente chiama il flusso",
+        "When an agent calls the flow",
+        "Rispondi all'agente",
+        "Respond to the agent",
+        "OData",
+        "Analizza JSON",
+        "Parse JSON",
+        "MCP"
+      ]
+    },
+    "171": {
+      "quiz": {
+        "frage": "Che cosa fa un'esecuzione che trova il flag IsRunning su Yes?",
+        "antworten": [
+          "Termina senza elaborare nulla",
+          "Imposta il flag su No e riparte",
+          "Rielabora di nuovo tutte le mail"
+        ],
+        "erklaerungen": [
+          "Se IsRunning è Yes, il blocco appartiene già a un'altra esecuzione. L'esecuzione termina con Termina e lo stato Succeeded, senza toccare le mail.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Raggruppi molti eventi del trigger in un'unica elaborazione.",
+      "thema": "Trigger"
+    },
+    "174": {
+      "quiz": {
+        "frage": "Perché un agente non può correggere da solo gli errori di un connettore collegato direttamente?",
+        "antworten": [
+          "Gli agenti non possono usare connettori in Copilot Studio",
+          "I connettori segnalano gli errori solo via e-mail al proprietario",
+          "La chiamata fallisce prima che arrivi il messaggio dell'API"
+        ],
+        "erklaerungen": [
+          "Sbagliato. I connettori si possono collegare direttamente come strumento. Il problema è cosa succede con uno stato di errore.",
+          "Sbagliato. La chiamata termina come chiamata di strumento fallita con un codice di errore come HTTP404NotFound, non con un'e-mail.",
+          "Esatto. Uno stato fuori da 2xx chiude la chiamata dello strumento con un codice di errore. Solo un flusso che restituisce sempre JSON leggibile rende il messaggio visibile all'agente."
+        ]
+      },
+      "lernziel": "Costruisci strumenti per agenti che imparano dagli errori.",
+      "thema": "IA e Copilot Studio",
+      "titel": "Chiamate che si correggono da sole per gli agenti",
+      "kurztext": "Se colleghi un connettore direttamente come strumento a un agente di Copilot Studio, ogni stato fuori da 2xx finisce come errore, per esempio HTTP404NotFound o HTTP422UnprocessableEntity. La spiegazione dell'API non raggiunge l'agente e questo non può correggersi. La soluzione è un flusso nel mezzo. La chiamata sta in un ambito, l'azione successiva gira dopo «è riuscito», «non è riuscito» e «è scaduto». Alla fine «Rispondi all'agente» restituisce sempre la stessa forma: ok, status, error e data. Lo stato lo legge coalesce(outputs('HTTP')?['statusCode'], 0): senza risposta diventa 0. Così l'agente vede il messaggio, adatta percorso o body e riprova. Limita i tentativi nelle istruzioni, per esempio a tre. Le correzioni sempre valide le scrivi nella descrizione dello strumento.",
+      "wann_ja": "Quando un agente chiama un'API tramite un connettore o l'azione HTTP e possono capitare percorsi o body sbagliati.",
+      "wann_nein": "Quando la chiamata richiede regolarmente più di {limit:agent_antwort}. Allora il flusso termina con FlowActionTimedOut prima che arrivi una risposta.",
+      "fehler": "Non limitare i tentativi. Allora l'agente ripete la chiamata all'infinito e consuma token, invece di spiegare l'errore.",
+      "suchbegriffe": [
+        "Copilot Studio",
+        "agente",
+        "gestione degli errori",
+        "ambito",
+        "Scope",
+        "Configura esecuzione dopo",
+        "Configure run after",
+        "HTTP404NotFound",
+        "Rispondi all'agente",
+        "Respond to the agent",
+        "Retry",
+        "nuovo tentativo"
+      ]
+    },
+    "193": {
+      "quiz": {
+        "frage": "Cosa cambi nell'URL per aprire la pagina di esportazione nascosta?",
+        "antworten": [
+          "Aggiungi /edit alla fine dell'indirizzo",
+          "Aggiungi ?export=true all'indirizzo",
+          "Sostituisci /details con /export"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Nella pagina di dettaglio del flusso sostituisci /details alla fine dell'indirizzo con /export. Si apre così la pagina di esportazione per il pacchetto ZIP."
+        ]
+      },
+      "lernziel": "Esporti un singolo flusso anche senza pulsante visibile.",
+      "thema": "ALM e governance"
+    },
+    "restore-earlier-version-flow-power-automate": {
+      "quiz": {
+        "frage": "Per cosa non basta la cronologia delle versioni integrata?",
+        "antworten": [
+          "Ripristinare una versione salvata precedente",
+          "Recuperare un flusso eliminato del tutto",
+          "Visualizzare versioni più vecchie di un flusso esistente"
+        ],
+        "erklaerungen": [
+          "",
+          "La cronologia delle versioni copre solo i flussi ancora esistenti. Un flusso eliminato lo ripristina un admin solo entro 21 giorni. Dopo aiuta solo un backup, ad esempio un'esportazione periodica come soluzione.",
+          ""
+        ]
+      },
+      "lernziel": "Ripristini una versione precedente del flusso e sai quando ti serve anche un backup.",
+      "thema": "ALM e governance"
+    },
+    "send-1-1-message-flow-teams": {
+      "quiz": {
+        "frage": "Quale impostazione fa sì che il messaggio di Teams arrivi da te e non dal Flow bot?",
+        "antworten": [
+          "Inserire più destinatari nella chat",
+          "Impostare Pubblica come su «Flow bot»",
+          "Impostare Pubblica come su «Utente»"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Con Pubblica come «Utente» l'azione «Pubblica messaggio in una chat o in un canale» scrive a nome dell'account della connessione Teams. Con «Flow bot» il messaggio arriva dal bot."
+        ]
+      },
+      "lernziel": "Invii da un flusso un messaggio personale 1:1 in Teams con te come mittente.",
+      "thema": "E-mail, Teams e calendario"
+    },
+    "power-automate-flows-vs-automate-rules": {
+      "quiz": {
+        "frage": "Un flusso senza condizione del trigger controlla la condizione solo durante l'esecuzione. Cosa succede con una modifica non pertinente?",
+        "antworten": [
+          "Il flusso non parte, SharePoint filtra prima",
+          "SharePoint annulla la modifica all'elemento",
+          "Il flusso parte comunque e consuma un'esecuzione"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Senza condizione del trigger il flusso parte a ogni modifica e controlla solo dopo. Una Automate Rule di SharePoint o una condizione del trigger filtra prima e risparmia l'esecuzione."
+        ]
+      },
+      "lernziel": "Scegli tra Automate Rule, flusso e condizione del trigger per evitare esecuzioni inutili.",
+      "thema": "Trigger"
+    },
+    "fill-and-sign-word-document-power-apps-automate": {
+      "quiz": {
+        "frage": "Perché puoi compilare un modello Word così senza il connettore Word premium?",
+        "antworten": [
+          "Perché Word compila i segnaposto da solo all'apertura",
+          "Perché SharePoint converte i file Word in testo",
+          "Perché un file .docx è un archivio ZIP di XML"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Un file .docx è un archivio ZIP con file XML. Un flusso non può ricomprimerlo con azioni standard, quindi salvi il modello come Word XML Document (*.xml), sostituisci i segnaposto con replace() e riscrivi il file con Crea file."
+        ]
+      },
+      "lernziel": "Compili un modello Word con azioni standard tramite il suo formato XML.",
+      "thema": "File e documenti"
+    },
+    "how-to-track-the-current-progress-of-a-flow-in-the-powerapp": {
+      "quiz": {
+        "frage": "Perché serve un elenco StateLog dedicato per l'indicatore di avanzamento?",
+        "antworten": [
+          "Perché Power Apps non può avviare flussi direttamente",
+          "Perché «Rispondi a PowerApps» può rispondere una sola volta",
+          "Perché un timer può leggere solo elenchi SharePoint"
+        ],
+        "erklaerungen": [
+          "",
+          "«Rispondi a PowerApps» risponde una sola volta. Per questo il flusso scrive lo stato intermedio in un elenco StateLog che un timer nell'app legge a intervalli regolari.",
+          ""
+        ]
+      },
+      "lernziel": "Mostri in un'app l'avanzamento di un flusso in esecuzione tramite un elenco di stato.",
+      "thema": "Power Apps e flussi"
+    },
+    "power-apps-elevated-permissions-power-automate": {
+      "quiz": {
+        "frage": "Con le autorizzazioni di chi viene eseguita un'azione SharePoint nel flusso?",
+        "antworten": [
+          "Con l'account della connessione memorizzata",
+          "Sempre con l'account che attiva il flusso",
+          "Automaticamente con diritti di amministratore"
+        ],
+        "erklaerungen": [
+          "Ogni azione usa la connessione impostata alla creazione. Se appartiene a un account di servizio, l'azione gira con i suoi diritti, a prescindere da chi avvia il flusso nell'app.",
+          "",
+          ""
+        ]
+      },
+      "lernziel": "Concedi agli utenti dell'app diritti elevati mirati, per una sola operazione, tramite un flusso.",
+      "thema": "Sicurezza e contesto utente"
+    },
+    "return-an-array-from-powerautomate-to-powerapps-split-method": {
+      "quiz": {
+        "frage": "Come restituisci una matrice da un flusso a Power Apps?",
+        "antworten": [
+          "Direttamente come output matrice di «Rispondi a PowerApp o a un flusso»",
+          "Non senza premium, le matrici passano solo dall'azione Risposta",
+          "Come testo JSON in un output testuale, da decomprimere nell'app con ParseJSON"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "«Rispondi a PowerApp o a un flusso» restituisce solo valori semplici. Invii la matrice come testo JSON e nell'app con ParseJSON ne ricavi di nuovo una tabella."
+        ]
+      },
+      "lernziel": "Restituisci elenchi da un flusso a un'app senza premium.",
+      "thema": "Power Apps e flussi"
+    },
+    "how-to-restore-create-backup-flow": {
+      "quiz": {
+        "frage": "Cosa vale se lo stesso flusso si trova in più soluzioni?",
+        "antworten": [
+          "Ogni soluzione contiene una copia indipendente",
+          "Il flusso viene disattivato in tutte le soluzioni",
+          "Resta un solo flusso, le modifiche valgono ovunque"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "Un flusso può stare in più soluzioni e resta comunque un unico flusso. Se lo modifichi o lo ripristini, vale in tutte le soluzioni."
+        ]
+      },
+      "lernziel": "Salvi i flussi tramite soluzioni in modo da poter recuperare anche quelli eliminati.",
+      "thema": "ALM e governance"
+    },
+    "extract-html-table-email-power-automate": {
+      "quiz": {
+        "frage": "Quali funzioni combini per leggere le celle di una tabella HTML da una mail?",
+        "antworten": [
+          "concat() e join()",
+          "json() e first()",
+          "xml() e xpath()"
+        ],
+        "erklaerungen": [
+          "",
+          "",
+          "xml() converte il testo HTML della mail in XML e xpath() ne seleziona righe e celle. Con /text() alla fine ottieni valori puri."
+        ]
+      },
+      "lernziel": "Leggi tabelle da mail HTML con xml() e xpath().",
+      "thema": "JSON e conversione dei dati"
+    }
+  }
+}

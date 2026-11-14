@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="fr" data-seite="technik" data-r="../../../" data-lr="../../../fr/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: https://powerautomate-ninja.goatcounter.com; connect-src 'self' https://powerautomate-ninja.goatcounter.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EDF2F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1019" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../assets/css/site.css">
+<script src="../../../assets/js/theme-init.js"></script>
+<script src="../../../assets/js/i18n-fr.js" defer></script><script src="../../../assets/js/site.js" defer></script>
+<script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
+
+<meta name="generator" content="Power Platform Dojo build">
+<title>Intercepter les erreurs avec Try, Catch et Finally | Flow Dojo</title>
+<meta name="description" content="Intercepter les erreurs avec Try, Catch et Finally : question de quiz avec solution, courte explication en français et lien vers l'astuce complète sur powerplat">
+<link rel="canonical" href="https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/fehler-mit-try-catch-finally-abfangen/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/fehler-mit-try-catch-finally-abfangen/">
+<link rel="alternate" hreflang="fr" href="https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/">
+<link rel="alternate" hreflang="it" href="https://powerautomate.ninja/it/techniken/fehler-mit-try-catch-finally-abfangen/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/fehler-mit-try-catch-finally-abfangen/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Power Platform Dojo">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:title" content="Intercepter les erreurs avec Try, Catch et Finally | Flow Dojo">
+<meta property="og:description" content="Intercepter les erreurs avec Try, Catch et Finally : question de quiz avec solution, courte explication en français et lien vers l'astuce complète sur powerplat">
+<meta property="og:url" content="https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/fr/guertel-orange.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Intercepter les erreurs avec Try, Catch et Finally | Flow Dojo">
+<meta name="twitter:description" content="Intercepter les erreurs avec Try, Catch et Finally : question de quiz avec solution, courte explication en français et lien vers l'astuce complète sur powerplat">
+<meta name="twitter:image" content="https://powerautomate.ninja/assets/img/fr/guertel-orange.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://powerautomate.ninja/fr/#website",
+      "name": "Power Platform Dojo",
+      "url": "https://powerautomate.ninja/fr/",
+      "inLanguage": "fr",
+      "description": "Questions, explications et parcours des ceintures pour les flux dans Power Automate, en français. Site indépendant, sans lien avec Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/#technik",
+      "name": "Intercepter les erreurs avec Try, Catch et Finally",
+      "url": "https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/",
+      "inLanguage": "fr",
+      "learningResourceType": "Quiz",
+      "educationalLevel": "Ceinture orange",
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/",
+      "citation": [
+        "https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/error-handling",
+        "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs"
+      ],
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://powerautomate.ninja/fr/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/#quiz"
+      }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/#quiz",
+      "name": "Question de quiz: Intercepter les erreurs avec Try, Catch et Finally",
+      "inLanguage": "fr",
+      "educationalLevel": "Ceinture orange",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Où places-tu Terminer pour que Finally nettoie avant ?",
+          "text": "Où places-tu Terminer pour que Finally nettoie avant ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 1,
+            "text": "Après Finally, seulement si Catch s'est exécuté",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Exact. Finally nettoie d'abord. Ensuite, une Condition n'autorise Terminer avec le statut Failed que si Catch s'est exécuté."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "Dans l'étendue Catch, juste avant le message d'erreur",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Faux. Un Terminer dans l'étendue Catch arrête le flux immédiatement, et l'étendue Finally est alors ignorée."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "Avant Try, avec le statut Failed",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Faux. Terminer arrêterait le flux avant que Try n'exécute ses actions."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://powerautomate.ninja/fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "techniques",
+          "item": "https://powerautomate.ninja/fr/techniken/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Intercepter les erreurs avec Try, Catch et Finally",
+          "item": "https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../../fr/" aria-label="Power Platform Dojo, Power Automate, accueil"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text" aria-hidden="true"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../../../fr/techniken/" aria-current="true">Techniques</a></li>
+        <li><a href="../../../fr/pruefung/">Examen de ceinture</a></li>
+        <li><a href="../../../fr/premium/">Vérification de licence</a></li>
+        <li><a href="../../../fr/dojo/">Mon dojo</a></li>
+        <li><a href="https://powerplatformdojo.com/fr/" rel="noopener">Aperçu du Dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="Langue: Français"><span aria-hidden="true">FR</span></summary>
+<ul class="sprachwahl__liste"><li><a href="../../../techniken/fehler-mit-try-catch-finally-abfangen/" hreflang="de" lang="de" data-sprache="de">Deutsch</a></li><li><a href="../../../fr/techniken/fehler-mit-try-catch-finally-abfangen/" hreflang="fr" lang="fr" data-sprache="fr" aria-current="true">Français</a></li><li><a href="../../../it/techniken/fehler-mit-try-catch-finally-abfangen/" hreflang="it" lang="it" data-sprache="it">Italiano</a></li><li><a href="../../../en/techniken/fehler-mit-try-catch-finally-abfangen/" hreflang="en" lang="en" data-sprache="en">English</a></li></ul></details>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Rechercher une technique" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Mode sombre" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Fermer le menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="../../../fr/techniken/">Techniques</a></li>
+      <li><a href="../../../fr/pruefung/">Examen de ceinture</a></li>
+      <li><a href="../../../fr/premium/">Vérification de licence</a></li>
+      <li><a href="../../../fr/heute/">Technique du jour</a></li>
+      <li><a href="../../../fr/dojo/">Mon dojo</a></li>
+      <li><a href="../../../fr/ueber/">À propos</a></li>
+      <li><a href="https://powerplatformdojo.com/fr/" rel="noopener">Aperçu du Dojo</a></li>
+      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo pour Copilot</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Rechercher une technique</h2>
+    <label for="suche-feld" class="sr-only">Terme de recherche</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approbation, boucle">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Fermer la recherche"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Résultats"></ul>
+  <p class="suche__leer" hidden>Aucune technique trouvée. Essaie avec JSON, approbation ou boucle.</p>
+</dialog>
+<main id="main"><div class="wrap">
+<nav class="krumen" aria-label="Fil d'Ariane"><ol><li><a href="../../">Accueil</a></li><li><a href="../">techniques</a></li><li><a href="./" aria-current="page">Intercepter les erreurs avec Try, Catch et Finally</a></li></ol></nav>
+<article class="tk" data-technik="15" data-guertel-nr="3">
+<header class="tk__kopf">
+<ul class="metazeile"><li><span class="guertel-tag" data-guertel-nr="3"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span>Ceinture orange</span></li><li><span class="badge badge--standard">Standard</span></li><li class="tk__nr">Astuce 15</li></ul>
+<h1 id="h1">Intercepter les erreurs avec Try, Catch et Finally</h1>
+</header>
+<section class="quiz" id="quiz" data-quiz data-richtig="1" data-guertel-nr="3" aria-labelledby="h-quiz">
+<h2 id="h-quiz" class="label">Question de quiz</h2>
+<p class="quiz__frage">Où places-tu Terminer pour que Finally nettoie avant ?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>Dans l'étendue Catch, juste avant le message d'erreur</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Après Finally, seulement si Catch s'est exécuté</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>Avant Try, avec le statut Failed</span></button></li></ul>
+<p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
+<div class="aufloesung-block" data-aufloesung>
+<h3>Solution</h3>
+<ol class="aufloesung"><li class="falsch"><b>A) Dans l'étendue Catch, juste avant le message d'erreur</b>Faux. Un Terminer dans l'étendue Catch arrête le flux immédiatement, et l'étendue Finally est alors ignorée.</li><li class="richtig"><b>B) Après Finally, seulement si Catch s'est exécuté</b>Exact. Finally nettoie d'abord. Ensuite, une Condition n'autorise Terminer avec le statut Failed que si Catch s'est exécuté.</li><li class="falsch"><b>C) Avant Try, avec le statut Failed</b>Faux. Terminer arrêterait le flux avant que Try n'exécute ses actions.</li></ol>
+</div>
+</section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">De quoi s'agit-il</h2><p>Dans l'étendue Try se trouve la logique proprement dite. Pour Catch, tu actives sous Configurer l'exécution après uniquement « a échoué » et « a expiré » de Try. Là, tu journalises l'erreur, par exemple avec result('Try'), ou tu préviens quelqu'un. Finally suit Catch, avec les quatre statuts dans Exécuter après, et nettoie. Après Finally vient une Condition avec les quatre statuts de Finally dans Exécuter après. Elle vérifie si Catch s'est exécuté, donc n'était pas Ignoré. Seule la branche d'erreur contient ensuite Terminer avec le statut Failed, après Finally. La branche de succès se termine sans Terminer. Un Terminer dans l'étendue Catch arrête le flux immédiatement, et l'étendue Finally est alors ignorée. Ainsi, l'erreur est d'abord traitée, puis tout est nettoyé, et l'exécution se termine enfin comme échouée.</p></section>
+<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">L'expression de l'astuce</h2><div class="code-block"><pre id="ausdruck"><code>result('Try')</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copier</button></div></section>
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Quand l'utiliser, quand l'éviter</h2><div class="zwei"><div class="karte-text"><h3>À utiliser</h3><p>Dans chaque flux dont la panne doit être remarquée : interfaces, fichiers, enregistrements dans Dataverse.</p></div><div class="karte-text"><h3>Plutôt pas</h3><p>Pour un court flux de test que tu démarres toi-même et dont tu suis directement l'exécution.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Erreur la plus fréquente</h2><p>Placer Terminer dans Catch. Mets-le après Finally, dans une branche qui ne s'exécute que si Catch s'est exécuté.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Licence</h2><p><span class="badge badge--standard">Standard</span> Cette technique utilise des connecteurs standard. Les droits d'utilisation de Microsoft 365 couvrent les connecteurs standard. Vérifie les droits pour l'ensemble de ton flux. Source sur Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Pour l'ensemble de ton flux: <a href="../../premium/">Vérification de licence</a>.</p></section>
+<section class="abschnitt" aria-label="Astuce complète"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-15" rel="noopener"><strong>Astuce complète avec captures d'écran sur powerplatformtip.com</strong><span>PowerPlatformTip #15, en anglais</span></a></section>
+<section class="abschnitt" aria-label="Ta progression">
+<button type="button" class="knopf" data-geuebt="15" aria-pressed="false" data-nur-js>Marquer comme pratiquée</button>
+<p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
+</section>
+<section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Partager</h2>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Question%20de%20quiz%20pour%20tous%20ceux%20qui%20cr%C3%A9ent%20des%20flux%3A%20O%C3%B9%20places-tu%20Terminer%20pour%20que%20Finally%20nettoie%20avant%C2%A0%3F%0A%0AA)%20Dans%20l'%C3%A9tendue%20Catch%2C%20juste%20avant%20le%20message%20d'erreur%0AB)%20Apr%C3%A8s%20Finally%2C%20seulement%20si%20Catch%20s'est%20ex%C3%A9cut%C3%A9%0AC)%20Avant%20Try%2C%20avec%20le%20statut%20Failed%0A%0ASolution%20avec%20explication%20dans%20le%20Power%20Platform%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Ffr%2Ftechniken%2Ffehler-mit-try-catch-finally-abfangen%2F" rel="noopener">Partager comme question de quiz sur LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Question de quiz pour tous ceux qui créent des flux: Où places-tu Terminer pour que Finally nettoie avant ?&#10;&#10;A) Dans l'étendue Catch, juste avant le message d'erreur&#10;B) Après Finally, seulement si Catch s'est exécuté&#10;C) Avant Try, avec le statut Failed&#10;&#10;Solution avec explication dans le Power Platform Dojo: https://powerautomate.ninja/fr/techniken/fehler-mit-try-catch-finally-abfangen/" data-nur-js>Copier le texte</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Power%20Platform%20Dojo%C2%A0%3A%20erreur%20dans%20la%20question%2015&amp;body=Question%3A%20O%C3%B9%20places-tu%20Terminer%20pour%20que%20Finally%20nettoie%20avant%C2%A0%3F%0A%0AQu'est-ce%20qui%20ne%20va%20pas%C2%A0%3F%0A%0A">Signaler une erreur dans cette question</a></div>
+<p class="klein">Adresse courte: powerautomate.ninja/fr/15</p>
+</section>
+<p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-15-try-catch-finally/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-15" rel="noopener">PowerPlatformTip #15</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/guidance/coding-guidelines/error-handling" rel="noopener">Employ robust error handling</a>.</p>
+<nav class="blaettern" aria-label="Autres techniques"><a href="../../techniken/float-vor-div/" rel="prev"><span>Technique précédente</span>float() avant div() pour des décimales correctes</a><a href="../../techniken/flow-laeufe-nacheinander/" rel="next"><span>Technique suivante</span>Exécuter les flux l'un après l'autre plutôt qu'en même temps</a></nav>
+<p class="kurs-zeile" data-kurs-status="warteliste">Tu préfères continuer avec un accompagnement ? Le <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-15" rel="noopener">Cours en direct Power Automate</a> de la Power Platform Academy dure quatre semaines. Les prochaines dates ne sont pas encore fixées, tu peux t'inscrire sur la liste d'attente sur la page du cours.</p>
+</article>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Site indépendant, sans lien avec Microsoft.</p>
+        <p>Questions et explications sur les flux, en français, tirées des astuces de <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Sans inscription. Les visites sont comptées sans cookies, seuls des totaux sans lien avec une personne sont enregistrés. Ta progression reste dans ton navigateur.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../../fr/techniken/">Toutes les techniques</a></li>
+          <li><a href="../../../fr/pruefung/">Examen de ceinture</a></li>
+          <li><a href="../../../fr/premium/">Ma licence suffit-elle ?</a></li>
+          <li><a href="../../../fr/heute/">Technique du jour</a></li>
+          <li><a href="../../../fr/kalender/montag.ics" download>Chaque lundi une question dans ton calendrier</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Infos</h2>
+        <ul>
+          <li><a href="../../../fr/ueber/">À propos du dojo</a></li>
+          <li><a href="../../../fr/impressum/">Mentions légales</a></li>
+          <li><a href="../../../fr/datenschutz/">Protection des données</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__dojos">
+      <p>Autres disciplines : <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/fr/lernpfade/" rel="noopener">Parcours d'apprentissage</a> | <a href="https://powerplatformdojo.com/fr/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Un projet de Marcel Lehmann. Pour apprendre davantage : <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft et les noms de produits de la Power Platform (par ex. Power Apps, Power Automate, Copilot Studio) sont des marques du groupe d'entreprises Microsoft. Ce site est un site indépendant de Marcel Lehmann. Il n'est ni exploité, ni sponsorisé, ni soutenu par Microsoft.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

@@ -2,26 +2,40 @@
    Kein Tracking, keine Anfragen an fremde Server. Jeder Zugriff auf localStorage in try/catch, alles laeuft auch ohne. */
 (function () {
   'use strict';
-  var d = document, h = d.documentElement, R = h.getAttribute('data-r') || '', LR = h.getAttribute('data-lr') || R, EN = /^en/i.test(h.lang || '');
-  var SFX = EN ? '-en' : '';
-  function tx(de, en) { return EN ? en : de; }
+  var d = document, h = d.documentElement, R = h.getAttribute('data-r') || '', LR = h.getAttribute('data-lr') || R;
+  /* Sprache aus <html lang>: Deutsch und Englisch stehen im Code, weitere Sprachen liefert assets/js/i18n-<code>.js
+     (window.FlowDojoI18n, erzeugt von build.mjs aus data/i18n/<code>.json, Schluessel = deutscher Text). */
+  var LANG = String(h.lang || 'de').slice(0, 2).toLowerCase(), EN = LANG === 'en', I18 = window.FlowDojoI18n || null;
+  var SFX = LANG === 'de' ? '' : '-' + LANG;
+  function tx(de, en) { if (LANG === 'de') return de; if (LANG === 'en' || !I18) return en; var v = I18.tx[de]; return typeof v === 'string' ? v : en; }
+  function txf(de, en, w) { return tx(de, en).replace(/\{(\w+)\}/g, function (m, k) { return Object.prototype.hasOwnProperty.call(w, k) ? String(w[k]) : m; }); }
   var SCHLUESSEL = 'fd-dojo-v1', THEME = 'fd-theme';
-  var GNAME = EN ? ['White belt', 'Yellow belt', 'Orange belt', 'Green belt', 'Blue belt', 'Brown belt', 'Black belt'] : ['Weisser Gürtel', 'Gelber Gürtel', 'Oranger Gürtel', 'Grüner Gürtel', 'Blauer Gürtel', 'Brauner Gürtel', 'Schwarzer Gürtel'];
+  var GNAME = I18 && I18.guertel ? I18.guertel : EN ? ['White belt', 'Yellow belt', 'Orange belt', 'Green belt', 'Blue belt', 'Brown belt', 'Black belt'] : ['Weisser Gürtel', 'Gelber Gürtel', 'Oranger Gürtel', 'Grüner Gürtel', 'Blauer Gürtel', 'Brauner Gürtel', 'Schwarzer Gürtel'];
   var BUCHST = ['A', 'B', 'C'];
   function $(s, c) { return (c || d).querySelector(s); }
   function $$(s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); }
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function heuteIso() { var t = new Date(); return t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2); }
-  function datumCH(iso) { if (!iso) return ''; if (EN) return iso; var p = iso.split('-'); return p[2] + '.' + p[1] + '.' + p[0]; }
+  function datumCH(iso) {
+    if (!iso) return ''; if (EN) return iso;
+    var p = iso.split('-');
+    if (LANG !== 'de') { try { return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])).toLocaleDateString(h.lang, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }); } catch (e) {} }
+    return p[2] + '.' + p[1] + '.' + p[0];
+  }
 
   /* Speicher */
   function lade() { try { var s = JSON.parse(localStorage.getItem(SCHLUESSEL) || 'null'); if (s && typeof s === 'object') { s.geuebt = s.geuebt || {}; return s; } } catch (e) {} return { v: 1, geuebt: {} }; }
   function speichere(s) { try { localStorage.setItem(SCHLUESSEL, JSON.stringify(s)); return true; } catch (e) { return false; } }
-  window.FlowDojo = { lade: lade, speichere: speichere, R: R, LR: LR, EN: EN, SFX: SFX, tx: tx, esc: esc, kopiere: kopiere, heuteIso: heuteIso, datumCH: datumCH };
+  window.FlowDojo = { lade: lade, speichere: speichere, R: R, LR: LR, EN: EN, LANG: LANG, SFX: SFX, tx: tx, txf: txf, esc: esc, kopiere: kopiere, heuteIso: heuteIso, datumCH: datumCH };
 
-  /* Sprache: Wahl beim Umschalten merken (fd-lang), keine Cookies. Die deutsche 404 unter /en/ leitet auf die englische. */
-  d.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('[data-sprache]'); if (a) { try { localStorage.setItem('fd-lang', a.getAttribute('data-sprache')); } catch (x) {} } });
-  if (h.getAttribute('data-seite') === '404' && !EN && location.pathname.indexOf(R + 'en/') === 0) location.replace(R + 'en/404.html');
+  /* Sprache: Wahl beim Umschalten merken (fd-lang), keine Cookies. Die deutsche 404 unter /<sprache>/ leitet auf die 404 dieser Sprache.
+     Die Sprachwahl (<details>) schliesst bei Klick daneben und mit Escape. */
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-sprache]'); if (a) { try { localStorage.setItem('fd-lang', a.getAttribute('data-sprache')); } catch (x) {} }
+    $$('details[data-sprachwahl][open]').forEach(function (w) { if (!w.contains(e.target)) w.removeAttribute('open'); });
+  });
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape') $$('details[data-sprachwahl][open]').forEach(function (w) { w.removeAttribute('open'); var s = $('summary', w); if (s) s.focus(); }); });
+  if (h.getAttribute('data-seite') === '404' && LANG === 'de') $$('[data-sprache]').forEach(function (a) { var c = a.getAttribute('data-sprache'); if (c !== 'de' && location.pathname.indexOf(R + c + '/') === 0) location.replace(R + c + '/404.html'); });
 
   /* Theme */
   var tk = $('[data-theme-toggle]');

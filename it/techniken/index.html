@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="it" data-seite="wand" data-r="../../" data-lr="../../it/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: https://powerautomate-ninja.goatcounter.com; connect-src 'self' https://powerautomate-ninja.goatcounter.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EDF2F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1019" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script src="../../assets/js/theme-init.js"></script>
+<script src="../../assets/js/i18n-it.js" defer></script><script src="../../assets/js/site.js" defer></script>
+<script src="../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
+
+<meta name="generator" content="Power Platform Dojo build">
+<title>Tutte le tecniche per i flussi, per cintura | Flow Dojo</title>
+<meta name="description" content="26 tecniche per i flussi in Power Automate, ordinate per cintura. Ognuna con domanda del quiz, spiegazione in italiano e link al tip completo.">
+<link rel="canonical" href="https://powerautomate.ninja/it/techniken/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/">
+<link rel="alternate" hreflang="fr" href="https://powerautomate.ninja/fr/techniken/">
+<link rel="alternate" hreflang="it" href="https://powerautomate.ninja/it/techniken/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Power Platform Dojo">
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:title" content="Tutte le tecniche per i flussi, per cintura | Flow Dojo">
+<meta property="og:description" content="26 tecniche per i flussi in Power Automate, ordinate per cintura. Ognuna con domanda del quiz, spiegazione in italiano e link al tip completo.">
+<meta property="og:url" content="https://powerautomate.ninja/it/techniken/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/it/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tutte le tecniche per i flussi, per cintura | Flow Dojo">
+<meta name="twitter:description" content="26 tecniche per i flussi in Power Automate, ordinate per cintura. Ognuna con domanda del quiz, spiegazione in italiano e link al tip completo.">
+<meta name="twitter:image" content="https://powerautomate.ninja/assets/img/it/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://powerautomate.ninja/it/#website",
+      "name": "Power Platform Dojo",
+      "url": "https://powerautomate.ninja/it/",
+      "inLanguage": "it",
+      "description": "Domande, spiegazioni e percorso delle cinture per i flussi in Power Automate, in italiano. Sito indipendente senza legame con Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Tutte le tecniche",
+      "url": "https://powerautomate.ninja/it/techniken/",
+      "inLanguage": "it",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://powerautomate.ninja/it/techniken/datum-direkt-mit-utcnow-formatieren/",
+            "name": "Formattare la data direttamente in utcNow()"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://powerautomate.ninja/it/techniken/flow-testen-vor-dem-einschalten/",
+            "name": "Testare il flusso prima di metterlo in produzione"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://powerautomate.ninja/it/techniken/aktionen-ueber-my-clipboard-wiederverwenden/",
+            "name": "Copiare e riutilizzare le azioni"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://powerautomate.ninja/it/techniken/mit-code-view-hinter-eine-aktion-schauen/",
+            "name": "Guardare dietro un'azione con la visualizzazione codice"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/",
+            "name": "Filtra matrice in modalità avanzata"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://powerautomate.ninja/it/techniken/feste-werte-in-compose-statt-variablen/",
+            "name": "Valori fissi in Componi invece che in variabili"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "url": "https://powerautomate.ninja/it/techniken/duplikate-mit-union-entfernen/",
+            "name": "Rimuovere i duplicati con union()"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "url": "https://powerautomate.ninja/it/techniken/mit-static-result-testen/",
+            "name": "Testare con il risultato statico senza modificare dati"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "url": "https://powerautomate.ninja/it/techniken/sicherer-zugriff-mit-fragezeichen/",
+            "name": "Accesso sicuro con l'operatore ?"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "url": "https://powerautomate.ninja/it/techniken/schleifen-beim-testen-mit-take-kuerzen/",
+            "name": "Accorciare i cicli durante il test con take()"
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "url": "https://powerautomate.ninja/it/techniken/float-vor-div/",
+            "name": "float() prima di div() per decimali corretti"
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "url": "https://powerautomate.ninja/it/techniken/fehler-mit-try-catch-finally-abfangen/",
+            "name": "Intercettare gli errori con Try, Catch e Finally"
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "url": "https://powerautomate.ninja/it/techniken/flow-laeufe-nacheinander/",
+            "name": "Esecuzioni del flusso una dopo l'altra invece che insieme"
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "url": "https://powerautomate.ninja/it/techniken/timeout-fuer-lange-aktionen/",
+            "name": "Impostare un timeout per azioni lunghe"
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "url": "https://powerautomate.ninja/it/techniken/apostrophe-und-sonderzeichen-codieren/",
+            "name": "Codificare correttamente apostrofi e caratteri speciali"
+          },
+          {
+            "@type": "ListItem",
+            "position": 16,
+            "url": "https://powerautomate.ninja/it/techniken/flow-daten-als-json-an-power-apps/",
+            "name": "Restituire dati del flusso come JSON a Power Apps"
+          },
+          {
+            "@type": "ListItem",
+            "position": 17,
+            "url": "https://powerautomate.ninja/it/techniken/apply-to-each-parallel/",
+            "name": "Eseguire Applica a ciascuno in parallelo"
+          },
+          {
+            "@type": "ListItem",
+            "position": 18,
+            "url": "https://powerautomate.ninja/it/techniken/json-objekt-statt-switch/",
+            "name": "Oggetto JSON invece di Switch"
+          },
+          {
+            "@type": "ListItem",
+            "position": 19,
+            "url": "https://powerautomate.ninja/it/techniken/json-schema-das-null-vertraegt/",
+            "name": "Schema JSON che tollera null"
+          },
+          {
+            "@type": "ListItem",
+            "position": 20,
+            "url": "https://powerautomate.ninja/it/techniken/microsoft-graph-ohne-app-registrierung/",
+            "name": "Chiamare Microsoft Graph senza registrazione dell'app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 21,
+            "url": "https://powerautomate.ninja/it/techniken/entscheidungen-ueber-ein-geteiltes-postfach/",
+            "name": "Decisioni tramite una casella condivisa"
+          },
+          {
+            "@type": "ListItem",
+            "position": 22,
+            "url": "https://powerautomate.ninja/it/techniken/sharepoint-datei-per-rest-umbenennen/",
+            "name": "Rinominare un file SharePoint tramite REST"
+          },
+          {
+            "@type": "ListItem",
+            "position": 23,
+            "url": "https://powerautomate.ninja/it/techniken/echte-fehlermeldung-mit-result-auslesen/",
+            "name": "Leggere il vero messaggio di errore con result()"
+          },
+          {
+            "@type": "ListItem",
+            "position": 24,
+            "url": "https://powerautomate.ninja/it/techniken/approvals-ueber-30-tage/",
+            "name": "Mantenere in vita le approvazioni oltre 30 giorni"
+          },
+          {
+            "@type": "ListItem",
+            "position": 25,
+            "url": "https://powerautomate.ninja/it/techniken/ein-flow-als-router-fuer-agent-werkzeuge/",
+            "name": "Un flusso come router per gli strumenti dell'agente"
+          },
+          {
+            "@type": "ListItem",
+            "position": 26,
+            "url": "https://powerautomate.ninja/it/techniken/selbstheilende-aufrufe-fuer-agents/",
+            "name": "Chiamate che si correggono da sole per gli agenti"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://powerautomate.ninja/it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "tecniche",
+          "item": "https://powerautomate.ninja/it/techniken/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../it/" aria-label="Power Platform Dojo, Power Automate, pagina iniziale"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text" aria-hidden="true"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <ul>
+        <li><a href="../../it/techniken/" aria-current="page">Tecniche</a></li>
+        <li><a href="../../it/pruefung/">Esame di cintura</a></li>
+        <li><a href="../../it/premium/">Verifica della licenza</a></li>
+        <li><a href="../../it/dojo/">Il mio dojo</a></li>
+        <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="Lingua: Italiano"><span aria-hidden="true">IT</span></summary>
+<ul class="sprachwahl__liste"><li><a href="../../techniken/" hreflang="de" lang="de" data-sprache="de">Deutsch</a></li><li><a href="../../fr/techniken/" hreflang="fr" lang="fr" data-sprache="fr">Français</a></li><li><a href="../../it/techniken/" hreflang="it" lang="it" data-sprache="it" aria-current="true">Italiano</a></li><li><a href="../../en/techniken/" hreflang="en" lang="en" data-sprache="en">English</a></li></ul></details>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Cerca una tecnica" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Modalità scura" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Chiudi il menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="../../it/techniken/">Tecniche</a></li>
+      <li><a href="../../it/pruefung/">Esame di cintura</a></li>
+      <li><a href="../../it/premium/">Verifica della licenza</a></li>
+      <li><a href="../../it/heute/">Tecnica del giorno</a></li>
+      <li><a href="../../it/dojo/">Il mio dojo</a></li>
+      <li><a href="../../it/ueber/">Info</a></li>
+      <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
+      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo per Copilot</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Cerca una tecnica</h2>
+    <label for="suche-feld" class="sr-only">Termine di ricerca</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, Approval, ciclo">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Chiudi la ricerca"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Risultati"></ul>
+  <p class="suche__leer" hidden>Nessuna tecnica trovata. Prova con JSON, Approval o ciclo.</p>
+</dialog>
+<main id="main"><div class="wrap">
+<nav class="krumen" aria-label="Percorso di navigazione"><ol><li><a href="../">Home</a></li><li><a href="./" aria-current="page">tecniche</a></li></ol></nav>
+<div class="sektion--eng">
+<span class="label">Parete delle tecniche</span>
+<h1 id="h1">Tutte le tecniche</h1>
+<p class="lead">26 tecniche con domanda del quiz, spiegazione ed espressione. Ognuna rimanda al tip completo con screenshot su powerplatformtip.com.</p>
+<div class="filter" data-filter data-nur-js>
+<label class="sr-only" for="wand-suche">Cerca tra le tecniche</label>
+<input class="suchfeld" id="wand-suche" type="search" placeholder="Cerca: JSON, Approval, SharePoint" data-wand-suche autocomplete="off">
+<fieldset><legend>Cintura</legend><div class="chips"><button type="button" class="chip" data-f="guertel-nr" data-v="1" aria-pressed="false"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span>Bianca</button><button type="button" class="chip" data-f="guertel-nr" data-v="2" aria-pressed="false"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span>Gialla</button><button type="button" class="chip" data-f="guertel-nr" data-v="3" aria-pressed="false"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span>Arancione</button><button type="button" class="chip" data-f="guertel-nr" data-v="4" aria-pressed="false"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span>Verde</button><button type="button" class="chip" data-f="guertel-nr" data-v="5" aria-pressed="false"><span class="band-punkt" data-guertel-nr="5" aria-hidden="true"></span>Blu</button><button type="button" class="chip" data-f="guertel-nr" data-v="6" aria-pressed="false"><span class="band-punkt" data-guertel-nr="6" aria-hidden="true"></span>Marrone</button><button type="button" class="chip" data-f="guertel-nr" data-v="7" aria-pressed="false"><span class="band-punkt" data-guertel-nr="7" aria-hidden="true"></span>Nera</button></div></fieldset>
+<fieldset><legend>Tema</legend><div class="chips"><button type="button" class="chip" data-f="thema" data-v="Approvazioni" aria-pressed="false">Approvazioni</button><button type="button" class="chip" data-f="thema" data-v="Cicli e parallelismo" aria-pressed="false">Cicli e parallelismo</button><button type="button" class="chip" data-f="thema" data-v="Data e ora" aria-pressed="false">Data e ora</button><button type="button" class="chip" data-f="thema" data-v="Espressioni" aria-pressed="false">Espressioni</button><button type="button" class="chip" data-f="thema" data-v="Gestione degli errori" aria-pressed="false">Gestione degli errori</button><button type="button" class="chip" data-f="thema" data-v="HTTP e Microsoft Graph" aria-pressed="false">HTTP e Microsoft Graph</button><button type="button" class="chip" data-f="thema" data-v="IA e Copilot Studio" aria-pressed="false">IA e Copilot Studio</button><button type="button" class="chip" data-f="thema" data-v="JSON e conversione dei dati" aria-pressed="false">JSON e conversione dei dati</button><button type="button" class="chip" data-f="thema" data-v="Matrici e filtri" aria-pressed="false">Matrici e filtri</button><button type="button" class="chip" data-f="thema" data-v="Power Apps e flussi" aria-pressed="false">Power Apps e flussi</button><button type="button" class="chip" data-f="thema" data-v="SharePoint REST" aria-pressed="false">SharePoint REST</button><button type="button" class="chip" data-f="thema" data-v="Struttura e leggibilità dei flussi" aria-pressed="false">Struttura e leggibilità dei flussi</button><button type="button" class="chip" data-f="thema" data-v="Test e debug" aria-pressed="false">Test e debug</button></div></fieldset>
+<fieldset><legend>Licenza</legend><div class="chips"><button type="button" class="chip" data-f="lizenz" data-v="standard" aria-pressed="false">Standard</button><button type="button" class="chip" data-f="lizenz" data-v="premium" aria-pressed="false">Premium</button></div></fieldset>
+<fieldset><legend>Il tuo stato</legend><div class="chips"><button type="button" class="chip" data-f="stand" data-v="offen" aria-pressed="false">Ancora da fare</button><button type="button" class="chip" data-f="stand" data-v="geuebt" aria-pressed="false">Esercitata</button></div></fieldset>
+<p class="zaehler" data-filter-zaehler role="status" aria-live="polite"></p>
+</div>
+</div>
+<section class="guertel-abschnitt sektion--eng" id="weiss" aria-labelledby="h-weiss" data-guertel-nr="1">
+<h2 id="h-weiss"><span class="band-punkt" data-guertel-nr="1" aria-hidden="true"></span>Cintura bianca: Utilizzo</h2>
+<p class="klein">Testi i flussi, leggi input e output di ogni azione e formatti le date direttamente.</p>
+<ul class="karten"><li class="karte" data-technik="6" data-guertel-nr="1" data-thema="Data e ora" data-lizenz="standard" data-such="formattare la data direttamente in utcnow() data e ora utcnow formatdatetime data formato fuso orario converttimezone 6">
+<span class="klein">Tip 6</span>
+<h3><a href="../techniken/datum-direkt-mit-utcnow-formatieren/">Formattare la data direttamente in utcNow()</a></h3>
+<p>Formatti la data attuale con una sola espressione.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Data e ora</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="9" data-guertel-nr="1" data-thema="Test e debug" data-lizenz="standard" data-such="testare il flusso prima di metterlo in produzione test e debug test esecuzione di test debug cronologia esecuzioni run history input output 9">
+<span class="klein">Tip 9</span>
+<h3><a href="../techniken/flow-testen-vor-dem-einschalten/">Testare il flusso prima di metterlo in produzione</a></h3>
+<p>Testi un flusso prima di attivarlo e leggi i risultati di ogni azione.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Test e debug</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="12" data-guertel-nr="1" data-thema="Struttura e leggibilità dei flussi" data-lizenz="standard" data-such="copiare e riutilizzare le azioni struttura e leggibilità dei flussi ambito scope appunti clipboard copiare incollare modello flusso figlio child flow 12">
+<span class="klein">Tip 12</span>
+<h3><a href="../techniken/aktionen-ueber-my-clipboard-wiederverwenden/">Copiare e riutilizzare le azioni</a></h3>
+<p>Usi gli ambiti come blocchi riutilizzabili.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Struttura e leggibilità dei flussi</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="89" data-guertel-nr="1" data-thema="Test e debug" data-lizenz="standard" data-such="guardare dietro un'azione con la visualizzazione codice test e debug visualizzazione codice code view peek code json espressione debug 89">
+<span class="klein">Tip 89</span>
+<h3><a href="../techniken/mit-code-view-hinter-eine-aktion-schauen/">Guardare dietro un'azione con la visualizzazione codice</a></h3>
+<p>Leggi la definizione di un'azione per trovare prima gli errori.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Test e debug</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="gelb" aria-labelledby="h-gelb" data-guertel-nr="2">
+<h2 id="h-gelb"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span>Cintura gialla: Espressioni</h2>
+<p class="klein">Scrivi le prime espressioni, filtri e ripulisci le matrici e testi i cicli con pochi elementi.</p>
+<ul class="karten"><li class="karte" data-technik="3" data-guertel-nr="2" data-thema="Matrici e filtri" data-lizenz="standard" data-such="filtra matrice in modalità avanzata matrici e filtri filtra matrice filter array modalità avanzata advanced mode and or contains condizione 3">
+<span class="klein">Tip 3</span>
+<h3><a href="../techniken/filter-array-im-advanced-mode/">Filtra matrice in modalità avanzata</a></h3>
+<p>Filtri le matrici con espressioni personalizzate in modalità avanzata.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Matrici e filtri</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="5" data-guertel-nr="2" data-thema="Struttura e leggibilità dei flussi" data-lizenz="standard" data-such="valori fissi in componi invece che in variabili struttura e leggibilità dei flussi variabili componi compose analizza json parse json inizializza variabile initialize variable impostazioni configurazione 5">
+<span class="klein">Tip 5</span>
+<h3><a href="../techniken/feste-werte-in-compose-statt-variablen/">Valori fissi in Componi invece che in variabili</a></h3>
+<p>Usi le variabili solo per valori che cambiano davvero.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Struttura e leggibilità dei flussi</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="7" data-guertel-nr="2" data-thema="Matrici e filtri" data-lizenz="standard" data-such="rimuovere i duplicati con union() matrici e filtri union duplicati distinct matrice filtra matrice filter array unire 7">
+<span class="klein">Tip 7</span>
+<h3><a href="../techniken/duplikate-mit-union-entfernen/">Rimuovere i duplicati con union()</a></h3>
+<p>Crei valori univoci con union() e poi filtri con Filtra matrice.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Matrici e filtri</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="36" data-guertel-nr="2" data-thema="Test e debug" data-lizenz="standard" data-such="testare con il risultato statico senza modificare dati test e debug risultato statico static result static result test mock simulazione 36">
+<span class="klein">Tip 36</span>
+<h3><a href="../techniken/mit-static-result-testen/">Testare con il risultato statico senza modificare dati</a></h3>
+<p>Testi i flussi con risultati simulati, senza modificare dati reali.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Test e debug</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="59" data-guertel-nr="2" data-thema="Espressioni" data-lizenz="standard" data-such="accesso sicuro con l'operatore ? espressioni punto interrogativo null invalidtemplate coalesce contenuto dinamico item() 59">
+<span class="klein">Tip 59</span>
+<h3><a href="../techniken/sicherer-zugriff-mit-fragezeichen/">Accesso sicuro con l'operatore ?</a></h3>
+<p>Accedi in modo robusto a proprietà che possono mancare.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Espressioni</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="148" data-guertel-nr="2" data-thema="Test e debug" data-lizenz="standard" data-such="accorciare i cicli durante il test con take() test e debug take applica a ciascuno apply to each ciclo test matrice limitare 148">
+<span class="klein">Tip 148</span>
+<h3><a href="../techniken/schleifen-beim-testen-mit-take-kuerzen/">Accorciare i cicli durante il test con take()</a></h3>
+<p>Testi i cicli con pochi elementi, senza ricostruire il flusso.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Test e debug</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="155" data-guertel-nr="2" data-thema="Espressioni" data-lizenz="standard" data-such="float() prima di div() per decimali corretti espressioni div float decimali percentuale formatnumber divisione 155">
+<span class="klein">Tip 155</span>
+<h3><a href="../techniken/float-vor-div/">float() prima di div() per decimali corretti</a></h3>
+<p>Calcoli percentuali e rapporti con i decimali corretti.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Espressioni</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="orange" aria-labelledby="h-orange" data-guertel-nr="3">
+<h2 id="h-orange"><span class="band-punkt" data-guertel-nr="3" aria-hidden="true"></span>Cintura arancione: Controllo</h2>
+<p class="klein">Intercetti gli errori con gli ambiti, gestisci le esecuzioni simultanee e restituisci dati a Power Apps.</p>
+<ul class="karten"><li class="karte" data-technik="15" data-guertel-nr="3" data-thema="Gestione degli errori" data-lizenz="standard" data-such="intercettare gli errori con try, catch e finally gestione degli errori try catch finally ambito scope configura esecuzione dopo configure run after gestione degli errori termina terminate 15">
+<span class="klein">Tip 15</span>
+<h3><a href="../techniken/fehler-mit-try-catch-finally-abfangen/">Intercettare gli errori con Try, Catch e Finally</a></h3>
+<p>Inserisci lo schema Try-Catch-Finally in ogni flusso importante.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Gestione degli errori</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="35" data-guertel-nr="3" data-thema="Cicli e parallelismo" data-lizenz="standard" data-such="esecuzioni del flusso una dopo l'altra invece che insieme cicli e parallelismo controllo della concorrenza concurrency control parallelismo trigger duplicati coda una dopo l'altra 35">
+<span class="klein">Tip 35</span>
+<h3><a href="../techniken/flow-laeufe-nacheinander/">Esecuzioni del flusso una dopo l'altra invece che insieme</a></h3>
+<p>Eviti i conflitti facendo eseguire le istanze del flusso una dopo l'altra.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Cicli e parallelismo</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="109" data-guertel-nr="3" data-thema="Approvazioni" data-lizenz="standard" data-such="impostare un timeout per azioni lunghe approvazioni timeout iso 8601 approvazione approval è scaduto has timed out configura esecuzione dopo p14d 109">
+<span class="klein">Tip 109</span>
+<h3><a href="../techniken/timeout-fuer-lange-aktionen/">Impostare un timeout per azioni lunghe</a></h3>
+<p>Proteggi le approvazioni lunghe dai timeout.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Approvazioni</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="146" data-guertel-nr="3" data-thema="Espressioni" data-lizenz="standard" data-such="codificare correttamente apostrofi e caratteri speciali espressioni apostrofo odata encodeuricomponent decodeuricomponent replace caratteri speciali json 146">
+<span class="klein">Tip 146</span>
+<h3><a href="../techniken/apostrophe-und-sonderzeichen-codieren/">Codificare correttamente apostrofi e caratteri speciali</a></h3>
+<p>Eviti che i caratteri speciali rompano filtri e chiamate.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Espressioni</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="158" data-guertel-nr="3" data-thema="Power Apps e flussi" data-lizenz="standard" data-such="restituire dati del flusso come json a power apps power apps e flussi power apps parsejson json rispondi a powerapp o a un flusso respond to a power app or flow app canvas restituzione 158">
+<span class="klein">Tip 158</span>
+<h3><a href="../techniken/flow-daten-als-json-an-power-apps/">Restituire dati del flusso come JSON a Power Apps</a></h3>
+<p>Restituisci dati annidati a un'app senza Premium.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Power Apps e flussi</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="gruen" aria-labelledby="h-gruen" data-guertel-nr="4">
+<h2 id="h-gruen"><span class="band-punkt" data-guertel-nr="4" aria-hidden="true"></span>Cintura verde: Protezione</h2>
+<p class="klein">Elabori in sicurezza dati disordinati, acceleri i cicli e chiami direttamente SharePoint e Microsoft Graph.</p>
+<ul class="karten"><li class="karte" data-technik="75" data-guertel-nr="4" data-thema="Cicli e parallelismo" data-lizenz="standard" data-such="eseguire applica a ciascuno in parallelo cicli e parallelismo applica a ciascuno apply to each controllo della concorrenza concurrency control parallelismo ciclo prestazioni limitazione 75">
+<span class="klein">Tip 75</span>
+<h3><a href="../techniken/apply-to-each-parallel/">Eseguire Applica a ciascuno in parallelo</a></h3>
+<p>Acceleri i cicli in parallelo e riconosci quando questo falsa i risultati.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Cicli e parallelismo</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="100" data-guertel-nr="4" data-thema="JSON e conversione dei dati" data-lizenz="standard" data-such="oggetto json invece di switch json e conversione dei dati switch condizione componi compose json ricerca lookup coalesce 100">
+<span class="klein">Tip 100</span>
+<h3><a href="../techniken/json-objekt-statt-switch/">Oggetto JSON invece di Switch</a></h3>
+<p>Sostituisci le ramificazioni con una ricerca in un oggetto JSON.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>JSON e conversione dei dati</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="104" data-guertel-nr="4" data-thema="JSON e conversione dei dati" data-lizenz="standard" data-such="schema json che tollera null json e conversione dei dati analizza json parse json schema null required expected string but got null validazione 104">
+<span class="klein">Tip 104</span>
+<h3><a href="../techniken/json-schema-das-null-vertraegt/">Schema JSON che tollera null</a></h3>
+<p>Scrivi schemi robusti per API inaffidabili.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>JSON e conversione dei dati</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="138" data-guertel-nr="4" data-thema="HTTP e Microsoft Graph" data-lizenz="premium" data-such="chiamare microsoft graph senza registrazione dell'app http e microsoft graph microsoft graph http con microsoft entra id http with microsoft entra id entra id registrazione app 403 nextlink 138">
+<span class="klein">Tip 138</span>
+<h3><a href="../techniken/microsoft-graph-ohne-app-registrierung/">Chiamare Microsoft Graph senza registrazione dell'app</a></h3>
+<p>Chiami Microsoft Graph da un flusso senza registrare un'app.</p>
+<div class="karte__meta"><span class="badge badge--premium">Premium</span><span>HTTP e Microsoft Graph</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="149" data-guertel-nr="4" data-thema="Approvazioni" data-lizenz="standard" data-such="decisioni tramite una casella condivisa approvazioni approvazione approval casella condivisa shared mailbox send email with options selectedoption outlook 149">
+<span class="klein">Tip 149</span>
+<h3><a href="../techniken/entscheidungen-ueber-ein-geteiltes-postfach/">Decisioni tramite una casella condivisa</a></h3>
+<p>Ottieni approvazioni tramite una casella condivisa.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Approvazioni</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="153" data-guertel-nr="4" data-thema="SharePoint REST" data-lizenz="standard" data-such="rinominare un file sharepoint tramite rest sharepoint rest sharepoint rinominare fileleafref merge rest invia una richiesta http a sharepoint send an http request to sharepoint 153">
+<span class="klein">Tip 153</span>
+<h3><a href="../techniken/sharepoint-datei-per-rest-umbenennen/">Rinominare un file SharePoint tramite REST</a></h3>
+<p>Rinomini i file SharePoint senza copiarli.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>SharePoint REST</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="blau" aria-labelledby="h-blau" data-guertel-nr="5">
+<h2 id="h-blau"><span class="band-punkt" data-guertel-nr="5" aria-hidden="true"></span>Cintura blu: Leggere gli errori</h2>
+<p class="klein">Leggi il vero messaggio di errore di un ambito e lo inoltri a persone o agenti.</p>
+<ul class="karten"><li class="karte" data-technik="168" data-guertel-nr="5" data-thema="Gestione degli errori" data-lizenz="standard" data-such="leggere il vero messaggio di errore con result() gestione degli errori result messaggio di errore ambito scope filtra matrice filter array error copilot studio 168">
+<span class="klein">Tip 168</span>
+<h3><a href="../techniken/echte-fehlermeldung-mit-result-auslesen/">Leggere il vero messaggio di errore con result()</a></h3>
+<p>Inoltri il vero messaggio di errore a persone o agenti.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Gestione degli errori</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="braun" aria-labelledby="h-braun" data-guertel-nr="6">
+<h2 id="h-braun"><span class="band-punkt" data-guertel-nr="6" aria-hidden="true"></span>Cintura marrone: Architettura</h2>
+<p class="klein">Mantieni in vita i processi per settimane, anche oltre il limite di durata di un flusso.</p>
+<ul class="karten"><li class="karte" data-technik="144" data-guertel-nr="6" data-thema="Approvazioni" data-lizenz="standard" data-such="mantenere in vita le approvazioni oltre 30 giorni approvazioni approvazione approval 30 giorni timeout triggerflow condizione del trigger trigger condition riavvio attendi un'approvazione wait for an approval 144">
+<span class="klein">Tip 144</span>
+<h3><a href="../techniken/approvals-ueber-30-tage/">Mantenere in vita le approvazioni oltre 30 giorni</a></h3>
+<p>Costruisci approvazioni che possono restare aperte più di 30 giorni.</p>
+<div class="karte__meta"><span class="badge badge--standard">Standard</span><span>Approvazioni</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+<section class="guertel-abschnitt sektion--eng" id="schwarz" aria-labelledby="h-schwarz" data-guertel-nr="7">
+<h2 id="h-schwarz"><span class="band-punkt" data-guertel-nr="7" aria-hidden="true"></span>Cintura nera: Flussi per agenti</h2>
+<p class="klein">Costruisci flussi come strumenti per gli agenti di Copilot Studio: un flusso per più operazioni, e gli errori tornano come risposta leggibile.</p>
+<ul class="karten"><li class="karte" data-technik="170" data-guertel-nr="7" data-thema="IA e Copilot Studio" data-lizenz="premium" data-such="un flusso come router per gli strumenti dell'agente ia e copilot studio copilot studio agente switch quando un agente chiama il flusso when an agent calls the flow rispondi all'agente respond to the agent odata analizza json parse json mcp 170">
+<span class="klein">Tip 170</span>
+<h3><a href="../techniken/ein-flow-als-router-fuer-agent-werkzeuge/">Un flusso come router per gli strumenti dell'agente</a></h3>
+<p>Dai a un agente di Copilot Studio più strumenti con un solo flusso.</p>
+<div class="karte__meta"><span class="badge badge--premium">Premium</span><span>IA e Copilot Studio</span><span class="karte__status" data-status hidden></span></div>
+</li>
+<li class="karte" data-technik="174" data-guertel-nr="7" data-thema="IA e Copilot Studio" data-lizenz="premium" data-such="chiamate che si correggono da sole per gli agenti ia e copilot studio copilot studio agente gestione degli errori ambito scope configura esecuzione dopo configure run after http404notfound rispondi all'agente respond to the agent retry nuovo tentativo 174">
+<span class="klein">Tip 174</span>
+<h3><a href="../techniken/selbstheilende-aufrufe-fuer-agents/">Chiamate che si correggono da sole per gli agenti</a></h3>
+<p>Costruisci strumenti per agenti che imparano dagli errori.</p>
+<div class="karte__meta"><span class="badge badge--premium">Premium</span><span>IA e Copilot Studio</span><span class="karte__status" data-status hidden></span></div>
+</li></ul>
+</section>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Sito indipendente, nessun legame con Microsoft.</p>
+        <p>Domande e spiegazioni sui flussi, in italiano, dai tip di <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Senza registrazione. Le visite vengono contate senza cookie, si salvano solo totali senza riferimento a persone. I tuoi progressi restano nel tuo browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../it/techniken/">Tutte le tecniche</a></li>
+          <li><a href="../../it/pruefung/">Esame di cintura</a></li>
+          <li><a href="../../it/premium/">La mia licenza basta?</a></li>
+          <li><a href="../../it/heute/">Tecnica del giorno</a></li>
+          <li><a href="../../it/kalender/montag.ics" download>Ogni lunedì una domanda nel calendario</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../../it/ueber/">Informazioni sul Dojo</a></li>
+          <li><a href="../../it/impressum/">Note legali</a></li>
+          <li><a href="../../it/datenschutz/">Privacy</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__dojos">
+      <p>Altre discipline: <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Un progetto di Marcel Lehmann. Per imparare di più: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft e i nomi dei prodotti della Power Platform (ad es. Power Apps, Power Automate, Copilot Studio) sono marchi del gruppo di aziende Microsoft. Questo è un sito indipendente di Marcel Lehmann. Non è gestito, sponsorizzato né sostenuto da Microsoft.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

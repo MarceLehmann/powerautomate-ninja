@@ -1,7 +1,7 @@
 /* Power Platform Dojo (Power Automate): Lizenz-Check. Vier Fragen, Urteil sofort. Vorauswahl ueber ?q1=... (Startseite). */
 (function () {
   'use strict';
-  var d = document, EN = /^en/i.test(d.documentElement.lang || ''), tx = function (de, en) { return EN ? en : de; }, form = d.querySelector('[data-lizenz-check]'), urteil = d.querySelector('[data-urteil]'), liste = d.querySelector('[data-urteil-liste]');
+  var d = document, F = window.FlowDojo, EN = /^en/i.test(d.documentElement.lang || ''), tx = F ? F.tx : function (de, en) { return EN ? en : de; }, txf = F ? F.txf : function (de, en, w) { return tx(de, en).replace('{n}', w.n); }, form = d.querySelector('[data-lizenz-check]'), urteil = d.querySelector('[data-urteil]'), liste = d.querySelector('[data-urteil-liste]');
   if (!form || !urteil) return;
   var fragen = Array.prototype.slice.call(form.querySelectorAll('fieldset'));
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -16,7 +16,7 @@
     gewaehlt.forEach(function (x) { if (!x) return; var w = x.getAttribute('data-wirkung'), pt = x.getAttribute('data-punkt'); if (w === 'premium') premium.push(pt); if (w === 'pruefen') pruefen.push(pt); });
     var klasse = 'urteil', text, punkte = [];
     if (premium.length) { klasse += ' premium'; text = tx('Wahrscheinlich Premium nötig für: ', 'Premium probably needed for: ') + premium.join(', ') + '.'; punkte = pruefen; }
-    else if (offen) { klasse += ' pruefen'; text = offen === fragen.length ? tx('Beantworte die vier Fragen, das Urteil erscheint hier.', 'Answer the four questions and the verdict appears here.') : tx('Noch ' + offen + (offen === 1 ? ' Frage' : ' Fragen') + ' offen. Bisher kein Premium-Merkmal.', offen + (offen === 1 ? ' question' : ' questions') + ' still open. No premium feature so far.'); punkte = pruefen; }
+    else if (offen) { klasse += ' pruefen'; text = offen === fragen.length ? tx('Beantworte die vier Fragen, das Urteil erscheint hier.', 'Answer the four questions and the verdict appears here.') : (offen === 1 ? tx('Noch 1 Frage offen. Bisher kein Premium-Merkmal.', '1 question still open. No premium feature so far.') : txf('Noch {n} Fragen offen. Bisher kein Premium-Merkmal.', '{n} questions still open. No premium feature so far.', { n: offen })); punkte = pruefen; }
     else if (pruefen.length) { klasse += ' pruefen'; text = tx('Bisher kein Premium-Merkmal. Ob eine Microsoft-365-Lizenz reicht, hängt noch an diesen Punkten:', 'No premium feature so far. Whether a Microsoft 365 license is enough still depends on these points:'); punkte = pruefen; }
     else { text = tx('Kein Premium-Merkmal gewählt. Dafür reicht in der Regel eine Microsoft-365-Lizenz mit Power-Automate-Nutzungsrechten.', 'No premium feature selected. A Microsoft 365 license with Power Automate usage rights is usually enough for this.'); }
     if (premium.length) punkte = [tx('Welche Lizenz hast du schon? Je nach Kontext können Power Automate Premium (pro Person), Process (pro Flow oder Flow-Gruppe, ersetzt den früheren Per-Flow-Plan), Power Apps Premium oder Nutzungsrechte etwa aus Dynamics 365 passen.', 'Which license do you already have? Depending on context, Power Automate Premium (per user), Process (per flow or flow group, replaces the former per-flow plan), Power Apps Premium or usage rights such as those from Dynamics 365 may cover it.')].concat(punkte);

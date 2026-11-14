@@ -20,11 +20,15 @@
 <link rel="canonical" href="https://powerautomate.ninja/en/datenschutz/">
 <link rel="alternate" hreflang="de" href="https://powerautomate.ninja/datenschutz/">
 <link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/datenschutz/">
+<link rel="alternate" hreflang="fr" href="https://powerautomate.ninja/fr/datenschutz/">
+<link rel="alternate" hreflang="it" href="https://powerautomate.ninja/it/datenschutz/">
 <link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/datenschutz/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Power Platform Dojo">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="de_CH">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="it_IT">
 <meta property="og:title" content="Privacy | Flow Dojo">
 <meta property="og:description" content="Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.">
 <meta property="og:url" content="https://powerautomate.ninja/en/datenschutz/">
@@ -51,7 +55,8 @@
       </ul>
     </nav>
     <div class="kopf__aktionen">
-      <a class="knopf-icon sprache" href="../../datenschutz/" hreflang="de" data-sprache="de"><span lang="de">DE</span><span class="sr-only" lang="de"> Deutsche Version</span></a>
+      <details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="Language: English"><span aria-hidden="true">EN</span></summary>
+<ul class="sprachwahl__liste"><li><a href="../../datenschutz/" hreflang="de" lang="de" data-sprache="de">Deutsch</a></li><li><a href="../../fr/datenschutz/" hreflang="fr" lang="fr" data-sprache="fr">Français</a></li><li><a href="../../it/datenschutz/" hreflang="it" lang="it" data-sprache="it">Italiano</a></li><li><a href="../../en/datenschutz/" hreflang="en" lang="en" data-sprache="en" aria-current="true">English</a></li></ul></details>
       <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
       <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
       <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
@@ -112,10 +117,10 @@
 <p>Settings and progress are kept in your browser's local storage (localStorage). These entries stay on your device and are not transmitted.</p>
 <ul class="arrow-list">
 <li><code>fd-theme</code>: saves your light or dark mode choice as <code>light</code> or <code>dark</code>.</li>
-<li><code>fd-dojo-v1</code>: after your actions, stores practiced techniques with dates and your exam belt with a date. Applies to both languages.</li>
+<li><code>fd-dojo-v1</code>: after your actions, stores practiced techniques with dates and your exam belt with a date. Applies to all languages.</li>
 </ul>
 <h2>Language redirect and storage</h2>
-<p><code>fd-lang</code> stores <code>de</code> or <code>en</code>. On a first visit to the German home page without a saved language choice, the website checks your browser languages. If none is German and a language is available, it saves <code>en</code> without a click and redirects to the English home page. This excludes detected crawlers and only happens if storage is available. Clicking the language switch also saves your choice. The entry prevents another automatic redirect, is not used for tracking and stays in your browser.</p>
+<p><code>fd-lang</code> stores <code>de</code>, <code>en</code>, <code>fr</code> or <code>it</code>. On a first visit to the German home page without a saved language choice, the website checks your browser languages. If none is German and a language is available, it saves <code>en</code> without a click and redirects to the English home page. This excludes detected crawlers and only happens if storage is available. Clicking a language in the language menu also saves your choice. The entry prevents another automatic redirect, is not used for tracking and stays in your browser.</p>
 <p>In <a href="../dojo/">My dojo</a>, "Delete everything" removes progress, theme and language choice. It leaves <code>skipgc</code> in place. You can also delete all entries through website data in your browser settings. The belt exam result image is created in your browser and is not uploaded.</p>
 <h2>If you write to me</h2>
 <p>The "Report an error in this question" link prepares an email in your mail program. Nothing is sent until you click send there. I use your email address and the content only to reply and correct the question, and delete the email once that is done.</p>

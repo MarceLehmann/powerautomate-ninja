@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="it" data-seite="technik" data-r="../../../" data-lr="../../../it/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: https://powerautomate-ninja.goatcounter.com; connect-src 'self' https://powerautomate-ninja.goatcounter.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EDF2F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1019" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../assets/css/site.css">
+<script src="../../../assets/js/theme-init.js"></script>
+<script src="../../../assets/js/i18n-it.js" defer></script><script src="../../../assets/js/site.js" defer></script>
+<script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
+
+<meta name="generator" content="Power Platform Dojo build">
+<title>Filtra matrice in modalità avanzata | Flow Dojo</title>
+<meta name="description" content="Filtra matrice in modalità avanzata: domanda del quiz con soluzione, breve spiegazione in italiano e link al tip completo su powerplatformtip.com.">
+<link rel="canonical" href="https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="fr" href="https://powerautomate.ninja/fr/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="it" href="https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/filter-array-im-advanced-mode/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Power Platform Dojo">
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:title" content="Filtra matrice in modalità avanzata | Flow Dojo">
+<meta property="og:description" content="Filtra matrice in modalità avanzata: domanda del quiz con soluzione, breve spiegazione in italiano e link al tip completo su powerplatformtip.com.">
+<meta property="og:url" content="https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/it/guertel-gelb.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Filtra matrice in modalità avanzata | Flow Dojo">
+<meta name="twitter:description" content="Filtra matrice in modalità avanzata: domanda del quiz con soluzione, breve spiegazione in italiano e link al tip completo su powerplatformtip.com.">
+<meta name="twitter:image" content="https://powerautomate.ninja/assets/img/it/guertel-gelb.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://powerautomate.ninja/it/#website",
+      "name": "Power Platform Dojo",
+      "url": "https://powerautomate.ninja/it/",
+      "inLanguage": "it",
+      "description": "Domande, spiegazioni e percorso delle cinture per i flussi in Power Automate, in italiano. Sito indipendente senza legame con Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/#technik",
+      "name": "Filtra matrice in modalità avanzata",
+      "url": "https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/",
+      "inLanguage": "it",
+      "learningResourceType": "Quiz",
+      "educationalLevel": "Cintura gialla",
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/",
+      "citation": [
+        "https://learn.microsoft.com/en-us/power-automate/data-operations",
+        "https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs"
+      ],
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://powerautomate.ninja/it/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/#quiz"
+      }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/#quiz",
+      "name": "Domanda del quiz: Filtra matrice in modalità avanzata",
+      "inLanguage": "it",
+      "educationalLevel": "Cintura gialla",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Quando passi alla modalità avanzata in Filtra matrice?",
+          "text": "Quando passi alla modalità avanzata in Filtra matrice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 0,
+            "text": "Quando in un filtro servono più condizioni",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Esatto. In modalità avanzata scrivi la condizione come espressione e colleghi più controlli con and() o or()."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Quando vuoi ordinare gli elementi per un campo",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Sbagliato. Filtra matrice esclude elementi ma non li ordina. L'ordine resta lo stesso."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "text": "Quando il filtro deve girare direttamente in SharePoint",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Sbagliato. Filtra matrice lavora nel flusso su una matrice già caricata, non nell'origine dati."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://powerautomate.ninja/it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "tecniche",
+          "item": "https://powerautomate.ninja/it/techniken/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Filtra matrice in modalità avanzata",
+          "item": "https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../../it/" aria-label="Power Platform Dojo, Power Automate, pagina iniziale"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text" aria-hidden="true"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <ul>
+        <li><a href="../../../it/techniken/" aria-current="true">Tecniche</a></li>
+        <li><a href="../../../it/pruefung/">Esame di cintura</a></li>
+        <li><a href="../../../it/premium/">Verifica della licenza</a></li>
+        <li><a href="../../../it/dojo/">Il mio dojo</a></li>
+        <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="Lingua: Italiano"><span aria-hidden="true">IT</span></summary>
+<ul class="sprachwahl__liste"><li><a href="../../../techniken/filter-array-im-advanced-mode/" hreflang="de" lang="de" data-sprache="de">Deutsch</a></li><li><a href="../../../fr/techniken/filter-array-im-advanced-mode/" hreflang="fr" lang="fr" data-sprache="fr">Français</a></li><li><a href="../../../it/techniken/filter-array-im-advanced-mode/" hreflang="it" lang="it" data-sprache="it" aria-current="true">Italiano</a></li><li><a href="../../../en/techniken/filter-array-im-advanced-mode/" hreflang="en" lang="en" data-sprache="en">English</a></li></ul></details>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Cerca una tecnica" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Modalità scura" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Chiudi il menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="../../../it/techniken/">Tecniche</a></li>
+      <li><a href="../../../it/pruefung/">Esame di cintura</a></li>
+      <li><a href="../../../it/premium/">Verifica della licenza</a></li>
+      <li><a href="../../../it/heute/">Tecnica del giorno</a></li>
+      <li><a href="../../../it/dojo/">Il mio dojo</a></li>
+      <li><a href="../../../it/ueber/">Info</a></li>
+      <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
+      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo per Copilot</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Cerca una tecnica</h2>
+    <label for="suche-feld" class="sr-only">Termine di ricerca</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, Approval, ciclo">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Chiudi la ricerca"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Risultati"></ul>
+  <p class="suche__leer" hidden>Nessuna tecnica trovata. Prova con JSON, Approval o ciclo.</p>
+</dialog>
+<main id="main"><div class="wrap">
+<nav class="krumen" aria-label="Percorso di navigazione"><ol><li><a href="../../">Home</a></li><li><a href="../">tecniche</a></li><li><a href="./" aria-current="page">Filtra matrice in modalità avanzata</a></li></ol></nav>
+<article class="tk" data-technik="3" data-guertel-nr="2">
+<header class="tk__kopf">
+<ul class="metazeile"><li><span class="guertel-tag" data-guertel-nr="2"><span class="band-punkt" data-guertel-nr="2" aria-hidden="true"></span>Cintura gialla</span></li><li><span class="badge badge--standard">Standard</span></li><li class="tk__nr">Tip 3</li></ul>
+<h1 id="h1">Filtra matrice in modalità avanzata</h1>
+</header>
+<section class="quiz" id="quiz" data-quiz data-richtig="0" data-guertel-nr="2" aria-labelledby="h-quiz">
+<h2 id="h-quiz" class="label">Domanda del quiz</h2>
+<p class="quiz__frage">Quando passi alla modalità avanzata in Filtra matrice?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>Quando in un filtro servono più condizioni</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Quando vuoi ordinare gli elementi per un campo</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>Quando il filtro deve girare direttamente in SharePoint</span></button></li></ul>
+<p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
+<div class="aufloesung-block" data-aufloesung>
+<h3>Soluzione</h3>
+<ol class="aufloesung"><li class="richtig"><b>A) Quando in un filtro servono più condizioni</b>Esatto. In modalità avanzata scrivi la condizione come espressione e colleghi più controlli con and() o or().</li><li class="falsch"><b>B) Quando vuoi ordinare gli elementi per un campo</b>Sbagliato. Filtra matrice esclude elementi ma non li ordina. L'ordine resta lo stesso.</li><li class="falsch"><b>C) Quando il filtro deve girare direttamente in SharePoint</b>Sbagliato. Filtra matrice lavora nel flusso su una matrice già caricata, non nell'origine dati.</li></ol>
+</div>
+</section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>L'azione Filtra matrice offre in modalità semplice una condizione con campo, operatore e valore. In molti casi non basta: due condizioni contemporaneamente, un collegamento con «o» oppure un confronto con un valore calcolato. Invece di mettere più filtri uno dopo l'altro, passi alla modalità avanzata. Lì scrivi la condizione come espressione e combini funzioni come equals(), contains(), and() e or(). Puoi includere anche i contenuti dinamici di azioni precedenti. Così resti con una sola azione e il flusso diventa più chiaro. I confronti semplici la finestra di progettazione continua a mostrarli come campi.</p></section>
+
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Quando usarla, quando no</h2><div class="zwei"><div class="karte-text"><h3>Usala</h3><p>Quando vuoi combinare più condizioni o confrontare con valori calcolati.</p></div><div class="karte-text"><h3>Meglio di no</h3><p>Quando basta un solo confronto. In quel caso la modalità semplice resta più leggibile.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Errore più frequente</h2><p>Mettere più azioni Filtra matrice una dopo l'altra, anche se un'espressione con and() fa lo stesso in un solo passaggio.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">Licenza</h2><p><span class="badge badge--standard">Standard</span> Questa tecnica usa connettori standard. I diritti di utilizzo di Microsoft 365 coprono i connettori standard. Controlla i diritti per l'intero flusso. Fonte su Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/admin/power-automate-licensing/faqs" rel="noopener">Power Automate licensing FAQ</a>. Per tutto il tuo flusso: <a href="../../premium/">Verifica della licenza</a>.</p></section>
+<section class="abschnitt" aria-label="Tip completo"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-3" rel="noopener"><strong>Tip completo con screenshot su powerplatformtip.com</strong><span>PowerPlatformTip #3, in inglese</span></a></section>
+<section class="abschnitt" aria-label="Il tuo stato">
+<button type="button" class="knopf" data-geuebt="3" aria-pressed="false" data-nur-js>Segna come esercitata</button>
+<p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
+</section>
+<section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Condividi</h2>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Domanda%20del%20quiz%20per%20chi%20crea%20flussi%3A%20Quando%20passi%20alla%20modalit%C3%A0%20avanzata%20in%20Filtra%20matrice%3F%0A%0AA)%20Quando%20in%20un%20filtro%20servono%20pi%C3%B9%20condizioni%0AB)%20Quando%20vuoi%20ordinare%20gli%20elementi%20per%20un%20campo%0AC)%20Quando%20il%20filtro%20deve%20girare%20direttamente%20in%20SharePoint%0A%0ASoluzione%20con%20spiegazione%20nel%20Power%20Platform%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fit%2Ftechniken%2Ffilter-array-im-advanced-mode%2F" rel="noopener">Condividi come domanda del quiz su LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Domanda del quiz per chi crea flussi: Quando passi alla modalità avanzata in Filtra matrice?&#10;&#10;A) Quando in un filtro servono più condizioni&#10;B) Quando vuoi ordinare gli elementi per un campo&#10;C) Quando il filtro deve girare direttamente in SharePoint&#10;&#10;Soluzione con spiegazione nel Power Platform Dojo: https://powerautomate.ninja/it/techniken/filter-array-im-advanced-mode/" data-nur-js>Copia il testo</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Power%20Platform%20Dojo%3A%20errore%20nella%20domanda%203&amp;body=Domanda%3A%20Quando%20passi%20alla%20modalit%C3%A0%20avanzata%20in%20Filtra%20matrice%3F%0A%0ACosa%20non%20va%3F%0A%0A">Segnala un errore in questa domanda</a></div>
+<p class="klein">Indirizzo breve: powerautomate.ninja/it/3</p>
+</section>
+<p class="quelle">Fonte: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-3-advanced-filtering-array/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-3" rel="noopener">PowerPlatformTip #3</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-automate/data-operations" rel="noopener">Use data operations in Power Automate</a>.</p>
+<nav class="blaettern" aria-label="Altre tecniche"><a href="../../techniken/mit-code-view-hinter-eine-aktion-schauen/" rel="prev"><span>Tecnica precedente</span>Guardare dietro un'azione con la visualizzazione codice</a><a href="../../techniken/feste-werte-in-compose-statt-variablen/" rel="next"><span>Tecnica successiva</span>Valori fissi in Componi invece che in variabili</a></nav>
+<p class="kurs-zeile" data-kurs-status="warteliste">Preferisci proseguire con affiancamento? Il <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-3" rel="noopener">Corso live Power Automate</a> della Power Platform Academy (in tedesco) dura quattro settimane. Le prossime date non sono ancora fissate, sulla pagina del corso ti metti in lista d'attesa.</p>
+</article>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Sito indipendente, nessun legame con Microsoft.</p>
+        <p>Domande e spiegazioni sui flussi, in italiano, dai tip di <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. Senza registrazione. Le visite vengono contate senza cookie, si salvano solo totali senza riferimento a persone. I tuoi progressi restano nel tuo browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../../it/techniken/">Tutte le tecniche</a></li>
+          <li><a href="../../../it/pruefung/">Esame di cintura</a></li>
+          <li><a href="../../../it/premium/">La mia licenza basta?</a></li>
+          <li><a href="../../../it/heute/">Tecnica del giorno</a></li>
+          <li><a href="../../../it/kalender/montag.ics" download>Ogni lunedì una domanda nel calendario</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../../../it/ueber/">Informazioni sul Dojo</a></li>
+          <li><a href="../../../it/impressum/">Note legali</a></li>
+          <li><a href="../../../it/datenschutz/">Privacy</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__dojos">
+      <p>Altre discipline: <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Un progetto di Marcel Lehmann. Per imparare di più: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft e i nomi dei prodotti della Power Platform (ad es. Power Apps, Power Automate, Copilot Studio) sono marchi del gruppo di aziende Microsoft. Questo è un sito indipendente di Marcel Lehmann. Non è gestito, sponsorizzato né sostenuto da Microsoft.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

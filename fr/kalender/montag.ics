@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//KMUpower//Power Platform Dojo//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:flow-dojo-montag-fr@kmupower.com
+DTSTAMP:20261114T000000Z
+DTSTART:20261116T083000
+DURATION:PT10M
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Power Platform Dojo: une question
+DESCRIPTION:Dix minutes, une question sur les flux. La technique du jour s
+ e trouve sous https://powerautomate.ninja/fr/heute/
+URL:https://powerautomate.ninja/fr/heute/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

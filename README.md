@@ -24,8 +24,19 @@ Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung
 | `/guertel/<farbe>/` | sieben Gürtelseiten, Ziel der geteilten Ergebnisse |
 | `/heute/`, `/dojo/` | Technik des Tages, eigener Fortschritt (nur localStorage) |
 | `/<tippnr>/` | Kurzadresse, leitet auf die Technik |
+| `/fr/...`, `/it/...` | französische und italienische Fassung aller Seiten (seit 14.11.2026), gleiche Pfade, Texte aus `data/i18n/<code>.json` |
 | `/en/...` | englische Fassung aller Seiten, gleiche Pfade. Umschalter DE/EN im Kopf, hreflang, Erstbesuch der deutschen Startseite ohne Deutsch in navigator.languages leitet einmalig auf /en/ (Wahl in localStorage fd-lang, nicht für Crawler) |
 | `/ueber/`, `/impressum/`, `/datenschutz/`, `/404.html` | |
+
+## Sprachen (seit 14.11.2026: de, en, fr, it)
+
+- Deutsch und Englisch stehen im Code (`T('deutsch', 'english')` in `scripts/build.mjs`, `tx()` in `assets/js`). Jede weitere Sprache braucht nur Daten: `data/i18n/<code>.json` mit `meta` (lang, og:locale, Name, Prüfregeln), `links` (Dojo, Lernpfade, Mentoring, copilot.ninja), `limits`, `ui` und `js` (Schlüssel = deutscher Text), `guertel`, `techniken` (Schlüssel wie `data/techniken.json`), dazu `templates/partials/kopf.<code>.html`, `fuss.<code>.html` und `templates/datenschutz.<code>.html`.
+- Texte mit wechselnden Werten über `TF('… {n} …', '… {n} …', { n })` bzw. `txf()`, damit der Schlüssel fest bleibt.
+- Fehlt eine Übersetzung, bricht der Build ab. `node scripts/build.mjs --testphase --ui-fehlend=<datei>` schreibt alle fehlenden Schlüssel mit der englischen Vorlage. Ungenutzte Schlüssel erscheinen als Warnung.
+- Sprachwahl im Kopf mit allen Sprachen (`<details>`, ohne JavaScript bedienbar), hreflang für alle Sprachen plus x-default (Deutsch), Sitemap und llms.txt mit allen Sprachen, Vorschaubilder in `assets/img/<code>/`.
+- Skripttexte weiterer Sprachen: `assets/js/i18n-<code>.js` (vom Build erzeugt). Das GoatCounter-Ereignis `pruefung-beendet/<farbe>` bleibt sprachunabhängig (deutsche Farbnamen).
+- Prüfregeln je Sprache: Französisch und Italienisch erlauben Antworten bis 15 Wörter und Kurztexte von 80 bis 170 Wörtern (`meta.pruefregeln`).
+- Die automatische Erstweiterleitung in `theme-init.js` (Engine-Datei) kennt nur Englisch. Französisch und Italienisch wählt man über die Sprachwahl.
 
 ## Aufbau
 
