@@ -43,6 +43,15 @@
       "learn_url": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/flow-agent",
       "learn_zitat": "Respond to the agent within the 100-second action limit.",
       "geprueft_am": "2026-11-14"
+    },
+    "approval_warten_max": {
+      "wert": 28,
+      "einheit": "Tage",
+      "text": "28 Tage",
+      "text_en": "28 days",
+      "learn_url": "https://learn.microsoft.com/en-us/power-automate/approvals-known-issues",
+      "learn_zitat": "An approval flow can wait for 28 days. If the wait time exceeds 28 days, that flow fails.",
+      "geprueft_am": "2026-11-14"
     }
   }
 }
