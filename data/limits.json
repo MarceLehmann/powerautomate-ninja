@@ -34,6 +34,15 @@
       "learn_url": "https://learn.microsoft.com/en-us/power-automate/limits-and-config",
       "learn_zitat": "Concurrent runs: 1 to 100 when Concurrency Control is turned on (defaults to 25). Turning on Concurrency Control can't be undone without deleting and re-adding the trigger.",
       "geprueft_am": "2026-10-16"
+    },
+    "agent_antwort": {
+      "wert": 100,
+      "einheit": "Sekunden",
+      "text": "100 Sekunden",
+      "text_en": "100 seconds",
+      "learn_url": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/flow-agent",
+      "learn_zitat": "Respond to the agent within the 100-second action limit.",
+      "geprueft_am": "2026-11-14"
     }
   }
 }

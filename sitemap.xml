@@ -267,6 +267,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/approvals-ueber-30-tage/"/>
   </url>
   <url>
+    <loc>https://powerautomate.ninja/techniken/ein-flow-als-router-fuer-agent-werkzeuge/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/ein-flow-als-router-fuer-agent-werkzeuge/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/ein-flow-als-router-fuer-agent-werkzeuge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/ein-flow-als-router-fuer-agent-werkzeuge/"/>
+  </url>
+  <url>
+    <loc>https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/"/>
+  </url>
+  <url>
     <loc>https://powerautomate.ninja/en/</loc>
     <lastmod>2026-10-16</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/"/>
@@ -531,5 +545,19 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/approvals-ueber-30-tage/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/approvals-ueber-30-tage/"/>
+  </url>
+  <url>
+    <loc>https://powerautomate.ninja/en/techniken/ein-flow-als-router-fuer-agent-werkzeuge/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/ein-flow-als-router-fuer-agent-werkzeuge/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/ein-flow-als-router-fuer-agent-werkzeuge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/ein-flow-als-router-fuer-agent-werkzeuge/"/>
+  </url>
+  <url>
+    <loc>https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/"/>
   </url>
 </urlset>

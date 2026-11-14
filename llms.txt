@@ -4,7 +4,7 @@
 
 ## Seiten
 
-- [Gürtelprüfung](https://powerautomate.ninja/pruefung/): Selbsttest von Weiss bis Braun
+- [Gürtelprüfung](https://powerautomate.ninja/pruefung/): Selbsttest von Weiss bis Schwarz mit Meisterprüfung
 - [Lizenz-Check](https://powerautomate.ninja/premium/): Reicht die Lizenz aus Microsoft 365?
 - [Alle Techniken](https://powerautomate.ninja/techniken/): nach Gürtel geordnet
 - [Über](https://powerautomate.ninja/ueber/): Methode und Herkunft der Fragen
@@ -37,11 +37,13 @@ Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Persone
 - [SharePoint-Datei per REST umbenennen](https://powerautomate.ninja/techniken/sharepoint-datei-per-rest-umbenennen/): Grüner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/
 - [Die echte Fehlermeldung mit result() auslesen](https://powerautomate.ninja/techniken/echte-fehlermeldung-mit-result-auslesen/): Blauer Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/
 - [Approvals über 30 Tage am Leben halten](https://powerautomate.ninja/techniken/approvals-ueber-30-tage/): Brauner Gürtel, Standard. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/
+- [Ein Flow als Router für Agent-Werkzeuge](https://powerautomate.ninja/techniken/ein-flow-als-router-fuer-agent-werkzeuge/): Schwarzer Gürtel, Premium. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-170-flow-as-agent-tool-switch-router/
+- [Selbstheilende Aufrufe für Agents](https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/): Schwarzer Gürtel, Premium. Grundlage: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/
 
 ## English
 
 - [Home](https://powerautomate.ninja/en/): English version
-- [Belt exam](https://powerautomate.ninja/en/pruefung/): self-assessment from white to brown
+- [Belt exam](https://powerautomate.ninja/en/pruefung/): self-assessment from white to black with master exam
 - [License check](https://powerautomate.ninja/en/premium/): is the license from Microsoft 365 enough?
 - [All techniques](https://powerautomate.ninja/en/techniken/): ordered by belt
 
@@ -71,3 +73,5 @@ Visits are counted without cookies; only totals without personal identifiers are
 - [Rename a SharePoint file via REST](https://powerautomate.ninja/en/techniken/sharepoint-datei-per-rest-umbenennen/): Green belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-153-rename-sharepoint-file-power-automate/
 - [Read the real error message with result()](https://powerautomate.ninja/en/techniken/echte-fehlermeldung-mit-result-auslesen/): Blue belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-168-collect-failed-action-details-with-result/
 - [Keep approvals alive beyond 30 days](https://powerautomate.ninja/en/techniken/approvals-ueber-30-tage/): Brown belt, Standard. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-144-infinite-approvals/
+- [One flow as a router for agent tools](https://powerautomate.ninja/en/techniken/ein-flow-als-router-fuer-agent-werkzeuge/): Black belt, Premium. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-170-flow-as-agent-tool-switch-router/
+- [Self-healing calls for agents](https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/): Black belt, Premium. Based on: https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/
