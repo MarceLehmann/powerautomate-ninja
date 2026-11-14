@@ -23,6 +23,7 @@
   },
   "limits": {
     "laufzeit_max": "30 giorni",
+    "approval_warten_max": "28 giorni",
     "schleife_parallel_max": "50",
     "trigger_warteschlange": "11",
     "trigger_parallel": "da 1 a 100, predefinito 25",
@@ -525,7 +526,7 @@
       "lernziel": "Testi un flusso prima di attivarlo e leggi i risultati di ogni azione.",
       "thema": "Test e debug",
       "titel": "Testare il flusso prima di metterlo in produzione",
-      "kurztext": "Un nuovo flusso raramente funziona senza errori al primo tentativo. Con «Test» nella finestra di progettazione lo avvii manualmente, inserisci tu stesso gli input del trigger e segui l'esecuzione passo dopo passo. Per ogni azione vedi cosa entra e cosa esce. Così trovi il passaggio in cui un valore resta vuoto o un'espressione restituisce qualcosa di diverso da quanto pensavi, prima che dati reali attraversino il flusso. Poi correggi e testi di nuovo, quante volte vuoi. Solo quando input e output sono giusti attivi il flusso per l'uso quotidiano.",
+      "kurztext": "Un nuovo flusso raramente funziona senza errori al primo tentativo. Con «Test» nella finestra di progettazione lo avvii manualmente. Con un trigger manuale inserisci tu stesso gli input, con un trigger automatico generi tu stesso l'evento. Poi segui l'esecuzione passo dopo passo. Per ogni azione vedi cosa entra e cosa esce. Così trovi il passaggio in cui un valore resta vuoto o un'espressione restituisce qualcosa di diverso da quanto pensavi, prima che dati reali attraversino il flusso. Poi correggi e testi di nuovo, quante volte vuoi. Solo quando input e output sono giusti attivi il flusso per l'uso quotidiano.",
       "wann_ja": "Prima di ogni attivazione e dopo ogni modifica a trigger, espressioni o condizioni.",
       "wann_nein": "Quando un'azione invia e-mail reali o modifica dati che non vuoi toccare. In quel caso dalle prima un risultato statico.",
       "fehler": "Guardare solo il segno di spunta verde senza aprire gli output. «Riuscito» non significa che il valore sia giusto.",
@@ -824,7 +825,7 @@
       "lernziel": "Testi i flussi con risultati simulati, senza modificare dati reali.",
       "thema": "Test e debug",
       "titel": "Testare con il risultato statico senza modificare dati",
-      "kurztext": "Alcune azioni durante il test non vuoi eseguirle davvero: inviano e-mail, modificano record o durano a lungo. Con il risultato statico assegni a un'azione un risultato fisso. Nella nuova finestra di progettazione attivi «Risultato statico» nell'area «Test» dell'azione e imposti i valori di output. Nella finestra di progettazione classica apri il menu «Impostazioni» dell'azione e lì «Risultato statico». All'esecuzione successiva l'azione risulta riuscita senza essere eseguita. I passaggi seguenti continuano con l'output che hai impostato. Così testi con calma la logica successiva e con casi diversi, senza toccare dati reali. Prima dell'uso in produzione disattivi di nuovo il risultato statico.",
+      "kurztext": "Alcune azioni durante il test non vuoi eseguirle davvero: inviano e-mail, modificano record o durano a lungo. Con il risultato statico assegni a un'azione un risultato fisso. Nella nuova finestra di progettazione attivi «Risultato statico» nell'area «Test» dell'azione e imposti i valori di output. Nella finestra di progettazione classica apri il menu con i tre puntini dell'azione e lì «Risultato statico». All'esecuzione successiva l'azione risulta riuscita senza essere eseguita. I passaggi seguenti continuano con l'output che hai impostato. Così testi con calma la logica successiva e con casi diversi, senza toccare dati reali. Prima dell'uso in produzione disattivi di nuovo il risultato statico.",
       "wann_ja": "Per azioni che inviano e-mail, modificano dati o durano a lungo, mentre testi i passaggi successivi.",
       "wann_nein": "In produzione. Se il risultato statico resta attivo, il flusso non esegue mai davvero l'azione.",
       "fehler": "Lasciare il risultato statico attivo dopo il test. Il flusso segnala successo, anche se l'azione non è mai stata eseguita.",
@@ -1400,7 +1401,7 @@
       "lernziel": "Proteggi le approvazioni lunghe dai timeout.",
       "thema": "Approvazioni",
       "titel": "Impostare un timeout per azioni lunghe",
-      "kurztext": "Un'approvazione o un'altra azione che aspetta delle persone può durare più del previsto. Nelle impostazioni dell'azione stabilisci sotto Timeout per quanto tempo può aspettare al massimo. La durata la scrivi nel formato ISO 8601: P1D è un giorno, P14D sono 14 giorni, PT2H due ore. Quando il tempo scade, l'azione risulta scaduta. Perché il flusso non fallisca semplicemente, aggiungi un'azione il cui «Configura Run after» è impostato solo su «è scaduto». Lì invii un promemoria, passi al livello superiore o avvii una nuova richiesta. Su tutto vale il limite di durata di un flusso di {limit:laufzeit_max}.",
+      "kurztext": "Un'approvazione o un'altra azione che aspetta delle persone può durare più del previsto. Nelle impostazioni dell'azione stabilisci sotto Timeout per quanto tempo può aspettare al massimo. La durata la scrivi nel formato ISO 8601: P1D è un giorno, P14D sono 14 giorni, PT2H due ore. Quando il tempo scade, l'azione risulta scaduta. Perché il flusso non fallisca semplicemente, aggiungi un'azione il cui «Configura Run after» è impostato solo su «è scaduto». Lì invii un promemoria, passi al livello superiore o avvii una nuova richiesta. Su tutto vale il limite di durata di un flusso di {limit:laufzeit_max}. Secondo Microsoft un flusso aspetta un'approvazione al massimo {limit:approval_warten_max}.",
       "wann_ja": "Per approvazioni e altre azioni che aspettano una risposta di cui non conosci la durata.",
       "wann_nein": "Quando il processo può superare il limite di durata di {limit:laufzeit_max}. Allora un timeout non basta, perché l'intera esecuzione termina prima.",
       "fehler": "Impostare il timeout ma non costruire un percorso per «è scaduto». Allora l'esecuzione fallisce comunque.",
@@ -2065,7 +2066,7 @@
         "antworten": [
           "Con un'uscita dedicata per ogni campo",
           "Come testo JSON in un'uscita, poi ParseJSON",
-          "Con l'azione Risposta del connettore HTTP"
+          "Con l'azione Risposta del connettore Request"
         ],
         "erklaerungen": [
           "Sbagliato. Le uscite piatte non rappresentano né elenchi né record annidati.",
@@ -2076,7 +2077,7 @@
       "lernziel": "Restituisci dati annidati a un'app senza Premium.",
       "thema": "Power Apps e flussi",
       "titel": "Restituire dati del flusso come JSON a Power Apps",
-      "kurztext": "Un flusso spesso fornisce a un'app canvas più di un singolo valore, per esempio un cliente con tutti gli ordini. «Rispondi a un'applicazione PowerApp o un flusso» conosce però solo uscite piatte come testo, numero o Sì/No. Invece di creare decine di campi, costruisci il risultato nel flusso come JSON, per esempio con Seleziona e Componi, e lo restituisci come un unico campo di testo. In Power Apps ParseJSON rilegge il testo. Senza indicazione di tipo ottieni un valore dinamico e converti i campi con Text(), Value() o Boolean(). Con un Type come secondo argomento ottieni direttamente record e tabelle tipizzati. L'azione Risposta del connettore HTTP per questo non serve.",
+      "kurztext": "Un flusso spesso fornisce a un'app canvas più di un singolo valore, per esempio un cliente con tutti gli ordini. «Rispondi a un'applicazione PowerApp o un flusso» conosce però solo uscite piatte come testo, numero o Sì/No. Invece di creare decine di campi, costruisci il risultato nel flusso come JSON, per esempio con Seleziona e Componi, e lo restituisci come un unico campo di testo. In Power Apps ParseJSON rilegge il testo. Senza indicazione di tipo ottieni un valore dinamico e converti i campi con Text(), Value() o Boolean(). Con un Type come secondo argomento ottieni direttamente record e tabelle tipizzati. L'azione Risposta del connettore Request per questo non serve.",
       "wann_ja": "Quando l'app ha bisogno di elenchi o record annidati dal flusso.",
       "wann_nein": "Con quantità di dati molto grandi. Allora il flusso salva i dati in SharePoint o Dataverse e l'app li legge direttamente.",
       "fehler": "Usare nelle formule campi di ParseJSON senza conversione. Senza Type ParseJSON restituisce valori dinamici.",

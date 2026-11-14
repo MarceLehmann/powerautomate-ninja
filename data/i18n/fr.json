@@ -24,6 +24,7 @@
   },
   "limits": {
     "laufzeit_max": "30 jours",
+    "approval_warten_max": "28 jours",
     "schleife_parallel_max": "50",
     "trigger_warteschlange": "11",
     "trigger_parallel": "1 à 100, 25 par défaut",
@@ -526,7 +527,7 @@
       "lernziel": "Tu testes un flux avant de l'activer et tu lis les résultats de chaque action.",
       "thema": "Tests et débogage",
       "titel": "Tester un flux avant sa mise en service",
-      "kurztext": "Un nouveau flux fonctionne rarement sans erreur du premier coup. Avec « Tester » dans le concepteur, tu le démarres manuellement, tu fournis toi-même les entrées du déclencheur et tu suis l'exécution étape par étape. Pour chaque action, tu vois ce qui entre et ce qui sort. Tu trouves ainsi l'étape où une valeur reste vide ou où une expression donne autre chose que prévu, avant que de vraies données ne traversent le flux. Ensuite, tu ajustes et tu testes à nouveau, aussi souvent que tu veux. Tu n'actives le flux pour le quotidien que lorsque les entrées et les sorties sont correctes.",
+      "kurztext": "Un nouveau flux fonctionne rarement sans erreur du premier coup. Avec « Tester » dans le concepteur, tu le démarres manuellement. Avec un déclencheur manuel, tu fournis toi-même les entrées, avec un déclencheur automatique, tu provoques toi-même l'événement. Ensuite tu suis l'exécution étape par étape. Pour chaque action, tu vois ce qui entre et ce qui sort. Tu trouves ainsi l'étape où une valeur reste vide ou où une expression donne autre chose que prévu, avant que de vraies données ne traversent le flux. Ensuite, tu ajustes et tu testes à nouveau, aussi souvent que tu veux. Tu n'actives le flux pour le quotidien que lorsque les entrées et les sorties sont correctes.",
       "wann_ja": "Avant chaque activation et après chaque modification du déclencheur, des expressions ou des conditions.",
       "wann_nein": "Quand une action envoie de vrais e-mails ou modifie des données que tu ne veux pas toucher. Donne-lui alors d'abord un résultat statique.",
       "fehler": "Ne regarder que la coche verte et ne pas ouvrir les sorties. « Réussi » ne veut pas dire que la valeur est correcte.",
@@ -825,7 +826,7 @@
       "lernziel": "Tu testes des flux avec des résultats simulés, sans modifier de vraies données.",
       "thema": "Tests et débogage",
       "titel": "Tester avec un résultat statique sans modifier de données",
-      "kurztext": "Certaines actions, tu ne veux pas vraiment les exécuter pendant les tests : elles envoient des e-mails, modifient des enregistrements ou prennent du temps. Avec un résultat statique, tu prédéfinis un résultat fixe pour une action. Dans le nouveau concepteur, tu ouvres l'onglet « Tests » de l'action, tu actives « Activer le résultat statique » et tu fixes les valeurs de sortie. Dans le concepteur classique, tu ouvres le menu « Paramètres » de l'action, puis « Résultat statique ». À l'exécution suivante, l'action est considérée comme réussie sans être exécutée. Les étapes suivantes continuent avec ta sortie prédéfinie. Tu testes ainsi la logique tranquillement et avec différents cas, sans toucher à de vraies données. Avant la mise en service, tu désactives à nouveau le résultat statique.",
+      "kurztext": "Certaines actions, tu ne veux pas vraiment les exécuter pendant les tests : elles envoient des e-mails, modifient des enregistrements ou prennent du temps. Avec un résultat statique, tu prédéfinis un résultat fixe pour une action. Dans le nouveau concepteur, tu ouvres l'onglet « Tests » de l'action, tu actives « Activer le résultat statique » et tu fixes les valeurs de sortie. Dans le concepteur classique, tu ouvres le menu à trois points de l'action, puis « Résultat statique ». À l'exécution suivante, l'action est considérée comme réussie sans être exécutée. Les étapes suivantes continuent avec ta sortie prédéfinie. Tu testes ainsi la logique tranquillement et avec différents cas, sans toucher à de vraies données. Avant la mise en service, tu désactives à nouveau le résultat statique.",
       "wann_ja": "Pour les actions qui envoient des e-mails, modifient des données ou durent longtemps, pendant que tu testes les étapes suivantes.",
       "wann_nein": "En production. Si le résultat statique reste activé, le flux n'exécute jamais réellement l'action.",
       "fehler": "Laisser le résultat statique activé après les tests. Le flux signale un succès alors que l'action ne s'est jamais exécutée.",
@@ -1402,7 +1403,7 @@
       "lernziel": "Tu protèges les longues approbations contre les délais d'expiration.",
       "thema": "Approbations",
       "titel": "Définir un délai d'expiration pour les actions longues",
-      "kurztext": "Une approbation, ou une autre action qui attend des personnes, peut durer plus longtemps que prévu. Dans les paramètres de l'action, tu définis sous Délai d'expiration combien de temps elle peut attendre au maximum. Tu écris la durée au format ISO 8601 : P1D est un jour, P14D font 14 jours, PT2H deux heures. Quand le temps est écoulé, l'action est considérée comme expirée. Pour que le flux n'échoue pas simplement, tu ajoutes une action dont « Exécuter après » est réglé uniquement sur « a expiré ». Là, tu relances, tu fais remonter l'affaire ou tu démarres une nouvelle demande. Par-dessus tout s'applique la limite de durée d'exécution d'un flux de {limit:laufzeit_max}.",
+      "kurztext": "Une approbation, ou une autre action qui attend des personnes, peut durer plus longtemps que prévu. Dans les paramètres de l'action, tu définis sous Délai d'expiration combien de temps elle peut attendre au maximum. Tu écris la durée au format ISO 8601 : P1D est un jour, P14D font 14 jours, PT2H deux heures. Quand le temps est écoulé, l'action est considérée comme expirée. Pour que le flux n'échoue pas simplement, tu ajoutes une action dont « Exécuter après » est réglé uniquement sur « a expiré ». Là, tu relances, tu fais remonter l'affaire ou tu démarres une nouvelle demande. Par-dessus tout s'applique la limite de durée d'exécution d'un flux de {limit:laufzeit_max}. Selon Microsoft, un flux attend une approbation pendant {limit:approval_warten_max} au maximum.",
       "wann_ja": "Pour les approbations et les autres actions qui attendent une réponse dont tu ne connais pas la durée.",
       "wann_nein": "Quand le processus peut dépasser la limite de durée d'exécution de {limit:laufzeit_max}. Un délai d'expiration ne suffit alors pas, car toute l'exécution se termine avant.",
       "fehler": "Définir le délai d'expiration sans construire de chemin pour « a expiré ». L'exécution échoue alors quand même.",
@@ -2068,7 +2069,7 @@
         "antworten": [
           "Avec une sortie distincte pour chaque champ",
           "Sous forme de texte JSON dans une sortie, puis ParseJSON",
-          "Via l'action Réponse du connecteur HTTP"
+          "Via l'action Réponse du connecteur Request"
         ],
         "erklaerungen": [
           "Faux. Les sorties à plat ne représentent ni listes ni enregistrements imbriqués.",
@@ -2079,7 +2080,7 @@
       "lernziel": "Tu renvoies des données imbriquées à une application sans premium.",
       "thema": "Power Apps et flux",
       "titel": "Renvoyer les données d'un flux à Power Apps sous forme de JSON",
-      "kurztext": "Un flux fournit souvent à une application canevas plus qu'une seule valeur, par exemple un client avec toutes ses commandes. Mais « Répondre à une application PowerApp ou à un flux » ne connaît que des sorties à plat comme texte, nombre ou Oui/Non. Au lieu de créer des dizaines de champs, tu construis le résultat dans le flux sous forme de JSON, par exemple avec Sélectionner et Composer, et tu le renvoies comme une seule sortie texte. Dans Power Apps, ParseJSON relit le texte. Sans indication de type, tu obtiens une valeur dynamique et tu convertis les champs avec Text(), Value() ou Boolean(). Avec un Type comme deuxième argument, tu obtiens directement des enregistrements et des tables typés. Tu n'as pas besoin de l'action Réponse du connecteur HTTP pour cela.",
+      "kurztext": "Un flux fournit souvent à une application canevas plus qu'une seule valeur, par exemple un client avec toutes ses commandes. Mais « Répondre à une application PowerApp ou à un flux » ne connaît que des sorties à plat comme texte, nombre ou Oui/Non. Au lieu de créer des dizaines de champs, tu construis le résultat dans le flux sous forme de JSON, par exemple avec Sélectionner et Composer, et tu le renvoies comme une seule sortie texte. Dans Power Apps, ParseJSON relit le texte. Sans indication de type, tu obtiens une valeur dynamique et tu convertis les champs avec Text(), Value() ou Boolean(). Avec un Type comme deuxième argument, tu obtiens directement des enregistrements et des tables typés. Tu n'as pas besoin de l'action Réponse du connecteur Request pour cela.",
       "wann_ja": "Quand l'application a besoin de listes ou d'enregistrements imbriqués provenant du flux.",
       "wann_nein": "Pour de très grands volumes de données. Le flux enregistre alors les données dans SharePoint ou Dataverse, et l'application les lit directement.",
       "fehler": "Utiliser dans des formules des champs de ParseJSON sans conversion. Sans Type, ParseJSON renvoie des valeurs dynamiques.",

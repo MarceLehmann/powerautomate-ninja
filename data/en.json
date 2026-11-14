@@ -237,7 +237,7 @@
       "lernziel": "You test a flow before turning it on and read the results of every action.",
       "thema": "Testing & debugging",
       "titel": "Test a flow before it goes live",
-      "kurztext": "A new flow rarely runs without errors on the first try. With Test in the designer you start it manually, provide the trigger inputs yourself and follow the run step by step. For every action you see what goes in and what comes out. That way you find the step where a value stays empty or an expression returns something other than expected, before real data runs through the flow. Then you adjust it and test again, as often as you like. Only when the inputs and outputs are right do you turn the flow on for daily use.",
+      "kurztext": "A new flow rarely runs without errors on the first try. With Test in the designer you start it manually. With a manual trigger you provide the inputs yourself, with an automated trigger you cause the event yourself. Then you follow the run step by step. For every action you see what goes in and what comes out. That way you find the step where a value stays empty or an expression returns something other than expected, before real data runs through the flow. Then you adjust it and test again, as often as you like. Only when the inputs and outputs are right do you turn the flow on for daily use.",
       "wann_ja": "Before every activation and after every change to the trigger, expressions or conditions.",
       "wann_nein": "When an action sends real emails or changes data you don't want to touch. Give it a static result first.",
       "fehler": "Looking only at the green check mark without opening the outputs. Succeeded does not mean the value is right.",
@@ -528,7 +528,7 @@
       "lernziel": "You test flows with simulated results without changing real data.",
       "thema": "Testing & debugging",
       "titel": "Test with Static Result without changing data",
-      "kurztext": "Some actions you don't want to actually run while testing: they send emails, change records or take a long time. With Static Result you give an action a fixed result. In the new designer, enable \"Static result\" in the action's \"Testing\" section and set the output values. In the classic designer, open the action's \"Settings\" menu, then \"Static result\". On the next run the action counts as successful without being executed. The following steps continue with your predefined output. That way you test the logic after it calmly and with different cases, without touching real data. Before the flow goes into production, you turn the static result off again.",
+      "kurztext": "Some actions you don't want to actually run while testing: they send emails, change records or take a long time. With Static Result you give an action a fixed result. In the new designer, enable \"Static result\" in the action's \"Testing\" section and set the output values. In the classic designer, open the action's three-dot menu, then \"Static result\". On the next run the action counts as successful without being executed. The following steps continue with your predefined output. That way you test the logic after it calmly and with different cases, without touching real data. Before the flow goes into production, you turn the static result off again.",
       "wann_ja": "For actions that send emails, change data or take long, while you test the steps after them.",
       "wann_nein": "In production. If Static Result stays on, the flow never actually runs the action.",
       "fehler": "Leaving Static Result on after testing. The flow reports success although the action never ran.",
@@ -1098,7 +1098,7 @@
       "lernziel": "You protect long approvals against timeouts.",
       "thema": "Approvals",
       "titel": "Set a timeout for long-running actions",
-      "kurztext": "An approval or another action that waits for people can take longer than planned. In the action settings you define under Timeout how long it may wait at most. You write the duration in ISO 8601 format: P1D is one day, P14D is 14 days, PT2H is two hours. When the time runs out, the action counts as timed out. So that the flow does not simply fail, add an action whose Configure run after is set to has timed out only. There you send a reminder, escalate or start a new request. On top of that, every flow run is limited to {limit:laufzeit_max}.",
+      "kurztext": "An approval or another action that waits for people can take longer than planned. In the action settings you define under Timeout how long it may wait at most. You write the duration in ISO 8601 format: P1D is one day, P14D is 14 days, PT2H is two hours. When the time runs out, the action counts as timed out. So that the flow does not simply fail, add an action whose Configure run after is set to has timed out only. There you send a reminder, escalate or start a new request. On top of that, every flow run is limited to {limit:laufzeit_max}. According to Microsoft, a flow waits for an approval for {limit:approval_warten_max} at most.",
       "wann_ja": "For approvals and other actions that wait for a response whose duration you do not know.",
       "wann_nein": "When the process can exceed the run duration limit of {limit:laufzeit_max}. A timeout is not enough then, because the whole run ends before.",
       "fehler": "Setting the timeout but building no path for has timed out. The run then fails anyway.",
@@ -1754,7 +1754,7 @@
         "antworten": [
           "With a separate output for every field",
           "As JSON text in one output, then ParseJSON",
-          "Through the Response action of the HTTP connector"
+          "Through the Response action of the Request connector"
         ],
         "erklaerungen": [
           "Wrong. Flat outputs cannot represent lists or nested records.",
@@ -1765,7 +1765,7 @@
       "lernziel": "You return nested data to an app without premium.",
       "thema": "Power Apps and flows",
       "titel": "Return flow data to Power Apps as JSON",
-      "kurztext": "A flow often returns more than a single value to a canvas app, for example a customer with all their orders. Respond to a Power App or flow, however, only knows flat outputs like text, number or yes/no. Instead of creating dozens of fields, you build the result in the flow as JSON, for example with Select and Compose, and return it as one single text output. In Power Apps, ParseJSON reads the text back in. Without a type you get a dynamic value and convert fields with Text(), Value() or Boolean(). With a Type as the second argument you get typed records and tables directly. You do not need the Response action from the HTTP connector for this.",
+      "kurztext": "A flow often returns more than a single value to a canvas app, for example a customer with all their orders. Respond to a Power App or flow, however, only knows flat outputs like text, number or yes/no. Instead of creating dozens of fields, you build the result in the flow as JSON, for example with Select and Compose, and return it as one single text output. In Power Apps, ParseJSON reads the text back in. Without a type you get a dynamic value and convert fields with Text(), Value() or Boolean(). With a Type as the second argument you get typed records and tables directly. You do not need the Response action from the Request connector for this.",
       "wann_ja": "When the app needs lists or nested records from the flow.",
       "wann_nein": "With very large amounts of data. Then the flow stores the data in SharePoint or Dataverse, and the app reads it directly.",
       "fehler": "Using fields from ParseJSON in formulas without converting them. Without a Type, ParseJSON returns dynamic values.",
