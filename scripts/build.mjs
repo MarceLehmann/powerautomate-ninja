@@ -109,7 +109,7 @@ const GNAMEN = ['Weisser Gürtel', 'Gelber Gürtel', 'Oranger Gürtel', 'Grüner
 const GKURZ = ['Weiss', 'Gelb', 'Orange', 'Grün', 'Blau', 'Braun', 'Schwarz'];
 const GAKK = ['den weissen Gürtel', 'den gelben Gürtel', 'den orangen Gürtel', 'den grünen Gürtel', 'den blauen Gürtel', 'den braunen Gürtel', 'den schwarzen Gürtel'];
 const BAND_HEX = ['#FBFAF5', '#E2B100', '#E36A00', '#2E8B57', '#2F6FB5', '#7A4A2B', '#111111'];
-const PRUEF_JE_GUERTEL = 2; // Gürtelprüfung: zwei Fragen je Gürtel von Weiss bis Braun (12 Fragen, Entscheid 16.10.2026)
+const PRUEF_JE_GUERTEL = 2; // Gürtelprüfung: zwei Fragen je Gürtel von Weiss bis Schwarz, die zwei schwarzen sind die Meisterprüfung (Entscheid 16.10.2026, Schwarz seit 14.11.2026)
 
 /* Platzhalter {limit:schluessel} aus data/limits.json einsetzen (Englisch: text_en) */
 function setzeLimits(text, wo) {
@@ -370,8 +370,8 @@ function guertelpfadHtml(r) {
   const zeile = (g) => {
     const tk = SEITEN.filter(t => t.guertel === g.nr).length;
     const fr = POOL.filter(t => t.guertel === g.nr).length;
-    const ziel = g.nr === 7 && !tk;
-    const zahl = ziel ? T('In Arbeit', 'In progress') : T(`${tk} ${tk === 1 ? 'Technik' : 'Techniken'}, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'}`, `${tk} ${tk === 1 ? 'technique' : 'techniques'}, ${fr} ${fr === 1 ? 'question' : 'questions'}`);
+    const ziel = !tk;
+    const zahl = T(`${tk} ${tk === 1 ? 'Technik' : 'Techniken'}, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'}`, `${tk} ${tk === 1 ? 'technique' : 'techniques'}, ${fr} ${fr === 1 ? 'question' : 'questions'}`);
     const name = ziel ? `<span class="pfadzeile__name">${esc(g.name)}: ${esc(g.leitwort)}</span>` : `<a class="pfadzeile__name" href="${r}guertel/${g.farbe}/">${esc(g.name)}: ${esc(g.leitwort)}</a>`;
     return `<li class="pfadzeile${ziel ? ' pfadzeile--ziel' : ''}" data-guertel-nr="${g.nr}"><span class="pfadzeile__band" aria-hidden="true"></span>${name}<span class="pfadzeile__zahl">${zahl}</span><p class="pfadzeile__kann">${esc(g.kannst_du)}</p></li>`;
   };
@@ -379,7 +379,7 @@ function guertelpfadHtml(r) {
 <p class="schwelle"><strong>${T('Die Schwelle.', 'The threshold.')}</strong> ${T('Ab Grün wird es technisch: unsaubere Daten, parallele Schleifen, Aufrufe an SharePoint und Microsoft Graph.', 'From green on it gets technical: messy data, parallel loops, calls to SharePoint and Microsoft Graph.')}</p>
 <ol class="pfadzeilen" start="4">${GUERTEL.slice(3).map(zeile).join('\n')}</ol>`;
 }
-const PRUEF_ANZAHL = () => GUERTEL.slice(0, 6).reduce((s, g) => s + Math.min(PRUEF_JE_GUERTEL, POOL.filter(t => t.guertel === g.nr).length), 0);
+const PRUEF_ANZAHL = () => GUERTEL.reduce((s, g) => s + Math.min(PRUEF_JE_GUERTEL, POOL.filter(t => t.guertel === g.nr).length), 0);
 
 function baueStart() {
   const t = heuteTechnik(true);
@@ -451,7 +451,7 @@ function filterHtml() {
   return `<div class="filter" data-filter data-nur-js>
 <label class="sr-only" for="wand-suche">${T('Techniken durchsuchen', 'Search techniques')}</label>
 <input class="suchfeld" id="wand-suche" type="search" placeholder="${T('Suchen: JSON, Approval, SharePoint', 'Search: JSON, approval, SharePoint')}" data-wand-suche autocomplete="off">
-<fieldset><legend>${T('Gürtel', 'Belt')}</legend><div class="chips">${GUERTEL.slice(0, 6).map(g => chip('guertel-nr', g.nr, g.kurz, bandPunkt(g.nr))).join('')}</div></fieldset>
+<fieldset><legend>${T('Gürtel', 'Belt')}</legend><div class="chips">${GUERTEL.map(g => chip('guertel-nr', g.nr, g.kurz, bandPunkt(g.nr))).join('')}</div></fieldset>
 <fieldset><legend>${T('Thema', 'Topic')}</legend><div class="chips">${themen.map(th => chip('thema', th, th)).join('')}</div></fieldset>
 <fieldset><legend>${T('Lizenz', 'License')}</legend><div class="chips">${chip('lizenz', 'standard', 'Standard')}${chip('lizenz', 'premium', 'Premium')}</div></fieldset>
 <fieldset><legend>${T('Dein Stand', 'Your progress')}</legend><div class="chips">${chip('stand', 'offen', T('Noch offen', 'Not yet practiced'))}${chip('stand', 'geuebt', T('Geübt', 'Practiced'))}</div></fieldset>
@@ -465,7 +465,7 @@ function baueWand() {
     return `<section class="guertel-abschnitt sektion--eng" id="${g.farbe}" aria-labelledby="h-${g.farbe}" data-guertel-nr="${g.nr}">
 <h2 id="h-${g.farbe}">${bandPunkt(g.nr)}${esc(g.name)}: ${esc(g.leitwort)}</h2>
 <p class="klein">${esc(g.kannst_du)}</p>
-${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul>` : `<p class="leer-hinweis">${g.nr === 7 ? T('Meisterprüfung. Die Techniken für diesen Gürtel folgen, sobald die Tipps dazu überarbeitet sind.', 'Master exam. The techniques for this belt follow once the tips behind them have been revised.') : T('Weitere Techniken folgen mit der nächsten Welle.', 'More techniques follow with the next wave.')}</p>`}
+${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul>` : `<p class="leer-hinweis">${T('Weitere Techniken folgen mit der nächsten Welle.', 'More techniques follow with the next wave.')}</p>`}
 </section>`;
   }).join('\n');
   const haupt = `<main id="main"><div class="wrap">
@@ -562,19 +562,19 @@ function bauePruefung() {
 ${krumenHtml('../', [[T('Gürtelprüfung', 'Belt exam'), './']])}
 ${dojoKopf(`<span class="label">${T('Selbsttest', 'Self-assessment')}</span>
 <h1 id="h1">${T('Gürtelprüfung', 'Belt exam')}</h1>
-<p class="lead">${T(`${n} Fragen von Weiss bis Braun, zwei je Gürtel. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.`, `${n} questions from white to brown, two per belt. Two wrong answers in one belt end the exam.`)}</p>`)}
+<p class="lead">${T(`${n} Fragen von Weiss bis Schwarz, zwei je Gürtel. Die letzten zwei sind die Meisterprüfung. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.`, `${n} questions from white to black, two per belt. The last two are the master exam. Two wrong answers in one belt end the exam.`)}</p>`)}
 <div data-pruefung data-anzahl="${n}">
 <p class="knopf-reihe"><button type="button" class="knopf knopf--primaer" data-pruefung-start data-nur-js>${T('Prüfung starten', 'Start the exam')}</button></p>
-<p class="klein" data-nur-js>${T(`Die Fragen kommen zufällig aus ${POOL.filter(t => t.guertel <= 6).length} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.`, `The questions are drawn at random from ${POOL.filter(t => t.guertel <= 6).length} questions on the tips. Your result stays in your browser.`)}</p>
+<p class="klein" data-nur-js>${T(`Die Fragen kommen zufällig aus ${POOL.length} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.`, `The questions are drawn at random from ${POOL.length} questions on the tips. Your result stays in your browser.`)}</p>
 <p class="leer-hinweis" data-ohne-js>${T('Die Gürtelprüfung braucht JavaScript. Alle Fragen mit Auflösung findest du auch auf den', 'The belt exam needs JavaScript. You also find questions with solutions on the')} <a href="../techniken/">${T('Technik-Seiten', 'technique pages')}</a>.</p>
 </div>
 <section class="abschnitt" aria-labelledby="h-regeln"><h2 id="h-regeln">${T('So wird gewertet', 'How it is scored')}</h2>
-<ul class="arrow-list">${T('<li>Ein Gürtel gilt als bestanden, wenn alle seine Fragen richtig sind.</li><li>Dein Ergebnis ist der höchste Gürtel, bis zu dem alle Gürtel bestanden sind.</li><li>Zwei falsche Antworten im selben Gürtel beenden die Prüfung. Der schwarze Gürtel und seine Meisterprüfung sind in Arbeit.</li><li>Nach jeder Frage führt ein Link zum Tipp, aus dem sie stammt.</li>', '<li>You pass a belt when all of its questions are correct.</li><li>Your result is the highest belt up to which you passed every belt.</li><li>Two wrong answers in the same belt end the exam. The black belt and its master exam are in progress.</li><li>After each question, a link takes you to the tip it comes from.</li>')}</ul>
+<ul class="arrow-list">${T('<li>Ein Gürtel gilt als bestanden, wenn alle seine Fragen richtig sind.</li><li>Dein Ergebnis ist der höchste Gürtel, bis zu dem alle Gürtel bestanden sind.</li><li>Zwei falsche Antworten im selben Gürtel beenden die Prüfung.</li><li>Die Fragen zum schwarzen Gürtel bilden die Meisterprüfung. Du erreichst sie, wenn du alle Gürtel bis Braun bestanden hast.</li><li>Nach jeder Frage führt ein Link zum Tipp, aus dem sie stammt.</li>', '<li>You pass a belt when all of its questions are correct.</li><li>Your result is the highest belt up to which you passed every belt.</li><li>Two wrong answers in the same belt end the exam.</li><li>The black belt questions form the master exam. You reach it once you have passed every belt up to brown.</li><li>After each question, a link takes you to the tip it comes from.</li>')}</ul>
 </section>
 </div></main>`;
   seite('pruefung/index.html', {
     seite: 'pruefung', titel: T(`Gürtelprüfung für Flows | ${TITEL_SUFFIX}`, `Belt exam for flows | ${TITEL_SUFFIX}`), haupt, js: ['pruefung.js'],
-    beschreibung: T(`Welcher Flow-Gürtel bist du? ${n} Fragen zu Flows in Power Automate, von Weiss bis Braun, mit Ergebnisbild zum Teilen.`, `Which flow belt are you? ${n} questions about flows in Power Automate, from white to brown, with a result image to share.`),
+    beschreibung: T(`Welcher Flow-Gürtel bist du? ${n} Fragen zu Flows in Power Automate, von Weiss bis Schwarz, mit Ergebnisbild zum Teilen.`, `Which flow belt are you? ${n} questions about flows in Power Automate, from white to black, with a result image to share.`),
     ogTitel: T('Welcher Flow-Gürtel bist du?', 'Which flow belt are you?'), jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [T('Gürtelprüfung', 'Belt exam'), `${BL()}pruefung/`]])]
   });
 }
@@ -634,10 +634,10 @@ ${krumenHtml(r, [[T('Gürtelweg', 'Belt path'), '../../techniken/'], [g.name, '.
 <div class="ergebnis__abzeichen guertel-kopf">${abzeichenSvg(g.nr)}<span class="guertel-kopf__tusch" data-guertel-nr="${g.nr}">${tusch('ruhe')}</span><div><span class="label">${T(`Stufe ${g.nr} von 7`, `Level ${g.nr} of 7`)}</span><h1 id="h1">${esc(g.name)}: ${esc(g.leitwort)}</h1></div></div>
 <p class="lead">${esc(g.erreicht_satz)}</p>
 <section class="abschnitt" aria-labelledby="h-kann"><h2 id="h-kann">${T('Das kannst du mit diesem Gürtel', 'What you can do with this belt')}</h2><p>${esc(g.kannst_du)}</p>
-${g.nr === 7 && !drin.length ? `<p class="leer-hinweis">${T('In Arbeit: Ein Tipp ist im Fragenpool, noch keine Technikseite ist freigegeben. Der schwarze Gürtel ist noch nicht Teil der Prüfung.', 'In progress: one tip is in the question pool; no technique page has been released yet. The black belt is not yet part of the exam.')}</p>` : `<p class="klein">${T(`${drin.length} ${drin.length === 1 ? 'Technik' : 'Techniken'} mit eigener Seite, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'} in der Gürtelprüfung.`, `${drin.length} ${drin.length === 1 ? 'technique' : 'techniques'} with their own page, ${fr} ${fr === 1 ? 'question' : 'questions'} in the belt exam.`)}</p>`}
+<p class="klein">${T(`${drin.length} ${drin.length === 1 ? 'Technik' : 'Techniken'} mit eigener Seite, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'} in der ${g.nr === 7 ? 'Meisterprüfung' : 'Gürtelprüfung'}.`, `${drin.length} ${drin.length === 1 ? 'technique' : 'techniques'} with their own page, ${fr} ${fr === 1 ? 'question' : 'questions'} in the ${g.nr === 7 ? 'master exam' : 'belt exam'}.`)}</p>
 </section>
 ${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul>` : ''}
-<p class="knopf-reihe">${g.nr === 7 && !drin.length ? `<a class="knopf knopf--primaer" href="${r}">${T('Zurück zur Übersicht', 'Back to the overview')}</a>` : `<a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>`}${naechster && g.nr < 6 ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${esc(T('Weiter zum ' + naechster.akk.replace(/^den /, ''), 'On to the ' + naechster.name.toLowerCase()))}</a>` : ''}</p>
+<p class="knopf-reihe"><a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>${naechster ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${esc(T('Weiter zum ' + naechster.akk.replace(/^den /, ''), 'On to the ' + naechster.name.toLowerCase()))}</a>` : ''}</p>
 <p class="sensei-hinweis klein" data-sensei-hinweis hidden>${SENSEI_HINWEIS()}</p>
 </div></main>`;
   seite(`guertel/${g.farbe}/index.html`, {
@@ -649,7 +649,7 @@ ${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul
 }
 
 function baueDojo() {
-  const liste = GUERTEL.slice(0, 6).map(g => {
+  const liste = GUERTEL.map(g => {
     const drin = SEITEN.filter(t => t.guertel === g.nr);
     if (!drin.length) return '';
     return `<section class="abschnitt" aria-labelledby="dl-${g.farbe}" data-guertel-nr="${g.nr}"><h2 id="dl-${g.farbe}">${bandPunkt(g.nr)} ${esc(g.name)}</h2>
@@ -799,7 +799,7 @@ function baueDaten() {
   schreibe(`assets/data/tag${sfx}.json`, JSON.stringify({ start: daten.tag_start, eintraege: folge.map(t => ({ k: t.schluessel, slug: t.slug, titel: t.titel_de, g: t.guertel, lizenz: t.lizenz, start: FUER_START(t), frage: t.quiz.frage, antworten: t.quiz.antworten })) }));
   const pool = POOL.map(t => ({ k: t.schluessel, g: t.guertel, frage: t.quiz.frage, antworten: t.quiz.antworten, richtig: t.quiz.richtig_index, erkl: (t.quiz.erklaerungen || [])[t.quiz.richtig_index] || '', url: t.seite ? `techniken/${t.slug}/` : mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), tipp: mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), titel: t.seite ? t.titel_de : tippLabel(t), tipp_label: tippLabel(t), seite: !!t.seite }));
   const guertel = GUERTEL.map(g => ({ nr: g.nr, farbe: g.farbe, name: g.name, akk: g.akk, kurz: g.kurz, leitwort: g.leitwort, kann: g.kannst_du, hex: g.hex, naechste: SEITEN.filter(t => t.guertel === g.nr).slice(0, 3).map(t => ({ titel: t.titel_de, url: `techniken/${t.slug}/` })) }));
-  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, dojo: { mentoring: POWERPLATFORM_MENTORING(), anmelden: POWERPLATFORM_MENTORING() + 'anmelden/' }, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME(), link_name: KURS_LINK_NAME(), status: CFG.kurs_status, status_satz: kursStatusSatz() }, guertel, fragen: pool }));
+  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, dojo: { mentoring: POWERPLATFORM_MENTORING(), anmelden: POWERPLATFORM_MENTORING() + 'anmelden/', finden: POWERPLATFORM_MENTORING() + 'finden/' }, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME(), link_name: KURS_LINK_NAME(), status: CFG.kurs_status, status_satz: kursStatusSatz() }, guertel, fragen: pool }));
 
   const montag = (() => { const d = new Date(DATUM + 'T00:00:00Z'); do d.setUTCDate(d.getUTCDate() + 1); while (d.getUTCDay() !== 1); return d.toISOString().slice(0, 10).replace(/-/g, ''); })();
   const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//Power Platform Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'en' ? '-en' : ''}@kmupower.com`,
@@ -826,10 +826,10 @@ function baueSitemap(indexierbar) {
   if (CFG.domain && new URL(BASE_URL).hostname === CFG.domain) schreibe('CNAME', CFG.domain + '\n');
   setzeSprache('de');
   const de = [`# ${NAME} · ${ZUSATZ}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
-    '## Seiten', '', `- [Gürtelprüfung](${BASE_URL}pruefung/): Selbsttest von Weiss bis Braun`, `- [Lizenz-Check](${BASE_URL}premium/): Reicht die Lizenz aus Microsoft 365?`, `- [Alle Techniken](${BASE_URL}techniken/): nach Gürtel geordnet`, `- [Über](${BASE_URL}ueber/): Methode und Herkunft der Fragen`, '',
+    '## Seiten', '', `- [Gürtelprüfung](${BASE_URL}pruefung/): Selbsttest von Weiss bis Schwarz mit Meisterprüfung`, `- [Lizenz-Check](${BASE_URL}premium/): Reicht die Lizenz aus Microsoft 365?`, `- [Alle Techniken](${BASE_URL}techniken/): nach Gürtel geordnet`, `- [Über](${BASE_URL}ueber/): Methode und Herkunft der Fragen`, '',
     'Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Details: ' + BASE_URL + 'datenschutz/', '', '## Techniken', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Grundlage: ${t.tipp_url}`), ''];
   setzeSprache('en');
-  const en = ['## English', '', `- [Home](${BASE_URL}en/): English version`, `- [Belt exam](${BASE_URL}en/pruefung/): self-assessment from white to brown`, `- [License check](${BASE_URL}en/premium/): is the license from Microsoft 365 enough?`, `- [All techniques](${BASE_URL}en/techniken/): ordered by belt`, '',
+  const en = ['## English', '', `- [Home](${BASE_URL}en/): English version`, `- [Belt exam](${BASE_URL}en/pruefung/): self-assessment from white to black with master exam`, `- [License check](${BASE_URL}en/premium/): is the license from Microsoft 365 enough?`, `- [All techniques](${BASE_URL}en/techniken/): ordered by belt`, '',
     'Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page path and page title, but no query string or fragment. Details: ' + BASE_URL + 'en/datenschutz/', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Based on: ${t.tipp_url}`), ''];
   schreibe('llms.txt', [...de, ...en].join('\n'));
 }
@@ -863,7 +863,7 @@ ${BAND_HEX.map((c, i) => `<rect x="${i * (1200 / 7)}" y="604" width="${1200 / 7 
 `;
   if (L === 'de') schreibe('og-image.svg', karteSvg('Welcher', 'Flow-Gürtel?', 'Fragen und Erklärungen zu Flows, auf Deutsch.', '#FBFAF5'));
   else schreibe('assets/img/en/og-image.svg', karteSvg('Which', 'flow belt?', 'Questions and explanations on flows.', '#FBFAF5'));
-  for (const g of GUERTEL) schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(g.name.split(' ')[0], T('Gürtel', 'belt'), esc(g.nr === 7 ? T('In Arbeit: noch keine Technikseite freigegeben.', 'In progress: no technique page released yet.') : g.erreicht_satz).slice(0, 70), g.hex));
+  for (const g of GUERTEL) schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(g.name.split(' ')[0], T('Gürtel', 'belt'), esc(g.erreicht_satz).slice(0, 70), g.hex));
 }
 function minifiziere(css) {
   const strings = [];

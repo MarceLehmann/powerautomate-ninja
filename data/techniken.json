@@ -40,9 +40,9 @@
     },
     {
       "nr": 7,
-      "leitwort": "Meisterprüfung in Arbeit",
-      "kannst_du": "In Arbeit: Ein Tipp ist im Fragenpool, noch keine Technikseite ist freigegeben.",
-      "erreicht_satz": "Der schwarze Gürtel ist in Arbeit. Techniken und Meisterprüfung sind noch nicht vollständig freigegeben."
+      "leitwort": "Flows für Agents",
+      "kannst_du": "Du baust Flows als Werkzeuge für Copilot-Studio-Agents: ein Flow für mehrere Operationen, und Fehler kommen als lesbare Antwort zurück.",
+      "erreicht_satz": "Deine Flows geben Agents verlässliche Antworten, auch wenn ein Aufruf scheitert."
     }
   ],
   "tag_start": "2026-10-19",
@@ -3160,9 +3160,9 @@
       "tipp_titel": "One Flow, Many Tools: a Switch Router for Copilot Studio Agents",
       "tipp_datum": "2026-08-20",
       "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-170-flow-as-agent-tool-switch-router/",
-      "guertel": 6,
+      "guertel": 7,
       "thema": "KI & Copilot Studio",
-      "seite": false,
+      "seite": true,
       "pool": true,
       "quiz": {
         "frage": "Was steuert der Parameter action im Router-Flow?",
@@ -3173,12 +3173,41 @@
         ],
         "richtig_index": 2,
         "erklaerungen": [
-          "",
-          "",
-          "Der Switch auf action leitet in den Zweig get, create oder update. Der Parameter input trägt dazu einen OData-Filter oder einen JSON-Body."
+          "Falsch. action wählt nur die Operation. Die Lizenz hängt davon ab, ob der Flow als Agent Flow oder als Cloud Flow abgerechnet wird.",
+          "Falsch. Mit der Sprache des Agents hat action nichts zu tun. Der Parameter wählt die Operation im Flow.",
+          "Richtig. Der Switch auf action leitet in den Zweig get, create oder update. Der Parameter input trägt dazu einen OData-Filter oder einen JSON-Body."
         ]
       },
-      "lernziel": "Du gibst einem Copilot-Studio-Agent mit einem Flow mehrere Werkzeuge."
+      "lernziel": "Du gibst einem Copilot-Studio-Agent mit einem Flow mehrere Werkzeuge.",
+      "slug": "ein-flow-als-router-fuer-agent-werkzeuge",
+      "titel_de": "Ein Flow als Router für Agent-Werkzeuge",
+      "ausdruck": "triggerBody()?['text']",
+      "kurztext_de": "Ein Copilot-Studio-Agent soll Daten lesen, anlegen und ändern. Dafür brauchst du keinen eigenen MCP-Server mit HTTP-Trigger und Custom Connector. Es reicht ein Flow mit dem Trigger «When an agent calls the flow», den du dem Agent als Werkzeug gibst. Der Trigger bekommt zwei Eingaben: action mit den Werten get, create oder update und input als allgemeinen Text. Ein Switch auf action leitet in den passenden Zweig. Bei get ist input ein OData-Filter und geht direkt in die Filter Query. Bei create und update ist input ein JSON-Body, den Parse JSON zerlegt. Jeder Zweig setzt die Variable result, die du vor dem Switch anlegst. Am Ende gibt «Respond to the agent» ein festes JSON zurück, innerhalb von {limit:agent_antwort} und mit Asynchronous response auf Off.",
+      "wann_ja": "Wenn ein interner Agent mehrere verwandte Operationen auf derselben Tabelle oder Liste braucht und du nur einen Flow pflegen willst.",
+      "wann_nein": "Wenn der Agent die Operationen oft verwechselt. Getrennte Flows mit eigener Beschreibung wählt er oft zuverlässiger.",
+      "fehler": "Im Zweig update auf Parse JSON aus dem Zweig create verweisen. Dieser Zweig lief nicht, und der Ausdruck schlägt fehl.",
+      "lizenz": "premium",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-faqs",
+          "titel": "FAQ for agent flows"
+        }
+      ],
+      "limits": [
+        "agent_antwort"
+      ],
+      "suchbegriffe": [
+        "Copilot Studio",
+        "Agent",
+        "Switch",
+        "When an agent calls the flow",
+        "Respond to the agent",
+        "OData",
+        "Parse JSON",
+        "MCP"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/flow-agent",
+      "learn_titel": "Add an agent flow as a tool to an agent"
     },
     {
       "schluessel": "171",
@@ -3214,23 +3243,56 @@
       "tipp_url": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/",
       "guertel": 7,
       "thema": "KI & Copilot Studio",
-      "seite": false,
+      "seite": true,
       "pool": true,
       "quiz": {
         "frage": "Warum kann ein Agent Fehler eines direkt gebundenen Connectors nicht selbst korrigieren?",
         "antworten": [
           "Agents dürfen in Copilot Studio keine Connectoren nutzen",
           "Connectoren melden Fehler nur per Mail an den Besitzer",
-          "Fehlerstatus brechen ab, bevor das Modell die Meldung sieht"
+          "Der Aufruf scheitert, bevor die Meldung der API ankommt"
         ],
         "richtig_index": 2,
         "erklaerungen": [
-          "",
-          "",
-          "Jeder Status ausserhalb von 2xx wird zum harten Fehler connectorRequestFailure, bevor das Sprachmodell die Antwort liest. Erst ein Flow, der immer lesbares JSON zurückgibt, macht den Fehler für den Agent sichtbar."
+          "Falsch. Connectoren lassen sich direkt als Werkzeug binden. Das Problem ist, was bei einem Fehlerstatus passiert.",
+          "Falsch. Der Aufruf endet als fehlgeschlagener Tool-Aufruf mit einem Fehlercode wie HTTP404NotFound, nicht mit einer Mail.",
+          "Richtig. Ein Status ausserhalb von 2xx beendet den Tool-Aufruf mit einem Fehlercode. Erst ein Flow, der immer lesbares JSON zurückgibt, macht die Meldung für den Agent sichtbar."
         ]
       },
-      "lernziel": "Du baust Agent-Werkzeuge, die aus Fehlern lernen."
+      "lernziel": "Du baust Agent-Werkzeuge, die aus Fehlern lernen.",
+      "slug": "selbstheilende-aufrufe-fuer-agents",
+      "titel_de": "Selbstheilende Aufrufe für Agents",
+      "ausdruck": "coalesce(outputs('HTTP')?['statusCode'], 0)",
+      "kurztext_de": "Bindest du einen Connector direkt als Werkzeug an einen Copilot-Studio-Agent, endet jeder Status ausserhalb von 2xx als Fehler, etwa HTTP404NotFound oder HTTP422UnprocessableEntity. Die Erklärung der API erreicht den Agent nicht, und er kann sich nicht korrigieren. Die Lösung ist ein Flow dazwischen. Der Aufruf liegt in einem Scope, die nächste Aktion läuft nach «is successful», «has failed» und «has timed out». Am Ende gibt «Respond to the agent» immer dieselbe Form zurück: ok, status, error und data. Den Status liest coalesce() aus, ohne Antwort wird er 0. So sieht der Agent die Meldung, passt Pfad oder Body an und versucht es erneut. Begrenze die Versuche in den Anweisungen, zum Beispiel auf drei. Korrekturen, die immer gelten, schreibst du in die Beschreibung des Werkzeugs.",
+      "wann_ja": "Wenn ein Agent eine API über einen Connector oder die Aktion HTTP aufruft und falsche Pfade oder Bodys vorkommen können.",
+      "wann_nein": "Wenn der Aufruf regelmässig länger als {limit:agent_antwort} braucht. Dann endet der Flow mit FlowActionTimedOut, bevor eine Antwort ankommt.",
+      "fehler": "Die Versuche nicht begrenzen. Dann wiederholt der Agent den Aufruf immer wieder und verbraucht Tokens, statt den Fehler zu erklären.",
+      "lizenz": "premium",
+      "lizenz_belege": [
+        {
+          "url": "https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-premium-connectors",
+          "titel": "List of all Premium tier connectors"
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-faqs",
+          "titel": "FAQ for agent flows"
+        }
+      ],
+      "limits": [
+        "agent_antwort"
+      ],
+      "suchbegriffe": [
+        "Copilot Studio",
+        "Agent",
+        "Fehlerbehandlung",
+        "Scope",
+        "Configure run after",
+        "HTTP404NotFound",
+        "Respond to the agent",
+        "Retry"
+      ],
+      "learn_url": "https://learn.microsoft.com/en-us/troubleshoot/power-platform/copilot-studio/authoring/error-codes",
+      "learn_titel": "Resolve Microsoft Copilot Studio agent error codes"
     },
     {
       "schluessel": "193",

@@ -60,9 +60,9 @@
       "name": "Black belt",
       "kurz": "Black",
       "akk": "the black belt",
-      "leitwort": "Master exam in progress",
-      "kannst_du": "In progress: one tip is in the question pool; no technique page has been released yet.",
-      "erreicht_satz": "The black belt is in progress. The techniques and master exam have not been fully released yet."
+      "leitwort": "Flows for agents",
+      "kannst_du": "You build flows as tools for Copilot Studio agents: one flow for several operations, with errors coming back as a readable answer.",
+      "erreicht_satz": "Your flows give agents reliable answers, even when a call fails."
     }
   ],
   "techniken": {
@@ -1970,13 +1970,28 @@
           "The Switch to get, create or update"
         ],
         "erklaerungen": [
-          "",
-          "",
-          "The Switch on action routes to the get, create or update branch. The input parameter carries an OData filter or a JSON body for it."
+          "Wrong. action only selects the operation. The license depends on whether the flow is billed as an agent flow or as a cloud flow.",
+          "Wrong. action has nothing to do with the language of the agent. The parameter selects the operation in the flow.",
+          "Correct. The Switch on action routes to the get, create or update branch. The input parameter carries an OData filter or a JSON body for it."
         ]
       },
       "lernziel": "You give a Copilot Studio agent several tools with one flow.",
-      "thema": "AI & Copilot Studio"
+      "thema": "AI & Copilot Studio",
+      "titel": "One flow as a router for agent tools",
+      "kurztext": "A Copilot Studio agent should read, create and update data. You don't need your own MCP server with an HTTP trigger and a custom connector for that. A flow with the trigger \"When an agent calls the flow\" that you give to the agent as a tool is enough. The trigger gets two inputs: action with the values get, create or update, and input as generic text. A Switch on action routes to the right branch. For get, input is an OData filter and goes straight into the Filter Query. For create and update, input is a JSON body that Parse JSON breaks down. Each branch sets the variable result, which you initialize before the Switch. At the end, \"Respond to the agent\" returns a fixed JSON, within {limit:agent_antwort} and with Asynchronous response set to Off.",
+      "wann_ja": "When an internal agent needs several related operations on the same table or list and you want to maintain only one flow.",
+      "wann_nein": "When the agent often mixes up the operations. It often picks separate flows with their own description more reliably.",
+      "fehler": "Referencing the Parse JSON of the create branch in the update branch. That branch did not run, and the expression fails.",
+      "suchbegriffe": [
+        "Copilot Studio",
+        "agent",
+        "Switch",
+        "When an agent calls the flow",
+        "Respond to the agent",
+        "OData",
+        "Parse JSON",
+        "MCP"
+      ]
     },
     "171": {
       "quiz": {
@@ -2001,16 +2016,31 @@
         "antworten": [
           "Agents cannot use connectors in Copilot Studio",
           "Connectors only report errors by email to the owner",
-          "Error statuses abort before the model sees the message"
+          "The call fails before the API message arrives"
         ],
         "erklaerungen": [
-          "",
-          "",
-          "Any status outside 2xx becomes the hard failure connectorRequestFailure before the language model reads the response. Only a flow that always returns readable JSON makes the error visible to the agent."
+          "Wrong. Connectors can be bound directly as a tool. The problem is what happens with an error status.",
+          "Wrong. The call ends as a failed tool call with an error code such as HTTP404NotFound, not with an email.",
+          "Correct. Any status outside 2xx ends the tool call with an error code. Only a flow that always returns readable JSON makes the message visible to the agent."
         ]
       },
       "lernziel": "You build agent tools that learn from errors.",
-      "thema": "AI & Copilot Studio"
+      "thema": "AI & Copilot Studio",
+      "titel": "Self-healing calls for agents",
+      "kurztext": "If you bind a connector directly as a tool to a Copilot Studio agent, every status outside 2xx ends as an error, for example HTTP404NotFound or HTTP422UnprocessableEntity. The explanation from the API never reaches the agent, so it cannot correct itself. The fix is a flow in between. The call sits in a scope, and the next action runs after \"is successful\", \"has failed\" and \"has timed out\". At the end, \"Respond to the agent\" always returns the same shape: ok, status, error and data. coalesce() reads the status and returns 0 when there is no response. Now the agent sees the message, adjusts the path or body and tries again. Limit the attempts in the instructions, for example to three. Corrections that always apply go into the tool description.",
+      "wann_ja": "When an agent calls an API through a connector or the HTTP action and wrong paths or bodies can occur.",
+      "wann_nein": "When the call regularly takes longer than {limit:agent_antwort}. The flow then ends with FlowActionTimedOut before any answer arrives.",
+      "fehler": "Not limiting the attempts. The agent then keeps repeating the call and burns tokens instead of explaining the error.",
+      "suchbegriffe": [
+        "Copilot Studio",
+        "agent",
+        "error handling",
+        "scope",
+        "Configure run after",
+        "HTTP404NotFound",
+        "Respond to the agent",
+        "retry"
+      ]
     },
     "193": {
       "quiz": {

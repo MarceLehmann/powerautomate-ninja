@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en" data-seite="technik" data-r="../../../" data-lr="../../../en/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: https://powerautomate-ninja.goatcounter.com; connect-src 'self' https://powerautomate-ninja.goatcounter.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EDF2F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1019" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../../assets/fonts/dojo-display-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../assets/css/site.css">
+<script src="../../../assets/js/theme-init.js"></script>
+<script src="../../../assets/js/site.js" defer></script>
+<script src="../../../assets/js/count.js" data-goatcounter="https://powerautomate-ninja.goatcounter.com/count" async></script>
+
+<meta name="generator" content="Power Platform Dojo build">
+<title>Self-healing calls for agents | Flow Dojo</title>
+<meta name="description" content="Self-healing calls for agents: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
+<link rel="canonical" href="https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/">
+<link rel="alternate" hreflang="de" href="https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/">
+<link rel="alternate" hreflang="en" href="https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/">
+<link rel="alternate" hreflang="x-default" href="https://powerautomate.ninja/techniken/selbstheilende-aufrufe-fuer-agents/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Power Platform Dojo">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:title" content="Self-healing calls for agents | Flow Dojo">
+<meta property="og:description" content="Self-healing calls for agents: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
+<meta property="og:url" content="https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/">
+<meta property="og:image" content="https://powerautomate.ninja/assets/img/en/guertel-schwarz.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Self-healing calls for agents | Flow Dojo">
+<meta name="twitter:description" content="Self-healing calls for agents: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.">
+<meta name="twitter:image" content="https://powerautomate.ninja/assets/img/en/guertel-schwarz.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://powerautomate.ninja/en/#website",
+      "name": "Power Platform Dojo",
+      "url": "https://powerautomate.ninja/en/",
+      "inLanguage": "en",
+      "description": "Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.",
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kmupower.com/#organization",
+      "name": "KMUpower",
+      "legalName": "Marcel Lehmann (Handelsname KMUpower)",
+      "url": "https://kmupower.com/"
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/#technik",
+      "name": "Self-healing calls for agents",
+      "url": "https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/",
+      "inLanguage": "en",
+      "learningResourceType": "Quiz",
+      "educationalLevel": "Black belt",
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/",
+      "citation": [
+        "https://learn.microsoft.com/en-us/troubleshoot/power-platform/copilot-studio/authoring/error-codes",
+        "https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-premium-connectors",
+        "https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-faqs"
+      ],
+      "publisher": {
+        "@id": "https://kmupower.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://powerautomate.ninja/en/#website"
+      },
+      "hasPart": {
+        "@id": "https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/#quiz"
+      }
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/#quiz",
+      "name": "Quiz question: Self-healing calls for agents",
+      "inLanguage": "en",
+      "educationalLevel": "Black belt",
+      "about": {
+        "@type": "Thing",
+        "name": "Power Automate"
+      },
+      "isBasedOn": "https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/",
+      "hasPart": [
+        {
+          "@type": "Question",
+          "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "name": "Why can't an agent correct errors from a directly bound connector itself?",
+          "text": "Why can't an agent correct errors from a directly bound connector itself?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "position": 2,
+            "text": "The call fails before the API message arrives",
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Correct. Any status outside 2xx ends the tool call with an error code. Only a flow that always returns readable JSON makes the message visible to the agent."
+            }
+          },
+          "suggestedAnswer": [
+            {
+              "@type": "Answer",
+              "position": 0,
+              "text": "Agents cannot use connectors in Copilot Studio",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. Connectors can be bound directly as a tool. The problem is what happens with an error status."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 1,
+              "text": "Connectors only report errors by email to the owner",
+              "answerExplanation": {
+                "@type": "Comment",
+                "text": "Wrong. The call ends as a failed tool call with an error code such as HTTP404NotFound, not with an email."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://powerautomate.ninja/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Techniques",
+          "item": "https://powerautomate.ninja/en/techniken/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Self-healing calls for agents",
+          "item": "https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="../../../en/" aria-label="Power Platform Dojo, Power Automate, home page"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text" aria-hidden="true"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="../../../en/techniken/" aria-current="true">Techniques</a></li>
+        <li><a href="../../../en/pruefung/">Belt exam</a></li>
+        <li><a href="../../../en/premium/">License check</a></li>
+        <li><a href="../../../en/dojo/">My dojo</a></li>
+        <li><a href="https://powerplatformdojo.com/en/" rel="noopener">Dojo overview</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      <a class="knopf-icon sprache" href="../../../techniken/selbstheilende-aufrufe-fuer-agents/" hreflang="de" data-sprache="de"><span lang="de">DE</span><span class="sr-only" lang="de"> Deutsche Version</span></a>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke"><span class="tusch tusch--ruhe" aria-hidden="true"><svg class="tusch__svg" viewBox="0 0 120 160" width="120" height="160" focusable="false" aria-hidden="true"><g class="t-figur"><path class="t-band" d="M89 27l21-8-2 8-17 6zM90 34h22l-3 6-18-2z"/><path class="t-koerper" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/><path class="t-gesicht" d="M31 38l62-5 1 13-63 5z"/><path class="t-augen" d="M46 44.6h9M68 42.4h9"/><g class="t-rolle"><path class="t-rolle-blatt" d="M30 114h60v18H30z"/><path class="t-rolle-zeilen" d="M38 120h40M38 126h28"/><path class="t-rolle-enden" d="M25 111h6v24h-6zM89 111h6v24h-6z"/></g><path class="t-guertel-enden" d="M52 107c4 13 14 21 30 25l-2 6c-16-4-26-12-31-28zM57 107c7 9 19 13 37 11l1 6c-19 3-32-3-40-14z"/><path class="t-guertel" d="M28 98l69-2 1 9-70 3zM49 94h11v14H49z"/><g class="t-pinsel"><path class="t-pinsel-stiel" d="M95 134l16-36"/><path class="t-pinsel-spitze" d="M110 99q-1-8 5-13 1 8-2 14z"/><circle class="t-hand" cx="101" cy="121" r="5.5"/></g><path class="t-strich" pathLength="1" d="M24 152l2.6-20 .4-20q1-28 3-50c1-26 14-48 36-53l18-3q-4 8 4 18c6 10 7 28 5 46q4 34 7 82z"/></g></svg></span><span class="marke__text"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="../../../en/techniken/">Techniques</a></li>
+      <li><a href="../../../en/pruefung/">Belt exam</a></li>
+      <li><a href="../../../en/premium/">License check</a></li>
+      <li><a href="../../../en/heute/">Technique of the day</a></li>
+      <li><a href="../../../en/dojo/">My dojo</a></li>
+      <li><a href="../../../en/ueber/">About</a></li>
+      <li><a href="https://powerplatformdojo.com/en/" rel="noopener">Dojo overview</a></li>
+      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo for Copilot</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Search techniques</h2>
+    <label for="suche-feld" class="sr-only">Search term</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approval, loop">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Close search"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Results"></ul>
+  <p class="suche__leer" hidden>No technique found. Try JSON, approval or loop.</p>
+</dialog>
+<main id="main"><div class="wrap">
+<nav class="krumen" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../">Techniques</a></li><li><a href="./" aria-current="page">Self-healing calls for agents</a></li></ol></nav>
+<article class="tk" data-technik="174" data-guertel-nr="7">
+<header class="tk__kopf">
+<ul class="metazeile"><li><span class="guertel-tag" data-guertel-nr="7"><span class="band-punkt" data-guertel-nr="7" aria-hidden="true"></span>Black belt</span></li><li><span class="badge badge--premium">Premium</span></li><li class="tk__nr">Tip 174</li></ul>
+<h1 id="h1">Self-healing calls for agents</h1>
+</header>
+<section class="quiz" id="quiz" data-quiz data-richtig="2" data-guertel-nr="7" aria-labelledby="h-quiz">
+<h2 id="h-quiz" class="label">Quiz question</h2>
+<p class="quiz__frage">Why can't an agent correct errors from a directly bound connector itself?</p>
+<ul class="antworten" data-nur-js><li><button type="button" class="antwort" data-antwort="0"><span class="antwort__b" aria-hidden="true">A</span><span>Agents cannot use connectors in Copilot Studio</span></button></li><li><button type="button" class="antwort" data-antwort="1"><span class="antwort__b" aria-hidden="true">B</span><span>Connectors only report errors by email to the owner</span></button></li><li><button type="button" class="antwort" data-antwort="2"><span class="antwort__b" aria-hidden="true">C</span><span>The call fails before the API message arrives</span></button></li></ul>
+<p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
+<div class="aufloesung-block" data-aufloesung>
+<h3>Solution</h3>
+<ol class="aufloesung"><li class="falsch"><b>A) Agents cannot use connectors in Copilot Studio</b>Wrong. Connectors can be bound directly as a tool. The problem is what happens with an error status.</li><li class="falsch"><b>B) Connectors only report errors by email to the owner</b>Wrong. The call ends as a failed tool call with an error code such as HTTP404NotFound, not with an email.</li><li class="richtig"><b>C) The call fails before the API message arrives</b>Correct. Any status outside 2xx ends the tool call with an error code. Only a flow that always returns readable JSON makes the message visible to the agent.</li></ol>
+</div>
+</section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">What it is about</h2><p>If you bind a connector directly as a tool to a Copilot Studio agent, every status outside 2xx ends as an error, for example HTTP404NotFound or HTTP422UnprocessableEntity. The explanation from the API never reaches the agent, so it cannot correct itself. The fix is a flow in between. The call sits in a scope, and the next action runs after &quot;is successful&quot;, &quot;has failed&quot; and &quot;has timed out&quot;. At the end, &quot;Respond to the agent&quot; always returns the same shape: ok, status, error and data. coalesce() reads the status and returns 0 when there is no response. Now the agent sees the message, adjusts the path or body and tries again. Limit the attempts in the instructions, for example to three. Corrections that always apply go into the tool description.</p></section>
+<section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">The expression from the tip</h2><div class="code-block"><pre id="ausdruck"><code>coalesce(outputs('HTTP')?['statusCode'], 0)</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copy</button></div></section>
+<section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">When to use it, when not</h2><div class="zwei"><div class="karte-text"><h3>Use it</h3><p>When an agent calls an API through a connector or the HTTP action and wrong paths or bodies can occur.</p></div><div class="karte-text"><h3>Better not</h3><p>When the call regularly takes longer than 100 seconds. The flow then ends with FlowActionTimedOut before any answer arrives.</p></div></div></section>
+<section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Most common mistake</h2><p>Not limiting the attempts. The agent then keeps repeating the call and burns tokens instead of explaining the error.</p></section>
+<section class="abschnitt" aria-labelledby="h-lizenz"><h2 id="h-lizenz">License</h2><p><span class="badge badge--premium">Premium</span> Premium connectors or features require suitable usage rights, for example from Power Automate Premium, Process, Power Apps or Dynamics 365. Check existing licenses in the license check. Source on Microsoft Learn: <a href="https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-premium-connectors" rel="noopener">List of all Premium tier connectors</a>, <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-faqs" rel="noopener">FAQ for agent flows</a>. For your whole flow: <a href="../../premium/">License check</a>.</p></section>
+<section class="abschnitt" aria-label="Full tip"><a class="tipp-knopf" href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-174" rel="noopener"><strong>Full tip on powerplatformtip.com</strong><span>PowerPlatformTip #174, with screenshots</span></a></section>
+<section class="abschnitt" aria-label="Your progress">
+<button type="button" class="knopf" data-geuebt="174" aria-pressed="false" data-nur-js>Mark as practiced</button>
+<p class="status-zeile" data-geuebt-status role="status" aria-live="polite"></p>
+</section>
+<section class="abschnitt" aria-labelledby="h-teilen"><h2 id="h-teilen">Share</h2>
+<div class="knopf-reihe"><a class="knopf knopf--klein" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Quiz%20question%20for%20everyone%20who%20builds%20flows%3A%20Why%20can't%20an%20agent%20correct%20errors%20from%20a%20directly%20bound%20connector%20itself%3F%0A%0AA)%20Agents%20cannot%20use%20connectors%20in%20Copilot%20Studio%0AB)%20Connectors%20only%20report%20errors%20by%20email%20to%20the%20owner%0AC)%20The%20call%20fails%20before%20the%20API%20message%20arrives%0A%0AAnswer%20with%20explanation%20in%20the%20Power%20Platform%20Dojo%3A%20https%3A%2F%2Fpowerautomate.ninja%2Fen%2Ftechniken%2Fselbstheilende-aufrufe-fuer-agents%2F" rel="noopener">Share as a quiz question on LinkedIn</a><button type="button" class="knopf knopf--klein" data-kopieren-text="Quiz question for everyone who builds flows: Why can't an agent correct errors from a directly bound connector itself?&#10;&#10;A) Agents cannot use connectors in Copilot Studio&#10;B) Connectors only report errors by email to the owner&#10;C) The call fails before the API message arrives&#10;&#10;Answer with explanation in the Power Platform Dojo: https://powerautomate.ninja/en/techniken/selbstheilende-aufrufe-fuer-agents/" data-nur-js>Copy text</button><a class="knopf knopf--leise knopf--klein" href="mailto:marcel.lehmann@kmupower.com?subject=Power%20Platform%20Dojo%3A%20error%20in%20question%20174&amp;body=Question%3A%20Why%20can't%20an%20agent%20correct%20errors%20from%20a%20directly%20bound%20connector%20itself%3F%0A%0AWhat%20is%20wrong%3F%0A%0A">Report an error in this question</a></div>
+<p class="klein">Short link: powerautomate.ninja/en/174</p>
+</section>
+<p class="quelle">Source: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-174-copilot-studio-self-healing-connector-actions/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-174" rel="noopener">PowerPlatformTip #174</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/troubleshoot/power-platform/copilot-studio/authoring/error-codes" rel="noopener">Resolve Microsoft Copilot Studio agent error codes</a>.</p>
+<nav class="blaettern" aria-label="More techniques"><a href="../../techniken/ein-flow-als-router-fuer-agent-werkzeuge/" rel="prev"><span>Previous technique</span>One flow as a router for agent tools</a><a href="../../pruefung/" rel="next"><span>Done</span>To the belt exam</a></nav>
+<p class="kurs-zeile" data-kurs-status="warteliste">Prefer to continue with guidance? The <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-174" rel="noopener">Power Automate live course</a> (in German) at the Power Platform Academy runs over four weeks. The next dates are not set yet, you can join the waiting list on the course page.</p>
+</article>
+</div></main>
+<footer class="fuss">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div>
+        <p class="fuss__klar">Independent website, not affiliated with Microsoft.</p>
+        <p>Questions and explanations on flows, based on the tips from <a href="https://www.powerplatformtip.com/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">powerplatformtip.com</a>. No sign-up. Visits are counted without cookies; only totals without personal identifiers are stored. Your progress stays in your browser.</p>
+      </div>
+      <nav aria-labelledby="fuss-dojo">
+        <h2 id="fuss-dojo">Dojo</h2>
+        <ul>
+          <li><a href="../../../en/techniken/">All techniques</a></li>
+          <li><a href="../../../en/pruefung/">Belt exam</a></li>
+          <li><a href="../../../en/premium/">Is my license enough?</a></li>
+          <li><a href="../../../en/heute/">Technique of the day</a></li>
+          <li><a href="../../../en/kalender/montag.ics" download>A question in your calendar every Monday</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="fuss-info">
+        <h2 id="fuss-info">Info</h2>
+        <ul>
+          <li><a href="../../../en/ueber/">About the dojo</a></li>
+          <li><a href="../../../en/impressum/">Legal notice</a></li>
+          <li><a href="../../../en/datenschutz/">Privacy</a></li>
+          <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fuss__dojos">
+      <p>More disciplines: <a href="https://copilot.ninja/en/" rel="noopener" hreflang="en">copilot.ninja</a> | <a href="https://powerplatformdojo.com/en/lernpfade/" rel="noopener">Learning paths</a> | <a href="https://powerplatformdojo.com/en/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>A project by Marcel Lehmann. Learn more: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
+    </div>
+    <div class="fuss__recht">
+      <p>Microsoft and the Power Platform product names (for example Power Apps, Power Automate, Copilot Studio) are trademarks of the Microsoft group of companies. This is an independent website. It is not operated, sponsored or endorsed by Microsoft.</p>
+    </div>
+  </div>
+  <p id="kopier-status" class="sr-only" role="status" aria-live="polite"></p>
+</footer>
+</body>
+</html>

@@ -1,13 +1,14 @@
-/* Power Platform Dojo (Power Automate): Guertelpruefung. Zwei Fragen je Guertel von Weiss bis Braun (je_guertel in pool.json).
+/* Power Platform Dojo (Power Automate): Guertelpruefung. Zwei Fragen je Guertel von Weiss bis Schwarz (je_guertel in pool.json), die Fragen zu Schwarz sind die Meisterpruefung.
    Bestanden ist ein Guertel, wenn alle seine Fragen richtig sind. Zwei falsche im selben Guertel beenden die Pruefung.
-   Ergebnis ist der hoechste Guertel, bis zu dem alle Guertel bestanden sind. Das Ergebnisbild entsteht lokal im Browser. */
+   Ergebnis ist der hoechste Guertel, bis zu dem alle Guertel bestanden sind. Das Ergebnisbild entsteht lokal im Browser.
+   Beim Anzeigen eines Ergebnisses zaehlt GoatCounter einmal das Ereignis pruefung-beendet/<guertelfarbe> (Entscheid 3 vom 14.11.2026). */
 (function () {
   'use strict';
   var F = window.FlowDojo, d = document, R = F ? F.R : (d.documentElement.getAttribute('data-r') || '');
   var LR = F ? F.LR : R, tx = F ? F.tx : function (de) { return de; }, SFX = F ? F.SFX : '';
   var box = d.querySelector('[data-pruefung]'), start = d.querySelector('[data-pruefung-start]');
   if (!box || !start || !F) return;
-  var esc = F.esc, BUCHST = ['A', 'B', 'C'], daten = null, fragen = [], idx = 0, log = [], falsch = {}, bildUrl = null;
+  var esc = F.esc, BUCHST = ['A', 'B', 'C'], daten = null, fragen = [], idx = 0, log = [], falsch = {}, bildUrl = null, gezaehlt = false;
   var KNOTEN = ['M2 11h28v7H2z', 'M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4'];
 
   function mische(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
@@ -22,8 +23,8 @@
   });
 
   function neu() {
-    fragen = []; idx = 0; log = []; falsch = {};
-    for (var g = 1; g <= 6; g++) {
+    fragen = []; idx = 0; log = []; falsch = {}; gezaehlt = false;
+    for (var g = 1; g <= daten.guertel.length; g++) {
       var n = daten.je_guertel || 2;
       mische(daten.fragen.filter(function (f) { return f.g === g; })).slice(0, n).forEach(function (f) {
         var reihe = mische([0, 1, 2]);
@@ -42,7 +43,7 @@
 
   function zeige() {
     var q = fragen[idx], g = daten.guertel[q.f.g - 1];
-    box.innerHTML = '<div class="pruef__kopf"><span>' + tx('Frage ', 'Question ') + (idx + 1) + tx(' von ', ' of ') + fragen.length + '</span><span class="guertel-tag" data-guertel-nr="' + g.nr + '"><span class="band-punkt" data-guertel-nr="' + g.nr + '" aria-hidden="true"></span>' + esc(g.name) + '</span></div>' + balken() +
+    box.innerHTML = '<div class="pruef__kopf"><span>' + tx('Frage ', 'Question ') + (idx + 1) + tx(' von ', ' of ') + fragen.length + '</span><span class="guertel-tag" data-guertel-nr="' + g.nr + '"><span class="band-punkt" data-guertel-nr="' + g.nr + '" aria-hidden="true"></span>' + esc(g.name) + (g.nr === daten.guertel.length ? tx(', Meisterprüfung', ', master exam') : '') + '</span></div>' + balken() +
       '<section class="quiz" data-guertel-nr="' + g.nr + '" aria-labelledby="pf-frage"><h2 class="quiz__frage" id="pf-frage" tabindex="-1">' + esc(q.f.frage) + '</h2>' +
       '<ul class="antworten">' + q.reihe.map(function (orig, pos) { return '<li><button type="button" class="antwort" data-orig="' + orig + '"><span class="antwort__b" aria-hidden="true">' + BUCHST[pos] + '</span><span>' + esc(q.f.antworten[orig]) + '</span></button></li>'; }).join('') + '</ul>' +
       '<div data-feedback role="status" aria-live="polite"></div></section>';
@@ -73,7 +74,7 @@
 
   function ergebnis(abbruch) {
     var res = 0, uebersicht = [];
-    for (var g = 1; g <= 6; g++) {
+    for (var g = 1; g <= daten.guertel.length; g++) {
       var dieser = log.filter(function (l) { return l.g === g; }), soll = fragen.filter(function (q) { return q.f.g === g; }).length;
       var bestanden = soll > 0 && dieser.length === soll && dieser.every(function (l) { return l.ok; });
       if (bestanden && res === g - 1) res = g;
@@ -83,13 +84,15 @@
     if (res) d.documentElement.setAttribute('data-guertel', res); else d.documentElement.removeAttribute('data-guertel');
     var g0 = res ? daten.guertel[res - 1] : null, naechster = daten.guertel[res] || null;
     var kurs = res <= 3 ? daten.kurs.einstieg : daten.kurs.fortgeschritten;
-    var text = res ? tx('Ich habe in der Flow-Gürtelprüfung des Power Platform Dojo für Power Automate ' + g0.akk + ' geschafft. ' + (naechster && res < 6 ? 'Schaffst du ' + naechster.akk + '?' : 'Schaffst du das auch?'), 'I earned ' + g0.akk + ' in the flow belt exam of the Power Platform Dojo for Power Automate. ' + (naechster && res < 6 ? 'Can you get ' + naechster.akk + '?' : 'Can you do it too?')) + '\n\n' + daten.base + 'guertel/' + g0.farbe + '/' : '';
-    var naechste = naechster && res < 6 ? daten.guertel[res].naechste : [];
+    var text = res ? tx('Ich habe in der Flow-Gürtelprüfung des Power Platform Dojo für Power Automate ' + g0.akk + ' geschafft. ' + (naechster ? 'Schaffst du ' + naechster.akk + '?' : 'Schaffst du das auch?'), 'I earned ' + g0.akk + ' in the flow belt exam of the Power Platform Dojo for Power Automate. ' + (naechster ? 'Can you get ' + naechster.akk + '?' : 'Can you do it too?')) + '\n\n' + daten.base + 'guertel/' + g0.farbe + '/' : '';
+    var naechste = naechster ? naechster.naechste : [];
     box.innerHTML = '<section class="ergebnis" aria-labelledby="erg-titel">' + balken() +
       '<div class="ergebnis__abzeichen">' + knotenSvg(res || 1) + '<div><span class="label">' + tx('Dein Ergebnis', 'Your result') + (abbruch ? tx(', Prüfung beendet', ', exam ended') : '') + '</span><h2 id="erg-titel" tabindex="-1">' + (res ? esc(g0.name) : tx('Noch kein Gürtel', 'No belt yet')) + '</h2></div></div>' +
       '<p class="lead">' + (res ? tx('Das kannst du: ', 'What you can do: ') + esc(g0.kann) : tx('Starte mit dem weissen Gürtel: Flows testen, Ein- und Ausgaben lesen, Datumswerte formatieren.', 'Start with the white belt: test flows, read inputs and outputs, format dates.')) + '</p>' +
       '<ul class="uebersicht">' + uebersicht.map(function (u) { return '<li><span class="band-punkt" data-guertel-nr="' + u.g + '" aria-hidden="true"></span>' + esc(daten.guertel[u.g - 1].name) + ': ' + u.text + '</li>'; }).join('') + '</ul>' +
-      (naechste.length ? '<h3>' + tx('Als Nächstes lernst du', 'What to learn next') + '</h3><ul class="arrow-list">' + naechste.map(function (t) { return '<li><a href="' + LR + t.url + '">' + esc(t.titel) + '</a></li>'; }).join('') + '</ul>' : (res < 6 ? '<p><a href="' + LR + 'guertel/' + (naechster ? naechster.farbe : 'weiss') + '/">' + tx('Zum ', 'To the ') + esc(naechster ? (F && F.EN ? naechster.name.toLowerCase() : naechster.name) : tx('Weissen Gürtel', 'white belt')) + '</a></p>' : '')) +
+      (naechste.length ? '<h3>' + tx('Als Nächstes lernst du', 'What to learn next') + '</h3><ul class="arrow-list">' + naechste.map(function (t) { return '<li><a href="' + LR + t.url + '">' + esc(t.titel) + '</a></li>'; }).join('') + '</ul>' : (naechster ? '<p><a href="' + LR + 'guertel/' + (naechster ? naechster.farbe : 'weiss') + '/">' + tx('Zum ', 'To the ') + esc(naechster ? (F && F.EN ? naechster.name.toLowerCase() : naechster.name) : tx('Weissen Gürtel', 'white belt')) + '</a></p>' : '')) +
+      /* Kein Guertel, Weiss und Gelb: Mentee-Hinweis (Koordinator 14.11.2026), ab Orange: Sensei-Hinweis, nie beide (Entscheid 1 vom 14.11.2026) */
+      (res < 3 ? '<aside class="sensei-hinweis" data-mentee-hinweis aria-labelledby="mentee-titel"><h3 id="mentee-titel">' + tx('Hol dir einen Sensei, 1:1 und gratis', 'Get a Sensei, 1:1 and free') + '</h3><p>' + tx('Im Dojo Mentoring begleitet dich ein Sensei 1:1 über 3 Monate, gratis. Du wählst Thema, Sprache, Niveau und Zeitfenster, danach wird dir fair ein passender Sensei zugeteilt.', 'In Dojo Mentoring a Sensei guides you 1:1 for 3 months, free of charge. You choose topic, language, level and time window, then a matching Sensei is fairly assigned to you.') + ' <a href="' + esc((daten.dojo && daten.dojo.finden) || tx('https://powerplatformdojo.com/mentoring/finden/', 'https://powerplatformdojo.com/en/mentoring/finden/')) + '" rel="noopener">' + tx('Mentoring anfragen', 'Request mentoring') + '</a></p></aside>' : '') +
       (res >= 3 ? '<aside class="sensei-hinweis" aria-labelledby="sensei-titel"><h3 id="sensei-titel">' + tx('Werde Sensei', 'Become a Sensei') + '</h3><p>' + tx('Du kannst anderen helfen. Im Dojo Mentoring begleitest du als Sensei jemanden 1:1 über 3 Monate, gratis. Zeit und Anzahl Mentees bestimmst du selbst, pausieren kannst du jederzeit.', 'You can help others. In Dojo Mentoring you guide someone 1:1 for 3 months as a Sensei, free of charge. You decide on time and number of mentees yourself and can pause at any time.') + ' <a href="' + esc((daten.dojo && daten.dojo.anmelden) || tx('https://powerplatformdojo.com/mentoring/anmelden/', 'https://powerplatformdojo.com/en/mentoring/anmelden/')) + '" rel="noopener">' + tx('Als Sensei anmelden', 'Sign up as a Sensei') + '</a></p></aside>' : '') +
       (res ? '<h3>' + tx('Teilen', 'Share') + '</h3><img class="vorschau-bild" data-bild alt="' + tx('Ergebnisbild: ', 'Result image: ') + esc(g0.name) + tx(' im Power Platform Dojo, Power Automate', ' in the Power Platform Dojo, Power Automate') + '" width="1200" height="627">' +
         '<div class="knopf-reihe"><a class="knopf knopf--klein" data-bild-download download="power-platform-dojo-power-automate-' + g0.farbe + '.png" href="#">' + tx('Bild herunterladen', 'Download image') + '</a>' +
@@ -103,7 +106,21 @@
     var t2 = box.querySelector('#erg-titel'); if (t2) t2.focus();
     box.querySelector('[data-nochmal]').addEventListener('click', neu);
     var kp = box.querySelector('[data-text-kopieren]'); if (kp) kp.addEventListener('click', function () { F.kopiere(text, kp); });
+    zaehle(res);
     if (res) zeichne(g0);
+  }
+
+  /* Ereignis pruefung-beendet/<guertelfarbe>, je Pruefung genau einmal. Fehlt count.js oder ist skipgc gesetzt, passiert nichts. */
+  function zaehle(res) {
+    if (gezaehlt) return;
+    gezaehlt = true;
+    try {
+      if (window.localStorage && window.localStorage.getItem('skipgc') === 't') return;
+      var gc = window.goatcounter;
+      if (!gc || typeof gc.count !== 'function') return;
+      var farbe = res ? daten.guertel[res - 1].farbe : 'kein-guertel';
+      gc.count({ path: 'pruefung-beendet/' + farbe, title: 'Prüfung beendet: ' + farbe, event: true });
+    } catch (e) { /* Zaehlen darf die Pruefung nie stoeren */ }
   }
 
   function umbrechen(ctx, text, x, y, breite, zeile) {
