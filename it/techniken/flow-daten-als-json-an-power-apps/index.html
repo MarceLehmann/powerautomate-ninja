@@ -127,7 +127,7 @@
               "text": "Con l'azione Risposta del connettore HTTP",
               "answerExplanation": {
                 "@type": "Comment",
-                "text": "Sbagliato. Per questo caso basta «Rispondi a PowerApp o a un flusso». Risposta non serve."
+                "text": "Sbagliato. Per questo caso basta «Rispondi a un'applicazione PowerApp o un flusso». Risposta non serve."
               }
             }
           ]
@@ -198,7 +198,7 @@
       <li><a href="../../../it/dojo/">Il mio dojo</a></li>
       <li><a href="../../../it/ueber/">Info</a></li>
       <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
-      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo per Copilot</a></li>
+      <li><a href="https://copilot.ninja/it/" rel="noopener">Dojo per Copilot</a></li>
     </ul>
   </nav>
 </div>
@@ -226,10 +226,10 @@
 <p class="quiz__status" data-quiz-status role="status" aria-live="polite"></p>
 <div class="aufloesung-block" data-aufloesung>
 <h3>Soluzione</h3>
-<ol class="aufloesung"><li class="falsch"><b>A) Con un'uscita dedicata per ogni campo</b>Sbagliato. Le uscite piatte non rappresentano né elenchi né record annidati.</li><li class="richtig"><b>B) Come testo JSON in un'uscita, poi ParseJSON</b>Esatto. Un'uscita di testo porta qualsiasi struttura e ParseJSON la ricostruisce nell'app.</li><li class="falsch"><b>C) Con l'azione Risposta del connettore HTTP</b>Sbagliato. Per questo caso basta «Rispondi a PowerApp o a un flusso». Risposta non serve.</li></ol>
+<ol class="aufloesung"><li class="falsch"><b>A) Con un'uscita dedicata per ogni campo</b>Sbagliato. Le uscite piatte non rappresentano né elenchi né record annidati.</li><li class="richtig"><b>B) Come testo JSON in un'uscita, poi ParseJSON</b>Esatto. Un'uscita di testo porta qualsiasi struttura e ParseJSON la ricostruisce nell'app.</li><li class="falsch"><b>C) Con l'azione Risposta del connettore HTTP</b>Sbagliato. Per questo caso basta «Rispondi a un'applicazione PowerApp o un flusso». Risposta non serve.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Un flusso spesso fornisce a un'app canvas più di un singolo valore, per esempio un cliente con tutti gli ordini. «Rispondi a PowerApp o a un flusso» conosce però solo uscite piatte come testo, numero o Sì/No. Invece di creare decine di campi, costruisci il risultato nel flusso come JSON, per esempio con Seleziona e Componi, e lo restituisci come un unico campo di testo. In Power Apps ParseJSON rilegge il testo. Senza indicazione di tipo ottieni un valore dinamico e converti i campi con Text(), Value() o Boolean(). Con un Type come secondo argomento ottieni direttamente record e tabelle tipizzati. L'azione Risposta del connettore HTTP per questo non serve.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Un flusso spesso fornisce a un'app canvas più di un singolo valore, per esempio un cliente con tutti gli ordini. «Rispondi a un'applicazione PowerApp o un flusso» conosce però solo uscite piatte come testo, numero o Sì/No. Invece di creare decine di campi, costruisci il risultato nel flusso come JSON, per esempio con Seleziona e Componi, e lo restituisci come un unico campo di testo. In Power Apps ParseJSON rilegge il testo. Senza indicazione di tipo ottieni un valore dinamico e converti i campi con Text(), Value() o Boolean(). Con un Type come secondo argomento ottieni direttamente record e tabelle tipizzati. L'azione Risposta del connettore HTTP per questo non serve.</p></section>
 
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Quando usarla, quando no</h2><div class="zwei"><div class="karte-text"><h3>Usala</h3><p>Quando l'app ha bisogno di elenchi o record annidati dal flusso.</p></div><div class="karte-text"><h3>Meglio di no</h3><p>Con quantità di dati molto grandi. Allora il flusso salva i dati in SharePoint o Dataverse e l'app li legge direttamente.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Errore più frequente</h2><p>Usare nelle formule campi di ParseJSON senza conversione. Senza Type ParseJSON restituisce valori dinamici.</p></section>
@@ -244,7 +244,7 @@
 <p class="klein">Indirizzo breve: powerautomate.ninja/it/158</p>
 </section>
 <p class="quelle">Fonte: <a href="https://www.powerplatformtip.com/article/powerplatformtip/powerplatformtip-158-parsejson-return-flow-data-power-apps/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=quelle-158" rel="noopener">PowerPlatformTip #158</a>, Microsoft Learn: <a href="https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-parsejson" rel="noopener">ParseJSON function</a>.</p>
-<nav class="blaettern" aria-label="Altre tecniche"><a href="../../techniken/apostrophe-und-sonderzeichen-codieren/" rel="prev"><span>Tecnica precedente</span>Codificare correttamente apostrofi e caratteri speciali</a><a href="../../techniken/apply-to-each-parallel/" rel="next"><span>Tecnica successiva</span>Eseguire Applica a ciascuno in parallelo</a></nav>
+<nav class="blaettern" aria-label="Altre tecniche"><a href="../../techniken/apostrophe-und-sonderzeichen-codieren/" rel="prev"><span>Tecnica precedente</span>Codificare correttamente apostrofi e caratteri speciali</a><a href="../../techniken/apply-to-each-parallel/" rel="next"><span>Tecnica successiva</span>Eseguire Applica a ogni in parallelo</a></nav>
 <p class="kurs-zeile" data-kurs-status="warteliste">Preferisci proseguire con affiancamento? Il <a href="https://www.powerplatformacademy.online/kurse/power-automate?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=technik-158" rel="noopener">Corso live Power Automate</a> della Power Platform Academy (in tedesco) dura quattro settimane. Le prossime date non sono ancora fissate, sulla pagina del corso ti metti in lista d'attesa.</p>
 </article>
 </div></main>
@@ -276,7 +276,7 @@
       </nav>
     </div>
     <div class="fuss__dojos">
-      <p>Altre discipline: <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Altre discipline: <a href="https://copilot.ninja/it/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
       <p>Un progetto di Marcel Lehmann. Per imparare di più: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
     </div>
     <div class="fuss__recht">

@@ -9,6 +9,8 @@
   var SFX = LANG === 'de' ? '' : '-' + LANG;
   function tx(de, en) { if (LANG === 'de') return de; if (LANG === 'en' || !I18) return en; var v = I18.tx[de]; return typeof v === 'string' ? v : en; }
   function txf(de, en, w) { return tx(de, en).replace(/\{(\w+)\}/g, function (m, k) { return Object.prototype.hasOwnProperty.call(w, k) ? String(w[k]) : m; }); }
+  /* Satzzeichen, die der Code anhaengt: Franzoesisch mit geschuetztem Leerzeichen davor (typografie aus i18n) */
+  function dp(z) { return (I18 && I18.typografie === 'fr' ? '\u00a0' : '') + z; }
   var SCHLUESSEL = 'fd-dojo-v1', THEME = 'fd-theme';
   var GNAME = I18 && I18.guertel ? I18.guertel : EN ? ['White belt', 'Yellow belt', 'Orange belt', 'Green belt', 'Blue belt', 'Brown belt', 'Black belt'] : ['Weisser Gürtel', 'Gelber Gürtel', 'Oranger Gürtel', 'Grüner Gürtel', 'Blauer Gürtel', 'Brauner Gürtel', 'Schwarzer Gürtel'];
   var BUCHST = ['A', 'B', 'C'];
@@ -26,7 +28,7 @@
   /* Speicher */
   function lade() { try { var s = JSON.parse(localStorage.getItem(SCHLUESSEL) || 'null'); if (s && typeof s === 'object') { s.geuebt = s.geuebt || {}; return s; } } catch (e) {} return { v: 1, geuebt: {} }; }
   function speichere(s) { try { localStorage.setItem(SCHLUESSEL, JSON.stringify(s)); return true; } catch (e) { return false; } }
-  window.FlowDojo = { lade: lade, speichere: speichere, R: R, LR: LR, EN: EN, LANG: LANG, SFX: SFX, tx: tx, txf: txf, esc: esc, kopiere: kopiere, heuteIso: heuteIso, datumCH: datumCH };
+  window.FlowDojo = { lade: lade, speichere: speichere, R: R, LR: LR, EN: EN, LANG: LANG, SFX: SFX, tx: tx, txf: txf, dp: dp, esc: esc, kopiere: kopiere, heuteIso: heuteIso, datumCH: datumCH };
 
   /* Sprache: Wahl beim Umschalten merken (fd-lang), keine Cookies. Die deutsche 404 unter /<sprache>/ leitet auf die 404 dieser Sprache.
      Die Sprachwahl (<details>) schliesst bei Klick daneben und mit Escape. */

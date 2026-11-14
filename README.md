@@ -36,6 +36,7 @@ Unabhängige Website von Marcel Lehmann (Handelsname KMUpower), keine Verbindung
 - Sprachwahl im Kopf mit allen Sprachen (`<details>`, ohne JavaScript bedienbar), hreflang für alle Sprachen plus x-default (Deutsch), Sitemap und llms.txt mit allen Sprachen, Vorschaubilder in `assets/img/<code>/`.
 - Skripttexte weiterer Sprachen: `assets/js/i18n-<code>.js` (vom Build erzeugt). Das GoatCounter-Ereignis `pruefung-beendet/<farbe>` bleibt sprachunabhängig (deutsche Farbnamen).
 - Prüfregeln je Sprache: Französisch und Italienisch erlauben Antworten bis 15 Wörter und Kurztexte von 80 bis 170 Wörtern (`meta.pruefregeln`).
+- copilot.ninja-Links zeigen in FR und IT auf copilot.ninja/fr/ bzw. /it/ (dort PR #4, gleichzeitig mergen).
 - Die automatische Erstweiterleitung in `theme-init.js` (Engine-Datei) kennt nur Englisch. Französisch und Italienisch wählt man über die Sprachwahl.
 
 ## Aufbau

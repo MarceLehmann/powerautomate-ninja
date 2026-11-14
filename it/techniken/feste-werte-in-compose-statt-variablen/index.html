@@ -198,7 +198,7 @@
       <li><a href="../../../it/dojo/">Il mio dojo</a></li>
       <li><a href="../../../it/ueber/">Info</a></li>
       <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
-      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo per Copilot</a></li>
+      <li><a href="https://copilot.ninja/it/" rel="noopener">Dojo per Copilot</a></li>
     </ul>
   </nav>
 </div>
@@ -229,7 +229,7 @@
 <ol class="aufloesung"><li class="falsch"><b>A) In una variabile, così il flusso è più veloce</b>Sbagliato. Una variabile non rende il flusso più veloce. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale.</li><li class="richtig"><b>B) In un'azione Componi o in Analizza JSON</b>Esatto. I valori fissi non hanno bisogno di una variabile. Componi o Analizza JSON mostrano chiaramente che il valore non cambia.</li><li class="falsch"><b>C) In una Condizione dedicata all'inizio del flusso</b>Sbagliato. Una Condizione verifica qualcosa e crea un ramo. Non serve a conservare un valore fisso.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Molti flussi iniziano con una serie di «Inizializza variabile» per valori che non cambiano mai: un indirizzo e-mail, l'URL di un elenco, una soglia. Per i valori fissi non serve una variabile. Un singolo valore va in un'azione Componi. Più valori collegati li salvi come oggetto JSON in Analizza JSON e ci accedi con un'espressione come body('Parse_JSON')?['settingName']. Il flusso diventa più corto e tutti vedono subito che questi valori sono fissi. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ciascuno: Controllo della concorrenza, Grado di parallelismo 1. Le variabili le tieni per valori che cambiano davvero durante l'esecuzione, come un totale progressivo.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Molti flussi iniziano con una serie di «Inizializza variabile» per valori che non cambiano mai: un indirizzo e-mail, l'URL di un elenco, una soglia. Per i valori fissi non serve una variabile. Un singolo valore va in un'azione Componi. Più valori collegati li salvi come oggetto JSON in Analizza JSON e ci accedi con un'espressione come body('Parse_JSON')?['settingName']. Il flusso diventa più corto e tutti vedono subito che questi valori sono fissi. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ogni: Controllo della concorrenza, Grado di parallelismo 1. Le variabili le tieni per valori che cambiano davvero durante l'esecuzione, come un totale progressivo.</p></section>
 
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Quando usarla, quando no</h2><div class="zwei"><div class="karte-text"><h3>Usala</h3><p>Per impostazioni che restano uguali durante l'esecuzione: indirizzi, URL, soglie, testi.</p></div><div class="karte-text"><h3>Meglio di no</h3><p>Per valori che cambiano durante l'esecuzione, come una somma o una matrice che riempi passo dopo passo. Per questo esistono le variabili.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Errore più frequente</h2><p>Segnare come obbligatori nello schema di Analizza JSON campi che a volte mancano. Allora l'esecuzione fallisce nella verifica dello schema.</p></section>
@@ -276,7 +276,7 @@
       </nav>
     </div>
     <div class="fuss__dojos">
-      <p>Altre discipline: <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Altre discipline: <a href="https://copilot.ninja/it/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
       <p>Un progetto di Marcel Lehmann. Per imparare di più: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
     </div>
     <div class="fuss__recht">

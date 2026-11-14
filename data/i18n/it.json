@@ -19,7 +19,7 @@
     "powerplatform_dojo": "https://powerplatformdojo.com/it/",
     "lernpfade": "https://powerplatformdojo.com/it/lernpfade/",
     "mentoring": "https://powerplatformdojo.com/it/mentoring/",
-    "copilot_dojo": "https://copilot.ninja/en/"
+    "copilot_dojo": "https://copilot.ninja/it/"
   },
   "limits": {
     "laufzeit_max": "30 giorni",
@@ -414,7 +414,7 @@
       "lernziel": "Usi le variabili solo per valori che cambiano davvero.",
       "thema": "Struttura e leggibilità dei flussi",
       "titel": "Valori fissi in Componi invece che in variabili",
-      "kurztext": "Molti flussi iniziano con una serie di «Inizializza variabile» per valori che non cambiano mai: un indirizzo e-mail, l'URL di un elenco, una soglia. Per i valori fissi non serve una variabile. Un singolo valore va in un'azione Componi. Più valori collegati li salvi come oggetto JSON in Analizza JSON e ci accedi con un'espressione come body('Parse_JSON')?['settingName']. Il flusso diventa più corto e tutti vedono subito che questi valori sono fissi. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ciascuno: Controllo della concorrenza, Grado di parallelismo 1. Le variabili le tieni per valori che cambiano davvero durante l'esecuzione, come un totale progressivo.",
+      "kurztext": "Molti flussi iniziano con una serie di «Inizializza variabile» per valori che non cambiano mai: un indirizzo e-mail, l'URL di un elenco, una soglia. Per i valori fissi non serve una variabile. Un singolo valore va in un'azione Componi. Più valori collegati li salvi come oggetto JSON in Analizza JSON e ci accedi con un'espressione come body('Parse_JSON')?['settingName']. Il flusso diventa più corto e tutti vedono subito che questi valori sono fissi. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ogni: Controllo della concorrenza, Grado di parallelismo 1. Le variabili le tieni per valori che cambiano davvero durante l'esecuzione, come un totale progressivo.",
       "wann_ja": "Per impostazioni che restano uguali durante l'esecuzione: indirizzi, URL, soglie, testi.",
       "wann_nein": "Per valori che cambiano durante l'esecuzione, come una somma o una matrice che riempi passo dopo passo. Per questo esistono le variabili.",
       "fehler": "Segnare come obbligatori nello schema di Analizza JSON campi che a volte mancano. Allora l'esecuzione fallisce nella verifica dello schema.",
@@ -606,7 +606,7 @@
       "lernziel": "Inserisci lo schema Try-Catch-Finally in ogni flusso importante.",
       "thema": "Gestione degli errori",
       "titel": "Intercettare gli errori con Try, Catch e Finally",
-      "kurztext": "Nell'ambito Try c'è la logica vera e propria. Per Catch attivi in Configura esecuzione dopo solo «non è riuscito» e «è scaduto» di Try. Lì registri l'errore, per esempio con result('Try'), oppure avvisi qualcuno. Finally segue Catch, con tutti e quattro gli stati in Esecuzione dopo, e fa pulizia. Dopo Finally c'è una Condizione con tutti e quattro gli stati di Finally in Esecuzione dopo. Verifica se Catch è stato eseguito, cioè se non era «ignorato». Solo nel ramo di errore segue Termina con stato Failed, dopo Finally. Il ramo di successo termina senza Termina. Un Termina nell'ambito Catch chiude subito il flusso e l'ambito Finally viene saltato. Così prima si gestisce l'errore, poi si fa pulizia e per ultimo l'esecuzione termina come fallita.",
+      "kurztext": "Nell'ambito Try c'è la logica vera e propria. Per Catch attivi in Configura Run after solo «non è riuscito» e «è scaduto» di Try. Lì registri l'errore, per esempio con result('Try'), oppure avvisi qualcuno. Finally segue Catch, con tutti e quattro gli stati in Esecuzione dopo, e fa pulizia. Dopo Finally c'è una Condizione con tutti e quattro gli stati di Finally in Esecuzione dopo. Verifica se Catch è stato eseguito, cioè se non era «ignorato». Solo nel ramo di errore segue Termina con stato Failed, dopo Finally. Il ramo di successo termina senza Termina. Un Termina nell'ambito Catch chiude subito il flusso e l'ambito Finally viene saltato. Così prima si gestisce l'errore, poi si fa pulizia e per ultimo l'esecuzione termina come fallita.",
       "wann_ja": "In ogni flusso il cui guasto qualcuno deve notare: interfacce, file, record in Dataverse.",
       "wann_nein": "In un breve flusso di test che avvii tu stesso e la cui esecuzione segui direttamente.",
       "fehler": "Mettere Termina in Catch. Inseriscilo dopo Finally, in un ramo che viene eseguito solo se Catch è stato eseguito.",
@@ -616,7 +616,7 @@
         "Finally",
         "ambito",
         "Scope",
-        "Configura esecuzione dopo",
+        "Configura Run after",
         "Configure run after",
         "gestione degli errori",
         "Termina",
@@ -644,12 +644,12 @@
       "quiz": {
         "frage": "Come salvi un file protetto da password preso dal web?",
         "antworten": [
-          "Richiesta HTTP autenticata, poi «Crea file»",
-          "Solo «Carica file da URL» con l'URL del file",
-          "«Recupera contenuto file» direttamente con l'indirizzo web"
+          "Richiesta HTTP autenticata, poi «Crea un file»",
+          "Solo «Carica file dall'URL» con l'URL del file",
+          "«Ottieni contenuto del file» direttamente con l'indirizzo web"
         ],
         "erklaerungen": [
-          "Con una richiesta HTTP autenticata ottieni il contenuto protetto e lo salvi con «Crea file». «Carica file da URL» va bene solo per i file pubblici.",
+          "Con una richiesta HTTP autenticata ottieni il contenuto protetto e lo salvi con «Crea un file». «Carica file dall'URL» va bene solo per i file pubblici.",
           "",
           ""
         ]
@@ -700,7 +700,7 @@
           "intersection() con entrambe le matrici"
         ],
         "erklaerungen": [
-          "union() rimuove le voci duplicate. Con join() le due matrici diventano testo, concat() le accoda e split() ne ricava di nuovo una matrice. Vale per valori semplici. Se i valori contengono il separatore o sono oggetti, usa Applica a ciascuno con Aggiungi a variabile di matrice.",
+          "union() rimuove le voci duplicate. Con join() le due matrici diventano testo, concat() le accoda e split() ne ricava di nuovo una matrice. Vale per valori semplici. Se i valori contengono il separatore o sono oggetti, usa Applica a ogni con Aggiungi a variabile di matrice.",
           "",
           ""
         ]
@@ -710,14 +710,14 @@
     },
     "27": {
       "quiz": {
-        "frage": "Come rendi visibile l'opzione di sovrascrittura in «Crea file» nella finestra di progettazione classica?",
+        "frage": "Come rendi visibile l'opzione di sovrascrittura in «Crea un file» nella finestra di progettazione classica?",
         "antworten": [
           "Disattivare «Allow chunking» nelle impostazioni",
           "Attivare il controllo della concorrenza nelle impostazioni",
           "Rimuovere prima il file esistente con «Elimina file»"
         ],
         "erklaerungen": [
-          "Nella finestra di progettazione classica «Crea file» nasconde l'opzione di sovrascrittura finché il chunking è attivo. Senza chunking compare, ma i file molto grandi possono fallire. Nella nuova finestra di progettazione non c'è nessuna opzione: Crea file sostituisce da solo un file esistente.",
+          "Nella finestra di progettazione classica «Crea un file» nasconde l'opzione di sovrascrittura finché il chunking è attivo. Senza chunking compare, ma i file molto grandi possono fallire. Nella nuova finestra di progettazione non c'è nessuna opzione: Crea file sostituisce da solo un file esistente.",
           "",
           ""
         ]
@@ -1058,7 +1058,7 @@
       "quiz": {
         "frage": "Con cosa trasformi una matrice in un oggetto, secondo il consiglio?",
         "antworten": [
-          "Un ciclo Applica a ciascuno con Aggiungi a matrice",
+          "Un ciclo Applica a ogni con Aggiungi a matrice",
           "L'azione «Crea tabella HTML» con colonne personalizzate",
           "Un'azione Seleziona e espressioni replace() annidate"
         ],
@@ -1087,13 +1087,13 @@
       },
       "lernziel": "Acceleri i cicli in parallelo e riconosci quando questo falsa i risultati.",
       "thema": "Cicli e parallelismo",
-      "titel": "Eseguire Applica a ciascuno in parallelo",
-      "kurztext": "Applica a ciascuno elabora gli elementi di default uno dopo l'altro. Se le iterazioni sono indipendenti, nelle impostazioni puoi attivare il controllo della concorrenza e portare il grado di parallelismo fino a un massimo di {limit:schleife_parallel_max}. Allora più iterazioni girano contemporaneamente. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ciascuno: Controllo della concorrenza, Grado di parallelismo 1. Riguarda per esempio contatori o matrici a cui aggiungi valori. Per iterazioni indipendenti puoi costruire invece il risultato con Seleziona o union(). Controlla anche l'ordine: se un passaggio ha bisogno del risultato del precedente, il parallelismo non va bene. Troppe chiamate simultanee allo stesso connettore possono inoltre causare limitazioni.",
+      "titel": "Eseguire Applica a ogni in parallelo",
+      "kurztext": "Applica a ogni elabora gli elementi di default uno dopo l'altro. Se le iterazioni sono indipendenti, nelle impostazioni puoi attivare il controllo della concorrenza e portare il grado di parallelismo fino a un massimo di {limit:schleife_parallel_max}. Allora più iterazioni girano contemporaneamente. Le variabili nei cicli paralleli danno risultati imprevedibili. Con le variabili il ciclo deve essere sequenziale. Scegli per questo Applica a ogni: Controllo della concorrenza, Grado di parallelismo 1. Riguarda per esempio contatori o matrici a cui aggiungi valori. Per iterazioni indipendenti puoi costruire invece il risultato con Seleziona o union(). Controlla anche l'ordine: se un passaggio ha bisogno del risultato del precedente, il parallelismo non va bene. Troppe chiamate simultanee allo stesso connettore possono inoltre causare limitazioni.",
       "wann_ja": "Quando ogni iterazione sta a sé, per esempio un'e-mail per persona o un aggiornamento per record.",
       "wann_nein": "Quando le iterazioni modificano la stessa variabile o l'ordine è importante.",
       "fehler": "Attivare il parallelismo e continuare a usare dentro «Incrementa variabile». Il contatore poi non è più corretto.",
       "suchbegriffe": [
-        "Applica a ciascuno",
+        "Applica a ogni",
         "Apply to each",
         "Controllo della concorrenza",
         "Concurrency Control",
@@ -1112,7 +1112,7 @@
           "Tutto va nella chat personale con il bot Flow"
         ],
         "erklaerungen": [
-          "Crei una chat di gruppo per argomento e fai pubblicare lì il bot Flow con «Pubblica messaggio in una chat o in un canale». Così non tutti i messaggi finiscono nella stessa chat.",
+          "Crei una chat di gruppo per argomento e fai pubblicare lì il bot Flow con «Pubblica un messaggio in una chat o in un canale». Così non tutti i messaggi finiscono nella stessa chat.",
           "",
           ""
         ]
@@ -1137,7 +1137,7 @@
       "lernziel": "Leggi la definizione di un'azione per trovare prima gli errori.",
       "thema": "Test e debug",
       "titel": "Guardare dietro un'azione con la visualizzazione codice",
-      "kurztext": "Nella finestra di progettazione vedi campi, simboli e contenuti dinamici. La definizione JSON ti mostra come queste informazioni sono collegate. Nella nuova finestra di progettazione apri l'azione e scegli «Visualizzazione codice» per leggerne il JSON. Lì non puoi modificarlo. Controlla nomi delle azioni, input ed espressioni. Nella finestra di progettazione classica apri «Peek code» per leggere la definizione di un'azione. Per la definizione dell'intero flusso lì usi l'esportazione. Così riconosci per esempio un'espressione concat() annidata dietro un campo. Aiuta nella ricerca degli errori e nell'apprendimento: leggi come è costruito un passaggio e puoi usare l'espressione nel tuo flusso.",
+      "kurztext": "Nella finestra di progettazione vedi campi, simboli e contenuti dinamici. La definizione JSON ti mostra come queste informazioni sono collegate. Nella nuova finestra di progettazione apri l'azione e scegli «Visualizza codice» per leggerne il JSON. Lì non puoi modificarlo. Controlla nomi delle azioni, input ed espressioni. Nella finestra di progettazione classica apri «Peek code» per leggere la definizione di un'azione. Per la definizione dell'intero flusso lì usi l'esportazione. Così riconosci per esempio un'espressione concat() annidata dietro un campo. Aiuta nella ricerca degli errori e nell'apprendimento: leggi come è costruito un passaggio e puoi usare l'espressione nel tuo flusso.",
       "wann_ja": "Quando un campo restituisce qualcosa di diverso dal previsto e vuoi vedere quale espressione c'è davvero dietro.",
       "wann_nein": "Quando vuoi solo cambiare il valore di un campo. Per questo il campo di input nella finestra di progettazione è di solito più chiaro.",
       "fehler": "Controllare solo il campo visibile nella finestra di progettazione. Solo nella visualizzazione codice vedi l'espressione completa con tutte le funzioni.",
@@ -1193,7 +1193,7 @@
           "Solo dopo il recupero, con un ciclo su tutti"
         ],
         "erklaerungen": [
-          "La Filter Query in «Recupera elementi» filtra con OData direttamente in SharePoint. Così il flusso carica solo gli elementi che gli servono, invece di prendere tutto e scremare dopo.",
+          "La Query di filtro in «Recupera elementi» filtra con OData direttamente in SharePoint. Così il flusso carica solo gli elementi che gli servono, invece di prendere tutto e scremare dopo.",
           "",
           ""
         ]
@@ -1205,14 +1205,14 @@
       "quiz": {
         "frage": "Con quale azione ottieni il contenuto di una pagina web senza connettore premium?",
         "antworten": [
-          "«Recupera contenuto file» nel connettore SharePoint",
+          "«Ottieni contenuto del file» nel connettore SharePoint",
           "L'azione HTTP con una chiamata GET",
-          "«Carica file da URL» nel connettore OneDrive"
+          "«Carica file dall'URL» nel connettore OneDrive"
         ],
         "erklaerungen": [
           "",
           "",
-          "«Carica file da URL» salva la pagina come file in OneDrive, poi la leggi come testo con «Recupera contenuto file». Sono entrambe azioni standard, l'azione HTTP sarebbe premium."
+          "«Carica file dall'URL» salva la pagina come file in OneDrive, poi la leggi come testo con «Ottieni contenuto del file». Sono entrambe azioni standard, l'azione HTTP sarebbe premium."
         ]
       },
       "lernziel": "Salvi i contenuti web con un'azione standard.",
@@ -1220,7 +1220,7 @@
     },
     "97": {
       "quiz": {
-        "frage": "Quanti elementi restituisce «Recupera elementi» di SharePoint per impostazione predefinita, senza Pagination e Top Count?",
+        "frage": "Quanti elementi restituisce «Recupera elementi» di SharePoint per impostazione predefinita, senza Paginazione e Top Count?",
         "antworten": [
           "256",
           "5000",
@@ -1229,15 +1229,15 @@
         "erklaerungen": [
           "",
           "",
-          "Senza Pagination e senza Top Count, SharePoint restituisce i primi 100 elementi. 256 è il valore predefinito del connettore Excel."
+          "Senza Paginazione e senza Top Count, SharePoint restituisce i primi 100 elementi. 256 è il valore predefinito del connettore Excel."
         ]
       },
-      "lernziel": "Con la Pagination ottieni tutti gli elementi invece della sola prima pagina.",
+      "lernziel": "Con la Paginazione ottieni tutti gli elementi invece della sola prima pagina.",
       "thema": "Lettura e scrittura dei dati"
     },
     "98": {
       "quiz": {
-        "frage": "Cosa fanno Secure Inputs e Secure Outputs?",
+        "frage": "Cosa fanno Input sicuri e Output sicuri?",
         "antworten": [
           "I dati sensibili vengono nascosti nella cronologia esecuzioni",
           "I dati vengono inviati cifrati per e-mail al proprietario",
@@ -1400,7 +1400,7 @@
       "lernziel": "Proteggi le approvazioni lunghe dai timeout.",
       "thema": "Approvazioni",
       "titel": "Impostare un timeout per azioni lunghe",
-      "kurztext": "Un'approvazione o un'altra azione che aspetta delle persone può durare più del previsto. Nelle impostazioni dell'azione stabilisci sotto Timeout per quanto tempo può aspettare al massimo. La durata la scrivi nel formato ISO 8601: P1D è un giorno, P14D sono 14 giorni, PT2H due ore. Quando il tempo scade, l'azione risulta scaduta. Perché il flusso non fallisca semplicemente, aggiungi un'azione il cui «Configura esecuzione dopo» è impostato solo su «è scaduto». Lì invii un promemoria, passi al livello superiore o avvii una nuova richiesta. Su tutto vale il limite di durata di un flusso di {limit:laufzeit_max}.",
+      "kurztext": "Un'approvazione o un'altra azione che aspetta delle persone può durare più del previsto. Nelle impostazioni dell'azione stabilisci sotto Timeout per quanto tempo può aspettare al massimo. La durata la scrivi nel formato ISO 8601: P1D è un giorno, P14D sono 14 giorni, PT2H due ore. Quando il tempo scade, l'azione risulta scaduta. Perché il flusso non fallisca semplicemente, aggiungi un'azione il cui «Configura Run after» è impostato solo su «è scaduto». Lì invii un promemoria, passi al livello superiore o avvii una nuova richiesta. Su tutto vale il limite di durata di un flusso di {limit:laufzeit_max}.",
       "wann_ja": "Per approvazioni e altre azioni che aspettano una risposta di cui non conosci la durata.",
       "wann_nein": "Quando il processo può superare il limite di durata di {limit:laufzeit_max}. Allora un timeout non basta, perché l'intera esecuzione termina prima.",
       "fehler": "Impostare il timeout ma non costruire un percorso per «è scaduto». Allora l'esecuzione fallisce comunque.",
@@ -1411,7 +1411,7 @@
         "Approval",
         "è scaduto",
         "has timed out",
-        "Configura esecuzione dopo",
+        "Configura Run after",
         "P14D"
       ]
     },
@@ -1455,12 +1455,12 @@
         "antworten": [
           "«Crea elemento» in una lista SharePoint",
           "«Avvia e attendi un'approvazione» standard",
-          "«Invia messaggio di posta elettronica con opzioni»"
+          "«Invia un messaggio di posta elettronica con opzioni»"
         ],
         "erklaerungen": [
           "",
           "",
-          "L'approvazione standard raggiunge gli esterni solo come utenti guest nel tenant, con invito accettato e licenza Power Automate. «Invia messaggio di posta elettronica con opzioni» arriva a qualsiasi indirizzo valido, e la risposta la elabori nel flusso."
+          "L'approvazione standard raggiunge gli esterni solo come utenti guest nel tenant, con invito accettato e licenza Power Automate. «Invia un messaggio di posta elettronica con opzioni» arriva a qualsiasi indirizzo valido, e la risposta la elabori nel flusso."
         ]
       },
       "lernziel": "Ottieni approvazioni anche da persone esterne all'organizzazione.",
@@ -1485,10 +1485,10 @@
     },
     "117": {
       "quiz": {
-        "frage": "Come superi, secondo il consiglio, le 50 iterazioni parallele di Applica a ciascuno?",
+        "frage": "Come superi, secondo il consiglio, le 50 iterazioni parallele di Applica a ogni?",
         "antworten": [
           "Con flussi figlio o trigger di database",
-          "Con un limite di Pagination più alto",
+          "Con un limite di Paginazione più alto",
           "Con un secondo trigger nello stesso flusso"
         ],
         "erklaerungen": [
@@ -1570,7 +1570,7 @@
     },
     "124": {
       "quiz": {
-        "frage": "Quali file restituisce «Recupera contenuto file» senza passare da Base64?",
+        "frage": "Quali file restituisce «Ottieni contenuto del file» senza passare da Base64?",
         "antworten": [
           "Formati immagine come PNG, JPG e GIF",
           "File Office come DOCX e XLSX",
@@ -1761,7 +1761,7 @@
           "concat()"
         ],
         "erklaerungen": [
-          "split() divide il testo a ogni a capo e restituisce una matrice che scorri con Applica a ciascuno.",
+          "split() divide il testo a ogni a capo e restituisce una matrice che scorri con Applica a ogni.",
           "",
           ""
         ]
@@ -1820,7 +1820,7 @@
       "lernziel": "Costruisci approvazioni che possono restare aperte più di 30 giorni.",
       "thema": "Approvazioni",
       "titel": "Mantenere in vita le approvazioni oltre 30 giorni",
-      "kurztext": "Un'esecuzione del flusso termina dopo {limit:laufzeit_max}. Se un'approvazione aspetta più a lungo, finisce nel vuoto e nessuno se ne accorge. La soluzione: il flusso si riavvia da solo. Un elenco SharePoint riceve la colonna TriggerFlow (Sì/No). Il trigger «Quando un elemento viene creato o modificato» grazie a una condizione del trigger come @equals(triggerOutputs()?['body/TriggerFlow'], true) parte solo se la colonna è su Sì, e la prima azione la imposta subito su No. L'approvazione riceve un timeout inferiore a 28 giorni, per esempio P27D. Secondo Microsoft un flusso non può aspettare un'approvazione più a lungo. Quando il timeout scade, un'azione con «è scaduto» riporta TriggerFlow su Sì e inizia una nuova esecuzione. Se non vuoi una nuova e-mail, separi «Crea un'approvazione» e «Attendi un'approvazione» e salvi l'ID dell'approvazione.",
+      "kurztext": "Un'esecuzione del flusso termina dopo {limit:laufzeit_max}. Se un'approvazione aspetta più a lungo, finisce nel vuoto e nessuno se ne accorge. La soluzione: il flusso si riavvia da solo. Un elenco SharePoint riceve la colonna TriggerFlow (Sì/No). Il trigger «Quando viene creato o modificato un elemento» grazie a una condizione del trigger come @equals(triggerOutputs()?['body/TriggerFlow'], true) parte solo se la colonna è su Sì, e la prima azione la imposta subito su No. L'approvazione riceve un timeout inferiore a 28 giorni, per esempio P27D. Secondo Microsoft un flusso non può aspettare un'approvazione più a lungo. Quando il timeout scade, un'azione con «è scaduto» riporta TriggerFlow su Sì e inizia una nuova esecuzione. Se non vuoi una nuova e-mail, separi «Crea un'approvazione» e «Attendi un'approvazione» e salvi l'ID dell'approvazione.",
       "wann_ja": "Per contratti, budget, verifiche legali e altre decisioni che possono restare ferme più di un mese.",
       "wann_nein": "Quando la decisione arriva di sicuro entro {limit:laufzeit_max}. Allora basta un timeout con un percorso per «è scaduto».",
       "fehler": "Omettere la condizione del trigger. Allora ogni modifica all'elemento avvia una nuova esecuzione e il flusso si richiama all'infinito.",
@@ -1902,13 +1902,13 @@
       "lernziel": "Testi i cicli con pochi elementi, senza ricostruire il flusso.",
       "thema": "Test e debug",
       "titel": "Accorciare i cicli durante il test con take()",
-      "kurztext": "Testare un ciclo su centinaia di elementi costa tempo e azioni a ogni esecuzione. Con take() durante il test elabori solo i primi elementi. Sostituisci l'input di Applica a ciascuno con un'espressione come take(body('Select'), 5). Il ciclo gira allora al massimo cinque volte, qualunque sia la dimensione della matrice. Se la matrice ha meno elementi, take() li restituisce semplicemente tutti, senza errori. Così verifichi la logica nel ciclo su pochi record reali. Quando tutto torna, togli take() e riselezioni l'output originale. La struttura del flusso resta invariata.",
+      "kurztext": "Testare un ciclo su centinaia di elementi costa tempo e azioni a ogni esecuzione. Con take() durante il test elabori solo i primi elementi. Sostituisci l'input di Applica a ogni con un'espressione come take(body('Select'), 5). Il ciclo gira allora al massimo cinque volte, qualunque sia la dimensione della matrice. Se la matrice ha meno elementi, take() li restituisce semplicemente tutti, senza errori. Così verifichi la logica nel ciclo su pochi record reali. Quando tutto torna, togli take() e riselezioni l'output originale. La struttura del flusso resta invariata.",
       "wann_ja": "Quando testi cicli su grandi elenchi o tabelle, prima di lanciare il flusso su tutti i dati.",
       "wann_nein": "In produzione. Se take() resta nel flusso, questo elabora per sempre solo i primi elementi.",
       "fehler": "Dimenticare take() nel flusso dopo il test. Una nota nell'azione ti ricorda di toglierlo.",
       "suchbegriffe": [
         "take",
-        "Applica a ciascuno",
+        "Applica a ogni",
         "Apply to each",
         "ciclo",
         "test",
@@ -1918,7 +1918,7 @@
     },
     "149": {
       "quiz": {
-        "frage": "Da dove legge il flusso la decisione in «Invia messaggio di posta elettronica con opzioni»?",
+        "frage": "Da dove legge il flusso la decisione in «Invia un messaggio di posta elettronica con opzioni»?",
         "antworten": [
           "Dal Centro approvazioni della casella",
           "Dal valore dinamico SelectedOption",
@@ -1933,7 +1933,7 @@
       "lernziel": "Ottieni approvazioni tramite una casella condivisa.",
       "thema": "Approvazioni",
       "titel": "Decisioni tramite una casella condivisa",
-      "kurztext": "Una casella condivisa non è l'identità personale di chi approva. I messaggi interattivi (Actionable Messages) lì non funzionano. L'azione «Invia messaggio di posta elettronica con opzioni» di Office 365 Outlook può essere un'alternativa: inserisci la casella in A e le opzioni in Opzioni utente, per esempio Approve,Reject. Con le risposte tramite HTML i campi di ritorno possono essere vuoti. Controlla quindi SelectedOption e UserEmailAddress prima di registrare una decisione. UserEmailAddress non è una prova affidabile di chi ha risposto. Se mancano le informazioni necessarie, serve un altro canale di risposta, per esempio un link a un modulo. L'azione non crea una voce nel Centro approvazioni. Verifica il processo con la casella e il client di posta che usi, prima di impiegarlo.",
+      "kurztext": "Una casella condivisa non è l'identità personale di chi approva. I messaggi interattivi (Actionable Messages) lì non funzionano. L'azione «Invia un messaggio di posta elettronica con opzioni» di Office 365 Outlook può essere un'alternativa: inserisci la casella in A e le opzioni in Opzioni utente, per esempio Approve,Reject. Con le risposte tramite HTML i campi di ritorno possono essere vuoti. Controlla quindi SelectedOption e UserEmailAddress prima di registrare una decisione. UserEmailAddress non è una prova affidabile di chi ha risposto. Se mancano le informazioni necessarie, serve un altro canale di risposta, per esempio un link a un modulo. L'azione non crea una voce nel Centro approvazioni. Verifica il processo con la casella e il client di posta che usi, prima di impiegarlo.",
       "wann_ja": "Per caselle di supporto, finanza o disposizione, dove decide chi è presente in quel momento.",
       "wann_nein": "Quando ti serve un'approvazione personale o la cronologia nel Centro approvazioni. Con risposte HTML vuote serve un altro canale di risposta.",
       "fehler": "Salvare UserEmailAddress senza controllo come prova di identità. Verifica che il campo sia compilato e con dati mancanti usa un altro canale di risposta.",
@@ -2047,8 +2047,8 @@
         "frage": "Con quale azione richiami un Office Script dal flusso?",
         "antworten": [
           "«Esegui script» nel connettore Excel Online (Business)",
-          "«Crea file» nel connettore OneDrive for Business",
-          "«Aggiorna una riga» in un ciclo Applica a ciascuno"
+          "«Crea un file» nel connettore OneDrive for Business",
+          "«Aggiorna una riga» in un ciclo Applica a ogni"
         ],
         "erklaerungen": [
           "Lo script si trova in OneDrive, «Esegui script» nel connettore Excel Online (Business) lo esegue sulla cartella di lavoro. Passi i parametri e usi i valori restituiti nel resto del flusso.",
@@ -2070,13 +2070,13 @@
         "erklaerungen": [
           "Sbagliato. Le uscite piatte non rappresentano né elenchi né record annidati.",
           "Esatto. Un'uscita di testo porta qualsiasi struttura e ParseJSON la ricostruisce nell'app.",
-          "Sbagliato. Per questo caso basta «Rispondi a PowerApp o a un flusso». Risposta non serve."
+          "Sbagliato. Per questo caso basta «Rispondi a un'applicazione PowerApp o un flusso». Risposta non serve."
         ]
       },
       "lernziel": "Restituisci dati annidati a un'app senza Premium.",
       "thema": "Power Apps e flussi",
       "titel": "Restituire dati del flusso come JSON a Power Apps",
-      "kurztext": "Un flusso spesso fornisce a un'app canvas più di un singolo valore, per esempio un cliente con tutti gli ordini. «Rispondi a PowerApp o a un flusso» conosce però solo uscite piatte come testo, numero o Sì/No. Invece di creare decine di campi, costruisci il risultato nel flusso come JSON, per esempio con Seleziona e Componi, e lo restituisci come un unico campo di testo. In Power Apps ParseJSON rilegge il testo. Senza indicazione di tipo ottieni un valore dinamico e converti i campi con Text(), Value() o Boolean(). Con un Type come secondo argomento ottieni direttamente record e tabelle tipizzati. L'azione Risposta del connettore HTTP per questo non serve.",
+      "kurztext": "Un flusso spesso fornisce a un'app canvas più di un singolo valore, per esempio un cliente con tutti gli ordini. «Rispondi a un'applicazione PowerApp o un flusso» conosce però solo uscite piatte come testo, numero o Sì/No. Invece di creare decine di campi, costruisci il risultato nel flusso come JSON, per esempio con Seleziona e Componi, e lo restituisci come un unico campo di testo. In Power Apps ParseJSON rilegge il testo. Senza indicazione di tipo ottieni un valore dinamico e converti i campi con Text(), Value() o Boolean(). Con un Type come secondo argomento ottieni direttamente record e tabelle tipizzati. L'azione Risposta del connettore HTTP per questo non serve.",
       "wann_ja": "Quando l'app ha bisogno di elenchi o record annidati dal flusso.",
       "wann_nein": "Con quantità di dati molto grandi. Allora il flusso salva i dati in SharePoint o Dataverse e l'app li legge direttamente.",
       "fehler": "Usare nelle formule campi di ParseJSON senza conversione. Senza Type ParseJSON restituisce valori dinamici.",
@@ -2197,12 +2197,12 @@
         "frage": "Quale azione ti mostra se una persona è assente?",
         "antworten": [
           "«Recupera profilo utente (V2)»",
-          "«Recupera suggerimenti di posta per una cassetta postale (V2)»",
-          "«Recupera visualizzazione calendario degli eventi»"
+          "«Recupera suggerimenti per la posta elettronica per una cassetta postale (V2)»",
+          "«Recupera la visualizzazione del calendario degli eventi (V3)»"
         ],
         "erklaerungen": [
           "",
-          "«Recupera suggerimenti di posta per una cassetta postale (V2)» con l'opzione automaticReplies mostra se la risposta automatica è attiva. Funziona senza HTTP e senza registrazione dell'app.",
+          "«Recupera suggerimenti per la posta elettronica per una cassetta postale (V2)» con l'opzione automaticReplies mostra se la risposta automatica è attiva. Funziona senza HTTP e senza registrazione dell'app.",
           ""
         ]
       },
@@ -2232,7 +2232,7 @@
         "antworten": [
           "Su qualsiasi azione in tutto il flusso",
           "Solo sul trigger all'inizio del flusso",
-          "Su un ambito, Applica a ciascuno o Esegui fino a"
+          "Su un ambito, Applica a ogni o Esegui fino a"
         ],
         "erklaerungen": [
           "Sbagliato. Se result() punta a un'azione semplice come Componi, fallisce già il salvataggio.",
@@ -2243,7 +2243,7 @@
       "lernziel": "Inoltri il vero messaggio di errore a persone o agenti.",
       "thema": "Gestione degli errori",
       "titel": "Leggere il vero messaggio di errore con result()",
-      "kurztext": "Se un flusso fallisce di notte, il motivo si trova nella cronologia esecuzioni. Chi deve conoscerlo spesso non può aprirla. La funzione result() ti dà i dettagli: result('Try') restituisce una matrice con tutte le azioni del livello superiore dell'ambito Try, con dati come name, status e code e, a seconda dell'errore, un oggetto error con il messaggio. In un'azione che gira solo con «non è riuscito» filtri la matrice con Filtra matrice su status uguale a Failed. Il testo lo ottieni con first(body('Filter_array'))?['error']?['message'] e lo inoltri per e-mail. result() funziona solo con un ambito, Applica a ciascuno o Esegui fino a. Con errori annidati controlli il contenitore interno. Leggi un messaggio solo se la matrice filtrata non è vuota.",
+      "kurztext": "Se un flusso fallisce di notte, il motivo si trova nella cronologia esecuzioni. Chi deve conoscerlo spesso non può aprirla. La funzione result() ti dà i dettagli: result('Try') restituisce una matrice con tutte le azioni del livello superiore dell'ambito Try, con dati come name, status e code e, a seconda dell'errore, un oggetto error con il messaggio. In un'azione che gira solo con «non è riuscito» filtri la matrice con Filtra matrice su status uguale a Failed. Il testo lo ottieni con first(body('Filter_array'))?['error']?['message'] e lo inoltri per e-mail. result() funziona solo con un ambito, Applica a ogni o Esegui fino a. Con errori annidati controlli il contenitore interno. Leggi un messaggio solo se la matrice filtrata non è vuota.",
       "wann_ja": "Quando esperti, amministratori o un agente devono sapere perché un'esecuzione è fallita.",
       "wann_nein": "Per azioni fuori dall'ambito. result() vede solo ciò che c'è nel contenitore.",
       "fehler": "Leggere solo il livello superiore. Con azioni annidate controlla il contenitore interno e se error.message è presente.",
@@ -2354,7 +2354,7 @@
         "gestione degli errori",
         "ambito",
         "Scope",
-        "Configura esecuzione dopo",
+        "Configura Run after",
         "Configure run after",
         "HTTP404NotFound",
         "Rispondi all'agente",
@@ -2402,13 +2402,13 @@
         "frage": "Quale impostazione fa sì che il messaggio di Teams arrivi da te e non dal Flow bot?",
         "antworten": [
           "Inserire più destinatari nella chat",
-          "Impostare Pubblica come su «Flow bot»",
+          "Impostare Pubblica come su «Flow Bot»",
           "Impostare Pubblica come su «Utente»"
         ],
         "erklaerungen": [
           "",
           "",
-          "Con Pubblica come «Utente» l'azione «Pubblica messaggio in una chat o in un canale» scrive a nome dell'account della connessione Teams. Con «Flow bot» il messaggio arriva dal bot."
+          "Con Pubblica come «Utente» l'azione «Pubblica un messaggio in una chat o in un canale» scrive a nome dell'account della connessione Teams. Con «Flow Bot» il messaggio arriva dal bot."
         ]
       },
       "lernziel": "Invii da un flusso un messaggio personale 1:1 in Teams con te come mittente.",
@@ -2453,12 +2453,12 @@
         "frage": "Perché serve un elenco StateLog dedicato per l'indicatore di avanzamento?",
         "antworten": [
           "Perché Power Apps non può avviare flussi direttamente",
-          "Perché «Rispondi a PowerApps» può rispondere una sola volta",
+          "Perché l'azione di risposta può rispondere una sola volta",
           "Perché un timer può leggere solo elenchi SharePoint"
         ],
         "erklaerungen": [
           "",
-          "«Rispondi a PowerApps» risponde una sola volta. Per questo il flusso scrive lo stato intermedio in un elenco StateLog che un timer nell'app legge a intervalli regolari.",
+          "«Rispondi a un'applicazione PowerApp o un flusso» risponde una sola volta. Per questo il flusso scrive lo stato intermedio in un elenco StateLog che un timer nell'app legge a intervalli regolari.",
           ""
         ]
       },
@@ -2486,14 +2486,14 @@
       "quiz": {
         "frage": "Come restituisci una matrice da un flusso a Power Apps?",
         "antworten": [
-          "Direttamente come output matrice di «Rispondi a PowerApp o a un flusso»",
+          "Direttamente come output matrice di «Rispondi a un'applicazione PowerApp o un flusso»",
           "Non senza premium, le matrici passano solo dall'azione Risposta",
           "Come testo JSON in un output testuale, da decomprimere nell'app con ParseJSON"
         ],
         "erklaerungen": [
           "",
           "",
-          "«Rispondi a PowerApp o a un flusso» restituisce solo valori semplici. Invii la matrice come testo JSON e nell'app con ParseJSON ne ricavi di nuovo una tabella."
+          "«Rispondi a un'applicazione PowerApp o un flusso» restituisce solo valori semplici. Invii la matrice come testo JSON e nell'app con ParseJSON ne ricavi di nuovo una tabella."
         ]
       },
       "lernziel": "Restituisci elenchi da un flusso a un'app senza premium.",

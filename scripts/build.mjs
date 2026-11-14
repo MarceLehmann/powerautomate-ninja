@@ -382,13 +382,23 @@ ${render(partial('fuss'), ctx, 'fuss')}
 </body>
 </html>
 `;
-  schreibe(rel, html);
+  schreibe(rel, typografie(html));
 }
 /* Sprachwahl im Kopf: alle Sprachen, aktuelle mit aria-current. Ohne JavaScript als <details>. */
 function sprachwahlHtml(r, pfad) {
   const m = META[L];
   return `<details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="${esc(`${m.wahl_label}: ${m.name}`)}"><span aria-hidden="true">${m.kurz}</span></summary>
 <ul class="sprachwahl__liste">${SPRACHWAHL.map(s => `<li><a href="${r}${pfxVon(s)}${pfad}" hreflang="${s}" lang="${s}" data-sprache="${s}"${s === L ? ' aria-current="true"' : ''}>${esc(META[s].name)}</a></li>`).join('')}</ul></details>`;
+}
+/* Typografie je Sprache (meta.typografie in data/i18n/<code>.json). Franzoesisch: geschuetztes Leerzeichen vor : ; ? !
+   auch dort, wo der Code Zeichen anhaengt («Ceinture blanche : Prise en main»). Nur sichtbarer Text, nicht in script, code, pre, kbd, Attributen. */
+function typografie(html) {
+  if ((META[L] || {}).typografie !== 'fr') return html;
+  let aus = 0;
+  return html.split(/(<[^>]+>)/).map(teil => {
+    if (teil.startsWith('<')) { const m = teil.match(/^<(\/?)(script|code|pre|kbd|style)\b/i); if (m) aus += m[1] ? -1 : 1; return teil; }
+    return aus > 0 ? teil : teil.replace(/([^\s\u00a0])[ ]?([:;?!])(?=[\s<]|$)/g, '$1\u00a0$2');
+  }).join('');
 }
 const LD_ORG = { '@type': 'Organization', '@id': 'https://kmupower.com/#organization', name: 'KMUpower', legalName: 'Marcel Lehmann (Handelsname KMUpower)', url: 'https://kmupower.com/' };
 const LD_WEBSITE = () => ({ '@type': 'WebSite', '@id': `${BL()}#website`, name: NAME, url: BL(), inLanguage: LANG_HTML(), description: T('Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.', 'Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.'), publisher: { '@id': LD_ORG['@id'] } });
@@ -861,7 +871,7 @@ function baueI18nJs() {
   const js = (I18N[L] || {}).js || {};
   const tx = {};
   for (const [de, en] of Object.entries(JS_SCHLUESSEL)) { if (typeof js[de] === 'string' && js[de]) tx[de] = js[de]; else ((UI_FEHLT[`${L}:js`] ||= {})[de] = en); }
-  schreibe(`assets/js/i18n-${L}.js`, `/* Power Platform Dojo: Texte der Skripte auf ${META[L].name}. Erzeugt von scripts/build.mjs aus data/i18n/${L}.json, nicht hier bearbeiten. */\nwindow.FlowDojoI18n = ${JSON.stringify({ lang: L, guertel: GUERTEL.map(g => g.name), tx })};\n`);
+  schreibe(`assets/js/i18n-${L}.js`, `/* Power Platform Dojo: Texte der Skripte auf ${META[L].name}. Erzeugt von scripts/build.mjs aus data/i18n/${L}.json, nicht hier bearbeiten. */\nwindow.FlowDojoI18n = ${JSON.stringify({ lang: L, typografie: META[L].typografie || '', guertel: GUERTEL.map(g => g.name), tx })};\n`);
 }
 /* Daten fuer Skripte, Kalender je Sprache (assets/data/*.json Deutsch, *-<code>.json weitere Sprachen) */
 function baueDaten() {
@@ -940,7 +950,14 @@ ${BAND_HEX.map((c, i) => `<rect x="${i * (1200 / 7)}" y="604" width="${1200 / 7 
   const startKarte = karteSvg(esc(T('Welcher', 'Which')), esc(T('Flow-Gürtel?', 'flow belt?')), esc(T('Fragen und Erklärungen zu Flows, auf Deutsch.', 'Questions and explanations on flows.')), '#FBFAF5');
   schreibe(L === 'de' ? 'og-image.svg' : `assets/img/${L}/og-image.svg`, startKarte);
   // Zeile 1 erstes Wort des Guertelnamens, Zeile 2 der Rest (Weisser | Gürtel, White | belt, Ceinture | blanche, Cintura | bianca)
-  for (const g of GUERTEL) { const w = g.name.split(' '); schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(esc(w[0]), esc(w.slice(1).join(' ')), esc(g.erreicht_satz).slice(0, 70), g.hex)); }
+  for (const g of GUERTEL) { const w = g.name.split(' '); schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(esc(w[0]), esc(w.slice(1).join(' ')), esc(kuerze(g.erreicht_satz, 54)), g.hex)); }
+}
+// Kuerzen an der Wortgrenze mit «…» (Unterzeile der Vorschaubilder, 54 Zeichen enden vor Tusch)
+function kuerze(text, max) {
+  const s = String(text || '');
+  if (s.length <= max) return s;
+  const schnitt = s.slice(0, max - 1).replace(/\s+\S*$/, '').replace(/[\s,;:.]+$/, '');
+  return schnitt + '…';
 }
 function minifiziere(css) {
   const strings = [];

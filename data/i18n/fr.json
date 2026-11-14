@@ -13,13 +13,14 @@
         80,
         170
       ]
-    }
+    },
+    "typografie": "fr"
   },
   "links": {
     "powerplatform_dojo": "https://powerplatformdojo.com/fr/",
     "lernpfade": "https://powerplatformdojo.com/fr/lernpfade/",
     "mentoring": "https://powerplatformdojo.com/fr/mentoring/",
-    "copilot_dojo": "https://copilot.ninja/en/"
+    "copilot_dojo": "https://copilot.ninja/fr/"
   },
   "limits": {
     "laufzeit_max": "30 jours",
@@ -350,7 +351,7 @@
   "techniken": {
     "3": {
       "quiz": {
-        "frage": "Quand passes-tu en mode avancé avec Filtrer le tableau ?",
+        "frage": "Quand passes-tu en mode avancé avec Filtrer un tableau ?",
         "antworten": [
           "Quand plusieurs conditions doivent aller dans un seul filtre",
           "Quand tu veux trier les éléments selon un champ",
@@ -358,19 +359,19 @@
         ],
         "erklaerungen": [
           "Exact. En mode avancé, tu écris la condition comme expression et tu relies plusieurs contrôles avec and() ou or().",
-          "Faux. Filtrer le tableau écarte des éléments mais ne trie pas. L'ordre reste le même.",
-          "Faux. Filtrer le tableau travaille dans le flux sur un tableau déjà chargé, pas dans la source de données."
+          "Faux. Filtrer un tableau écarte des éléments mais ne trie pas. L'ordre reste le même.",
+          "Faux. Filtrer un tableau travaille dans le flux sur un tableau déjà chargé, pas dans la source de données."
         ]
       },
       "lernziel": "Tu filtres des tableaux avec tes propres expressions en mode avancé.",
       "thema": "Tableaux et filtres",
-      "titel": "Filtrer le tableau en mode avancé",
-      "kurztext": "En mode simple, l'action Filtrer le tableau propose une condition avec un champ, un opérateur et une valeur. Dans bien des cas, cela ne suffit pas : deux conditions en même temps, un OU logique ou une comparaison avec une valeur calculée. Au lieu d'enchaîner plusieurs filtres, tu passes en mode avancé. Là, tu écris la condition sous forme d'expression et tu combines des fonctions comme equals(), contains(), and() et or(). Tu peux aussi utiliser le contenu dynamique d'actions précédentes. Tu gardes ainsi une seule action, et le flux devient plus lisible. Pour les comparaisons simples, le concepteur continue d'afficher des champs.",
+      "titel": "Filtrer un tableau en mode avancé",
+      "kurztext": "En mode simple, l'action Filtrer un tableau propose une condition avec un champ, un opérateur et une valeur. Dans bien des cas, cela ne suffit pas : deux conditions en même temps, un OU logique ou une comparaison avec une valeur calculée. Au lieu d'enchaîner plusieurs filtres, tu passes en mode avancé. Là, tu écris la condition sous forme d'expression et tu combines des fonctions comme equals(), contains(), and() et or(). Tu peux aussi utiliser le contenu dynamique d'actions précédentes. Tu gardes ainsi une seule action, et le flux devient plus lisible. Pour les comparaisons simples, le concepteur continue d'afficher des champs.",
       "wann_ja": "Quand tu veux combiner plusieurs conditions ou comparer avec des valeurs calculées.",
       "wann_nein": "Quand une seule comparaison suffit. Le mode simple reste alors plus lisible.",
-      "fehler": "Enchaîner plusieurs actions Filtrer le tableau, alors qu'une expression avec and() fait la même chose en une seule étape.",
+      "fehler": "Enchaîner plusieurs actions Filtrer un tableau, alors qu'une expression avec and() fait la même chose en une seule étape.",
       "suchbegriffe": [
-        "Filtrer le tableau",
+        "Filtrer un tableau",
         "Filter array",
         "mode avancé",
         "Advanced Mode",
@@ -414,7 +415,7 @@
       "lernziel": "Tu n'utilises des variables que pour les valeurs qui changent vraiment.",
       "thema": "Structure et lisibilité des flux",
       "titel": "Valeurs fixes dans Composer plutôt que dans des variables",
-      "kurztext": "De nombreux flux commencent par une série d'actions « Initialiser la variable » pour des valeurs qui ne changent jamais : une adresse e-mail, l'URL d'une liste, un seuil. Pour des valeurs fixes, tu n'as pas besoin de variable. Une valeur isolée va dans une action Composer. Plusieurs valeurs liées, tu les ranges dans un objet JSON avec Analyser JSON et tu y accèdes avec une expression comme body('Parse_JSON')?['settingName']. Le flux devient plus court, et tout le monde voit tout de suite que ces valeurs sont fixes. Les variables dans des boucles parallèles donnent des résultats imprévisibles. Avec des variables, la boucle doit s'exécuter de façon séquentielle. Choisis pour cela Appliquer à chacun : Contrôle d'accès concurrentiel, Degré de parallélisme 1. Garde les variables pour les valeurs qui changent vraiment pendant l'exécution, comme un total cumulé.",
+      "kurztext": "De nombreux flux commencent par une série d'actions « Initialiser une variable » pour des valeurs qui ne changent jamais : une adresse e-mail, l'URL d'une liste, un seuil. Pour des valeurs fixes, tu n'as pas besoin de variable. Une valeur isolée va dans une action Composer. Plusieurs valeurs liées, tu les ranges dans un objet JSON avec Analyser JSON et tu y accèdes avec une expression comme body('Parse_JSON')?['settingName']. Le flux devient plus court, et tout le monde voit tout de suite que ces valeurs sont fixes. Les variables dans des boucles parallèles donnent des résultats imprévisibles. Avec des variables, la boucle doit s'exécuter de façon séquentielle. Choisis pour cela Appliquer à chacun : Contrôle d'accès concurrentiel, Degré de parallélisme 1. Garde les variables pour les valeurs qui changent vraiment pendant l'exécution, comme un total cumulé.",
       "wann_ja": "Pour les réglages qui restent identiques pendant l'exécution : adresses, URL, seuils, textes.",
       "wann_nein": "Pour les valeurs qui changent pendant l'exécution, comme une somme ou un tableau que tu remplis pas à pas. Les variables servent à cela.",
       "fehler": "Marquer comme obligatoires, dans le schéma d'Analyser JSON, des champs qui manquent parfois. L'exécution échoue alors à la validation du schéma.",
@@ -424,7 +425,7 @@
         "Compose",
         "Analyser JSON",
         "Parse JSON",
-        "Initialiser la variable",
+        "Initialiser une variable",
         "Initialize variable",
         "paramètres",
         "configuration"
@@ -474,10 +475,10 @@
           "Faux. union() réunit les tableaux et garde chaque valeur une fois, y compris celles qui n'apparaissent qu'une seule fois."
         ]
       },
-      "lernziel": "Tu obtiens des valeurs uniques avec union(), puis tu filtres avec Filtrer le tableau.",
+      "lernziel": "Tu obtiens des valeurs uniques avec union(), puis tu filtres avec Filtrer un tableau.",
       "thema": "Tableaux et filtres",
       "titel": "Supprimer les doublons avec union()",
-      "kurztext": "Quand tu fusionnes des données de deux sources, des doublons se glissent vite dans le résultat. La fonction union() relie deux tableaux et ne renvoie chaque valeur qu'une fois. D'où une astuce simple : si tu passes deux fois le même tableau, donc union(x, x), tu obtiens le tableau sans doublons, comme DISTINCT dans une base de données. Cela fonctionne avec des valeurs simples et avec des objets. Ensuite, tu limites le résultat aux entrées dont tu as besoin avec Filtrer le tableau. Deux étapes intégrées remplacent ainsi une boucle avec condition et variable. Si tu veux garder les doublons, union() est le mauvais choix.",
+      "kurztext": "Quand tu fusionnes des données de deux sources, des doublons se glissent vite dans le résultat. La fonction union() relie deux tableaux et ne renvoie chaque valeur qu'une fois. D'où une astuce simple : si tu passes deux fois le même tableau, donc union(x, x), tu obtiens le tableau sans doublons, comme DISTINCT dans une base de données. Cela fonctionne avec des valeurs simples et avec des objets. Ensuite, tu limites le résultat aux entrées dont tu as besoin avec Filtrer un tableau. Deux étapes intégrées remplacent ainsi une boucle avec condition et variable. Si tu veux garder les doublons, union() est le mauvais choix.",
       "wann_ja": "Quand tu fusionnes des listes ou que tu veux nettoyer un tableau avant de continuer.",
       "wann_nein": "Quand les entrées en double doivent être conservées, par exemple pour des écritures de même montant.",
       "fehler": "Supprimer les doublons dans une boucle avec condition et variable, alors qu'une seule expression suffit.",
@@ -486,7 +487,7 @@
         "doublons",
         "DISTINCT",
         "tableau",
-        "Filtrer le tableau",
+        "Filtrer un tableau",
         "Filter array",
         "fusionner"
       ]
@@ -541,7 +542,7 @@
     },
     "11": {
       "quiz": {
-        "frage": "Que remplaces-tu avant d'insérer une expression de Filtrer le tableau comme condition de déclencheur ?",
+        "frage": "Que remplaces-tu avant d'insérer une expression de Filtrer un tableau comme condition de déclenchement ?",
         "antworten": [
           "Le caractère @ au début par un caractère #",
           "Rien, l'expression fonctionne telle quelle",
@@ -550,10 +551,10 @@
         "erklaerungen": [
           "",
           "",
-          "Filtrer le tableau vérifie chaque élément avec item(), qui n'existe pas dans le déclencheur. Dans la condition de déclencheur, tu fais donc référence à triggerOutputs() ou triggerBody()."
+          "Filtrer un tableau vérifie chaque élément avec item(), qui n'existe pas dans le déclencheur. Dans la condition de déclenchement, tu fais donc référence à triggerOutputs() ou triggerBody()."
         ]
       },
-      "lernziel": "Tu écris des conditions de déclencheur pour que le flux ne démarre que sur les bons événements.",
+      "lernziel": "Tu écris des conditions de déclenchement pour que le flux ne démarre que sur les bons événements.",
       "thema": "Déclencheurs"
     },
     "12": {
@@ -605,7 +606,7 @@
       "lernziel": "Tu intègres le modèle Try-Catch-Finally dans chaque flux important.",
       "thema": "Gestion des erreurs",
       "titel": "Intercepter les erreurs avec Try, Catch et Finally",
-      "kurztext": "Dans l'étendue Try se trouve la logique proprement dite. Pour Catch, tu actives sous Configurer l'exécution après uniquement « a échoué » et « a expiré » de Try. Là, tu journalises l'erreur, par exemple avec result('Try'), ou tu préviens quelqu'un. Finally suit Catch, avec les quatre statuts dans Exécuter après, et nettoie. Après Finally vient une Condition avec les quatre statuts de Finally dans Exécuter après. Elle vérifie si Catch s'est exécuté, donc n'était pas Ignoré. Seule la branche d'erreur contient ensuite Terminer avec le statut Failed, après Finally. La branche de succès se termine sans Terminer. Un Terminer dans l'étendue Catch arrête le flux immédiatement, et l'étendue Finally est alors ignorée. Ainsi, l'erreur est d'abord traitée, puis tout est nettoyé, et l'exécution se termine enfin comme échouée.",
+      "kurztext": "Dans l'étendue Try se trouve la logique proprement dite. Pour Catch, tu actives sous Exécuter après uniquement « a échoué » et « a expiré » de Try. Là, tu journalises l'erreur, par exemple avec result('Try'), ou tu préviens quelqu'un. Finally suit Catch, avec les quatre statuts dans Exécuter après, et nettoie. Après Finally vient une Condition avec les quatre statuts de Finally dans Exécuter après. Elle vérifie si Catch s'est exécuté, donc n'était pas Ignoré. Seule la branche d'erreur contient ensuite Terminer avec le statut Failed, après Finally. La branche de succès se termine sans Terminer. Un Terminer dans l'étendue Catch arrête le flux immédiatement, et l'étendue Finally est alors ignorée. Ainsi, l'erreur est d'abord traitée, puis tout est nettoyé, et l'exécution se termine enfin comme échouée.",
       "wann_ja": "Dans chaque flux dont la panne doit être remarquée : interfaces, fichiers, enregistrements dans Dataverse.",
       "wann_nein": "Pour un court flux de test que tu démarres toi-même et dont tu suis directement l'exécution.",
       "fehler": "Placer Terminer dans Catch. Mets-le après Finally, dans une branche qui ne s'exécute que si Catch s'est exécuté.",
@@ -615,7 +616,7 @@
         "Finally",
         "étendue",
         "Scope",
-        "Configurer l'exécution après",
+        "Exécuter après",
         "Configure run after",
         "gestion des erreurs",
         "Terminer",
@@ -712,7 +713,7 @@
         "frage": "Comment affiches-tu dans le concepteur classique l'option de remplacement (Overwrite) de « Créer un fichier » ?",
         "antworten": [
           "Désactiver « Autoriser la segmentation » dans les paramètres",
-          "Activer le contrôle d'accès concurrentiel dans les paramètres",
+          "Activer le contrôle de la concurrence dans les paramètres",
           "Supprimer d'abord le fichier existant avec Supprimer le fichier"
         ],
         "erklaerungen": [
@@ -792,12 +793,12 @@
       "lernziel": "Tu évites les conflits en exécutant les instances de flux l'une après l'autre.",
       "thema": "Boucles et parallélisme",
       "titel": "Exécuter les flux l'un après l'autre plutôt qu'en même temps",
-      "kurztext": "Un flux automatisé démarre à chaque nouvel événement, même si l'exécution précédente n'est pas terminée. Si deux exécutions traitent les mêmes données en même temps, des doublons apparaissent, ou une exécution écrase l'autre. Dans les paramètres du déclencheur, tu actives le contrôle d'accès concurrentiel et tu règles le degré de parallélisme sur 1. Une seule exécution tourne alors à la fois, les autres attendent et démarrent à tour de rôle. Cela coûte du temps, mais protège les données. La file d'attente est limitée : elle peut contenir au maximum {limit:trigger_warteschlange}. Réfléchis donc avant d'activer l'option : le contrôle d'accès concurrentiel sur le déclencheur ne se désactive qu'en supprimant le déclencheur et en le réinsérant.",
+      "kurztext": "Un flux automatisé démarre à chaque nouvel événement, même si l'exécution précédente n'est pas terminée. Si deux exécutions traitent les mêmes données en même temps, des doublons apparaissent, ou une exécution écrase l'autre. Dans les paramètres du déclencheur, tu actives le contrôle de la concurrence et tu règles le degré de parallélisme sur 1. Une seule exécution tourne alors à la fois, les autres attendent et démarrent à tour de rôle. Cela coûte du temps, mais protège les données. La file d'attente est limitée : elle peut contenir au maximum {limit:trigger_warteschlange}. Réfléchis donc avant d'activer l'option : le contrôle de la concurrence sur le déclencheur ne se désactive qu'en supprimant le déclencheur et en le réinsérant.",
       "wann_ja": "Quand plusieurs exécutions traitent la même liste, le même fichier ou le même compteur.",
       "wann_nein": "Quand de très nombreux événements arrivent en peu de temps. La file d'attente est limitée, et une exécution après l'autre devient un goulot d'étranglement.",
-      "fehler": "Activer le contrôle d'accès concurrentiel sur le déclencheur pour essayer. Pour revenir en arrière, il faut supprimer le déclencheur et le réinsérer.",
+      "fehler": "Activer le contrôle de la concurrence sur le déclencheur pour essayer. Pour revenir en arrière, il faut supprimer le déclencheur et le réinsérer.",
       "suchbegriffe": [
-        "contrôle d'accès concurrentiel",
+        "contrôle de la concurrence",
         "Concurrency Control",
         "parallélisme",
         "déclencheur",
@@ -824,7 +825,7 @@
       "lernziel": "Tu testes des flux avec des résultats simulés, sans modifier de vraies données.",
       "thema": "Tests et débogage",
       "titel": "Tester avec un résultat statique sans modifier de données",
-      "kurztext": "Certaines actions, tu ne veux pas vraiment les exécuter pendant les tests : elles envoient des e-mails, modifient des enregistrements ou prennent du temps. Avec un résultat statique, tu prédéfinis un résultat fixe pour une action. Dans le nouveau concepteur, tu actives « Résultat statique » dans la section « Test » de l'action et tu fixes les valeurs de sortie. Dans le concepteur classique, tu ouvres le menu « Paramètres » de l'action, puis « Résultat statique ». À l'exécution suivante, l'action est considérée comme réussie sans être exécutée. Les étapes suivantes continuent avec ta sortie prédéfinie. Tu testes ainsi la logique tranquillement et avec différents cas, sans toucher à de vraies données. Avant la mise en service, tu désactives à nouveau le résultat statique.",
+      "kurztext": "Certaines actions, tu ne veux pas vraiment les exécuter pendant les tests : elles envoient des e-mails, modifient des enregistrements ou prennent du temps. Avec un résultat statique, tu prédéfinis un résultat fixe pour une action. Dans le nouveau concepteur, tu ouvres l'onglet « Tests » de l'action, tu actives « Activer le résultat statique » et tu fixes les valeurs de sortie. Dans le concepteur classique, tu ouvres le menu « Paramètres » de l'action, puis « Résultat statique ». À l'exécution suivante, l'action est considérée comme réussie sans être exécutée. Les étapes suivantes continuent avec ta sortie prédéfinie. Tu testes ainsi la logique tranquillement et avec différents cas, sans toucher à de vraies données. Avant la mise en service, tu désactives à nouveau le résultat statique.",
       "wann_ja": "Pour les actions qui envoient des e-mails, modifient des données ou durent longtemps, pendant que tu testes les étapes suivantes.",
       "wann_nein": "En production. Si le résultat statique reste activé, le flux n'exécute jamais réellement l'action.",
       "fehler": "Laisser le résultat statique activé après les tests. Le flux signale un succès alors que l'action ne s'est jamais exécutée.",
@@ -858,7 +859,7 @@
         "frage": "Où utilises-tu FetchXML dans un flux ?",
         "antworten": [
           "Dans le paramètre Requête XML Fetch de l'action Lister les lignes",
-          "Dans la condition de déclencheur du déclencheur Dataverse",
+          "Dans la condition de déclenchement du déclencheur Dataverse",
           "Dans une action FetchXML dédiée du connecteur Dataverse"
         ],
         "erklaerungen": [
@@ -1087,14 +1088,14 @@
       "lernziel": "Tu accélères les boucles en parallèle et tu reconnais quand cela fausse les résultats.",
       "thema": "Boucles et parallélisme",
       "titel": "Exécuter Appliquer à chacun en parallèle",
-      "kurztext": "Appliquer à chacun traite les entrées l'une après l'autre par défaut. Si les itérations sont indépendantes, tu peux activer le contrôle d'accès concurrentiel dans les paramètres et augmenter le degré de parallélisme à {limit:schleife_parallel_max} au maximum. Plusieurs itérations s'exécutent alors en même temps. Les variables dans des boucles parallèles donnent des résultats imprévisibles. Avec des variables, la boucle doit s'exécuter de façon séquentielle. Choisis pour cela Appliquer à chacun : Contrôle d'accès concurrentiel, Degré de parallélisme 1. Cela concerne par exemple les compteurs ou les tableaux auxquels tu ajoutes des valeurs. Pour des itérations indépendantes, tu peux plutôt construire le résultat avec Sélectionner ou union(). Vérifie aussi l'ordre : si une étape a besoin du résultat de la précédente, le parallélisme ne convient pas. Trop d'appels simultanés vers le même connecteur peuvent en outre entraîner une limitation.",
+      "kurztext": "Appliquer à chacun traite les entrées l'une après l'autre par défaut. Si les itérations sont indépendantes, tu peux activer le contrôle de la concurrence dans les paramètres et augmenter le degré de parallélisme à {limit:schleife_parallel_max} au maximum. Plusieurs itérations s'exécutent alors en même temps. Les variables dans des boucles parallèles donnent des résultats imprévisibles. Avec des variables, la boucle doit s'exécuter de façon séquentielle. Choisis pour cela Appliquer à chacun : Contrôle d'accès concurrentiel, Degré de parallélisme 1. Cela concerne par exemple les compteurs ou les tableaux auxquels tu ajoutes des valeurs. Pour des itérations indépendantes, tu peux plutôt construire le résultat avec Sélectionner ou union(). Vérifie aussi l'ordre : si une étape a besoin du résultat de la précédente, le parallélisme ne convient pas. Trop d'appels simultanés vers le même connecteur peuvent en outre entraîner une limitation.",
       "wann_ja": "Quand chaque itération est autonome, par exemple un e-mail par personne ou une mise à jour par enregistrement.",
       "wann_nein": "Quand des itérations modifient la même variable ou que l'ordre est important.",
       "fehler": "Activer le parallélisme et continuer à utiliser « Incrémenter la variable » à l'intérieur. Le compteur n'est ensuite plus correct.",
       "suchbegriffe": [
         "Appliquer à chacun",
         "Apply to each",
-        "contrôle d'accès concurrentiel",
+        "contrôle de la concurrence",
         "Concurrency Control",
         "parallélisme",
         "boucle",
@@ -1123,7 +1124,7 @@
       "quiz": {
         "frage": "Où lis-tu le JSON d'une action dans le nouveau concepteur ?",
         "antworten": [
-          "Dans l'onglet Affichage du code de l'action",
+          "Dans l'onglet Vue du code de l'action",
           "Dans Mon Presse-papiers du sélecteur d'actions",
           "Dans l'historique des exécutions de la dernière exécution"
         ],
@@ -1136,12 +1137,12 @@
       "lernziel": "Tu lis la définition d'une action pour trouver les erreurs plus vite.",
       "thema": "Tests et débogage",
       "titel": "Regarder derrière une action avec l'affichage du code",
-      "kurztext": "Dans le concepteur, tu vois des champs, des symboles et du contenu dynamique. La définition JSON te montre comment ces informations s'articulent. Dans le nouveau concepteur, tu ouvres l'action et tu choisis « Affichage du code » pour lire son JSON. Tu ne peux pas le modifier là. Vérifie à cette occasion les noms d'actions, les entrées et les expressions. Dans le concepteur classique, tu ouvres « Aperçu du code » pour lire la définition d'une action. Pour la définition du flux entier, tu y utilises l'export. Tu repères ainsi, par exemple, une expression concat() imbriquée derrière un champ. Cela aide à chercher les erreurs et à apprendre : tu lis comment une étape est construite et tu peux reprendre l'expression dans ton propre flux.",
+      "kurztext": "Dans le concepteur, tu vois des champs, des symboles et du contenu dynamique. La définition JSON te montre comment ces informations s'articulent. Dans le nouveau concepteur, tu ouvres l'action et tu choisis « Vue du code » pour lire son JSON. Tu ne peux pas le modifier là. Vérifie à cette occasion les noms d'actions, les entrées et les expressions. Dans le concepteur classique, tu ouvres « Aperçu du code » pour lire la définition d'une action. Pour la définition du flux entier, tu y utilises l'export. Tu repères ainsi, par exemple, une expression concat() imbriquée derrière un champ. Cela aide à chercher les erreurs et à apprendre : tu lis comment une étape est construite et tu peux reprendre l'expression dans ton propre flux.",
       "wann_ja": "Quand un champ donne autre chose que prévu et que tu veux voir quelle expression se cache vraiment derrière.",
       "wann_nein": "Quand tu veux seulement modifier la valeur d'un champ. Pour cela, le champ de saisie du concepteur est en général plus clair.",
-      "fehler": "Ne vérifier que le champ visible dans le concepteur. Ce n'est qu'en affichage du code que tu vois l'expression complète avec toutes les fonctions.",
+      "fehler": "Ne vérifier que le champ visible dans le concepteur. Ce n'est que dans la Vue du code que tu vois l'expression complète avec toutes les fonctions.",
       "suchbegriffe": [
-        "affichage du code",
+        "vue du code",
         "Code View",
         "Aperçu du code",
         "Peek code",
@@ -1188,12 +1189,12 @@
       "quiz": {
         "frage": "Où filtres-tu le plus efficacement les données SharePoint ?",
         "antworten": [
-          "Dans la requête de filtre d'Obtenir les éléments, à la source",
+          "Dans la requête de filtre d'Obtenir des éléments, à la source",
           "Dans une condition pour chaque élément",
           "Seulement après la récupération, avec une boucle"
         ],
         "erklaerungen": [
-          "La requête de filtre d'Obtenir les éléments filtre en OData directement dans SharePoint. Le flux ne charge ainsi que les éléments dont il a besoin, au lieu de tout récupérer puis de trier ensuite.",
+          "La requête de filtre d'Obtenir des éléments filtre en OData directement dans SharePoint. Le flux ne charge ainsi que les éléments dont il a besoin, au lieu de tout récupérer puis de trier ensuite.",
           "",
           ""
         ]
@@ -1220,7 +1221,7 @@
     },
     "97": {
       "quiz": {
-        "frage": "Combien d'éléments Obtenir les éléments de SharePoint renvoie-t-il par défaut, sans pagination ni Top Count ?",
+        "frage": "Combien d'éléments Obtenir des éléments de SharePoint renvoie-t-il par défaut, sans pagination ni Top Count ?",
         "antworten": [
           "256",
           "5000",
@@ -1394,14 +1395,14 @@
         ],
         "erklaerungen": [
           "Faux. Le délai d'expiration ne retarde rien. Il définit quand une action en cours est considérée comme expirée.",
-          "Faux. Le délai d'expiration ne répète aucune action. Les répétitions relèvent de la stratégie de nouvelle tentative.",
+          "Faux. Le délai d'expiration ne répète aucune action. Les répétitions relèvent de la stratégie de nouvelles tentatives.",
           "Exact. P14D est une durée ISO 8601 et représente 14 jours, donc deux semaines."
         ]
       },
       "lernziel": "Tu protèges les longues approbations contre les délais d'expiration.",
       "thema": "Approbations",
       "titel": "Définir un délai d'expiration pour les actions longues",
-      "kurztext": "Une approbation, ou une autre action qui attend des personnes, peut durer plus longtemps que prévu. Dans les paramètres de l'action, tu définis sous Délai d'expiration combien de temps elle peut attendre au maximum. Tu écris la durée au format ISO 8601 : P1D est un jour, P14D font 14 jours, PT2H deux heures. Quand le temps est écoulé, l'action est considérée comme expirée. Pour que le flux n'échoue pas simplement, tu ajoutes une action dont « Configurer l'exécution après » est réglé uniquement sur « a expiré ». Là, tu relances, tu fais remonter l'affaire ou tu démarres une nouvelle demande. Par-dessus tout s'applique la limite de durée d'exécution d'un flux de {limit:laufzeit_max}.",
+      "kurztext": "Une approbation, ou une autre action qui attend des personnes, peut durer plus longtemps que prévu. Dans les paramètres de l'action, tu définis sous Délai d'expiration combien de temps elle peut attendre au maximum. Tu écris la durée au format ISO 8601 : P1D est un jour, P14D font 14 jours, PT2H deux heures. Quand le temps est écoulé, l'action est considérée comme expirée. Pour que le flux n'échoue pas simplement, tu ajoutes une action dont « Exécuter après » est réglé uniquement sur « a expiré ». Là, tu relances, tu fais remonter l'affaire ou tu démarres une nouvelle demande. Par-dessus tout s'applique la limite de durée d'exécution d'un flux de {limit:laufzeit_max}.",
       "wann_ja": "Pour les approbations et les autres actions qui attendent une réponse dont tu ne connais pas la durée.",
       "wann_nein": "Quand le processus peut dépasser la limite de durée d'exécution de {limit:laufzeit_max}. Un délai d'expiration ne suffit alors pas, car toute l'exécution se termine avant.",
       "fehler": "Définir le délai d'expiration sans construire de chemin pour « a expiré ». L'exécution échoue alors quand même.",
@@ -1412,7 +1413,7 @@
         "approbation",
         "approval",
         "a expiré",
-        "Configurer l'exécution après",
+        "Exécuter après",
         "P14D"
       ]
     },
@@ -1507,7 +1508,7 @@
         "antworten": [
           "Supprimer le commutateur et le recréer entièrement",
           "Coller dans la branche et redéfinir les références vers d'autres branches",
-          "Activer le contrôle d'accès concurrentiel dans les paramètres"
+          "Activer le contrôle de la concurrence dans les paramètres"
         ],
         "erklaerungen": [
           "",
@@ -1558,7 +1559,7 @@
         "antworten": [
           "De la propriété ItemCount de la liste",
           "De l'ID le plus élevé de la liste",
-          "De la longueur de Obtenir les éléments sans pagination"
+          "De la longueur de Obtenir des éléments sans pagination"
         ],
         "erklaerungen": [
           "L'appel REST sur /ItemCount renvoie directement le nombre. Dans une bibliothèque, les dossiers sont comptés.",
@@ -1643,11 +1644,11 @@
         "antworten": [
           "Parce qu'OData ne renvoie que 100 éléments",
           "Parce qu'OData ignore les majuscules et minuscules",
-          "Parce que Filtrer le tableau est plus rapide qu'OData"
+          "Parce que Filtrer un tableau est plus rapide qu'OData"
         ],
         "erklaerungen": [
           "",
-          "Title eq 'ABC' renvoie aussi abc et Abc. Filtrer le tableau avec equals() compare ensuite en respectant la casse exacte.",
+          "Title eq 'ABC' renvoie aussi abc et Abc. Filtrer un tableau avec equals() compare ensuite en respectant la casse exacte.",
           ""
         ]
       },
@@ -1821,17 +1822,17 @@
       "lernziel": "Tu construis des approbations qui peuvent rester ouvertes plus de 30 jours.",
       "thema": "Approbations",
       "titel": "Garder les approbations en vie au-delà de 30 jours",
-      "kurztext": "Une exécution de flux se termine après {limit:laufzeit_max}. Si une approbation attend plus longtemps, elle part dans le vide, et personne ne s'en aperçoit. La solution : le flux se relance lui-même. Une liste SharePoint reçoit la colonne TriggerFlow (Oui/Non). Le déclencheur « Lorsqu'un élément est créé ou modifié » ne s'exécute, grâce à une condition de déclencheur, que si elle est sur Oui, et la première action la remet aussitôt sur Non. L'approbation reçoit un délai d'expiration inférieur à 28 jours, par exemple P27D. Selon Microsoft, un flux ne peut pas attendre une approbation plus longtemps. Quand le délai expire, une action avec « a expiré » remet TriggerFlow sur Oui, et une nouvelle exécution commence. Si tu ne veux pas de nouvel e-mail, tu sépares « Créer une approbation » et « Attendre une approbation » et tu enregistres l'ID de l'approbation.",
+      "kurztext": "Une exécution de flux se termine après {limit:laufzeit_max}. Si une approbation attend plus longtemps, elle part dans le vide, et personne ne s'en aperçoit. La solution : le flux se relance lui-même. Une liste SharePoint reçoit la colonne TriggerFlow (Oui/Non). Le déclencheur « Lorsqu'un élément est créé ou modifié » ne s'exécute, grâce à une condition de déclenchement, que si elle est sur Oui, et la première action la remet aussitôt sur Non. L'approbation reçoit un délai d'expiration inférieur à 28 jours, par exemple P27D. Selon Microsoft, un flux ne peut pas attendre une approbation plus longtemps. Quand le délai expire, une action avec « a expiré » remet TriggerFlow sur Oui, et une nouvelle exécution commence. Si tu ne veux pas de nouvel e-mail, tu sépares « Créer une approbation » et « Attendre une approbation » et tu enregistres l'ID de l'approbation.",
       "wann_ja": "Pour les contrats, budgets, examens juridiques et autres décisions qui peuvent rester en suspens plus d'un mois.",
       "wann_nein": "Quand la décision tombe sûrement dans les {limit:laufzeit_max}. Un délai d'expiration avec un chemin pour « a expiré » suffit alors.",
-      "fehler": "Oublier la condition de déclencheur. Chaque modification de l'élément démarre alors une nouvelle exécution, et le flux s'appelle lui-même sans fin.",
+      "fehler": "Oublier la condition de déclenchement. Chaque modification de l'élément démarre alors une nouvelle exécution, et le flux s'appelle lui-même sans fin.",
       "suchbegriffe": [
         "approbation",
         "approval",
         "30 jours",
         "délai d'expiration",
         "TriggerFlow",
-        "condition de déclencheur",
+        "condition de déclenchement",
         "Trigger Condition",
         "redémarrage",
         "Attendre une approbation",
@@ -1843,12 +1844,12 @@
         "frage": "À quoi sert le Trigger Condition Builder sur tools.powerplatformtip.com ?",
         "antworten": [
           "Il démarre des flux selon un calendrier fixe",
-          "Il génère des conditions de déclencheur valides à partir de tes données",
+          "Il génère des conditions de déclenchement valides",
           "Il exporte des solutions vers un autre environnement"
         ],
         "erklaerungen": [
           "",
-          "Tu colles des données d'exemple, comme un corps JSON, et tu construis la condition visuellement. Tu copies l'expression terminée dans les conditions de déclencheur de ton flux.",
+          "Tu colles des données d'exemple, comme un corps JSON, et tu construis la condition visuellement. Tu copies l'expression terminée dans les conditions de déclenchement de ton flux.",
           ""
         ]
       },
@@ -1919,7 +1920,7 @@
     },
     "149": {
       "quiz": {
-        "frage": "D'où le flux lit-il la décision avec « Envoyer un e-mail avec des options » ?",
+        "frage": "D'où le flux lit-il la décision avec « Envoyer un e-mail avec options » ?",
         "antworten": [
           "Du centre d'approbations de la boîte aux lettres",
           "De la valeur dynamique SelectedOption",
@@ -1934,7 +1935,7 @@
       "lernziel": "Tu obtiens des approbations via une boîte aux lettres partagée.",
       "thema": "Approbations",
       "titel": "Décisions via une boîte aux lettres partagée",
-      "kurztext": "Une boîte aux lettres partagée n'est pas une identité d'approbateur personnelle. Les messages actionnables n'y fonctionnent pas. L'action « Envoyer un e-mail avec des options » d'Office 365 Outlook peut être une alternative : tu saisis la boîte aux lettres sous À et les options sous Options utilisateur, par exemple Approve,Reject. Avec des réponses via HTML, les champs de retour peuvent être vides. Vérifie donc SelectedOption et UserEmailAddress avant d'enregistrer une décision. UserEmailAddress n'est pas une preuve fiable de qui a répondu. Si les informations nécessaires manquent, il te faut un autre mode de réponse, par exemple un lien vers un formulaire. L'action ne crée aucune entrée dans le centre d'approbations. Teste le processus avec la boîte aux lettres et le client de messagerie utilisés avant de le mettre en service.",
+      "kurztext": "Une boîte aux lettres partagée n'est pas une identité d'approbateur personnelle. Les messages actionnables n'y fonctionnent pas. L'action « Envoyer un e-mail avec options » d'Office 365 Outlook peut être une alternative : tu saisis la boîte aux lettres sous À et les options sous Options utilisateur, par exemple Approve,Reject. Avec des réponses via HTML, les champs de retour peuvent être vides. Vérifie donc SelectedOption et UserEmailAddress avant d'enregistrer une décision. UserEmailAddress n'est pas une preuve fiable de qui a répondu. Si les informations nécessaires manquent, il te faut un autre mode de réponse, par exemple un lien vers un formulaire. L'action ne crée aucune entrée dans le centre d'approbations. Teste le processus avec la boîte aux lettres et le client de messagerie utilisés avant de le mettre en service.",
       "wann_ja": "Pour les boîtes aux lettres de support, de finance ou de répartition, où décide la personne qui est présente.",
       "wann_nein": "Quand tu as besoin d'une approbation personnelle ou de l'historique dans le centre d'approbations. Des retours HTML vides demandent un autre mode de réponse.",
       "fehler": "Enregistrer UserEmailAddress comme preuve d'identité sans le vérifier. Contrôle le contenu du champ et utilise un autre mode de réponse si des informations manquent.",
@@ -1943,7 +1944,7 @@
         "approval",
         "boîte aux lettres partagée",
         "shared mailbox",
-        "Envoyer un e-mail avec des options",
+        "Envoyer un e-mail avec options",
         "Send email with options",
         "SelectedOption",
         "Outlook"
@@ -2245,7 +2246,7 @@
       "lernziel": "Tu transmets le vrai message d'erreur à des personnes ou à des agents.",
       "thema": "Gestion des erreurs",
       "titel": "Lire le vrai message d'erreur avec result()",
-      "kurztext": "Quand un flux échoue la nuit, la raison se trouve dans l'historique des exécutions. Celui qui doit la connaître ne peut souvent pas l'ouvrir. La fonction result() te donne les détails : result('Try') renvoie un tableau avec toutes les actions du premier niveau de l'étendue Try, avec des informations comme name, status et code et, selon l'erreur, un objet error avec le message. Dans une action qui ne s'exécute que sur « a échoué », tu filtres le tableau avec Filtrer le tableau sur status égal à Failed. Tu récupères le texte avec first(body('Filter_array'))?['error']?['message'] et tu l'envoies par e-mail. result() ne fonctionne qu'avec une Étendue, Appliquer à chacun ou Faire jusqu'à. Pour des erreurs imbriquées, tu vérifies le conteneur interne. Ne lis un message que si le tableau filtré n'est pas vide.",
+      "kurztext": "Quand un flux échoue la nuit, la raison se trouve dans l'historique des exécutions. Celui qui doit la connaître ne peut souvent pas l'ouvrir. La fonction result() te donne les détails : result('Try') renvoie un tableau avec toutes les actions du premier niveau de l'étendue Try, avec des informations comme name, status et code et, selon l'erreur, un objet error avec le message. Dans une action qui ne s'exécute que sur « a échoué », tu filtres le tableau avec Filtrer un tableau sur status égal à Failed. Tu récupères le texte avec first(body('Filter_array'))?['error']?['message'] et tu l'envoies par e-mail. result() ne fonctionne qu'avec une Étendue, Appliquer à chacun ou Faire jusqu'à. Pour des erreurs imbriquées, tu vérifies le conteneur interne. Ne lis un message que si le tableau filtré n'est pas vide.",
       "wann_ja": "Quand des spécialistes, des administrateurs ou un agent doivent savoir pourquoi une exécution a échoué.",
       "wann_nein": "Pour les actions en dehors de l'étendue. result() ne voit que ce qui se trouve dans le conteneur.",
       "fehler": "Ne lire que le premier niveau. Pour des actions imbriquées, vérifie le conteneur interne et si error.message existe.",
@@ -2254,7 +2255,7 @@
         "message d'erreur",
         "étendue",
         "Scope",
-        "Filtrer le tableau",
+        "Filtrer un tableau",
         "Filter array",
         "error",
         "Copilot Studio"
@@ -2357,7 +2358,7 @@
         "gestion des erreurs",
         "étendue",
         "Scope",
-        "Configurer l'exécution après",
+        "Exécuter après",
         "Configure run after",
         "HTTP404NotFound",
         "Répondre à l'agent",
@@ -2419,7 +2420,7 @@
     },
     "power-automate-flows-vs-automate-rules": {
       "quiz": {
-        "frage": "Un flux sans condition de déclencheur ne vérifie sa condition que pendant l'exécution. Que se passe-t-il pour une modification qui ne convient pas ?",
+        "frage": "Un flux sans condition de déclenchement ne vérifie sa condition que pendant l'exécution. Que se passe-t-il pour une modification qui ne convient pas ?",
         "antworten": [
           "Le flux ne démarre pas, SharePoint filtre avant",
           "SharePoint annule la modification de l'élément",
@@ -2428,10 +2429,10 @@
         "erklaerungen": [
           "",
           "",
-          "Sans condition de déclencheur, le flux démarre à chaque modification et ne vérifie qu'ensuite. Une règle Automate SharePoint ou une condition de déclencheur filtre avant et économise l'exécution."
+          "Sans condition de déclenchement, le flux démarre à chaque modification et ne vérifie qu'ensuite. Une règle Automate SharePoint ou une condition de déclenchement filtre avant et économise l'exécution."
         ]
       },
-      "lernziel": "Tu choisis entre règle Automate, flux et condition de déclencheur pour éviter des exécutions inutiles.",
+      "lernziel": "Tu choisis entre règle Automate, flux et condition de déclenchement pour éviter des exécutions inutiles.",
       "thema": "Déclencheurs"
     },
     "fill-and-sign-word-document-power-apps-automate": {

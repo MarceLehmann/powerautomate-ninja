@@ -198,7 +198,7 @@
       <li><a href="../../../it/dojo/">Il mio dojo</a></li>
       <li><a href="../../../it/ueber/">Info</a></li>
       <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
-      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo per Copilot</a></li>
+      <li><a href="https://copilot.ninja/it/" rel="noopener">Dojo per Copilot</a></li>
     </ul>
   </nav>
 </div>
@@ -229,7 +229,7 @@
 <ol class="aufloesung"><li class="falsch"><b>A) Nell'ambito Catch, subito prima del messaggio di errore</b>Sbagliato. Un Termina nell'ambito Catch chiude subito il flusso e l'ambito Finally viene saltato.</li><li class="richtig"><b>B) Dopo Finally, solo se Catch è stato eseguito</b>Esatto. Finally pulisce per primo. Poi una Condizione lascia passare Termina con stato Failed solo se Catch è stato eseguito.</li><li class="falsch"><b>C) Prima di Try, con lo stato Failed</b>Sbagliato. Termina chiuderebbe il flusso prima che Try esegua le sue azioni.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Nell'ambito Try c'è la logica vera e propria. Per Catch attivi in Configura esecuzione dopo solo «non è riuscito» e «è scaduto» di Try. Lì registri l'errore, per esempio con result('Try'), oppure avvisi qualcuno. Finally segue Catch, con tutti e quattro gli stati in Esecuzione dopo, e fa pulizia. Dopo Finally c'è una Condizione con tutti e quattro gli stati di Finally in Esecuzione dopo. Verifica se Catch è stato eseguito, cioè se non era «ignorato». Solo nel ramo di errore segue Termina con stato Failed, dopo Finally. Il ramo di successo termina senza Termina. Un Termina nell'ambito Catch chiude subito il flusso e l'ambito Finally viene saltato. Così prima si gestisce l'errore, poi si fa pulizia e per ultimo l'esecuzione termina come fallita.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Nell'ambito Try c'è la logica vera e propria. Per Catch attivi in Configura Run after solo «non è riuscito» e «è scaduto» di Try. Lì registri l'errore, per esempio con result('Try'), oppure avvisi qualcuno. Finally segue Catch, con tutti e quattro gli stati in Esecuzione dopo, e fa pulizia. Dopo Finally c'è una Condizione con tutti e quattro gli stati di Finally in Esecuzione dopo. Verifica se Catch è stato eseguito, cioè se non era «ignorato». Solo nel ramo di errore segue Termina con stato Failed, dopo Finally. Il ramo di successo termina senza Termina. Un Termina nell'ambito Catch chiude subito il flusso e l'ambito Finally viene saltato. Così prima si gestisce l'errore, poi si fa pulizia e per ultimo l'esecuzione termina come fallita.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">L'espressione dal tip</h2><div class="code-block"><pre id="ausdruck"><code>result('Try')</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copia</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Quando usarla, quando no</h2><div class="zwei"><div class="karte-text"><h3>Usala</h3><p>In ogni flusso il cui guasto qualcuno deve notare: interfacce, file, record in Dataverse.</p></div><div class="karte-text"><h3>Meglio di no</h3><p>In un breve flusso di test che avvii tu stesso e la cui esecuzione segui direttamente.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Errore più frequente</h2><p>Mettere Termina in Catch. Inseriscilo dopo Finally, in un ramo che viene eseguito solo se Catch è stato eseguito.</p></section>
@@ -276,7 +276,7 @@
       </nav>
     </div>
     <div class="fuss__dojos">
-      <p>Altre discipline: <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Altre discipline: <a href="https://copilot.ninja/it/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
       <p>Un progetto di Marcel Lehmann. Per imparare di più: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
     </div>
     <div class="fuss__recht">

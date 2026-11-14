@@ -199,7 +199,7 @@
       <li><a href="../../../it/dojo/">Il mio dojo</a></li>
       <li><a href="../../../it/ueber/">Info</a></li>
       <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
-      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo per Copilot</a></li>
+      <li><a href="https://copilot.ninja/it/" rel="noopener">Dojo per Copilot</a></li>
     </ul>
   </nav>
 </div>
@@ -230,7 +230,7 @@
 <ol class="aufloesung"><li class="falsch"><b>A) Perché l'approvazione venga eliminata alla scadenza</b>Sbagliato. TriggerFlow controlla solo l'avvio del flusso. La colonna non c'entra con l'approvazione stessa.</li><li class="richtig"><b>B) Perché le modifiche durante l'esecuzione non causino un nuovo avvio</b>Esatto. Solo il percorso dopo il timeout riporta TriggerFlow su Sì. Così c'è esattamente un riavvio per ciclo.</li><li class="falsch"><b>C) Perché chi approva non riceva alcuna e-mail</b>Sbagliato. Se arriva una nuova e-mail dipende dal metodo scelto, non da TriggerFlow.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Un'esecuzione del flusso termina dopo 30 giorni. Se un'approvazione aspetta più a lungo, finisce nel vuoto e nessuno se ne accorge. La soluzione: il flusso si riavvia da solo. Un elenco SharePoint riceve la colonna TriggerFlow (Sì/No). Il trigger «Quando un elemento viene creato o modificato» grazie a una condizione del trigger come @equals(triggerOutputs()?['body/TriggerFlow'], true) parte solo se la colonna è su Sì, e la prima azione la imposta subito su No. L'approvazione riceve un timeout inferiore a 28 giorni, per esempio P27D. Secondo Microsoft un flusso non può aspettare un'approvazione più a lungo. Quando il timeout scade, un'azione con «è scaduto» riporta TriggerFlow su Sì e inizia una nuova esecuzione. Se non vuoi una nuova e-mail, separi «Crea un'approvazione» e «Attendi un'approvazione» e salvi l'ID dell'approvazione.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Un'esecuzione del flusso termina dopo 30 giorni. Se un'approvazione aspetta più a lungo, finisce nel vuoto e nessuno se ne accorge. La soluzione: il flusso si riavvia da solo. Un elenco SharePoint riceve la colonna TriggerFlow (Sì/No). Il trigger «Quando viene creato o modificato un elemento» grazie a una condizione del trigger come @equals(triggerOutputs()?['body/TriggerFlow'], true) parte solo se la colonna è su Sì, e la prima azione la imposta subito su No. L'approvazione riceve un timeout inferiore a 28 giorni, per esempio P27D. Secondo Microsoft un flusso non può aspettare un'approvazione più a lungo. Quando il timeout scade, un'azione con «è scaduto» riporta TriggerFlow su Sì e inizia una nuova esecuzione. Se non vuoi una nuova e-mail, separi «Crea un'approvazione» e «Attendi un'approvazione» e salvi l'ID dell'approvazione.</p></section>
 <section class="abschnitt" aria-labelledby="h-ausdruck"><h2 id="h-ausdruck">L'espressione dal tip</h2><div class="code-block"><pre id="ausdruck"><code>@equals(triggerOutputs()?['body/TriggerFlow'], true)</code></pre><button type="button" class="knopf knopf--klein" data-kopieren="ausdruck" data-nur-js>Copia</button></div></section>
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Quando usarla, quando no</h2><div class="zwei"><div class="karte-text"><h3>Usala</h3><p>Per contratti, budget, verifiche legali e altre decisioni che possono restare ferme più di un mese.</p></div><div class="karte-text"><h3>Meglio di no</h3><p>Quando la decisione arriva di sicuro entro 30 giorni. Allora basta un timeout con un percorso per «è scaduto».</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Errore più frequente</h2><p>Omettere la condizione del trigger. Allora ogni modifica all'elemento avvia una nuova esecuzione e il flusso si richiama all'infinito.</p></section>
@@ -277,7 +277,7 @@
       </nav>
     </div>
     <div class="fuss__dojos">
-      <p>Altre discipline: <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Altre discipline: <a href="https://copilot.ninja/it/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
       <p>Un progetto di Marcel Lehmann. Per imparare di più: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
     </div>
     <div class="fuss__recht">

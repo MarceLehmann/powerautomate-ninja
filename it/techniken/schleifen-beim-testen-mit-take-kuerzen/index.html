@@ -198,7 +198,7 @@
       <li><a href="../../../it/dojo/">Il mio dojo</a></li>
       <li><a href="../../../it/ueber/">Info</a></li>
       <li><a href="https://powerplatformdojo.com/it/" rel="noopener">Panoramica del Dojo</a></li>
-      <li><a href="https://copilot.ninja/en/" rel="noopener">Dojo per Copilot</a></li>
+      <li><a href="https://copilot.ninja/it/" rel="noopener">Dojo per Copilot</a></li>
     </ul>
   </nav>
 </div>
@@ -229,7 +229,7 @@
 <ol class="aufloesung"><li class="richtig"><b>A) Tutti e tre gli elementi, senza errori</b>Esatto. take() prende al massimo il numero indicato. Se sono meno, restituisce tutti quelli presenti.</li><li class="falsch"><b>B) Un errore, perché mancano elementi</b>Sbagliato. take() non si interrompe se la matrice è più corta del numero richiesto.</li><li class="falsch"><b>C) Tre elementi e due vuoti in più</b>Sbagliato. take() non riempie nulla. Taglia solo ciò che supera il numero.</li></ol>
 </div>
 </section>
-<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Testare un ciclo su centinaia di elementi costa tempo e azioni a ogni esecuzione. Con take() durante il test elabori solo i primi elementi. Sostituisci l'input di Applica a ciascuno con un'espressione come take(body('Select'), 5). Il ciclo gira allora al massimo cinque volte, qualunque sia la dimensione della matrice. Se la matrice ha meno elementi, take() li restituisce semplicemente tutti, senza errori. Così verifichi la logica nel ciclo su pochi record reali. Quando tutto torna, togli take() e riselezioni l'output originale. La struttura del flusso resta invariata.</p></section>
+<section class="abschnitt" aria-labelledby="h-worum"><h2 id="h-worum">Di cosa si tratta</h2><p>Testare un ciclo su centinaia di elementi costa tempo e azioni a ogni esecuzione. Con take() durante il test elabori solo i primi elementi. Sostituisci l'input di Applica a ogni con un'espressione come take(body('Select'), 5). Il ciclo gira allora al massimo cinque volte, qualunque sia la dimensione della matrice. Se la matrice ha meno elementi, take() li restituisce semplicemente tutti, senza errori. Così verifichi la logica nel ciclo su pochi record reali. Quando tutto torna, togli take() e riselezioni l'output originale. La struttura del flusso resta invariata.</p></section>
 
 <section class="abschnitt" aria-labelledby="h-wann"><h2 id="h-wann">Quando usarla, quando no</h2><div class="zwei"><div class="karte-text"><h3>Usala</h3><p>Quando testi cicli su grandi elenchi o tabelle, prima di lanciare il flusso su tutti i dati.</p></div><div class="karte-text"><h3>Meglio di no</h3><p>In produzione. Se take() resta nel flusso, questo elabora per sempre solo i primi elementi.</p></div></div></section>
 <section class="abschnitt" aria-labelledby="h-fehler"><h2 id="h-fehler">Errore più frequente</h2><p>Dimenticare take() nel flusso dopo il test. Una nota nell'azione ti ricorda di toglierlo.</p></section>
@@ -276,7 +276,7 @@
       </nav>
     </div>
     <div class="fuss__dojos">
-      <p>Altre discipline: <a href="https://copilot.ninja/en/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
+      <p>Altre discipline: <a href="https://copilot.ninja/it/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>
       <p>Un progetto di Marcel Lehmann. Per imparare di più: <a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_campaign=dojo&amp;utm_content=footer" rel="noopener">Power Platform Academy</a>.</p>
     </div>
     <div class="fuss__recht">
