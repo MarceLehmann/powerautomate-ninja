@@ -1,0 +1,49 @@
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="kopf">
+  <div class="wrap kopf__innen">
+    <a class="marke" href="{{lr}}" aria-label="{{name}}, Power Automate, accueil">{{{marke_tusch}}}<span class="marke__text" aria-hidden="true"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="{{lr}}techniken/"{{{cur_techniken}}}>Techniques</a></li>
+        <li><a href="{{lr}}pruefung/"{{{cur_pruefung}}}>Examen de ceinture</a></li>
+        <li><a href="{{lr}}premium/"{{{cur_premium}}}>Vérification de licence</a></li>
+        <li><a href="{{lr}}dojo/"{{{cur_dojo}}}>Mon dojo</a></li>
+        <li><a href="{{powerplatform_dojo}}" rel="noopener">Aperçu du Dojo</a></li>
+      </ul>
+    </nav>
+    <div class="kopf__aktionen">
+      {{{sprachwahl}}}
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Rechercher une technique" aria-keyshortcuts="Control+K Meta+K" data-nur-js>{{{icon_suche}}}<kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Mode sombre" data-nur-js>{{{icon_sonne}}}{{{icon_mond}}}</button>
+      <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js>{{{icon_menue}}}</button>
+    </div>
+  </div>
+</header>
+<div class="menue" id="menue" hidden>
+  <div class="menue__kopf">
+    <span class="marke">{{{marke_tusch}}}<span class="marke__text"><b>Power&nbsp;Platform&nbsp;Dojo</b><small>Power Automate</small></span></span>
+    <button type="button" class="knopf-icon" data-menue-zu aria-label="Fermer le menu">{{{icon_zu}}}</button>
+  </div>
+  <nav aria-label="Menu">
+    <ul>
+      <li><a href="{{lr}}techniken/">Techniques</a></li>
+      <li><a href="{{lr}}pruefung/">Examen de ceinture</a></li>
+      <li><a href="{{lr}}premium/">Vérification de licence</a></li>
+      <li><a href="{{lr}}heute/">Technique du jour</a></li>
+      <li><a href="{{lr}}dojo/">Mon dojo</a></li>
+      <li><a href="{{lr}}ueber/">À propos</a></li>
+      <li><a href="{{powerplatform_dojo}}" rel="noopener">Aperçu du Dojo</a></li>
+      <li><a href="{{copilot_dojo}}" rel="noopener">Dojo pour Copilot</a></li>
+    </ul>
+  </nav>
+</div>
+<dialog class="suche" id="suche" aria-labelledby="suche-titel">
+  <div class="suche__kopf">
+    <h2 id="suche-titel" class="sr-only">Rechercher une technique</h2>
+    <label for="suche-feld" class="sr-only">Terme de recherche</label>
+    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approbation, boucle">
+    <button type="button" class="knopf-icon" data-suche-zu aria-label="Fermer la recherche">{{{icon_zu}}}</button>
+  </div>
+  <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Résultats"></ul>
+  <p class="suche__leer" hidden>Aucune technique trouvée. Essaie avec JSON, approbation ou boucle.</p>
+</dialog>

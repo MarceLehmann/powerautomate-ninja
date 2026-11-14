@@ -37,14 +37,45 @@ const fehlerListe = [], warnListe = [], geschrieben = [];
 const fehler = (m) => { if (!fehlerListe.includes(m)) fehlerListe.push(m); };
 const warnung = (m) => { if (!warnListe.includes(m)) warnListe.push(m); };
 
-/* Sprachen: Deutsch unter /, Englisch unter /en/. Alle Builder laufen je Sprache einmal, L ist die aktuelle Sprache.
-   T('deutsch', 'english') waehlt den Text. Pfade in den Buildern sind relativ zur Sprachwurzel. */
-const SPRACHEN = ['de', 'en'];
+/* Sprachen: Deutsch unter /, Englisch unter /en/, jede weitere Sprache unter /<code>/. Alle Builder laufen je Sprache einmal,
+   L ist die aktuelle Sprache. Pfade in den Buildern sind relativ zur Sprachwurzel.
+   T('deutsch', 'english') waehlt den Text. Deutsch und Englisch stehen im Code, jede weitere Sprache kommt nur aus Daten:
+   data/i18n/<code>.json mit meta, links, limits, ui (Schluessel = deutscher Text), js, guertel und techniken.
+   Texte mit wechselnden Werten laufen ueber TF('… {name} …', '… {name} …', { name }), damit der Schluessel fest bleibt.
+   Fehlt eine Uebersetzung, bricht der Build ab. --ui-fehlend=<datei> schreibt die fehlenden Schluessel (mit Englisch) als JSON. */
+const I18N_DIR = path.join(ROOT, 'data/i18n');
+const WEITERE = fs.existsSync(I18N_DIR) ? fs.readdirSync(I18N_DIR).filter(f => /^[a-z]{2}\.json$/.test(f)).map(f => f.slice(0, 2)).sort() : [];
+const I18N = Object.fromEntries(WEITERE.map(c => [c, JSON.parse(fs.readFileSync(path.join(I18N_DIR, `${c}.json`), 'utf8'))]));
+const SPRACHEN = ['de', 'en', ...WEITERE];
+// Reihenfolge in der Sprachwahl wie powerplatformdojo.com: Landessprachen, dann Englisch
+const SPRACHWAHL = ['de', ...WEITERE, 'en'];
+const META = {
+  de: { html: 'de-CH', og: 'de_CH', name: 'Deutsch', kurz: 'DE', wahl_label: 'Sprache' },
+  en: { html: 'en', og: 'en_US', name: 'English', kurz: 'EN', wahl_label: 'Language' },
+  ...Object.fromEntries(WEITERE.map(c => [c, I18N[c].meta || {}]))
+};
 let L = 'de';
-const T = (de, en) => (L === 'en' ? en : de);
-const PFX = () => (L === 'en' ? 'en/' : '');
+const UI_FEHLT = {}, UI_GENUTZT = {};
+function uebersetze(de, en) {
+  (UI_GENUTZT[L] ||= new Set()).add(de);
+  const v = ((I18N[L] || {}).ui || {})[de];
+  if (typeof v === 'string' && v) return v;
+  (UI_FEHLT[L] ||= {})[de] = en;
+  return en;
+}
+const T = (de, en) => (L === 'de' ? de : L === 'en' ? en : uebersetze(de, en));
+const TF = (de, en, werte) => T(de, en).replace(/\{(\w+)\}/g, (m, k) => (k in werte ? String(werte[k]) : m));
+const pfxVon = (s) => (s === 'de' ? '' : `${s}/`);
+const PFX = () => pfxVon(L);
 const BL = () => BASE_URL + PFX();
-const LANG_HTML = () => T('de-CH', 'en');
+const LANG_HTML = () => META[L].html;
+// Sprachabhaengige Links: Deutsch und Englisch aus site.config.json, weitere Sprachen aus data/i18n/<code>.json (links)
+const LINK = (schluessel, de, en) => (L === 'de' ? de : L === 'en' ? en : ((I18N[L] || {}).links || {})[schluessel] || en);
+// Datum: Deutsch TT.MM.JJJJ, Englisch ISO, weitere Sprachen ausgeschrieben in der Landessprache (Intl)
+const DATUM_ANZEIGE = (iso) => !iso ? '' : L === 'de' ? datumCH(iso) : L === 'en' ? iso
+  : new Intl.DateTimeFormat(META[L].html, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(iso + 'T00:00:00Z'));
+// Pruefregeln je Sprache (Wortgrenzen). Franzoesisch und Italienisch brauchen fuer denselben Inhalt mehr Woerter.
+const REGELN = () => ({ antwort_max: 12, kurztext: [80, 150], ...((META[L] || {}).pruefregeln || {}) });
 
 /* Hilfen */
 function lokalesDatum(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
@@ -69,13 +100,14 @@ const mitUtm = (url, stelle) => `${url}${url.includes('?') ? '&' : '?'}${utm(ste
 const kursUrl = (stelle) => mitUtm(CFG.kurs_url, stelle);
 // Verlinkung der Dojos und der Academy (Fusszeile, Ueber-Seite)
 const ACADEMY_DOJO = () => `${CFG.academy_url}?utm_source=${encodeURIComponent(CFG.utm_source)}&utm_medium=${encodeURIComponent(CFG.utm_medium)}&utm_campaign=dojo&utm_content=footer`;
-const COPILOT_DOJO = () => T(CFG.weitere_dojos.copilot, CFG.weitere_dojos.copilot_en);
-const POWERPLATFORM_DOJO = () => T(CFG.powerplatform_dojo.de, CFG.powerplatform_dojo.en);
-const POWERPLATFORM_LERNPFADE = () => T(CFG.powerplatform_dojo.lernpfade, CFG.powerplatform_dojo.lernpfade_en || CFG.powerplatform_dojo.lernpfade);
-const POWERPLATFORM_MENTORING = () => T(CFG.powerplatform_dojo.mentoring, CFG.powerplatform_dojo.mentoring_en || CFG.powerplatform_dojo.mentoring);
-const SENSEI_HINWEIS = () => T(
-  `Gürtel geschafft? Gib dein Wissen weiter und werde Sensei im Dojo Mentoring: 3 Monate, gratis, 1:1. <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Zum Dojo Mentoring</a>.`,
-  `Belt earned? Pass it on and become a Sensei in Dojo Mentoring: 3 months, free, 1:1. <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Join Dojo Mentoring</a>.`
+const COPILOT_DOJO = () => LINK('copilot_dojo', CFG.weitere_dojos.copilot, CFG.weitere_dojos.copilot_en);
+const POWERPLATFORM_DOJO = () => LINK('powerplatform_dojo', CFG.powerplatform_dojo.de, CFG.powerplatform_dojo.en);
+const POWERPLATFORM_LERNPFADE = () => LINK('lernpfade', CFG.powerplatform_dojo.lernpfade, CFG.powerplatform_dojo.lernpfade_en || CFG.powerplatform_dojo.lernpfade);
+const POWERPLATFORM_MENTORING = () => LINK('mentoring', CFG.powerplatform_dojo.mentoring, CFG.powerplatform_dojo.mentoring_en || CFG.powerplatform_dojo.mentoring);
+const SENSEI_HINWEIS = () => TF(
+  'Gürtel geschafft? Gib dein Wissen weiter und werde Sensei im Dojo Mentoring: 3 Monate, gratis, 1:1. <a href="{mentoring}" rel="noopener">Zum Dojo Mentoring</a>.',
+  'Belt earned? Pass it on and become a Sensei in Dojo Mentoring: 3 months, free, 1:1. <a href="{mentoring}" rel="noopener">Join Dojo Mentoring</a>.',
+  { mentoring: esc(POWERPLATFORM_MENTORING()) }
 );
 
 /* Mini-Templates wie copilot-ninja: {{feld}} escaped, {{{feld}}} roh, {{> partial}} */
@@ -86,7 +118,9 @@ function partial(name) {
   if (!partialCache[key]) {
     // .svg-Partials (tusch.svg) sind sprachneutral
     const datei = gibtEs(`templates/partials/${name}.svg`) ? `templates/partials/${name}.svg`
-      : L !== 'de' && gibtEs(`templates/partials/${name}.${L}.html`) ? `templates/partials/${name}.${L}.html` : `templates/partials/${name}.html`;
+      : L !== 'de' && gibtEs(`templates/partials/${name}.${L}.html`) ? `templates/partials/${name}.${L}.html`
+      : L !== 'de' && WEITERE.includes(L) && gibtEs(`templates/partials/${name}.en.html`) ? (fehler(`Partial fehlt: templates/partials/${name}.${L}.html`), `templates/partials/${name}.en.html`)
+      : `templates/partials/${name}.html`;
     if (!gibtEs(datei)) { fehler(`Partial fehlt: ${datei}`); return ''; }
     partialCache[key] = lies(datei).replace(/\s+$/, '');
   }
@@ -117,8 +151,11 @@ function setzeLimits(text, wo) {
     const l = LIMITS.limits[k];
     if (!l) { fehler(`${wo}: unbekanntes Limit «${k}»`); return ''; }
     if (!String(l.learn_url || '').startsWith('https://learn.microsoft.com/')) fehler(`limits.json ${k}: learn_url fehlt`);
-    if (L === 'en' && !l.text_en) fehler(`limits.json ${k}: text_en fehlt`);
-    return L === 'en' ? l.text_en : l.text;
+    if (L === 'de') return l.text;
+    if (L === 'en') { if (!l.text_en) fehler(`limits.json ${k}: text_en fehlt`); return l.text_en; }
+    const v = ((I18N[L] || {}).limits || {})[k];
+    if (!v) fehler(`data/i18n/${L}.json: limits.${k} fehlt`);
+    return v || l.text_en;
   });
 }
 function mitLimits(obj, wo) {
@@ -131,12 +168,15 @@ function mitLimits(obj, wo) {
 /* Sprachsicht: dieselben Felder (titel_de, kurztext_de ...) mit Texten der aktuellen Sprache.
    Englisch aus data/en.json, Schluessel = schluessel. Fortschritt (localStorage) gilt sprachuebergreifend ueber schluessel. */
 let ALLE, SEITEN, POOL, NACH_KEY, GUERTEL;
+const SPRACHDATEN = () => (L === 'en' ? EN : I18N[L] || { guertel: [], techniken: {} });
+const SPRACHDATEI = () => (L === 'en' ? 'data/en.json' : `data/i18n/${L}.json`);
 function technikSicht(t) {
   if (L === 'de') return t;
-  const e = (EN.techniken || {})[t.schluessel];
-  if (!e) { if (t.pool || t.seite) fehler(`Tipp ${t.schluessel}: englische Fassung fehlt in data/en.json`); return null; }
+  const e = (SPRACHDATEN().techniken || {})[t.schluessel];
+  if (!e) { if (t.pool || t.seite) fehler(`Tipp ${t.schluessel}: Fassung ${L} fehlt in ${SPRACHDATEI()}`); return null; }
   const q = e.quiz || {};
-  if (t.pool && (!q.frage || !Array.isArray(q.antworten) || q.antworten.length !== 3)) fehler(`Tipp ${t.schluessel}: englisches Quiz unvollständig`);
+  if (t.pool && (!q.frage || !Array.isArray(q.antworten) || q.antworten.length !== 3)) fehler(`Tipp ${t.schluessel}: Quiz ${L} unvollständig`);
+  if (t.seite && !e.titel) fehler(`Tipp ${t.schluessel}: Seite ${L} ohne Titel in ${SPRACHDATEI()}`);
   const v = { ...t, lernziel: e.lernziel || '', thema: e.thema || t.thema, suchbegriffe: e.suchbegriffe || [],
     quiz: { ...t.quiz, frage: q.frage || '', antworten: q.antworten || [], erklaerungen: q.erklaerungen || [] } };
   if (t.seite) Object.assign(v, { titel_de: e.titel, kurztext_de: e.kurztext, wann_ja: e.wann_ja, wann_nein: e.wann_nein, fehler: e.fehler });
@@ -151,8 +191,8 @@ function setzeSprache(sprache) {
   GUERTEL = FARBEN.map((farbe, i) => {
     const basis = { nr: i + 1, farbe, name: GNAMEN[i], kurz: GKURZ[i], akk: GAKK[i], hex: BAND_HEX[i], leitwort: '', kannst_du: '', erreicht_satz: '', ...((daten.guertel || []).find(g => g.nr === i + 1) || {}) };
     if (L === 'de') return basis;
-    const e = (EN.guertel || []).find(g => g.nr === i + 1);
-    if (!e) { fehler(`Gürtel ${i + 1}: englische Fassung fehlt in data/en.json`); return basis; }
+    const e = (SPRACHDATEN().guertel || []).find(g => g.nr === i + 1);
+    if (!e) { fehler(`Gürtel ${i + 1}: Fassung ${L} fehlt in ${SPRACHDATEI()}`); return basis; }
     return { ...basis, ...e, farbe, hex: BAND_HEX[i] };
   });
 }
@@ -161,7 +201,7 @@ const tippLabel = (t) => t.tipp_nr ? `PowerPlatformTip #${t.tipp_nr}` : T('Artik
 const BUCHST = ['A', 'B', 'C'];
 
 /* Validierung */
-const VERBOTEN = [[/[\u2013\u2014]/, 'Gedankenstrich'], [/\u00df/, 'Eszett'], [/\p{Extended_Pictographic}/u, 'Emoji'], [/ - /, '« - » als Gedankenstrich'], [/nicht getestet|laut Doku|not tested|according to the docs/i, 'Testhinweis'], [/Power Automate Ninja|powerautomate[\s-]ninja/i, 'Marke als Name']];
+const VERBOTEN = [[/[\u2013\u2014]/, 'Gedankenstrich'], [/\u00df/, 'Eszett'], [/\p{Extended_Pictographic}/u, 'Emoji'], [/ - /, '« - » als Gedankenstrich'], [/nicht getestet|laut Doku|not tested|according to the docs|non testée?s?|selon la doc|non testat[oaie]|secondo la documentazione/i, 'Testhinweis'], [/Power Automate Ninja|powerautomate[\s-]ninja/i, 'Marke als Name']];
 function texte(wert, pfad, aus = []) {
   if (typeof wert === 'string') aus.push([pfad, wert]);
   else if (Array.isArray(wert)) wert.forEach((v, i) => texte(v, `${pfad}[${i}]`, aus));
@@ -183,7 +223,7 @@ function validiere() {
     if (!Number.isInteger(t.guertel) || t.guertel < 1 || t.guertel > 7) fehler(`${wo}: guertel 1 bis 7`);
     texte({ quiz: t.quiz }, wo).forEach(([p, s]) => VERBOTEN.forEach(([re, w]) => re.test(s) && fehler(`${p}: enthält ${w}`)));
     if (!t.seite && Array.isArray(q.antworten)) {
-      q.antworten.forEach((a, i) => { if (woerter(a) > 12) fehler(`${wo}: Antwort ${BUCHST[i]} über 12 Wörter`); });
+      q.antworten.forEach((a, i) => { if (woerter(a) > REGELN().antwort_max) fehler(`${wo}: Antwort ${BUCHST[i]} über ${REGELN().antwort_max} Wörter`); });
       const l = q.antworten.map(a => a.length), andere = l.filter((_, i) => i !== q.richtig_index);
       if (l[q.richtig_index] > Math.max(...andere) * 1.4 && l[q.richtig_index] - Math.max(...andere) > 12) warnung(`${wo}: richtige Antwort deutlich länger als die falschen (${l.join('/')} Zeichen)`);
       if (!(q.erklaerungen || [])[q.richtig_index]) warnung(`${wo}: Prüfungsfrage ohne Erklärung`);
@@ -195,11 +235,12 @@ function validiere() {
     if (t.slug) { if (slugs.has(t.slug)) fehler(`${wo}: slug doppelt`); slugs.add(t.slug); if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(t.slug)) fehler(`${wo}: slug nur [a-z0-9-]`); }
     if (!t.pool) fehler(`${wo}: Seite ohne Pool-Frage`);
     if ((t.quiz.erklaerungen || []).length !== 3) fehler(`${wo}: drei Erklärungen nötig`);
-    t.quiz.antworten.forEach((a, i) => { if (woerter(a) > 12) fehler(`${wo}: Antwort ${BUCHST[i]} über 12 Wörter`); });
+    t.quiz.antworten.forEach((a, i) => { if (woerter(a) > REGELN().antwort_max) fehler(`${wo}: Antwort ${BUCHST[i]} über ${REGELN().antwort_max} Wörter`); });
     const laengen = t.quiz.antworten.map(a => a.length);
     if (Math.max(...laengen) > Math.min(...laengen) * 1.6) warnung(`${wo}: Antworten ungleich lang (${laengen.join('/')} Zeichen)`);
     const w = woerter(t.kurztext_de);
-    if (w < 80 || w > 150) fehler(`${wo}: Kurztext ${w} Wörter, erlaubt 80 bis 150`);
+    const [wMin, wMax] = REGELN().kurztext;
+    if (w < wMin || w > wMax) fehler(`${wo}: Kurztext ${w} Wörter, erlaubt ${wMin} bis ${wMax}`);
     if (t.lizenz !== 'standard' && t.lizenz !== 'premium') fehler(`${wo}: lizenz nur standard oder premium`);
     const belege = t.lizenz_belege || [];
     if (!belege.length || !belege.every(b => String(b.url).startsWith('https://learn.microsoft.com/'))) fehler(`${wo}: Lizenz ohne Beleg bei Microsoft Learn`);
@@ -239,10 +280,10 @@ const LIZENZ_SATZ = () => ({
   standard: T('Diese Technik nutzt Standard-Connectoren. Microsoft-365-Nutzungsrechte decken Standard-Connectoren ab. Prüfe die Rechte für deinen gesamten Flow.', 'This technique uses standard connectors. Microsoft 365 usage rights cover standard connectors. Check the rights for your whole flow.'),
   premium: T('Für Premium-Connectoren oder -Funktionen brauchst du passende Nutzungsrechte, etwa aus Power Automate Premium, Process, Power Apps oder Dynamics 365. Prüfe vorhandene Lizenzen im Lizenz-Check.', 'Premium connectors or features require suitable usage rights, for example from Power Automate Premium, Process, Power Apps or Dynamics 365. Check existing licenses in the license check.')
 });
-const mailtoFehler = (t) => `mailto:${CFG.kontakt}?subject=${encodeURIComponent(T(`${NAME}: Fehler in Frage ${t.tipp_nr || t.schluessel}`, `${NAME}: error in question ${t.tipp_nr || t.schluessel}`))}&body=${encodeURIComponent(T(`Frage: ${t.quiz.frage}\n\nWas stimmt nicht?\n\n`, `Question: ${t.quiz.frage}\n\nWhat is wrong?\n\n`))}`;
+const mailtoFehler = (t) => `mailto:${CFG.kontakt}?subject=${encodeURIComponent(TF('{name}: Fehler in Frage {nr}', '{name}: error in question {nr}', { name: NAME, nr: t.tipp_nr || t.schluessel }))}&body=${encodeURIComponent(T('Frage', 'Question') + `: ${t.quiz.frage}\n\n` + T('Was stimmt nicht?', 'What is wrong?') + '\n\n')}`;
 function linkedinUrl(text) { return `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`; }
 function teilenText(t) {
-  return `${T('Quizfrage für alle, die Flows bauen', 'Quiz question for everyone who builds flows')}: ${t.quiz.frage}\n\n${t.quiz.antworten.map((a, i) => `${BUCHST[i]}) ${a}`).join('\n')}\n\n${T(`Auflösung mit Erklärung im ${NAME}`, `Answer with explanation in the ${NAME}`)}: ${urlTechnik(t)}`;
+  return `${T('Quizfrage für alle, die Flows bauen', 'Quiz question for everyone who builds flows')}: ${t.quiz.frage}\n\n${t.quiz.antworten.map((a, i) => `${BUCHST[i]}) ${a}`).join('\n')}\n\n${TF('Auflösung mit Erklärung im {name}', 'Answer with explanation in the {name}', { name: NAME })}: ${urlTechnik(t)}`;
 }
 function karte(t, r) {
   const such = [t.titel_de, t.thema, ...(t.suchbegriffe || []), String(t.tipp_nr || '')].join(' ').toLowerCase();
@@ -300,28 +341,28 @@ function seite(relL, p) {
   const r = p.absolut ? BASIS_PFAD : praefix(rel); // Wurzel der Website (Assets)
   const lr = r + PFX(); // Wurzel der aktuellen Sprache (Seiten)
   const pfad = relL.replace(/(^|\/)index\.html$/, '$1');
-  const andere = L === 'en' ? '' : 'en/';
   const cur = (n) => NAV[p.seite] === n ? (/^(wand|pruefung|premium|dojo)$/.test(p.seite) ? ' aria-current="page"' : ' aria-current="true"') : '';
   const ctx = {
     r, lr, name: NAME, marke_tusch: tusch('ruhe'),
     icon_suche: ICONS.suche, icon_sonne: ICONS.sonne, icon_mond: ICONS.mond, icon_menue: ICONS.menue, icon_zu: ICONS.zu,
     cur_techniken: cur('techniken'), cur_pruefung: cur('pruefung'), cur_premium: cur('premium'), cur_dojo: cur('dojo'),
     js_extra: (p.js || []).map(s => `<script src="${r}assets/js/${s}" defer></script>`).join('\n'),
+    js_sprache: L === 'de' || L === 'en' ? '' : `<script src="${r}assets/js/i18n-${L}.js" defer></script>`,
     tipp_fuss: mitUtm('https://www.powerplatformtip.com/', 'fusszeile'), academy_fuss: mitUtm(CFG.academy_url, 'fusszeile'), academy_dojo: ACADEMY_DOJO(), copilot_dojo: COPILOT_DOJO(),
     powerplatform_dojo: POWERPLATFORM_DOJO(), powerplatform_lernpfade: POWERPLATFORM_LERNPFADE(), powerplatform_mentoring: POWERPLATFORM_MENTORING(),
-    sprache_href: r + andere + pfad, sprache_code: L === 'en' ? 'de' : 'en', sprache_kurz: L === 'en' ? 'DE' : 'EN', sprache_name: L === 'en' ? 'Deutsche Version' : 'English version'
+    sprachwahl: sprachwahlHtml(r, pfad)
   };
   const noindex = TESTPHASE || p.noindex || ['heute', 'dojo'].includes(p.seite);
-  const bild = p.ogBild || `${BASE_URL}${L === 'en' ? 'assets/img/en/og-image.png' : 'og-image.png'}`;
+  const bild = p.ogBild || `${BASE_URL}${L === 'de' ? 'og-image.png' : `assets/img/${L}/og-image.png`}`;
   const canonical = p.absolut ? '' : (p.canonical === false ? '' : BL() + pfad);
   const meta = [GENERATOR, `<title>${esc(p.titel)}</title>`, `<meta name="description" content="${esc(p.beschreibung)}">`];
   if (noindex) meta.push('<meta name="robots" content="noindex">');
   if (TESTPHASE) meta.push('<meta name="dojo-build" content="testphase">');
   if (canonical) {
     meta.push(`<link rel="canonical" href="${canonical}">`,
-      `<link rel="alternate" hreflang="de" href="${BASE_URL}${pfad}">`, `<link rel="alternate" hreflang="en" href="${BASE_URL}en/${pfad}">`, `<link rel="alternate" hreflang="x-default" href="${BASE_URL}${pfad}">`);
+      ...SPRACHEN.map(s => `<link rel="alternate" hreflang="${s}" href="${BASE_URL}${pfxVon(s)}${pfad}">`), `<link rel="alternate" hreflang="x-default" href="${BASE_URL}${pfad}">`);
   }
-  meta.push(`<meta property="og:type" content="${p.ogTyp || 'website'}">`, `<meta property="og:site_name" content="${esc(NAME)}">`, `<meta property="og:locale" content="${T('de_CH', 'en_US')}">`, `<meta property="og:locale:alternate" content="${T('en_US', 'de_CH')}">`,
+  meta.push(`<meta property="og:type" content="${p.ogTyp || 'website'}">`, `<meta property="og:site_name" content="${esc(NAME)}">`, `<meta property="og:locale" content="${META[L].og}">`, ...SPRACHEN.filter(s => s !== L).map(s => `<meta property="og:locale:alternate" content="${META[s].og}">`),
     `<meta property="og:title" content="${esc(p.ogTitel || p.titel)}">`, `<meta property="og:description" content="${esc(p.beschreibung)}">`);
   if (canonical) meta.push(`<meta property="og:url" content="${canonical}">`);
   meta.push(`<meta property="og:image" content="${bild}">`, '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="630">', '<meta name="twitter:card" content="summary_large_image">',
@@ -341,7 +382,23 @@ ${render(partial('fuss'), ctx, 'fuss')}
 </body>
 </html>
 `;
-  schreibe(rel, html);
+  schreibe(rel, typografie(html));
+}
+/* Sprachwahl im Kopf: alle Sprachen, aktuelle mit aria-current. Ohne JavaScript als <details>. */
+function sprachwahlHtml(r, pfad) {
+  const m = META[L];
+  return `<details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="${esc(`${m.wahl_label}: ${m.name}`)}"><span aria-hidden="true">${m.kurz}</span></summary>
+<ul class="sprachwahl__liste">${SPRACHWAHL.map(s => `<li><a href="${r}${pfxVon(s)}${pfad}" hreflang="${s}" lang="${s}" data-sprache="${s}"${s === L ? ' aria-current="true"' : ''}>${esc(META[s].name)}</a></li>`).join('')}</ul></details>`;
+}
+/* Typografie je Sprache (meta.typografie in data/i18n/<code>.json). Franzoesisch: geschuetztes Leerzeichen vor : ; ? !
+   auch dort, wo der Code Zeichen anhaengt («Ceinture blanche : Prise en main»). Nur sichtbarer Text, nicht in script, code, pre, kbd, Attributen. */
+function typografie(html) {
+  if ((META[L] || {}).typografie !== 'fr') return html;
+  let aus = 0;
+  return html.split(/(<[^>]+>)/).map(teil => {
+    if (teil.startsWith('<')) { const m = teil.match(/^<(\/?)(script|code|pre|kbd|style)\b/i); if (m) aus += m[1] ? -1 : 1; return teil; }
+    return aus > 0 ? teil : teil.replace(/([^\s\u00a0])[ ]?([:;?!])(?=[\s<]|$)/g, '$1\u00a0$2');
+  }).join('');
 }
 const LD_ORG = { '@type': 'Organization', '@id': 'https://kmupower.com/#organization', name: 'KMUpower', legalName: 'Marcel Lehmann (Handelsname KMUpower)', url: 'https://kmupower.com/' };
 const LD_WEBSITE = () => ({ '@type': 'WebSite', '@id': `${BL()}#website`, name: NAME, url: BL(), inLanguage: LANG_HTML(), description: T('Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.', 'Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.'), publisher: { '@id': LD_ORG['@id'] } });
@@ -371,7 +428,7 @@ function guertelpfadHtml(r) {
     const tk = SEITEN.filter(t => t.guertel === g.nr).length;
     const fr = POOL.filter(t => t.guertel === g.nr).length;
     const ziel = !tk;
-    const zahl = T(`${tk} ${tk === 1 ? 'Technik' : 'Techniken'}, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'}`, `${tk} ${tk === 1 ? 'technique' : 'techniques'}, ${fr} ${fr === 1 ? 'question' : 'questions'}`);
+    const zahl = `${ANZ_TECHNIKEN(tk)}, ${ANZ_FRAGEN(fr)}`;
     const name = ziel ? `<span class="pfadzeile__name">${esc(g.name)}: ${esc(g.leitwort)}</span>` : `<a class="pfadzeile__name" href="${r}guertel/${g.farbe}/">${esc(g.name)}: ${esc(g.leitwort)}</a>`;
     return `<li class="pfadzeile${ziel ? ' pfadzeile--ziel' : ''}" data-guertel-nr="${g.nr}"><span class="pfadzeile__band" aria-hidden="true"></span>${name}<span class="pfadzeile__zahl">${zahl}</span><p class="pfadzeile__kann">${esc(g.kannst_du)}</p></li>`;
   };
@@ -379,6 +436,10 @@ function guertelpfadHtml(r) {
 <p class="schwelle"><strong>${T('Die Schwelle.', 'The threshold.')}</strong> ${T('Ab Grün wird es technisch: unsaubere Daten, parallele Schleifen, Aufrufe an SharePoint und Microsoft Graph.', 'From green on it gets technical: messy data, parallel loops, calls to SharePoint and Microsoft Graph.')}</p>
 <ol class="pfadzeilen" start="4">${GUERTEL.slice(3).map(zeile).join('\n')}</ol>`;
 }
+// Anzahl mit Wort (Einzahl/Mehrzahl), eigener Schluessel, weil «Techniken» allein auch als Titel vorkommt
+// Beide Formen werden immer uebersetzt, damit fehlende Einzahl/Mehrzahl sofort auffaellt
+const ANZ_TECHNIKEN = (n) => [TF('{n} Technik', '{n} technique', { n }), TF('{n} Techniken', '{n} techniques', { n })][n === 1 ? 0 : 1];
+const ANZ_FRAGEN = (n) => [TF('{n} Frage', '{n} question', { n }), TF('{n} Fragen', '{n} questions', { n })][n === 1 ? 0 : 1];
 const PRUEF_ANZAHL = () => GUERTEL.reduce((s, g) => s + Math.min(PRUEF_JE_GUERTEL, POOL.filter(t => t.guertel === g.nr).length), 0);
 
 function baueStart() {
@@ -389,13 +450,13 @@ function baueStart() {
   <div class="hero__band" aria-hidden="true">${GUERTEL.map(g => `<span data-guertel-nr="${g.nr}"></span>`).join('')}</div>
   <span class="label">${esc(`${NAME} · ${ZUSATZ}`)}</span>
   <h1 id="h1">${T('Welcher <span class="strich">Flow-Gürtel</span> bist du?', 'Which <span class="strich">flow belt</span> are you?')}</h1>
-  <p class="lead">${T(`${PRUEF_ANZAHL()} Fragen, rund vier Minuten. Danach weisst du, was du als Nächstes lernst.`, `${PRUEF_ANZAHL()} questions, about four minutes. Then you know what to learn next.`)}</p>
+  <p class="lead">${TF('{n} Fragen, rund vier Minuten. Danach weisst du, was du als Nächstes lernst.', '{n} questions, about four minutes. Then you know what to learn next.', { n: PRUEF_ANZAHL() })}</p>
   <div class="knopf-reihe"><a class="knopf knopf--primaer" href="pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a><a class="knopf" href="premium/">${T('Reicht meine Lizenz?', 'Is my license enough?')}</a></div>
   <span class="hero__tusch">${tusch('ruhe')}</span>
 </section>
 <section class="block" aria-labelledby="h-lizenz"><div class="wrap sektion--eng">
   <div class="lcheck">
-    <span class="label">${T(`Lizenz-Check, Frage 1 von ${lq.length}`, `License check, question 1 of ${lq.length}`)}</span>
+    <span class="label">${TF('Lizenz-Check, Frage 1 von {n}', 'License check, question 1 of {n}', { n: lq.length })}</span>
     <h2 id="h-lizenz">${T('Reicht die Lizenz aus Microsoft 365 für deinen Flow?', 'Is the license from Microsoft 365 enough for your flow?')}</h2>
     <p class="lcheck__frage">${esc(q1.frage)}</p>
     <ul class="antworten antworten--drei">${q1.optionen.map((o, i) => `<li><a class="antwort" href="premium/?q1=${o.v}#q2"><span class="antwort__b" aria-hidden="true">${BUCHST[i]}</span><span>${esc(o.text)}</span></a></li>`).join('')}</ul>
@@ -405,9 +466,9 @@ function baueStart() {
 <section class="block" aria-labelledby="h-weiter-dojo"><div class="wrap sektion--eng">
   <h2 id="h-weiter-dojo">${T('Weiter im Dojo', 'More in the Dojo')}</h2>
   <ul class="weiter-dojo-liste">
-    <li><a href="${T('https://powerplatformdojo.com/lernpfade/', 'https://powerplatformdojo.com/en/lernpfade/')}" rel="noopener">${T('Lernpfade: in 7 Wochen zur eigenen App', 'Learning paths: build your own app in 7 weeks')}</a></li>
-    <li><a href="${T('https://powerplatformdojo.com/mentoring/', 'https://powerplatformdojo.com/en/mentoring/')}" rel="noopener">${T('Dojo Mentoring: 1:1 mit einem Sensei, 3 Monate, gratis', 'Dojo mentoring: 1:1 with a sensei, 3 months, free')}</a></li>
-    <li><a href="https://copilot.ninja/" rel="noopener">${T('Weitere Disziplin: Copilot Ninja', 'Further discipline: Copilot Ninja')}</a></li>
+    <li><a href="${esc(POWERPLATFORM_LERNPFADE())}" rel="noopener">${T('Lernpfade: in 7 Wochen zur eigenen App', 'Learning paths: build your own app in 7 weeks')}</a></li>
+    <li><a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">${T('Dojo Mentoring: 1:1 mit einem Sensei, 3 Monate, gratis', 'Dojo mentoring: 1:1 with a sensei, 3 months, free')}</a></li>
+    <li><a href="${esc(COPILOT_DOJO())}" rel="noopener">${T('Weitere Disziplin: Copilot Ninja', 'Further discipline: Copilot Ninja')}</a></li>
   </ul>
   <p class="klein">${T('Gratis Live-Workshops und bezahlte Kurse findest du in der <a href="https://www.powerplatformacademy.online/" rel="noopener">Power Platform Academy</a>.', 'You can find free live workshops and paid courses at the <a href="https://www.powerplatformacademy.online/" rel="noopener">Power Platform Academy</a>.')}</p>
 </div></section>
@@ -423,7 +484,7 @@ function baueStart() {
   <p class="knopf-reihe"><a class="knopf" href="techniken/">${T('Alle Techniken ansehen', 'See all techniques')}</a></p>
 </div></section>
 <section class="block" aria-label="${T('Absender', 'About the author')}"><div class="wrap sektion--eng">
-  <div class="absender-block">${tusch('zeigen')}<p class="absender">${T('Von Marcel Lehmann, KMUpower. Die Fragen stammen aus den wöchentlichen Tipps auf powerplatformtip.com. Wer Flows mit Begleitung lernen will', 'By Marcel Lehmann, KMUpower. The questions come from the weekly tips on powerplatformtip.com. If you want to learn flows with guidance')}: <a href="${esc(kursUrl('start'))}" rel="noopener">${esc(KURS_NAME())}</a>${T('', ' (in German)')}. ${T('Dasselbe Dojo für Microsoft Copilot Chat und Copilot Studio', 'The same dojo for Microsoft Copilot Chat and Copilot Studio')}: <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>.</p></div>
+  <div class="absender-block">${tusch('zeigen')}<p class="absender">${T('Von Marcel Lehmann, KMUpower. Die Fragen stammen aus den wöchentlichen Tipps auf powerplatformtip.com. Wer Flows mit Begleitung lernen will', 'By Marcel Lehmann, KMUpower. The questions come from the weekly tips on powerplatformtip.com. If you want to learn flows with guidance')}: <a href="${esc(kursUrl('start'))}" rel="noopener">${esc(KURS_NAME())}</a>${AUF_DEUTSCH()}. ${T('Dasselbe Dojo für Microsoft Copilot Chat und Copilot Studio', 'The same dojo for Microsoft Copilot Chat and Copilot Studio')}: <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>.</p></div>
 </div></section>
 </main>`;
   seite('index.html', {
@@ -432,7 +493,8 @@ function baueStart() {
     ogTitel: T('Welcher Flow-Gürtel bist du?', 'Which flow belt are you?'), jsonld: [LD_WEBSITE(), LD_ORG]
   });
 }
-const KURS_NAME = () => T(`${CFG.kurs_name} der Power Platform Academy`, 'Power Automate live course of the Power Platform Academy');
+const AUF_DEUTSCH = () => (L === 'de' ? '' : ' ' + T('(auf Deutsch)', '(in German)'));
+const KURS_NAME = () => TF('{kurs} der Power Platform Academy', 'Power Automate live course of the Power Platform Academy', { kurs: CFG.kurs_name });
 // Kursstatus wie auf der Kursseite der Academy (17.10.2026: «Auf die Warteliste», «Neue Termine folgen in Kürze»), Feld kurs_status in
 // site.config.json. Steuert jede Kurszeile (Technik-Seiten, Gürtelprüfung). Sobald Termine buchbar sind: "termine". Gleiche Regel in copilot-ninja.
 const KURS_LINK_NAME = () => T(CFG.kurs_name, 'Power Automate live course');
@@ -442,7 +504,7 @@ const kursStatusSatz = () => CFG.kurs_status === 'warteliste'
 // Kurszeile der gemeinsamen Dojo-Vorlage (UX-Review 17.10.2026, Q12): gleicher Satzbau wie copilot.ninja, unter «Nächste Technik»
 function kursZeile(stelle) {
   const link = `<a href="${esc(kursUrl(stelle))}" rel="noopener">${esc(KURS_LINK_NAME())}</a>`;
-  return `<p class="kurs-zeile" data-kurs-status="${esc(CFG.kurs_status)}">${T(`Lieber mit Begleitung weiter? Der ${link} der Power Platform Academy läuft über vier Wochen. `, `Prefer to continue with guidance? The ${link} (in German) at the Power Platform Academy runs over four weeks. `)}${kursStatusSatz()}</p>`;
+  return `<p class="kurs-zeile" data-kurs-status="${esc(CFG.kurs_status)}">${TF('Lieber mit Begleitung weiter? Der {link} der Power Platform Academy läuft über vier Wochen. ', 'Prefer to continue with guidance? The {link} (in German) at the Power Platform Academy runs over four weeks. ', { link })}${kursStatusSatz()}</p>`;
 }
 
 function filterHtml() {
@@ -473,14 +535,14 @@ ${krumenHtml(r, [[T('Techniken', 'Techniques'), './']])}
 <div class="sektion--eng">
 <span class="label">${T('Technik-Wand', 'Technique wall')}</span>
 <h1 id="h1">${T('Alle Techniken', 'All techniques')}</h1>
-<p class="lead">${T(`${SEITEN.length} Techniken mit Quizfrage, Erklärung und Ausdruck. Jede verweist auf den ganzen Tipp mit Screenshots auf powerplatformtip.com.`, `${SEITEN.length} techniques with a quiz question, explanation and expression. Each one links to the full tip with screenshots on powerplatformtip.com.`)}</p>
+<p class="lead">${TF('{n} Techniken mit Quizfrage, Erklärung und Ausdruck. Jede verweist auf den ganzen Tipp mit Screenshots auf powerplatformtip.com.', '{n} techniques with a quiz question, explanation and expression. Each one links to the full tip with screenshots on powerplatformtip.com.', { n: SEITEN.length })}</p>
 ${filterHtml()}
 </div>
 ${abschnitte}
 </div></main>`;
   seite('techniken/index.html', {
-    seite: 'wand', titel: T(`Alle Techniken für Flows nach Gürtel | ${TITEL_SUFFIX}`, `All techniques for flows by belt | ${TITEL_SUFFIX}`), haupt,
-    beschreibung: T(`${SEITEN.length} Techniken für Flows in Power Automate, nach Gürtel geordnet. Jede mit Quizfrage, Erklärung auf Deutsch und Link zum ganzen Tipp.`, `${SEITEN.length} techniques for flows in Power Automate, ordered by belt. Each with a quiz question, explanation and a link to the full tip.`),
+    seite: 'wand', titel: T('Alle Techniken für Flows nach Gürtel', 'All techniques for flows by belt') + ` | ${TITEL_SUFFIX}`, haupt,
+    beschreibung: TF('{n} Techniken für Flows in Power Automate, nach Gürtel geordnet. Jede mit Quizfrage, Erklärung auf Deutsch und Link zum ganzen Tipp.', '{n} techniques for flows in Power Automate, ordered by belt. Each with a quiz question, explanation and a link to the full tip.', { n: SEITEN.length }),
     jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'CollectionPage', name: T('Alle Techniken', 'All techniques'), url: `${BL()}techniken/`, inLanguage: LANG_HTML(), mainEntity: { '@type': 'ItemList', itemListElement: SEITEN.map((t, i) => ({ '@type': 'ListItem', position: i + 1, url: urlTechnik(t), name: t.titel_de })) } }, krumen([[T('Start', 'Home'), BL()], [T('Techniken', 'Techniques'), `${BL()}techniken/`]])]
   });
 }
@@ -533,7 +595,7 @@ ${kurs}
   seite(`techniken/${t.slug}/index.html`, {
     seite: 'technik', titel: `${t.titel_de} | ${TITEL_SUFFIX}`, haupt, noindex: !indexierbar, ogTyp: 'article',
     ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`,
-    beschreibung: T(`${t.titel_de}: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.`, `${t.titel_de}: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.`).slice(0, 160),
+    beschreibung: TF('{titel}: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.', '{titel}: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.', { titel: t.titel_de }).slice(0, 160),
     jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'LearningResource', '@id': `${url}#technik`, name: t.titel_de, url, inLanguage: LANG_HTML(), learningResourceType: 'Quiz', educationalLevel: g.name, isBasedOn: t.tipp_url, citation: [t.learn_url, ...(t.lizenz_belege || []).map(b => b.url)], publisher: { '@id': LD_ORG['@id'] }, isPartOf: { '@id': `${BL()}#website` }, hasPart: { '@id': `${url}#quiz` } },
       { '@type': 'Quiz', '@id': `${url}#quiz`, name: `${T('Quizfrage', 'Quiz question')}: ${t.titel_de}`, inLanguage: LANG_HTML(), educationalLevel: g.name, about: { '@type': 'Thing', name: 'Power Automate' }, isBasedOn: t.tipp_url,
         hasPart: [{ '@type': 'Question', eduQuestionType: 'Multiple choice', learningResourceType: 'Practice problem', name: q.frage, text: q.frage,
@@ -553,7 +615,7 @@ function baueHeute() {
 <div data-heute data-heute-alle>${t ? quizKarte(t, '../', 'h2') : `<p class="leer-hinweis">${T('Die erste Technik des Tages folgt.', 'The first technique of the day is coming soon.')}</p>`}</div>
 <p class="knopf-reihe"><a class="knopf" href="../kalender/montag.ics" download>${T('Jeden Montag eine Frage im Kalender', 'A question in your calendar every Monday')}</a><a class="knopf knopf--leise" href="../techniken/">${T('Alle Techniken', 'All techniques')}</a></p>
 </div></main>`;
-  seite('heute/index.html', { seite: 'heute', titel: T(`Technik des Tages | ${TITEL_SUFFIX}`, `Technique of the day | ${TITEL_SUFFIX}`), haupt, beschreibung: T('Jeden Tag eine Quizfrage zu Flows in Power Automate, mit Auflösung und Erklärung.', 'A quiz question about flows in Power Automate every day, with solution and explanation.') });
+  seite('heute/index.html', { seite: 'heute', titel: T('Technik des Tages', 'Technique of the day') + ` | ${TITEL_SUFFIX}`, haupt, beschreibung: T('Jeden Tag eine Quizfrage zu Flows in Power Automate, mit Auflösung und Erklärung.', 'A quiz question about flows in Power Automate every day, with solution and explanation.') });
 }
 
 function bauePruefung() {
@@ -562,10 +624,10 @@ function bauePruefung() {
 ${krumenHtml('../', [[T('Gürtelprüfung', 'Belt exam'), './']])}
 ${dojoKopf(`<span class="label">${T('Selbsttest', 'Self-assessment')}</span>
 <h1 id="h1">${T('Gürtelprüfung', 'Belt exam')}</h1>
-<p class="lead">${T(`${n} Fragen von Weiss bis Schwarz, zwei je Gürtel. Die letzten zwei sind die Meisterprüfung. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.`, `${n} questions from white to black, two per belt. The last two are the master exam. Two wrong answers in one belt end the exam.`)}</p>`)}
+<p class="lead">${TF('{n} Fragen von Weiss bis Schwarz, zwei je Gürtel. Die letzten zwei sind die Meisterprüfung. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.', '{n} questions from white to black, two per belt. The last two are the master exam. Two wrong answers in one belt end the exam.', { n })}</p>`)}
 <div data-pruefung data-anzahl="${n}">
 <p class="knopf-reihe"><button type="button" class="knopf knopf--primaer" data-pruefung-start data-nur-js>${T('Prüfung starten', 'Start the exam')}</button></p>
-<p class="klein" data-nur-js>${T(`Die Fragen kommen zufällig aus ${POOL.length} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.`, `The questions are drawn at random from ${POOL.length} questions on the tips. Your result stays in your browser.`)}</p>
+<p class="klein" data-nur-js>${TF('Die Fragen kommen zufällig aus {n} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.', 'The questions are drawn at random from {n} questions on the tips. Your result stays in your browser.', { n: POOL.length })}</p>
 <p class="leer-hinweis" data-ohne-js>${T('Die Gürtelprüfung braucht JavaScript. Alle Fragen mit Auflösung findest du auch auf den', 'The belt exam needs JavaScript. You also find questions with solutions on the')} <a href="../techniken/">${T('Technik-Seiten', 'technique pages')}</a>.</p>
 </div>
 <section class="abschnitt" aria-labelledby="h-regeln"><h2 id="h-regeln">${T('So wird gewertet', 'How it is scored')}</h2>
@@ -573,8 +635,8 @@ ${dojoKopf(`<span class="label">${T('Selbsttest', 'Self-assessment')}</span>
 </section>
 </div></main>`;
   seite('pruefung/index.html', {
-    seite: 'pruefung', titel: T(`Gürtelprüfung für Flows | ${TITEL_SUFFIX}`, `Belt exam for flows | ${TITEL_SUFFIX}`), haupt, js: ['pruefung.js'],
-    beschreibung: T(`Welcher Flow-Gürtel bist du? ${n} Fragen zu Flows in Power Automate, von Weiss bis Schwarz, mit Ergebnisbild zum Teilen.`, `Which flow belt are you? ${n} questions about flows in Power Automate, from white to black, with a result image to share.`),
+    seite: 'pruefung', titel: T('Gürtelprüfung für Flows', 'Belt exam for flows') + ` | ${TITEL_SUFFIX}`, haupt, js: ['pruefung.js'],
+    beschreibung: TF('Welcher Flow-Gürtel bist du? {n} Fragen zu Flows in Power Automate, von Weiss bis Schwarz, mit Ergebnisbild zum Teilen.', 'Which flow belt are you? {n} questions about flows in Power Automate, from white to black, with a result image to share.', { n }),
     ogTitel: T('Welcher Flow-Gürtel bist du?', 'Which flow belt are you?'), jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [T('Gürtelprüfung', 'Belt exam'), `${BL()}pruefung/`]])]
   });
 }
@@ -587,10 +649,10 @@ function bauePremium() {
 ${q.hinweis ? `<p class="klein">${esc(q.hinweis)}</p>` : ''}
 ${q.optionen.map(o => `<label class="wahl"><input type="radio" name="${q.id}" value="${o.v}" data-wirkung="${o.wirkung}" data-punkt="${esc(o.punkt || '')}"><span>${esc(o.text)}</span></label>`).join('\n')}
 </fieldset>`).join('\n');
-  const stand = T(datumCH(LIMITS.stand), LIMITS.stand);
+  const stand = DATUM_ANZEIGE(LIMITS.stand);
   const haupt = `<main id="main"><div class="wrap sektion--eng pruef">
 ${krumenHtml('../', [[T('Lizenz-Check', 'License check'), './']])}
-<span class="label">${T(`Lizenz-Check, Stand ${stand}`, `License check, as of ${stand}`)}</span>
+<span class="label">${TF('Lizenz-Check, Stand {stand}', 'License check, as of {stand}', { stand })}</span>
 <h1 id="h1">${T('Reicht meine Lizenz?', 'Is my license enough?')}</h1>
 <p class="lead">${T('Vier Fragen zu deinem Flow als erste Einschätzung. Welche Lizenz hast du schon? Auch vorhandene Nutzungsrechte und der Kontext des Flows zählen.', 'Four questions about your flow for an initial assessment. Which license do you already have? Existing usage rights and the context of the flow matter too.')}</p>
 <p class="lizenz-hinweis">${T('Keine Lizenzberatung. Lizenzen und Preise können sich seit der Veröffentlichung geändert haben. Die Angaben sind ein Anhaltspunkt.', 'Not licensing advice. Licences and prices may have changed since publication. The information is a guide only.')}</p>
@@ -611,14 +673,14 @@ ${T(`<li>Microsoft-365-Lizenzen mit Power-Automate-Nutzungsrechten decken nur St
 <li>If a flow uses premium connectors, the owner needs the license for automated and scheduled flows, and every person who starts it needs one for instant flows. Instead of licensing every person, you can license the flow with Process.</li>
 <li>Which license do you already have? Check assignments in your tenant or ask your IT team or Microsoft partner.</li>`)}
 </ul>
-<p class="klein">${T(`Quellen, Stand ${stand}`, `Sources, as of ${stand}`)}: ${LQUELLEN().map(q => `<a href="${q.url}" rel="noopener">${esc(q.titel)}</a>`).join(', ')}.</p>
+<p class="klein">${TF('Quellen, Stand {stand}', 'Sources, as of {stand}', { stand })}: ${LQUELLEN().map(q => `<a href="${q.url}" rel="noopener">${esc(q.titel)}</a>`).join(', ')}.</p>
 </section>
 <section class="abschnitt" aria-labelledby="h-standard"><h2 id="h-standard">${T('Diese Techniken laufen mit Standard', 'These techniques run with Standard')}</h2>
 <ul class="dojo-liste">${standard.map(t => `<li data-guertel-nr="${t.guertel}">${bandPunkt(t.guertel)}<a href="../techniken/${t.slug}/">${esc(t.titel_de)}</a></li>`).join('')}</ul>
 </section>
 </div></main>`;
   seite('premium/index.html', {
-    seite: 'premium', titel: T(`Reicht meine Lizenz für Flows? Lizenz-Check | ${TITEL_SUFFIX}`, `Is my license enough for flows? License check | ${TITEL_SUFFIX}`), haupt, js: ['premium.js'],
+    seite: 'premium', titel: T('Reicht meine Lizenz für Flows? Lizenz-Check', 'Is my license enough for flows? License check') + ` | ${TITEL_SUFFIX}`, haupt, js: ['premium.js'],
     beschreibung: T('Lizenz-Check für deinen Flow: erste Einschätzung zu Standard, Premium und vorhandenen Nutzungsrechten. Mit Quellen bei Microsoft Learn.', 'License check for your flow: an initial assessment of standard, premium and existing usage rights. With sources on Microsoft Learn.'),
     jsonld: [LD_WEBSITE(), LD_ORG, krumen([[T('Start', 'Home'), BL()], [T('Lizenz-Check', 'License check'), `${BL()}premium/`]])]
   });
@@ -631,13 +693,13 @@ function baueGuertel(g) {
   const naechster = GUERTEL[g.nr];
   const haupt = `<main id="main" data-guertel-seite="${g.nr}"><div class="wrap sektion--eng">
 ${krumenHtml(r, [[T('Gürtelweg', 'Belt path'), '../../techniken/'], [g.name, './']])}
-<div class="ergebnis__abzeichen guertel-kopf">${abzeichenSvg(g.nr)}<span class="guertel-kopf__tusch" data-guertel-nr="${g.nr}">${tusch('ruhe')}</span><div><span class="label">${T(`Stufe ${g.nr} von 7`, `Level ${g.nr} of 7`)}</span><h1 id="h1">${esc(g.name)}: ${esc(g.leitwort)}</h1></div></div>
+<div class="ergebnis__abzeichen guertel-kopf">${abzeichenSvg(g.nr)}<span class="guertel-kopf__tusch" data-guertel-nr="${g.nr}">${tusch('ruhe')}</span><div><span class="label">${TF('Stufe {nr} von 7', 'Level {nr} of 7', { nr: g.nr })}</span><h1 id="h1">${esc(g.name)}: ${esc(g.leitwort)}</h1></div></div>
 <p class="lead">${esc(g.erreicht_satz)}</p>
 <section class="abschnitt" aria-labelledby="h-kann"><h2 id="h-kann">${T('Das kannst du mit diesem Gürtel', 'What you can do with this belt')}</h2><p>${esc(g.kannst_du)}</p>
-<p class="klein">${T(`${drin.length} ${drin.length === 1 ? 'Technik' : 'Techniken'} mit eigener Seite, ${fr} ${fr === 1 ? 'Frage' : 'Fragen'} in der ${g.nr === 7 ? 'Meisterprüfung' : 'Gürtelprüfung'}.`, `${drin.length} ${drin.length === 1 ? 'technique' : 'techniques'} with their own page, ${fr} ${fr === 1 ? 'question' : 'questions'} in the ${g.nr === 7 ? 'master exam' : 'belt exam'}.`)}</p>
+<p class="klein">${g.nr === 7 ? TF('{tk} mit eigener Seite, {fr} in der Meisterprüfung.', '{tk} with their own page, {fr} in the master exam.', { tk: ANZ_TECHNIKEN(drin.length), fr: ANZ_FRAGEN(fr) }) : TF('{tk} mit eigener Seite, {fr} in der Gürtelprüfung.', '{tk} with their own page, {fr} in the belt exam.', { tk: ANZ_TECHNIKEN(drin.length), fr: ANZ_FRAGEN(fr) })}</p>
 </section>
 ${drin.length ? `<ul class="karten">${drin.map(t => karte(t, r)).join('\n')}</ul>` : ''}
-<p class="knopf-reihe"><a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>${naechster ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${esc(T('Weiter zum ' + naechster.akk.replace(/^den /, ''), 'On to the ' + naechster.name.toLowerCase()))}</a>` : ''}</p>
+<p class="knopf-reihe"><a class="knopf knopf--primaer" href="${r}pruefung/">${T('Gürtelprüfung starten', 'Start the belt exam')}</a>${naechster ? `<a class="knopf" href="${r}guertel/${naechster.farbe}/">${esc(TF('Weiter zum {g}', 'On to the {g}', { g: GURT_IM_SATZ(naechster) }))}</a>` : ''}</p>
 <p class="sensei-hinweis klein" data-sensei-hinweis hidden>${SENSEI_HINWEIS()}</p>
 </div></main>`;
   seite(`guertel/${g.farbe}/index.html`, {
@@ -663,15 +725,16 @@ ${dojoKopf(`<span class="label">${T('Dein Fortschritt', 'Your progress')}</span>
 ${liste}
 <section class="abschnitt" aria-labelledby="h-loeschen"><h2 id="h-loeschen">${T('Daten löschen', 'Delete data')}</h2><p>${T('Dein Fortschritt liegt nur im lokalen Speicher dieses Browsers. Mit einem Klick ist er weg.', 'Your progress is only stored in the local storage of this browser. One click and it is gone.')}</p><p><button type="button" class="knopf knopf--leise" data-dojo-loeschen data-nur-js>${T('Alles löschen', 'Delete everything')}</button></p><p class="status-zeile" data-dojo-meldung role="status" aria-live="polite"></p></section>
 </div></main>`;
-  seite('dojo/index.html', { seite: 'dojo', titel: T(`Mein Dojo | ${TITEL_SUFFIX}`, `My dojo | ${TITEL_SUFFIX}`), haupt, beschreibung: T('Dein Fortschritt im Power Platform Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the Power Platform Dojo: practiced techniques and your belt from the exam.') });
+  seite('dojo/index.html', { seite: 'dojo', titel: T('Mein Dojo', 'My dojo') + ` | ${TITEL_SUFFIX}`, haupt, beschreibung: T('Dein Fortschritt im Power Platform Dojo: geübte Techniken und dein Gürtel aus der Prüfung.', 'Your progress in the Power Platform Dojo: practiced techniques and your belt from the exam.') });
 }
 
+const WERTE_RECHT = () => ({ dojo: esc(POWERPLATFORM_DOJO()), copilot: esc(COPILOT_DOJO()), lernpfade: esc(POWERPLATFORM_LERNPFADE()), mentoring: esc(POWERPLATFORM_MENTORING()), kontakt: CFG.kontakt });
 function baueRecht() {
   const r = '../';
   const ueber = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Über', 'About'), './']])}
 <div class="prose sektion--eng">
-${T(`<h1 id="h1">Über das Dojo</h1>
+${TF(`<h1 id="h1">Über das Dojo</h1>
 <p class="lead">Das Power Platform Dojo für Power Automate prüft und erklärt auf Deutsch, was die Tipps auf powerplatformtip.com zeigen. Eine Frage nach der anderen, vom ersten Test bis zur Architektur.</p>
 <h2>Wie es funktioniert</h2>
 <ul class="arrow-list">
@@ -686,9 +749,9 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 <h2>Was das Dojo nicht ist</h2>
 <p>Kein Angebot von Microsoft, keine Zertifizierung und keine Lizenzberatung im Einzelfall. Die Gürtel sind eine Lernhilfe dieser Seite.</p>
 <h2>Power Platform Dojo</h2>
-<p>Power Platform Dojo findest du auf <a href="${esc(POWERPLATFORM_DOJO())}" rel="noopener">powerplatformdojo.com</a>. Weitere Disziplinen: <a href="${esc(COPILOT_DOJO())}" rel="noopener">copilot.ninja</a>, <a href="${esc(POWERPLATFORM_LERNPFADE())}" rel="noopener">Lernpfade</a> und <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Dojo Mentoring</a>.</p>
+<p>Power Platform Dojo findest du auf <a href="{dojo}" rel="noopener">powerplatformdojo.com</a>. Weitere Disziplinen: <a href="{copilot}" rel="noopener">copilot.ninja</a>, <a href="{lernpfade}" rel="noopener">Lernpfade</a> und <a href="{mentoring}" rel="noopener">Dojo Mentoring</a>.</p>
 <h2>Fehler gefunden?</h2>
-<p>Auf jeder Technik-Seite gibt es den Link «Fehler in dieser Frage melden». Oder schreib direkt an <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>
+<p>Auf jeder Technik-Seite gibt es den Link «Fehler in dieser Frage melden». Oder schreib direkt an <a href="mailto:{kontakt}">{kontakt}</a>.</p>
 <p>Wer Flows mit Begleitung lernen will: `, `<h1 id="h1">About the dojo</h1>
 <p class="lead">The Power Platform Dojo for Power Automate tests and explains what the tips on powerplatformtip.com show. One question after another, from the first test to architecture.</p>
 <h2>How it works</h2>
@@ -704,21 +767,21 @@ ${T(`<h1 id="h1">Über das Dojo</h1>
 <h2>What the dojo is not</h2>
 <p>Not a Microsoft offering, not a certification and no licensing advice for individual cases. The belts are a learning aid of this website.</p>
 <h2>Power Platform Dojo</h2>
-<p>Find the Power Platform Dojo at <a href="${esc(POWERPLATFORM_DOJO())}" rel="noopener">powerplatformdojo.com</a>. More disciplines: <a href="${esc(COPILOT_DOJO())}" rel="noopener" hreflang="en">copilot.ninja</a>, <a href="${esc(POWERPLATFORM_LERNPFADE())}" rel="noopener">learning paths</a> and <a href="${esc(POWERPLATFORM_MENTORING())}" rel="noopener">Dojo Mentoring</a>.</p>
+<p>Find the Power Platform Dojo at <a href="{dojo}" rel="noopener">powerplatformdojo.com</a>. More disciplines: <a href="{copilot}" rel="noopener" hreflang="en">copilot.ninja</a>, <a href="{lernpfade}" rel="noopener">learning paths</a> and <a href="{mentoring}" rel="noopener">Dojo Mentoring</a>.</p>
 <h2>Found an error?</h2>
-<p>Every technique page has the link "Report an error in this question". Or write directly to <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a>.</p>
-<p>If you want to learn flows with guidance: `)}<a href="${esc(kursUrl('ueber'))}" rel="noopener">${esc(KURS_NAME())}</a>${T('', ' (in German)')}.</p>
+<p>Every technique page has the link "Report an error in this question". Or write directly to <a href="mailto:{kontakt}">{kontakt}</a>.</p>
+<p>If you want to learn flows with guidance: `, WERTE_RECHT())}<a href="${esc(kursUrl('ueber'))}" rel="noopener">${esc(KURS_NAME())}</a>${AUF_DEUTSCH()}.</p>
 </div></div></main>`;
-  seite('ueber/index.html', { seite: 'ueber', titel: T(`Über das Dojo | ${TITEL_SUFFIX}`, `About the dojo | ${TITEL_SUFFIX}`), haupt: ueber, beschreibung: T('Wie das Power Platform Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.', 'How the Power Platform Dojo works, where the questions come from and what the site is not.') });
+  seite('ueber/index.html', { seite: 'ueber', titel: T('Über das Dojo', 'About the dojo') + ` | ${TITEL_SUFFIX}`, haupt: ueber, beschreibung: T('Wie das Power Platform Dojo funktioniert, woher die Fragen kommen und was die Seite nicht ist.', 'How the Power Platform Dojo works, where the questions come from and what the site is not.') });
 
   const impressum = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Impressum', 'Legal notice'), './']])}
 <div class="prose sektion--eng">
-${T(`<h1 id="h1">Impressum</h1>
+${TF(`<h1 id="h1">Impressum</h1>
 <h2>Anbieter</h2>
 <address>Marcel Lehmann<br>Einzelfirma (Handelsname KMUpower)<br>Weidstrasse 1<br>8320 Fehraltorf<br>Schweiz</address>
 <p>UID: CHE-296.591.945, im UID-Register erfasst seit 01.01.2023 (<a href="https://www.uid.admin.ch/Detail.aspx?uid_id=CHE-296.591.945" rel="noopener">Eintrag im UID-Register</a>).</p>
-<p>E-Mail: <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a><br>Web: <a href="https://kmupower.com/" rel="noopener">kmupower.com</a></p>
+<p>E-Mail: <a href="mailto:{kontakt}">{kontakt}</a><br>Web: <a href="https://kmupower.com/" rel="noopener">kmupower.com</a></p>
 <h2>Verantwortlich für den Inhalt</h2>
 <p>Marcel Lehmann.</p>
 <h2>Unabhängigkeit und Marken</h2>
@@ -732,7 +795,7 @@ ${T(`<h1 id="h1">Impressum</h1>
 <h2>Provider</h2>
 <address>Marcel Lehmann<br>Sole proprietorship (trade name KMUpower)<br>Weidstrasse 1<br>8320 Fehraltorf<br>Switzerland</address>
 <p>UID: CHE-296.591.945, listed in the Swiss UID register since 01.01.2023 (<a href="https://www.uid.admin.ch/Detail.aspx?uid_id=CHE-296.591.945" rel="noopener">entry in the UID register</a>).</p>
-<p>Email: <a href="mailto:${CFG.kontakt}">${CFG.kontakt}</a><br>Web: <a href="https://kmupower.com/" rel="noopener">kmupower.com</a></p>
+<p>Email: <a href="mailto:{kontakt}">{kontakt}</a><br>Web: <a href="https://kmupower.com/" rel="noopener">kmupower.com</a></p>
 <h2>Responsible for the content</h2>
 <p>Marcel Lehmann.</p>
 <h2>Independence and trademarks</h2>
@@ -742,25 +805,25 @@ ${T(`<h1 id="h1">Impressum</h1>
 <h2>Links</h2>
 <p>This website links to third-party websites. Their providers are responsible for their content.</p>
 <h2>Copyright</h2>
-<p>You may use the expressions from the tips freely in your organization. You may not publish the other texts, questions or the design of this website as your own without asking first.</p>`)}
+<p>You may use the expressions from the tips freely in your organization. You may not publish the other texts, questions or the design of this website as your own without asking first.</p>`, WERTE_RECHT())}
 </div></div></main>`;
-  seite('impressum/index.html', { seite: 'recht', titel: T(`Impressum | ${TITEL_SUFFIX}`, `Legal notice | ${TITEL_SUFFIX}`), haupt: impressum, beschreibung: T('Impressum des Flow Dojo: Angaben zu Marcel Lehmann, KMUpower, Kontakt und Hinweise zur Website.', 'Flow Dojo legal notice: details of Marcel Lehmann, KMUpower, contact information and website notices.') });
+  seite('impressum/index.html', { seite: 'recht', titel: T('Impressum', 'Legal notice') + ` | ${TITEL_SUFFIX}`, haupt: impressum, beschreibung: T('Impressum des Flow Dojo: Angaben zu Marcel Lehmann, KMUpower, Kontakt und Hinweise zur Website.', 'Flow Dojo legal notice: details of Marcel Lehmann, KMUpower, contact information and website notices.') });
 
   const datenschutz = `<main id="main"><div class="wrap">
 ${krumenHtml(r, [[T('Datenschutz', 'Privacy'), './']])}
 <div class="prose sektion--eng">
-${render(lies(T('templates/datenschutz.html', 'templates/datenschutz.en.html')), { kontakt: CFG.kontakt, stand: T(datumCH(CFG.recht_stand), CFG.recht_stand), utm_source: CFG.utm_source }, 'datenschutz')}
+${render(lies(L === 'de' ? 'templates/datenschutz.html' : gibtEs(`templates/datenschutz.${L}.html`) ? `templates/datenschutz.${L}.html` : (fehler(`templates/datenschutz.${L}.html fehlt`), 'templates/datenschutz.en.html')), { kontakt: CFG.kontakt, stand: DATUM_ANZEIGE(CFG.recht_stand), utm_source: CFG.utm_source }, 'datenschutz')}
 </div></div></main>`;
-  seite('datenschutz/index.html', { seite: 'recht', titel: T(`Datenschutz | ${TITEL_SUFFIX}`, `Privacy | ${TITEL_SUFFIX}`), haupt: datenschutz, beschreibung: T('Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Fortschritt und Sprachwahl bleiben im Browser.', 'Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.') });
+  seite('datenschutz/index.html', { seite: 'recht', titel: T('Datenschutz', 'Privacy') + ` | ${TITEL_SUFFIX}`, haupt: datenschutz, beschreibung: T('Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Fortschritt und Sprachwahl bleiben im Browser.', 'Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.') });
 
   const b = BASIS_PFAD + PFX();
   seite('404.html', {
-    seite: '404', absolut: true, titel: T(`Seite nicht gefunden | ${TITEL_SUFFIX}`, `Page not found | ${TITEL_SUFFIX}`), noindex: true, beschreibung: T('Diese Seite gibt es nicht.', 'This page does not exist.'),
+    seite: '404', absolut: true, titel: T('Seite nicht gefunden', 'Page not found') + ` | ${TITEL_SUFFIX}`, noindex: true, beschreibung: T('Diese Seite gibt es nicht.', 'This page does not exist.'),
     haupt: `<main id="main"><div class="wrap sektion">
 ${tusch('spaehen', 'tusch--404')}
 <span class="label">${T('Fehler 404', 'Error 404')}</span>
 <h1 id="h1">${T('Diese Seite gibt es nicht.', 'This page does not exist.')}</h1>
-<p class="lead">${T(`Der Link ist falsch oder die Seite ist umgezogen. Eine Kurzadresse wie ${esc(KURZ_BASIS)}/158 führt direkt zur Technik zu diesem Tipp.`, `The link is wrong or the page has moved. A short link like ${esc(KURZ_BASIS)}/en/158 takes you straight to the technique for that tip.`)}</p>
+<p class="lead">${TF('Der Link ist falsch oder die Seite ist umgezogen. Eine Kurzadresse wie {kurz} führt direkt zur Technik zu diesem Tipp.', 'The link is wrong or the page has moved. A short link like {kurz} takes you straight to the technique for that tip.', { kurz: `${esc(KURZ_BASIS)}/${PFX()}158` })}</p>
 <div class="knopf-reihe"><a class="knopf knopf--primaer" href="${b}techniken/">${T('Zu den Techniken', 'To the techniques')}</a><a class="knopf" href="${b}pruefung/">${T('Gürtelprüfung', 'Belt exam')}</a><a class="knopf knopf--leise" href="${b}">${T('Zur Startseite', 'To the home page')}</a></div>
 </div></main>`
   });
@@ -791,26 +854,45 @@ ${GENERATOR}
   }
 }
 
-/* Daten fuer Skripte, Kalender je Sprache (assets/data/*.json Deutsch, *-en.json Englisch) */
+// Guertel mitten im Satz: «im weissen Gürtel», «in the white belt», weitere Sprachen mit Artikel aus akk («la ceinture blanche»)
+const GURT_IM_SATZ = (g) => (L === 'de' ? g.akk.replace(/^den /, '') : L === 'en' ? g.name.toLowerCase() : g.akk);
+/* Texte der Skripte (tx('deutsch', 'english') in assets/js) fuer weitere Sprachen: assets/js/i18n-<code>.js aus data/i18n/<code>.json (js).
+   Fehlt ein Text, bricht der Build ab. */
+const JS_DATEIEN = ['assets/js/site.js', 'assets/js/pruefung.js', 'assets/js/premium.js'];
+const JS_SCHLUESSEL = (() => {
+  const aus = {};
+  const str = String.raw`'((?:[^'\\]|\\.)*)'`;
+  const re = new RegExp(String.raw`\btxf?\(` + str + ', ' + str, 'g');
+  for (const f of JS_DATEIEN) for (const m of lies(f).matchAll(re)) aus[m[1].replace(/\\'/g, "'")] = m[2].replace(/\\'/g, "'");
+  return aus;
+})();
+function baueI18nJs() {
+  if (L === 'de' || L === 'en') return;
+  const js = (I18N[L] || {}).js || {};
+  const tx = {};
+  for (const [de, en] of Object.entries(JS_SCHLUESSEL)) { if (typeof js[de] === 'string' && js[de]) tx[de] = js[de]; else ((UI_FEHLT[`${L}:js`] ||= {})[de] = en); }
+  schreibe(`assets/js/i18n-${L}.js`, `/* Power Platform Dojo: Texte der Skripte auf ${META[L].name}. Erzeugt von scripts/build.mjs aus data/i18n/${L}.json, nicht hier bearbeiten. */\nwindow.FlowDojoI18n = ${JSON.stringify({ lang: L, typografie: META[L].typografie || '', guertel: GUERTEL.map(g => g.name), tx })};\n`);
+}
+/* Daten fuer Skripte, Kalender je Sprache (assets/data/*.json Deutsch, *-<code>.json weitere Sprachen) */
 function baueDaten() {
-  const sfx = L === 'en' ? '-en' : '';
+  const sfx = L === 'de' ? '' : `-${L}`;
   schreibe(`assets/data/suche${sfx}.json`, JSON.stringify({ eintraege: SEITEN.map(t => ({ k: t.schluessel, nr: t.tipp_nr, titel: t.titel_de, g: t.guertel, slug: t.slug, s: [t.thema, ...(t.suchbegriffe || [])].join(' ') })) }));
   const folge = (daten.tag_reihenfolge || []).map(k => NACH_KEY[k]).filter(t => t && t.seite);
   schreibe(`assets/data/tag${sfx}.json`, JSON.stringify({ start: daten.tag_start, eintraege: folge.map(t => ({ k: t.schluessel, slug: t.slug, titel: t.titel_de, g: t.guertel, lizenz: t.lizenz, start: FUER_START(t), frage: t.quiz.frage, antworten: t.quiz.antworten })) }));
   const pool = POOL.map(t => ({ k: t.schluessel, g: t.guertel, frage: t.quiz.frage, antworten: t.quiz.antworten, richtig: t.quiz.richtig_index, erkl: (t.quiz.erklaerungen || [])[t.quiz.richtig_index] || '', url: t.seite ? `techniken/${t.slug}/` : mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), tipp: mitUtm(t.tipp_url, `pruefung-${t.tipp_nr || 'artikel'}`), titel: t.seite ? t.titel_de : tippLabel(t), tipp_label: tippLabel(t), seite: !!t.seite }));
-  const guertel = GUERTEL.map(g => ({ nr: g.nr, farbe: g.farbe, name: g.name, akk: g.akk, kurz: g.kurz, leitwort: g.leitwort, kann: g.kannst_du, hex: g.hex, naechste: SEITEN.filter(t => t.guertel === g.nr).slice(0, 3).map(t => ({ titel: t.titel_de, url: `techniken/${t.slug}/` })) }));
-  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'en' ? '/en' : ''), je_guertel: PRUEF_JE_GUERTEL, dojo: { mentoring: POWERPLATFORM_MENTORING(), anmelden: POWERPLATFORM_MENTORING() + 'anmelden/', finden: POWERPLATFORM_MENTORING() + 'finden/' }, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME(), link_name: KURS_LINK_NAME(), status: CFG.kurs_status, status_satz: kursStatusSatz() }, guertel, fragen: pool }));
+  const guertel = GUERTEL.map(g => ({ nr: g.nr, farbe: g.farbe, name: g.name, akk: g.akk, satz: GURT_IM_SATZ(g), kurz: g.kurz, leitwort: g.leitwort, kann: g.kannst_du, hex: g.hex, naechste: SEITEN.filter(t => t.guertel === g.nr).slice(0, 3).map(t => ({ titel: t.titel_de, url: `techniken/${t.slug}/` })) }));
+  schreibe(`assets/data/pool${sfx}.json`, JSON.stringify({ base: BL(), kurz: KURZ_BASIS + (L === 'de' ? '' : `/${L}`), je_guertel: PRUEF_JE_GUERTEL, richtig_praefix: T('Richtig', 'Correct'), dojo: { mentoring: POWERPLATFORM_MENTORING(), anmelden: POWERPLATFORM_MENTORING() + 'anmelden/', finden: POWERPLATFORM_MENTORING() + 'finden/' }, kurs: { einstieg: kursUrl('pruefung-einstieg'), fortgeschritten: kursUrl('pruefung-fortgeschritten'), name: KURS_NAME(), link_name: KURS_LINK_NAME(), status: CFG.kurs_status, status_satz: kursStatusSatz() }, guertel, fragen: pool }));
 
   const montag = (() => { const d = new Date(DATUM + 'T00:00:00Z'); do d.setUTCDate(d.getUTCDate() + 1); while (d.getUTCDay() !== 1); return d.toISOString().slice(0, 10).replace(/-/g, ''); })();
-  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//Power Platform Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'en' ? '-en' : ''}@kmupower.com`,
-    `DTSTAMP:${DATUM.replace(/-/g, '')}T000000Z`, `DTSTART:${montag}T083000`, 'DURATION:PT10M', 'RRULE:FREQ=WEEKLY;BYDAY=MO', T(`SUMMARY:${NAME}: eine Frage`, `SUMMARY:${NAME}: one question`),
-    T(`DESCRIPTION:Zehn Minuten, eine Frage zu Flows. Die Technik des Tages steht unter ${BL()}heute/`, `DESCRIPTION:Ten minutes, one question about flows. The technique of the day is at ${BL()}heute/`), `URL:${BL()}heute/`, 'TRANSP:TRANSPARENT', 'END:VEVENT', 'END:VCALENDAR'];
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//KMUpower//Power Platform Dojo//${L.toUpperCase()}`, 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `UID:flow-dojo-montag${L === 'de' ? '' : `-${L}`}@kmupower.com`,
+    `DTSTAMP:${DATUM.replace(/-/g, '')}T000000Z`, `DTSTART:${montag}T083000`, 'DURATION:PT10M', 'RRULE:FREQ=WEEKLY;BYDAY=MO', `SUMMARY:${NAME}: ${T('eine Frage', 'one question')}`,
+    `DESCRIPTION:${TF('Zehn Minuten, eine Frage zu Flows. Die Technik des Tages steht unter {url}', 'Ten minutes, one question about flows. The technique of the day is at {url}', { url: `${BL()}heute/` })}`, `URL:${BL()}heute/`, 'TRANSP:TRANSPARENT', 'END:VEVENT', 'END:VCALENDAR'];
   schreibe(`${PFX()}kalender/montag.ics`, ics.map(falte).join('\r\n') + '\r\n');
 }
-/* Sitemap (beide Sprachen mit hreflang), robots, llms.txt: einmal nach beiden Sprachen */
+/* Sitemap (alle Sprachen mit hreflang), robots, llms.txt: einmal nach allen Sprachen */
 function baueSitemap(indexierbar) {
-  const alt = (p) => ['de', 'en'].map(s => `    <xhtml:link rel="alternate" hreflang="${s}" href="${BASE_URL}${s === 'en' ? 'en/' : ''}${p}"/>`).join('\n') + `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${p}"/>`;
-  const url = (p, sprache) => `  <url>\n    <loc>${BASE_URL}${sprache === 'en' ? 'en/' : ''}${p}</loc>\n    <lastmod>${daten.stand}</lastmod>\n${alt(p)}\n  </url>`;
+  const alt = (p) => SPRACHEN.map(s => `    <xhtml:link rel="alternate" hreflang="${s}" href="${BASE_URL}${pfxVon(s)}${p}"/>`).join('\n') + `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${p}"/>`;
+  const url = (p, sprache) => `  <url>\n    <loc>${BASE_URL}${pfxVon(sprache)}${p}</loc>\n    <lastmod>${daten.stand}</lastmod>\n${alt(p)}\n  </url>`;
   const eintraege = [];
   for (const s of SPRACHEN) {
     const pfade = ['', 'pruefung/', 'premium/', 'techniken/', ...FARBEN.map(f => `guertel/${f}/`), 'ueber/', 'impressum/', 'datenschutz/', ...indexierbar[s].map(t => `techniken/${t.slug}/`)];
@@ -825,13 +907,17 @@ function baueSitemap(indexierbar) {
   if (CFG.indexnow_key) { if (!/^[a-f0-9]{32}$/.test(CFG.indexnow_key)) fehler('indexnow_key: 32 Hexzeichen'); schreibe(`${CFG.indexnow_key}.txt`, CFG.indexnow_key); }
   if (CFG.domain && new URL(BASE_URL).hostname === CFG.domain) schreibe('CNAME', CFG.domain + '\n');
   setzeSprache('de');
-  const de = [`# ${NAME} · ${ZUSATZ}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch und Englisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
+  const de = [`# ${NAME} · ${ZUSATZ}`, '', `> Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch, Englisch, Französisch und Italienisch. Jede Technik beruht auf einem Tipp von powerplatformtip.com und verlinkt ihn. Lizenzangaben mit Quelle bei Microsoft Learn. Unabhängige Website von Marcel Lehmann (KMUpower), keine Verbindung zu Microsoft.`, '',
     '## Seiten', '', `- [Gürtelprüfung](${BASE_URL}pruefung/): Selbsttest von Weiss bis Schwarz mit Meisterprüfung`, `- [Lizenz-Check](${BASE_URL}premium/): Reicht die Lizenz aus Microsoft 365?`, `- [Alle Techniken](${BASE_URL}techniken/): nach Gürtel geordnet`, `- [Über](${BASE_URL}ueber/): Methode und Herkunft der Fragen`, '',
     'Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Details: ' + BASE_URL + 'datenschutz/', '', '## Techniken', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Grundlage: ${t.tipp_url}`), ''];
-  setzeSprache('en');
-  const en = ['## English', '', `- [Home](${BASE_URL}en/): English version`, `- [Belt exam](${BASE_URL}en/pruefung/): self-assessment from white to black with master exam`, `- [License check](${BASE_URL}en/premium/): is the license from Microsoft 365 enough?`, `- [All techniques](${BASE_URL}en/techniken/): ordered by belt`, '',
-    'Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page path and page title, but no query string or fragment. Details: ' + BASE_URL + 'en/datenschutz/', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. Based on: ${t.tipp_url}`), ''];
-  schreibe('llms.txt', [...de, ...en].join('\n'));
+  // Weitere Sprachen: gleicher Aufbau, Texte ueber T() (Englisch im Code, sonst data/i18n/<code>.json)
+  const weitere = SPRACHEN.filter(sp => sp !== 'de').flatMap(sp => {
+    setzeSprache(sp);
+    const b = BL();
+    return [`## ${META[sp].name}`, '', `- [${T('Startseite', 'Home')}](${b}): ${T('Fassung auf Deutsch', 'English version')}`, `- [${T('Gürtelprüfung', 'Belt exam')}](${b}pruefung/): ${T('Selbsttest von Weiss bis Schwarz mit Meisterprüfung', 'self-assessment from white to black with master exam')}`, `- [${T('Lizenz-Check', 'License check')}](${b}premium/): ${T('Reicht die Lizenz aus Microsoft 365?', 'is the license from Microsoft 365 enough?')}`, `- [${T('Alle Techniken', 'All techniques')}](${b}techniken/): ${T('nach Gürtel geordnet', 'ordered by belt')}`, '',
+      T('Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Die Zählanfrage enthält Seitenpfad und Seitentitel, aber keine Query-Zeichenfolge und kein Fragment. Details: ', 'Visits are counted without cookies; only totals without personal identifiers are stored. Count requests include the page path and page title, but no query string or fragment. Details: ') + b + 'datenschutz/', '', ...SEITEN.map(t => `- [${t.titel_de}](${urlTechnik(t)}): ${GUERTEL[t.guertel - 1].name}, ${t.lizenz === 'premium' ? 'Premium' : 'Standard'}. ${T('Grundlage', 'Based on')}: ${t.tipp_url}`), ''];
+  });
+  schreibe('llms.txt', [...de, ...weitere].join('\n'));
 }
 function falte(zeile) {
   if (Buffer.byteLength(zeile, 'utf8') <= 75) return zeile;
@@ -861,9 +947,17 @@ ${BAND_HEX.map((c, i) => `<rect x="${i * (1200 / 7)}" y="604" width="${1200 / 7 
 <g transform="translate(862 150) scale(2.55)">${tuschSvg(hex)}</g>
 </svg>
 `;
-  if (L === 'de') schreibe('og-image.svg', karteSvg('Welcher', 'Flow-Gürtel?', 'Fragen und Erklärungen zu Flows, auf Deutsch.', '#FBFAF5'));
-  else schreibe('assets/img/en/og-image.svg', karteSvg('Which', 'flow belt?', 'Questions and explanations on flows.', '#FBFAF5'));
-  for (const g of GUERTEL) schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(g.name.split(' ')[0], T('Gürtel', 'belt'), esc(g.erreicht_satz).slice(0, 70), g.hex));
+  const startKarte = karteSvg(esc(T('Welcher', 'Which')), esc(T('Flow-Gürtel?', 'flow belt?')), esc(T('Fragen und Erklärungen zu Flows, auf Deutsch.', 'Questions and explanations on flows.')), '#FBFAF5');
+  schreibe(L === 'de' ? 'og-image.svg' : `assets/img/${L}/og-image.svg`, startKarte);
+  // Zeile 1 erstes Wort des Guertelnamens, Zeile 2 der Rest (Weisser | Gürtel, White | belt, Ceinture | blanche, Cintura | bianca)
+  for (const g of GUERTEL) { const w = g.name.split(' '); schreibe(`assets/img/${PFX()}guertel-${g.farbe}.svg`, karteSvg(esc(w[0]), esc(w.slice(1).join(' ')), esc(kuerze(g.erreicht_satz, 54)), g.hex)); }
+}
+// Kuerzen an der Wortgrenze mit «…» (Unterzeile der Vorschaubilder, 54 Zeichen enden vor Tusch)
+function kuerze(text, max) {
+  const s = String(text || '');
+  if (s.length <= max) return s;
+  const schnitt = s.slice(0, max - 1).replace(/\s+\S*$/, '').replace(/[\s,;:.]+$/, '');
+  return schnitt + '…';
 }
 function minifiziere(css) {
   const strings = [];
@@ -913,7 +1007,10 @@ function abschluss() {
       const sichtbar = html.replace(/<script[\s\S]*?<\/script>/g, '');
       const ids = new Set();
       for (const m of sichtbar.matchAll(/\sid="([^"]+)"/g)) { if (ids.has(m[1])) fehler(`${wo}: id «${m[1]}» doppelt`); ids.add(m[1]); }
-      if (!/hreflang="en"/.test(html) && !/(^|\/)404\.html$/.test(rel)) fehler(`${wo}: hreflang fehlt`);
+      if (!/(^|\/)404\.html$/.test(rel)) for (const sp of [...SPRACHEN, 'x-default']) if (!html.includes(`hreflang="${sp}" href=`)) fehler(`${wo}: hreflang ${sp} fehlt`);
+      const sp = SPRACHEN.find(x => x !== 'de' && rel.startsWith(`${x}/`)) || 'de';
+      if (!html.includes(`<html lang="${META[sp].html}"`)) fehler(`${wo}: lang-Attribut nicht ${META[sp].html}`);
+      for (const x of SPRACHEN) if (!html.includes(`data-sprache="${x}"`)) fehler(`${wo}: Sprachwahl ohne ${x}`);
       if (!/data-sprache=/.test(html)) fehler(`${wo}: Sprachumschalter fehlt`);
     }
     const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
@@ -922,9 +1019,11 @@ function abschluss() {
     if (/\u00df/.test(text)) fehler(`${wo}: Eszett im Text`);
     if (/\p{Extended_Pictographic}/u.test(text)) fehler(`${wo}: Emoji im Text`);
     if (/Entwurf|Prüfstempel|Geprüft am/i.test(text)) fehler(`${wo}: Entwurf- oder Prüfhinweis`);
-    if (rel.startsWith('en/') && /[äöüÄÖÜ]/.test(text.replace(/Gürtel|Fehraltorf/g, ''))) warnung(`${wo}: Umlaut auf englischer Seite (deutscher Rest?)`);
+    // Deutsche Reste auf anderen Sprachseiten (Sprachwahl «Deutsch», Ortsnamen und Kursname ausgenommen)
+    const fremd = SPRACHEN.find(x => x !== 'de' && rel.startsWith(`${x}/`));
+    if (fremd && /[äöüÄÖÜ]/.test(text.replace(/Gürtel|Fehraltorf|Zürich/g, ''))) warnung(`${wo}: Umlaut auf Seite ${fremd} (deutscher Rest?)`);
   }
-  for (const f of ['assets/data/pool.json', 'assets/data/pool-en.json', 'assets/data/tag.json', 'assets/data/tag-en.json', 'assets/data/suche.json', 'assets/data/suche-en.json']) {
+  for (const f of SPRACHEN.flatMap(sp => ['pool', 'tag', 'suche'].map(n => `assets/data/${n}${sp === 'de' ? '' : `-${sp}`}.json`))) {
     if (!gibtEs(f)) { fehler(`${f} fehlt`); continue; }
     const s = lies(f);
     if (/[\u2013\u2014\u00df]/.test(s) || /\p{Extended_Pictographic}/u.test(s)) fehler(`${f}: Gedankenstrich, Eszett oder Emoji`);
@@ -953,10 +1052,20 @@ if (!fehlerListe.length && MODUS !== 'pruefen') {
     baueRecht();
     baueKurzadressen();
     baueDaten();
+    baueI18nJs();
   }
   baueSitemap(indexierbar);
   abschluss();
 }
+// Fehlende Uebersetzungen der Oberflaeche (Schluessel = deutscher Text, Wert = Englisch als Vorlage)
+const UI_DATEI = (ARGS.find(a => a.startsWith('--ui-fehlend=')) || '').slice(13);
+if (UI_DATEI) fs.writeFileSync(path.resolve(UI_DATEI), JSON.stringify(UI_FEHLT, null, 1));
+if (MODUS !== 'pruefen' && !fehlerListe.length) for (const sp of WEITERE) {
+  const ui = Object.keys(I18N[sp].ui || {}).filter(k => !(UI_GENUTZT[sp] || new Set()).has(k));
+  const js = Object.keys(I18N[sp].js || {}).filter(k => !(k in JS_SCHLUESSEL));
+  if (ui.length || js.length) warnung(`data/i18n/${sp}.json: ungenutzte Schlüssel, ui ${ui.length}, js ${js.length} (${[...ui, ...js].join(" | ").slice(0, 400)})`);
+}
+for (const [sp, fehlt] of Object.entries(UI_FEHLT)) fehler(`data/i18n/${sp.slice(0, 2)}.json: ${Object.keys(fehlt).length} Texte fehlen in «${sp.endsWith(':js') ? 'js' : 'ui'}» (Liste mit --ui-fehlend=<datei>), z. B. «${Object.keys(fehlt)[0].slice(0, 60)}»`);
 setzeSprache('de');
 console.log(`\nPower Platform Dojo Build, Modus ${MODUS}, Datum ${DATUM}, Sprachen ${SPRACHEN.join(', ')}`);
 console.log(`Tipps: ${ALLE.length}, Pool ${POOL.length}, Technik-Seiten ${SEITEN.length}, Prüfung ${PRUEF_ANZAHL()} Fragen`);

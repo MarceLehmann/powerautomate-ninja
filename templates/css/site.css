@@ -324,6 +324,16 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 /* Sprachumschalter DE/EN im Kopf */
 .sprache { font-weight: 600; font-size: .95rem; letter-spacing: .04em; text-decoration: none; }
 .sprache:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+/* Sprachwahl: vier Sprachen, ohne JavaScript als <details>, die aktuelle Sprache mit aria-current */
+.sprachwahl { position: relative; }
+.sprachwahl > summary { list-style: none; }
+.sprachwahl > summary::-webkit-details-marker { display: none; }
+.sprachwahl__liste { position: absolute; right: 0; top: calc(100% + .35rem); z-index: 30; min-width: 11rem; margin: 0; padding: .35rem; list-style: none; background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-md); box-shadow: var(--shadow); }
+.sprachwahl__liste a { display: flex; justify-content: space-between; gap: 1rem; min-height: 44px; align-items: center; padding: 0 .75rem; border-radius: var(--r-sm); color: var(--ink); text-decoration: none; }
+.sprachwahl__liste a:hover { background: var(--surface-2); }
+.sprachwahl__liste a[aria-current] { font-weight: 600; }
+.sprachwahl__liste a[aria-current]::after { content: "\2713"; color: var(--ink-muted); }
+.sprachwahl__liste a:focus-visible { outline: 2px solid var(--signal); outline-offset: -2px; }
 @media (max-width: 359px) { .kopf__aktionen .knopf-icon { min-width: 40px; padding: 0 .3rem; } .kopf__innen { gap: .3rem; } .marke { gap: .4rem; } .marke__text b { font-size: .9rem; } .marke__text small { font-size: .6rem; letter-spacing: .08em; } }
 /* Tusch, die Figur des Dojo (aus copilot.ninja, 16.10.2026) */
 .tusch { display: inline-block; width: 120px; height: 160px; line-height: 0; flex: none; }
