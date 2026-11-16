@@ -1,14 +1,14 @@
 /* Power Platform Dojo (Power Automate): Guertelpruefung. Zwei Fragen je Guertel von Weiss bis Schwarz (je_guertel in pool.json), die Fragen zu Schwarz sind die Meisterpruefung.
    Bestanden ist ein Guertel, wenn alle seine Fragen richtig sind. Zwei falsche im selben Guertel beenden die Pruefung.
    Ergebnis ist der hoechste Guertel, bis zu dem alle Guertel bestanden sind. Das Ergebnisbild entsteht lokal im Browser.
-   Beim Anzeigen eines Ergebnisses zaehlt GoatCounter einmal das Ereignis pruefung-beendet/<guertelfarbe> (Entscheid 3 vom 14.11.2026). */
+   Sobald die Pruefung beendet ist (letzte Antwort gegeben oder Abbruch), zaehlt GoatCounter einmal das Ereignis pruefung-beendet/<guertelfarbe> (Entscheid 3 vom 14.11.2026), die Anzeige folgt erst beim Klick auf «Zum Ergebnis». */
 (function () {
   'use strict';
   var F = window.FlowDojo, d = document, R = F ? F.R : (d.documentElement.getAttribute('data-r') || '');
   var LR = F ? F.LR : R, tx = F ? F.tx : function (de) { return de; }, txf = F ? F.txf : function (de) { return de; }, SFX = F ? F.SFX : '';
   var box = d.querySelector('[data-pruefung]'), start = d.querySelector('[data-pruefung-start]');
   if (!box || !start || !F) return;
-  var esc = F.esc, BUCHST = ['A', 'B', 'C'], daten = null, fragen = [], idx = 0, log = [], falsch = {}, bildUrl = null, gezaehlt = false;
+  var esc = F.esc, BUCHST = ['A', 'B', 'C'], daten = null, fragen = [], idx = 0, log = [], falsch = {}, bildUrl = null, gezaehlt = false, zaehlLauf = 0;
   var KNOTEN = ['M2 11h28v7H2z', 'M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4'];
 
   function mische(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
@@ -25,7 +25,7 @@
   });
 
   function neu() {
-    fragen = []; idx = 0; log = []; falsch = {}; gezaehlt = false;
+    fragen = []; idx = 0; log = []; falsch = {}; gezaehlt = false; zaehlLauf++;
     for (var g = 1; g <= daten.guertel.length; g++) {
       var n = daten.je_guertel || 2;
       mische(daten.fragen.filter(function (f) { return f.g === g; })).slice(0, n).forEach(function (f) {
@@ -63,6 +63,7 @@
       if (o === q.f.richtig) b.classList.add('ist-richtig'); if (o === orig && !ok) b.classList.add('ist-falsch');
     });
     var abbruch = falsch[q.f.g] >= 2, ende = abbruch || idx === fragen.length - 1;
+    if (ende) zaehle(berechne().res);
     var fb = box.querySelector('[data-feedback]');
     fb.innerHTML = '<div class="feedback ' + (ok ? 'ok' : 'nein') + '"><p><strong>' + (ok ? tx('Richtig.', 'Correct.') : tx('Nicht ganz. Richtig ist: ', 'Not quite. The correct answer is: ') + esc(q.f.antworten[q.f.richtig]) + '.') + '</strong></p>' +
       (q.f.erkl ? '<p>' + esc(ohnePraefix(q.f.erkl)) + '</p>' : '') +
@@ -74,7 +75,8 @@
     w.focus();
   }
 
-  function ergebnis(abbruch) {
+  /* Ergebnis-Guertel und Uebersicht aus log und fragen, genutzt von antwort() (Zaehlen) und ergebnis() (Anzeige) */
+  function berechne() {
     var res = 0, uebersicht = [];
     for (var g = 1; g <= daten.guertel.length; g++) {
       var dieser = log.filter(function (l) { return l.g === g; }), soll = fragen.filter(function (q) { return q.f.g === g; }).length;
@@ -82,6 +84,11 @@
       if (bestanden && res === g - 1) res = g;
       uebersicht.push({ g: g, text: !dieser.length ? tx('nicht geprüft', 'not tested') : bestanden ? tx('bestanden', 'passed') : (dieser.filter(function (l) { return l.ok; }).length + tx(' von ', ' of ') + soll + tx(' richtig', ' correct')) });
     }
+    return { res: res, uebersicht: uebersicht };
+  }
+
+  function ergebnis(abbruch) {
+    var b = berechne(), res = b.res, uebersicht = b.uebersicht;
     var s = F.lade(); s.guertel = res; s.pruefung_datum = F.heuteIso(); F.speichere(s);
     if (res) d.documentElement.setAttribute('data-guertel', res); else d.documentElement.removeAttribute('data-guertel');
     var g0 = res ? daten.guertel[res - 1] : null, naechster = daten.guertel[res] || null;
@@ -112,17 +119,24 @@
     if (res) zeichne(g0);
   }
 
-  /* Ereignis pruefung-beendet/<guertelfarbe>, je Pruefung genau einmal. Fehlt count.js oder ist skipgc gesetzt, passiert nichts. */
+  /* Ereignis pruefung-beendet/<guertelfarbe>, je Pruefung genau einmal (auch bei zweitem Aufruf aus ergebnis()).
+     count.js laedt async: ist goatcounter.count noch nicht da, alle 500 ms erneut versuchen, bis ca. 10 s, dann aufgeben.
+     «Pruefung neu starten» erhoeht zaehlLauf und bricht damit offene Wiederholungen der alten Pruefung ab.
+     skipgc oder fehlendes GoatCounter: still nichts. */
   function zaehle(res) {
     if (gezaehlt) return;
     gezaehlt = true;
-    try {
-      if (window.localStorage && window.localStorage.getItem('skipgc') === 't') return;
-      var gc = window.goatcounter;
-      if (!gc || typeof gc.count !== 'function') return;
-      var farbe = res ? daten.guertel[res - 1].farbe : 'kein-guertel';
-      gc.count({ path: 'pruefung-beendet/' + farbe, title: 'Prüfung beendet: ' + farbe, event: true });
-    } catch (e) { /* Zaehlen darf die Pruefung nie stoeren */ }
+    var lauf = zaehlLauf, farbe = res ? daten.guertel[res - 1].farbe : 'kein-guertel', versuch = 0;
+    function sende() {
+      if (lauf !== zaehlLauf) return;
+      try {
+        if (window.localStorage && window.localStorage.getItem('skipgc') === 't') return;
+        var gc = window.goatcounter;
+        if (gc && typeof gc.count === 'function') { gc.count({ path: 'pruefung-beendet/' + farbe, title: 'Prüfung beendet: ' + farbe, event: true }); return; }
+      } catch (e) { return; /* Zaehlen darf die Pruefung nie stoeren */ }
+      if (++versuch <= 20) setTimeout(sende, 500);
+    }
+    sende();
   }
 
   function umbrechen(ctx, text, x, y, breite, zeile) {
