@@ -1,5 +1,5 @@
 /* Power Platform Dojo (Power Automate): Theme, Menue, Suche, Kopieren, Quiz, Fortschritt, Technik-Wand, Technik des Tages, Mein Dojo.
-   Kein Tracking, keine Anfragen an fremde Server. Jeder Zugriff auf localStorage in try/catch, alles laeuft auch ohne. */
+   Kein eigenes Tracking. Die Seitenzaehlung (GoatCounter, ohne Cookies, auch das Ereignis pruefung-beendet) laeuft ueber count.js, siehe Datenschutz. Jeder Zugriff auf localStorage in try/catch, alles laeuft auch ohne. */
 (function () {
   'use strict';
   var d = document, h = d.documentElement, R = h.getAttribute('data-r') || '', LR = h.getAttribute('data-lr') || R;
