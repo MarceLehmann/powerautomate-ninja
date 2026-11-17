@@ -356,7 +356,7 @@
       "lernziel": "Du testest einen Flow vor dem Aktivieren und liest die Ergebnisse jeder Aktion.",
       "slug": "flow-testen-vor-dem-einschalten",
       "titel_de": "Flow testen, bevor er live geht",
-      "kurztext_de": "Ein neuer Flow läuft selten beim ersten Versuch fehlerfrei. Mit «Test» im Designer startest du ihn manuell, gibst die Eingaben des Triggers selbst vor und verfolgst den Lauf Schritt für Schritt. Bei jeder Aktion siehst du, was hineingeht und was herauskommt. So findest du den Schritt, an dem ein Wert leer bleibt oder ein Ausdruck etwas anderes liefert als gedacht, bevor echte Daten durch den Flow laufen. Danach passt du an und testest erneut, so oft du willst. Erst wenn die Ein- und Ausgaben stimmen, schaltest du den Flow für den Alltag ein.",
+      "kurztext_de": "Ein neuer Flow läuft selten beim ersten Versuch fehlerfrei. Mit «Test» im Designer startest du ihn manuell. Bei einem manuellen Trigger gibst du die Eingaben selbst vor, bei einem automatischen löst du das Ereignis selbst aus. Dann verfolgst du den Lauf Schritt für Schritt. Bei jeder Aktion siehst du, was hineingeht und was herauskommt. So findest du den Schritt, an dem ein Wert leer bleibt oder ein Ausdruck etwas anderes liefert als gedacht, bevor echte Daten durch den Flow laufen. Danach passt du an und testest erneut, so oft du willst. Erst wenn die Ein- und Ausgaben stimmen, schaltest du den Flow für den Alltag ein.",
       "wann_ja": "Vor jedem Einschalten und nach jeder Änderung an Trigger, Ausdrücken oder Bedingungen.",
       "wann_nein": "Wenn eine Aktion echte Mails verschickt oder Daten ändert, die du nicht anfassen willst. Dann gib ihr zuerst ein statisches Ergebnis.",
       "fehler": "Nur auf den grünen Haken schauen und die Ausgaben nicht öffnen. «Erfolgreich» heisst nicht, dass der Wert stimmt.",
@@ -846,7 +846,7 @@
       "lernziel": "Du testest Flows mit simulierten Ergebnissen, ohne echte Daten zu verändern.",
       "slug": "mit-static-result-testen",
       "titel_de": "Mit Static Result testen, ohne Daten zu ändern",
-      "kurztext_de": "Manche Aktionen willst du beim Testen nicht wirklich ausführen: Sie verschicken Mails, ändern Datensätze oder dauern lange. Mit Static Result gibst du einer Aktion ein festes Ergebnis vor. Im neuen Designer aktivierst du im Bereich \"Testing\" der Aktion \"Static result\" und setzt die Ausgabewerte. Im klassischen Designer öffnest du das Menü \"Settings\" der Aktion und dort \"Static result\". Beim nächsten Lauf gilt die Aktion als erfolgreich, ohne dass sie ausgeführt wird. Die folgenden Schritte arbeiten mit deiner vorgegebenen Ausgabe weiter. So testest du die Logik danach in Ruhe und mit verschiedenen Fällen, ohne echte Daten anzufassen. Vor dem Einsatz im Betrieb schaltest du das statische Ergebnis wieder aus.",
+      "kurztext_de": "Manche Aktionen willst du beim Testen nicht wirklich ausführen: Sie verschicken Mails, ändern Datensätze oder dauern lange. Mit Static Result gibst du einer Aktion ein festes Ergebnis vor. Im neuen Designer aktivierst du im Bereich \"Testing\" der Aktion \"Static result\" und setzt die Ausgabewerte. Im klassischen Designer wählst du bei der Aktion das Drei-Punkte-Menü und dort \"Static result\". Beim nächsten Lauf gilt die Aktion als erfolgreich, ohne dass sie ausgeführt wird. Die folgenden Schritte arbeiten mit deiner vorgegebenen Ausgabe weiter. So testest du die Logik danach in Ruhe und mit verschiedenen Fällen, ohne echte Daten anzufassen. Vor dem Einsatz im Betrieb schaltest du das statische Ergebnis wieder aus.",
       "wann_ja": "Für Aktionen, die Mails senden, Daten ändern oder lange dauern, während du die Schritte danach testest.",
       "wann_nein": "Im Betrieb. Bleibt Static Result eingeschaltet, führt der Flow die Aktion nie wirklich aus.",
       "fehler": "Static Result nach dem Testen eingeschaltet lassen. Der Flow meldet Erfolg, obwohl die Aktion nie gelaufen ist.",
@@ -1751,7 +1751,7 @@
       "slug": "timeout-fuer-lange-aktionen",
       "titel_de": "Timeout für lange Aktionen festlegen",
       "ausdruck": "",
-      "kurztext_de": "Eine Approval oder eine andere Aktion, die auf Menschen wartet, kann länger dauern als geplant. In den Einstellungen der Aktion legst du unter Timeout fest, wie lange sie höchstens warten darf. Die Dauer schreibst du im Format ISO 8601: P1D ist ein Tag, P14D sind 14 Tage, PT2H zwei Stunden. Läuft die Zeit ab, gilt die Aktion als abgelaufen. Damit der Flow dann nicht einfach scheitert, hängst du eine Aktion an, deren «Configure run after» nur auf «has timed out» steht. Dort erinnerst du, eskalierst oder startest eine neue Anfrage. Über allem gilt die Laufzeitgrenze eines Flows von {limit:laufzeit_max}.",
+      "kurztext_de": "Eine Approval oder eine andere Aktion, die auf Menschen wartet, kann länger dauern als geplant. In den Einstellungen der Aktion legst du unter Timeout fest, wie lange sie höchstens warten darf. Die Dauer schreibst du im Format ISO 8601: P1D ist ein Tag, P14D sind 14 Tage, PT2H zwei Stunden. Läuft die Zeit ab, gilt die Aktion als abgelaufen. Damit der Flow dann nicht einfach scheitert, hängst du eine Aktion an, deren «Configure run after» nur auf «has timed out» steht. Dort erinnerst du, eskalierst oder startest eine neue Anfrage. Über allem gilt die Laufzeitgrenze eines Flows von {limit:laufzeit_max}. Auf eine Approval wartet ein Flow laut Microsoft höchstens {limit:approval_warten_max}.",
       "wann_ja": "Bei Approvals und anderen Aktionen, die auf eine Antwort warten, deren Dauer du nicht kennst.",
       "wann_nein": "Wenn der Prozess die Laufzeitgrenze von {limit:laufzeit_max} überschreiten kann. Dann reicht ein Timeout nicht, weil der ganze Lauf vorher endet.",
       "fehler": "Den Timeout setzen, aber keinen Pfad für «has timed out» bauen. Dann scheitert der Lauf trotzdem.",
@@ -1763,7 +1763,8 @@
         }
       ],
       "limits": [
-        "laufzeit_max"
+        "laufzeit_max",
+        "approval_warten_max"
       ],
       "suchbegriffe": [
         "Timeout",
@@ -2833,7 +2834,7 @@
         "antworten": [
           "Mit einem eigenen Ausgang für jedes Feld",
           "Als JSON-Text in einem Ausgang, dann ParseJSON",
-          "Über die Aktion Response des HTTP-Connectors"
+          "Über die Aktion Response des Request-Connectors"
         ],
         "richtig_index": 1,
         "erklaerungen": [
@@ -2845,7 +2846,7 @@
       "lernziel": "Du gibst verschachtelte Daten ohne Premium an eine App zurück.",
       "slug": "flow-daten-als-json-an-power-apps",
       "titel_de": "Flow-Daten als JSON an Power Apps zurückgeben",
-      "kurztext_de": "Ein Flow liefert einer Canvas-App oft mehr als einen einzelnen Wert, zum Beispiel einen Kunden mit allen Bestellungen. «Respond to a Power App or flow» kennt aber nur flache Ausgaben wie Text, Zahl oder Ja/Nein. Statt Dutzende Felder anzulegen, baust du das Ergebnis im Flow als JSON, etwa mit Select und Compose, und gibst es als einen einzigen Textausgang zurück. In Power Apps liest ParseJSON den Text wieder ein. Ohne Typangabe bekommst du einen dynamischen Wert und wandelst Felder mit Text(), Value() oder Boolean() um. Mit einem Type als zweitem Argument erhältst du direkt typisierte Datensätze und Tabellen. Die Aktion Response aus dem HTTP-Connector brauchst du dafür nicht.",
+      "kurztext_de": "Ein Flow liefert einer Canvas-App oft mehr als einen einzelnen Wert, zum Beispiel einen Kunden mit allen Bestellungen. «Respond to a Power App or flow» kennt aber nur flache Ausgaben wie Text, Zahl oder Ja/Nein. Statt Dutzende Felder anzulegen, baust du das Ergebnis im Flow als JSON, etwa mit Select und Compose, und gibst es als einen einzigen Textausgang zurück. In Power Apps liest ParseJSON den Text wieder ein. Ohne Typangabe bekommst du einen dynamischen Wert und wandelst Felder mit Text(), Value() oder Boolean() um. Mit einem Type als zweitem Argument erhältst du direkt typisierte Datensätze und Tabellen. Die Aktion Response aus dem Request-Connector brauchst du dafür nicht.",
       "wann_ja": "Wenn die App Listen oder verschachtelte Datensätze aus dem Flow braucht.",
       "wann_nein": "Bei sehr grossen Datenmengen. Dann speichert der Flow die Daten in SharePoint oder Dataverse, und die App liest sie direkt.",
       "fehler": "Felder aus ParseJSON ohne Umwandlung in Formeln verwenden. Ohne Type liefert ParseJSON dynamische Werte.",
