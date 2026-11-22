@@ -59,7 +59,11 @@
       "@id": "https://kmupower.com/#organization",
       "name": "KMUpower",
       "legalName": "Marcel Lehmann (Handelsname KMUpower)",
-      "url": "https://kmupower.com/"
+      "url": "https://kmupower.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://kmupower.com/assets/logos/LOGO_KMUpower_high.webp"
+      }
     },
     {
       "@type": "LearningResource",
@@ -178,7 +182,7 @@
     <div class="kopf__aktionen">
       <details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="Lingua: Italiano"><span aria-hidden="true">IT</span></summary>
 <ul class="sprachwahl__liste"><li><a href="../../../techniken/sicherer-zugriff-mit-fragezeichen/" hreflang="de" lang="de" data-sprache="de">Deutsch</a></li><li><a href="../../../fr/techniken/sicherer-zugriff-mit-fragezeichen/" hreflang="fr" lang="fr" data-sprache="fr">Français</a></li><li><a href="../../../it/techniken/sicherer-zugriff-mit-fragezeichen/" hreflang="it" lang="it" data-sprache="it" aria-current="true">Italiano</a></li><li><a href="../../../en/techniken/sicherer-zugriff-mit-fragezeichen/" hreflang="en" lang="en" data-sprache="en">English</a></li></ul></details>
-      <button type="button" class="knopf-icon" data-suche-auf aria-label="Cerca una tecnica" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Cerca una tecnica" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd aria-hidden="true">Ctrl K</kbd></button>
       <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Modalità scura" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
       <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
     </div>
@@ -206,7 +210,8 @@
   <div class="suche__kopf">
     <h2 id="suche-titel" class="sr-only">Cerca una tecnica</h2>
     <label for="suche-feld" class="sr-only">Termine di ricerca</label>
-    <input id="suche-feld" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, Approval, ciclo">
+    <input id="suche-feld" type="text" role="combobox" inputmode="search" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, Approval, ciclo">
+    <button type="button" class="knopf-icon" data-suche-leeren aria-label="Cancella il termine di ricerca" hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg></button>
     <button type="button" class="knopf-icon" data-suche-zu aria-label="Chiudi la ricerca"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   </div>
   <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Risultati"></ul>
@@ -274,6 +279,9 @@
           <li><a href="https://www.powerplatformacademy.online/?utm_source=powerautomate.ninja&amp;utm_medium=dojo&amp;utm_content=fusszeile" rel="noopener">Power Platform Academy</a></li>
         </ul>
       </nav>
+    </div>
+    <div class="fuss__dojos fuss__sprachen">
+      <p>Lingua: <a href="../../../techniken/sicherer-zugriff-mit-fragezeichen/" hreflang="de" lang="de">Deutsch</a>, <a href="../../../fr/techniken/sicherer-zugriff-mit-fragezeichen/" hreflang="fr" lang="fr">Français</a>, <a href="../../../en/techniken/sicherer-zugriff-mit-fragezeichen/" hreflang="en" lang="en">English</a></p>
     </div>
     <div class="fuss__dojos">
       <p>Altre discipline: <a href="https://copilot.ninja/it/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/it/lernpfade/" rel="noopener">Percorsi di apprendimento</a> | <a href="https://powerplatformdojo.com/it/mentoring/" rel="noopener">Dojo Mentoring</a></p>

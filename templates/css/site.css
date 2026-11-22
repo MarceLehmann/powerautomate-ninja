@@ -298,7 +298,8 @@ html.js .aufloesung-block:not(.offen) { display: none; }
 .suche::backdrop { background: rgb(14 15 18 / .5); }
 .suche__kopf { display: flex; gap: .4rem; padding: .6rem; border-bottom: 1px solid var(--line); }
 .suche__kopf input { flex: 1; min-height: 48px; font: inherit; padding: .4rem .7rem; border: 0; background: transparent; color: var(--ink); min-width: 0; }
-.suche__kopf input:focus-visible { outline: none; }
+.suche__kopf input:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; border-radius: var(--r-md); }
+.suche__kopf [hidden] { display: none; }
 .suche__treffer { list-style: none; margin: 0; padding: .4rem; max-height: 60vh; overflow-y: auto; }
 .suche__treffer a { display: flex; gap: .6rem; align-items: center; padding: .6rem .7rem; border-radius: var(--r-md); color: var(--ink); text-decoration: none; min-height: 44px; }
 .suche__treffer a:hover, .suche__treffer a[aria-selected="true"] { background: var(--surface-2); }

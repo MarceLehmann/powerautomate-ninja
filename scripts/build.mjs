@@ -262,7 +262,8 @@ const ICONS = {
   sonne: '<svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>',
   mond: '<svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>',
   menue: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg>',
-  zu: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>'
+  zu: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>',
+  loeschen: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>'
 };
 // Gurtknoten als Zeichen der Seite (keine Microsoft-Farben, keine Produktsymbole)
 const KNOTEN_PFADE = '<path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/>';
@@ -322,14 +323,17 @@ const LQUELLEN = () => [
   { url: 'https://learn.microsoft.com/en-us/connectors/webcontents/', titel: T('HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz', 'HTTP with Microsoft Entra ID (preauthorized) connector reference') }
 ];
 
-/* Kurze Seitentitel, H1 und Inhalt bleiben ausgeschrieben. */
+/* Seitentitel 30 bis 60 Zeichen, gemessen am Text vor dem Escapen. Passt das Suffix nicht mehr in 60 Zeichen, entfaellt es.
+   Sehr kurze Titel (Rechtstexte) bekommen den Namen der Seite dazu. H1 und Inhalt bleiben ausgeschrieben. */
 function kurzerTitel(titel) {
   const suffix = ' | ' + TITEL_SUFFIX;
+  const suffixLang = suffix + ', powerautomate.ninja';
   const basis = titel.endsWith(suffix) ? titel.slice(0, -suffix.length) : titel;
-  const max = 65 - suffix.length;
-  const kurz = basis.length > max ? basis.slice(0, max - 1).replace(/\s+\S*$/, '') + '…' : basis;
-  return kurz + suffix;
+  if (basis.length + suffix.length <= 60) return basis.length + suffix.length < 30 && basis.length + suffixLang.length <= 60 ? basis + suffixLang : basis + suffix;
+  if (basis.length <= 60) return basis;
+  return basis.slice(0, 59).replace(/\s+\S*$/, '') + '…';
 }
+
 
 /* Rahmen */
 const NAV = { wand: 'techniken', technik: 'techniken', pruefung: 'pruefung', premium: 'premium', dojo: 'dojo' };
@@ -344,13 +348,14 @@ function seite(relL, p) {
   const cur = (n) => NAV[p.seite] === n ? (/^(wand|pruefung|premium|dojo)$/.test(p.seite) ? ' aria-current="page"' : ' aria-current="true"') : '';
   const ctx = {
     r, lr, name: NAME, marke_tusch: tusch('ruhe'),
-    icon_suche: ICONS.suche, icon_sonne: ICONS.sonne, icon_mond: ICONS.mond, icon_menue: ICONS.menue, icon_zu: ICONS.zu,
+    icon_suche: ICONS.suche, icon_sonne: ICONS.sonne, icon_mond: ICONS.mond, icon_menue: ICONS.menue, icon_zu: ICONS.zu, icon_loeschen: ICONS.loeschen,
     cur_techniken: cur('techniken'), cur_pruefung: cur('pruefung'), cur_premium: cur('premium'), cur_dojo: cur('dojo'),
     js_extra: (p.js || []).map(s => `<script src="${r}assets/js/${s}" defer></script>`).join('\n'),
     js_sprache: L === 'de' || L === 'en' ? '' : `<script src="${r}assets/js/i18n-${L}.js" defer></script>`,
     tipp_fuss: mitUtm('https://www.powerplatformtip.com/', 'fusszeile'), academy_fuss: mitUtm(CFG.academy_url, 'fusszeile'), academy_dojo: ACADEMY_DOJO(), copilot_dojo: COPILOT_DOJO(),
     powerplatform_dojo: POWERPLATFORM_DOJO(), powerplatform_lernpfade: POWERPLATFORM_LERNPFADE(), powerplatform_mentoring: POWERPLATFORM_MENTORING(),
-    sprachwahl: sprachwahlHtml(r, pfad)
+    sprachwahl: sprachwahlHtml(r, pfad),
+    sprachen_fuss: p.seite === '404' ? '' : sprachenFussHtml(r, pfad)
   };
   const noindex = TESTPHASE || p.noindex || ['heute', 'dojo'].includes(p.seite);
   const bild = p.ogBild || `${BASE_URL}${L === 'de' ? 'og-image.png' : `assets/img/${L}/og-image.png`}`;
@@ -385,6 +390,13 @@ ${render(partial('fuss'), ctx, 'fuss')}
   schreibe(rel, typografie(html));
 }
 /* Sprachwahl im Kopf: alle Sprachen, aktuelle mit aria-current. Ohne JavaScript als <details>. */
+// Sichtbare Links auf die Entsprechung dieser Seite in den anderen Sprachen (Fusszeile, ohne JS und ohne aufgeklapptes Menue)
+function sprachenFussHtml(r, pfad) {
+  const links = SPRACHWAHL.filter(s => s !== L).map(s => `<a href="${r}${pfxVon(s)}${pfad}" hreflang="${s}" lang="${s}">${esc(META[s].name)}</a>`).join(', ');
+  return `<div class="fuss__dojos fuss__sprachen">
+      <p>${esc(META[L].wahl_label)}: ${links}</p>
+    </div>`;
+}
 function sprachwahlHtml(r, pfad) {
   const m = META[L];
   return `<details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="${esc(`${m.wahl_label}: ${m.name}`)}"><span aria-hidden="true">${m.kurz}</span></summary>
@@ -400,7 +412,7 @@ function typografie(html) {
     return aus > 0 ? teil : teil.replace(/([^\s\u00a0])[ ]?([:;?!])(?=[\s<]|$)/g, '$1\u00a0$2');
   }).join('');
 }
-const LD_ORG = { '@type': 'Organization', '@id': 'https://kmupower.com/#organization', name: 'KMUpower', legalName: 'Marcel Lehmann (Handelsname KMUpower)', url: 'https://kmupower.com/' };
+const LD_ORG = { '@type': 'Organization', '@id': 'https://kmupower.com/#organization', name: 'KMUpower', legalName: 'Marcel Lehmann (Handelsname KMUpower)', url: 'https://kmupower.com/', logo: { '@type': 'ImageObject', url: 'https://kmupower.com/assets/logos/LOGO_KMUpower_high.webp' } };
 const LD_WEBSITE = () => ({ '@type': 'WebSite', '@id': `${BL()}#website`, name: NAME, url: BL(), inLanguage: LANG_HTML(), description: T('Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.', 'Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.'), publisher: { '@id': LD_ORG['@id'] } });
 const krumen = (teile) => ({ '@type': 'BreadcrumbList', itemListElement: teile.map(([name, url], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url })) });
 const krumenHtml = (r, teile) => `<nav class="krumen" aria-label="${T('Brotkrumen', 'Breadcrumb')}"><ol><li><a href="${r}">${T('Start', 'Home')}</a></li>${teile.map(([name, href], i) => `<li><a href="${href}"${i === teile.length - 1 ? ' aria-current="page"' : ''}>${esc(name)}</a></li>`).join('')}</ol></nav>`;
@@ -414,12 +426,13 @@ function heuteTechnik(nurStart) {
   return folge[n];
 }
 function quizKarte(t, r, ebene, mitLink = true) {
-  return `<article class="tdt" data-guertel-nr="${t.guertel}" data-heute-karte>
+  const huelle = ebene === 'p' ? 'div' : 'article'; // article braucht eine Ueberschrift (W3C), die Startseite zeigt die Frage als Absatz
+  return `<${huelle} class="tdt" data-guertel-nr="${t.guertel}" data-heute-karte>
 <ul class="metazeile"><li>${guertelTag(t.guertel)}</li><li data-heute-badge>${lizenzBadge(t)}</li></ul>
 <${ebene} class="tdt__frage" data-heute-frage>${esc(t.quiz.frage)}</${ebene}>
 <ul class="antworten antworten--drei" data-heute-antworten>${t.quiz.antworten.map((a, i) => `<li><a class="antwort" href="${r}techniken/${t.slug}/?antwort=${i}#quiz"><span class="antwort__b" aria-hidden="true">${BUCHST[i]}</span><span>${esc(a)}</span></a></li>`).join('')}</ul>
 ${mitLink ? `<p class="klein">${T('Tippe auf eine Antwort, die Auflösung steht auf der Technik-Seite', 'Tap an answer, the solution is on the technique page')}: <a href="${r}techniken/${t.slug}/" data-heute-link>${esc(t.titel_de)}</a></p>` : ''}
-</article>`;
+</${huelle}>`;
 }
 
 /* Seiten */
@@ -814,7 +827,7 @@ ${krumenHtml(r, [[T('Datenschutz', 'Privacy'), './']])}
 <div class="prose sektion--eng">
 ${render(lies(L === 'de' ? 'templates/datenschutz.html' : gibtEs(`templates/datenschutz.${L}.html`) ? `templates/datenschutz.${L}.html` : (fehler(`templates/datenschutz.${L}.html fehlt`), 'templates/datenschutz.en.html')), { kontakt: CFG.kontakt, stand: DATUM_ANZEIGE(CFG.recht_stand), utm_source: CFG.utm_source }, 'datenschutz')}
 </div></div></main>`;
-  seite('datenschutz/index.html', { seite: 'recht', titel: T('Datenschutz', 'Privacy') + ` | ${TITEL_SUFFIX}`, haupt: datenschutz, beschreibung: T('Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Fortschritt und Sprachwahl bleiben im Browser.', 'Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.') });
+  seite('datenschutz/index.html', { seite: 'recht', titel: (T('Datenschutz', 'Privacy') === 'Privacy' && L !== 'en' ? `Privacy (${META[L].name})` : T('Datenschutz', 'Privacy')) + ` | ${TITEL_SUFFIX}`, haupt: datenschutz, beschreibung: T('Aufrufe werden ohne Cookies gezählt, gespeichert werden nur Summen ohne Personenbezug. Fortschritt und Sprachwahl bleiben im Browser.', 'Visits are counted without cookies; only totals without personal identifiers are stored. Progress and language choice stay in your browser.') });
 
   const b = BASIS_PFAD + PFX();
   seite('404.html', {
