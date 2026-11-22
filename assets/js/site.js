@@ -79,7 +79,7 @@
     if (leeren) leeren.hidden = !feld.value;
     leer.hidden = treffer.length > 0 || !q; auswahl = -1; feld.setAttribute('aria-expanded', treffer.length ? 'true' : 'false');
   }
-  function sucheAuf() { if (!dlg || !dlg.showModal) { location.href = LR + 'techniken/'; return; } ladeSuche(function () { zeigeTreffer(); }); if (!dlg.open) dlg.showModal(); feld.value = ''; if (leeren) leeren.hidden = true; feld.focus(); }
+  function sucheAuf() { if (!dlg || !dlg.showModal) { location.href = LR + 'techniken/'; return; } feld.value = ''; ladeSuche(function () { zeigeTreffer(); }); if (!dlg.open) dlg.showModal(); zeigeTreffer(); feld.focus(); }
   if (dlg) {
     $$('[data-suche-auf]').forEach(function (b) { b.addEventListener('click', sucheAuf); });
     $$('[data-suche-zu]').forEach(function (b) { b.addEventListener('click', function () { dlg.close(); }); });

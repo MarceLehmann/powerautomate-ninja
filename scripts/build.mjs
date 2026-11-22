@@ -262,7 +262,8 @@ const ICONS = {
   sonne: '<svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>',
   mond: '<svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>',
   menue: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg>',
-  zu: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>'
+  zu: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>',
+  loeschen: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>'
 };
 // Gurtknoten als Zeichen der Seite (keine Microsoft-Farben, keine Produktsymbole)
 const KNOTEN_PFADE = '<path class="band" d="M2 11h28v7H2z"/><path class="band" d="M12.5 17.5L8 29h5.2l3-6.4M19.5 17.5L24 29h-5.2l-3-6.4"/><rect class="knoten-k" x="11.5" y="8.5" width="9" height="12" rx="2.2"/>';
@@ -347,7 +348,7 @@ function seite(relL, p) {
   const cur = (n) => NAV[p.seite] === n ? (/^(wand|pruefung|premium|dojo)$/.test(p.seite) ? ' aria-current="page"' : ' aria-current="true"') : '';
   const ctx = {
     r, lr, name: NAME, marke_tusch: tusch('ruhe'),
-    icon_suche: ICONS.suche, icon_sonne: ICONS.sonne, icon_mond: ICONS.mond, icon_menue: ICONS.menue, icon_zu: ICONS.zu,
+    icon_suche: ICONS.suche, icon_sonne: ICONS.sonne, icon_mond: ICONS.mond, icon_menue: ICONS.menue, icon_zu: ICONS.zu, icon_loeschen: ICONS.loeschen,
     cur_techniken: cur('techniken'), cur_pruefung: cur('pruefung'), cur_premium: cur('premium'), cur_dojo: cur('dojo'),
     js_extra: (p.js || []).map(s => `<script src="${r}assets/js/${s}" defer></script>`).join('\n'),
     js_sprache: L === 'de' || L === 'en' ? '' : `<script src="${r}assets/js/i18n-${L}.js" defer></script>`,
