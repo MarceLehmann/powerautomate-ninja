@@ -1,0 +1,110 @@
+{
+ "quelle": "git blame data/techniken.json",
+ "erzeugt_aus_commit": "7e08265",
+ "seiten": {
+  "filter-array-im-advanced-mode": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-16"
+  },
+  "feste-werte-in-compose-statt-variablen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "datum-direkt-mit-utcnow-formatieren": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-16"
+  },
+  "duplikate-mit-union-entfernen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-16"
+  },
+  "flow-testen-vor-dem-einschalten": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-11-14"
+  },
+  "aktionen-ueber-my-clipboard-wiederverwenden": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "fehler-mit-try-catch-finally-abfangen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "flow-laeufe-nacheinander": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "mit-static-result-testen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-11-14"
+  },
+  "sicherer-zugriff-mit-fragezeichen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-16"
+  },
+  "apply-to-each-parallel": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "mit-code-view-hinter-eine-aktion-schauen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-28"
+  },
+  "json-objekt-statt-switch": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "json-schema-das-null-vertraegt": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-16"
+  },
+  "timeout-fuer-lange-aktionen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-11-14"
+  },
+  "microsoft-graph-ohne-app-registrierung": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "approvals-ueber-30-tage": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "apostrophe-und-sonderzeichen-codieren": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-11-02"
+  },
+  "schleifen-beim-testen-mit-take-kuerzen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "entscheidungen-ueber-ein-geteiltes-postfach": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "sharepoint-datei-per-rest-umbenennen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "float-vor-div": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-16"
+  },
+  "flow-daten-als-json-an-power-apps": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-11-14"
+  },
+  "echte-fehlermeldung-mit-result-auslesen": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-10-24"
+  },
+  "ein-flow-als-router-fuer-agent-werkzeuge": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-11-16"
+  },
+  "selbstheilende-aufrufe-fuer-agents": {
+   "publiziert": "2026-10-16",
+   "geaendert": "2026-11-14"
+  }
+ }
+}

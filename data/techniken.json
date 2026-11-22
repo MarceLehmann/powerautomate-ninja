@@ -1150,7 +1150,7 @@
         "dynamischer Inhalt",
         "item()"
       ],
-      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-definition-language",
+      "learn_url": "https://learn.microsoft.com/en-us/azure/logic-apps/workflow-definition-language-schema",
       "learn_titel": "Workflow Definition Language schema reference",
       "limits": []
     },

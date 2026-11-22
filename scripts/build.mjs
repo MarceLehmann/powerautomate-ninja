@@ -88,6 +88,7 @@ function tageZwischen(a, b) { return Math.round((Date.parse(b + 'T00:00:00Z') - 
 function woerter(s) { return String(s || '').trim().split(/\s+/).filter(Boolean).length; }
 function schreibe(rel, inhalt) {
   if (MODUS === 'pruefen') return;
+  if (/\.html$/.test(rel)) inhalt = titelLaenge(inhalt);
   const ziel = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(ziel), { recursive: true });
   fs.writeFileSync(ziel, inhalt);
@@ -322,14 +323,24 @@ const LQUELLEN = () => [
   { url: 'https://learn.microsoft.com/en-us/connectors/webcontents/', titel: T('HTTP with Microsoft Entra ID (preauthorized), Connector-Referenz', 'HTTP with Microsoft Entra ID (preauthorized) connector reference') }
 ];
 
-/* Kurze Seitentitel, H1 und Inhalt bleiben ausgeschrieben. */
+/* Kurze Seitentitel (30 bis 60 Zeichen), H1 und Inhalt bleiben ausgeschrieben. Passt das Suffix nicht mehr in 60 Zeichen, entfaellt es. */
 function kurzerTitel(titel) {
   const suffix = ' | ' + TITEL_SUFFIX;
   const basis = titel.endsWith(suffix) ? titel.slice(0, -suffix.length) : titel;
-  const max = 65 - suffix.length;
-  const kurz = basis.length > max ? basis.slice(0, max - 1).replace(/\s+\S*$/, '') + '…' : basis;
-  return kurz + suffix;
+  if (basis.length + suffix.length <= 60) return basis + suffix;
+  if (basis.length <= 60) return basis;
+  return basis.slice(0, 59).replace(/\s+\S*$/, '') + '…';
 }
+/* Sehr kurze Titel (Rechtstexte, unter 30 Zeichen) bekommen den Namen der Seite dazu. */
+const TITEL_SUFFIX_LANG = ' | ' + TITEL_SUFFIX + ', powerautomate.ninja';
+function titelLaenge(html) {
+  return html.replace(/<title>([^<]*)<\/title>/, (m, t) => {
+    const suffix = ' | ' + TITEL_SUFFIX;
+    if (t.length >= 30 || !t.endsWith(suffix)) return m;
+    return `<title>${t.slice(0, -suffix.length)}${TITEL_SUFFIX_LANG}</title>`;
+  });
+}
+
 
 /* Rahmen */
 const NAV = { wand: 'techniken', technik: 'techniken', pruefung: 'pruefung', premium: 'premium', dojo: 'dojo' };
@@ -350,7 +361,8 @@ function seite(relL, p) {
     js_sprache: L === 'de' || L === 'en' ? '' : `<script src="${r}assets/js/i18n-${L}.js" defer></script>`,
     tipp_fuss: mitUtm('https://www.powerplatformtip.com/', 'fusszeile'), academy_fuss: mitUtm(CFG.academy_url, 'fusszeile'), academy_dojo: ACADEMY_DOJO(), copilot_dojo: COPILOT_DOJO(),
     powerplatform_dojo: POWERPLATFORM_DOJO(), powerplatform_lernpfade: POWERPLATFORM_LERNPFADE(), powerplatform_mentoring: POWERPLATFORM_MENTORING(),
-    sprachwahl: sprachwahlHtml(r, pfad)
+    sprachwahl: sprachwahlHtml(r, pfad),
+    sprachen_fuss: sprachenFussHtml(r, pfad)
   };
   const noindex = TESTPHASE || p.noindex || ['heute', 'dojo'].includes(p.seite);
   const bild = p.ogBild || `${BASE_URL}${L === 'de' ? 'og-image.png' : `assets/img/${L}/og-image.png`}`;
@@ -385,6 +397,13 @@ ${render(partial('fuss'), ctx, 'fuss')}
   schreibe(rel, typografie(html));
 }
 /* Sprachwahl im Kopf: alle Sprachen, aktuelle mit aria-current. Ohne JavaScript als <details>. */
+// Sichtbare Links auf die Entsprechung dieser Seite in den anderen Sprachen (Fusszeile, ohne JS und ohne aufgeklapptes Menue)
+function sprachenFussHtml(r, pfad) {
+  const links = SPRACHWAHL.filter(s => s !== L).map(s => `<a href="${r}${pfxVon(s)}${pfad}" hreflang="${s}" lang="${s}" data-sprache="${s}">${esc(META[s].name)}</a>`).join(', ');
+  return `<div class="fuss__dojos fuss__sprachen">
+      <p>${esc(META[L].wahl_label)}: ${links}</p>
+    </div>`;
+}
 function sprachwahlHtml(r, pfad) {
   const m = META[L];
   return `<details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="${esc(`${m.wahl_label}: ${m.name}`)}"><span aria-hidden="true">${m.kurz}</span></summary>
@@ -400,7 +419,10 @@ function typografie(html) {
     return aus > 0 ? teil : teil.replace(/([^\s\u00a0])[ ]?([:;?!])(?=[\s<]|$)/g, '$1\u00a0$2');
   }).join('');
 }
-const LD_ORG = { '@type': 'Organization', '@id': 'https://kmupower.com/#organization', name: 'KMUpower', legalName: 'Marcel Lehmann (Handelsname KMUpower)', url: 'https://kmupower.com/' };
+// Veroeffentlichungs- und Aenderungsdatum je Technik-Seite aus der Git-Historie (scripts/seitendaten-aus-git.mjs, data/seitendaten.json)
+const SEITENDATEN = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'data/seitendaten.json'), 'utf8')).seiten || {}; } catch (e) { return {}; } })();
+const seitenDatum = (slug) => (SEITENDATEN[slug] ? { datePublished: SEITENDATEN[slug].publiziert, dateModified: SEITENDATEN[slug].geaendert } : {});
+const LD_ORG = { '@type': 'Organization', '@id': 'https://kmupower.com/#organization', name: 'KMUpower', legalName: 'Marcel Lehmann (Handelsname KMUpower)', url: 'https://kmupower.com/', logo: { '@type': 'ImageObject', url: 'https://kmupower.com/assets/logos/LOGO_KMUpower_high.webp' } };
 const LD_WEBSITE = () => ({ '@type': 'WebSite', '@id': `${BL()}#website`, name: NAME, url: BL(), inLanguage: LANG_HTML(), description: T('Fragen, Erklärungen und Gürtelweg für Flows in Power Automate, auf Deutsch. Unabhängige Website ohne Verbindung zu Microsoft.', 'Questions, explanations and a belt path for flows in Power Automate. Independent website, not affiliated with Microsoft.'), publisher: { '@id': LD_ORG['@id'] } });
 const krumen = (teile) => ({ '@type': 'BreadcrumbList', itemListElement: teile.map(([name, url], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url })) });
 const krumenHtml = (r, teile) => `<nav class="krumen" aria-label="${T('Brotkrumen', 'Breadcrumb')}"><ol><li><a href="${r}">${T('Start', 'Home')}</a></li>${teile.map(([name, href], i) => `<li><a href="${href}"${i === teile.length - 1 ? ' aria-current="page"' : ''}>${esc(name)}</a></li>`).join('')}</ol></nav>`;
@@ -414,12 +436,13 @@ function heuteTechnik(nurStart) {
   return folge[n];
 }
 function quizKarte(t, r, ebene, mitLink = true) {
-  return `<article class="tdt" data-guertel-nr="${t.guertel}" data-heute-karte>
+  const huelle = ebene === 'p' ? 'div' : 'article'; // article braucht eine Ueberschrift (W3C), die Startseite zeigt die Frage als Absatz
+  return `<${huelle} class="tdt" data-guertel-nr="${t.guertel}" data-heute-karte>
 <ul class="metazeile"><li>${guertelTag(t.guertel)}</li><li data-heute-badge>${lizenzBadge(t)}</li></ul>
 <${ebene} class="tdt__frage" data-heute-frage>${esc(t.quiz.frage)}</${ebene}>
 <ul class="antworten antworten--drei" data-heute-antworten>${t.quiz.antworten.map((a, i) => `<li><a class="antwort" href="${r}techniken/${t.slug}/?antwort=${i}#quiz"><span class="antwort__b" aria-hidden="true">${BUCHST[i]}</span><span>${esc(a)}</span></a></li>`).join('')}</ul>
 ${mitLink ? `<p class="klein">${T('Tippe auf eine Antwort, die Auflösung steht auf der Technik-Seite', 'Tap an answer, the solution is on the technique page')}: <a href="${r}techniken/${t.slug}/" data-heute-link>${esc(t.titel_de)}</a></p>` : ''}
-</article>`;
+</${huelle}>`;
 }
 
 /* Seiten */
@@ -596,8 +619,8 @@ ${kurs}
     seite: 'technik', titel: `${t.titel_de} | ${TITEL_SUFFIX}`, haupt, noindex: !indexierbar, ogTyp: 'article',
     ogBild: `${BASE_URL}assets/img/${PFX()}guertel-${g.farbe}.png`,
     beschreibung: TF('{titel}: Quizfrage mit Auflösung, kurze Erklärung auf Deutsch und der Link zum ganzen Tipp auf powerplatformtip.com.', '{titel}: quiz question with solution, a short explanation and the link to the full tip on powerplatformtip.com.', { titel: t.titel_de }).slice(0, 160),
-    jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'LearningResource', '@id': `${url}#technik`, name: t.titel_de, url, inLanguage: LANG_HTML(), learningResourceType: 'Quiz', educationalLevel: g.name, isBasedOn: t.tipp_url, citation: [t.learn_url, ...(t.lizenz_belege || []).map(b => b.url)], publisher: { '@id': LD_ORG['@id'] }, isPartOf: { '@id': `${BL()}#website` }, hasPart: { '@id': `${url}#quiz` } },
-      { '@type': 'Quiz', '@id': `${url}#quiz`, name: `${T('Quizfrage', 'Quiz question')}: ${t.titel_de}`, inLanguage: LANG_HTML(), educationalLevel: g.name, about: { '@type': 'Thing', name: 'Power Automate' }, isBasedOn: t.tipp_url,
+    jsonld: [LD_WEBSITE(), LD_ORG, { '@type': 'LearningResource', '@id': `${url}#technik`, name: t.titel_de, url, inLanguage: LANG_HTML(), learningResourceType: 'Quiz', educationalLevel: g.name, ...seitenDatum(t.slug), isBasedOn: t.tipp_url, citation: [t.learn_url, ...(t.lizenz_belege || []).map(b => b.url)], publisher: { '@id': LD_ORG['@id'] }, isPartOf: { '@id': `${BL()}#website` }, hasPart: { '@id': `${url}#quiz` } },
+      { '@type': 'Quiz', '@id': `${url}#quiz`, name: `${T('Quizfrage', 'Quiz question')}: ${t.titel_de}`, inLanguage: LANG_HTML(), educationalLevel: g.name, ...seitenDatum(t.slug), about: { '@type': 'Thing', name: 'Power Automate' }, isBasedOn: t.tipp_url,
         hasPart: [{ '@type': 'Question', eduQuestionType: 'Multiple choice', learningResourceType: 'Practice problem', name: q.frage, text: q.frage,
           acceptedAnswer: { '@type': 'Answer', position: q.richtig_index, text: q.antworten[q.richtig_index], answerExplanation: { '@type': 'Comment', text: q.erklaerungen[q.richtig_index] } },
           suggestedAnswer: q.antworten.map((a, k) => k === q.richtig_index ? null : { '@type': 'Answer', position: k, text: a, answerExplanation: { '@type': 'Comment', text: q.erklaerungen[k] } }).filter(Boolean) }] },
