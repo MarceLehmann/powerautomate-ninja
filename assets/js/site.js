@@ -69,19 +69,22 @@
   });
 
   /* Suche (Strg+K) */
+  var leeren = $('[data-suche-leeren]');
   var dlg = $('#suche'), feld = $('#suche-feld'), liste = $('#suche-liste'), leer = $('.suche__leer'), daten = null, auswahl = -1;
   function ladeSuche(cb) { if (daten) return cb(); fetch(R + 'assets/data/suche' + SFX + '.json').then(function (r) { return r.json(); }).then(function (j) { daten = j.eintraege || []; cb(); }).catch(function () { daten = []; cb(); }); }
   function zeigeTreffer() {
     var q = (feld.value || '').toLowerCase().trim(), teile = q.split(/\s+/).filter(Boolean);
     var treffer = (daten || []).filter(function (t) { var s = (t.titel + ' ' + t.s + ' ' + t.nr).toLowerCase(); return teile.every(function (w) { return s.indexOf(w) > -1; }); }).slice(0, 12);
     liste.innerHTML = treffer.map(function (t, i) { return '<li role="option" id="st-' + i + '"><a href="' + LR + 'techniken/' + t.slug + '/"><span class="band-punkt" data-guertel-nr="' + t.g + '" aria-hidden="true"></span><span>' + esc(t.titel) + ' <span class="klein">' + tx('Tipp', 'Tip') + ' ' + t.nr + '</span></span></a></li>'; }).join('');
+    if (leeren) leeren.hidden = !feld.value;
     leer.hidden = treffer.length > 0 || !q; auswahl = -1; feld.setAttribute('aria-expanded', treffer.length ? 'true' : 'false');
   }
-  function sucheAuf() { if (!dlg || !dlg.showModal) { location.href = LR + 'techniken/'; return; } ladeSuche(function () { zeigeTreffer(); }); if (!dlg.open) dlg.showModal(); feld.value = ''; feld.focus(); }
+  function sucheAuf() { if (!dlg || !dlg.showModal) { location.href = LR + 'techniken/'; return; } ladeSuche(function () { zeigeTreffer(); }); if (!dlg.open) dlg.showModal(); feld.value = ''; if (leeren) leeren.hidden = true; feld.focus(); }
   if (dlg) {
     $$('[data-suche-auf]').forEach(function (b) { b.addEventListener('click', sucheAuf); });
     $$('[data-suche-zu]').forEach(function (b) { b.addEventListener('click', function () { dlg.close(); }); });
     feld.addEventListener('input', zeigeTreffer);
+    if (leeren) leeren.addEventListener('click', function () { feld.value = ''; zeigeTreffer(); feld.focus(); });
     feld.addEventListener('keydown', function (e) {
       var links = $$('a', liste); if (!links.length) return;
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); auswahl = (auswahl + (e.key === 'ArrowDown' ? 1 : -1) + links.length) % links.length; links.forEach(function (a, i) { a.setAttribute('aria-selected', i === auswahl ? 'true' : 'false'); }); feld.setAttribute('aria-activedescendant', 'st-' + auswahl); }

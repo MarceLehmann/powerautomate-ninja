@@ -13,7 +13,7 @@
     </nav>
     <div class="kopf__aktionen">
       {{{sprachwahl}}}
-      <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js>{{{icon_suche}}}<kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Search techniques" aria-keyshortcuts="Control+K Meta+K" data-nur-js>{{{icon_suche}}}<kbd aria-hidden="true">Ctrl K</kbd></button>
       <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-nur-js>{{{icon_sonne}}}{{{icon_mond}}}</button>
       <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js>{{{icon_menue}}}</button>
     </div>
@@ -41,7 +41,8 @@
   <div class="suche__kopf">
     <h2 id="suche-titel" class="sr-only">Search techniques</h2>
     <label for="suche-feld" class="sr-only">Search term</label>
-    <input id="suche-feld" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approval, loop">
+    <input id="suche-feld" type="text" role="combobox" inputmode="search" enterkeyhint="search" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approval, loop">
+    <button type="button" class="knopf-icon" data-suche-leeren aria-label="Clear search term" hidden>{{{icon_zu}}}</button>
     <button type="button" class="knopf-icon" data-suche-zu aria-label="Close search">{{{icon_zu}}}</button>
   </div>
   <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Results"></ul>

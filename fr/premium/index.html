@@ -103,7 +103,7 @@
     <div class="kopf__aktionen">
       <details class="sprachwahl" data-sprachwahl><summary class="knopf-icon sprache" aria-label="Langue: Français"><span aria-hidden="true">FR</span></summary>
 <ul class="sprachwahl__liste"><li><a href="../../premium/" hreflang="de" lang="de" data-sprache="de">Deutsch</a></li><li><a href="../../fr/premium/" hreflang="fr" lang="fr" data-sprache="fr" aria-current="true">Français</a></li><li><a href="../../it/premium/" hreflang="it" lang="it" data-sprache="it">Italiano</a></li><li><a href="../../en/premium/" hreflang="en" lang="en" data-sprache="en">English</a></li></ul></details>
-      <button type="button" class="knopf-icon" data-suche-auf aria-label="Rechercher une technique" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd>Ctrl K</kbd></button>
+      <button type="button" class="knopf-icon" data-suche-auf aria-label="Rechercher une technique" aria-keyshortcuts="Control+K Meta+K" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><kbd aria-hidden="true">Ctrl K</kbd></button>
       <button type="button" class="knopf-icon" data-theme-toggle aria-pressed="false" aria-label="Mode sombre" data-nur-js><svg class="icon-sonne" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="icon-mond" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
       <button type="button" class="knopf-icon kopf__menue" data-menue-knopf aria-expanded="false" aria-controls="menue" aria-label="Menu" data-nur-js><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h12"/></svg></button>
     </div>
@@ -131,7 +131,8 @@
   <div class="suche__kopf">
     <h2 id="suche-titel" class="sr-only">Rechercher une technique</h2>
     <label for="suche-feld" class="sr-only">Terme de recherche</label>
-    <input id="suche-feld" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approbation, boucle">
+    <input id="suche-feld" type="text" role="combobox" inputmode="search" enterkeyhint="search" aria-autocomplete="list" aria-expanded="false" aria-controls="suche-liste" autocomplete="off" placeholder="JSON, approbation, boucle">
+    <button type="button" class="knopf-icon" data-suche-leeren aria-label="Effacer le terme de recherche" hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
     <button type="button" class="knopf-icon" data-suche-zu aria-label="Fermer la recherche"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   </div>
   <ul class="suche__treffer" id="suche-liste" role="listbox" aria-label="Résultats"></ul>
@@ -215,7 +216,7 @@
       </nav>
     </div>
     <div class="fuss__dojos fuss__sprachen">
-      <p>Langue : <a href="../../premium/" hreflang="de" lang="de" data-sprache="de">Deutsch</a>, <a href="../../it/premium/" hreflang="it" lang="it" data-sprache="it">Italiano</a>, <a href="../../en/premium/" hreflang="en" lang="en" data-sprache="en">English</a></p>
+      <p>Langue : <a href="../../premium/" hreflang="de" lang="de">Deutsch</a>, <a href="../../it/premium/" hreflang="it" lang="it">Italiano</a>, <a href="../../en/premium/" hreflang="en" lang="en">English</a></p>
     </div>
     <div class="fuss__dojos">
       <p>Autres disciplines : <a href="https://copilot.ninja/fr/" rel="noopener">copilot.ninja</a> | <a href="https://powerplatformdojo.com/fr/lernpfade/" rel="noopener">Parcours d'apprentissage</a> | <a href="https://powerplatformdojo.com/fr/mentoring/" rel="noopener">Dojo Mentoring</a></p>
