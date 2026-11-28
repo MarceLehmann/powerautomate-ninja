@@ -733,7 +733,7 @@ function baueDojo() {
   const haupt = `<main id="main"><div class="wrap sektion--eng pruef">
 ${dojoKopf(`<span class="label">${T('Dein Fortschritt', 'Your progress')}</span>
 <h1 id="h1">${T('Mein Dojo', 'My dojo')}</h1>
-<p class="lead" data-dojo-stand>${T('Hier siehst du, welche Techniken du geübt hast und welchen Gürtel du in der Prüfung erreicht hast. Alles bleibt in deinem Browser.', 'Here you see which techniques you have practiced and which belt you reached in the exam. Everything stays in your browser.')}</p>`)}
+<p class="lead" data-dojo-stand>${T('Hier siehst du, welche Techniken du geübt hast und welchen Gürtel du in der Prüfung erreicht hast. Dein Stand ist nur in deinem Browser gespeichert.', 'Here you see which techniques you have practiced and which belt you reached in the exam. Your progress is stored only in your browser.')}</p>`)}
 <p class="knopf-reihe"><a class="knopf knopf--primaer" href="../pruefung/">${T('Gürtelprüfung', 'Belt exam')}</a><a class="knopf" href="../heute/">${T('Technik des Tages', 'Technique of the day')}</a></p>
 ${liste}
 <section class="abschnitt" aria-labelledby="h-loeschen"><h2 id="h-loeschen">${T('Daten löschen', 'Delete data')}</h2><p>${T('Dein Fortschritt liegt nur im lokalen Speicher dieses Browsers. Mit einem Klick ist er weg.', 'Your progress is only stored in the local storage of this browser. One click and it is gone.')}</p><p><button type="button" class="knopf knopf--leise" data-dojo-loeschen data-nur-js>${T('Alles löschen', 'Delete everything')}</button></p><p class="status-zeile" data-dojo-meldung role="status" aria-live="polite"></p></section>
