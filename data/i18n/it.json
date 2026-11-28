@@ -142,7 +142,7 @@
     "Selbsttest": "Autotest",
     "{n} Fragen von Weiss bis Schwarz, zwei je Gürtel. Die letzten zwei sind die Meisterprüfung. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.": "{n} domande dalla cintura bianca alla nera, due per cintura. Le ultime due sono l'esame da maestro. Due risposte sbagliate in una cintura terminano l'esame.",
     "Prüfung starten": "Avvia l'esame",
-    "Die Fragen kommen zufällig aus {n} Fragen zu den Tipps. Deine Antworten und dein Ergebnis bleiben in deinem Browser. Nur die erreichte Gürtelfarbe wird gezählt, anonym und ohne Cookies.": "Le domande sono estratte a caso da {n} domande sui tip. Le tue risposte e il tuo risultato restano nel tuo browser. Viene contato solo il colore di cintura raggiunto, in modo anonimo e senza cookie.",
+    "Die Fragen kommen zufällig aus {n} Fragen zu den Tipps. Deine Antworten bleiben in deinem Browser. Gezählt wird nur, mit welcher Gürtelfarbe eine Prüfung endet, anonym und ohne Cookies.": "Le domande sono estratte a caso da {n} domande sui tip. Le tue risposte restano nel tuo browser. Viene contato solo il colore di cintura con cui termina l'esame, in modo anonimo e senza cookie.",
     "Die Gürtelprüfung braucht JavaScript. Alle Fragen mit Auflösung findest du auch auf den": "L'esame di cintura richiede JavaScript. Trovi tutte le domande con soluzione anche nelle",
     "Technik-Seiten": "pagine delle tecniche",
     "So wird gewertet": "Come si valuta",
