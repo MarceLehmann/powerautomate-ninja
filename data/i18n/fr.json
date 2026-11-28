@@ -143,7 +143,7 @@
     "Selbsttest": "Autotest",
     "{n} Fragen von Weiss bis Schwarz, zwei je Gürtel. Die letzten zwei sind die Meisterprüfung. Zwei falsche Antworten in einem Gürtel beenden die Prüfung.": "{n} questions de la ceinture blanche à la noire, deux par ceinture. Les deux dernières forment l'examen de maître. Deux réponses fausses dans une ceinture mettent fin à l'examen.",
     "Prüfung starten": "Démarrer l'examen",
-    "Die Fragen kommen zufällig aus {n} Fragen zu den Tipps. Dein Ergebnis bleibt in deinem Browser.": "Les questions sont tirées au hasard parmi {n} questions sur les astuces. Ton résultat reste dans ton navigateur.",
+    "Die Fragen kommen zufällig aus {n} Fragen zu den Tipps. Deine Antworten und dein Ergebnis bleiben in deinem Browser. Nur die erreichte Gürtelfarbe wird gezählt, anonym und ohne Cookies.": "Les questions sont tirées au hasard parmi {n} questions sur les astuces. Tes réponses et ton résultat restent dans ton navigateur. Seule la couleur de ceinture atteinte est comptée, de façon anonyme et sans cookies.",
     "Die Gürtelprüfung braucht JavaScript. Alle Fragen mit Auflösung findest du auch auf den": "L'examen de ceinture nécessite JavaScript. Tu trouves aussi toutes les questions avec solution sur les",
     "Technik-Seiten": "pages des techniques",
     "So wird gewertet": "Comment c'est évalué",
