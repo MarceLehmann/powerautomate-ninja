@@ -198,7 +198,7 @@
     var teile = [];
     if (s.guertel) teile.push(tx('Dein Gürtel aus der Prüfung: ', 'Your belt from the exam: ') + GNAME[s.guertel - 1] + (s.pruefung_datum ? ' (' + datumCH(s.pruefung_datum) + ')' : '') + '.');
     else teile.push(tx('Du hast die Gürtelprüfung noch nicht gemacht.', 'You have not taken the belt exam yet.'));
-    teile.push(tx('Geübt: ', 'Practiced: ') + n + tx(' von ', ' of ') + gesamt + tx(' Techniken. Alles bleibt in deinem Browser.', ' techniques. Everything stays in your browser.'));
+    teile.push(tx('Geübt: ', 'Practiced: ') + n + tx(' von ', ' of ') + gesamt + tx(' Techniken. Dein Stand ist nur in deinem Browser gespeichert.', ' techniques. Your progress is stored only in your browser.'));
     stand.textContent = teile.join(' ');
     var lo = $('[data-dojo-loeschen]');
     if (lo) lo.addEventListener('click', function () {
